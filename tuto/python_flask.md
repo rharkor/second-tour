@@ -13,13 +13,14 @@ Pour vérifier que python est bien installé tapez ```py``` si cela vous ouvre u
  - Nous pourrons ajouter des type d'objet ou en supprimer
  - Nous pourrons assigner un nombre pour chaque objet pour savoir combien il en reste
  - Tout les objets seront sauvegardés dans un fichier pour sauvegarder et lire les données (sinon tout est effacé à l'arrêt du programme)
+ - Un objet est une classe avec des attributs (un nom, et un nombre)
 
 PS : l'architecture des fichier/dossier est très importantes et un projet non maintenable ne seras pas validé.
 N'oubliez pas d'utiliser des classes !
 
 ## Les bases de Flask
 
-Avant de commencer regardez cette série de vidéo elle vous seras utile tout au long du projet https://www.youtube.com/watch?v=mqhxxeeTbu0&list=PLzMcBGfZo4-n4vJJybUVV3Un_NFS5EOgX.
+Apres avoir apris les bases de python mais avant de commencer le projet suivant cette série de vidéo elle vous seras utile tout au long du projet https://www.youtube.com/watch?v=mqhxxeeTbu0&list=PLzMcBGfZo4-n4vJJybUVV3Un_NFS5EOgX.
 
 Le but ici est de créer un site web portfolio pour votre cv, il seras très simpliste l'objectif reste d'apprendre à utiliser le framework `Flask`.
  - Votre site devras être décomposé en plusieurs fichier html (notamment celui du squelette du site).
