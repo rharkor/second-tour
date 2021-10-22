@@ -18,7 +18,7 @@ Ce planning devra, en fonction des choix des candidats et des capacités du cent
 
 ## Technologies nécessaires
 - suite office
-- ymfony ou autre framework
+- symfony ou autre framework
 - panneau d'affichage
 - langage de programmation au choix
 
