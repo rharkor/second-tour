@@ -16,7 +16,8 @@ tous les paramètres rentrés précedemment peuvent être modifiable à tout mom
 ### Jour J
 Dès le matin les élèves irons se présenter à l'admin avec leurs choix de matières, c'est l'admin qui se chargeras de les ajouter sur l'application. Le candidat donneras son nom et les deux matières choisies.
 
-## Spécifications supplémentaires / techniques
+## Spécifications supplémentaires
+ - 30 minutes de pause entre chaques épreuves d'un élève.
  - Les proffesseurs doivent manger entre 13h et 14h il faut donc leur prévoir une pause.
  - Le planning se génère manuellement quand l'admin cliques sur le bouton, à savoir qu'une fois l'heure de début dépassé on ne pourras modifier les heures de passage de chaque élève qu'individuellement.
  - Pour prévoir les retards tous les 5 crénauds un crénaud est vide.
@@ -24,11 +25,11 @@ Dès le matin les élèves irons se présenter à l'admin avec leurs choix de ma
  - Les candidats de la série STI2D passe le premier jour.
  - On ne mélange pas les candidats de série différentes.
  - Les matières Math et Physique des STI2D sont regroupés en une (1 salle / 2 profs / 1 élève).
- - Les matières sont à chercher sur internet (Français et Philosophie sont invluse de base). Pour les STI2D c'est : 
+ - Les matières sont à chercher sur internet (Français et Philosophie sont incluse de base). Pour les STI2D c'est : 
    - Math / Physique
    - 2I2D
    - Philo
-   - Français
+   - Français  
     Pour les S c'est :
    - Philo
    - Français
