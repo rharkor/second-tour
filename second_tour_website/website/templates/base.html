@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+    <!-- Boostrap -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <!-- Header -->
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+
+    <title>{% block title %}{% endblock %}</title>
+    {% block head %}{% endblock %}
+</head>
+
+<body>
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{url_for('main_routes.index')}}">Calendrier</a>
+            <ul class="navbar-nav navbar-disposition">
+                <li class="navbar-item">
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </li>
+                <li class="navbar-item">
+                    <a class="nav-link" href="{{url_for('main_routes.connexion')}}">
+                        <img alt="logo de connexion" src="{{url_for('static', filename='img/login.png')}}" class="image-login">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    {% block content %}{% endblock %}
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
