@@ -13,19 +13,36 @@
           required="required">
         <label for="floatingInput">Adresse email</label>
       </div>
-      <div class="form-floating form-login-input-lg margin-login-form">
+      <div class="form-floating form-login-input-lg margin-login-form d-flex">
         <input type="password" class="form-control" id="floatingPassword" placeholder="MotDePasse" name="password"
           required="required">
+        <i class="bi bi-eye-slash d-flex justify-content-center align-items-center eye-form" id="togglePassword"></i>
         <label for="floatingPassword">Mot de passe</label>
       </div>
       <button class="w-100 btn btn-lg btn-primary margin-login-form btn-success" type="submit">Se connecter</button>
     </form>
     {%- for category, message in get_flashed_messages(with_categories = true) %}
-    <div class="alert alert-{{category}}">
+    <div class="alert alert-{{category}}  alert-dismissible fade show" role="alert" >
       {{ message }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     {%- endfor %}
   </div>
 </div>
 
+{% endblock %}
+
+{% block script %}
+<script>
+  const togglePassword = document.querySelector('#togglePassword');
+  const password = document.querySelector('#floatingPassword');
+
+  togglePassword.addEventListener('click', function (e) {
+    // toggle the type attribute
+    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+    password.setAttribute('type', type);
+    // toggle the eye / eye slash icon
+    this.classList.toggle('bi-eye');
+});
+</script>
 {% endblock %}

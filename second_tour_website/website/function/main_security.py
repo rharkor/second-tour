@@ -19,9 +19,13 @@ def test_password(password, user):
         return True
     return False
 
-def test_session_connected(session):
+def test_session_connected(session, admin):
     if 'email' in session and 'password' in session:
         user = UTILISATEURS.query.filter_by(email=session['email']).first()
         if user:
-            return session['password'] == user.password
+            if session['password'] == user.password:
+                if admin:
+                    return user.admin == True
+                else:
+                    return True
     return False

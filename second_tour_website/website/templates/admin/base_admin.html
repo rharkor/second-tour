@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block head %}
+<link rel="stylesheet" href="{{url_for('static', filename='admin.css')}}">
+{% endblock %}
+{% block content %}
+<div class="d-flex flex-column vh-100 flex-shrink-0 p-3 text-white bg-dark" style="width: 250px;">
+    <a href="{{url_for('admin_routes.acceuil')}}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+        <svg class="bi me-2" width="40" height="32"></svg>
+        <span class="fs-4">Espace admin</span>
+    </a>
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item">
+            <a href="{{url_for('admin_routes.acceuil')}}" {% if request.url_rule.endpoint=="admin_routes.acceuil"
+                %}class="nav-link active" aria-current="page" {% else %}class="nav-link text-white" {% endif %}>
+                <i class="fas fa-home"></i>
+                <span class="ms-2">Acceuil</span>
+            </a>
+        </li>
+        <li>
+            <a href="{{url_for('admin_routes.candidats')}}" {% if request.url_rule.endpoint=="admin_routes.candidats"
+                %}class="nav-link active" aria-current="page" {% else %}class="nav-link text-white" {% endif %}>
+                <i class="fas fa-users"></i>
+                <span class="ms-2">Candidats</span>
+            </a>
+        </li>
+        <li>
+            <a href="{{url_for('admin_routes.salles')}}" {% if request.url_rule.endpoint=="admin_routes.salles"
+                %}class="nav-link active" aria-current="page" {% else %}class="nav-link text-white" {% endif %}>
+                <i class="fas fa-chalkboard-teacher"> </i>
+                <span class="ms-2">Salles</span>
+            </a>
+        </li>
+        <li>
+            <a href="{{url_for('admin_routes.professeurs')}}" {% if
+                request.url_rule.endpoint=="admin_routes.professeurs" %}class="nav-link active" aria-current="page" {%
+                else %}class="nav-link text-white" {% endif %}>
+                <i class="fas fa-user-tie"></i>
+                <span class="ms-2">Professeurs</span>
+            </a>
+        </li>
+        <li>
+            <a href="{{url_for('admin_routes.series')}}" {% if request.url_rule.endpoint=="admin_routes.series"
+                %}class="nav-link active" aria-current="page" {% else %}class="nav-link text-white" {% endif %}>
+                <i class="fas fa-vial"></i>
+                <span class="ms-2">Séries</span>
+            </a>
+        </li>
+        <li>
+            <a href="{{url_for('admin_routes.matieres')}}" {% if request.url_rule.endpoint=="admin_routes.matieres"
+                %}class="nav-link active" aria-current="page" {% else %}class="nav-link text-white" {% endif %}>
+                <i class="fas fa-bookmark"></i>
+                <span class="ms-2">Matières</span>
+            </a>
+        </li>
+        <hr>
+        <li>
+            <a href="{{url_for('admin_routes.comptes')}}" {% if request.url_rule.endpoint=="admin_routes.comptes"
+                %}class="nav-link active" aria-current="page" {% else %}class="nav-link text-white" {% endif %}>
+                <i class="fas fa-user-circle"></i>
+                <span class="ms-2">Comptes</span>
+            </a>
+        </li>
+    </ul>
+    <hr>
+    <div class="dropdown">
+        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            <strong>{{session['email']}}</strong>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+            <li>
+                <a class="dropdown-item" href="{{url_for('admin_routes.deconnexion')}}">Se déconnecter</a>
+            </li>
+        </ul>
+    </div>
+</div>
+{% block sub_content %}
+{% endblock %}
+{% endblock %}
+
+
+{% block script %}
+{% endblock %}

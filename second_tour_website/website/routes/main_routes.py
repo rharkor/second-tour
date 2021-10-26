@@ -16,7 +16,10 @@ def index():
 @main_routes.route('/connexion', methods=['POST', 'GET'])
 def connexion():
     if request.method == 'GET':
-        return render_template('connexion.html')
+            if main_security.test_session_connected(session, True):
+                return redirect(url_for('admin_routes.acceuil'))
+            else:
+                return render_template('connexion.html')
     else:
         form = request.form
         if not all([form['email'], form['password']]):
@@ -34,7 +37,7 @@ def connexion():
                     # Save in session
                     main_sessions.save_user(session, user)
                     # Go to dashboard
-                    return redirect(url_for('admin_routes.dashboard'))
+                    return redirect(url_for('admin_routes.acceuil'))
                 else:
                     flash('Cet utilisateur n\'existe pas', 'warning')
 

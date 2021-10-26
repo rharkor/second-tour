@@ -1,0 +1,43 @@
+main{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.nav-link:hover {
+    background-color: #525252 !important
+}
+
+.nav-link .fa {
+    transition: all 1s
+}
+
+.nav-link:hover .fa {
+    transform: rotate(360deg)
+}
+
+.main-table-admin{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.main-div-admin{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 10px 20px 20px 20px;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.name-finder{
+    display: flex;
+    justify-content: flex-end;
+    width: 15%;
+    margin: 20px 15px 20px 0;
+}
+
+th.supprimer{
+    width: 10%;
+}

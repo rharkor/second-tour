@@ -7,9 +7,15 @@
     </a>
 </div>
 <div class="d-flex flex-column align-items-center min-width-max-content">
-    <div>
+    <div class="mb-l">
         <img alt="logo" src="{{url_for('static', filename='img/logo.png')}}" class="image-m">
     </div>
+    {%- for category, message in get_flashed_messages(with_categories = true) %}
+    <div class="alert alert-{{category}}  alert-dismissible fade show" role="alert" >
+      {{ message }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {%- endfor %}
     <div class="padding-main-calendar">
         <div class="calendar table-responsive thumbnail">
             <div class="name-finder">

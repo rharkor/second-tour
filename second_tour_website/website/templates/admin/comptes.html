@@ -1,0 +1,33 @@
+{% extends "admin/base_admin.html" %}
+{% block title %}Administration{% endblock %}
+{% block sub_content %}
+<div class="main-div-admin">
+    <div class="name-finder">
+            <input type="text" id="search-name" class="form-control" onkeyup="nameFinder()" placeholder="Recherche par email..">
+    </div>
+    <div class="main-table-admin">
+        <div class="table-responsive thumbnail">
+            <table class="table table-light table-striped table-hover" id="calendar">
+                <thead>
+                    <tr>
+                        <th scope="col">Email</th>
+                        <th scope="col">Type</th>
+                        <th scope="col" class="supprimer">Supprimer</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for an_user in all_users %}
+                <tr>
+                    <td scope="row">{{an_user.email}}</th>
+                    <td scope="row">{% if an_user.admin %}Admin{% else %}Professeur{% endif %}</td>
+                    <td scope="row">
+                        <button type="button" class="btn btn-outline-danger" {% if an_user.email == 'admin@ac-poitiers.fr' %}disabled{% endif %}>Supprimer</button>
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
