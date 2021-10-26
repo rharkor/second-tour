@@ -7,7 +7,7 @@ class UTILISATEURS(db.Model):
     password = db.Column(db.String(200))
     admin = db.Column(db.Boolean(False))
     __table_args__ = (
-        db.UniqueConstraint('email', 'password', 'admin', name='unq_email_password_admin'),
+        db.UniqueConstraint('email', 'admin', name='unq_email_admin'),
         )
 
     def __init__(self, email, password, admin):

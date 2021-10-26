@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, flash, session, url_for
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from datetime import timedelta
 
@@ -14,12 +14,11 @@ app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=3)
 
 db = SQLAlchemy(app)
 
-# Import sql classes
-from .database.main_database import UTILISATEURS
-
 # Configure the routes blueprint
 from .routes.main_routes import main_routes
+from .routes.admin_routes import admin_routes
 app.register_blueprint(main_routes, url_prefix='/')
+app.register_blueprint(admin_routes, url_prefix='/admin')
 
 
 def run(debug_mode=False):
