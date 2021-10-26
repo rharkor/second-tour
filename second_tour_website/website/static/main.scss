@@ -1,0 +1,148 @@
+$white: #ffffff;
+$primary: #4C5CFF;
+
+html{
+    height: 100%;
+}
+
+body{
+    background: $primary;
+    height: 100%;
+}
+
+main{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.top-layer{
+    position: relative;
+    top: 0;
+    right: 0;
+    display: flex;
+    margin: 10px 10px 0 0;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.left{
+    left: 0;
+    right: unset;
+    margin: 0 0 10px 10px;
+}
+
+.image-login {
+    width: 35px;
+    height: auto;
+    filter: invert(100%);
+}
+
+.image-xl {
+    width: 300px;
+    height: auto;
+}
+
+.image-l {
+    width: 200px;
+    height: auto;
+}
+
+.image-m {
+    width: 100px;
+    height: auto;
+}
+
+.image-xm {
+    width: 150px;
+    height: auto;
+}
+
+.image-s {
+    width: 50px;
+    height: auto;
+}
+
+.form-login {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+}
+
+.form-login form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-login .checkbox {
+    font-weight: 400;
+}
+
+.form-login .form-floating:focus-within {
+    z-index: 2;
+}
+
+.form-login input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.form-login input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+div.form-login-input-lg{
+    width: 500px;
+}
+
+.padding-main-calendar{
+    padding: 20px 5% 20px 5%;
+    width: 100%;
+}
+
+.pt-m{
+    padding-top: 20px;
+}
+
+.mb-m{
+    margin-bottom: 20px;
+}
+
+.mt-xxl{
+    margin-top: 10%;
+}
+
+.maxw{
+    width: 100%;
+}
+
+.maxh{
+    height: 100%;
+}
+
+.calendar{
+    width: 100%;
+}
+
+.min-width-max-content{
+    min-width: max-content;
+}
+div.thumbnail{
+    border-radius: 5px;
+}
+
+.name-finder{
+    position: relative;
+    top: 0px;
+    display: flex;
+    justify-content: end;
+}
+
+.margin-login-form{
+    margin: 10px 0 10px 0;
+}

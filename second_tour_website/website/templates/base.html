@@ -10,37 +10,49 @@
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
     <!-- Header -->
-    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='main.css')}}">
 
     <title>{% block title %}{% endblock %}</title>
+
+    <link rel="shortcut icon" type="image/x-icon" href="{{url_for('static', filename='img/logo_square.ico')}}" />
+
     {% block head %}{% endblock %}
 </head>
 
 <body>
-    <nav class="navbar navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="{{url_for('main_routes.index')}}">Calendrier</a>
-            <ul class="navbar-nav navbar-disposition">
-                <li class="navbar-item">
-                    <form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
-                </li>
-                <li class="navbar-item">
-                    <a class="nav-link" href="{{url_for('main_routes.connexion')}}">
-                        <img alt="logo de connexion" src="{{url_for('static', filename='img/login.png')}}" class="image-login">
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <main>
     {% block content %}{% endblock %}
+    </main>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
+
+    <!-- Finder name -->
+    <script>
+        function nameFinder() {
+          // Declare variables
+          var input, filter, table, tr, td, i, txtValue;
+          input = document.getElementById("search-name");
+          filter = input.value.toUpperCase();
+          table = document.getElementById("calendar");
+          tr = table.getElementsByTagName("tr");
+        
+          // Loop through all table rows, and hide those who don't match the search query
+          for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+              txtValue = td.textContent || td.innerText;
+              if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+              }
+            }
+          }
+        }
+        </script>
 </body>
 
 </html>

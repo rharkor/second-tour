@@ -11,4 +11,4 @@ def index():
 
 @main_routes.route('/connexion')
 def connexion():
-    return render_template('connexion.html')
+    return render_template('admin/connexion.html')

@@ -1,0 +1,172 @@
+html {
+  height: 100%;
+}
+
+body {
+  background: #4C5CFF;
+  height: 100%;
+}
+
+main {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.top-layer {
+  position: relative;
+  top: 0;
+  right: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 10px 10px 0 0;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.left {
+  left: 0;
+  right: unset;
+  margin: 0 0 10px 10px;
+}
+
+.image-login {
+  width: 35px;
+  height: auto;
+  -webkit-filter: invert(100%);
+          filter: invert(100%);
+}
+
+.image-xl {
+  width: 300px;
+  height: auto;
+}
+
+.image-l {
+  width: 200px;
+  height: auto;
+}
+
+.image-m {
+  width: 100px;
+  height: auto;
+}
+
+.image-xm {
+  width: 150px;
+  height: auto;
+}
+
+.image-s {
+  width: 50px;
+  height: auto;
+}
+
+.form-login {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+.form-login form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.form-login .checkbox {
+  font-weight: 400;
+}
+
+.form-login .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-login input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-login input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+div.form-login-input-lg {
+  width: 500px;
+}
+
+.padding-main-calendar {
+  padding: 20px 5% 20px 5%;
+  width: 100%;
+}
+
+.pt-m {
+  padding-top: 20px;
+}
+
+.mb-m {
+  margin-bottom: 20px;
+}
+
+.mt-xxl {
+  margin-top: 10%;
+}
+
+.maxw {
+  width: 100%;
+}
+
+.maxh {
+  height: 100%;
+}
+
+.calendar {
+  width: 100%;
+}
+
+.min-width-max-content {
+  min-width: -webkit-max-content;
+  min-width: -moz-max-content;
+  min-width: max-content;
+}
+
+div.thumbnail {
+  border-radius: 5px;
+}
+
+.name-finder {
+  position: relative;
+  top: 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
+}
+
+.margin-login-form {
+  margin: 10px 0 10px 0;
+}
+/*# sourceMappingURL=main.css.map */
