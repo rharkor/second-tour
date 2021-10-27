@@ -33,9 +33,15 @@ main{
 
 .name-finder{
     display: flex;
-    justify-content: flex-end;
-    width: 15%;
-    margin: 20px 15px 20px 0;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 20px 15px 20px 15px;
+}
+
+.name-finder input{
+    width: 25%;
 }
 
 th.supprimer{
