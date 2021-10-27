@@ -1,5 +1,148 @@
 {% extends "admin/base_admin.html" %}
 {% block title %}Administration{% endblock %}
 {% block sub_content %}
-<h1>Matières</h1>
+<div class="main-div-admin">
+    <div class="name-finder">
+        <input type="text" id="search-name" class="form-control" onkeyup="nameFinder()"
+            placeholder="Recherhe par nom">
+        <button href="#" type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addMatiereModal">
+            Ajouter
+            <i class="fas fa-plus ml-s"></i>
+        </button>
+    </div>
+    <div class="main-table-admin">
+        {%- for category, message in get_flashed_messages(with_categories = true) %}
+        <div class="alert alert-{{category}}  alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {%- endfor %}
+        <div class="table-responsive thumbnail">
+            <table class="table table-light table-striped table-hover" id="calendar">
+                <thead>
+                    <tr>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Série</th>
+                        <th scope="col">Temps de préparation</th>
+                        <th scope="col">Temps de passage</th>
+                        <th scope="col">Loge assginée</th>
+                        <th scope="col" class="supprimer">Supprimer</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for an_matiere in all_matieres %}
+                    <tr>
+                        <td scope="row">{{an_matiere.nom}}</td>
+                        <td scope="row">
+                            {% for a_serie in all_series %}
+                            {% if a_serie.id_serie == an_matiere.id_serie %}
+                            {{a_serie.nom}} - {% if a_serie.specialite1 %}{{a_serie.specialite1}}{% endif %}{% if
+                            a_serie.specialite2 %}/{{a_serie.specialite2}}{% endif %}
+                            {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td scope="row">{{an_matiere.temps_preparation}}</td>
+                        <td scope="row">{{an_matiere.temps_passage}}</td>
+                        <td scope="row">{% if an_matiere.loge %}{{an_matiere.loge}}{% endif %}</td>
+                        <td scope="row">
+                            <form method="post" action="{{url_for('admin_routes.matieres')}}"
+                                id="deleteMatiereForm{{an_matiere.id_matiere}}">
+                                <input type="hidden" name="id" value="{{an_matiere.id_matiere}}">
+                                <button type="button" id="{{an_matiere.id_matiere}}" data-bs-toggle="modal"
+                                    data-bs-target="#confirmDeleteModal"
+                                    class="deleteRow btn btn-outline-danger">Supprimer</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="addMatiereModal" tabindex="-1" role="dialog" aria-labelledby="addMatiereModal"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Ajouter une matière</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Add user form -->
+                    <form method="post" action="{{url_for('admin_routes.matieres')}}" id="addMatiereForm">
+                        <div class="form-group">
+                            <label for="matiereName">Nom de la matière</label>
+                            <input type="text" class="form-control" id="matiereName" name="name"
+                                placeholder="Entrez le nom de la matière" required="required">
+                        </div>
+                        <div class="form-group">
+                            <label for="selectSerie">Série</label>
+                            <select class="form-control" id="selectSerie" name="serie">
+                                {% for a_serie in all_series %}
+                                <option id="serie{{a_serie.id_serie}}" value="{{a_serie.id_serie}}">{{a_serie.nom}} - {%
+                                    if a_serie.specialite1
+                                    %}{{a_serie.specialite1}}{% endif %}{% if a_serie.specialite2
+                                    %}/{{a_serie.specialite2}}{% endif %}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="loge">Loge (si besoin)</label>
+                            <select class="form-control" id="selectLoge" name="loge">
+                                <option disabled selected value></option>
+                                {% for an_class in all_classes %}
+                                <option id="class{{an_class.id_salle}}">{{an_class.numero}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="temps_preparation">Temps de préparation</label>
+                            <input type="number" class="form-control" id="temps_preparation" name="temps_preparation"
+                                placeholder="Entrez un temps de préparation" required="required">
+                        </div>
+                        <div class="form-group">
+                            <label for="temps_passage">Temps de passage</label>
+                            <input type="number" class="form-control" id="temps_passage" name="temps_passage"
+                                placeholder="Entrez un temps de passage" required="required">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                    <button class="btn btn-primary" name="submit_button" type="submit" form="addMatiereForm">Sauvegarder
+                        les changements</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModal"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Attention</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Êtes vous sûr de vouloir supprimer cette matière ?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <button type="submit" name="delete_button" id="ModalSubmitButton" value="" form="deleteMatiereForm"
+                        class="btn btn-danger">Supprimer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block sub_script %}
 {% endblock %}

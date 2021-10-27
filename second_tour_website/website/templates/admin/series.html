@@ -5,7 +5,7 @@
     <div class="name-finder">
         <input type="text" id="search-name" class="form-control" onkeyup="nameFinder()"
             placeholder="Recherhe par série">
-        <button href="#" type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addUserModal">
+        <button href="#" type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addSerieModal">
             Ajouter
             <i class="fas fa-plus ml-s"></i>
         </button>
@@ -30,7 +30,7 @@
                 <tbody>
                     {% for an_serie in all_series %}
                     <tr>
-                        <td scope="row">{{an_serie.nom}}</th>
+                        <td scope="row">{{an_serie.nom}}</td>
                         <td scope="row">{% if an_serie.specialite1: %}{{an_serie.specialite1}}{% endif %}
                         </td>
                         <td scope="row">{% if an_serie.specialite2: %}{{an_serie.specialite2}}{% endif %}
@@ -52,12 +52,12 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="addUserModal"
+    <div class="modal fade" id="addSerieModal" tabindex="-1" role="dialog" aria-labelledby="addSerieModal"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ajouter une série</h5>
+                    <h5 class="modal-title">Ajouter une série</h5>
                     <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -66,7 +66,7 @@
                     <!-- Add user form -->
                     <form method="post" action="{{url_for('admin_routes.series')}}" id="addSerieForm">
                         <div class="form-group">
-                            <label for="serieName">Nom de la fillière</label>
+                            <label for="selectTypeUser">Nom de la fillière</label>
                             <select class="form-control" id="selectTypeUser" name="serie" onchange="testSpeciality()">
                                 <option>Générale</option>
                                 <option>Technologique</option>

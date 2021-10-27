@@ -47,3 +47,35 @@ def delete_serie(id):
         return False
     except Exception:
         return ['Erreur : ' + traceback.format_exc(), 'danger']
+
+def add_matiere(name, serie, temps_preparation, temps_passage, loge):
+    try:
+        serie = int(serie)
+        all_series = SERIE.query.all()
+        serie_name = None
+        for a_serie in all_series:
+            if a_serie.id_serie == serie:
+                serie_name = a_serie.specialite1
+                if a_serie.specialite2 is not None:
+                    serie_name += '/' + a_serie.specialite2
+        if serie_name is None:
+            print(f"Erreur : No serie found at this id ({serie})")
+        name_complete = f"{name} - {serie_name}"
+        matiere = MATIERES(serie, name, name_complete, temps_preparation, temps_passage, loge)
+        if not matiere.unvalid:
+            db.session.add(matiere)
+            db.session.commit()
+            return ['La matière à bien été crée', 'success']
+        else:
+            return matiere.unvalid
+    except Exception:
+        return ['Erreur : ' + traceback.format_exc(), 'danger']
+
+def delete_matiere(id):
+    try:
+        matiere = MATIERES.query.filter_by(id_matiere=id).one()
+        db.session.delete(matiere)
+        db.session.commit()
+        return False
+    except Exception:
+        return ['Erreur : ' + traceback.format_exc(), 'danger']

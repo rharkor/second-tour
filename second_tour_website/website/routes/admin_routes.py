@@ -56,10 +56,22 @@ def series():
     else:
         return redirect(url_for('main_routes.connexion'))
         
-@admin_routes.route('/matieres')
+@admin_routes.route('/matieres', methods=['POST', 'GET'])
 def matieres():
     if main_security.test_session_connected(session, True):
-        return render_template('admin/matieres.html')
+        if request.method == 'POST':
+            form = request.form
+            if form.get('submit_button') is not None:
+                if 'name' in form and 'serie' in form and 'temps_preparation' in form and 'temps_passage' in form:
+                    result = main_database.add_matiere(form['name'], form['serie'], form['temps_preparation'], form['temps_passage'], form['loge'] if 'loge' in form else None)
+                    flash(result[0], result[1])
+            elif form.get('delete_button') is not None:
+                if 'id' in form:
+                    if r := main_database.delete_matiere(form['id']):
+                        return flash(r[0], r[1])
+        all_matieres = MATIERES.query.all()
+        all_series = SERIE.query.all()
+        return render_template('admin/matieres.html', all_matieres=all_matieres, all_series=all_series)
     else:
         return redirect(url_for('main_routes.connexion'))
 

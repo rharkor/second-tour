@@ -53,7 +53,7 @@ class SERIE(db.Model):
 class MATIERES(db.Model):
     __tablename__= 'MATIERES'
     id_matiere = db.Column('id', db.Integer, primary_key = True)
-    id_serie = db.Column(db.Integer, nullable=False) #clé étrangère à déclarer
+    id_serie = db.Column(db.Integer, nullable=False)
     nom = db.Column(db.String(30),nullable=False)
     nom_complet = db.Column(db.String(60),nullable=False)
     temps_preparation = db.Column(db.Integer, nullable=False)
