@@ -37,10 +37,22 @@ def professeurs():
     else:
         return redirect(url_for('main_routes.connexion'))
 
-@admin_routes.route('/series')
+@admin_routes.route('/series', methods=['POST', 'GET'])
 def series():
     if main_security.test_session_connected(session, True):
-        return render_template('admin/series.html')
+        if request.method == 'POST':
+            form = request.form
+            if form.get('submit_button') is not None:
+                if 'serie' in form and 'specialite1' in form:
+                    result = main_database.add_serie(form['serie'], form['specialite1'], form['specialite2'] if 'specialite2' in form else None)
+                    flash(result[0], result[1])
+            elif form.get('delete_button') is not None:
+                if 'id' in form:
+                    if r := main_database.delete_serie(form['id']):
+                        flash(r[0], r[1])
+                
+        all_series = SERIE.query.all()
+        return render_template('admin/series.html', all_series=all_series)
     else:
         return redirect(url_for('main_routes.connexion'))
         

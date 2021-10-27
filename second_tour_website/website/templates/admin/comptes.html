@@ -32,10 +32,13 @@
                         <td scope="row">{{an_user.email}}</th>
                         <td scope="row">{% if an_user.admin %}Admin{% else %}Professeur{% endif %}</td>
                         <td scope="row">
-                            <form method="post" action="{{url_for('admin_routes.comptes')}}" id="deleteAccountForm{{an_user.id}}">
+                            <form method="post" action="{{url_for('admin_routes.comptes')}}"
+                                id="deleteAccountForm{{an_user.id}}">
                                 <input type="hidden" name="id" value="{{an_user.id}}">
-                                <button type="button" id="{{an_user.id}}" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal" class="deleteRow btn btn-outline-danger" {% if
-                                    an_user.email=='admin@ac-poitiers.fr' and an_user.admin %}disabled{% endif %}>Supprimer</button>
+                                <button type="button" id="{{an_user.id}}" data-bs-toggle="modal"
+                                    data-bs-target="#confirmDeleteModal" class="deleteRow btn btn-outline-danger" {% if
+                                    an_user.email=='admin@ac-poitiers.fr' and an_user.admin %}disabled{% endif
+                                    %}>Supprimer</button>
                             </form>
                         </td>
                     </tr>
@@ -92,24 +95,25 @@
     </div>
 
     <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModal"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Attention</h5>
-                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <p>Êtes vous sûr de vouloir supprimer cet utilisateur ?</p>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                <button type="submit" name="delete_button" id="ModalSubmitButton" value="" form="deleteAccountForm" class="btn btn-danger">Supprimer</button>
-              </div>
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Attention</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Êtes vous sûr de vouloir supprimer cet utilisateur ?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <button type="submit" name="delete_button" id="ModalSubmitButton" value="" form="deleteAccountForm"
+                        class="btn btn-danger">Supprimer</button>
+                </div>
+            </div>
         </div>
     </div>
-</div>
 </div>
 {% endblock %}

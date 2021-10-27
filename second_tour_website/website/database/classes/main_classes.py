@@ -32,9 +32,9 @@ class SERIE(db.Model):
     id_serie = db.Column('id', db.Integer, primary_key = True)
     nom = db.Column(db.String(40), nullable=False)
     specialite1 = db.Column(db.String(50),nullable=False)
-    specialite2 = db.Column(db.String(50),nullable=False)
+    specialite2 = db.Column(db.String(50),nullable=True)
 
-    def __init__(self, nom, specialite1, specialite2):
+    def __init__(self, nom, specialite1, specialite2=None):
         self.unvalid = False
 
         if res := self.unique_nom_spe1_spe2(nom, specialite1, specialite2):

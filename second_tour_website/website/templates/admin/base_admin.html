@@ -84,8 +84,11 @@
 <script>
     $('.deleteRow').click(function () {
      var $myRowId = $(this).get(0).id;
-     console.log($myRowId)
-     $("#ModalSubmitButton").attr('form', "deleteAccountForm" + $myRowId);
+     name = document.getElementById("ModalSubmitButton").getAttribute("form");
+     console.log('HERE : ' + name + $myRowId);
+     $("#ModalSubmitButton").attr('form', name + $myRowId);
 });
 </script>
+{% block sub_script %}
+{% endblock %}
 {% endblock %}
