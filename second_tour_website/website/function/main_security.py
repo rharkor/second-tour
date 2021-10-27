@@ -20,8 +20,8 @@ def test_password(password, user):
     return False
 
 def test_session_connected(session, admin):
-    if 'email' in session and 'password' in session:
-        user = UTILISATEURS.query.filter_by(email=session['email']).first()
+    if 'email' in session and 'password' in session and 'admin' in session:
+        user = UTILISATEURS.query.filter_by(email=session['email'], admin=session['admin']).first()
         if user:
             if session['password'] == user.password:
                 if admin:

@@ -58,20 +58,31 @@ class MATIERES(db.Model):
     nom_complet = db.Column(db.String(60),nullable=False)
     temps_preparation = db.Column(db.Integer, nullable=False)
     temps_passage = db.Column(db.Integer, nullable=False)
-    loge = db.Column(db.Integer, nullable=False)
+    loge = db.Column(db.Integer, nullable=True)
 
-    def __init__(self, nom, nom_complet, temps_preparation):
+    def __init__(self, id_serie, nom, nom_complet, temps_preparation, temps_passage, loge=None):
         self.unvalid = False
 
-        if res := self.unique_nom_nom_comp_tps_prepa(self, nom, complet, tpsprepa):
+        if res := self.unique_nom_nom_comp_tps_prepa(nom, nom_complet, temps_preparation, temps_passage):
+            self.unvalid = res
+        if res := self.foreign_serie(id_serie):
             self.unvalid = res
 
+        self.id_serie = id_serie
         self.nom = nom
-        self.nom_complet = complet
-        self.temps_preparation = tpsprepa
+        self.nom_complet = nom_complet
+        self.temps_preparation = temps_preparation
+        self.temps_passage = temps_passage
+        self.loge = loge
 
-    def unique_nom_nom_comp_tps_prepa(self, nom, complet, tpsprepa):
-        matiere = MATIERES.query.filter_by(nom=nom, nom_complet=complet, temps_preparation=tpsprepa).first()
+    def unique_nom_nom_comp_tps_prepa(self, nom, nom_complet, tpsprepa, tpspassage):
+        matiere = MATIERES.query.filter_by(nom=nom, nom_complet=nom_complet, temps_preparation=tpsprepa, temps_passage=tpspassage).first()
         if matiere:
             return ["Cette matière existe déja", "danger"]
         return False
+    
+    def foreign_serie(self, id_serie):
+        serie = SERIE.query.filter_by(id_serie=id_serie).first()
+        if serie:
+            return False
+        return ["Aucune série ne correspond", "danger"]

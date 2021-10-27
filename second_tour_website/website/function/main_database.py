@@ -20,6 +20,7 @@ def add_account(email, password, user_type_string):
 
 def delete_account(id):
     try:
+        print("Deletion of : " + id)
         user = UTILISATEURS.query.filter_by(id=id).one()
         db.session.delete(user)
         db.session.commit()

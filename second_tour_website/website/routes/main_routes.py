@@ -22,13 +22,15 @@ def connexion():
                 return render_template('connexion.html')
     else:
         form = request.form
-        if not all([form['email'], form['password']]):
+        if 'email' not in form or 'password' not in form:
             flash('Une erreur est survenue', 'danger')
             return render_template('connexion.html')
         email, password = form['email'], form['password']
         # Verify that there valid
         try:
-            user = UTILISATEURS.query.filter_by(email=email).first()
+            user = UTILISATEURS.query.filter_by(email=email, admin=True).first()
+            if not user:
+                user = UTILISATEURS.query.filter_by(email=email, admin=False).first()
             # Verify that the user exist
             if user:
                 # Verify the password
