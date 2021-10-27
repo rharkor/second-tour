@@ -3,8 +3,7 @@
 {% block sub_content %}
 <div class="main-div-admin">
     <div class="name-finder">
-        <input type="text" id="search-name" class="form-control" onkeyup="nameFinder()"
-            placeholder="Recherhe par nom">
+        <input type="text" id="search-name" class="form-control" onkeyup="nameFinder()" placeholder="Recherhe par nom">
         <button href="#" type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addMatiereModal">
             Ajouter
             <i class="fas fa-plus ml-s"></i>
@@ -43,7 +42,13 @@
                         </td>
                         <td scope="row">{{an_matiere.temps_preparation}}</td>
                         <td scope="row">{{an_matiere.temps_passage}}</td>
-                        <td scope="row">{% if an_matiere.loge %}{{an_matiere.loge}}{% endif %}</td>
+                        <td scope="row">{% if an_matiere.loge %}
+                            {% for a_salle in all_salles %}
+                            {% if a_salle.id_salle == an_matiere.loge %}
+                            {{a_salle.numero}}
+                            {% endif %}
+                            {% endfor %}
+                            {% endif %}</td>
                         <td scope="row">
                             <form method="post" action="{{url_for('admin_routes.matieres')}}"
                                 id="deleteMatiereForm{{an_matiere.id_matiere}}">
@@ -93,9 +98,10 @@
                         <div class="form-group">
                             <label for="loge">Loge (si besoin)</label>
                             <select class="form-control" id="selectLoge" name="loge">
-                                <option disabled selected value></option>
-                                {% for an_class in all_classes %}
-                                <option id="class{{an_class.id_salle}}">{{an_class.numero}}</option>
+                                <option selected value></option>
+                                {% for a_salle in all_salles %}
+                                <option id="salle{{a_salle.id_salle}}" value="{{a_salle.id_salle}}">
+                                    {{a_salle.numero}}</option>
                                 {% endfor %}
                             </select>
                         </div>

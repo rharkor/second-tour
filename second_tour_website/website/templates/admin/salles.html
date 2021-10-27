@@ -1,5 +1,99 @@
 {% extends "admin/base_admin.html" %}
 {% block title %}Administration{% endblock %}
 {% block sub_content %}
-<h1>Salles</h1>
+<div class="main-div-admin">
+    <div class="name-finder">
+        <input type="text" id="search-name" class="form-control" onkeyup="nameFinder()"
+            placeholder="Recherche par numéro..">
+        <button href="#" type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addSalleModal">
+            Ajouter
+            <i class="fas fa-plus ml-s"></i>
+        </button>
+    </div>
+    <div class="main-table-admin">
+        {%- for category, message in get_flashed_messages(with_categories = true) %}
+        <div class="alert alert-{{category}}  alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {%- endfor %}
+        <div class="table-responsive thumbnail">
+            <table class="table table-light table-striped table-hover" id="calendar">
+                <thead>
+                    <tr>
+                        <th scope="col">Numéro</th>
+                        <th scope="col" class="supprimer">Supprimer</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for a_salle in all_salles %}
+                    <tr>
+                        <td scope="row">{{a_salle.numero}}</td>
+                        <td>
+                            <form method="post" action="{{url_for('admin_routes.salles')}}"
+                                id="deleteSalleForm{{a_salle.id_salle}}">
+                                <input type="hidden" name="id" value="{{a_salle.id_salle}}">
+                                <button type="button" id="{{a_salle.id_salle}}" data-bs-toggle="modal"
+                                    data-bs-target="#confirmDeleteModal" class="deleteRow btn btn-outline-danger">Supprimer</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="addSalleModal" tabindex="-1" role="dialog" aria-labelledby="addSalleModal"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Ajouter une salle</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Add user form -->
+                    <form method="post" action="{{url_for('admin_routes.salles')}}" id="addSalleForm">
+                        <div class="form-group">
+                            <label for="salleNum">Numéro</label>
+                            <input type="text" class="form-control" id="salleNum" name="numero"
+                                aria-describedby="salleNumHelp" placeholder="Entrez un numéro de salle" required="required">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                    <button class="btn btn-primary" name="submit_button" type="submit" form="addSalleForm">Sauvegarder
+                        les changements</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModal"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Attention</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Êtes vous sûr de vouloir supprimer cette salle ?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <button type="submit" name="delete_button" id="ModalSubmitButton" value="" form="deleteSalleForm"
+                        class="btn btn-danger">Supprimer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

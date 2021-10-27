@@ -23,17 +23,41 @@ def candidats():
     else:
         return redirect(url_for('main_routes.connexion'))
 
-@admin_routes.route('/salles')
+@admin_routes.route('/salles', methods=['POST', 'GET'])
 def salles():
     if main_security.test_session_connected(session, True):
-        return render_template('admin/salles.html')
+        if request.method == 'POST':
+            form = request.form
+            if form.get('submit_button') is not None:
+                if 'numero' in form:
+                    result = main_database.add_salle(form['numero'])
+                    flash(result[0], result[1])
+            elif form.get('delete_button') is not None:
+                if 'id' in form:
+                    if r := main_database.delete_salle(form['id']):
+                        flash(r[0], r[1])
+        all_salles = SALLE.query.all()
+        return render_template('admin/salles.html', all_salles=all_salles)
     else:
         return redirect(url_for('main_routes.connexion'))
  
-@admin_routes.route('/professeurs')
+@admin_routes.route('/professeurs', methods=['POST', 'GET'])
 def professeurs():
     if main_security.test_session_connected(session, True):
-        return render_template('admin/professeurs.html')
+        if request.method == 'POST':
+            form = request.form
+            if form.get('submit_button') is not None:
+                if 'email' in form and 'password' in form and 'name' in form and 'surname' in form and 'matiere' in form and 'salle' in form:
+                    result = main_database.add_professeur(form['email'], form['password'], form['name'], form['surname'], form['matiere'], form['salle'])
+                    flash(result[0], result[1])
+            elif form.get('delete_button') is not None:
+                if 'id' in form:
+                    if r := main_database.delete_professeur(form['id']):
+                        flash(r[0], r[1])
+        all_profs = PROFESSEUR.query.all()
+        all_matieres = MATIERES.query.all()
+        all_salles = SALLE.query.all()
+        return render_template('admin/professeurs.html', all_profs=all_profs, all_matieres=all_matieres, all_salles=all_salles)
     else:
         return redirect(url_for('main_routes.connexion'))
 
@@ -71,7 +95,8 @@ def matieres():
                         return flash(r[0], r[1])
         all_matieres = MATIERES.query.all()
         all_series = SERIE.query.all()
-        return render_template('admin/matieres.html', all_matieres=all_matieres, all_series=all_series)
+        all_salles = SALLE.query.all()
+        return render_template('admin/matieres.html', all_matieres=all_matieres, all_series=all_series, all_salles=all_salles)
     else:
         return redirect(url_for('main_routes.connexion'))
 

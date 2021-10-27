@@ -86,3 +86,65 @@ class MATIERES(db.Model):
         if serie:
             return False
         return ["Aucune série ne correspond", "danger"]
+
+class SALLE(db.Model):
+    __tablename__ = 'SALLE'
+    id_salle = db.Column('id', db.Integer, primary_key = True)
+    numero = db.Column(db.String(50), nullable=False)
+
+    def __init__(self, numero):
+        self.unvalid = False
+        
+        if res := self.unique_numero(numero):
+            self.unvalid = res
+
+        self.numero = numero
+
+    def unique_numero(self, numero):
+        salle = SALLE.query.filter_by(numero=numero).first()
+        if salle:
+            return ["Une salle à déjà le même numéro", "danger"]
+        return False
+
+class PROFESSEUR(db.Model):
+    __tablename__ = 'PROFESSEUR'
+    id_professeur = db.Column('id', db.Integer, primary_key = True)
+    id_utilisateur = db.Column(db.Integer, nullable=False)
+    nom = db.Column(db.String(30), nullable=False)
+    prenom = db.Column(db.String(30), nullable=False)
+    matiere = db.Column(db.Integer, nullable=False)
+    salle = db.Column(db.Integer, nullable=False)
+
+    def __init__(self, id_utilisateur, nom, prenom, matiere, salle):
+        self.unvalid = False
+
+        if res := self.unique_iduser_nom_prenom_matiere(id_utilisateur, nom, prenom, matiere):
+            self.unvalid = res
+        if res := self.foreign_iduser(id_utilisateur):
+            self.unvalid = res
+        if res := self.foreign_matiere(matiere):
+            self.unvalid = res
+
+        self.id_utilisateur = id_utilisateur
+        self.nom = nom
+        self.prenom = prenom
+        self.matiere = matiere
+        self.salle = salle
+
+    def unique_iduser_nom_prenom_matiere(self, id_utilisateur, nom, prenom, matiere):
+        professeur = PROFESSEUR.query.filter_by(id_utilisateur=id_utilisateur, nom=nom, prenom=prenom, matiere=matiere).first()
+        if professeur:
+            return ['Ce professeur existe déjà', 'danger']
+        return False
+
+    def foreign_iduser(self, id_utilisateur):
+        utilisateur = UTILISATEURS.query.filter_by(id=id_utilisateur).first()
+        if utilisateur:
+            return False
+        return ['Aucun utilisateur ne correspondant', 'danger']
+    
+    def foreign_matiere(self, matiere):
+        matiere = MATIERES.query.filter_by(id_matiere=matiere).first()
+        if matiere:
+            return False
+        return ['Aucune matière ne correspondantes', 'danger']

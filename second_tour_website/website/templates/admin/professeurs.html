@@ -1,5 +1,156 @@
 {% extends "admin/base_admin.html" %}
 {% block title %}Administration{% endblock %}
 {% block sub_content %}
-<h1>Professeurs</h1>
+<div class="main-div-admin">
+    <div class="name-finder">
+        <input type="text" id="search-name" class="form-control" onkeyup="nameFinder()"
+            placeholder="Recherche par nom..">
+        <button href="#" type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addProfModal">
+            Ajouter
+            <i class="fas fa-plus ml-s"></i>
+        </button>
+    </div>
+    <div class="main-table-admin">
+        {%- for category, message in get_flashed_messages(with_categories = true) %}
+        <div class="alert alert-{{category}}  alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {%- endfor %}
+        <div class="table-responsive thumbnail">
+            <table class="table table-light table-striped table-hover" id="calendar">
+                <thead>
+                    <tr>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Prénom</th>
+                        <th scope="col">Matière</th>
+                        <th scope="col">Salle</th>
+                        <th scope="col" class="supprimer">Supprimer</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for a_prof in all_profs %}
+                    <tr>
+                        <td scope="row">{{a_prof.nom}}</td>
+                        <td scope="row">{{a_prof.prenom}}</td>
+                        <td scope="row">
+                            {% for a_matiere in all_matieres %}
+                            {% if a_matiere.id_matiere == a_prof.matiere %}
+                            {{a_matiere.nom_complet}}
+                            {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td scope="row">
+                            {% for a_salle in all_salles %}
+                            {% if a_salle.id_salle == a_prof.salle %}
+                            {{a_salle.numero}}
+                            {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td scope="row">
+                            <form method="post" action="{{url_for('admin_routes.professeurs')}}"
+                                id="deleteProfForm{{a_prof.id_professeur}}">
+                                <input type="hidden" name="id" value="{{a_prof.id_professeur}}">
+                                <button type="button" id="{{a_prof.id_professeur}}" data-bs-toggle="modal"
+                                    data-bs-target="#confirmDeleteModal" class="deleteRow btn btn-outline-danger"    >Supprimer</button>
+                            </form>
+                        </td> 
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="addProfModal" tabindex="-1" role="dialog" aria-labelledby="addProfModal"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Ajouter un professeur</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Add user form -->
+                    <form method="post" action="{{url_for('admin_routes.professeurs')}}" id="addProfForm">
+                        <div class="form-group">
+                            <label for="accountEmail">Adresse email</label>
+                            <input type="email" class="form-control" id="accountEmail" name="email"
+                                aria-describedby="emailHelp" placeholder="Entrez un email" required="required">
+                        </div>
+                        <div class="form-group">
+                            <label for="floatingPassword">Mot de passe</label>
+                            <div class="d-flex">
+                                <input type="password" class="form-control" id="floatingPassword" name="password"
+                                    placeholder="Entrez un mot de passe" required="required">
+                                <i class="bi bi-eye-slash d-flex justify-content-center align-items-center eye-form"
+                                    id="togglePassword"></i>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Nom</label>
+                            <div class="d-flex">
+                                <input type="text" class="form-control" id="name" name="name"
+                                    placeholder="Entrez un nom" required="required">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="surname">Prénom</label>
+                            <div class="d-flex">
+                                <input type="text" class="form-control" id="surname" name="surname"
+                                    placeholder="Entrez un prénom" required="required">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="selectMatiere">Matière</label>
+                            <select class="form-control" id="selectMatiere" name="matiere">
+                                {% for a_matiere in all_matieres %}
+                                <option id="matiere{{a_matiere.id_matiere}}" value="{{a_matiere.id_matiere}}">{{a_matiere.nom_complet}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="selectSalle">Salle</label>
+                            <select class="form-control" id="selectSalle" name="salle">
+                                {% for a_salle in all_salles %}
+                                <option id="salle{{a_salle.id_salle}}" value="{{a_salle.id_salle}}">{{a_salle.numero}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                    <button class="btn btn-primary" name="submit_button" type="submit" form="addProfForm">Sauvegarder
+                        les changements</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModal"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Attention</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Êtes vous sûr de vouloir supprimer ce professeur ?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <button type="submit" name="delete_button" id="ModalSubmitButton" value="" form="deleteProfForm"
+                        class="btn btn-danger">Supprimer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
