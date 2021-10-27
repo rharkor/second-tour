@@ -49,3 +49,29 @@ class SERIE(db.Model):
         if serie:
             return ["Cette serie existe déja", "danger"]
         return False
+
+class MATIERES(db.Model):
+    __tablename__= 'MATIERES'
+    id_matiere = db.Column('id', db.Integer, primary_key = True)
+    id_serie = db.Column(db.Integer, nullable=False) #clé étrangère à déclarer
+    nom = db.Column(db.String(30),nullable=False)
+    nom_complet = db.Column(db.String(60),nullable=False)
+    temps_preparation = db.Column(db.Integer, nullable=False)
+    temps_passage = db.Column(db.Integer, nullable=False)
+    loge = db.Column(db.Integer, nullable=False)
+
+    def __init__(self, nom, nom_complet, temps_preparation):
+        self.unvalid = False
+
+        if res := self.unique_nom_nom_comp_tps_prepa(self, nom, complet, tpsprepa):
+            self.unvalid = res
+
+        self.nom = nom
+        self.nom_complet = complet
+        self.temps_preparation = tpsprepa
+
+    def unique_nom_nom_comp_tps_prepa(self, nom, complet, tpsprepa):
+        matiere = MATIERES.query.filter_by(nom=nom, nom_complet=complet, temps_preparation=tpsprepa).first()
+        if matiere:
+            return ["Cette matière existe déja", "danger"]
+        return False
