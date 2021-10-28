@@ -11,7 +11,12 @@ main_routes = Blueprint('main_routes', __name__,
 @main_routes.route('/')
 @main_routes.route('/index')
 def index():
-    return render_template('index.html')
+    all_candidats = CANDIDATS.query.order_by(CANDIDATS.nom).all()
+    all_creneaux = CRENEAU.query.all()
+    all_series = SERIE.query.all()
+    all_matieres = MATIERES.query.all()
+    all_salles = SALLE.query.all()
+    return render_template('index.html', all_candidats=all_candidats, all_creneaux=all_creneaux, all_series=all_series, all_matieres=all_matieres, all_salles=all_salles)
 
 @main_routes.route('/connexion', methods=['POST', 'GET'])
 def connexion():

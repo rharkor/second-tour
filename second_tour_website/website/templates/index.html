@@ -32,40 +32,40 @@
                     </tr>
                 </thead>
                 <tbody>
+                    {% for candidat in all_candidats %}
                     <tr>
-                        <td scope="row">MARCHER</th>
-                        <td scope="row">Hugo</td>
-                        <td scope="row">STI2D</td>
+                        <td scope="row">{{candidat.nom}}</td>
+                        <td scope="row">{{candidat.prenom}}</td>
+                        {% for serie in all_series %}
+                        {% if serie.id_serie == candidat.id_serie %}
+                        <td scope="row">
+                            {{serie.nom}} - {% if serie.specialite1 %}{{serie.specialite1}}{% endif %}{% if
+                                serie.specialite2 %}/{{serie.specialite2}}{% endif %}
+                        </td>
+                        {% endif %}
+                        {% endfor %}
+                        {% for creneau in all_creneaux %}
+                        {% if creneau.id_candidat == candidat.id_candidat %}
                         <td scope="row">
                             <div class="calendar-subject">
-                                <div>2I2D - D203</div>
-                                <div>8h00 - 9h30</div>
+                                {% for matiere in all_matieres %}
+                                {% if matiere.id_matiere == creneau.id_matiere %}
+                                <div>{{matiere.nom}} - {% if matiere.loge %}Loge {{matiere.loge}}{% else %}
+                                    {% for salle in all_salles %}
+                                    {% if salle.id_salle == creneau.id_salle %}
+                                    {{salle.numero}}
+                                    {% endif %}
+                                    {% endfor %}
+                                    {% endif %}</div>
+                                    <div>{{creneau.debut_preparation}} - {{creneau.fin}}</div>
+                                {% endif %}
+                                {% endfor %}
                             </div>
                         </td>
-                        <td scope="row">
-                            <div class="calendar-subject">
-                                <div>Français - D202</div>
-                                <div>10h00 - 11h00</div>
-                            </div>
-                        </td>
+                        {% endif %}
+                        {% endfor %}
                     </tr>
-                    <tr>
-                        <td scope="row">SECOND</th>
-                        <td scope="row">Etudiant</td>
-                        <td scope="row">S - SI</td>
-                        <td scope="row">
-                            <div class="calendar-subject">
-                                <div>2I2D - D203</div>
-                                <div>8h00 - 9h30</div>
-                            </div>
-                        </td>
-                        <td scope="row">
-                            <div class="calendar-subject">
-                                <div>Français - D202</div>
-                                <div>10h00 - 11h00</div>
-                            </div>
-                        </td>
-                    </tr>
+                    {% endfor %}
                 </tbody>
             </table>
         </div>

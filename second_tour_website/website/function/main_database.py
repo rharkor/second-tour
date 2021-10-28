@@ -95,9 +95,9 @@ def delete_matiere(id):
         for a_prof in professeur:
             db.session.delete(a_prof)
         # Delete the dependency
-        crenauds = CRENAUD.query.filter_by(id_matiere=id)
-        for crenaud in crenauds:
-            db.session.delete(crenaud)
+        crenauds = CRENEAU.query.filter_by(id_matiere=id)
+        for creneau in crenauds:
+            db.session.delete(creneau)
         # Delete the dependency
         matieres1 = CHOIX_MATIERE.query.filter_by(matiere1=id)
         for matiere in matieres1:
@@ -132,9 +132,9 @@ def delete_salle(id):
         for prof in professeurs:
             db.session.delete(prof)
         # Delete the dependency
-        crenauds = CRENAUD.query.filter_by(id_salle=id)
-        for crenaud in crenauds:
-            db.session.delete(crenaud)
+        crenauds = CRENEAU.query.filter_by(id_salle=id)
+        for creneau in crenauds:
+            db.session.delete(creneau)
         # Delete the dependency
         matieres = MATIERES.query.filter_by(loge=id)
         for matiere in matieres:
@@ -200,9 +200,9 @@ def delete_candidat(id):
         for choix in choix_matiere:
             db.session.delete(choix)
         # Delete the dependency
-        crenauds = CRENAUD.query.filter_by(id_candidat=id)
-        for crenaud in crenauds:
-            db.session.delete(crenaud)
+        crenauds = CRENEAU.query.filter_by(id_candidat=id)
+        for creneau in crenauds:
+            db.session.delete(creneau)
         db.session.delete(candidat)
         db.session.commit()
         return False
@@ -231,23 +231,23 @@ def delete_choix_matiere(id):
     except Exception:
         return ['Erreur : ' + traceback.format_exc(), 'danger']
 
-def add_crenaud(id_candidat, id_matiere, id_salle, debutpreparation):
+def add_crenaud(id_candidat, id_matiere, id_salle, debut_preparation, fin):
     try:
-        crenaud = CRENAUD(id_candidat, id_matiere, id_salle, debutpreparation)
-        if not crenaud.unvalid:
-            db.session.add(crenaud)
+        creneau = CRENEAU(id_candidat, id_matiere, id_salle, debut_preparation, fin)
+        if not creneau.unvalid:
+            db.session.add(creneau)
             db.session.commit()
             return ['Le crénaud à correctement été crée', 'success']
         else:
-            return crenaud.unvalid
+            return creneau.unvalid
     except Exception:
         print(traceback.format_exc())
         return ['Erreur : ' + traceback.format_exc(), 'danger']
 
 def delete_crenaud(id):
     try:
-        crenaud = CRENAUD.query.filter_by(id_crenaud=id).one()
-        db.session.delete(crenaud)
+        creneau = CRENEAU.query.filter_by(id_crenaud=id).one()
+        db.session.delete(creneau)
         db.session.commit()
         return False
     except Exception:

@@ -235,15 +235,16 @@ class CHOIX_MATIERE(db.Model):
     def as_dict(self):
         return {c.name: getattr(self, c.name) for c in self.__table__.columns}
 
-class CRENAUD(db.Model):
-    __tablename__ = 'CRENAUD'
-    id_crenaud = db.Column(db.Integer, primary_key = True)
+class CRENEAU(db.Model):
+    __tablename__ = 'CRENEAU'
+    id_creneau = db.Column(db.Integer, primary_key = True)
     id_candidat = db.Column(db.Integer, nullable=False)
     id_matiere = db.Column(db.Integer, nullable=False)
     id_salle = db.Column(db.Integer, nullable=False)
-    debut_preparation = db.Column(db.DateTime, nullable=False)
+    debut_preparation = db.Column(db.String(20), nullable=False)
+    fin = db.Column(db.String(20), nullable=False)
 
-    def __init__(self, id_candidat, id_matiere, id_salle, debut_preparation):
+    def __init__(self, id_candidat, id_matiere, id_salle, debut_preparation, fin):
         self.unvalid = False
 
         if res := self.unique_id_candidat_debut_preparation(id_candidat, debut_preparation):
@@ -261,14 +262,15 @@ class CRENAUD(db.Model):
         self.id_matiere = id_matiere
         self.id_salle = id_salle
         self.debut_preparation = debut_preparation
+        self.fin = fin
 
     def unique_id_candidat_matiere(self, id_candidat, id_matiere):
-        crenaud = CRENAUD.query.filter_by(id_candidat=id_candidat, id_matiere=id_matiere).first()
+        crenaud = CRENEAU.query.filter_by(id_candidat=id_candidat, id_matiere=id_matiere).first()
         if crenaud:
             return ["Ce candidat à déjà un crénaud de prévu pour cette matière", "danger"]
         return False
     def unique_id_candidat_debut_preparation(self, id_candidat, debut_preparation):
-        crenaud = CRENAUD.query.filter_by(id_candidat=id_candidat, debut_preparation=debut_preparation).first()
+        crenaud = CRENEAU.query.filter_by(id_candidat=id_candidat, debut_preparation=debut_preparation).first()
         if crenaud:
             return ["Ce candidat à déjà un crénaud qui commence à la même heure", "danger"]
         return False
