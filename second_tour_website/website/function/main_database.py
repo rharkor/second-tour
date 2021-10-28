@@ -55,6 +55,9 @@ def delete_serie(id):
         matieres = MATIERES.query.filter_by(id_serie=id)
         for matiere in matieres:
             db.session.delete(matiere)
+        candidats = CANDIDATS.query.filter_by(id_serie=id)
+        for candidat in candidats:
+            db.session.delete(candidat)
         db.session.delete(user)
         db.session.commit()
         return False
@@ -91,6 +94,18 @@ def delete_matiere(id):
         professeur = PROFESSEUR.query.filter_by(matiere=id)
         for a_prof in professeur:
             db.session.delete(a_prof)
+        # Delete the dependency
+        crenauds = CRENAUD.query.filter_by(id_matiere=id)
+        for crenaud in crenauds:
+            db.session.delete(crenaud)
+        # Delete the dependency
+        matieres1 = CHOIX_MATIERE.query.filter_by(matiere1=id)
+        for matiere in matieres1:
+            db.session.delete(matiere)
+        # Delete the dependency
+        matieres2 = CHOIX_MATIERE.query.filter_by(matiere2=id)
+        for matiere in matieres2:
+            db.session.delete(matiere)
         db.session.delete(matiere)
         db.session.commit()
         return False
@@ -116,6 +131,11 @@ def delete_salle(id):
         professeurs = PROFESSEUR.query.filter_by(salle=id)
         for prof in professeurs:
             db.session.delete(prof)
+        # Delete the dependency
+        crenauds = CRENAUD.query.filter_by(id_salle=id)
+        for crenaud in crenauds:
+            db.session.delete(crenaud)
+        # Delete the dependency
         matieres = MATIERES.query.filter_by(loge=id)
         for matiere in matieres:
             db.session.delete(matiere)
@@ -149,6 +169,85 @@ def delete_professeur(id):
         for an_user in user:
             db.session.delete(an_user)
         db.session.delete(professeur)
+        db.session.commit()
+        return False
+    except Exception:
+        return ['Erreur : ' + traceback.format_exc(), 'danger']
+
+def add_candidat(nom, prenom, id_serie, output=False):
+    try:
+        candidat = CANDIDATS(nom, prenom, id_serie)
+        if not candidat.unvalid:
+            db.session.add(candidat)
+            db.session.commit()
+            if output:
+                return (candidat, ['Le candidat à bien été crée', 'success'])
+            return ['Le candidat à bien été crée', 'success']
+        else:
+            if output:
+                return (candidat, candidat.unvalid)
+            return candidat.unvalid
+    except Exception:
+        if output:
+            return (candidat, ['Erreur : ' + traceback.format_exc(), 'danger'])
+        return ['Erreur : ' + traceback.format_exc(), 'danger']
+
+def delete_candidat(id):
+    try:
+        candidat = CANDIDATS.query.filter_by(id_candidat=id).one()
+        # Delete the dependency
+        choix_matiere = CHOIX_MATIERE.query.filter_by(id_candidat=id)
+        for choix in choix_matiere:
+            db.session.delete(choix)
+        # Delete the dependency
+        crenauds = CRENAUD.query.filter_by(id_candidat=id)
+        for crenaud in crenauds:
+            db.session.delete(crenaud)
+        db.session.delete(candidat)
+        db.session.commit()
+        return False
+    except Exception:
+        return ['Erreur : ' + traceback.format_exc(), 'danger']
+
+def add_choix_matiere(id_candidat, matiere1, matiere2):
+    try:
+        choix_matiere = CHOIX_MATIERE(id_candidat, matiere1, matiere2)
+        if not choix_matiere.unvalid:
+            db.session.add(choix_matiere)
+            db.session.commit()
+            return ['Les choix du candidat on bien été crée', 'success']
+        else:
+            return choix_matiere.unvalid
+    except Exception:
+        print(traceback.format_exc())
+        return ['Erreur : ' + traceback.format_exc(), 'danger']
+
+def delete_choix_matiere(id):
+    try:
+        choix_matiere = CHOIX_MATIERE.query.filter_by(id_choix_matiere=id).one()
+        db.session.delete(choix_matiere)
+        db.session.commit()
+        return False
+    except Exception:
+        return ['Erreur : ' + traceback.format_exc(), 'danger']
+
+def add_crenaud(id_candidat, id_matiere, id_salle, debutpreparation):
+    try:
+        crenaud = CRENAUD(id_candidat, id_matiere, id_salle, debutpreparation)
+        if not crenaud.unvalid:
+            db.session.add(crenaud)
+            db.session.commit()
+            return ['Le crénaud à correctement été crée', 'success']
+        else:
+            return crenaud.unvalid
+    except Exception:
+        print(traceback.format_exc())
+        return ['Erreur : ' + traceback.format_exc(), 'danger']
+
+def delete_crenaud(id):
+    try:
+        crenaud = CRENAUD.query.filter_by(id_crenaud=id).one()
+        db.session.delete(crenaud)
         db.session.commit()
         return False
     except Exception:

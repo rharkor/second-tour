@@ -1,5 +1,390 @@
 {% extends "admin/base_admin.html" %}
 {% block title %}Administration{% endblock %}
 {% block sub_content %}
-<h1>Candidats</h1>
+<div class="main-div-admin">
+    <div class="name-finder">
+        <input type="text" id="search-name" class="form-control" onkeyup="nameFinder()"
+            placeholder="Recherche par nom..">
+        <button href="#" type="button" class="btn btn-success" data-bs-toggle="modal"
+            data-bs-target="#addCandidatModal">
+            Ajouter
+            <i class="fas fa-plus ml-s"></i>
+        </button>
+    </div>
+    <div class="main-table-admin">
+        {%- for category, message in get_flashed_messages(with_categories = true) %}
+        <div class="alert alert-{{category}}  alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {%- endfor %}
+        <div class="table-responsive thumbnail">
+            <table class="table table-light table-striped table-hover" id="calendar">
+                <thead>
+                    <tr>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Prénom</th>
+                        <th scope="col">Série</th>
+                        <th scope="col">Matière1</th>
+                        <th scope="col">Matière2</th>
+                        <th scope="col" class="modifier">Modifier</th>
+                        <th scope="col" class="supprimer">Supprimer</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for candidat in all_candidats %}
+                    <tr>
+                        <td scope="row">{{candidat.nom}}</td>
+                        <td scope="row">{{candidat.prenom}}</td>
+                        <td scope="row">{% for a_serie in all_series %}
+                            {% if a_serie.id_serie == candidat.id_serie %}
+                            {{a_serie.nom}} - {% if a_serie.specialite1 %}{{a_serie.specialite1}}{% endif %}{% if
+                            a_serie.specialite2 %}/{{a_serie.specialite2}}{% endif %}
+                            {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td scope="row">
+                            {% for a_choix_matiere in all_choix_matieres %}
+                            {% if a_choix_matiere.id_candidat == candidat.id_candidat %}
+                            {% for a_matiere in all_matieres %}
+                            {% if a_matiere.id_matiere == a_choix_matiere.matiere1 %}
+                            {{a_matiere.nom}}
+                            {% endif %}
+                            {% endfor %}
+                            {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td scope="row">
+                            {% for a_choix_matiere in all_choix_matieres %}
+                            {% if a_choix_matiere.id_candidat == candidat.id_candidat %}
+                            {% for a_matiere in all_matieres %}
+                            {% if a_matiere.id_matiere == a_choix_matiere.matiere2 %}
+                            {{a_matiere.nom}}
+                            {% endif %}
+                            {% endfor %}
+                            {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td>
+                            <form method="post" action="{{url_for('admin_routes.candidats')}}"
+                                id="modifCandidatsForm{{candidat.id_candidat}}">
+                                <button type="button" id="{{candidat.id_candidat}}" data-bs-toggle="modal"
+                                    data-bs-target="#modifModal"
+                                    class="modifRow btn btn-outline-warning">Modifier</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form method="post" action="{{url_for('admin_routes.candidats')}}"
+                                id="deleteCandidatsForm{{candidat.id_candidat}}">
+                                <input type="hidden" name="id" value="{{candidat.id_candidat}}">
+                                <button type="button" id="{{candidat.id_candidat}}" data-bs-toggle="modal"
+                                    data-bs-target="#confirmDeleteModal"
+                                    class="deleteRow btn btn-outline-danger">Supprimer</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="addCandidatModal" tabindex="-1" role="dialog" aria-labelledby="addCandidatModal"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Ajouter un candidat</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Add user form -->
+                    <form method="post" action="{{url_for('admin_routes.candidats')}}" id="addCandidatsForm">
+                        <div class="form-group">
+                            <label for="name">Nom</label>
+                            <input type="text" class="form-control" id="name" name="name" aria-describedby="nameHelp"
+                                placeholder="Entrez un nom" required="required">
+                        </div>
+                        <div class="form-group">
+                            <label for="surname">Prenom</label>
+                            <input type="text" class="form-control" id="surname" name="surname"
+                                aria-describedby="surnameHelp" placeholder="Entrez un prénom" required="required">
+                        </div>
+                        <div class="form-group">
+                            <label for="serieSelect">Serie</label>
+                            <select class="form-control" id="serieSelect" name="serie"
+                                onchange="testMatiereCompatible()">
+                                {% for a_serie in all_series %}
+                                <option id="serie{{a_serie.id_serie}}" value="{{a_serie.id_serie}}">{{a_serie.nom}} - {%
+                                    if a_serie.specialite1
+                                    %}{{a_serie.specialite1}}{% endif %}{% if a_serie.specialite2
+                                    %}/{{a_serie.specialite2}}{% endif %}
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="matiere1Select">Matière1</label>
+                            <select class="form-control" id="matiere1Select" name="matiere1">
+                                <option selected value></option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="matiere2Select">Matière2</label>
+                            <select class="form-control" id="matiere2Select" name="matiere2">
+                                <option selected value></option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                    <button class="btn btn-primary" name="submit_button" type="submit" form="addCandidatsForm">Ajouter
+                        le candidat</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modifModal" tabindex="-1" role="dialog" aria-labelledby="modifCandidatModal"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Ajouter un candidat</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Modif candidat form -->
+                    <form method="post" action="{{url_for('admin_routes.candidats')}}" id="modifCandidatsForm">
+                        <div class="form-group">
+                            <label for="name">Nom</label>
+                            <input type="text" class="form-control" id="name" name="name" aria-describedby="nameHelp"
+                                placeholder="Entrez un nom" required="required">
+                        </div>
+                        <div class="form-group">
+                            <label for="surname">Prenom</label>
+                            <input type="text" class="form-control" id="surname" name="surname"
+                                aria-describedby="surnameHelp" placeholder="Entrez un prénom" required="required">
+                        </div>
+                        <div class="form-group">
+                            <label for="serieSelectModif">Serie</label>
+                            <select class="form-control" id="serieSelectModif" name="serie"
+                                onchange="testMatiereCompatible()">
+                                {% for a_serie in all_series %}
+                                <option id="serieModif{{a_serie.id_serie}}" value="{{a_serie.id_serie}}">{{a_serie.nom}}
+                                    - {%
+                                    if a_serie.specialite1
+                                    %}{{a_serie.specialite1}}{% endif %}{% if a_serie.specialite2
+                                    %}/{{a_serie.specialite2}}{% endif %}
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="matiere1SelectModif">Matière1</label>
+                            <select class="form-control" id="matiere1SelectModif" name="matiere1">
+                                <option selected value></option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="matiere2SelectModif">Matière2</label>
+                            <select class="form-control" id="matiere2SelectModif" name="matiere2">
+                                <option selected value></option>
+                            </select>
+                        </div>
+                        <input type="hidden" name="id" id="hiddenIdModif">
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                    <button class="btn btn-primary" name="modif_button" type="submit" id="ModalSubmitModifButton"
+                        form="modifCandidatsForm">Sauvegarder
+                        les changements</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModal"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Attention</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Êtes vous sûr de vouloir supprimer ce candidat ?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <button type="submit" name="delete_button" id="ModalSubmitButton" value=""
+                        form="deleteCandidatsForm" class="btn btn-danger">Supprimer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block sub_script %}
+<script>
+    function testMatiereCompatible() {
+
+
+        myvar = '{{all_matieres|tojson}}';
+        var all_matieres = JSON.parse(myvar);
+
+
+        var selectMatiereObject1 = document.getElementById('matiere1Select');
+        var selectMatiereObject2 = document.getElementById('matiere2Select');
+        var selectSerieObject = document.getElementById('serieSelect');
+        var id_serie = selectSerieObject.value;
+        manage_option(selectMatiereObject1, selectMatiereObject2, id_serie, all_matieres);
+
+
+
+        var selectMatiereObject1 = document.getElementById('matiere1SelectModif');
+        var selectMatiereObject2 = document.getElementById('matiere2SelectModif');
+        var selectSerieObject = document.getElementById('serieSelectModif');
+        var id_serie = selectSerieObject.value;
+        manage_option(selectMatiereObject1, selectMatiereObject2, id_serie, all_matieres);
+    }
+
+    function manage_option(selectMatiereObject1, selectMatiereObject2, id_serie, all_matieres) {
+        //Delete all before
+        while (selectMatiereObject1.length > 0) {
+            selectMatiereObject1.remove(0);
+        }
+        while (selectMatiereObject2.length > 0) {
+            selectMatiereObject2.remove(0);
+        }
+
+        var empty1 = document.createElement("option");
+        empty1.selected = true;
+        selectMatiereObject1.append(empty1);
+        var empty2 = document.createElement("option");
+        empty2.selected = true;
+        selectMatiereObject2.append(empty2);
+
+        for (var i = 0; i < Object.keys(all_matieres).length; i++) {
+            if (all_matieres[i]['id_serie'] == id_serie) {
+
+                var opt1 = document.createElement("option");
+                opt1.id = "matiere1_" + all_matieres[i]['id_matiere'];
+                opt1.value = all_matieres[i]['id_matiere'];
+                opt1.text = all_matieres[i]['nom'];
+                selectMatiereObject1.append(opt1);
+
+                var opt2 = document.createElement("option");
+                opt2.id = "matiere2_" + all_matieres[i]['id_matiere'];
+                opt2.value = all_matieres[i]['id_matiere'];
+                opt2.text = all_matieres[i]['nom'];
+                selectMatiereObject2.append(opt2);
+            }
+        }
+    }
+
+    window.onload = function () {
+        testMatiereCompatible();
+    };
+</script>
+
+<script>
+    $('.modifRow').click(function () {
+
+        var $myRowId = $(this).get(0).id;
+        name = document.getElementById("ModalSubmitModifButton").getAttribute("form");
+        $("#hiddenIdModif").attr('value', $myRowId);
+
+        form_elements = document.getElementById("modifCandidatsForm").elements;
+
+
+        myvar_matieres = '{{all_matieres|tojson}}';
+        var all_matieres = JSON.parse(myvar_matieres);
+        myvar_candidats = '{{all_candidats|tojson}}';
+        var all_candidats = JSON.parse(myvar_candidats);
+        myvar_choix = '{{all_choix_matieres|tojson}}';
+        var all_choix_matieres = JSON.parse(myvar_choix);
+        myvar_serie = '{{all_series|tojson}}';
+        var all_series = JSON.parse(myvar_serie);
+
+        var candidat;
+        for (var i = 0; i < all_candidats.length; i++) {
+            if (all_candidats[i]['id_candidat'] == $myRowId) {
+                candidat = all_candidats[i];
+            }
+        }
+        var serie;
+        for (var i = 0; i < all_series.length; i++) {
+            if (all_series[i]['id_serie'] == candidat['id_serie']) {
+                serie = all_series[i];
+            }
+        }
+
+        var choix_matiere;
+        for (var i = 0; i < all_choix_matieres.length; i++) {
+            if (all_choix_matieres[i]['id_candidat'] == candidat['id_candidat']) {
+                choix_matiere = all_choix_matieres[i];
+            }
+        }
+
+        var matiere1 = null, matiere2 = null;
+        if (choix_matiere != null) {
+            for (var i = 0; i < Object.keys(all_matieres).length; i++) {
+                if (all_matieres[i].id_matiere == choix_matiere['matiere1']) {
+                    matiere1 = all_matieres[i];
+                }
+                if (all_matieres[i].id_matiere == choix_matiere['matiere2']) {
+                    matiere2 = all_matieres[i];
+                }
+            }
+        }
+
+
+        //Set the name
+        form_elements[0].value = candidat['nom'];
+        //Set the surname
+        form_elements[1].value = candidat['prenom'];
+        //Set the serie
+        id_serie = serie['id_serie'];
+        select = form_elements[2];
+        for (var i = 0; i < select.length; i++) {
+            if (select.options[i].id == "serieModif" + id_serie) {
+                select.options[i].selected = true;
+            }
+        }
+
+        testMatiereCompatible();
+
+        //Set the matiere1
+        if (matiere1 != null) {
+            id_matiere1 = matiere1['id_matiere'];
+            select = form_elements[3];
+            for (var i = 0; i < select.length; i++) {
+                if (select.options[i].id == "matiere1_" + id_matiere1) {
+                    select.options[i].selected = true;
+                }
+            }
+        }
+        if (matiere2 != null) {
+            //Set the matiere2
+            id_matiere2 = matiere2['id_matiere'];
+            select = form_elements[4];
+            for (var i = 0; i < select.length; i++) {
+                if (select.options[i].id == "matiere2_" + id_matiere2) {
+                    select.options[i].selected = true;
+                }
+            }
+        }
+    });
+</script>
 {% endblock %}

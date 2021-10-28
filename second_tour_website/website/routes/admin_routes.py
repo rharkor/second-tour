@@ -16,10 +16,74 @@ def acceuil():
     else:
         return redirect(url_for('main_routes.connexion'))
 
-@admin_routes.route('/candidats')
+@admin_routes.route('/candidats', methods=['POST', 'GET'])
 def candidats():
     if main_security.test_session_connected(session, True):
-        return render_template('admin/candidats.html')
+        if request.method == 'POST':
+            form = request.form
+            if form.get('submit_button') is not None:
+                if 'name' in form and 'surname' in form and 'serie' in form:
+                    result = main_database.add_candidat(form['name'], form['surname'], form['serie'], output=True)
+                    if result[1][1] == 'danger':
+                        flash(result[0], result[1])
+                    else:
+                        if 'matiere1' in form and 'matiere2' in form:
+                            if form['matiere1'] or form['matiere2']:
+                                second_result = main_database.add_choix_matiere(result[0].id_candidat, form['matiere1'], form['matiere2'])
+                                flash(second_result[0], second_result[1])
+                            else:
+                                flash(result[1][0], result[1][1])
+                        else:
+                            flash(result[1][0], result[1][1])
+                        
+            elif form.get('delete_button') is not None:
+                if 'id' in form:
+                    if r := main_database.delete_candidat(form['id']):
+                        flash(r[0], r[1])
+            elif form.get('modif_button') is not None:
+                if 'name' in form and 'surname' in form and 'serie' in form and 'id' in form:
+                    if r := main_database.delete_candidat(form['id']):
+                        flash(r[0], r[1])
+                    else:
+                        result = main_database.add_candidat(form['name'], form['surname'], form['serie'], output=True)
+                        if result[1][1] == 'danger':
+                            flash(result[0], result[1])
+                        else:
+                            if 'matiere1' in form and 'matiere2' in form:
+                                if form['matiere1'] or form['matiere2']:
+                                    second_result = main_database.add_choix_matiere(result[0].id_candidat, form['matiere1'], form['matiere2'])
+                                    if second_result[1] != 'danger':
+                                        flash("Modification correctement effecutée", second_result[1])
+                                    else:
+                                        flash(second_result[0], second_result[1])
+                                else:
+                                    flash(result[1][0], result[1][1])
+                            else:
+                                if result[1][1] != "danger":
+                                    flash("Modification correctement effecutée", result[1][1])
+                                else:
+                                    flash(result[1][0], result[1][1])
+        # Serialize TABLE
+        candidats = CANDIDATS.query.order_by(CANDIDATS.nom).all()
+        all_candidats = []
+        for a_candidat in candidats:
+            all_candidats.append(a_candidat.as_dict())
+        # Serialize TABLE
+        choix_matieres = CHOIX_MATIERE.query.all()
+        all_choix_matieres = []
+        for a_choix_matiere in choix_matieres:
+            all_choix_matieres.append(a_choix_matiere.as_dict())
+        # Serialize TABLE
+        all_series = []
+        series = SERIE.query.all()
+        for a_serie in series:
+            all_series.append(a_serie.as_dict())
+        # Serialize TABLE
+        matieres = MATIERES.query.all()
+        all_matieres = []
+        for a_matiere in matieres:
+            all_matieres.append(a_matiere.as_dict())
+        return render_template('admin/candidats.html', all_candidats=all_candidats, all_choix_matieres=all_choix_matieres, all_series=all_series, all_matieres=all_matieres)
     else:
         return redirect(url_for('main_routes.connexion'))
 
@@ -36,7 +100,7 @@ def salles():
                 if 'id' in form:
                     if r := main_database.delete_salle(form['id']):
                         flash(r[0], r[1])
-        all_salles = SALLE.query.all()
+        all_salles = SALLE.query.order_by(SALLE.numero).all()
         return render_template('admin/salles.html', all_salles=all_salles)
     else:
         return redirect(url_for('main_routes.connexion'))
@@ -54,7 +118,7 @@ def professeurs():
                 if 'id' in form:
                     if r := main_database.delete_professeur(form['id']):
                         flash(r[0], r[1])
-        all_profs = PROFESSEUR.query.all()
+        all_profs = PROFESSEUR.query.order_by(PROFESSEUR.nom).all()
         all_matieres = MATIERES.query.all()
         all_salles = SALLE.query.all()
         return render_template('admin/professeurs.html', all_profs=all_profs, all_matieres=all_matieres, all_salles=all_salles)
@@ -75,7 +139,7 @@ def series():
                     if r := main_database.delete_serie(form['id']):
                         flash(r[0], r[1])
                 
-        all_series = SERIE.query.all()
+        all_series = SERIE.query.order_by(SERIE.nom).all()
         return render_template('admin/series.html', all_series=all_series)
     else:
         return redirect(url_for('main_routes.connexion'))
@@ -93,7 +157,7 @@ def matieres():
                 if 'id' in form:
                     if r := main_database.delete_matiere(form['id']):
                         return flash(r[0], r[1])
-        all_matieres = MATIERES.query.all()
+        all_matieres = MATIERES.query.order_by(MATIERES.nom).all()
         all_series = SERIE.query.all()
         all_salles = SALLE.query.all()
         return render_template('admin/matieres.html', all_matieres=all_matieres, all_series=all_series, all_salles=all_salles)
