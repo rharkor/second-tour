@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, session, request, redirect, url_for
 from flask.helpers import flash
 
-from ..function import main_security, main_sessions, main_database
+from ..function import main_security, main_sessions, main_database, main_calendrier
 from ..database.main_database import *
 
 admin_routes = Blueprint('admin_routes', __name__,
@@ -9,9 +9,14 @@ admin_routes = Blueprint('admin_routes', __name__,
                         static_folder='static')
 
 @admin_routes.route('/')
-@admin_routes.route('/acceuil')
+@admin_routes.route('/acceuil', methods=['POST', 'GET'])
 def acceuil():
     if main_security.test_session_connected(session, True):
+        if request.method == 'POST':
+            form = request.form
+            if form.get('generate_button') is not None:
+                main_calendrier.generation_calendrier()
+                return render_template('admin/acceuil.html')
         return render_template('admin/acceuil.html')
     else:
         return redirect(url_for('main_routes.connexion'))
