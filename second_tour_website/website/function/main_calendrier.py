@@ -6,6 +6,13 @@ from . import main_database
 from ..database.main_database import *
 
 def generation_calendrier():
+    # Delete all creneaux
+    all_creneaux = CRENEAU.query.all()
+    for creneau in all_creneaux:
+        db.session.delete(creneau)
+    db.session.commit()
+
+
     all_candidats = CANDIDATS.query.all()
     all_professeurs = PROFESSEUR.query.all()
     all_choix_matieres = CHOIX_MATIERE.query.all()

@@ -1,0 +1,50 @@
+{% extends "professeur/base_professeur.html" %}
+{% block title %}Administration{% endblock %}
+{% block sub_content %}
+<div class="main-div-admin">
+    <div class="name-finder align-items-end">
+        <button href="#" type="button" class="btn btn-info">
+            Télécharger
+            <i class="fas fa-print ml-s"></i>
+        </button>
+    </div>
+    <div class="main-table-admin">
+        {%- for category, message in get_flashed_messages(with_categories = true) %}
+        <div class="alert alert-{{category}}  alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {%- endfor %}
+        <div class="table-responsive thumbnail">
+            <table class="table table-light table-striped table-hover" id="calendar">
+                <thead>
+                    <tr>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Prénom</th>
+                        <th scope="col">Heure de début préparation</th>
+                        <th scope="col">Heure de fin</th>
+                        <th scope="col">Emargement</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for creneau in all_creneaux %}
+                    {% if creneau.id_matiere in id_matieres %}
+                    <tr>
+                        {% for candidat in all_candidats %}
+                        {% if candidat.id_candidat == creneau.id_candidat %}
+                        <td scope="row">{{candidat.nom}}</td>
+                        <td scope="row">{{candidat.prenom}}</td>
+                        {% endif %}
+                        {% endfor %}
+                        <td scope="row">{{creneau.debut_preparation}}</td>
+                        <td scope="row">{{creneau.fin}}</td>
+                        <td scope="row"></td>
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

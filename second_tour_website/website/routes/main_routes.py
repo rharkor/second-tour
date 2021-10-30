@@ -23,6 +23,8 @@ def connexion():
     if request.method == 'GET':
             if main_security.test_session_connected(session, True):
                 return redirect(url_for('admin_routes.acceuil'))
+            elif main_security.test_session_connected(session, False):
+                return redirect(url_for('professeur_routes.acceuil'))
             else:
                 return render_template('connexion.html')
     else:

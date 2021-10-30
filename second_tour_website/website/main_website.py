@@ -17,8 +17,10 @@ db = SQLAlchemy(app)
 # Configure the routes blueprint
 from .routes.main_routes import main_routes
 from .routes.admin_routes import admin_routes
+from .routes.professeur_routes import professeur_routes
 app.register_blueprint(main_routes, url_prefix='/')
 app.register_blueprint(admin_routes, url_prefix='/admin')
+app.register_blueprint(professeur_routes, url_prefix='/professeur')
 
 
 def run(debug_mode=False):
