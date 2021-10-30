@@ -233,7 +233,7 @@ def delete_choix_matiere(id):
 
 def add_crenaud(id_candidat, id_matiere, id_salle, debut_preparation, fin):
     try:
-        print("Create the creneau : ", id_candidat, id_matiere, id_salle, debut_preparation, fin)
+        print("new Créneau : ", id_candidat, id_matiere, id_salle, debut_preparation, fin)
         creneau = CRENEAU(id_candidat, id_matiere, id_salle, debut_preparation, fin)
         if not creneau.unvalid:
             db.session.add(creneau)

@@ -2,6 +2,7 @@ from ctypes import create_string_buffer, create_unicode_buffer
 import traceback
 import datetime
 from flask.helpers import flash
+from copy import deepcopy
 
 import flask
 
@@ -58,22 +59,33 @@ def generation_calendrier():
                 matiere2 = matiere
         
         # Get prof for each matiere
-        professeur_m1, professeur_m2 = None, None
+        professeur_m1, professeur_m2 = [], []
         for professeur in all_professeurs:
             if professeur.matiere == matiere1.id_matiere:
-                professeur_m1 = professeur
+                professeur_m1.append(professeur)
             if professeur.matiere == matiere2.id_matiere:
-                professeur_m2 = professeur
+                professeur_m2.append(professeur)
 
         # salle for each matiere
-        salle_m1, salle_m2 = None, None
-        salle_m1_n = matiere1.loge if matiere1.loge else professeur_m1.salle
-        salle_m2_n = matiere2.loge if matiere2.loge else professeur_m2.salle
+        salle_m1, salle_m2 = [], []
+        if matiere1.loge:
+            salle_m1_n = [matiere1.loge]
+        else:
+            salle_m1_n = []
+            for a_prof in professeur_m1:
+                salle_m1_n.append(a_prof.salle)
+        if matiere2.loge:
+            salle_m2_n = [matiere2.loge]
+        else:
+            salle_m2_n = []
+            for a_prof in professeur_m2:
+                salle_m2_n.append(a_prof.salle)
+
         for salle in all_salles:
-            if salle.id_salle == salle_m1_n:
-                salle_m1 = salle
-            if salle.id_salle == salle_m2_n:
-                salle_m2 = salle
+            if salle.id_salle in salle_m1_n:
+                salle_m1.append(salle)
+            if salle.id_salle in salle_m2_n:
+                salle_m2.append(salle)
 
         # assign matiere
         # FOR THE MOMENT 1 CANDIDAT PER SALLE 
@@ -81,53 +93,73 @@ def generation_calendrier():
 
         # Verify the disponibility
         # total time for matiere
-        total_time_m1 = convert_to_decimal_time(convert_minute_to_string(matiere1.temps_passage))
-        total_time_m2 = convert_to_decimal_time(convert_minute_to_string(matiere2.temps_passage))
-        fin_prepa_m1 = convert_to_decimal_time(convert_minute_to_string(matiere1.temps_preparation))
-        fin_prepa_m2 = convert_to_decimal_time(convert_minute_to_string(matiere2.temps_preparation))
+        temps_passage_m1 = convert_to_decimal_time(convert_minute_to_string(matiere1.temps_passage))
+        temps_passage_m2 = convert_to_decimal_time(convert_minute_to_string(matiere2.temps_passage))
+        temps_preparation_m1 = convert_to_decimal_time(convert_minute_to_string(matiere1.temps_preparation))
+        temps_preparation_m2 = convert_to_decimal_time(convert_minute_to_string(matiere2.temps_preparation))
         
 
         for x in range(0, 2):
 
-            salle_m = salle_m1 if x == 0 else salle_m2
-            total_time_m = total_time_m1 if x == 0 else total_time_m2
-            fin_prepa_i = fin_prepa_m1 if x == 0 else fin_prepa_m2
+            salle_matiere = salle_m1 if x == 0 else salle_m2
+            temps_passage_matiere = temps_passage_m1 if x == 0 else temps_passage_m2
+            temps_preparation_matiere = temps_preparation_m1 if x == 0 else temps_preparation_m2
             matiere = matiere1 if x == 0 else matiere2
 
-            all_creneaux = CRENEAU.query.all()
-            i = 8.00
-            while i < 16.00:
-                # test if the crenau is free
-                free = True
-                for creneau in all_creneaux:
-                        debut_prepa_decimal = convert_to_decimal_time(creneau.debut_preparation)
-                        fin_decimal = convert_to_decimal_time(creneau.fin)
-                        fin_prepa_decimal = convert_to_decimal_time(convert_minute_to_string(matiere.temps_passage))
+            heure_debut_preparation_voulue = 8.00
+            while heure_debut_preparation_voulue < 20.00:
+                for a_salle in salle_matiere:
+                    # reset the var
+                    aucune_collision = True
+                    all_creneaux = CRENEAU.query.all()
 
-                        # Test if the salle is empty
-                        if creneau.id_salle == salle_m.id_salle \
-                        and ((fin_prepa_i + i < fin_prepa_decimal and fin_prepa_i + i + total_time_m > fin_decimal)
-                        or (fin_prepa_i + i < fin_prepa_decimal and fin_prepa_i + i + total_time_m > fin_prepa_decimal)
-                        or (fin_prepa_i + i < fin_decimal and fin_prepa_i + i + total_time_m > fin_prepa_decimal)
-                        or (fin_prepa_i + i > fin_prepa_decimal and fin_prepa_i + i + total_time_m < fin_decimal)):
-                            free = False
-                        
-                        # Test if the user don't have already creneau
-                        if creneau.id_candidat == candidat.id_candidat \
-                        and ((i < debut_prepa_decimal-0.5 and i + total_time_m > fin_decimal+0.5)
-                        or (i < debut_prepa_decimal-0.5 and i + total_time_m > debut_prepa_decimal-0.5)
-                        or (i < fin_decimal+0.5 and i + total_time_m > debut_prepa_decimal-0.5)
-                        or (i > debut_prepa_decimal-0.5 and i + total_time_m < fin_decimal+0.5)):
-                            free = False
-            
+                    for creneau in all_creneaux:
+                            debut_preparation_creneau = convert_to_decimal_time(creneau.debut_preparation)
+                            fin_passage_creneau = convert_to_decimal_time(creneau.fin)
+                            for a_matiere in all_matieres:
+                                if a_matiere.id_matiere == creneau.id_matiere:
+                                    matiere_creneau = a_matiere
+                            temps_passage_creneau = convert_to_decimal_time(convert_minute_to_string(matiere_creneau.temps_passage))
+                            temps_preparation_creneau = convert_to_decimal_time(convert_minute_to_string(matiere_creneau.temps_preparation))
 
-                if free:
-                    # Create the creneau
-                    res = main_database.add_crenaud(candidat.id_candidat, matiere.id_matiere, salle_m.id_salle, convert_from_decimal_time(i), convert_from_decimal_time(i + total_time_m))
-                    if res[1] == 'danger':
-                        print(res[0])
-                    i = 20
-                i += 0.5
+                            fin_passage_matiere = heure_debut_preparation_voulue + temps_preparation_matiere + temps_passage_matiere
+
+                            # PRINT DEBUG HERE
+                            if creneau.id_salle == a_salle.id_salle:
+                                # print("DEBUG : ", "Matiere : ", heure_debut_preparation_voulue, temps_preparation_matiere, temps_passage_matiere, fin_passage_matiere)
+                                # print("DEBUG : ", "Creneau : ", debut_preparation_creneau, temps_preparation_creneau, temps_passage_creneau, fin_passage_creneau)
+                                pass
+
+                            # Test if the salle is empty
+                            if creneau.id_salle == a_salle.id_salle \
+                            and not((heure_debut_preparation_voulue + temps_preparation_matiere >= fin_passage_creneau)
+                            or (heure_debut_preparation_voulue + temps_preparation_matiere + temps_passage_matiere <= debut_preparation_creneau + temps_preparation_creneau)):
+                                aucune_collision = False
+                            
+                            # Test if the user don't have already creneau and need a pause
+                            if creneau.id_candidat == candidat.id_candidat \
+                            and not ((fin_passage_matiere <= debut_preparation_creneau - 0.5)
+                            or (heure_debut_preparation_voulue >= fin_passage_creneau + 0.5)):
+                                aucune_collision = False
+
+                            # Test if the prof don't have too many course
+                            
+                            # Test for lunch
+
+                            # Test only morning or only afternoon
+                            
+                            
+                
+
+                    if aucune_collision:
+                        # Create the creneau
+                        # print(matiere.id_matiere, heure_debut_preparation_voulue, temps_preparation_matiere, temps_passage_matiere)
+                        res = main_database.add_crenaud(candidat.id_candidat, matiere.id_matiere, a_salle.id_salle, convert_from_decimal_time(heure_debut_preparation_voulue), convert_from_decimal_time(heure_debut_preparation_voulue + temps_preparation_matiere + temps_passage_matiere))
+                        if res[1] == 'danger':
+                            print(res[0])
+                        heure_debut_preparation_voulue = 20
+                        break
+                heure_debut_preparation_voulue += 0.5
     
     result = test_calendar_complete()
     flash(result[0], result[1])
@@ -150,24 +182,38 @@ def convert_minute_to_string(time):
 
 
 def test_calendar_complete():
-    choix_left = CHOIX_MATIERE.query.all()
-    
+    all_choix_matiere = CHOIX_MATIERE.query.all()
+    all_choix_matiere_left = deepcopy(all_choix_matiere) # Because all_choix_matiere is immutable
     all_creneaux = CRENEAU.query.all()
-    for creneau in all_creneaux:
-        first_matiere, second_matiere = False, False
-        for choix_matiere in choix_left:
-            if creneau.id_candidat == choix_matiere.id_candidat:
-                for a_creneau in all_creneaux:
-                    if a_creneau.id_matiere == choix_matiere.matiere1:
-                        first_matiere = True
-                    elif a_creneau.id_matiere == choix_matiere.matiere2:
-                        second_matiere = True
-            if first_matiere and second_matiere:
-                choix_left.remove(choix_matiere)
 
-    if len(choix_left) > 0:
-        print("Le calendrier n'est pas complet :", len(choix_left), choix_left)
-        return [f'Le calendrier n\'est pas complet, nombre de choix non pris en compte : {len(choix_left)}', 'danger']
+    matiere_left = 0
+    for _ in all_choix_matiere:
+        if _.matiere1:
+            matiere_left += 1
+        if _.matiere2:
+            matiere_left += 1
+
+    i = 0
+    for choix_matiere in all_choix_matiere:
+        matiere1, matiere2 = False, False
+        for creneau in all_creneaux:
+            if creneau.id_candidat == choix_matiere.id_candidat:
+                if creneau.id_matiere == choix_matiere.matiere1:
+                    matiere1 = True
+                    matiere_left -= 1
+                elif creneau.id_matiere == choix_matiere.matiere2:
+                    matiere2 = True
+                    matiere_left -= 1
+        if matiere1 and matiere2:
+            all_choix_matiere_left.pop(i)
+            i -= 1
+        i += 1
+    
+
+
+    if matiere_left > 0:
+        print("Le calendrier n'est pas complet :", matiere_left, all_choix_matiere_left)
+        return [f'Le calendrier n\'est pas complet, il manque {matiere_left} créneau', 'danger']
     else:
         print("Le calendrier est complet !")
         return ['Calendrier généré avec succès', 'success']

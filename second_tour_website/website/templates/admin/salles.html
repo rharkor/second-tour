@@ -52,7 +52,7 @@
                                         </thead>
                                         <tbody>
                                             {% for a_prof in all_profs %}
-                                            {% if a_prof.salle == a_salle.id_salle %}
+                                            {% if creneau.id_matiere == a_prof.matiere and creneau.id_salle == a_prof.salle %}
                                             <tr class="clickable" data-bs-toggle="collapse" data-bs-target="#accordion{{a_prof.id_professeur}}">
                                                 <td scope="row">{{a_prof.nom}}</td>
                                                 <td scope="row">{{a_prof.prenom}}</td>

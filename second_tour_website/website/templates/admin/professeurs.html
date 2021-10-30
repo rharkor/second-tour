@@ -73,7 +73,7 @@
                                         </thead>
                                         <tbody>
                                             {% for creneau in all_creneaux %}
-                                            {% if creneau.id_matiere == a_prof.matiere %}
+                                            {% if creneau.id_matiere == a_prof.matiere and creneau.id_salle == a_prof.salle %}
                                             <tr>
                                                 {% for candidat in all_candidats %}
                                                 {% if candidat.id_candidat == creneau.id_candidat %}
