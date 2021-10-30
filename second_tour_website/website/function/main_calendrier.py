@@ -1,4 +1,4 @@
-from ctypes import create_string_buffer
+from ctypes import create_string_buffer, create_unicode_buffer
 import traceback
 import datetime
 from flask.helpers import flash
@@ -81,10 +81,11 @@ def generation_calendrier():
 
         # Verify the disponibility
         # total time for matiere
-        total_time_m1 = convert_to_decimal_time(convert_minute_to_string(matiere1.temps_preparation)) + convert_to_decimal_time(convert_minute_to_string(matiere1.temps_passage))
-        total_time_m2 = convert_to_decimal_time(convert_minute_to_string(matiere2.temps_preparation)) + convert_to_decimal_time(convert_minute_to_string(matiere2.temps_passage))
-        fin_prepa_m1 = convert_from_decimal_time(convert_minute_to_string(matiere1.temps_preparation))
-        fin_prepa_m2 = convert_from_decimal_time(convert_minute_to_string(matiere2.temps_preparation))
+        total_time_m1 = convert_to_decimal_time(convert_minute_to_string(matiere1.temps_passage))
+        total_time_m2 = convert_to_decimal_time(convert_minute_to_string(matiere2.temps_passage))
+        fin_prepa_m1 = convert_to_decimal_time(convert_minute_to_string(matiere1.temps_preparation))
+        fin_prepa_m2 = convert_to_decimal_time(convert_minute_to_string(matiere2.temps_preparation))
+        
 
         for x in range(0, 2):
 
@@ -105,10 +106,10 @@ def generation_calendrier():
 
                         # Test if the salle is empty
                         if creneau.id_salle == salle_m.id_salle \
-                        and ((i < fin_prepa_decimal and i + total_time_m > fin_decimal)
-                        or (i < fin_prepa_decimal and i + total_time_m > fin_prepa_decimal)
-                        or (i < fin_decimal and i + total_time_m > fin_prepa_decimal)
-                        or (i > fin_prepa_decimal and i + total_time_m < fin_decimal)):
+                        and ((fin_prepa_i + i < fin_prepa_decimal and fin_prepa_i + i + total_time_m > fin_decimal)
+                        or (fin_prepa_i + i < fin_prepa_decimal and fin_prepa_i + i + total_time_m > fin_prepa_decimal)
+                        or (fin_prepa_i + i < fin_decimal and fin_prepa_i + i + total_time_m > fin_prepa_decimal)
+                        or (fin_prepa_i + i > fin_prepa_decimal and fin_prepa_i + i + total_time_m < fin_decimal)):
                             free = False
                         
                         # Test if the user don't have already creneau
@@ -127,6 +128,9 @@ def generation_calendrier():
                         print(res[0])
                     i = 20
                 i += 0.5
+    
+    result = test_calendar_complete()
+    flash(result[0], result[1])
             
 
 def convert_from_decimal_time(decimal):
@@ -143,3 +147,27 @@ def convert_to_decimal_time(time):
 def convert_minute_to_string(time):
     h, m = int(time/60), int(time%60)
     return f"{h}:{m}"
+
+
+def test_calendar_complete():
+    choix_left = CHOIX_MATIERE.query.all()
+    
+    all_creneaux = CRENEAU.query.all()
+    for creneau in all_creneaux:
+        first_matiere, second_matiere = False, False
+        for choix_matiere in choix_left:
+            if creneau.id_candidat == choix_matiere.id_candidat:
+                for a_creneau in all_creneaux:
+                    if a_creneau.id_matiere == choix_matiere.matiere1:
+                        first_matiere = True
+                    elif a_creneau.id_matiere == choix_matiere.matiere2:
+                        second_matiere = True
+            if first_matiere and second_matiere:
+                choix_left.remove(choix_matiere)
+
+    if len(choix_left) > 0:
+        print("Le calendrier n'est pas complet :", len(choix_left), choix_left)
+        return [f'Le calendrier n\'est pas complet, nombre de choix non pris en compte : {len(choix_left)}', 'danger']
+    else:
+        print("Le calendrier est complet !")
+        return ['Calendrier généré avec succès', 'success']

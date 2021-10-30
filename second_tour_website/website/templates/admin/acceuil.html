@@ -1,8 +1,71 @@
 {% extends "admin/base_admin.html" %}
 {% block title %}Administration{% endblock %}
 {% block sub_content %}
-<h1>Acceuil</h1>
-<form method="post">
-    <button name="generate_button" type="submit" class="btn btn-primary">Generer le calendrier</button>
-</form>
+<div class="main-div-admin">
+    <h1 class="text-white text-decoration-none" style="margin-bottom: 10px;">Acceuil</h1>
+    <form method="post">
+        <button name="generate_button" type="submit" class="btn btn-warning">Generer le calendrier</button>
+    </form>
+    <div class="main-table-admin" style="margin: 20px 0 0 0;">
+        {%- for category, message in get_flashed_messages(with_categories = true) %}
+        <div class="alert alert-{{category}}  alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {%- endfor %}
+        <div class="name-finder">
+            <input type="text" id="search-name" onkeyup="nameFinder()" placeholder="Recherche par nom..">
+        </div>
+        <div class="table-responsive thumbnail">
+            <table class="table table-light table-striped" id="calendar">
+                <thead>
+                    <tr>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Prénom</th>
+                        <th scope="col">Série</th>
+                        <th scope="col">Epreuve 1</th>
+                        <th scope="col">Epreuve 2</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for candidat in all_candidats %}
+                    <tr>
+                        <td scope="row">{{candidat.nom}}</td>
+                        <td scope="row">{{candidat.prenom}}</td>
+                        {% for serie in all_series %}
+                        {% if serie.id_serie == candidat.id_serie %}
+                        <td scope="row">
+                            {{serie.nom}} - {% if serie.specialite1 %}{{serie.specialite1}}{% endif %}{% if
+                            serie.specialite2 %}/{{serie.specialite2}}{% endif %}
+                        </td>
+                        {% endif %}
+                        {% endfor %}
+                        {% for creneau in all_creneaux %}
+                        {% if creneau.id_candidat == candidat.id_candidat %}
+                        <td scope="row">
+                            <div class="calendar-subject">
+                                {% for matiere in all_matieres %}
+                                {% if matiere.id_matiere == creneau.id_matiere %}
+                                <div>{{matiere.nom}} - {% if matiere.loge %}Loge {% for salle in all_salles %}{% if
+                                    matiere.loge == salle.id_salle %}{{salle.numero}}{% endif %}{% endfor %}{% else %}
+                                    {% for salle in all_salles %}
+                                    {% if salle.id_salle == creneau.id_salle %}
+                                    {{salle.numero}}
+                                    {% endif %}
+                                    {% endfor %}
+                                    {% endif %}</div>
+                                <div>{{creneau.debut_preparation}} - {{creneau.fin}}</div>
+                                {% endif %}
+                                {% endfor %}
+                            </div>
+                        </td>
+                        {% endif %}
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 {% endblock %}
