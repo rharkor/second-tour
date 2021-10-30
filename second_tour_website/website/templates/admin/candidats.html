@@ -33,7 +33,7 @@
                 </thead>
                 <tbody>
                     {% for candidat in all_candidats %}
-                    <tr>
+                    <tr class="clickable" data-bs-toggle="collapse" data-bs-target="#accordion{{candidat.id_candidat}}">
                         <td scope="row">{{candidat.nom}}</td>
                         <td scope="row">{{candidat.prenom}}</td>
                         <td scope="row">{% for a_serie in all_series %}
@@ -83,6 +83,45 @@
                             </form>
                         </td>
                     </tr>
+                    <tr style="--bs-table-hover-bg: transparent; --bs-table-accent-bg: transparent;">
+                        <td colspan="100%" style="padding: 0; background: transparent; --bs-table-accent-bg: transparent;">
+                            <div class="collapse" id="accordion{{candidat.id_candidat}}" style="margin: 15px 10px;">
+                                <div class="table-responsive thumbnail">
+                                    <table class="table table-light table-striped table-hover" id="calendar">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Matière</th>
+                                                <th scope="col">Salle</th>
+                                                <th scope="col">Heure de début</th>
+                                                <th scope="col">Heure de fin</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for creneau in all_creneaux %}
+                                            {% if creneau.id_candidat == candidat.id_candidat %}
+                                            <tr>
+                                                {% for matiere in all_matieres %}
+                                                {% if matiere.id_matiere == creneau.id_matiere %}
+                                                <td scope="row">{{matiere.nom}}</td>
+                                                {% endif %}
+                                                {% endfor %}
+                                                {% for salle in all_salles %}
+                                                {% if salle.id_salle == creneau.id_salle %}
+                                                <td scope="row">{{salle.numero}}</td>
+                                                {% endif %}
+                                                {% endfor %}
+                                                <td scope="row">{{creneau.debut_preparation}}</td>
+                                                <td scope="row">{{creneau.fin}}</td>
+                                            </tr>
+                                            {% endif %}
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr></tr>
                     {% endfor %}
                 </tbody>
             </table>
@@ -105,8 +144,8 @@
                     <form method="post" action="{{url_for('admin_routes.candidats')}}" id="addCandidatsForm">
                         <div class="form-group">
                             <label for="namePush">Nom</label>
-                            <input type="text" class="form-control" id="namePush" name="name" aria-describedby="nameHelp"
-                                placeholder="Entrez un nom" required="required">
+                            <input type="text" class="form-control" id="namePush" name="name"
+                                aria-describedby="nameHelp" placeholder="Entrez un nom" required="required">
                         </div>
                         <div class="form-group">
                             <label for="surnamePush">Prenom</label>

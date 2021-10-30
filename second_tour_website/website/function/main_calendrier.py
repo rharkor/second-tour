@@ -1,6 +1,9 @@
 from ctypes import create_string_buffer
 import traceback
 import datetime
+from flask.helpers import flash
+
+import flask
 
 from . import main_database
 from ..database.main_database import *
@@ -80,30 +83,32 @@ def generation_calendrier():
         # total time for matiere
         total_time_m1 = convert_to_decimal_time(convert_minute_to_string(matiere1.temps_preparation)) + convert_to_decimal_time(convert_minute_to_string(matiere1.temps_passage))
         total_time_m2 = convert_to_decimal_time(convert_minute_to_string(matiere2.temps_preparation)) + convert_to_decimal_time(convert_minute_to_string(matiere2.temps_passage))
-        
+        fin_prepa_m1 = convert_from_decimal_time(convert_minute_to_string(matiere1.temps_preparation))
+        fin_prepa_m2 = convert_from_decimal_time(convert_minute_to_string(matiere2.temps_preparation))
+
         for x in range(0, 2):
-            print("User : " + candidat.nom)
 
             salle_m = salle_m1 if x == 0 else salle_m2
             total_time_m = total_time_m1 if x == 0 else total_time_m2
+            fin_prepa_i = fin_prepa_m1 if x == 0 else fin_prepa_m2
             matiere = matiere1 if x == 0 else matiere2
 
             all_creneaux = CRENEAU.query.all()
             i = 8.00
-            while i < 20.00:
-                print("test for creneau :", i)
+            while i < 16.00:
                 # test if the crenau is free
                 free = True
                 for creneau in all_creneaux:
                         debut_prepa_decimal = convert_to_decimal_time(creneau.debut_preparation)
                         fin_decimal = convert_to_decimal_time(creneau.fin)
+                        fin_prepa_decimal = convert_to_decimal_time(convert_minute_to_string(matiere.temps_passage))
 
                         # Test if the salle is empty
                         if creneau.id_salle == salle_m.id_salle \
-                        and ((i < debut_prepa_decimal and i + total_time_m > fin_decimal)
-                        or (i < debut_prepa_decimal and i + total_time_m > debut_prepa_decimal)
-                        or (i < fin_decimal and i + total_time_m > debut_prepa_decimal)
-                        or (i > debut_prepa_decimal and i + total_time_m < fin_decimal)):
+                        and ((i < fin_prepa_decimal and i + total_time_m > fin_decimal)
+                        or (i < fin_prepa_decimal and i + total_time_m > fin_prepa_decimal)
+                        or (i < fin_decimal and i + total_time_m > fin_prepa_decimal)
+                        or (i > fin_prepa_decimal and i + total_time_m < fin_decimal)):
                             free = False
                         
                         # Test if the user don't have already creneau
@@ -118,7 +123,8 @@ def generation_calendrier():
                 if free:
                     # Create the creneau
                     res = main_database.add_crenaud(candidat.id_candidat, matiere.id_matiere, salle_m.id_salle, convert_from_decimal_time(i), convert_from_decimal_time(i + total_time_m))
-                    print(res[0])
+                    if res[1] == 'danger':
+                        print(res[0])
                     i = 20
                 i += 0.5
             
@@ -126,7 +132,8 @@ def generation_calendrier():
 def convert_from_decimal_time(decimal):
     hours = int(decimal)
     minutes = (decimal*60) % 60
-    return "%d:%02d" % (hours, minutes)
+    res = "%02d:%02d" % (hours, minutes)
+    return res
 
 def convert_to_decimal_time(time):
     h, m = time.split(':')

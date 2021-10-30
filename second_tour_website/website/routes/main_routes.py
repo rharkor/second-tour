@@ -12,7 +12,7 @@ main_routes = Blueprint('main_routes', __name__,
 @main_routes.route('/index')
 def index():
     all_candidats = CANDIDATS.query.order_by(CANDIDATS.nom).all()
-    all_creneaux = CRENEAU.query.all()
+    all_creneaux = CRENEAU.query.order_by(CRENEAU.debut_preparation).all()
     all_series = SERIE.query.all()
     all_matieres = MATIERES.query.all()
     all_salles = SALLE.query.all()

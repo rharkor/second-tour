@@ -30,7 +30,7 @@
                 </thead>
                 <tbody>
                     {% for a_prof in all_profs %}
-                    <tr>
+                    <tr class="clickable" data-bs-toggle="collapse" data-bs-target="#accordion{{a_prof.id_professeur}}">
                         <td scope="row">{{a_prof.nom}}</td>
                         <td scope="row">{{a_prof.prenom}}</td>
                         <td scope="row">
@@ -52,10 +52,48 @@
                                 id="deleteProfForm{{a_prof.id_professeur}}">
                                 <input type="hidden" name="id" value="{{a_prof.id_professeur}}">
                                 <button type="button" id="{{a_prof.id_professeur}}" data-bs-toggle="modal"
-                                    data-bs-target="#confirmDeleteModal" class="deleteRow btn btn-outline-danger"    >Supprimer</button>
+                                    data-bs-target="#confirmDeleteModal"
+                                    class="deleteRow btn btn-outline-danger">Supprimer</button>
                             </form>
-                        </td> 
+                        </td>
                     </tr>
+                    <tr style="--bs-table-hover-bg: transparent; --bs-table-accent-bg: transparent;">
+                        <td colspan="100%" style="padding: 0; background: transparent; --bs-table-accent-bg: transparent;">
+                            <div class="collapse" id="accordion{{a_prof.id_professeur}}" style="margin: 15px 10px;">
+                                <div class="table-responsive thumbnail">
+                                    <table class="table table-light table-striped table-hover" id="calendar">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Nom</th>
+                                                <th scope="col">Prénom</th>
+                                                <th scope="col">Heure de début préparation</th>
+                                                <th scope="col">Heure de fin</th>
+                                                <th scope="col">Emargement</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for creneau in all_creneaux %}
+                                            {% if creneau.id_matiere == a_prof.matiere %}
+                                            <tr>
+                                                {% for candidat in all_candidats %}
+                                                {% if candidat.id_candidat == creneau.id_candidat %}
+                                                <td scope="row">{{candidat.nom}}</td>
+                                                <td scope="row">{{candidat.prenom}}</td>
+                                                {% endif %}
+                                                {% endfor %}
+                                                <td scope="row">{{creneau.debut_preparation}}</td>
+                                                <td scope="row">{{creneau.fin}}</td>
+                                                <td scope="row"></td>
+                                            </tr>
+                                            {% endif %}
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr></tr>
                     {% endfor %}
                 </tbody>
             </table>
@@ -108,7 +146,8 @@
                             <label for="selectMatiere">Matière</label>
                             <select class="form-control" id="selectMatiere" name="matiere">
                                 {% for a_matiere in all_matieres %}
-                                <option id="matiere{{a_matiere.id_matiere}}" value="{{a_matiere.id_matiere}}">{{a_matiere.nom_complet}}</option>
+                                <option id="matiere{{a_matiere.id_matiere}}" value="{{a_matiere.id_matiere}}">
+                                    {{a_matiere.nom_complet}}</option>
                                 {% endfor %}
                             </select>
                         </div>
@@ -116,7 +155,8 @@
                             <label for="selectSalle">Salle</label>
                             <select class="form-control" id="selectSalle" name="salle">
                                 {% for a_salle in all_salles %}
-                                <option id="salle{{a_salle.id_salle}}" value="{{a_salle.id_salle}}">{{a_salle.numero}}</option>
+                                <option id="salle{{a_salle.id_salle}}" value="{{a_salle.id_salle}}">{{a_salle.numero}}
+                                </option>
                                 {% endfor %}
                             </select>
                         </div>
