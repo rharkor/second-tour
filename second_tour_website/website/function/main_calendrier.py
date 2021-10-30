@@ -142,9 +142,10 @@ def generation_calendrier():
                             or (heure_debut_preparation_voulue >= fin_passage_creneau + 0.5)):
                                 aucune_collision = False
 
-                            # Test if the prof don't have too many course
-                            
                             # Test for lunch
+                            
+
+                            # Test if the prof don't have too many course
 
                             # Test only morning or only afternoon
                             
