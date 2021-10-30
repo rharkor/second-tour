@@ -28,4 +28,4 @@ def run(debug_mode=False):
     db.create_all()
 
     # Run the website
-    app.run(debug=debug_mode)
+    app.run(host="0.0.0.0", port=5000, debug=debug_mode)

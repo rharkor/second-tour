@@ -95,7 +95,7 @@ def candidats():
         
         all_professeurs = PROFESSEUR.query.all()
         all_salles = SALLE.query.all()
-        all_creneaux = CRENEAU.query.all()
+        all_creneaux = CRENEAU.query.order_by(CRENEAU.debut_preparation).all()
         return render_template('admin/candidats.html', all_candidats=all_candidats, all_choix_matieres=all_choix_matieres, all_series=all_series, all_matieres=all_matieres, all_professeurs=all_professeurs, all_salles=all_salles, all_creneaux=all_creneaux)
     else:
         return redirect(url_for('main_routes.connexion'))
@@ -115,7 +115,7 @@ def salles():
                         flash(r[0], r[1])
         all_profs = PROFESSEUR.query.order_by(PROFESSEUR.nom).all()
         all_matieres = MATIERES.query.all()
-        all_creneaux = CRENEAU.query.all()
+        all_creneaux = CRENEAU.query.order_by(CRENEAU.debut_preparation).all()
         all_candidats = CANDIDATS.query.all()
         all_salles = SALLE.query.order_by(SALLE.numero).all()
         return render_template('admin/salles.html', all_salles=all_salles, all_profs=all_profs, all_matieres=all_matieres, all_creneaux=all_creneaux, all_candidats=all_candidats)
@@ -138,7 +138,7 @@ def professeurs():
         all_profs = PROFESSEUR.query.order_by(PROFESSEUR.nom).all()
         all_matieres = MATIERES.query.all()
         all_salles = SALLE.query.all()
-        all_creneaux = CRENEAU.query.all()
+        all_creneaux = CRENEAU.query.order_by(CRENEAU.debut_preparation).all()
         all_candidats = CANDIDATS.query.all()
         return render_template('admin/professeurs.html', all_profs=all_profs, all_matieres=all_matieres, all_salles=all_salles,all_creneaux=all_creneaux, all_candidats=all_candidats)
     else:
