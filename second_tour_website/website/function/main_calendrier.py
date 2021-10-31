@@ -68,18 +68,12 @@ def generation_calendrier():
 
         # salle for each matiere
         salle_m1, salle_m2 = [], []
-        if matiere1.loge:
-            salle_m1_n = [matiere1.loge]
-        else:
-            salle_m1_n = []
-            for a_prof in professeur_m1:
-                salle_m1_n.append(a_prof.salle)
-        if matiere2.loge:
-            salle_m2_n = [matiere2.loge]
-        else:
-            salle_m2_n = []
-            for a_prof in professeur_m2:
-                salle_m2_n.append(a_prof.salle)
+        salle_m1_n = []
+        for a_prof in professeur_m1:
+            salle_m1_n.append(a_prof.salle)
+        salle_m2_n = []
+        for a_prof in professeur_m2:
+            salle_m2_n.append(a_prof.salle)
 
         for salle in all_salles:
             if salle.id_salle in salle_m1_n:
@@ -143,11 +137,34 @@ def generation_calendrier():
                                 aucune_collision = False
 
                             # Test for lunch
-                            
+                            if creneau.id_salle == a_salle.id_salle \
+                            and ((heure_debut_preparation_voulue >= 13.00 and heure_debut_preparation_voulue < 14.00)
+                            or (fin_passage_matiere > 13.00 and fin_passage_matiere <= 14.00)
+                            or (heure_debut_preparation_voulue <= 13.00 and fin_passage_matiere >= 14.00)):
+                                aucune_collision = False
 
                             # Test if the prof don't have too many course
-
+                            if aucune_collision:
+                                all_creneau_test_break = CRENEAU.query.order_by(CRENEAU.debut_preparation).filter_by(id_salle=a_salle.id_salle).all()
+                                break_time = 0
+                                creneau_prec = all_creneau_test_break[0] if len(all_creneau_test_break) > 0 else []
+                                x = 0
+                                for creneau_test in all_creneau_test_break:
+                                    if (res := (convert_to_decimal_time(creneau_test.debut_preparation) - (convert_to_decimal_time(creneau_prec.debut_preparation) + 0.5))) >= 0:
+                                        break_time += res
+                                    creneau_prec = creneau_test
+                                    x += 1
+                                    if x >= 4:
+                                        if break_time == 0 and convert_to_decimal_time(creneau_prec.debut_preparation) + 0.5 == heure_debut_preparation_voulue:
+                                            x = 0
+                                            aucune_collision = False
+                                            
                             # Test only morning or only afternoon
+                            first_creneau = CRENEAU.query.filter_by(id_candidat=candidat.id_candidat).first()
+                            if first_creneau \
+                            and ((convert_to_decimal_time(first_creneau.debut_preparation) <= 13.00 and heure_debut_preparation_voulue >= 14.00)
+                            or (convert_to_decimal_time(first_creneau.debut_preparation) >= 14.00 and heure_debut_preparation_voulue <= 13.00)):
+                                aucune_collision = False
                             
                             
                 

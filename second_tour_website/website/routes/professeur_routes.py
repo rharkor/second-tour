@@ -13,15 +13,17 @@ professeur_routes = Blueprint('professeur_routes', __name__,
 def acceuil():
     if main_security.test_session_connected(session, False):
         id_matieres = []
+        id_salles = []
         for utilisateur in UTILISATEURS.query.all():
             if utilisateur.email == session['email']:
                 for professeur in PROFESSEUR.query.all():
                     if professeur.id_utilisateur == utilisateur.id:
                         id_matieres.append(professeur.matiere)
+                        id_salles.append(professeur.salle)
 
         all_candidats = CANDIDATS.query.all()
         all_creneaux = CRENEAU.query.all()
-        return render_template('professeur/acceuil.html', id_matieres=id_matieres, all_candidats=all_candidats, all_creneaux=all_creneaux)
+        return render_template('professeur/acceuil.html', id_matieres=id_matieres, all_candidats=all_candidats, all_creneaux=all_creneaux, id_salles=id_salles)
     else:
         return redirect(url_for('main_routes.connexion'))
 

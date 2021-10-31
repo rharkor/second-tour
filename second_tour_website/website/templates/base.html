@@ -50,9 +50,14 @@
           txtValue = td.textContent || td.innerText;
           if (txtValue.toUpperCase().indexOf(filter) > -1) {
             tr[i].style.display = "";
+          } else if (tr[i].getAttribute("class") != null) {
+            if (!tr[i].getAttribute("class").includes("not-null")) {
+              tr[i].style.display = "none";
+            }
           } else {
             tr[i].style.display = "none";
           }
+          console.log(tr[i].getAttribute("class"))
         }
       }
     }

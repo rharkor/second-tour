@@ -28,7 +28,7 @@
                 </thead>
                 <tbody>
                     {% for creneau in all_creneaux %}
-                    {% if creneau.id_matiere in id_matieres %}
+                    {% if creneau.id_matiere in id_matieres and creneau.id_salle in id_salles %}
                     <tr>
                         {% for candidat in all_candidats %}
                         {% if candidat.id_candidat == creneau.id_candidat %}

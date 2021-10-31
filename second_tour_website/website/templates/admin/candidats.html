@@ -83,7 +83,7 @@
                             </form>
                         </td>
                     </tr>
-                    <tr style="--bs-table-hover-bg: transparent; --bs-table-accent-bg: transparent;">
+                    <tr class="not-null" style="--bs-table-hover-bg: transparent; --bs-table-accent-bg: transparent;">
                         <td colspan="100%" style="padding: 0; background: transparent; --bs-table-accent-bg: transparent;">
                             <div class="collapse" id="accordion{{candidat.id_candidat}}" style="margin: 15px 10px;">
                                 <div class="table-responsive thumbnail">
@@ -99,7 +99,7 @@
                                         <tbody>
                                             {% for creneau in all_creneaux %}
                                             {% if creneau.id_candidat == candidat.id_candidat %}
-                                            <tr>
+                                            <tr class="not-null">
                                                 {% for matiere in all_matieres %}
                                                 {% if matiere.id_matiere == creneau.id_matiere %}
                                                 <td scope="row">{{matiere.nom}}</td>
@@ -121,7 +121,7 @@
                             </div>
                         </td>
                     </tr>
-                    <tr></tr>
+                    <tr class="not-null no-border"></tr>
                     {% endfor %}
                 </tbody>
             </table>

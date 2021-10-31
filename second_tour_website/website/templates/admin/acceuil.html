@@ -4,7 +4,8 @@
 <div class="main-div-admin">
     <h1 class="text-white text-decoration-none" style="margin-bottom: 10px;">Acceuil</h1>
     <form method="post">
-        <button name="generate_button" type="submit" class="btn btn-warning">Generer le calendrier</button>
+        <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+        data-bs-target="#generateCalendarModal">Generer le calendrier</button> 
     </form>
     <div class="main-table-admin" style="margin: 20px 0 0 0;">
         {%- for category, message in get_flashed_messages(with_categories = true) %}
@@ -67,5 +68,51 @@
             </table>
         </div>
     </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="generateCalendarModal" tabindex="-1" role="dialog" aria-labelledby="generateCalendarModal"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Générer le calendrier</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Êtes vous sûr de vouloir générer le calendrier ?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
+                    <form method="post">
+                        <button name="generate_button" type="submit" class="btn btn-warning" data-bs-toggle="modal"
+                        data-bs-target="#loadingModal">Confirmer</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="loadingModal" tabindex="-1" role="dialog" aria-labelledby="generateCalendarModal"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Chargement...</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body d-flex justify-content-center align-items-center flex-column">
+                <div class="loader" style="margin-bottom: 10px;"></div>
+                <p>Chargement...</p>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
 </div>
 {% endblock %}
