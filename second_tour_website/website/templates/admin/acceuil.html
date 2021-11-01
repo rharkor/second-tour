@@ -8,12 +8,12 @@
             data-bs-target="#generateCalendarModal">Generer le calendrier</button>
     </form>
     <div class="main-table-admin" style="margin: 20px 0 0 0;">
-        {%- for category, message in get_flashed_messages(with_categories = true) %}
+        {% for category, message in get_flashed_messages(with_categories = true) %}
         <div class="alert alert-{{category}}  alert-dismissible fade show" role="alert">
             {{ message }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
-        {%- endfor %}
+        {% endfor %}
         <div class="table-responsive thumbnail">
             <table class="table table-light table-striped" id="calendar">
                 <thead>
