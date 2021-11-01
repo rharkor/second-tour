@@ -22,14 +22,14 @@
                         <th scope="col" style="width: 10%;">
                             <div class="th-inner">Nom</div>
                             <div class="filter-control">
-                                <input type="text" class="form-control finder" onkeyup="finder()"
+                                <input type="text" class="form-control finder" onkeyup="finder()" style="width: 100px;"
                                     placeholder="">
                             </div>
                         </th>
                         <th scope="col" style="width: 10%;">
                             <div class="th-inner">Prénom</div>
                             <div class="filter-control">
-                                <input type="text" class="form-control finder" onkeyup="finder()"
+                                <input type="text" class="form-control finder" onkeyup="finder()" style="width: 100px;"
                                     placeholder="">
                             </div>
                         </th>
@@ -47,7 +47,7 @@
                         <th scope="col" style="width: 10%;">
                             <div class="th-inner">Salle</div>
                             <div class="filter-control">
-                                    <select class="form-select finder" onchange="finder()">
+                                    <select class="form-select finder" onchange="finder()"  style="width: 100px;">
                                         <option select></option>
                                         {% for salle in all_salles %}
                                         <option>{{salle.numero}}</option>
@@ -58,9 +58,9 @@
                         <th scope="col" style="width: 10%;">
                             <div class="th-inner">Début</div>
                             <div class="filter-control">
-                                    <select class="form-select finder" onchange="finder()">
+                                    <select class="form-select finder break-doublons" onchange="finder()" style="width: 100px;">
                                         <option select></option>
-                                        {% for creneau in all_creneau %}
+                                        {% for creneau in all_creneau_deb %}
                                         <option>{{creneau.debut_preparation}}</option>
                                         {% endfor %}
                                     </select>
@@ -69,9 +69,9 @@
                         <th scope="col" style="width: 10%;">
                             <div class="th-inner">Fin</div>
                             <div class="filter-control">
-                                    <select class="form-select finder" onchange="finder()">
+                                    <select class="form-select finder break-doublons-1" onchange="finder()" style="width: 100px;">
                                         <option select></option>
-                                        {% for creneau in all_creneau %}
+                                        {% for creneau in all_creneau_deb %}
                                         <option>{{creneau.fin}}</option>
                                         {% endfor %}
                                     </select>

@@ -225,10 +225,11 @@ def comptes():
 def creneau():
     if main_security.test_session_connected(session, True):
         all_creneau = CRENEAU.query.order_by(CRENEAU.id_candidat).all()
+        all_creneau_deb = CRENEAU.query.order_by(CRENEAU.debut_preparation).all()
         all_candidats = CANDIDATS.query.all()
         all_matieres = MATIERES.query.all()
         all_salles = SALLE.query.all()
-        return render_template('admin/creneau.html', all_creneau=all_creneau, all_candidats=all_candidats, all_matieres=all_matieres, all_salles=all_salles)
+        return render_template('admin/creneau.html', all_creneau=all_creneau, all_candidats=all_candidats, all_matieres=all_matieres, all_salles=all_salles, all_creneau_deb=all_creneau_deb)
     else:
         return redirect(url_for('main_routes.connexion'))
 

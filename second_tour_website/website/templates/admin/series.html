@@ -2,9 +2,7 @@
 {% block title %}Administration{% endblock %}
 {% block sub_content %}
 <div class="main-div-admin">
-    <div class="name-finder">
-        <input type="text" id="search-name" class="form-control" onkeyup="nameFinder()"
-            placeholder="Recherhe par série">
+    <div class="name-finder" style="justify-content: end;">
         <button href="#" type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addSerieModal">
             Ajouter
             <i class="fas fa-plus ml-s"></i>
@@ -21,9 +19,19 @@
             <table class="table table-light table-striped table-hover" id="calendar">
                 <thead>
                     <tr>
-                        <th scope="col">Série</th>
-                        <th scope="col">Spécialité 1</th>
-                        <th scope="col">Spécialité 2</th>
+                        <th scope="col">
+                            <div class="th-inner">Série</div>
+                            <div class="filter-control">
+                                    <select class="form-select finder break-doublons" onchange="finder()">
+                                        <option select></option>
+                                        {% for an_serie in all_series %}
+                                        <option>{{an_serie.nom}}</option>
+                                        {% endfor %}
+                                    </select>
+                            </div>
+                        </th>
+                        <th scope="col" style="vertical-align: text-top;">Spécialité 1</th>
+                        <th scope="col" style="vertical-align: text-top;">Spécialité 2</th>
                         <th scope="col" class="supprimer">Supprimer</th>
                     </tr>
                 </thead>

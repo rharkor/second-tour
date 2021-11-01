@@ -2,9 +2,7 @@
 {% block title %}Administration{% endblock %}
 {% block sub_content %}
 <div class="main-div-admin">
-    <div class="name-finder">
-        <input type="text" id="search-name" class="form-control" onkeyup="nameFinder()"
-            placeholder="Recherche par numéro..">
+    <div class="name-finder" style="justify-content: end;">
         <button href="#" type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addSalleModal">
             Ajouter
             <i class="fas fa-plus ml-s"></i>
@@ -21,7 +19,13 @@
             <table class="table table-light table-striped table-hover" id="calendar">
                 <thead>
                     <tr>
-                        <th scope="col">Numéro</th>
+                        <th scope="col">
+                            <div class="th-inner">Numéro</div>
+                            <div class="filter-control">
+                                <input type="text" class="form-control finder" onkeyup="finder()"
+                                    placeholder="">
+                            </div>
+                        </th>
                         <th scope="col" style="width: 15%;">Fiche d'émargement</th>
                         <th scope="col" class="supprimer">Supprimer</th>
                     </tr>

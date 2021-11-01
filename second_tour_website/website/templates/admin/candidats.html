@@ -2,9 +2,7 @@
 {% block title %}Administration{% endblock %}
 {% block sub_content %}
 <div class="main-div-admin">
-    <div class="name-finder">
-        <input type="text" id="search-name" class="form-control" onkeyup="nameFinder()"
-            placeholder="Recherche par nom..">
+    <div class="name-finder" style="justify-content: end;">
         <button href="#" type="button" class="btn btn-success" data-bs-toggle="modal"
             data-bs-target="#addCandidatModal">
             Ajouter
@@ -22,11 +20,54 @@
             <table class="table table-light table-striped table-hover" id="calendar">
                 <thead>
                     <tr>
-                        <th scope="col">Nom</th>
-                        <th scope="col">Prénom</th>
-                        <th scope="col">Série</th>
-                        <th scope="col">Matière1</th>
-                        <th scope="col">Matière2</th>
+                        <th scope="col">
+                            <div class="th-inner">Nom</div>
+                            <div class="filter-control">
+                                <input type="text" class="form-control finder" onkeyup="finder()" style="width: 100px;"
+                                    placeholder="">
+                            </div>
+                        </th>
+                        <th scope="col">
+                            <div class="th-inner">Prénom</div>
+                            <div class="filter-control">
+                                <input type="text" class="form-control finder" onkeyup="finder()" style="width: 100px;"
+                                    placeholder="">
+                            </div>
+                        </th>
+                        <th scope="col">
+                            <div class="th-inner">Série</div>
+                            <div class="filter-control">
+                                    <select class="form-select finder" onchange="finder()">
+                                        <option select></option>
+                                        {% for a_serie in all_series %}
+                                        <option>{{a_serie.nom}} - {% if a_serie.specialite1 %}{{a_serie.specialite1}}{% endif %}{% if
+                                            a_serie.specialite2 %}/{{a_serie.specialite2}}{% endif %}</option>
+                                        {% endfor %}
+                                    </select>
+                            </div>
+                        </th>
+                        <th scope="col">
+                            <div class="th-inner">Matière1</div>
+                            <div class="filter-control">
+                                    <select class="form-select finder break-doublons" onchange="finder()">
+                                        <option select></option>
+                                        {% for matiere in all_matieres %}
+                                        <option>{{matiere.nom}}</option>
+                                        {% endfor %}
+                                    </select>
+                            </div>
+                        </th>
+                        <th scope="col">
+                            <div class="th-inner">Matière2</div>
+                            <div class="filter-control">
+                                    <select class="form-select finder break-doublons-1" onchange="finder()">
+                                        <option select></option>
+                                        {% for matiere in all_matieres %}
+                                        <option>{{matiere.nom}}</option>
+                                        {% endfor %}
+                                    </select>
+                            </div>
+                        </th>
                         <th scope="col" class="modifier">Modifier</th>
                         <th scope="col" class="supprimer">Supprimer</th>
                     </tr>

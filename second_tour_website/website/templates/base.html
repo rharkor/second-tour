@@ -67,14 +67,14 @@
     function finder() {
       // Declare variables
       var elements = document.getElementsByClassName("finder");
-        var filter, table, tr, td, i, txtValue;
-        table = document.getElementById("calendar");
-        tr = table.getElementsByTagName("tr");
+      var filter, table, tr, td, i, txtValue;
+      table = document.getElementById("calendar");
+      tr = table.getElementsByTagName("tr");
 
-        // Loop through all table rows, and hide those who don't match the search query
-        for (i = 0; i < tr.length; i++) {
-          var match = true;
-          for (var x = 0; x < elements.length; x++) {
+      // Loop through all table rows, and hide those who don't match the search query
+      for (i = 0; i < tr.length; i++) {
+        var match = true;
+        for (var x = 0; x < elements.length; x++) {
           filter = elements[x].value.toUpperCase();
           td = tr[i].getElementsByTagName("td")[x];
           if (td) {
@@ -89,9 +89,9 @@
             }
           }
         }
-        if (match){
+        if (match) {
           tr[i].style.display = "";
-        }else{
+        } else {
           tr[i].style.display = "none";
         }
       }
@@ -111,6 +111,23 @@
       });
     }
   </script>
+  <script>
+    window.addEventListener("DOMContentLoaded", (event) => {
+      let options = []
+
+      document.querySelectorAll('.break-doublons > option').forEach((option) => {
+        if (options.includes(option.value)) option.remove()
+        else options.push(option.value)
+      })
+
+      options = []
+      document.querySelectorAll('.break-doublons-1 > option').forEach((option) => {
+        if (options.includes(option.value)) option.remove()
+        else options.push(option.value)
+      })
+    });
+  </script>
+
 
   {% block script %}
   {% endblock %}
