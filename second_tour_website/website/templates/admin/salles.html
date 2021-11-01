@@ -29,7 +29,8 @@
                 <tbody>
                     {% for a_salle in all_salles %}
                     <tr class="clickable" data-bs-toggle="collapse" data-bs-target="#accordion{{a_salle.id_salle}}">
-                        <td scope="row">{{a_salle.numero}}</td>
+                        <td scope="row">{{a_salle.numero}}{% for a_matiere in all_matieres %}{% if a_matiere.loge ==
+                            a_salle.id_salle %} - Loge{% endif %}{% endfor %}</td>
                         <td scope="row">
                             <div class="align-items-end">
                                 <button href="#" type="button" class="btn btn-info">
@@ -120,6 +121,39 @@
                                                 </td>
                                             </tr>
                                             <tr class="no-border not-null"></tr>
+                                            {% endif %}
+                                            {% endfor %}
+
+                                            {% for a_matiere_o in all_matieres %}
+                                            {% if a_matiere_o.loge == a_salle.id_salle %}
+                                            {% for candidat in all_candidats %}
+                                            {% for a_choix_o in all_choix_matieres %}
+                                            {% if a_choix_o.id_candidat == candidat.id_candidat %}
+                                            {% if a_matiere_o.id_matiere == a_choix_o.matiere1 or a_matiere_o.id_matiere
+                                            ==
+                                            a_choix_o.matiere2 %}
+                                            <tr>
+                                                <td scope="row">{{candidat.nom}}</td>
+                                                <td scope="row">{{candidat.prenom}}</td>
+                                                <td scope="row">
+                                                    {% for a_choix_matiere in all_choix_matieres %}
+                                                    {% if a_choix_matiere.id_candidat == candidat.id_candidat %}
+                                                    {% for a_matiere in all_matieres %}
+                                                    {% if (a_matiere.id_matiere == a_choix_matiere.matiere1 and
+                                                    a_matiere_o.id_matiere == a_choix_o.matiere1) or
+                                                    (a_matiere.id_matiere == a_choix_matiere.matiere2 and
+                                                    a_matiere_o.id_matiere == a_choix_o.matiere2) %}
+                                                    {{a_matiere.nom}}
+                                                    {% endif %}
+                                                    {% endfor %}
+                                                    {% endif %}
+                                                    {% endfor %}
+                                                </td>
+                                            </tr>
+                                            {% endif %}
+                                            {% endif %}
+                                            {% endfor %}
+                                            {% endfor %}
                                             {% endif %}
                                             {% endfor %}
                                         </tbody>

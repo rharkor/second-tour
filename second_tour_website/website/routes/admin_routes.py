@@ -118,7 +118,8 @@ def salles():
         all_creneaux = CRENEAU.query.order_by(CRENEAU.debut_preparation).all()
         all_candidats = CANDIDATS.query.all()
         all_salles = SALLE.query.order_by(SALLE.numero).all()
-        return render_template('admin/salles.html', all_salles=all_salles, all_profs=all_profs, all_matieres=all_matieres, all_creneaux=all_creneaux, all_candidats=all_candidats)
+        all_choix_matieres = CHOIX_MATIERE.query.all()
+        return render_template('admin/salles.html', all_salles=all_salles, all_profs=all_profs, all_matieres=all_matieres, all_creneaux=all_creneaux, all_candidats=all_candidats, all_choix_matieres=all_choix_matieres)
     else:
         return redirect(url_for('main_routes.connexion'))
  
