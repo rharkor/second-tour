@@ -56,6 +56,13 @@
         </li>
         <hr>
         <li>
+            <a href="{{url_for('admin_routes.creneau')}}" {% if request.url_rule.endpoint=="admin_routes.creneau"
+                %}class="nav-link active" aria-current="page" {% else %}class="nav-link text-white" {% endif %}>
+                <i class="fas fa-calendar-alt"></i>
+                <span class="ms-2">Créneau</span>
+            </a>
+        </li>
+        <li>
             <a href="{{url_for('admin_routes.comptes')}}" {% if request.url_rule.endpoint=="admin_routes.comptes"
                 %}class="nav-link active" aria-current="page" {% else %}class="nav-link text-white" {% endif %}>
                 <i class="fas fa-user-circle"></i>

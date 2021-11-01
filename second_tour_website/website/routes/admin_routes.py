@@ -5,8 +5,9 @@ from ..function import main_security, main_sessions, main_database, main_calendr
 from ..database.main_database import *
 
 admin_routes = Blueprint('admin_routes', __name__,
-                        template_folder='templates',
-                        static_folder='static')
+                         template_folder='templates',
+                         static_folder='static')
+
 
 @admin_routes.route('/')
 @admin_routes.route('/acceuil', methods=['POST', 'GET'])
@@ -25,6 +26,7 @@ def acceuil():
     else:
         return redirect(url_for('main_routes.connexion'))
 
+
 @admin_routes.route('/candidats', methods=['POST', 'GET'])
 def candidats():
     if main_security.test_session_connected(session, True):
@@ -32,19 +34,21 @@ def candidats():
             form = request.form
             if form.get('submit_button') is not None:
                 if 'name' in form and 'surname' in form and 'serie' in form:
-                    result = main_database.add_candidat(form['name'], form['surname'], form['serie'], output=True)
+                    result = main_database.add_candidat(
+                        form['name'], form['surname'], form['serie'], output=True)
                     if result[1][1] == 'danger':
                         flash(result[0], result[1])
                     else:
                         if 'matiere1' in form and 'matiere2' in form:
                             if form['matiere1'] or form['matiere2']:
-                                second_result = main_database.add_choix_matiere(result[0].id_candidat, form['matiere1'], form['matiere2'])
+                                second_result = main_database.add_choix_matiere(
+                                    result[0].id_candidat, form['matiere1'], form['matiere2'])
                                 flash(second_result[0], second_result[1])
                             else:
                                 flash(result[1][0], result[1][1])
                         else:
                             flash(result[1][0], result[1][1])
-                        
+
             elif form.get('delete_button') is not None:
                 if 'id' in form:
                     if r := main_database.delete_candidat(form['id']):
@@ -54,22 +58,27 @@ def candidats():
                     if r := main_database.delete_candidat(form['id']):
                         flash(r[0], r[1])
                     else:
-                        result = main_database.add_candidat(form['name'], form['surname'], form['serie'], output=True)
+                        result = main_database.add_candidat(
+                            form['name'], form['surname'], form['serie'], output=True)
                         if result[1][1] == 'danger':
                             flash(result[0], result[1])
                         else:
                             if 'matiere1' in form and 'matiere2' in form:
                                 if form['matiere1'] or form['matiere2']:
-                                    second_result = main_database.add_choix_matiere(result[0].id_candidat, form['matiere1'], form['matiere2'])
+                                    second_result = main_database.add_choix_matiere(
+                                        result[0].id_candidat, form['matiere1'], form['matiere2'])
                                     if second_result[1] != 'danger':
-                                        flash("Modification correctement effecutée", second_result[1])
+                                        flash(
+                                            "Modification correctement effecutée", second_result[1])
                                     else:
-                                        flash(second_result[0], second_result[1])
+                                        flash(
+                                            second_result[0], second_result[1])
                                 else:
                                     flash(result[1][0], result[1][1])
                             else:
                                 if result[1][1] != "danger":
-                                    flash("Modification correctement effecutée", result[1][1])
+                                    flash(
+                                        "Modification correctement effecutée", result[1][1])
                                 else:
                                     flash(result[1][0], result[1][1])
         # Serialize TABLE
@@ -92,13 +101,14 @@ def candidats():
         all_matieres = []
         for a_matiere in matieres:
             all_matieres.append(a_matiere.as_dict())
-        
+
         all_professeurs = PROFESSEUR.query.all()
         all_salles = SALLE.query.all()
         all_creneaux = CRENEAU.query.order_by(CRENEAU.debut_preparation).all()
         return render_template('admin/candidats.html', all_candidats=all_candidats, all_choix_matieres=all_choix_matieres, all_series=all_series, all_matieres=all_matieres, all_professeurs=all_professeurs, all_salles=all_salles, all_creneaux=all_creneaux)
     else:
         return redirect(url_for('main_routes.connexion'))
+
 
 @admin_routes.route('/salles', methods=['POST', 'GET'])
 def salles():
@@ -122,7 +132,8 @@ def salles():
         return render_template('admin/salles.html', all_salles=all_salles, all_profs=all_profs, all_matieres=all_matieres, all_creneaux=all_creneaux, all_candidats=all_candidats, all_choix_matieres=all_choix_matieres)
     else:
         return redirect(url_for('main_routes.connexion'))
- 
+
+
 @admin_routes.route('/professeurs', methods=['POST', 'GET'])
 def professeurs():
     if main_security.test_session_connected(session, True):
@@ -130,7 +141,8 @@ def professeurs():
             form = request.form
             if form.get('submit_button') is not None:
                 if 'email' in form and 'password' in form and 'name' in form and 'surname' in form and 'matiere' in form and 'salle' in form:
-                    result = main_database.add_professeur(form['email'], form['password'], form['name'], form['surname'], form['matiere'], form['salle'])
+                    result = main_database.add_professeur(
+                        form['email'], form['password'], form['name'], form['surname'], form['matiere'], form['salle'])
                     flash(result[0], result[1])
             elif form.get('delete_button') is not None:
                 if 'id' in form:
@@ -141,9 +153,10 @@ def professeurs():
         all_salles = SALLE.query.all()
         all_creneaux = CRENEAU.query.order_by(CRENEAU.debut_preparation).all()
         all_candidats = CANDIDATS.query.all()
-        return render_template('admin/professeurs.html', all_profs=all_profs, all_matieres=all_matieres, all_salles=all_salles,all_creneaux=all_creneaux, all_candidats=all_candidats)
+        return render_template('admin/professeurs.html', all_profs=all_profs, all_matieres=all_matieres, all_salles=all_salles, all_creneaux=all_creneaux, all_candidats=all_candidats)
     else:
         return redirect(url_for('main_routes.connexion'))
+
 
 @admin_routes.route('/series', methods=['POST', 'GET'])
 def series():
@@ -152,18 +165,20 @@ def series():
             form = request.form
             if form.get('submit_button') is not None:
                 if 'serie' in form and 'specialite1' in form:
-                    result = main_database.add_serie(form['serie'], form['specialite1'], form['specialite2'] if 'specialite2' in form else None)
+                    result = main_database.add_serie(
+                        form['serie'], form['specialite1'], form['specialite2'] if 'specialite2' in form else None)
                     flash(result[0], result[1])
             elif form.get('delete_button') is not None:
                 if 'id' in form:
                     if r := main_database.delete_serie(form['id']):
                         flash(r[0], r[1])
-                
+
         all_series = SERIE.query.order_by(SERIE.nom).all()
         return render_template('admin/series.html', all_series=all_series)
     else:
         return redirect(url_for('main_routes.connexion'))
-        
+
+
 @admin_routes.route('/matieres', methods=['POST', 'GET'])
 def matieres():
     if main_security.test_session_connected(session, True):
@@ -171,7 +186,8 @@ def matieres():
             form = request.form
             if form.get('submit_button') is not None:
                 if 'name' in form and 'serie' in form and 'temps_preparation' in form and 'temps_passage' in form:
-                    result = main_database.add_matiere(form['name'], form['serie'], form['temps_preparation'], form['temps_passage'], form['loge'] if 'loge' in form else None)
+                    result = main_database.add_matiere(
+                        form['name'], form['serie'], form['temps_preparation'], form['temps_passage'], form['loge'] if 'loge' in form else None)
                     flash(result[0], result[1])
             elif form.get('delete_button') is not None:
                 if 'id' in form:
@@ -184,6 +200,7 @@ def matieres():
     else:
         return redirect(url_for('main_routes.connexion'))
 
+
 @admin_routes.route('/comptes', methods=['POST', 'GET'])
 def comptes():
     if main_security.test_session_connected(session, True):
@@ -191,7 +208,8 @@ def comptes():
             form = request.form
             if form.get('submit_button') is not None:
                 if 'email' in form and 'password' in form and 'type' in form:
-                    result = main_database.add_account(form['email'], form['password'], form['type'])
+                    result = main_database.add_account(
+                        form['email'], form['password'], form['type'])
                     flash(result[0], result[1])
             elif form.get('delete_button') is not None:
                 if 'id' in form:
@@ -201,6 +219,19 @@ def comptes():
         return render_template('admin/comptes.html', all_users=all_users)
     else:
         return redirect(url_for('main_routes.connexion'))
+
+
+@admin_routes.route('/creneau', methods=['POST', 'GET'])
+def creneau():
+    if main_security.test_session_connected(session, True):
+        all_creneau = CRENEAU.query.order_by(CRENEAU.id_candidat).all()
+        all_candidats = CANDIDATS.query.all()
+        all_matieres = MATIERES.query.all()
+        all_salles = SALLE.query.all()
+        return render_template('admin/creneau.html', all_creneau=all_creneau, all_candidats=all_candidats, all_matieres=all_matieres, all_salles=all_salles)
+    else:
+        return redirect(url_for('main_routes.connexion'))
+
 
 @admin_routes.route('/deconnexion')
 def deconnexion():

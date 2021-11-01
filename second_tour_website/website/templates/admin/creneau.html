@@ -1,0 +1,181 @@
+{% extends "admin/base_admin.html" %}
+{% block title %}Administration{% endblock %}
+{% block sub_content %}
+<div class="main-div-admin">
+    <div class="name-finder" style="justify-content:end;">
+        <button href="#" type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addCreneauModal">
+            Ajouter
+            <i class="fas fa-plus ml-s"></i>
+        </button>
+    </div>
+    <div class="main-table-admin">
+        {%- for category, message in get_flashed_messages(with_categories = true) %}
+        <div class="alert alert-{{category}}  alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {%- endfor %}
+        <div class="table-responsive thumbnail">
+            <table class="table table-light table-striped table-hover" id="calendar">
+                <thead>
+                    <tr>
+                        <th scope="col" style="width: 10%;">
+                            <div class="th-inner">Nom</div>
+                            <div class="filter-control">
+                                <input type="text" class="form-control finder" onkeyup="finder()"
+                                    placeholder="">
+                            </div>
+                        </th>
+                        <th scope="col" style="width: 10%;">
+                            <div class="th-inner">Prénom</div>
+                            <div class="filter-control">
+                                <input type="text" class="form-control finder" onkeyup="finder()"
+                                    placeholder="">
+                            </div>
+                        </th>
+                        <th scope="col" style="width: 24%;">
+                            <div class="th-inner">Matière</div>
+                            <div class="filter-control">
+                                    <select class="form-select finder" onchange="finder()">
+                                        <option select></option>
+                                        {% for matiere in all_matieres %}
+                                        <option>{{matiere.nom_complet}}</option>
+                                        {% endfor %}
+                                    </select>
+                            </div>
+                        </th>
+                        <th scope="col" style="width: 10%;">
+                            <div class="th-inner">Salle</div>
+                            <div class="filter-control">
+                                    <select class="form-select finder" onchange="finder()">
+                                        <option select></option>
+                                        {% for salle in all_salles %}
+                                        <option>{{salle.numero}}</option>
+                                        {% endfor %}
+                                    </select>
+                            </div>
+                        </th>
+                        <th scope="col" style="width: 10%;">
+                            <div class="th-inner">Début</div>
+                            <div class="filter-control">
+                                    <select class="form-select finder" onchange="finder()">
+                                        <option select></option>
+                                        {% for creneau in all_creneau %}
+                                        <option>{{creneau.debut_preparation}}</option>
+                                        {% endfor %}
+                                    </select>
+                            </div>
+                        </th>
+                        <th scope="col" style="width: 10%;">
+                            <div class="th-inner">Fin</div>
+                            <div class="filter-control">
+                                    <select class="form-select finder" onchange="finder()">
+                                        <option select></option>
+                                        {% for creneau in all_creneau %}
+                                        <option>{{creneau.fin}}</option>
+                                        {% endfor %}
+                                    </select>
+                            </div>
+                        </th>
+                        <th scope="col" style="width: 10%;">Modifier</th>
+                        <th scope="col" class="supprimer" style="width: 10%;">Supprimer</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for a_creneau in all_creneau %}
+                    <tr>
+                        {% for candidat in all_candidats %}
+                        {% if candidat.id_candidat == a_creneau.id_candidat %}
+                        <td scope="row">{{candidat.nom}}</td>
+                        <td scope="row">{{candidat.prenom}}</td>
+                        {% endif %}
+                        {% endfor %}
+                        {% for matiere in all_matieres %}
+                        {% if matiere.id_matiere == a_creneau.id_matiere %}
+                        <td scope="row">{{matiere.nom_complet}}</td>
+                        {% endif %}
+                        {% endfor %}
+                        {% for salle in all_salles %}
+                        {% if salle.id_salle == a_creneau.id_salle %}
+                        <td scope="row">{{salle.numero}}</td>
+                        {% endif %}
+                        {% endfor %}
+                        <td scope="row">{{a_creneau.debut_preparation}}</td>
+                        <td scope="row">{{a_creneau.fin}}</td>
+                        <td scope="row">
+                            <form method="post" action="{{url_for('admin_routes.creneau')}}"
+                                id="modifyCreneauForm{{a_creneau.id_creneau}}">
+                                <input type="hidden" name="id" value="{{a_creneau.id_creneau}}">
+                                <button type="button" id="{{a_creneau.id_creneau}}" data-bs-toggle="modal"
+                                    data-bs-target="#confirmModifyModal"
+                                    class="deleteRow btn btn-outline-warning">Modifier</button>
+                            </form>
+                        </td>
+                        <td scope="row">
+                            <form method="post" action="{{url_for('admin_routes.creneau')}}"
+                                id="deleteCreneauForm{{a_creneau.id_creneau}}">
+                                <input type="hidden" name="id" value="{{a_creneau.id_creneau}}">
+                                <button type="button" id="{{a_creneau.id_creneau}}" data-bs-toggle="modal"
+                                    data-bs-target="#confirmDeleteModal"
+                                    class="deleteRow btn btn-outline-danger">Supprimer</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="addCreneauModal" tabindex="-1" role="dialog" aria-labelledby="addCreneauModal"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Ajouter un créneau</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Add user form -->
+                    <form method="post" action="{{url_for('admin_routes.creneau')}}" id="addCreneauForm">
+                        <p>A faire...</p>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                    <button class="btn btn-primary" name="submit_button" type="submit" form="addCreneauForm">Sauvegarder
+                        les changements</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModal"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Attention</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Êtes vous sûr de vouloir supprimer ce créneau ?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <button type="submit" name="delete_button" id="ModalSubmitButton" value="" form="deleteCreneauForm"
+                        class="btn btn-danger">Supprimer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block sub_script %}
+{% endblock %}

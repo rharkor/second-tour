@@ -119,12 +119,14 @@
 
 {% block sub_script %}
 <script>
-function testSpeciality() {
-    d = document.getElementById("selectTypeUser").value;
-    if(d === "Technologique"){
-        second = document.getElementById("specialite2")
-        second.setAttribute('disabled','true');
+    function testSpeciality() {
+        d = document.getElementById("selectTypeUser").value;
+        second = document.getElementById("specialite2");
+        if(d === "Technologique"){
+            second.setAttribute('disabled','true');
+        }else{
+            second.removeAttribute('disabled');
+        }
     }
-}
 </script>
 {% endblock %}
