@@ -1,6 +1,3 @@
-from sqlalchemy.orm import defaultload
-
-
 def save_user(session, user):
     session['email'] = user.email
     session['password'] = user.password

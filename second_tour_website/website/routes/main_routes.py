@@ -1,3 +1,4 @@
+import logging
 from flask import Blueprint, render_template, session, request, redirect, url_for
 from flask.helpers import flash
 
@@ -31,6 +32,7 @@ def connexion():
         form = request.form
         if 'email' not in form or 'password' not in form:
             flash('Une erreur est survenue', 'danger')
+            logging.warning('Une erreur est survenue, il m\anquais l\'email ou le mot de passe')
             return render_template('connexion.html')
         email, password = form['email'], form['password']
         # Verify that there valid
@@ -46,10 +48,13 @@ def connexion():
                     # Save in session
                     main_sessions.save_user(session, user)
                     # Go to dashboard
+                    logging.warning('Connexion réussie')
                     return redirect(url_for('admin_routes.acceuil'))
                 else:
                     flash('Cet utilisateur n\'existe pas', 'warning')
+                    logging.warning('Cet utilisateur n\'existe pas')
 
         except Exception:
             flash('Cet utilisateur n\'existe pas', 'warning')
+            logging.warning('Cet utilisateur n\'existe pas')
     return render_template('connexion.html')

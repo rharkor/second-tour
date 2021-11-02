@@ -1,9 +1,23 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from datetime import timedelta
+from logging import WARNING, FileHandler
+import logging
+import os, sys
+sys.path.append(os.path.join(os.path.dirname(__file__)))
 
 # Global website
 app = Flask(__name__)
+
+file_handler = FileHandler(os.getcwd() + "/second_tour_website/logs/logs_info.txt")
+file_handler.setLevel(WARNING)
+logging.basicConfig(
+    level=WARNING,
+    format="%(asctime)s [%(levelname)s] %(message)s",
+    handlers=[
+        file_handler
+    ]
+)
 
 
 # Configure the website
@@ -24,6 +38,7 @@ app.register_blueprint(professeur_routes, url_prefix='/professeur')
 
 
 def run(debug_mode=False):
+    logging.warning("Run the server")
     # Run the database
     db.create_all()
 

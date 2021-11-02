@@ -1,3 +1,4 @@
+import logging
 from flask import Blueprint, render_template, session, request, redirect, url_for
 from flask.helpers import flash
 
@@ -19,7 +20,8 @@ def acceuil():
                 main_calendrier.generation_calendrier()
         else:
             result = main_calendrier.test_calendar_complete()
-            flash(result[0], result[1]) if result[1] == "danger" else flash("Le calendrier est complet !    " , result[1])
+            flash(result[0], result[1]) if result[1] == "danger" else flash("Le calendrier est complet !    ", result[1])
+            logging.warning(result[0] if result[1] == "danger" else "Le calendrier est complet")
         all_candidats = CANDIDATS.query.order_by(CANDIDATS.nom).all()
         all_creneaux = CRENEAU.query.order_by(CRENEAU.debut_preparation).all()
         all_series = SERIE.query.all()
@@ -41,30 +43,37 @@ def candidats():
                         form['name'], form['surname'], form['serie'], output=True)
                     if result[1][1] == 'danger':
                         flash(result[0], result[1])
+                        logging.warning(result[0])
                     else:
                         if 'matiere1' in form and 'matiere2' in form:
                             if form['matiere1'] or form['matiere2']:
                                 second_result = main_database.add_choix_matiere(
                                     result[0].id_candidat, form['matiere1'], form['matiere2'])
                                 flash(second_result[0], second_result[1])
+                                logging.warning(second_result[0])
                             else:
                                 flash(result[1][0], result[1][1])
+                                logging.warning(result[1][0])
                         else:
                             flash(result[1][0], result[1][1])
+                            logging.warning(result[1][0])
 
             elif form.get('delete_button') is not None:
                 if 'id' in form:
                     if r := main_database.delete_candidat(form['id']):
                         flash(r[0], r[1])
+                        logging.warning(r[0])
             elif form.get('modif_button') is not None:
                 if 'name' in form and 'surname' in form and 'serie' in form and 'id' in form:
                     if r := main_database.delete_candidat(form['id']):
                         flash(r[0], r[1])
+                        logging.warning(r[0])
                     else:
                         result = main_database.add_candidat(
                             form['name'], form['surname'], form['serie'], output=True)
                         if result[1][1] == 'danger':
                             flash(result[0], result[1])
+                            logging.warning(resize[0])
                         else:
                             if 'matiere1' in form and 'matiere2' in form:
                                 if form['matiere1'] or form['matiere2']:
@@ -73,17 +82,23 @@ def candidats():
                                     if second_result[1] != 'danger':
                                         flash(
                                             "Modification correctement effecutée", second_result[1])
+                                        logging.warning(
+                                            "Modification effectuée")
                                     else:
                                         flash(
                                             second_result[0], second_result[1])
+                                        logging.warning(second_result[0])
                                 else:
                                     flash(result[1][0], result[1][1])
+                                    logging.warning(result[1][0])
                             else:
                                 if result[1][1] != "danger":
                                     flash(
                                         "Modification correctement effecutée", result[1][1])
+                                    logging.warning("Modification effectuée")
                                 else:
                                     flash(result[1][0], result[1][1])
+                                    logging.warning(result[1][0])
         # Serialize TABLE
         candidats = CANDIDATS.query.order_by(CANDIDATS.nom).all()
         all_candidats = []
@@ -122,10 +137,12 @@ def salles():
                 if 'numero' in form:
                     result = main_database.add_salle(form['numero'])
                     flash(result[0], result[1])
+                    logging.warning(result[0])
             elif form.get('delete_button') is not None:
                 if 'id' in form:
                     if r := main_database.delete_salle(form['id']):
                         flash(r[0], r[1])
+                        logging.warning(r[0])
         all_profs = PROFESSEUR.query.order_by(PROFESSEUR.nom).all()
         all_matieres = MATIERES.query.all()
         all_creneaux = CRENEAU.query.order_by(CRENEAU.debut_preparation).all()
@@ -147,10 +164,12 @@ def professeurs():
                     result = main_database.add_professeur(
                         form['email'], form['password'], form['name'], form['surname'], form['matiere'], form['salle'])
                     flash(result[0], result[1])
+                    logging.warning(result[0])
             elif form.get('delete_button') is not None:
                 if 'id' in form:
                     if r := main_database.delete_professeur(form['id']):
                         flash(r[0], r[1])
+                        logging.warning(r[0])
         all_profs = PROFESSEUR.query.order_by(PROFESSEUR.nom).all()
         all_matieres = MATIERES.query.all()
         all_salles = SALLE.query.all()
@@ -171,10 +190,12 @@ def series():
                     result = main_database.add_serie(
                         form['serie'], form['specialite1'], form['specialite2'] if 'specialite2' in form else None)
                     flash(result[0], result[1])
+                    logging.warning(result[0])
             elif form.get('delete_button') is not None:
                 if 'id' in form:
                     if r := main_database.delete_serie(form['id']):
                         flash(r[0], r[1])
+                        logging.warning(r[0])
 
         all_series = SERIE.query.order_by(SERIE.nom).all()
         return render_template('admin/series.html', all_series=all_series)
@@ -192,10 +213,12 @@ def matieres():
                     result = main_database.add_matiere(
                         form['name'], form['serie'], form['temps_preparation'], form['temps_passage'], form['loge'] if 'loge' in form else None)
                     flash(result[0], result[1])
+                    logging.warning(result[0])
             elif form.get('delete_button') is not None:
                 if 'id' in form:
                     if r := main_database.delete_matiere(form['id']):
-                        return flash(r[0], r[1])
+                        flash(r[0], r[1])
+                        logging.warning(r[0])
         all_matieres = MATIERES.query.order_by(MATIERES.nom).all()
         all_series = SERIE.query.all()
         all_salles = SALLE.query.all()
@@ -214,10 +237,12 @@ def comptes():
                     result = main_database.add_account(
                         form['email'], form['password'], form['type'])
                     flash(result[0], result[1])
+                    logging.warning(result[0])
             elif form.get('delete_button') is not None:
                 if 'id' in form:
                     if r := main_database.delete_account(form['id']):
                         flash(r[0], r[1])
+                        logging.warning(r[0])
         all_users = UTILISATEURS.query.all()
         return render_template('admin/comptes.html', all_users=all_users)
     else:
@@ -233,19 +258,24 @@ def creneau():
                 if 'candidat' in form and 'matiere' in form and 'salle' in form and 'debut' in form and 'fin' in form:
                     result = main_database.add_creneau(form['candidat'], form['matiere'], form['salle'], form['debut'], form['fin'])
                     flash(result[0], result[1])
+                    logging.warning(result[0])
             elif form.get('modify_button') is not None:
                 if 'last_creneau_id' in form and 'candidat' in form and 'matiere' in form and 'salle' in form and 'debut' in form and 'fin' in form:
                     if not (res := main_database.delete_creneau(form['last_creneau_id'])):
                         result = main_database.add_creneau(form['candidat'], form['matiere'], form['salle'], form['debut'], form['fin'])
                         flash(result[0], result[1])
+                        logging.warning(result[0])
                     else:
                         flash(res[0], res[1])
+                        logging.warning(res[0])
             elif form.get('delete_button') is not None:
                 if 'id' in form:
                     if (res := main_database.delete_creneau(form['id'])):
                         flash(res[0], res[1])
+                        logging.warning(res[0])
                     else:
                         flash("Le créneau à bien été supprimé", "success")
+                        logging.warning("Le créneau à bien été supprimé")
 
 
         # Serialize table
@@ -296,4 +326,5 @@ def deconnexion():
     if session['password']:
         session.pop('password', None)
     flash('Vous avez correment été déconnecté', 'primary')
+    logging.warning('Vous avez correctement été déconnecté')
     return redirect(url_for('main_routes.index'))

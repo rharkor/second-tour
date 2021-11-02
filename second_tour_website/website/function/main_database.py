@@ -1,4 +1,5 @@
 import traceback
+import logging
 
 from . import main_security
 from ..database.main_database import *
@@ -13,15 +14,19 @@ def add_account(email, password, user_type_string, output=False):
             db.session.commit()
             if output:
                 return (user, ['L\'utilisateur à bien été crée', 'success'])
+                logging.warning('L\'utilisateur à bien été crée')
             return ['L\'utilisateur à bien été crée', 'success']
+            logging.warning('L\'utilisateur à bien été crée')
         else:
             if output:
                 return (user, user.unvalid)
             return user.unvalid
     except Exception:
         if output:
-                return (user, ['Erreur : ' + traceback.print_exc(), 'danger'])
-        return ['Erreur : ' + traceback.print_exc(), 'danger']
+                return (user, ['Erreur : ' + traceback.logging.warning_exc(), 'danger'])
+                logging.warning('Erreur : ' + traceback.logging.warning_exc())
+        return ['Erreur : ' + traceback.logging.warning_exc(), 'danger']
+        logging.warning('Erreur : ' + traceback.logging.warning_exc())
 
 def delete_account(id):
     try:
@@ -35,6 +40,7 @@ def delete_account(id):
         return False
     except Exception:
         return ['Erreur : ' + traceback.format_exc(), 'danger']
+        logging.warning('Erreur : ' + traceback.format_exc())
 
 def add_serie(serie_choice, specialite1, specialite2):
     try:
@@ -43,10 +49,12 @@ def add_serie(serie_choice, specialite1, specialite2):
             db.session.add(serie)
             db.session.commit()
             return ['La série à bien été crée', 'success']
+            logging.warning('La série à bien été crée')
         else:
             return serie.unvalid
     except Exception:
         return ['Erreur : ' + traceback.format_exc(), 'danger']
+        logging.warning('Erreur : ' + traceback.format_exc())
 
 def delete_serie(id):
     try:
@@ -63,6 +71,7 @@ def delete_serie(id):
         return False
     except Exception:
         return ['Erreur : ' + traceback.format_exc(), 'danger']
+        logging.warning('Erreur : ' + traceback.format_exc())
 
 def add_matiere(name, serie, temps_preparation, temps_passage, loge):
     try:
@@ -75,17 +84,19 @@ def add_matiere(name, serie, temps_preparation, temps_passage, loge):
                 if a_serie.specialite2 is not None:
                     serie_name += '/' + a_serie.specialite2
         if serie_name is None:
-            print(f"Erreur : No serie found at this id ({serie})")
+            logging.warning(f"Erreur : No serie found at this id ({serie})")
         name_complete = f"{name} - {serie_name}"
         matiere = MATIERES(serie, name, name_complete, temps_preparation, temps_passage, loge)
         if not matiere.unvalid:
             db.session.add(matiere)
             db.session.commit()
             return ['La matière à bien été crée', 'success']
+            logging.warning('La matière à bien été crée')
         else:
             return matiere.unvalid
     except Exception:
         return ['Erreur : ' + traceback.format_exc(), 'danger']
+        logging.warning('Erreur : ' + traceback.format_exc())
 
 def delete_matiere(id):
     try:
@@ -95,8 +106,8 @@ def delete_matiere(id):
         for a_prof in professeur:
             db.session.delete(a_prof)
         # Delete the dependency
-        creneaus = CRENEAU.query.filter_by(id_matiere=id)
-        for creneau in creneaus:
+        creneaux = CRENEAU.query.filter_by(id_matiere=id)
+        for creneau in creneaux:
             db.session.delete(creneau)
         # Delete the dependency
         matieres1 = CHOIX_MATIERE.query.filter_by(matiere1=id)
@@ -111,6 +122,7 @@ def delete_matiere(id):
         return False
     except Exception:
         return ['Erreur : ' + traceback.format_exc(), 'danger']
+        logging.warning('Erreur : ' + traceback.format_exc())
 
 def add_salle(numero):
     try:
@@ -119,10 +131,12 @@ def add_salle(numero):
             db.session.add(salle)
             db.session.commit()
             return ['La salle à bien été crée', 'success']
+            logging.warning('La salle à bien été crée')
         else:
             return salle.unvalid
     except Exception:
         return ['Erreur : ' + traceback.format_exc(), 'danger']
+        logging.warning('Erreur : ' + traceback.format_exc())
 
 def delete_salle(id):
     try:
@@ -132,8 +146,8 @@ def delete_salle(id):
         for prof in professeurs:
             db.session.delete(prof)
         # Delete the dependency
-        creneaus = CRENEAU.query.filter_by(id_salle=id)
-        for creneau in creneaus:
+        creneaux = CRENEAU.query.filter_by(id_salle=id)
+        for creneau in creneaux:
             db.session.delete(creneau)
         # Delete the dependency
         matieres = MATIERES.query.filter_by(loge=id)
@@ -144,6 +158,7 @@ def delete_salle(id):
         return False
     except Exception:
         return ['Erreur : ' + traceback.format_exc(), 'danger']
+        logging.warning('Erreur : ' + traceback.format_exc())
 
 def add_professeur(email, password, nom, prenom, matiere, salle):
     try:
@@ -156,10 +171,12 @@ def add_professeur(email, password, nom, prenom, matiere, salle):
             db.session.add(professeur)
             db.session.commit()
             return ['Le professeur à bien été crée', 'success']
+            logging.warning('Le professeur à bien été crée')
         else:
             return professeur.unvalid
     except Exception:
         return ['Erreur : ' + traceback.format_exc(), 'danger']
+        logging.warning('Erreur : ' + traceback.format_exc())
 
 def delete_professeur(id):
     try:
@@ -173,6 +190,7 @@ def delete_professeur(id):
         return False
     except Exception:
         return ['Erreur : ' + traceback.format_exc(), 'danger']
+        logging.warning('Erreur : ' + traceback.format_exc())
 
 def add_candidat(nom, prenom, id_serie, output=False):
     try:
@@ -183,6 +201,7 @@ def add_candidat(nom, prenom, id_serie, output=False):
             if output:
                 return (candidat, ['Le candidat à bien été crée', 'success'])
             return ['Le candidat à bien été crée', 'success']
+            logging.warning('Le candidat à bien été crée')
         else:
             if output:
                 return (candidat, candidat.unvalid)
@@ -191,6 +210,7 @@ def add_candidat(nom, prenom, id_serie, output=False):
         if output:
             return (candidat, ['Erreur : ' + traceback.format_exc(), 'danger'])
         return ['Erreur : ' + traceback.format_exc(), 'danger']
+        logging.warning('Erreur : ' + traceback.format_exc())
 
 def delete_candidat(id):
     try:
@@ -208,6 +228,7 @@ def delete_candidat(id):
         return False
     except Exception:
         return ['Erreur : ' + traceback.format_exc(), 'danger']
+        logging.warning('Erreur : ' + traceback.format_exc())
 
 def add_choix_matiere(id_candidat, matiere1, matiere2):
     try:
@@ -216,11 +237,13 @@ def add_choix_matiere(id_candidat, matiere1, matiere2):
             db.session.add(choix_matiere)
             db.session.commit()
             return ['Les choix du candidat on bien été crée', 'success']
+            logging.warning('Les choix du candidat on bien été crée')
         else:
             return choix_matiere.unvalid
     except Exception:
-        print(traceback.format_exc())
+        logging.warning(traceback.format_exc())
         return ['Erreur : ' + traceback.format_exc(), 'danger']
+        logging.warning('Erreur : ' + traceback.format_exc())
 
 def delete_choix_matiere(id):
     try:
@@ -230,20 +253,23 @@ def delete_choix_matiere(id):
         return False
     except Exception:
         return ['Erreur : ' + traceback.format_exc(), 'danger']
+        logging.warning('Erreur : ' + traceback.format_exc())
 
 def add_creneau(id_candidat, id_matiere, id_salle, debut_preparation, fin):
     try:
-        print("new Créneau : ", id_candidat, id_matiere, id_salle, debut_preparation, fin)
+        logging.warning("new Créneau : ", id_candidat, id_matiere, id_salle, debut_preparation, fin)
         creneau = CRENEAU(id_candidat, id_matiere, id_salle, debut_preparation, fin)
         if not creneau.unvalid:
             db.session.add(creneau)
             db.session.commit()
             return ['Le créneau à correctement été crée', 'success']
+            logging.warning('Le créneau à correctement été crée')
         else:
             return creneau.unvalid
     except Exception:
-        print(traceback.format_exc())
+        logging.warning(traceback.format_exc())
         return ['Erreur : ' + traceback.format_exc(), 'danger']
+        logging.warning('Erreur : ' + traceback.format_exc())
 
 def delete_creneau(id):
     try:
@@ -253,3 +279,4 @@ def delete_creneau(id):
         return False
     except Exception:
         return ['Erreur : ' + traceback.format_exc(), 'danger']
+        logging.warning('Erreur : ' + traceback.format_exc())

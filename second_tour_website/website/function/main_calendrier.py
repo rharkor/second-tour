@@ -1,4 +1,5 @@
 from ctypes import create_string_buffer, create_unicode_buffer
+import logging
 import traceback
 import datetime
 from flask.helpers import flash
@@ -120,8 +121,8 @@ def generation_calendrier():
 
                             # PRINT DEBUG HERE
                             if creneau.id_salle == a_salle.id_salle:
-                                # print("DEBUG : ", "Matiere : ", heure_debut_preparation_voulue, temps_preparation_matiere, temps_passage_matiere, fin_passage_matiere)
-                                # print("DEBUG : ", "Creneau : ", debut_preparation_creneau, temps_preparation_creneau, temps_passage_creneau, fin_passage_creneau)
+                                # logging.warning("DEBUG : ", "Matiere : ", heure_debut_preparation_voulue, temps_preparation_matiere, temps_passage_matiere, fin_passage_matiere)
+                                # logging.warning("DEBUG : ", "Creneau : ", debut_preparation_creneau, temps_preparation_creneau, temps_passage_creneau, fin_passage_creneau)
                                 pass
 
                             # Test if the salle is empty
@@ -171,10 +172,10 @@ def generation_calendrier():
 
                     if aucune_collision:
                         # Create the creneau
-                        # print(matiere.id_matiere, heure_debut_preparation_voulue, temps_preparation_matiere, temps_passage_matiere)
+                        # logging.warning(matiere.id_matiere, heure_debut_preparation_voulue, temps_preparation_matiere, temps_passage_matiere)
                         res = main_database.add_creneau(candidat.id_candidat, matiere.id_matiere, a_salle.id_salle, convert_from_decimal_time(heure_debut_preparation_voulue), convert_from_decimal_time(heure_debut_preparation_voulue + temps_preparation_matiere + temps_passage_matiere))
                         if res[1] == 'danger':
-                            print(res[0])
+                            logging.warning(res[0])
                         heure_debut_preparation_voulue = 20
                         break
                 heure_debut_preparation_voulue += 0.5
@@ -230,8 +231,8 @@ def test_calendar_complete():
 
 
     if matiere_left > 0:
-        print("Le calendrier n'est pas complet :", matiere_left, all_choix_matiere_left)
+        logging.warning("Le calendrier n'est pas complet :", matiere_left, all_choix_matiere_left)
         return [f'Le calendrier n\'est pas complet, il manque {matiere_left} créneau', 'danger']
     else:
-        print("Le calendrier est complet !")
+        logging.warning("Le calendrier est complet !")
         return ['Calendrier généré avec succès', 'success']

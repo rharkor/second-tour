@@ -1,3 +1,4 @@
+import logging
 from flask import Blueprint, render_template, session, request, redirect, url_for
 from flask.helpers import flash
 
@@ -34,4 +35,5 @@ def deconnexion():
     if session['password']:
         session.pop('password', None)
     flash('Vous avez correment été déconnecté', 'primary')
+    logging.warning('Vous avez correctement été déconnecté')
     return redirect(url_for('main_routes.index'))
