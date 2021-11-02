@@ -17,6 +17,9 @@ def acceuil():
             form = request.form
             if form.get('generate_button') is not None:
                 main_calendrier.generation_calendrier()
+        else:
+            result = main_calendrier.test_calendar_complete()
+            flash(result[0], result[1]) if result[1] == "danger" else flash("Le calendrier est complet !    " , result[1])
         all_candidats = CANDIDATS.query.order_by(CANDIDATS.nom).all()
         all_creneaux = CRENEAU.query.order_by(CRENEAU.debut_preparation).all()
         all_series = SERIE.query.all()
@@ -224,12 +227,64 @@ def comptes():
 @admin_routes.route('/creneau', methods=['POST', 'GET'])
 def creneau():
     if main_security.test_session_connected(session, True):
-        all_creneau = CRENEAU.query.order_by(CRENEAU.id_candidat).all()
+        if request.method == 'POST':
+            form = request.form
+            if form.get('submit_button') is not None:
+                if 'candidat' in form and 'matiere' in form and 'salle' in form and 'debut' in form and 'fin' in form:
+                    result = main_database.add_creneau(form['candidat'], form['matiere'], form['salle'], form['debut'], form['fin'])
+                    flash(result[0], result[1])
+            elif form.get('modify_button') is not None:
+                if 'last_creneau_id' in form and 'candidat' in form and 'matiere' in form and 'salle' in form and 'debut' in form and 'fin' in form:
+                    if not (res := main_database.delete_creneau(form['last_creneau_id'])):
+                        result = main_database.add_creneau(form['candidat'], form['matiere'], form['salle'], form['debut'], form['fin'])
+                        flash(result[0], result[1])
+                    else:
+                        flash(res[0], res[1])
+            elif form.get('delete_button') is not None:
+                if 'id' in form:
+                    if (res := main_database.delete_creneau(form['id'])):
+                        flash(res[0], res[1])
+                    else:
+                        flash("Le créneau à bien été supprimé", "success")
+
+
+        # Serialize table
+        creneaux = CRENEAU.query.order_by(CRENEAU.id_candidat).all()
+        all_creneau = []
+        for creneau in creneaux:
+            all_creneau.append(creneau.as_dict())
         all_creneau_deb = CRENEAU.query.order_by(CRENEAU.debut_preparation).all()
-        all_candidats = CANDIDATS.query.all()
-        all_matieres = MATIERES.query.all()
-        all_salles = SALLE.query.all()
-        return render_template('admin/creneau.html', all_creneau=all_creneau, all_candidats=all_candidats, all_matieres=all_matieres, all_salles=all_salles, all_creneau_deb=all_creneau_deb)
+        # Serialize table
+        candidats = CANDIDATS.query.order_by(CANDIDATS.nom).all()
+        all_candidats = []
+        for candidat in candidats:
+            all_candidats.append(candidat.as_dict())
+        # Serialize table
+        matieres = MATIERES.query.all()
+        all_matieres = []
+        for a_matiere in matieres:
+            all_matieres.append(a_matiere.as_dict())
+        # Serialize table
+        salles = SALLE.query.all()
+        all_salles = []
+        for salle in salles:
+            all_salles.append(salle.as_dict())
+        # Serialize table
+        choix_matieres = CHOIX_MATIERE.query.all()
+        all_choix_matieres = []
+        for choix_matiere in choix_matieres:
+            all_choix_matieres.append(choix_matiere.as_dict())
+        # Serialize table
+        series = SERIE.query.all()
+        all_series = []
+        for serie in series:
+            all_series.append(serie.as_dict())
+        # Serialize table
+        professeurs = PROFESSEUR.query.all()
+        all_professeur = []
+        for professeur in professeurs:
+            all_professeur.append(professeur.as_dict())
+        return render_template('admin/creneau.html',all_professeur=all_professeur, all_creneau=all_creneau, all_candidats=all_candidats, all_matieres=all_matieres, all_salles=all_salles, all_creneau_deb=all_creneau_deb, all_series=all_series, all_choix_matieres=all_choix_matieres)
     else:
         return redirect(url_for('main_routes.connexion'))
 

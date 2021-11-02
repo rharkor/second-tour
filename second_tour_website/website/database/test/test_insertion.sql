@@ -181,7 +181,7 @@ VALUES (NULL, 23, 10, 9);
 -- VALUES (NULL, 1, 'Hubert', 'Jean', 1, 2); --PROF WITH ACCOUNT ALREADY MADE MANUALLY
 -- MATHS G
 INSERT INTO PROFESSEUR
-VALUES (NULL, 2, 'De Renaud', 'Julien', 1, 3);
+VALUES (NULL, 10, 'De Renaud', 'Julien', 1, 3);
 -- SVT G
 INSERT INTO PROFESSEUR
 VALUES (NULL, 1, 'Pelletier-aubert', 'Aimé', 2, 4);

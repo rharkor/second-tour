@@ -1,27 +1,27 @@
 $white: #ffffff;
-$primary: #4C5CFF;
+$primary: #4c5cff;
 
-html{
+html {
     height: 100%;
     width: 100%;
 
     min-width: max-content;
 }
 
-body{
+body {
     background: $primary;
     height: 100%;
     width: 100%;
 }
 
-main{
+main {
     height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
 }
 
-.top-layer{
+.top-layer {
     position: relative;
     top: 0;
     right: 0;
@@ -31,7 +31,7 @@ main{
     justify-content: flex-end;
 }
 
-.left{
+.left {
     left: 0;
     right: unset;
     margin: 0 0 10px 10px;
@@ -101,68 +101,68 @@ main{
     border-top-right-radius: 0;
 }
 
-div.form-login-input-lg{
+div.form-login-input-lg {
     width: 500px;
 }
 
 @media only screen and (max-width: 600px) {
-    div.form-login-input-lg{
+    div.form-login-input-lg {
         width: 100%;
     }
 }
 
-.padding-main-calendar{
+.padding-main-calendar {
     padding: 20px 5% 20px 5%;
     width: 100%;
 }
 
-.pt-m{
+.pt-m {
     padding-top: 20px;
 }
 
-.mb-m{
+.mb-m {
     margin-bottom: 20px;
 }
 
-.mt-xxl{
+.mt-xxl {
     margin-top: 10%;
 }
 
-.ml-m{
+.ml-m {
     margin-left: 20px;
 }
 
-.ml-s{
+.ml-s {
     margin-left: 10px;
 }
 
-.maxw{
+.maxw {
     width: 100%;
 }
 
-.maxh{
+.maxh {
     height: 100%;
 }
 
-.calendar{
+.calendar {
     width: 100%;
 }
 
-.min-width-max-content{
+.min-width-max-content {
     min-width: max-content;
 }
-div.thumbnail{
+div.thumbnail {
     border-radius: 5px;
 }
 
-.name-finder{
+.name-finder {
     position: relative;
     top: 0px;
     display: flex;
     justify-content: end;
 }
 
-.margin-login-form{
+.margin-login-form {
     margin: 10px 0 10px 0;
 }
 
@@ -171,7 +171,7 @@ form * i {
     cursor: pointer;
 }
 
-.eye-form{
+.eye-form {
     font-size: 120%;
     margin-top: auto;
     margin-bottom: auto;
@@ -184,9 +184,22 @@ form * i {
     width: 100px;
     height: 100px;
     animation: spin 1s linear infinite;
-  }
-  
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+option:disabled{
+    background-color: #e9ecef;
+}
+
+.disabled{
+    opacity: 1;
+    background-color: #e9ecef;
+    pointer-events:none;
+}

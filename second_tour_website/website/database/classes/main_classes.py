@@ -26,6 +26,9 @@ class UTILISATEURS(db.Model):
         if user:
             return ["Cet utilisateur existe déjà", "danger"]
         return False
+    
+    def as_dict(self):
+       return {c.name: getattr(self, c.name) for c in self.__table__.columns}
 
 class SERIE(db.Model):
     __tablename__=  'SERIE'
@@ -95,7 +98,7 @@ class MATIERES(db.Model):
 
 class SALLE(db.Model):
     __tablename__ = 'SALLE'
-    id_salle = db.Column('id', db.Integer, primary_key = True)
+    id_salle = db.Column('id_salle', db.Integer, primary_key = True)
     numero = db.Column(db.String(50), nullable=False)
 
     def __init__(self, numero):
@@ -112,9 +115,12 @@ class SALLE(db.Model):
             return ["Une salle à déjà le même numéro", "danger"]
         return False
 
+    def as_dict(self):
+       return {c.name: getattr(self, c.name) for c in self.__table__.columns}
+
 class PROFESSEUR(db.Model):
     __tablename__ = 'PROFESSEUR'
-    id_professeur = db.Column('id', db.Integer, primary_key = True)
+    id_professeur = db.Column('id_professeur', db.Integer, primary_key = True)
     id_utilisateur = db.Column(db.Integer, nullable=False)
     nom = db.Column(db.String(30), nullable=False)
     prenom = db.Column(db.String(30), nullable=False)
@@ -155,6 +161,9 @@ class PROFESSEUR(db.Model):
             return False
         return ['Aucune matière correspondante', 'danger']
 
+    def as_dict(self):
+       return {c.name: getattr(self, c.name) for c in self.__table__.columns}
+
 class CANDIDATS(db.Model):
     __tablename__ = 'CANDIDATS'
     id_candidat = db.Column('id_candidat', db.Integer, primary_key = True)
@@ -183,7 +192,7 @@ class CANDIDATS(db.Model):
 
 class CHOIX_MATIERE(db.Model):
     __tablename__ = 'CHOIX_MATIERE'
-    id_choix_matiere = db.Column(db.Integer, primary_key = True)
+    id_choix_matiere = db.Column('id_choix_matiere', db.Integer, primary_key = True)
     id_candidat = db.Column(db.Integer, nullable=False)
     matiere1 = db.Column(db.Integer, nullable=True)
     matiere2 = db.Column(db.Integer, nullable=True)
@@ -237,7 +246,7 @@ class CHOIX_MATIERE(db.Model):
 
 class CRENEAU(db.Model):
     __tablename__ = 'CRENEAU'
-    id_creneau = db.Column(db.Integer, primary_key = True)
+    id_creneau = db.Column('id_creneau', db.Integer, primary_key = True)
     id_candidat = db.Column(db.Integer, nullable=False)
     id_matiere = db.Column(db.Integer, nullable=False)
     id_salle = db.Column(db.Integer, nullable=False)
@@ -292,3 +301,6 @@ class CRENEAU(db.Model):
         if salle:
             return False
         return ["Aucune salle correspondante", "danger"]
+
+    def as_dict(self):
+       return {c.name: getattr(self, c.name) for c in self.__table__.columns}

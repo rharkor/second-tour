@@ -36,45 +36,47 @@
                         <th scope="col" style="width: 24%;">
                             <div class="th-inner">Matière</div>
                             <div class="filter-control">
-                                    <select class="form-select finder" onchange="finder()">
-                                        <option select></option>
-                                        {% for matiere in all_matieres %}
-                                        <option>{{matiere.nom_complet}}</option>
-                                        {% endfor %}
-                                    </select>
+                                <select class="form-select finder" onchange="finder()">
+                                    <option select></option>
+                                    {% for matiere in all_matieres %}
+                                    <option>{{matiere.nom_complet}}</option>
+                                    {% endfor %}
+                                </select>
                             </div>
                         </th>
                         <th scope="col" style="width: 10%;">
                             <div class="th-inner">Salle</div>
                             <div class="filter-control">
-                                    <select class="form-select finder" onchange="finder()"  style="width: 100px;">
-                                        <option select></option>
-                                        {% for salle in all_salles %}
-                                        <option>{{salle.numero}}</option>
-                                        {% endfor %}
-                                    </select>
+                                <select class="form-select finder" onchange="finder()" style="width: 100px;">
+                                    <option select></option>
+                                    {% for salle in all_salles %}
+                                    <option>{{salle.numero}}</option>
+                                    {% endfor %}
+                                </select>
                             </div>
                         </th>
                         <th scope="col" style="width: 10%;">
                             <div class="th-inner">Début</div>
                             <div class="filter-control">
-                                    <select class="form-select finder break-doublons" onchange="finder()" style="width: 100px;">
-                                        <option select></option>
-                                        {% for creneau in all_creneau_deb %}
-                                        <option>{{creneau.debut_preparation}}</option>
-                                        {% endfor %}
-                                    </select>
+                                <select class="form-select finder break-doublons" onchange="finder()"
+                                    style="width: 100px;">
+                                    <option select></option>
+                                    {% for creneau in all_creneau_deb %}
+                                    <option>{{creneau.debut_preparation}}</option>
+                                    {% endfor %}
+                                </select>
                             </div>
                         </th>
                         <th scope="col" style="width: 10%;">
                             <div class="th-inner">Fin</div>
                             <div class="filter-control">
-                                    <select class="form-select finder break-doublons-1" onchange="finder()" style="width: 100px;">
-                                        <option select></option>
-                                        {% for creneau in all_creneau_deb %}
-                                        <option>{{creneau.fin}}</option>
-                                        {% endfor %}
-                                    </select>
+                                <select class="form-select finder break-doublons-1" onchange="finder()"
+                                    style="width: 100px;">
+                                    <option select></option>
+                                    {% for creneau in all_creneau_deb %}
+                                    <option>{{creneau.fin}}</option>
+                                    {% endfor %}
+                                </select>
                             </div>
                         </th>
                         <th scope="col" style="width: 10%;">Modifier</th>
@@ -107,8 +109,8 @@
                                 id="modifyCreneauForm{{a_creneau.id_creneau}}">
                                 <input type="hidden" name="id" value="{{a_creneau.id_creneau}}">
                                 <button type="button" id="{{a_creneau.id_creneau}}" data-bs-toggle="modal"
-                                    data-bs-target="#confirmModifyModal"
-                                    class="deleteRow btn btn-outline-warning">Modifier</button>
+                                    data-bs-target="#modifyModal"
+                                    class="modifRow btn btn-outline-warning">Modifier</button>
                             </form>
                         </td>
                         <td scope="row">
@@ -128,6 +130,7 @@
     </div>
 
     <!-- Modal -->
+    <!--ADD CRENEAU MODAL-->
     <div class="modal fade" id="addCreneauModal" tabindex="-1" role="dialog" aria-labelledby="addCreneauModal"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -139,20 +142,134 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <!-- Add user form -->
+                    <p style="color: orange;">Attention l'insertion de créneau manuelle ne prends pas en comptes les
+                        temps de pause.</p>
                     <form method="post" action="{{url_for('admin_routes.creneau')}}" id="addCreneauForm">
-                        <p>A faire...</p>
+                        <div class="form-group">
+                            <label for="candidat" class="col-form-label">Candidat</label>
+                            <select class="form-select" name="candidat" id="candidat-select" required
+                                onchange="candidatChange()">
+                                <option selected></option>
+                                {% for candidat in all_candidats %}
+                                {% for serie in all_series %}
+                                {% if serie.id_serie == candidat.id_serie %}
+                                <option id="candidat{{candidat.id_candidat}}" value="{{candidat.id_candidat}}" {% set
+                                    nbrCreneauForCandidat=namespace(value=0) %}{% for creneau in all_creneau %}{% if
+                                    creneau.id_candidat==candidat.id_candidat %}{% set
+                                    nbrCreneauForCandidat.value=nbrCreneauForCandidat.value + 1 %}{% endif %}{% endfor
+                                    %}{% if nbrCreneauForCandidat.value>= 2 %}disabled{% endif %}>
+                                    {{candidat.nom}} {{candidat.prenom}} |
+                                    {{serie.nom}} - {% if serie.specialite1 %}{{serie.specialite1}}{% endif %}{% if
+                                    serie.specialite2 %}/{{serie.specialite2}}{% endif %}
+                                </option>
+                                {% endif %}
+                                {% endfor %}
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="matiere" class="col-form-label">Matière</label>
+                            <select class="form-select" name="matiere" id="matiere-select" required
+                                onchange="matiereChange()">
+                                <option selected></option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="salle" class="col-form-label">Salle</label>
+                            <select class="form-select" name="salle" id="salle-select" required
+                                onchange="salleChange()">
+                                <option selected></option>
+                            </select>
+                        </div>
+                        <div class="form-group" style="display:flex; width:100%;">
+                            <div style="width: 50%; margin-right:5px;">
+                                <label for="debut" class="col-form-label">Début</label>
+                                <select class="form-select" name="debut" id="debut-select" required
+                                    onchange="heureChange()">
+                                    <option selected></option>
+                                </select>
+                            </div>
+                            <div style="width: 50%; margin-left: 5px;">
+                                <label for="fin" class="col-form-label">Fin</label>
+                                <select class="form-select disabled" name="fin" id="fin-select" required>
+                                    <option selected></option>
+                                </select>
+                            </div>
+                        </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                    <button class="btn btn-primary" name="submit_button" type="submit" form="addCreneauForm">Sauvegarder
-                        les changements</button>
+                    <button class="btn btn-success" name="submit_button" type="submit" form="addCreneauForm">Ajouter le
+                        créneau</button>
                 </div>
             </div>
         </div>
     </div>
 
+    <!--MODIF CRENEAU MODAL-->
+    <div class="modal fade" id="modifyModal" tabindex="-1" role="dialog" aria-labelledby="modifyModal"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modifier un créneau</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p style="color: orange;">Attention la modification de créneau ne prends pas en comptes les
+                        temps de pause.</p>
+                    <form method="post" action="{{url_for('admin_routes.creneau')}}" id="modifyCreneauForm">
+                        <input id="id_creneau_modify" name="last_creneau_id" value="" hidden>
+
+                        <div class="form-group">
+                            <label for="candidat" class="col-form-label">Candidat</label>
+                            <select class="form-select disabled" name="candidat" id="candidat-select-modif" required
+                                onchange="">
+                                <option selected></option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="matiere" class="col-form-label">Matière</label>
+                            <select class="form-select disabled" name="matiere" id="matiere-select-modif" required onchange="">
+                                <option selected></option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="salle" class="col-form-label">Salle</label>
+                            <select class="form-select" name="salle" id="salle-select-modif" required onchange="salleChange('-modif')">
+                                <option selected></option>
+                            </select>
+                        </div>
+                        <div class="form-group" style="display:flex; width:100%;">
+                            <div style="width: 50%; margin-right:5px;">
+                                <label for="debut" class="col-form-label">Début</label>
+                                <select class="form-select" name="debut" id="debut-select-modif" required
+                                    onchange="heureChange('-modif')">
+                                    <option selected></option>
+                                </select>
+                            </div>
+                            <div style="width: 50%; margin-left: 5px;">
+                                <label for="fin" class="col-form-label">Fin</label>
+                                <select class="form-select disabled" name="fin" id="fin-select-modif" required>
+                                    <option selected></option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                    <button class="btn btn-warning" name="modify_button" type="submit"
+                        form="modifyCreneauForm">Modifier le créneau</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--DELETE CRENEAU MODAL-->
     <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModal"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -178,4 +295,362 @@
 {% endblock %}
 
 {% block sub_script %}
+<script>
+    function candidatChange() {
+        cleanUp(["matiere-select", "salle-select", "debut-select", "fin-select"]);
+
+        matiereChange();
+    }
+
+    function matiereChange() {
+        cleanUp(["salle-select", "debut-select", "fin-select"]);
+
+        let candidatSelect = document.getElementById("candidat-select");
+
+        let candidatId = candidatSelect.value;
+
+        let all_candidats = JSON.parse('{{all_candidats|tojson}}');
+        let candidat;
+        for (let i = 0; i < all_candidats.length; i++) {
+            if (candidatId == all_candidats[i].id_candidat) {
+                candidat = all_candidats[i];
+            }
+        }
+
+        //Matiere
+        let matiereSelect = document.getElementById("matiere-select");
+        let all_choix_matieres = JSON.parse('{{all_choix_matieres|tojson}}')
+        let all_matieres = JSON.parse('{{all_matieres|tojson}}');
+        let all_creneaux = JSON.parse('{{all_creneau|tojson}}');
+        let choix_matiere;
+        for (let i = 0; i < all_choix_matieres.length; i++) {
+            if (candidat.id_candidat == all_choix_matieres[i].id_candidat) {
+                var option1 = document.createElement("option");
+                option1.value = all_choix_matieres[i].matiere1;
+                for (let y = 0; y < all_matieres.length; y++) {
+                    if (all_matieres[y].id_matiere == all_choix_matieres[i].matiere1) {
+                        option1.text = all_matieres[y]['nom'];
+                    }
+                }
+                for (let y = 0; y < all_creneaux.length; y++) {
+                    if (all_creneaux[y].id_candidat == candidat.id_candidat
+                        && all_creneaux[y].id_matiere == all_choix_matieres[i].matiere1) {
+                        option1.disabled = true;
+                    }
+                }
+                var option2 = document.createElement("option");
+                option2.value = all_choix_matieres[i].matiere2;
+                for (let y = 0; y < all_matieres.length; y++) {
+                    if (all_matieres[y].id_matiere == all_choix_matieres[i].matiere2) {
+                        option2.text = all_matieres[y]['nom'];
+                    }
+                }
+                for (let y = 0; y < all_creneaux.length; y++) {
+                    if (all_creneaux[y].id_candidat == candidat.id_candidat
+                        && all_creneaux[y].id_matiere == all_choix_matieres[i].matiere2) {
+                        option2.disabled = true;
+                    }
+                }
+                matiereSelect.append(option1);
+                matiereSelect.append(option2);
+            }
+        }
+        salleChange();
+    }
+
+    function salleChange(opt = "") {
+        cleanUp(["debut-select" + opt, "fin-select" + opt]);
+
+        //Salle
+        let salleSelect = document.getElementById("salle-select"+opt);
+        let all_matieres = JSON.parse('{{all_matieres|tojson}}');
+        let matiereId = document.getElementById("matiere-select"+opt).value;
+        let all_salles = JSON.parse('{{all_salles|tojson}}');
+        let all_professeurs = JSON.parse('{{all_professeur|tojson}}');
+        for (let i = 0; i < all_matieres.length; i++) {
+            if (all_matieres[i].id_matiere == matiereId) {
+                let matiere = all_matieres[i];
+                for (let x = 0; x < all_professeurs.length; x++) {
+                    if (all_professeurs[x].matiere == matiere.id_matiere) {
+                        var option = document.createElement("option");
+                        option.value = all_professeurs[x].salle;
+                        for (let z = 0; z < all_salles.length; z++) {
+                            if (all_salles[z].id_salle == all_professeurs[x].salle) {
+                                option.text = all_salles[z].numero;
+                            }
+                        }
+                        salleSelect.append(option);
+                    }
+                }
+            }
+        }
+        heureChange();
+    }
+
+    function heureChange(opt = "") {
+        cleanUp(["fin-select"+opt]);
+
+        //Heure
+        let heureDebutSelect = document.getElementById("debut-select"+opt);
+        let heureFinSelect = document.getElementById("fin-select"+opt);
+        let all_matieres = JSON.parse('{{all_matieres|tojson}}');
+        let salleId = document.getElementById("salle-select"+opt).value;
+        let all_salles = JSON.parse('{{all_salles|tojson}}');
+        let all_creneaux = JSON.parse('{{all_creneau|tojson}}');
+        let matiereId = document.getElementById("matiere-select"+opt).value;
+        let matiere;
+        for (let i = 0; i < all_matieres.length; i++) {
+            if (all_matieres[i].id_matiere == matiereId) {
+                matiere = all_matieres[i];
+            }
+        }
+        let candidatSelect = document.getElementById("candidat-select"+opt);
+        let candidatId = candidatSelect.value;
+        let all_candidats = JSON.parse('{{all_candidats|tojson}}');
+        let candidat;
+        for (let i = 0; i < all_candidats.length; i++) {
+            if (candidatId == all_candidats[i].id_candidat) {
+                candidat = all_candidats[i];
+            }
+        }
+        let temps_passage_matiere = convert_to_decimal_time(convert_minute_to_string(matiere.temps_passage))
+        let temps_preparation_matiere = convert_to_decimal_time(convert_minute_to_string(matiere.temps_preparation))
+
+        let heure_debut_preparation_voulue = 8.00;
+        while (heure_debut_preparation_voulue < 20.00) {
+            for (let i = 0; i < all_salles.length; i++) {
+                if (all_salles[i].id_salle == salleId) {
+                    let a_salle = all_salles[i];
+                    // reset the var
+                    let aucune_collision = true;
+                    let all_creneaux = JSON.parse('{{all_creneau|tojson}}');
+
+                    for (let x = 0; x < all_creneaux.length; x++) {
+                        let creneau = all_creneaux[x];
+                        let debut_preparation_creneau = convert_to_decimal_time(creneau.debut_preparation)
+                        let fin_passage_creneau = convert_to_decimal_time(creneau.fin)
+                        let matiere_creneau;
+                        for (let z = 0; z < all_matieres.length; z++) {
+                            if (all_matieres[z].id_matiere == creneau.id_matiere) {
+                                matiere_creneau = all_matieres[z];
+                            }
+                        }
+                        let temps_passage_creneau = convert_to_decimal_time(convert_minute_to_string(matiere_creneau.temps_passage));
+                        let temps_preparation_creneau = convert_to_decimal_time(convert_minute_to_string(matiere_creneau.temps_preparation));
+
+                        let fin_passage_matiere = heure_debut_preparation_voulue + temps_preparation_matiere + temps_passage_matiere;
+
+                        // Test if the salle is empty
+                        if (creneau.id_salle == a_salle.id_salle
+                            && !((heure_debut_preparation_voulue + temps_preparation_matiere >= fin_passage_creneau)
+                                || (heure_debut_preparation_voulue + temps_preparation_matiere + temps_passage_matiere <= debut_preparation_creneau + temps_preparation_creneau))) {
+                            aucune_collision = false;
+                        }
+
+                        // Test if the user don't have already creneau and need a pause
+                        if (creneau.id_candidat == candidat.id_candidat
+                            && !((fin_passage_matiere <= debut_preparation_creneau - 0.5)
+                                || (heure_debut_preparation_voulue >= fin_passage_creneau + 0.5))) {
+                            aucune_collision = false;
+                        }
+
+                        // Test for lunch
+                        if (creneau.id_salle == a_salle.id_salle
+                            && ((heure_debut_preparation_voulue >= 13.00 && heure_debut_preparation_voulue < 14.00)
+                                || (fin_passage_matiere > 13.00 && fin_passage_matiere <= 14.00)
+                                || (heure_debut_preparation_voulue <= 13.00 && fin_passage_matiere >= 14.00))) {
+                            aucune_collision = false;
+                        }
+                    }
+
+                    if (aucune_collision) {
+                        let optionDebut = document.createElement("option");
+                        optionDebut.value = convert_from_decimal_time(heure_debut_preparation_voulue);
+                        optionDebut.text = convert_from_decimal_time(heure_debut_preparation_voulue);
+
+                        //Append
+                        heureDebutSelect.append(optionDebut);
+                    } else {
+                        let optionDebut = document.createElement("option");
+                        optionDebut.value = convert_from_decimal_time(heure_debut_preparation_voulue);
+                        optionDebut.text = convert_from_decimal_time(heure_debut_preparation_voulue);
+                        optionDebut.disabled = true;
+
+                        //Append
+                        heureDebutSelect.append(optionDebut);
+                    }
+                }
+            }
+            heure_debut_preparation_voulue += 0.5
+        }
+
+        let heureDebutSelected = convert_to_decimal_time(heureDebutSelect.value);
+
+        let optionFin = document.createElement("option");
+        optionFin.value = convert_from_decimal_time(heureDebutSelected + temps_passage_matiere + temps_preparation_matiere);
+        optionFin.text = convert_from_decimal_time(heureDebutSelected + temps_passage_matiere + temps_preparation_matiere);
+        heureFinSelect.append(optionFin);
+
+        break_doublons();
+    }
+
+
+    function cleanUp(elements) {
+        //Delete all before
+        for (let i = 0; i < elements.length; i++) {
+            let element = document.getElementById(elements[i]);
+            while (element.length > 0) {
+                element.remove(0);
+            }
+        }
+    }
+
+    function break_doublons() {
+        let all = ["matiere-select", "salle-select", "debut-select", "fin-select"];
+        for (let i = 0; i < all.length; i++) {
+            let options = []
+            document.querySelectorAll('#' + all[i] + ' > option').forEach((option) => {
+                if (options.includes(option.value)) option.remove()
+                else options.push(option.value)
+            })
+        }
+    }
+
+    function convert_from_decimal_time(decimal) {
+        let hours = parseInt(decimal, 10);
+        if (hours < 10) {
+            hours = "0" + hours.toString();
+        } else {
+            hours = hours.toString();
+        }
+        let minutes = parseInt((decimal * 60) % 60, 10);
+        if (minutes < 10) {
+            minutes = "0" + minutes.toString();
+        } else {
+            minutes = minutes.toString();
+        }
+        let res = hours + ":" + minutes;
+        return res;
+    }
+
+    function convert_to_decimal_time(time) {
+        let alls = time.split(':');
+        let h = alls[0];
+        let m = alls[1];
+        let r = parseInt(h, 10) + parseFloat(m) / 60;
+        return r;
+    }
+
+    function convert_minute_to_string(time) {
+        let h = parseInt(time / 60, 10);
+        let m = parseInt(time % 60, 10);
+        return h.toString() + ":" + m.toString();
+    }
+</script>
+<script>
+
+    $('.modifRow').click(function () {
+        var creneauId = $(this).get(0).id;
+
+
+        //Set the value for the hidden input
+        hidden_input = document.getElementById("id_creneau_modify");
+        hidden_input.value = creneauId;
+
+        // Delete all
+        cleanUp(["candidat-select-modif", "matiere-select-modif", "salle-select-modif", "debut-select-modif", "fin-select-modif"]);
+
+        var all_creneau = JSON.parse('{{all_creneau|tojson}}');
+        var creneau;
+        for (var i = 0; i < all_creneau.length; i++) {
+            if (all_creneau[i].id_creneau == creneauId) {
+                creneau = all_creneau[i];
+            }
+        }
+        var all_candidats = JSON.parse('{{all_candidats|tojson}}');
+        var candidat;
+        for (let i = 0; i < all_candidats.length; i++) {
+            if (all_candidats[i].id_candidat == creneau.id_candidat) {
+                candidat = all_candidats[i];
+            }
+        }
+        var all_series = JSON.parse('{{all_series|tojson}}');
+        var serie;
+        for (let i = 0; i < all_series.length; i++) {
+            if (all_series[i].id_serie == candidat.id_serie) {
+                serie = all_series[i];
+            }
+        }
+        var all_matieres = JSON.parse('{{all_matieres|tojson}}');
+        var matiere;
+        for (let i = 0; i < all_matieres.length; i++) {
+            if (all_matieres[i].id_matiere == creneau.id_matiere) {
+                matiere = all_matieres[i];
+            }
+        }
+        var all_salles = JSON.parse('{{all_salles|tojson}}');
+        var salle;
+        for (let i = 0; i < all_salles.length; i++) {
+            if (all_salles[i].id_salle == creneau.id_salle) {
+                salle = all_salles[i];
+            }
+        }
+
+        //Add the candidat
+        var candidatSelect = document.getElementById("candidat-select-modif");
+        let option = document.createElement("option");
+        option.value = candidat.id_candidat;
+        option.id = "candidatModif" + candidat.id_candidat.toString();
+        option.text = candidat.nom + " " + candidat.prenom + " | " + serie.nom + " - ";
+        if (serie.specialite1) {
+            option.text += serie.specialite1;
+        }
+        if (serie.specialite2) {
+            option.text += "/" + serie.specialite2;
+        }
+        candidatSelect.append(option);
+
+        //Add the Matiere
+        var matiereSelect = document.getElementById("matiere-select-modif");
+        option = document.createElement("option");
+        option.value = matiere.id_matiere;
+        option.id = "matiereModif" + matiere.id_matiere.toString();
+        option.text = matiere.nom;
+        matiereSelect.append(option);
+
+        //Add the salle
+        var salleSelect = document.getElementById("salle-select-modif");
+        option = document.createElement("option");
+        option.value = salle.id_salle;
+        option.id = "salleModif" + salle.id_salle.toString();
+        option.text = salle.numero;
+        salleSelect.append(option);
+        //Add the other salle
+        let matiereId = document.getElementById("matiere-select-modif").value;
+        let all_professeurs = JSON.parse('{{all_professeur|tojson}}');
+        for (let i = 0; i < all_matieres.length; i++) {
+            if (all_matieres[i].id_matiere == matiereId) {
+                let matiere = all_matieres[i];
+                for (let x = 0; x < all_professeurs.length; x++) {
+                    if (all_professeurs[x].matiere == matiere.id_matiere) {
+                        let new_option = document.createElement("option");
+                        new_option.value = all_professeurs[x].salle;
+                        for (let z = 0; z < all_salles.length; z++) {
+                            if (all_salles[z].id_salle == all_professeurs[x].salle && salle.id_salle != all_salles[z].id_salle) {
+                                new_option.text = all_salles[z].numero;
+                            }
+                        }
+                        if (new_option.text != ""){
+                        salleSelect.append(new_option);
+                        }
+                    }
+                }
+            }
+        }
+
+        //Add the heure début
+        heureChange("-modif");
+    });
+
+</script>
 {% endblock %}

@@ -7,7 +7,7 @@ html {
 }
 
 body {
-  background: #4C5CFF;
+  background: #4c5cff;
   height: 100%;
   width: 100%;
 }
@@ -233,5 +233,15 @@ form * i {
     -webkit-transform: rotate(360deg);
             transform: rotate(360deg);
   }
+}
+
+option:disabled {
+  background-color: #e9ecef;
+}
+
+.disabled {
+  opacity: 1;
+  background-color: #e9ecef;
+  pointer-events: none;
 }
 /*# sourceMappingURL=main.css.map */
