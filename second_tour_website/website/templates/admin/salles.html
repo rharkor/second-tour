@@ -22,8 +22,7 @@
                         <th scope="col">
                             <div class="th-inner">Numéro</div>
                             <div class="filter-control">
-                                <input type="text" class="form-control finder" onkeyup="finder()"
-                                    placeholder="">
+                                <input type="text" class="form-control finder" onkeyup="finder()" placeholder="">
                             </div>
                         </th>
                         <th scope="col" style="width: 15%;">Fiche d'émargement</th>
@@ -37,10 +36,21 @@
                             a_salle.id_salle %} - Loge{% endif %}{% endfor %}</td>
                         <td scope="row">
                             <div class="align-items-end">
-                                <button href="#" type="button" class="btn btn-info">
+                                <!-- <form method="post" action="{{url_for('admin_routes.salles')}}" id="downloadSalleForm{{a_salle.id_salle}}">
+                                    <input type="hidden" id="{{a_salle.id_salle}}" value="{{a_salle.id_salle}}" name="id">
+                                    <button type="submit" class="btn btn-info" id="buttonSubmitDownload" name="download_button">
+                                        Télécharger
+                                        <i class="fas fa-print ml-s"></i>
+                                    </button>
+                                </form> -->
+                                <button class="btn btn-primary"
+                                {% for a_prof in all_profs %}
+                                {% if a_prof.salle == a_salle.id_salle %}
+                                onclick="downloadPDFWithBrowserPrint('tableAccordionProf{{a_prof.id_professeur}}', '{{a_salle.numero}}')"
+                                {% endif %}
+                                {% endfor %}>
                                     Télécharger
-                                    <i class="fas fa-print ml-s"></i>
-                                </button>
+                                    <i class="fas fa-print ml-s"></i></button>
                             </div>
                         </td>
                         <td scope="row">
@@ -58,7 +68,7 @@
                             style="padding: 0; background: transparent; --bs-table-accent-bg: transparent;">
                             <div class="collapse" id="accordion{{a_salle.id_salle}}" style="margin: 15px 10px;">
                                 <div class="table-responsive thumbnail">
-                                    <table class="table table-light table-striped table-hover" id="calendar">
+                                    <table class="table table-light table-striped table-hover" id="tableAccordion{{a_salle.id_salle}}">
                                         <thead>
                                             <tr>
                                                 <th scope="col">Nom</th>
@@ -88,7 +98,7 @@
                                                     <div class="collapse" id="accordionProf{{a_prof.id_professeur}}"
                                                         style="margin: 15px 10px;">
                                                         <div class="table-responsive thumbnail">
-                                                            <table class="table table-light table-striped table-hover"
+                                                            <table class="table table-light table-striped table-hover" id="tableAccordionProf{{a_prof.id_professeur}}"
                                                                 id="calendar">
                                                                 <thead>
                                                                     <tr>
@@ -226,4 +236,69 @@
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block sub_script %}
+<script>
+    function downloadPDFWithBrowserPrint(name, num_salle) {
+        var doc = new jsPDF('l', 'pt', 'a4');
+        var htmlstring = '';
+        var tempVarToCheckPageHeight = 0;
+        var pageHeight = 0;
+        var pageWidth = 0;
+        pageHeight = doc.internal.pageSize.height;
+        specialElementHandlers = {  
+            // element with id of "bypass" - jQuery style selector  
+            '#bypassme': function(element, renderer) {  
+                // true = "handled elsewhere, bypass text extraction"  
+                return true  
+            }  
+        };  
+        margins = {
+            top: 150,
+            bottom: 60,
+            left: 40,
+            right: 40,
+            width: 600
+        };
+        doc.setFontSize(10);
+        doc.setLineWidth(4);
+        doc.text(20, 20, 'Salle : ' + num_salle.toString());
+        //doc.text(200, y = y + 30, "Liste d'émargement");
+        doc.setFontSize(20);
+        centered_text("Liste d'émargement", 60, doc);
+        doc.autoTable({
+            html: '#' + name,
+            startY: 70,
+            theme: 'grid',
+            columnStyles: {
+                0: {
+                    cellWidth: 140,
+                },
+                1: {
+                    cellWidth: 140,
+                },
+                2: {
+                    cellWidth: 140,
+                },
+                3: {
+                    cellWidth: 140,
+                },
+                4: {
+                    cellWidth: 220,
+                },
+            },
+            styles: {
+                minCellHeight: 40
+            }
+        })
+        doc.save(num_salle.toString() + '_listeDEmargement.pdf');
+    }
+
+    function centered_text(text, y, doc) {
+        var textWidth = doc.getStringUnitWidth(text) * doc.internal.getFontSize() / doc.internal.scaleFactor;
+        var textOffset = (doc.internal.pageSize.width - textWidth) / 2;
+        doc.text(textOffset, y, text);
+    }
+</script>
 {% endblock %}
