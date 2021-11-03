@@ -4,3 +4,258 @@
 2021-11-02 18:16:36,833 [WARNING]  * Running on all addresses.
    WARNING: This is a development server. Do not use it in a production deployment.
 2021-11-02 18:16:43,178 [WARNING] Le calendrier n'est pas complet, il manque 2 créneau
+2021-11-02 18:17:18,238 [WARNING] Run the server
+2021-11-02 18:17:19,044 [WARNING] Run the server
+2021-11-02 18:17:19,072 [WARNING]  * Debugger is active!
+2021-11-02 18:17:19,133 [WARNING]  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-02 20:30:16,062 [WARNING] Run the server
+2021-11-02 20:30:17,174 [WARNING] Run the server
+2021-11-02 20:30:17,226 [WARNING]  * Debugger is active!
+2021-11-02 20:30:17,330 [WARNING]  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-02 20:30:17,863 [WARNING] Le calendrier n'est pas complet, il manque 2 créneau
+2021-11-02 20:30:41,209 [WARNING] Le calendrier n'est pas complet, il manque 2 créneau
+2021-11-02 20:31:44,521 [WARNING] Le calendrier n'est pas complet, il manque 2 créneau
+2021-11-02 20:32:13,741 [WARNING] Le créneau à correctement été crée
+2021-11-02 20:32:19,336 [WARNING] Le calendrier n'est pas complet, il manque 1 créneau
+2021-11-02 20:32:25,834 [WARNING] Vous avez correctement été déconnecté
+2021-11-02 20:32:32,865 [WARNING] Connexion réussie
+2021-11-02 20:32:32,900 [WARNING] Le calendrier n'est pas complet, il manque 1 créneau
+2021-11-02 20:57:17,877 [WARNING] Le calendrier n'est pas complet, il manque 2 créneau
+2021-11-02 20:57:36,183 [WARNING] Le calendrier n'est pas complet, il manque 2 créneau
+2021-11-03 10:06:28,176 [WARNING] Run the server
+2021-11-03 10:06:31,327 [WARNING] Run the server
+2021-11-03 10:06:31,470 [WARNING]  * Debugger is active!
+2021-11-03 10:06:32,622 [WARNING]  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-03 10:09:44,117 [WARNING] Run the server
+2021-11-03 10:09:44,149 [WARNING]  * Debugger is active!
+2021-11-03 10:09:45,062 [WARNING]  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-03 10:10:18,588 [WARNING] Run the server
+2021-11-03 10:10:18,622 [WARNING]  * Debugger is active!
+2021-11-03 10:10:19,532 [WARNING]  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-03 10:15:30,783 [WARNING] Le calendrier n'est pas complet, il manque 46 créneau
+2021-11-03 10:15:41,064 [WARNING] Le calendrier n'est pas complet, il manque 46 créneau
+2021-11-03 10:32:44,730 [WARNING] Le calendrier n'est pas complet, il manque 46 créneau
+2021-11-03 10:47:00,305 [WARNING] Run the server
+2021-11-03 10:47:00,327 [WARNING]  * Debugger is active!
+2021-11-03 10:47:01,256 [WARNING]  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-03 10:47:03,058 [WARNING] Run the server
+2021-11-03 10:47:03,080 [WARNING]  * Debugger is active!
+2021-11-03 10:47:04,032 [WARNING]  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-03 10:47:34,808 [WARNING] Run the server
+2021-11-03 10:47:34,840 [WARNING]  * Debugger is active!
+2021-11-03 10:47:34,893 [WARNING]  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-03 10:47:56,252 [WARNING] Run the server
+2021-11-03 10:47:56,279 [WARNING]  * Debugger is active!
+2021-11-03 10:47:56,329 [WARNING]  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-03 10:48:04,270 [WARNING] Run the server
+2021-11-03 10:48:04,290 [WARNING]  * Debugger is active!
+2021-11-03 10:48:04,345 [WARNING]  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-03 10:48:17,466 [WARNING] Run the server
+2021-11-03 10:48:17,489 [WARNING]  * Debugger is active!
+2021-11-03 10:48:17,540 [WARNING]  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-03 10:48:40,476 [WARNING] Les choix du candidat on bien été crée
+2021-11-03 10:49:01,320 [WARNING] Les choix du candidat on bien été crée
+2021-11-03 10:49:49,984 [WARNING] Run the server
+2021-11-03 10:49:50,010 [WARNING]  * Debugger is active!
+2021-11-03 10:49:50,897 [WARNING]  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-03 10:49:52,455 [WARNING] Erreur : Traceback (most recent call last):
+  File "C:\Users\louid\OneDrive\Documents\Espace_de_travail\S2\PTS\pts2021_sujet14\second_tour_website\website\function\main_database.py", line 217, in delete_candidat
+    candidat = CANDIDATS.query.filter_by(id_candidat=id).one()
+  File "C:\Users\louid\AppData\Local\Programs\Python\Python39\lib\site-packages\sqlalchemy\orm\query.py", line 2808, in one
+    return self._iter().one()
+  File "C:\Users\louid\AppData\Local\Programs\Python\Python39\lib\site-packages\sqlalchemy\engine\result.py", line 1385, in one
+    return self._only_one_row(
+  File "C:\Users\louid\AppData\Local\Programs\Python\Python39\lib\site-packages\sqlalchemy\engine\result.py", line 561, in _only_one_row
+    raise exc.NoResultFound(
+sqlalchemy.exc.NoResultFound: No row was found when one was required
+
+2021-11-03 10:50:11,777 [WARNING] Les choix du candidat on bien été crée
+2021-11-03 10:50:24,402 [WARNING] Modification effectuée
+2021-11-03 10:50:41,873 [WARNING] Run the server
+2021-11-03 10:50:41,902 [WARNING]  * Debugger is active!
+2021-11-03 10:50:42,803 [WARNING]  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-03 10:50:48,782 [WARNING] Modification effectuée
+2021-11-03 10:51:04,675 [WARNING] Run the server
+2021-11-03 10:51:04,700 [WARNING]  * Debugger is active!
+2021-11-03 10:51:05,592 [WARNING]  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-03 10:51:05,860 [WARNING] Modification effectuée
+2021-11-03 10:52:03,021 [WARNING] Run the server
+2021-11-03 10:52:03,046 [WARNING]  * Debugger is active!
+2021-11-03 10:52:03,094 [WARNING]  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-03 10:52:12,929 [WARNING] Modification effectuée
+2021-11-03 10:52:29,863 [WARNING] Run the server
+2021-11-03 10:52:29,889 [WARNING]  * Debugger is active!
+2021-11-03 10:52:29,942 [WARNING]  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-03 10:52:40,097 [WARNING] Run the server
+2021-11-03 10:52:40,124 [WARNING]  * Debugger is active!
+2021-11-03 10:52:40,177 [WARNING]  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-03 10:56:17,646 [WARNING] Run the server
+2021-11-03 10:56:17,670 [WARNING]  * Debugger is active!
+2021-11-03 10:56:17,724 [WARNING]  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-03 11:33:26,577 [WARNING] Run the server
+2021-11-03 11:33:26,602 [WARNING]  * Debugger is active!
+2021-11-03 11:33:26,653 [WARNING]  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-03 11:34:30,751 [WARNING] Run the server
+2021-11-03 11:34:30,791 [WARNING]  * Debugger is active!
+2021-11-03 11:34:30,854 [WARNING]  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-03 11:36:44,439 [WARNING] Run the server
+2021-11-03 11:36:44,463 [WARNING]  * Debugger is active!
+2021-11-03 11:36:44,515 [WARNING]  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-03 11:37:53,734 [WARNING] Run the server
+2021-11-03 11:37:53,760 [WARNING]  * Debugger is active!
+2021-11-03 11:37:53,810 [WARNING]  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-03 11:38:44,434 [WARNING] Run the server
+2021-11-03 11:38:44,464 [WARNING]  * Debugger is active!
+2021-11-03 11:38:44,536 [WARNING]  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-03 11:39:03,402 [WARNING] Run the server
+2021-11-03 11:39:03,445 [WARNING]  * Debugger is active!
+2021-11-03 11:39:03,510 [WARNING]  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-03 11:44:23,222 [WARNING] Run the server
+2021-11-03 11:44:23,252 [WARNING]  * Debugger is active!
+2021-11-03 11:44:23,307 [WARNING]  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-03 11:44:27,907 [WARNING] Le calendrier n'est pas complet, il manque 46 créneau
+2021-11-03 11:44:31,606 [WARNING] Le créneau à correctement été crée
+2021-11-03 11:44:31,659 [WARNING] Le créneau à correctement été crée
+2021-11-03 11:44:31,742 [WARNING] Le créneau à correctement été crée
+2021-11-03 11:44:31,835 [WARNING] Le créneau à correctement été crée
+2021-11-03 11:44:31,922 [WARNING] Le créneau à correctement été crée
+2021-11-03 11:44:32,026 [WARNING] Le créneau à correctement été crée
+2021-11-03 11:44:32,118 [WARNING] Le créneau à correctement été crée
+2021-11-03 11:44:32,204 [WARNING] Le créneau à correctement été crée
+2021-11-03 11:44:32,295 [WARNING] Le créneau à correctement été crée
+2021-11-03 11:44:32,383 [WARNING] Le créneau à correctement été crée
+2021-11-03 11:44:32,499 [WARNING] Le créneau à correctement été crée
+2021-11-03 11:44:32,622 [WARNING] Le créneau à correctement été crée
+2021-11-03 11:44:32,756 [WARNING] Le créneau à correctement été crée
+2021-11-03 11:44:32,901 [WARNING] Le créneau à correctement été crée
+2021-11-03 11:44:33,086 [WARNING] Le créneau à correctement été crée
+2021-11-03 11:44:33,595 [WARNING] Le créneau à correctement été crée
+2021-11-03 11:44:33,689 [WARNING] Le créneau à correctement été crée
+2021-11-03 11:44:33,942 [WARNING] Le créneau à correctement été crée
+2021-11-03 11:44:34,238 [WARNING] Le créneau à correctement été crée
+2021-11-03 11:44:34,519 [WARNING] Le créneau à correctement été crée
+2021-11-03 11:44:34,891 [WARNING] Le créneau à correctement été crée
+2021-11-03 11:44:35,239 [WARNING] Le créneau à correctement été crée
+2021-11-03 11:44:35,710 [WARNING] Le créneau à correctement été crée
+2021-11-03 11:44:36,487 [WARNING] Le créneau à correctement été crée
+2021-11-03 11:44:36,807 [WARNING] Le créneau à correctement été crée
+2021-11-03 11:44:36,943 [WARNING] Le créneau à correctement été crée
+2021-11-03 11:44:37,179 [WARNING] Le créneau à correctement été crée
+2021-11-03 11:44:37,369 [WARNING] Le créneau à correctement été crée
+2021-11-03 11:44:37,618 [WARNING] Le créneau à correctement été crée
+2021-11-03 11:44:37,722 [WARNING] Le créneau à correctement été crée
+2021-11-03 11:44:37,891 [WARNING] Le créneau à correctement été crée
+2021-11-03 11:44:38,300 [WARNING] Le créneau à correctement été crée
+2021-11-03 11:44:38,408 [WARNING] Le créneau à correctement été crée
+2021-11-03 11:44:38,546 [WARNING] Le créneau à correctement été crée
+2021-11-03 11:44:38,845 [WARNING] Le créneau à correctement été crée
+2021-11-03 11:44:39,258 [WARNING] Le créneau à correctement été crée
+2021-11-03 11:44:39,421 [WARNING] Le créneau à correctement été crée
+2021-11-03 11:44:39,594 [WARNING] Le créneau à correctement été crée
+2021-11-03 11:44:39,898 [WARNING] Le créneau à correctement été crée
+2021-11-03 11:44:40,170 [WARNING] Le créneau à correctement été crée
+2021-11-03 11:44:40,481 [WARNING] Le créneau à correctement été crée
+2021-11-03 11:44:40,745 [WARNING] Le créneau à correctement été crée
+2021-11-03 11:44:41,122 [WARNING] Le créneau à correctement été crée
+2021-11-03 11:44:41,481 [WARNING] Le créneau à correctement été crée
+2021-11-03 11:44:41,631 [WARNING] Le créneau à correctement été crée
+2021-11-03 11:47:25,977 Run the server
+2021-11-03 11:47:26,002  * Debugger is active!
+2021-11-03 11:47:26,055  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-03 11:48:07,455 Run the server
+2021-11-03 11:48:07,512  * Debugger is active!
+2021-11-03 11:48:07,568  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-03 11:48:17,071 Le calendrier n'est pas complet, il manque 1 créneau
+2021-11-03 11:48:20,742 Le créneau à correctement été crée
+2021-11-03 11:48:20,803 Le créneau à correctement été crée
+2021-11-03 11:48:20,898 Le créneau à correctement été crée
+2021-11-03 11:48:20,980 Le créneau à correctement été crée
+2021-11-03 11:48:21,081 Le créneau à correctement été crée
+2021-11-03 11:48:21,144 Le créneau à correctement été crée
+2021-11-03 11:48:21,312 Le créneau à correctement été crée
+2021-11-03 11:48:21,413 Le créneau à correctement été crée
+2021-11-03 11:48:21,520 Le créneau à correctement été crée
+2021-11-03 11:48:21,622 Le créneau à correctement été crée
+2021-11-03 11:48:21,771 Le créneau à correctement été crée
+2021-11-03 11:48:21,911 Le créneau à correctement été crée
+2021-11-03 11:48:22,072 Le créneau à correctement été crée
+2021-11-03 11:48:22,208 Le créneau à correctement été crée
+2021-11-03 11:48:22,370 Le créneau à correctement été crée
+2021-11-03 11:48:23,119 Le créneau à correctement été crée
+2021-11-03 11:48:23,217 Le créneau à correctement été crée
+2021-11-03 11:48:23,437 Le créneau à correctement été crée
+2021-11-03 11:48:24,034 Le créneau à correctement été crée
+2021-11-03 11:48:24,612 Le créneau à correctement été crée
+2021-11-03 11:48:25,228 Le créneau à correctement été crée
+2021-11-03 11:48:25,672 Le créneau à correctement été crée
+2021-11-03 11:48:26,094 Le créneau à correctement été crée
+2021-11-03 11:48:26,541 Le créneau à correctement été crée
+2021-11-03 11:48:26,916 Le créneau à correctement été crée
+2021-11-03 11:48:27,051 Le créneau à correctement été crée
+2021-11-03 11:48:27,381 Le créneau à correctement été crée
+2021-11-03 11:48:27,568 Le créneau à correctement été crée
+2021-11-03 11:48:27,841 Le créneau à correctement été crée
+2021-11-03 11:48:27,937 Le créneau à correctement été crée
+2021-11-03 11:48:28,101 Le créneau à correctement été crée
+2021-11-03 11:48:28,305 Le créneau à correctement été crée
+2021-11-03 11:48:28,371 Le créneau à correctement été crée
+2021-11-03 11:48:28,491 Le créneau à correctement été crée
+2021-11-03 11:48:28,687 Le créneau à correctement été crée
+2021-11-03 11:48:29,007 Le créneau à correctement été crée
+2021-11-03 11:48:29,130 Le créneau à correctement été crée
+2021-11-03 11:48:29,287 Le créneau à correctement été crée
+2021-11-03 11:48:29,524 Le créneau à correctement été crée
+2021-11-03 11:48:29,717 Le créneau à correctement été crée
+2021-11-03 11:48:30,009 Le créneau à correctement été crée
+2021-11-03 11:48:30,235 Le créneau à correctement été crée
+2021-11-03 11:48:30,569 Le créneau à correctement été crée
+2021-11-03 11:48:30,876 Le créneau à correctement été crée
+2021-11-03 11:48:31,024 Le créneau à correctement été crée
+2021-11-03 11:49:49,725  * Debugger is active!
+2021-11-03 11:49:49,773  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-03 11:51:09,286  * Debugger is active!
+2021-11-03 11:51:09,335  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-03 11:52:04,344  * Debugger is active!
+2021-11-03 11:52:04,436  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-03 11:54:09,795  * Debugger is active!
+2021-11-03 11:54:09,942  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-03 11:54:24,741  * Debugger is active!
+2021-11-03 11:54:24,834  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-03 11:55:33,824  * Debugger is active!
+2021-11-03 11:55:33,885  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-03 11:55:50,310  * Debugger is active!
+2021-11-03 11:55:50,357  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.

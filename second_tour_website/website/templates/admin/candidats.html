@@ -37,35 +37,48 @@
                         <th scope="col">
                             <div class="th-inner">Série</div>
                             <div class="filter-control">
-                                    <select class="form-select finder" onchange="finder()">
-                                        <option select></option>
-                                        {% for a_serie in all_series %}
-                                        <option>{{a_serie.nom}} - {% if a_serie.specialite1 %}{{a_serie.specialite1}}{% endif %}{% if
-                                            a_serie.specialite2 %}/{{a_serie.specialite2}}{% endif %}</option>
-                                        {% endfor %}
-                                    </select>
+                                <select class="form-select finder" onchange="finder()" style="width: 200px;">
+                                    <option selected></option>
+                                    {% for a_serie in all_series %}
+                                    <option>{{a_serie.nom}} - {% if a_serie.specialite1 %}{{a_serie.specialite1}}{%
+                                        endif %}{% if
+                                        a_serie.specialite2 %}/{{a_serie.specialite2}}{% endif %}</option>
+                                    {% endfor %}
+                                </select>
                             </div>
                         </th>
                         <th scope="col">
                             <div class="th-inner">Matière1</div>
                             <div class="filter-control">
-                                    <select class="form-select finder break-doublons" onchange="finder()">
-                                        <option select></option>
-                                        {% for matiere in all_matieres %}
-                                        <option>{{matiere.nom}}</option>
-                                        {% endfor %}
-                                    </select>
+                                <select class="form-select finder break-doublons" onchange="finder()"
+                                    style="width: 200px;">
+                                    <option selected></option>
+                                    {% for matiere in all_matieres %}
+                                    <option>{{matiere.nom}}</option>
+                                    {% endfor %}
+                                </select>
                             </div>
                         </th>
                         <th scope="col">
                             <div class="th-inner">Matière2</div>
                             <div class="filter-control">
-                                    <select class="form-select finder break-doublons-1" onchange="finder()">
-                                        <option select></option>
-                                        {% for matiere in all_matieres %}
-                                        <option>{{matiere.nom}}</option>
-                                        {% endfor %}
-                                    </select>
+                                <select class="form-select finder break-doublons-1" onchange="finder()"
+                                    style="width: 200px;">
+                                    <option selected></option>
+                                    {% for matiere in all_matieres %}
+                                    <option>{{matiere.nom}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </th>
+                        <th scope="col">
+                            <div class="th-inner">Tiers temps</div>
+                            <div class="filter-control">
+                                <select class="form-select finder" onchange="finder()" style="width: 100px;">
+                                    <option selected></option>
+                                    <option>Oui</option>
+                                    <option>Non</option>
+                                </select>
                             </div>
                         </th>
                         <th scope="col" class="modifier">Modifier</th>
@@ -106,6 +119,9 @@
                             {% endif %}
                             {% endfor %}
                         </td>
+                        <td scope="row">
+                            {% if candidat.tiers_temps %}Oui{% else %}Non{% endif %}
+                        </td>
                         <td>
                             <form method="post" action="{{url_for('admin_routes.candidats')}}"
                                 id="modifCandidatsForm{{candidat.id_candidat}}">
@@ -125,7 +141,8 @@
                         </td>
                     </tr>
                     <tr class="not-null" style="--bs-table-hover-bg: transparent; --bs-table-accent-bg: transparent;">
-                        <td colspan="100%" style="padding: 0; background: transparent; --bs-table-accent-bg: transparent;">
+                        <td colspan="100%"
+                            style="padding: 0; background: transparent; --bs-table-accent-bg: transparent;">
                             <div class="collapse" id="accordion{{candidat.id_candidat}}" style="margin: 15px 10px;">
                                 <div class="table-responsive thumbnail">
                                     <table class="table table-light table-striped table-hover" id="calendar">
@@ -186,12 +203,12 @@
                         <div class="form-group">
                             <label for="namePush">Nom</label>
                             <input type="text" class="form-control" id="namePush" name="name"
-                                aria-describedby="nameHelp" placeholder="Entrez un nom" required="required">
+                                aria-describedby="nameHelp" placeholder="Entrez un nom" required>
                         </div>
                         <div class="form-group">
                             <label for="surnamePush">Prenom</label>
                             <input type="text" class="form-control" id="surnamePush" name="surname"
-                                aria-describedby="surnameHelp" placeholder="Entrez un prénom" required="required">
+                                aria-describedby="surnameHelp" placeholder="Entrez un prénom" required>
                         </div>
                         <div class="form-group">
                             <label for="serieSelect">Serie</label>
@@ -218,6 +235,13 @@
                                 <option selected value></option>
                             </select>
                         </div>
+                        <div class="form-group">
+                            <label for="tierstempsSelect">Tiers temps</label>
+                            <select class="form-control" name="tiers_temps" id="tierstempsSelect" required>
+                                <option selected value="False">Non</option>
+                                <option value="True">Oui</option>
+                            </select>
+                        </div>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -229,6 +253,7 @@
         </div>
     </div>
 
+    <!--Modal modif candidat-->
     <div class="modal fade" id="modifModal" tabindex="-1" role="dialog" aria-labelledby="modifCandidatModal"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -245,12 +270,12 @@
                         <div class="form-group">
                             <label for="name">Nom</label>
                             <input type="text" class="form-control" id="name" name="name" aria-describedby="nameHelp"
-                                placeholder="Entrez un nom" required="required">
+                                placeholder="Entrez un nom" required>
                         </div>
                         <div class="form-group">
                             <label for="surname">Prenom</label>
                             <input type="text" class="form-control" id="surname" name="surname"
-                                aria-describedby="surnameHelp" placeholder="Entrez un prénom" required="required">
+                                aria-describedby="surnameHelp" placeholder="Entrez un prénom" required>
                         </div>
                         <div class="form-group">
                             <label for="serieSelectModif">Serie</label>
@@ -276,6 +301,13 @@
                             <label for="matiere2SelectModif">Matière2</label>
                             <select class="form-control" id="matiere2SelectModif" name="matiere2">
                                 <option selected value></option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="tierstempsSelect">Tiers temps</label>
+                            <select class="form-control" name="tiers_temps" id="tierstempsSelect" required>
+                                <option selected value="False">Non</option>
+                                <option value="True">Oui</option>
                             </select>
                         </div>
                         <input type="hidden" name="id" id="hiddenIdModif">
@@ -441,6 +473,14 @@
             if (select.options[i].id == "serieModif" + id_serie) {
                 select.options[i].selected = true;
             }
+        }
+        //Set the tiers temps
+        if (candidat['tiers_temps'] == true) {
+            form_elements[5].options[0].selected = false;
+            form_elements[5].options[1].selected = true;
+        } else {
+            form_elements[5].options[0].selected = true;
+            form_elements[5].options[1].selected = false;
         }
 
         testMatiereCompatible();

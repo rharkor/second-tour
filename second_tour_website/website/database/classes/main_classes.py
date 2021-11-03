@@ -63,10 +63,12 @@ class MATIERES(db.Model):
     nom = db.Column(db.String(30),nullable=False)
     nom_complet = db.Column(db.String(60),nullable=False)
     temps_preparation = db.Column(db.Integer, nullable=False)
+    temps_preparation_tiers_temps = db.Column(db.Integer, nullable=False)
     temps_passage = db.Column(db.Integer, nullable=False)
+    temps_passage_tiers_temps = db.Column(db.Integer, nullable=False)
     loge = db.Column(db.Integer, nullable=True)
 
-    def __init__(self, id_serie, nom, nom_complet, temps_preparation, temps_passage, loge=None):
+    def __init__(self, id_serie, nom, nom_complet, temps_preparation, temps_preparation_tiers_temps, temps_passage, temps_passage_tiers_temps, loge=None):
         self.unvalid = False
 
         if res := self.unique_nom_nom_comp_tps_prepa(nom, nom_complet, temps_preparation, temps_passage):
@@ -78,7 +80,9 @@ class MATIERES(db.Model):
         self.nom = nom
         self.nom_complet = nom_complet
         self.temps_preparation = temps_preparation
+        self.temps_preparation_tiers_temps = temps_preparation_tiers_temps
         self.temps_passage = temps_passage
+        self.temps_passage_tiers_temps = temps_passage_tiers_temps
         self.loge = loge
 
     def unique_nom_nom_comp_tps_prepa(self, nom, nom_complet, tpsprepa, tpspassage):
@@ -170,8 +174,9 @@ class CANDIDATS(db.Model):
     nom = db.Column(db.String(200), nullable=False)
     prenom = db.Column(db.String(150), nullable=False)
     id_serie = db.Column(db.Integer, nullable=False)
+    tiers_temps = db.Column(db.Boolean, nullable=False)
 
-    def __init__(self, nom, prenom, id_serie):
+    def __init__(self, nom, prenom, id_serie, tiers_temps):
         self.unvalid = False
 
         if res := self.foreign_id_serie(id_serie):
@@ -180,6 +185,7 @@ class CANDIDATS(db.Model):
         self.nom = nom
         self.prenom = prenom
         self.id_serie = id_serie
+        self.tiers_temps = tiers_temps
 
     def foreign_id_serie(self, id_serie):
         serie = SERIE.query.filter_by(id_serie=id_serie).first()

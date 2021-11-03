@@ -34,145 +34,145 @@ VALUES (NULL, 'Technologique', 'STI2D', NULL);
 
 --INSERTION DES MATIERES--
 INSERT INTO MATIERES
-VALUES (NULL, 1, 'Mathématiques', 'Mathématiques - Mathématiques/SVT', 30, 30, NULL);
+VALUES (NULL, 1, 'Mathématiques', 'Mathématiques - Mathématiques/SVT', 30, 40, 30, 40, NULL);
 INSERT INTO MATIERES
-VALUES (NULL, 1, 'SVT', 'SVT - Mathématiques/SVT', 30, 30, NULL);
+VALUES (NULL, 1, 'SVT', 'SVT - Mathématiques/SVT', 30, 40, 30, 40, NULL);
 INSERT INTO MATIERES
-VALUES (NULL, 1, 'Français', 'Français - Mathématiques/SVT', 30, 30, NULL);
+VALUES (NULL, 1, 'Français', 'Français - Mathématiques/SVT', 30, 40, 30, 40, NULL);
 INSERT INTO MATIERES
-VALUES (NULL, 1, 'Philosophie', 'Philosophie - Mathématiques/SVT', 30, 30, NULL);
+VALUES (NULL, 1, 'Philosophie', 'Philosophie - Mathématiques/SVT', 30, 40, 30, 40, NULL);
 
 INSERT INTO MATIERES
-VALUES (NULL, 2, 'Physique', 'Physique - Physique/SI', 30, 30, NULL);
+VALUES (NULL, 2, 'Physique', 'Physique - Physique/SI', 30, 40, 30, 40, NULL);
 INSERT INTO MATIERES
-VALUES (NULL, 2, 'SI', 'SI - Physique/SI', 60, 30, 1);
+VALUES (NULL, 2, 'SI', 'SI - Physique/SI', 60, 60, 30, 40, 1);
 INSERT INTO MATIERES
-VALUES (NULL, 2, 'Français', 'Français - Physique/SI', 30, 30, NULL);
+VALUES (NULL, 2, 'Français', 'Français - Physique/SI', 30, 40, 30, 40, NULL);
 INSERT INTO MATIERES
-VALUES (NULL, 2, 'Philosophie', 'Philosophie - Physique/SI', 30, 30, NULL);
+VALUES (NULL, 2, 'Philosophie', 'Philosophie - Physique/SI', 30, 40, 30, 40, NULL);
 
 INSERT INTO MATIERES
-VALUES (NULL, 3, '2I2D', '2I2D - STI2D', 60, 30, 2);
+VALUES (NULL, 3, '2I2D', '2I2D - STI2D', 60, 60, 30, 40, 2);
 INSERT INTO MATIERES
-VALUES (NULL, 3, 'Mathématiques/Physique', 'Mathématiques/Physique - STI2D', 30, 30, NULL);
+VALUES (NULL, 3, 'Mathématiques/Physique', 'Mathématiques/Physique - STI2D', 30, 40, 30, 40, NULL);
 INSERT INTO MATIERES
-VALUES (NULL, 3, 'Français', 'Français - STI2D', 30, 30, NULL);
+VALUES (NULL, 3, 'Français', 'Français - STI2D', 30, 40, 30, 40, NULL);
 INSERT INTO MATIERES
-VALUES (NULL, 3, 'Philosophie', 'Philosophie - STI2D', 30, 30, NULL);
+VALUES (NULL, 3, 'Philosophie', 'Philosophie - STI2D', 30, 40, 30, 40, NULL);
 
 --INSERTION DES CANDIDATS--
 INSERT INTO CANDIDATS
-VALUES (NULL, 'Oumiri', 'Hakim', 1);
+VALUES (NULL, 'Oumiri', 'Hakim', 1, true);
 INSERT INTO CHOIX_MATIERE
 VALUES (NULL, 1, 1, 2);
 
 INSERT INTO CANDIDATS
-VALUES (NULL, 'Garland', 'Gamelin', 1);
+VALUES (NULL, 'Garland', 'Gamelin', 1, true);
 INSERT INTO CHOIX_MATIERE
 VALUES (NULL, 2, 1, 3);
 
 INSERT INTO CANDIDATS
-VALUES (NULL, 'Huon', 'Guimond', 2);
+VALUES (NULL, 'Huon', 'Guimond', 2, false);
 INSERT INTO CHOIX_MATIERE
 VALUES (NULL, 3, 5, 6);
 
 INSERT INTO CANDIDATS
-VALUES (NULL, 'Pinette', 'Agathe', 3);
+VALUES (NULL, 'Pinette', 'Agathe', 3, false);
 INSERT INTO CHOIX_MATIERE
 VALUES (NULL, 4, 9, 10);
 
 INSERT INTO CANDIDATS
-VALUES (NULL, 'Allain', 'Clothilde', 3);
+VALUES (NULL, 'Allain', 'Clothilde', 3, false);
 INSERT INTO CHOIX_MATIERE
 VALUES (NULL, 5, 9, 10);
 
 INSERT INTO CANDIDATS
-VALUES (NULL, 'Jalbert', 'Arienne', 3);
+VALUES (NULL, 'Jalbert', 'Arienne', 3, false);
 INSERT INTO CHOIX_MATIERE
 VALUES (NULL, 6, 9, 10);
 
 INSERT INTO CANDIDATS
-VALUES (NULL, 'Bernard', 'Noémie', 3);
+VALUES (NULL, 'Bernard', 'Noémie', 3, false);
 INSERT INTO CHOIX_MATIERE
 VALUES (NULL, 7, 9, 11);
 
 INSERT INTO CANDIDATS
-VALUES (NULL, 'Gousse', 'Maurice', 1);
+VALUES (NULL, 'Gousse', 'Maurice', 1, false);
 INSERT INTO CHOIX_MATIERE
 VALUES (NULL, 8, 1, 3);
 
 INSERT INTO CANDIDATS
-VALUES (NULL, 'Le mendes', 'Isaac', 1);
+VALUES (NULL, 'Le mendes', 'Isaac', 1, false);
 INSERT INTO CHOIX_MATIERE
 VALUES (NULL, 9, 2, 3);
 
 INSERT INTO CANDIDATS
-VALUES (NULL, 'Guillot', 'Henri', 1);
+VALUES (NULL, 'Guillot', 'Henri', 1, false);
 INSERT INTO CHOIX_MATIERE
 VALUES (NULL, 10, 1, 2);
 
 INSERT INTO CANDIDATS
-VALUES (NULL, 'Foucher', 'Charlotte', 2);
+VALUES (NULL, 'Foucher', 'Charlotte', 2, false);
 INSERT INTO CHOIX_MATIERE
 VALUES (NULL, 11, 5, 6);
 
 INSERT INTO CANDIDATS
-VALUES (NULL, 'Duhamel', 'Claire', 2);
+VALUES (NULL, 'Duhamel', 'Claire', 2, false);
 INSERT INTO CHOIX_MATIERE
 VALUES (NULL, 12, 5, 6);
 
 INSERT INTO CANDIDATS
-VALUES (NULL, 'Pons', 'Sebastien', 2);
+VALUES (NULL, 'Pons', 'Sebastien', 2, false);
 INSERT INTO CHOIX_MATIERE
 VALUES (NULL, 13, 5, 6);
 
 INSERT INTO CANDIDATS
-VALUES (NULL, 'Vincent', 'Noémie', 2);
+VALUES (NULL, 'Vincent', 'Noémie', 2, false);
 INSERT INTO CHOIX_MATIERE
 VALUES (NULL, 14, 5, 7);
 
 INSERT INTO CANDIDATS
-VALUES (NULL, 'Lefebvre', 'Gilles', 3);
+VALUES (NULL, 'Lefebvre', 'Gilles', 3, false);
 INSERT INTO CHOIX_MATIERE
 VALUES (NULL, 15, 9, 10);
 
 INSERT INTO CANDIDATS
-VALUES (NULL, 'Devaux', 'Marine', 3);
+VALUES (NULL, 'Devaux', 'Marine', 3, false);
 INSERT INTO CHOIX_MATIERE
 VALUES (NULL, 16, 9, 10);
 
 INSERT INTO CANDIDATS
-VALUES (NULL, 'Labbe', 'David', 3);
+VALUES (NULL, 'Labbe', 'David', 3, false);
 INSERT INTO CHOIX_MATIERE
 VALUES (NULL, 17, 9, 10);
 
 INSERT INTO CANDIDATS
-VALUES (NULL, 'Gomes', 'Aimé', 3);
+VALUES (NULL, 'Gomes', 'Aimé', 3, false);
 INSERT INTO CHOIX_MATIERE
 VALUES (NULL, 18, 9, 10);
 
 INSERT INTO CANDIDATS
-VALUES (NULL, 'Ribeiro', 'Alfred', 3);
+VALUES (NULL, 'Ribeiro', 'Alfred', 3, false);
 INSERT INTO CHOIX_MATIERE
 VALUES (NULL, 19, 9, 10);
 
 INSERT INTO CANDIDATS
-VALUES (NULL, 'Romero', 'Julio', 3);
+VALUES (NULL, 'Romero', 'Julio', 3, false);
 INSERT INTO CHOIX_MATIERE
 VALUES (NULL, 20, 9, 12);
 
 INSERT INTO CANDIDATS
-VALUES (NULL, 'Leroy', 'Benoît', 3);
+VALUES (NULL, 'Leroy', 'Benoît', 3, false);
 INSERT INTO CHOIX_MATIERE
 VALUES (NULL, 21, 10, 11);
 
 INSERT INTO CANDIDATS
-VALUES (NULL, 'Dias', 'Gilles', 3);
+VALUES (NULL, 'Dias', 'Gilles', 3, false);
 INSERT INTO CHOIX_MATIERE
 VALUES (NULL, 22, 10, 11);
 
 INSERT INTO CANDIDATS
-VALUES (NULL, 'Lemaire', 'Alain', 3);
+VALUES (NULL, 'Lemaire', 'Alain', 3, true);
 INSERT INTO CHOIX_MATIERE
 VALUES (NULL, 23, 10, 9);
 

@@ -38,9 +38,9 @@ def candidats():
         if request.method == 'POST':
             form = request.form
             if form.get('submit_button') is not None:
-                if 'name' in form and 'surname' in form and 'serie' in form:
+                if 'name' in form and 'surname' in form and 'serie' in form and 'tiers_temps' in form:
                     result = main_database.add_candidat(
-                        form['name'], form['surname'], form['serie'], output=True)
+                        form['name'], form['surname'], form['serie'], form['tiers_temps'], output=True)
                     if result[1][1] == 'danger':
                         flash(result[0], result[1])
                         logging.warning(result[0])
@@ -64,13 +64,13 @@ def candidats():
                         flash(r[0], r[1])
                         logging.warning(r[0])
             elif form.get('modif_button') is not None:
-                if 'name' in form and 'surname' in form and 'serie' in form and 'id' in form:
+                if 'name' in form and 'surname' in form and 'serie' in form and 'id' in form and 'tiers_temps' in form:
                     if r := main_database.delete_candidat(form['id']):
                         flash(r[0], r[1])
                         logging.warning(r[0])
                     else:
                         result = main_database.add_candidat(
-                            form['name'], form['surname'], form['serie'], output=True)
+                            form['name'], form['surname'], form['serie'], form['tiers_temps'], output=True)
                         if result[1][1] == 'danger':
                             flash(result[0], result[1])
                             logging.warning(resize[0])
@@ -209,9 +209,9 @@ def matieres():
         if request.method == 'POST':
             form = request.form
             if form.get('submit_button') is not None:
-                if 'name' in form and 'serie' in form and 'temps_preparation' in form and 'temps_passage' in form:
+                if 'name' in form and 'serie' in form and 'temps_preparation' in form and 'temps_passage' in form and 'temps_preparation_tiers_temps' in form and 'temps_passage_tiers_temps' in form:
                     result = main_database.add_matiere(
-                        form['name'], form['serie'], form['temps_preparation'], form['temps_passage'], form['loge'] if 'loge' in form else None)
+                        form['name'], form['serie'], form['temps_preparation'], form['temps_preparation_tiers_temps'], form['temps_passage'], form['temps_passage_tiers_temps'], form['loge'] if 'loge' in form else None)
                     flash(result[0], result[1])
                     logging.warning(result[0])
             elif form.get('delete_button') is not None:

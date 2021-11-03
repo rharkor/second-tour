@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from datetime import timedelta
-from logging import WARNING, FileHandler
+from logging import WARNING,ERROR, FileHandler
 import logging
 import os, sys
 sys.path.append(os.path.join(os.path.dirname(__file__)))
@@ -12,8 +12,8 @@ app = Flask(__name__)
 file_handler = FileHandler(os.getcwd() + "/second_tour_website/logs/logs_info.txt")
 file_handler.setLevel(WARNING)
 logging.basicConfig(
-    level=WARNING,
-    format="%(asctime)s [%(levelname)s] %(message)s",
+    level=ERROR,
+    format="%(asctime)s %(message)s",
     handlers=[
         file_handler
     ]

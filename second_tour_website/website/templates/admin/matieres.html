@@ -81,8 +81,14 @@
                             {% endif %}
                             {% endfor %}
                         </td>
-                        <td scope="row">{{an_matiere.temps_preparation}}</td>
-                        <td scope="row">{{an_matiere.temps_passage}}</td>
+                        <td scope="row">{{an_matiere.temps_preparation}}
+                            <br>
+                            Tiers temps : {{an_matiere.temps_preparation_tiers_temps}}
+                        </td>
+                        <td scope="row">{{an_matiere.temps_passage}}
+                            <br>
+                            Tiers temps : {{an_matiere.temps_passage_tiers_temps}}
+                        </td>
                         <td scope="row">{% if an_matiere.loge %}
                             {% for a_salle in all_salles %}
                             {% if a_salle.id_salle == an_matiere.loge %}
@@ -123,7 +129,7 @@
                         <div class="form-group">
                             <label for="matiereName">Nom de la matière</label>
                             <input type="text" class="form-control" id="matiereName" name="name"
-                                placeholder="Entrez le nom de la matière" required="required">
+                                placeholder="Entrez le nom de la matière" required>
                         </div>
                         <div class="form-group">
                             <label for="selectSerie">Série</label>
@@ -147,14 +153,24 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="temps_preparation">Temps de préparation</label>
+                            <label for="temps_preparation">Temps de préparation (minutes)</label>
                             <input type="number" class="form-control" id="temps_preparation" name="temps_preparation"
-                                placeholder="Entrez un temps de préparation" required="required">
+                                placeholder="Entrez un temps de préparation" required>
                         </div>
                         <div class="form-group">
-                            <label for="temps_passage">Temps de passage</label>
+                            <label for="temps_preparation_tiers_temps">Temps de préparation tiers temps</label>
+                            <input type="number" class="form-control" id="temps_preparation_tiers_temps" name="temps_preparation_tiers_temps"
+                                placeholder="Entrez un temps de préparation pour les tiers temps" required>
+                        </div>
+                        <div class="form-group" style="margin-top: 20px;">
+                            <label for="temps_passage">Temps de passage  (minutes)</label>
                             <input type="number" class="form-control" id="temps_passage" name="temps_passage"
-                                placeholder="Entrez un temps de passage" required="required">
+                                placeholder="Entrez un temps de passage" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="temps_passage_tiers_temps">Temps de passage tiers temps</label>
+                            <input type="number" class="form-control" id="temps_passage_tiers_temps" name="temps_passage_tiers_temps"
+                                placeholder="Entrez un temps de passage pour les tiers temps" required>
                         </div>
                     </form>
                 </div>

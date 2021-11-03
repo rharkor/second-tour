@@ -13,20 +13,20 @@ def add_account(email, password, user_type_string, output=False):
             db.session.add(user)
             db.session.commit()
             if output:
-                return (user, ['L\'utilisateur à bien été crée', 'success'])
                 logging.warning('L\'utilisateur à bien été crée')
-            return ['L\'utilisateur à bien été crée', 'success']
+                return (user, ['L\'utilisateur à bien été crée', 'success'])
             logging.warning('L\'utilisateur à bien été crée')
+            return ['L\'utilisateur à bien été crée', 'success']
         else:
             if output:
                 return (user, user.unvalid)
             return user.unvalid
     except Exception:
         if output:
-                return (user, ['Erreur : ' + traceback.logging.warning_exc(), 'danger'])
                 logging.warning('Erreur : ' + traceback.logging.warning_exc())
-        return ['Erreur : ' + traceback.logging.warning_exc(), 'danger']
+                return (user, ['Erreur : ' + traceback.logging.warning_exc(), 'danger'])
         logging.warning('Erreur : ' + traceback.logging.warning_exc())
+        return ['Erreur : ' + traceback.logging.warning_exc(), 'danger']
 
 def delete_account(id):
     try:
@@ -39,8 +39,8 @@ def delete_account(id):
         db.session.commit()
         return False
     except Exception:
-        return ['Erreur : ' + traceback.format_exc(), 'danger']
         logging.warning('Erreur : ' + traceback.format_exc())
+        return ['Erreur : ' + traceback.format_exc(), 'danger']
 
 def add_serie(serie_choice, specialite1, specialite2):
     try:
@@ -48,13 +48,13 @@ def add_serie(serie_choice, specialite1, specialite2):
         if not serie.unvalid:
             db.session.add(serie)
             db.session.commit()
-            return ['La série à bien été crée', 'success']
             logging.warning('La série à bien été crée')
+            return ['La série à bien été crée', 'success']
         else:
             return serie.unvalid
     except Exception:
-        return ['Erreur : ' + traceback.format_exc(), 'danger']
         logging.warning('Erreur : ' + traceback.format_exc())
+        return ['Erreur : ' + traceback.format_exc(), 'danger']
 
 def delete_serie(id):
     try:
@@ -70,10 +70,10 @@ def delete_serie(id):
         db.session.commit()
         return False
     except Exception:
-        return ['Erreur : ' + traceback.format_exc(), 'danger']
         logging.warning('Erreur : ' + traceback.format_exc())
+        return ['Erreur : ' + traceback.format_exc(), 'danger']
 
-def add_matiere(name, serie, temps_preparation, temps_passage, loge):
+def add_matiere(name, serie, temps_preparation, temps_preparation_tiers_temps, temps_passage, temps_passage_tiers_temps, loge):
     try:
         serie = int(serie)
         all_series = SERIE.query.all()
@@ -86,17 +86,17 @@ def add_matiere(name, serie, temps_preparation, temps_passage, loge):
         if serie_name is None:
             logging.warning(f"Erreur : No serie found at this id ({serie})")
         name_complete = f"{name} - {serie_name}"
-        matiere = MATIERES(serie, name, name_complete, temps_preparation, temps_passage, loge)
+        matiere = MATIERES(serie, name, name_complete, temps_preparation, temps_preparation_tiers_temps, temps_passage, temps_passage_tiers_temps, loge)
         if not matiere.unvalid:
             db.session.add(matiere)
             db.session.commit()
-            return ['La matière à bien été crée', 'success']
             logging.warning('La matière à bien été crée')
+            return ['La matière à bien été crée', 'success']
         else:
             return matiere.unvalid
     except Exception:
-        return ['Erreur : ' + traceback.format_exc(), 'danger']
         logging.warning('Erreur : ' + traceback.format_exc())
+        return ['Erreur : ' + traceback.format_exc(), 'danger']
 
 def delete_matiere(id):
     try:
@@ -121,8 +121,8 @@ def delete_matiere(id):
         db.session.commit()
         return False
     except Exception:
-        return ['Erreur : ' + traceback.format_exc(), 'danger']
         logging.warning('Erreur : ' + traceback.format_exc())
+        return ['Erreur : ' + traceback.format_exc(), 'danger']
 
 def add_salle(numero):
     try:
@@ -130,13 +130,13 @@ def add_salle(numero):
         if not salle.unvalid:
             db.session.add(salle)
             db.session.commit()
-            return ['La salle à bien été crée', 'success']
             logging.warning('La salle à bien été crée')
+            return ['La salle à bien été crée', 'success']
         else:
             return salle.unvalid
     except Exception:
-        return ['Erreur : ' + traceback.format_exc(), 'danger']
         logging.warning('Erreur : ' + traceback.format_exc())
+        return ['Erreur : ' + traceback.format_exc(), 'danger']
 
 def delete_salle(id):
     try:
@@ -157,8 +157,8 @@ def delete_salle(id):
         db.session.commit()
         return False
     except Exception:
-        return ['Erreur : ' + traceback.format_exc(), 'danger']
         logging.warning('Erreur : ' + traceback.format_exc())
+        return ['Erreur : ' + traceback.format_exc(), 'danger']
 
 def add_professeur(email, password, nom, prenom, matiere, salle):
     try:
@@ -170,13 +170,13 @@ def add_professeur(email, password, nom, prenom, matiere, salle):
         if not professeur.unvalid:
             db.session.add(professeur)
             db.session.commit()
-            return ['Le professeur à bien été crée', 'success']
             logging.warning('Le professeur à bien été crée')
+            return ['Le professeur à bien été crée', 'success']
         else:
             return professeur.unvalid
     except Exception:
-        return ['Erreur : ' + traceback.format_exc(), 'danger']
         logging.warning('Erreur : ' + traceback.format_exc())
+        return ['Erreur : ' + traceback.format_exc(), 'danger']
 
 def delete_professeur(id):
     try:
@@ -189,28 +189,28 @@ def delete_professeur(id):
         db.session.commit()
         return False
     except Exception:
-        return ['Erreur : ' + traceback.format_exc(), 'danger']
         logging.warning('Erreur : ' + traceback.format_exc())
+        return ['Erreur : ' + traceback.format_exc(), 'danger']
 
-def add_candidat(nom, prenom, id_serie, output=False):
+def add_candidat(nom, prenom, id_serie, tiers_temps, output=False):
     try:
-        candidat = CANDIDATS(nom, prenom, id_serie)
+        candidat = CANDIDATS(nom, prenom, id_serie, True if tiers_temps == "True" else False)
         if not candidat.unvalid:
             db.session.add(candidat)
             db.session.commit()
             if output:
-                return (candidat, ['Le candidat à bien été crée', 'success'])
+                logging.warning('Le candidat à bien été crée')
+                return [candidat, 'Le candidat à bien été crée', 'success']
             return ['Le candidat à bien été crée', 'success']
-            logging.warning('Le candidat à bien été crée')
         else:
             if output:
                 return (candidat, candidat.unvalid)
             return candidat.unvalid
     except Exception:
         if output:
-            return (candidat, ['Erreur : ' + traceback.format_exc(), 'danger'])
+            logging.warning('Erreur : ' + traceback.format_exc())
+            return [candidat, 'Erreur : ' + traceback.format_exc(), 'danger']
         return ['Erreur : ' + traceback.format_exc(), 'danger']
-        logging.warning('Erreur : ' + traceback.format_exc())
 
 def delete_candidat(id):
     try:
@@ -227,8 +227,8 @@ def delete_candidat(id):
         db.session.commit()
         return False
     except Exception:
-        return ['Erreur : ' + traceback.format_exc(), 'danger']
         logging.warning('Erreur : ' + traceback.format_exc())
+        return ['Erreur : ' + traceback.format_exc(), 'danger']
 
 def add_choix_matiere(id_candidat, matiere1, matiere2):
     try:
@@ -236,14 +236,13 @@ def add_choix_matiere(id_candidat, matiere1, matiere2):
         if not choix_matiere.unvalid:
             db.session.add(choix_matiere)
             db.session.commit()
-            return ['Les choix du candidat on bien été crée', 'success']
             logging.warning('Les choix du candidat on bien été crée')
+            return ['Les choix du candidat on bien été crée', 'success']
         else:
             return choix_matiere.unvalid
     except Exception:
-        logging.warning(traceback.format_exc())
-        return ['Erreur : ' + traceback.format_exc(), 'danger']
         logging.warning('Erreur : ' + traceback.format_exc())
+        return ['Erreur : ' + traceback.format_exc(), 'danger']
 
 def delete_choix_matiere(id):
     try:
@@ -252,8 +251,8 @@ def delete_choix_matiere(id):
         db.session.commit()
         return False
     except Exception:
-        return ['Erreur : ' + traceback.format_exc(), 'danger']
         logging.warning('Erreur : ' + traceback.format_exc())
+        return ['Erreur : ' + traceback.format_exc(), 'danger']
 
 def add_creneau(id_candidat, id_matiere, id_salle, debut_preparation, fin):
     try:
@@ -262,14 +261,14 @@ def add_creneau(id_candidat, id_matiere, id_salle, debut_preparation, fin):
         if not creneau.unvalid:
             db.session.add(creneau)
             db.session.commit()
-            return ['Le créneau à correctement été crée', 'success']
             logging.warning('Le créneau à correctement été crée')
+            return ['Le créneau à correctement été crée', 'success']
         else:
             return creneau.unvalid
     except Exception:
         logging.warning(traceback.format_exc())
-        return ['Erreur : ' + traceback.format_exc(), 'danger']
         logging.warning('Erreur : ' + traceback.format_exc())
+        return ['Erreur : ' + traceback.format_exc(), 'danger']
 
 def delete_creneau(id):
     try:
@@ -278,5 +277,5 @@ def delete_creneau(id):
         db.session.commit()
         return False
     except Exception:
-        return ['Erreur : ' + traceback.format_exc(), 'danger']
         logging.warning('Erreur : ' + traceback.format_exc())
+        return ['Erreur : ' + traceback.format_exc(), 'danger']

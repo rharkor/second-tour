@@ -88,10 +88,10 @@ def generation_calendrier():
 
         # Verify the disponibility
         # total time for matiere
-        temps_passage_m1 = convert_to_decimal_time(convert_minute_to_string(matiere1.temps_passage))
-        temps_passage_m2 = convert_to_decimal_time(convert_minute_to_string(matiere2.temps_passage))
-        temps_preparation_m1 = convert_to_decimal_time(convert_minute_to_string(matiere1.temps_preparation))
-        temps_preparation_m2 = convert_to_decimal_time(convert_minute_to_string(matiere2.temps_preparation))
+        temps_passage_m1 = convert_to_decimal_time(convert_minute_to_string(matiere1.temps_passage if not candidat.tiers_temps else matiere1.temps_passage_tiers_temps))
+        temps_passage_m2 = convert_to_decimal_time(convert_minute_to_string(matiere2.temps_passage if not candidat.tiers_temps else matiere2.temps_passage_tiers_temps))
+        temps_preparation_m1 = convert_to_decimal_time(convert_minute_to_string(matiere1.temps_preparation if not candidat.tiers_temps else matiere1.temps_preparation_tiers_temps))
+        temps_preparation_m2 = convert_to_decimal_time(convert_minute_to_string(matiere2.temps_preparation if not candidat.tiers_temps else matiere2.temps_preparation_tiers_temps))
         
 
         for x in range(0, 2):
@@ -193,6 +193,7 @@ def convert_from_decimal_time(decimal):
 def convert_to_decimal_time(time):
     h, m = time.split(':')
     r = int(h) + float(m)/60
+    r = round(r, 2)
     return r
 
 def convert_minute_to_string(time):
