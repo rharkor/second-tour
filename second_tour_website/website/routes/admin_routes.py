@@ -1,9 +1,12 @@
 import logging
-from flask import Blueprint, render_template, session, request, redirect, url_for
+from flask import Blueprint, render_template, session, request, redirect, url_for, send_file
 from flask.helpers import flash
+import pandas as pd
+from zipfile import ZipFile
 
 from ..function import main_security, main_sessions, main_database, main_calendrier
 from ..database.main_database import *
+from ..main_website import app
 
 admin_routes = Blueprint('admin_routes', __name__,
                          template_folder='templates',
@@ -143,13 +146,46 @@ def salles():
                     if r := main_database.delete_salle(form['id']):
                         flash(r[0], r[1])
                         logging.warning(r[0])
-        all_profs = PROFESSEUR.query.order_by(PROFESSEUR.nom).all()
+            elif form.get('excel_button') is not None:
+                # create a ZipFile object
+                # zipObj = ZipFile(app.config['UPLOAD_FOLDER'] + '/data.zip', 'w')
+                filename = app.config['UPLOAD_FOLDER'] + "/donees.xlsx"
+                writer = pd.ExcelWriter(filename)
+                for table in [CRENEAU, CANDIDATS, PROFESSEUR, SALLE, SERIE, MATIERES, CHOIX_MATIERE, UTILISATEURS]:
+                    records = db.session.query(table).all()
+                    data_list = [main_database.to_dict(item) for item in records]
+                    df = pd.DataFrame(data_list)
+                    df.to_excel(writer, sheet_name=table.__table__.name)
+                writer.save()
+                # zipObj.write(filename)
+
+                # close the Zip File
+                # zipObj.close()
+                return send_file(filename)
+
         all_matieres = MATIERES.query.all()
         all_creneaux = CRENEAU.query.order_by(CRENEAU.debut_preparation).all()
+        # Serialize table
+        creneaux = CRENEAU.query.order_by(CRENEAU.debut_preparation).all()
+        all_creneaux = []
+        for creneau in creneaux:
+            all_creneaux.append(creneau.as_dict())
+
         all_candidats = CANDIDATS.query.all()
-        all_salles = SALLE.query.order_by(SALLE.numero).all()
+
+        # Serialize table
+        professeurs = PROFESSEUR.query.all()
+        all_professeurs = []
+        for professeur in professeurs:
+            all_professeurs.append(professeur.as_dict())
+        # Serialize table
+        salles = SALLE.query.all()
+        all_salles = []
+        for salle in salles:
+            all_salles.append(salle.as_dict())
+
         all_choix_matieres = CHOIX_MATIERE.query.all()
-        return render_template('admin/salles.html', all_salles=all_salles, all_profs=all_profs, all_matieres=all_matieres, all_creneaux=all_creneaux, all_candidats=all_candidats, all_choix_matieres=all_choix_matieres)
+        return render_template('admin/salles.html', all_salles=all_salles, all_professeurs=all_professeurs, all_matieres=all_matieres, all_creneaux=all_creneaux, all_candidats=all_candidats, all_choix_matieres=all_choix_matieres)
     else:
         return redirect(url_for('main_routes.connexion'))
 

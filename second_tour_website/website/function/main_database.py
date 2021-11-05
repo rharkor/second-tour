@@ -279,3 +279,14 @@ def delete_creneau(id):
     except Exception:
         logging.warning('Erreur : ' + traceback.format_exc())
         return ['Erreur : ' + traceback.format_exc(), 'danger']
+
+
+def to_dict(row):
+    if row is None:
+        return None
+
+    rtn_dict = dict()
+    keys = row.__table__.columns.keys()
+    for key in keys:
+        rtn_dict[key] = getattr(row, key)
+    return rtn_dict

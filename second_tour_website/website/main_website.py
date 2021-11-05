@@ -25,6 +25,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/data.sqlite3'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 app.config['SECRET_KEY'] = "HEby4gbqFGFtSCeV"
 app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=3)
+app.config['UPLOAD_FOLDER'] = os.getcwd() + "/second_tour_website/website/upload"
 
 db = SQLAlchemy(app)
 

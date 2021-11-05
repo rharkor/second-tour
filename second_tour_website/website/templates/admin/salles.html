@@ -2,11 +2,25 @@
 {% block title %}Administration{% endblock %}
 {% block sub_content %}
 <div class="main-div-admin">
-    <div class="name-finder" style="justify-content: end;">
-        <button href="#" type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addSalleModal">
-            Ajouter
-            <i class="fas fa-plus ml-s"></i>
+    <div class="d-flex flex-row" style="justify-content: space-between;align-items:center; width:100%;">
+        <button class="btn btn-primary" onclick="download_multiplePdf()" style="width: max-content; white-space:nowrap;"">
+            Télécharger
+            <i class=" fas fa-print ml-s"></i>
         </button>
+        <form method="post">
+            <button class="btn btn-success" type="submit" style="background-color: green; width: max-content;white-space:nowrap;"
+                name="excel_button">
+                Exporter au format XLSX
+                <i class="fas fa-file-excel ml-s"></i>
+            </button>
+        </form>
+        <div class="name-finder" style="justify-content: end;">
+            <button href="#" type="button" class="btn btn-success" data-bs-toggle="modal"
+                data-bs-target="#addSalleModal">
+                Ajouter
+                <i class="fas fa-plus ml-s"></i>
+            </button>
+        </div>
     </div>
     <div class="main-table-admin">
         {%- for category, message in get_flashed_messages(with_categories = true) %}
@@ -36,19 +50,8 @@
                             a_salle.id_salle %} - Loge{% endif %}{% endfor %}</td>
                         <td scope="row">
                             <div class="align-items-end">
-                                <!-- <form method="post" action="{{url_for('admin_routes.salles')}}" id="downloadSalleForm{{a_salle.id_salle}}">
-                                    <input type="hidden" id="{{a_salle.id_salle}}" value="{{a_salle.id_salle}}" name="id">
-                                    <button type="submit" class="btn btn-info" id="buttonSubmitDownload" name="download_button">
-                                        Télécharger
-                                        <i class="fas fa-print ml-s"></i>
-                                    </button>
-                                </form> -->
                                 <button class="btn btn-primary"
-                                {% for a_prof in all_profs %}
-                                {% if a_prof.salle == a_salle.id_salle %}
-                                onclick="downloadPDFWithBrowserPrint('tableAccordionProf{{a_prof.id_professeur}}', '{{a_salle.numero}}')"
-                                {% endif %}
-                                {% endfor %}>
+                                    onclick="downloadPDFWithBrowserPrint('tableAccordion{{a_salle.id_salle}}', '{{a_salle.numero}}')">
                                     Télécharger
                                     <i class="fas fa-print ml-s"></i></button>
                             </div>
@@ -68,7 +71,8 @@
                             style="padding: 0; background: transparent; --bs-table-accent-bg: transparent;">
                             <div class="collapse" id="accordion{{a_salle.id_salle}}" style="margin: 15px 10px;">
                                 <div class="table-responsive thumbnail">
-                                    <table class="table table-light table-striped table-hover" id="tableAccordion{{a_salle.id_salle}}">
+                                    <table class="table table-light table-striped table-hover"
+                                        id="tableAccordionProf{{a_salle.id_salle}}">
                                         <thead>
                                             <tr>
                                                 <th scope="col">Nom</th>
@@ -77,7 +81,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {% for a_prof in all_profs %}
+                                            {% for a_prof in all_professeurs %}
                                             {% if a_prof.salle == a_salle.id_salle %}
                                             <tr class="clickable not-null" data-bs-toggle="collapse"
                                                 data-bs-target="#accordionProf{{a_prof.id_professeur}}">
@@ -98,8 +102,8 @@
                                                     <div class="collapse" id="accordionProf{{a_prof.id_professeur}}"
                                                         style="margin: 15px 10px;">
                                                         <div class="table-responsive thumbnail">
-                                                            <table class="table table-light table-striped table-hover" id="tableAccordionProf{{a_prof.id_professeur}}"
-                                                                id="calendar">
+                                                            <table class="table table-light table-striped table-hover"
+                                                                id="tableAccordion{{a_salle.id_salle}}" id="calendar">
                                                                 <thead>
                                                                     <tr>
                                                                         <th scope="col">Nom</th>
@@ -140,34 +144,55 @@
 
                                             {% for a_matiere_o in all_matieres %}
                                             {% if a_matiere_o.loge == a_salle.id_salle %}
-                                            {% for candidat in all_candidats %}
-                                            {% for a_choix_o in all_choix_matieres %}
-                                            {% if a_choix_o.id_candidat == candidat.id_candidat %}
-                                            {% if a_matiere_o.id_matiere == a_choix_o.matiere1 or a_matiere_o.id_matiere
-                                            ==
-                                            a_choix_o.matiere2 %}
-                                            <tr>
-                                                <td scope="row">{{candidat.nom}}</td>
-                                                <td scope="row">{{candidat.prenom}}</td>
-                                                <td scope="row">
-                                                    {% for a_choix_matiere in all_choix_matieres %}
-                                                    {% if a_choix_matiere.id_candidat == candidat.id_candidat %}
-                                                    {% for a_matiere in all_matieres %}
-                                                    {% if (a_matiere.id_matiere == a_choix_matiere.matiere1 and
-                                                    a_matiere_o.id_matiere == a_choix_o.matiere1) or
-                                                    (a_matiere.id_matiere == a_choix_matiere.matiere2 and
-                                                    a_matiere_o.id_matiere == a_choix_o.matiere2) %}
-                                                    {{a_matiere.nom}}
-                                                    {% endif %}
-                                                    {% endfor %}
-                                                    {% endif %}
-                                                    {% endfor %}
+                                            <tr class="clickable not-null" data-bs-toggle="collapse"
+                                                data-bs-target="#accordionLoge{{a_salle.id_salle}}">
+                                                <td scope="row">Loge</td>
+                                                <td scope="row"> </td>
+                                                <td scope="row"> </td>
+                                            </tr>
+                                            <tr style="--bs-table-hover-bg: transparent; --bs-table-accent-bg: transparent;"
+                                                class="not-null">
+                                                <td colspan="100%"
+                                                    style="padding: 0; background: transparent; --bs-table-accent-bg: transparent;">
+                                                    <div class="collapse" id="accordionLoge{{a_salle.id_salle}}"
+                                                        style="margin: 15px 10px;">
+                                                        <div class="table-responsive thumbnail">
+                                                            <table class="table table-light table-striped table-hover"
+                                                                id="tableAccordion{{a_salle.id_salle}}" id="calendar">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th scope="col">Nom</th>
+                                                                        <th scope="col">Prénom</th>
+                                                                        <th scope="col">Heure de début préparation</th>
+                                                                        <th scope="col">Heure de fin</th>
+                                                                        <th scope="col">Emargement</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    {% for creneau in all_creneaux %}
+                                                                    {% if creneau.id_matiere == a_matiere_o.id_matiere
+                                                                    %}
+                                                                    <tr class="not-null">
+                                                                        {% for candidat in all_candidats %}
+                                                                        {% if candidat.id_candidat ==
+                                                                        creneau.id_candidat %}
+                                                                        <td scope="row">{{candidat.nom}}</td>
+                                                                        <td scope="row">{{candidat.prenom}}</td>
+                                                                        {% endif %}
+                                                                        {% endfor %}
+                                                                        <td scope="row">{{creneau.debut_preparation}}
+                                                                        </td>
+                                                                        <td scope="row">{{creneau.fin}}</td>
+                                                                        <td scope="row"></td>
+                                                                    </tr>
+                                                                    {% endif %}
+                                                                    {% endfor %}
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
                                                 </td>
                                             </tr>
-                                            {% endif %}
-                                            {% endif %}
-                                            {% endfor %}
-                                            {% endfor %}
                                             {% endif %}
                                             {% endfor %}
                                         </tbody>
@@ -239,66 +264,4 @@
 {% endblock %}
 
 {% block sub_script %}
-<script>
-    function downloadPDFWithBrowserPrint(name, num_salle) {
-        var doc = new jsPDF('l', 'pt', 'a4');
-        var htmlstring = '';
-        var tempVarToCheckPageHeight = 0;
-        var pageHeight = 0;
-        var pageWidth = 0;
-        pageHeight = doc.internal.pageSize.height;
-        specialElementHandlers = {  
-            // element with id of "bypass" - jQuery style selector  
-            '#bypassme': function(element, renderer) {  
-                // true = "handled elsewhere, bypass text extraction"  
-                return true  
-            }  
-        };  
-        margins = {
-            top: 150,
-            bottom: 60,
-            left: 40,
-            right: 40,
-            width: 600
-        };
-        doc.setFontSize(10);
-        doc.setLineWidth(4);
-        doc.text(20, 20, 'Salle : ' + num_salle.toString());
-        //doc.text(200, y = y + 30, "Liste d'émargement");
-        doc.setFontSize(20);
-        centered_text("Liste d'émargement", 60, doc);
-        doc.autoTable({
-            html: '#' + name,
-            startY: 70,
-            theme: 'grid',
-            columnStyles: {
-                0: {
-                    cellWidth: 140,
-                },
-                1: {
-                    cellWidth: 140,
-                },
-                2: {
-                    cellWidth: 140,
-                },
-                3: {
-                    cellWidth: 140,
-                },
-                4: {
-                    cellWidth: 220,
-                },
-            },
-            styles: {
-                minCellHeight: 40
-            }
-        })
-        doc.save(num_salle.toString() + '_listeDEmargement.pdf');
-    }
-
-    function centered_text(text, y, doc) {
-        var textWidth = doc.getStringUnitWidth(text) * doc.internal.getFontSize() / doc.internal.scaleFactor;
-        var textOffset = (doc.internal.pageSize.width - textWidth) / 2;
-        doc.text(textOffset, y, text);
-    }
-</script>
 {% endblock %}
