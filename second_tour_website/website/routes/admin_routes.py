@@ -29,8 +29,17 @@ def acceuil():
         all_creneaux = CRENEAU.query.order_by(CRENEAU.debut_preparation).all()
         all_series = SERIE.query.all()
         all_matieres = MATIERES.query.all()
-        all_salles = SALLE.query.all()
-        return render_template('admin/acceuil.html', all_candidats=all_candidats, all_creneaux=all_creneaux, all_series=all_series, all_matieres=all_matieres, all_salles=all_salles)
+        # Serialize table
+        professeurs = PROFESSEUR.query.all()
+        all_professeurs = []
+        for professeur in professeurs:
+            all_professeurs.append(professeur.as_dict())
+        # Serialize table
+        salles = SALLE.query.all()
+        all_salles = []
+        for salle in salles:
+            all_salles.append(salle.as_dict())
+        return render_template('admin/acceuil.html',all_professeurs=all_professeurs, all_candidats=all_candidats, all_creneaux=all_creneaux, all_series=all_series, all_matieres=all_matieres, all_salles=all_salles)
     else:
         return redirect(url_for('main_routes.connexion'))
 
