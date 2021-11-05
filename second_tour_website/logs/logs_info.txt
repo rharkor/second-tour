@@ -460,3 +460,19 @@ sqlalchemy.exc.NoResultFound: No row was found when one was required
 2021-11-05 09:57:11,620  * Debugger is active!
 2021-11-05 09:57:11,696  * Running on all addresses.
    WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-05 09:59:20,753  * Debugger is active!
+2021-11-05 09:59:20,822  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-05 10:03:55,880  * Debugger is active!
+2021-11-05 10:03:55,953  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-05 10:04:20,423  * Debugger is active!
+2021-11-05 10:04:20,498  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-05 13:42:59,152  * Debugger is active!
+2021-11-05 13:42:59,235  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-05 14:08:34,188  * Debugger is active!
+2021-11-05 14:08:35,186  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-05 17:10:34,404 167.94.138.114 - - [05/Nov/2021 17:10:34] code 400, message Bad HTTP/0.9 request type ("\x16\x03\x01\x00{\x01\x00\x00w\x03\x03\x9f\x8b¢[>תצ,\x1bK+90¯ÈL\x95'=\xad\x8cÄ3or\x18Jל\x8f\x14]נ\x00\x00\x1aÀ/À+À\x11À\x07À\x13À")

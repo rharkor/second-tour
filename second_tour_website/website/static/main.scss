@@ -9,16 +9,34 @@ html {
 }
 
 body {
-    background: $primary;
+    background-image: radial-gradient( circle 469px at 51.2% 6%,  rgba(114,126,245,1) 0%, rgba(76,92,255,1) 100.2% );
     height: 100%;
     width: 100%;
 }
 
 main {
-    height: 100%;
+    min-height: 100%;
+    height: max-content;
     width: 100%;
     display: flex;
     flex-direction: column;
+    position: relative;
+}
+
+table{
+    margin-bottom: 0px !important;
+}
+
+.background {
+    position: absolute;
+    min-height: 100%;
+    display: block;
+
+    top: 0;
+
+    left: 0;
+
+    z-index: -1;
 }
 
 .top-layer {
@@ -194,12 +212,12 @@ form * i {
         transform: rotate(360deg);
     }
 }
-option:disabled{
+option:disabled {
     background-color: #e9ecef;
 }
 
-.disabled{
+.disabled {
     opacity: 1;
     background-color: #e9ecef;
-    pointer-events:none;
+    pointer-events: none;
 }

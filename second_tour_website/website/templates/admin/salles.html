@@ -3,17 +3,10 @@
 {% block sub_content %}
 <div class="main-div-admin">
     <div class="d-flex flex-row" style="justify-content: space-between;align-items:center; width:100%;">
-        <button class="btn btn-primary" onclick="download_multiplePdf()" style="width: max-content; white-space:nowrap;"">
-            Télécharger
+        <button class="btn btn-primary" onclick="download_multiplePdf()" style="width: max-content; white-space:nowrap; background-color:blue;">
+            Télécharger les fiches d'émargement
             <i class=" fas fa-print ml-s"></i>
         </button>
-        <form method="post">
-            <button class="btn btn-success" type="submit" style="background-color: green; width: max-content;white-space:nowrap;"
-                name="excel_button">
-                Exporter au format XLSX
-                <i class="fas fa-file-excel ml-s"></i>
-            </button>
-        </form>
         <div class="name-finder" style="justify-content: end;">
             <button href="#" type="button" class="btn btn-success" data-bs-toggle="modal"
                 data-bs-target="#addSalleModal">
@@ -272,64 +265,6 @@
     });
 </script>
 <script>
-    function downloadPDFWithBrowserPrint(name, num_salle, output = false) {
-        var doc = new jsPDF('l', 'pt', 'a4');
-        var htmlstring = '';
-        var tempVarToCheckPageHeight = 0;
-        var pageHeight = 0;
-
-        pageHeight = doc.internal.pageSize.height;
-        specialElementHandlers = {
-            // element with id of "bypass" - jQuery style selector  
-            '#bypassme': function (element, renderer) {
-                // true = "handled elsewhere, bypass text extraction"  
-                return true
-            }
-        };
-        margins = {
-            top: 150,
-            bottom: 60,
-            left: 40,
-            right: 40,
-            width: 600
-        };
-        doc.setFontSize(10);
-        doc.setLineWidth(4);
-        doc.text(20, 20, 'Salle : ' + num_salle.toString());
-        //doc.text(200, y = y + 30, "Liste d'émargement");
-        doc.setFontSize(20);
-        centered_text("Liste d'émargement", 60, doc);
-        doc.autoTable({
-            html: '#' + name,
-            startY: 70,
-            theme: 'grid',
-            columnStyles: {
-                0: {
-                    cellWidth: 140,
-                },
-                1: {
-                    cellWidth: 140,
-                },
-                2: {
-                    cellWidth: 140,
-                },
-                3: {
-                    cellWidth: 140,
-                },
-            },
-            styles: {
-                minCellHeight: 40
-            }
-        })
-
-        if (!output) {
-            doc.save(num_salle.toString() + '_listeDEmargement.pdf');
-        } else {
-            return doc;
-        }
-
-    }
-
     function download_multiplePdf() {
         var zip = new JSZip();
         var all_salles = JSON.parse('{{all_salles|tojson}}');
@@ -348,12 +283,6 @@
         zip.generateAsync({ type: 'blob' }).then(function (content) {
             saveAs(content, 'listesDEmargement.zip');
         });
-    }
-
-    function centered_text(text, y, doc) {
-        var textWidth = doc.getStringUnitWidth(text) * doc.internal.getFontSize() / doc.internal.scaleFactor;
-        var textOffset = (doc.internal.pageSize.width - textWidth) / 2;
-        doc.text(textOffset, y, text);
     }
 </script>
 {% endblock %}

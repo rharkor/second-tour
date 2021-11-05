@@ -21,6 +21,22 @@ def acceuil():
             form = request.form
             if form.get('generate_button') is not None:
                 main_calendrier.generation_calendrier()
+            elif form.get('excel_button') is not None:
+                # create a ZipFile object
+                # zipObj = ZipFile(app.config['UPLOAD_FOLDER'] + '/data.zip', 'w')
+                filename = app.config['UPLOAD_FOLDER'] + "/donees.xlsx"
+                writer = pd.ExcelWriter(filename)
+                for table in [CRENEAU, CANDIDATS, PROFESSEUR, SALLE, SERIE, MATIERES, CHOIX_MATIERE, UTILISATEURS]:
+                    records = db.session.query(table).all()
+                    data_list = [main_database.to_dict(item) for item in records]
+                    df = pd.DataFrame(data_list)
+                    df.to_excel(writer, sheet_name=table.__table__.name)
+                writer.save()
+                # zipObj.write(filename)
+
+                # close the Zip File
+                # zipObj.close()
+                return send_file(filename)
         else:
             result = main_calendrier.test_calendar_complete()
             flash(result[0], result[1]) if result[1] == "danger" else flash("Le calendrier est complet !    ", result[1])
@@ -155,22 +171,6 @@ def salles():
                     if r := main_database.delete_salle(form['id']):
                         flash(r[0], r[1])
                         logging.warning(r[0])
-            elif form.get('excel_button') is not None:
-                # create a ZipFile object
-                # zipObj = ZipFile(app.config['UPLOAD_FOLDER'] + '/data.zip', 'w')
-                filename = app.config['UPLOAD_FOLDER'] + "/donees.xlsx"
-                writer = pd.ExcelWriter(filename)
-                for table in [CRENEAU, CANDIDATS, PROFESSEUR, SALLE, SERIE, MATIERES, CHOIX_MATIERE, UTILISATEURS]:
-                    records = db.session.query(table).all()
-                    data_list = [main_database.to_dict(item) for item in records]
-                    df = pd.DataFrame(data_list)
-                    df.to_excel(writer, sheet_name=table.__table__.name)
-                writer.save()
-                # zipObj.write(filename)
-
-                # close the Zip File
-                # zipObj.close()
-                return send_file(filename)
 
         all_matieres = MATIERES.query.all()
         all_creneaux = CRENEAU.query.order_by(CRENEAU.debut_preparation).all()

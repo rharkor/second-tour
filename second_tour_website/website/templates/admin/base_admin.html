@@ -5,9 +5,9 @@
 {% block content %}
 <div class="d-flex flex-column vh-100 flex-shrink-0 p-3 text-white bg-dark"
     style="position: fixed; width: 250px; height: 100% !important;">
-    <a href="{{url_for('admin_routes.acceuil')}}"
-        class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-        <svg class="bi me-2" width="40" height="32"></svg>
+    <a href="{{url_for('main_routes.index')}}" style="width: 100%;"
+        class="d-flex align-items-center justify-content-evenly mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+        <i class="fas fa-arrow-left fa-lg" style="font-size: 1.5em; display:flex; justify-content: center; align-items: center;height: 100%;padding-top: 3px;"></i>
         <span class="fs-4">Espace admin</span>
     </a>
     <hr>
@@ -92,6 +92,124 @@
 
 
 {% block script %}
+<script>
+    function downloadPDFWithBrowserPrint(name, num_salle, output = false) {
+        var doc = new jsPDF('l', 'pt', 'a4');
+        var htmlstring = '';
+        var tempVarToCheckPageHeight = 0;
+        var pageHeight = 0;
+
+        pageHeight = doc.internal.pageSize.height;
+        specialElementHandlers = {
+            // element with id of "bypass" - jQuery style selector  
+            '#bypassme': function (element, renderer) {
+                // true = "handled elsewhere, bypass text extraction"  
+                return true
+            }
+        };
+        margins = {
+            top: 150,
+            bottom: 60,
+            left: 40,
+            right: 40,
+            width: 600
+        };
+        doc.setFontSize(10);
+        doc.setLineWidth(4);
+        doc.text(20, 20, 'Salle : ' + num_salle.toString());
+        //doc.text(200, y = y + 30, "Liste d'émargement");
+        doc.setFontSize(20);
+        centered_text("Liste d'émargement", 60, doc);
+        doc.autoTable({
+            html: '#' + name,
+            startY: 70,
+            theme: 'grid',
+            columnStyles: {
+                0: {
+                    cellWidth: 140,
+                },
+                1: {
+                    cellWidth: 140,
+                },
+                2: {
+                    cellWidth: 140,
+                },
+                3: {
+                    cellWidth: 140,
+                },
+            },
+            styles: {
+                minCellHeight: 40
+            },
+            didParseCell: function (table) {
+                if (table.section === 'head') {
+                    table.cell.styles.fillColor = '#4c5cff';
+                }
+            }
+        })
+
+        if (!output) {
+            doc.save(num_salle.toString() + '_listeDEmargement.pdf');
+        } else {
+            return doc;
+        }
+
+    }
+</script>
+<script>
+    function downloadCalendar(calendar_id) {
+        var doc = new jsPDF('l', 'pt', 'a4');
+        var htmlstring = '';
+        var tempVarToCheckPageHeight = 0;
+        var pageHeight = 0;
+
+        pageHeight = doc.internal.pageSize.height;
+        specialElementHandlers = {
+            // element with id of "bypass" - jQuery style selector  
+            '#bypassme': function (element, renderer) {
+                // true = "handled elsewhere, bypass text extraction"  
+                return true
+            }
+        };
+        margins = {
+            top: 150,
+            bottom: 60,
+            left: 40,
+            right: 40,
+            width: 600
+        };
+        doc.setFontSize(10);
+        doc.setLineWidth(4);
+        //doc.text(200, y = y + 30, "Liste d'émargement");
+        doc.setFontSize(20);
+        centered_text("Calendrier", 60, doc);
+        doc.autoTable({
+            html: '#' + calendar_id,
+            startY: 70,
+            theme: 'grid',
+            styles: {
+                minCellHeight: 40,
+            },
+            didParseCell: function (table) {
+                if (table.section === 'head') {
+                    table.cell.styles.fillColor = '#4c5cff';
+                    if (table.cell.text[0].includes("Série")) {
+                        table.cell.text = "Série";
+                    }
+                }
+            }
+        })
+
+
+        doc.save('Calendrier.pdf');
+    }
+
+    function centered_text(text, y, doc) {
+        var textWidth = doc.getStringUnitWidth(text) * doc.internal.getFontSize() / doc.internal.scaleFactor;
+        var textOffset = (doc.internal.pageSize.width - textWidth) / 2;
+        doc.text(textOffset, y, text);
+    }
+</script>
 {% block sub_script %}
 {% endblock %}
 {% endblock %}

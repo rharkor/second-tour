@@ -17,59 +17,68 @@
     </div>
     {%- endfor %}
     <div class="padding-main-calendar">
-        <div class="calendar table-responsive thumbnail">
-            <div class="name-finder">
-                <input type="text" id="search-name" onkeyup="nameFinder()" placeholder="Recherche par nom..">
+        <div class="calendar table-responsive">
+            <div class="name-finder" style="width: max-content;">
+                <input class="form-control" type="text" id="search-name" onkeyup="nameFinder()"
+                    placeholder="Recherche par nom..">
             </div>
-            <table class="table table-light table-striped" id="calendar">
-                <thead>
-                    <tr>
-                        <th scope="col">Nom</th>
-                        <th scope="col">Prénom</th>
-                        <th scope="col">Série</th>
-                        <th scope="col">Epreuve 1</th>
-                        <th scope="col">Epreuve 2</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for candidat in all_candidats %}
-                    <tr>
-                        <td scope="row">{{candidat.nom}}</td>
-                        <td scope="row">{{candidat.prenom}}</td>
-                        {% for serie in all_series %}
-                        {% if serie.id_serie == candidat.id_serie %}
-                        <td scope="row">
-                            {{serie.nom}} - {% if serie.specialite1 %}{{serie.specialite1}}{% endif %}{% if
-                            serie.specialite2 %}/{{serie.specialite2}}{% endif %}
-                        </td>
-                        {% endif %}
-                        {% endfor %}
-                        {% for creneau in all_creneaux %}
-                        {% if creneau.id_candidat == candidat.id_candidat %}
-                        <td scope="row">
-                            <div class="calendar-subject">
-                                {% for matiere in all_matieres %}
-                                {% if matiere.id_matiere == creneau.id_matiere %}
-                                <div>{{matiere.nom}} - {% if matiere.loge %}Loge {% for salle in all_salles %}{% if
-                                    matiere.loge == salle.id_salle %}{{salle.numero}}{% endif %}{% endfor %}{% else %}
-                                    {% for salle in all_salles %}
-                                    {% if salle.id_salle == creneau.id_salle %}
-                                    {{salle.numero}}
+            <div class="thumbnail" style="overflow: hidden;">
+                <table class="table table-light table-striped" id="calendar">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nom</th>
+                            <th scope="col">Prénom</th>
+                            <th scope="col">Série</th>
+                            <th scope="col">Epreuve 1</th>
+                            <th scope="col">Epreuve 2</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for candidat in all_candidats %}
+                        <tr>
+                            <td scope="row">{{candidat.nom}}</td>
+                            <td scope="row">{{candidat.prenom}}</td>
+                            {% for serie in all_series %}
+                            {% if serie.id_serie == candidat.id_serie %}
+                            <td scope="row">
+                                {{serie.nom}} - {% if serie.specialite1 %}{{serie.specialite1}}{% endif %}{% if
+                                serie.specialite2 %}/{{serie.specialite2}}{% endif %}
+                            </td>
+                            {% endif %}
+                            {% endfor %}
+                            {% for creneau in all_creneaux %}
+                            {% if creneau.id_candidat == candidat.id_candidat %}
+                            <td scope="row">
+                                <div class="calendar-subject">
+                                    {% for matiere in all_matieres %}
+                                    {% if matiere.id_matiere == creneau.id_matiere %}
+                                    <div>{{matiere.nom}} - {% if matiere.loge %}Loge {% for salle in all_salles %}{% if
+                                        matiere.loge == salle.id_salle %}{{salle.numero}}{% endif %}{% endfor %}{% else
+                                        %}
+                                        {% for salle in all_salles %}
+                                        {% if salle.id_salle == creneau.id_salle %}
+                                        {{salle.numero}}
+                                        {% endif %}
+                                        {% endfor %}
+                                        {% endif %}</div>
+                                    <div>{{creneau.debut_preparation}} - {{creneau.fin}}</div>
                                     {% endif %}
                                     {% endfor %}
-                                    {% endif %}</div>
-                                <div>{{creneau.debut_preparation}} - {{creneau.fin}}</div>
-                                {% endif %}
-                                {% endfor %}
-                            </div>
-                        </td>
-                        {% endif %}
+                                </div>
+                            </td>
+                            {% endif %}
+                            {% endfor %}
+                        </tr>
                         {% endfor %}
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
+<!-- Background
+<canvas class="background"></canvas> -->
+{% endblock %}
+
+{% block script %}
 {% endblock %}

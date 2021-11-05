@@ -3,10 +3,26 @@
 {% block sub_content %}
 <div class="main-div-admin">
     <h1 class="text-white text-decoration-none" style="margin-bottom: 10px;">Acceuil</h1>
-    <form method="post">
-        <button type="button" class="btn btn-warning" data-bs-toggle="modal"
-            data-bs-target="#generateCalendarModal">Generer le calendrier</button>
-    </form>
+    <div class="d-flex" style="width: 100%; justify-content:space-between;">
+        <form method="post">
+            <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                data-bs-target="#generateCalendarModal">Generer le calendrier</button>
+        </form>
+        <div class="d-flex flex-row">
+            <button class="btn btn-primary" onclick="downloadCalendar('calendar')"
+                style="width: max-content; white-space:nowrap; background-color:blue;">
+                Télécharger
+                <i class=" fas fa-print ml-s"></i>
+            </button>
+            <form method="post">
+                <button class="btn btn-success" type="submit"
+                    style="background-color: green; width: max-content;white-space:nowrap;" name="excel_button">
+                    Exporter au format XLSX
+                    <i class="fas fa-file-excel ml-s"></i>
+                </button>
+            </form>
+        </div>
+    </div>
     <div class="main-table-admin" style="margin: 20px 0 0 0;">
         {% for category, message in get_flashed_messages(with_categories = true) %}
         <div class="alert alert-{{category}}  alert-dismissible fade show" role="alert">
@@ -141,9 +157,5 @@
             </div>
         </div>
     </div>
-
 </div>
-{% endblock %}
-
-{% block sub_script %}
 {% endblock %}
