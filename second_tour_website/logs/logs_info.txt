@@ -476,3 +476,21 @@ sqlalchemy.exc.NoResultFound: No row was found when one was required
 2021-11-05 14:08:35,186  * Running on all addresses.
    WARNING: This is a development server. Do not use it in a production deployment.
 2021-11-05 17:10:34,404 167.94.138.114 - - [05/Nov/2021 17:10:34] code 400, message Bad HTTP/0.9 request type ("\x16\x03\x01\x00{\x01\x00\x00w\x03\x03\x9f\x8b¢[>úö,\x1bK+90¯ÈL\x95'=\xad\x8cÄ3or\x18Jì\x8f\x14]ð\x00\x00\x1aÀ/À+À\x11À\x07À\x13À")
+2021-11-05 17:35:56,978  * Debugger is active!
+2021-11-05 17:35:57,053  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-05 17:36:05,938  * Debugger is active!
+2021-11-05 17:36:06,018  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-05 17:36:57,491  * Debugger is active!
+2021-11-05 17:36:57,566  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-05 17:47:06,795  * Debugger is active!
+2021-11-05 17:47:06,875  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-05 17:54:44,435  * Debugger is active!
+2021-11-05 17:54:44,603  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-05 18:11:13,007  * Debugger is active!
+2021-11-05 18:11:13,098  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.

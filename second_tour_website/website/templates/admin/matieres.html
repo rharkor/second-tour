@@ -70,42 +70,93 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for an_matiere in all_matieres %}
-                    <tr>
-                        <td scope="row">{{an_matiere.nom}}</td>
+                    {% for a_matiere in all_matieres %}
+                    <tr class="clickable" data-bs-toggle="collapse" data-bs-target="#accordion{{a_matiere.id_matiere}}">
+                        <td scope="row">{{a_matiere.nom}}</td>
                         <td scope="row">
                             {% for a_serie in all_series %}
-                            {% if a_serie.id_serie == an_matiere.id_serie %}
+                            {% if a_serie.id_serie == a_matiere.id_serie %}
                             {{a_serie.nom}} - {% if a_serie.specialite1 %}{{a_serie.specialite1}}{% endif %}{% if
                             a_serie.specialite2 %}/{{a_serie.specialite2}}{% endif %}
                             {% endif %}
                             {% endfor %}
                         </td>
-                        <td scope="row">{{an_matiere.temps_preparation}}
+                        <td scope="row">{{a_matiere.temps_preparation}}
                             <br>
-                            Tiers temps : {{an_matiere.temps_preparation_tiers_temps}}
+                            Tiers temps : {{a_matiere.temps_preparation_tiers_temps}}
                         </td>
-                        <td scope="row">{{an_matiere.temps_passage}}
+                        <td scope="row">{{a_matiere.temps_passage}}
                             <br>
-                            Tiers temps : {{an_matiere.temps_passage_tiers_temps}}
+                            Tiers temps : {{a_matiere.temps_passage_tiers_temps}}
                         </td>
-                        <td scope="row">{% if an_matiere.loge %}
+                        <td scope="row">{% if a_matiere.loge %}
                             {% for a_salle in all_salles %}
-                            {% if a_salle.id_salle == an_matiere.loge %}
+                            {% if a_salle.id_salle == a_matiere.loge %}
                             {{a_salle.numero}}
                             {% endif %}
                             {% endfor %}
                             {% endif %}</td>
                         <td scope="row">
                             <form method="post" action="{{url_for('admin_routes.matieres')}}"
-                                id="deleteMatiereForm{{an_matiere.id_matiere}}">
-                                <input type="hidden" name="id" value="{{an_matiere.id_matiere}}">
-                                <button type="button" id="{{an_matiere.id_matiere}}" data-bs-toggle="modal"
+                                id="deleteMatiereForm{{a_matiere.id_matiere}}">
+                                <input type="hidden" name="id" value="{{a_matiere.id_matiere}}">
+                                <button type="button" id="{{a_matiere.id_matiere}}" data-bs-toggle="modal"
                                     data-bs-target="#confirmDeleteModal"
                                     class="deleteRow btn btn-outline-danger">Supprimer</button>
                             </form>
                         </td>
                     </tr>
+                    <tr style="--bs-table-hover-bg: transparent; --bs-table-accent-bg: transparent;" class="not-null">
+                        <td colspan="100%"
+                            style="padding: 0; background: transparent; --bs-table-accent-bg: transparent;">
+                            <div class="collapse" id="accordion{{a_matiere.id_matiere}}" style="margin: 15px 10px;">
+                                <div class="table-responsive thumbnail">
+                                    <table class="table table-light table-striped table-hover"
+                                        id="tableAccordionProf{{a_matiere.id_matiere}}">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">
+                                                    <div class="th-inner">Nom</div>
+                                                </th>
+                                                <th scope="col">
+                                                    <div class="th-inner">Prénom</div>
+                                                </th>
+                                                <th scope="col">
+                                                    <div class="th-inner">Série</div>
+                                                </th>
+                                                <th scope="col">
+                                                    <div class="th-inner">Tiers temps</div>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for a_candidat in all_candidats %}
+                                            {% for a_choix_matiere in all_choix_matieres %}
+                                            {% if a_choix_matiere.id_candidat == a_candidat.id_candidat %}
+                                            {% if a_choix_matiere.matiere1 == a_matiere.id_matiere or a_choix_matiere.matiere2 == a_matiere.id_matiere %}
+                                            <tr class="clickable not-null">
+                                                <td scope="row">{{a_candidat.nom}}</td>
+                                                <td scope="row">{{a_candidat.prenom}}</td>
+                                                {% for a_serie in all_series %}
+                                                {% if a_serie.id_serie == a_matiere.id_serie %}
+                                                <td scope="row">{{a_serie.nom}}</td>
+                                                {% endif %}
+                                                {% endfor %}
+                                                <td scope="row">
+                                                    {% if a_candidat.tiers_temps %}Oui{% else %}Non{% endif %}
+                                                </td>
+                                            </tr>
+                                            {% endif %}
+                                            {% endif %}
+                                            {% endfor %}
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="no-border not-null"></tr>
                     {% endfor %}
                 </tbody>
             </table>
@@ -159,17 +210,19 @@
                         </div>
                         <div class="form-group">
                             <label for="temps_preparation_tiers_temps">Temps de préparation tiers temps</label>
-                            <input type="number" class="form-control" id="temps_preparation_tiers_temps" name="temps_preparation_tiers_temps"
+                            <input type="number" class="form-control" id="temps_preparation_tiers_temps"
+                                name="temps_preparation_tiers_temps"
                                 placeholder="Entrez un temps de préparation pour les tiers temps" required>
                         </div>
                         <div class="form-group" style="margin-top: 20px;">
-                            <label for="temps_passage">Temps de passage  (minutes)</label>
+                            <label for="temps_passage">Temps de passage (minutes)</label>
                             <input type="number" class="form-control" id="temps_passage" name="temps_passage"
                                 placeholder="Entrez un temps de passage" required>
                         </div>
                         <div class="form-group">
                             <label for="temps_passage_tiers_temps">Temps de passage tiers temps</label>
-                            <input type="number" class="form-control" id="temps_passage_tiers_temps" name="temps_passage_tiers_temps"
+                            <input type="number" class="form-control" id="temps_passage_tiers_temps"
+                                name="temps_passage_tiers_temps"
                                 placeholder="Entrez un temps de passage pour les tiers temps" required>
                         </div>
                     </form>

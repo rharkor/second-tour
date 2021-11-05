@@ -22,8 +22,6 @@ def acceuil():
             if form.get('generate_button') is not None:
                 main_calendrier.generation_calendrier()
             elif form.get('excel_button') is not None:
-                # create a ZipFile object
-                # zipObj = ZipFile(app.config['UPLOAD_FOLDER'] + '/data.zip', 'w')
                 filename = app.config['UPLOAD_FOLDER'] + "/donees.xlsx"
                 writer = pd.ExcelWriter(filename)
                 for table in [CRENEAU, CANDIDATS, PROFESSEUR, SALLE, SERIE, MATIERES, CHOIX_MATIERE, UTILISATEURS]:
@@ -32,10 +30,6 @@ def acceuil():
                     df = pd.DataFrame(data_list)
                     df.to_excel(writer, sheet_name=table.__table__.name)
                 writer.save()
-                # zipObj.write(filename)
-
-                # close the Zip File
-                # zipObj.close()
                 return send_file(filename)
         else:
             result = main_calendrier.test_calendar_complete()
@@ -243,7 +237,11 @@ def series():
                         logging.warning(r[0])
 
         all_series = SERIE.query.order_by(SERIE.nom).all()
-        return render_template('admin/series.html', all_series=all_series)
+        all_candidats = CANDIDATS.query.order_by(CANDIDATS.nom).all()
+        all_salle = SALLE.query.all()
+        all_matieres = MATIERES.query.all()
+        all_choix_matieres = CHOIX_MATIERE.query.all()
+        return render_template('admin/series.html', all_series=all_series, all_candidats=all_candidats, all_salle=all_salle, all_matieres=all_matieres, all_choix_matieres=all_choix_matieres)
     else:
         return redirect(url_for('main_routes.connexion'))
 
@@ -267,7 +265,9 @@ def matieres():
         all_matieres = MATIERES.query.order_by(MATIERES.nom).all()
         all_series = SERIE.query.all()
         all_salles = SALLE.query.all()
-        return render_template('admin/matieres.html', all_matieres=all_matieres, all_series=all_series, all_salles=all_salles)
+        all_candidats = CANDIDATS.query.order_by(CANDIDATS.nom).all()
+        all_choix_matieres = CHOIX_MATIERE.query.all()
+        return render_template('admin/matieres.html', all_matieres=all_matieres, all_series=all_series, all_salles=all_salles, all_candidats=all_candidats, all_choix_matieres=all_choix_matieres)
     else:
         return redirect(url_for('main_routes.connexion'))
 
