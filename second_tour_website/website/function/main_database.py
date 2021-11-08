@@ -13,10 +13,10 @@ def add_account(email, password, user_type_string, output=False):
             db.session.add(user)
             db.session.commit()
             if output:
-                logging.warning('L\'utilisateur à bien été crée')
-                return (user, ['L\'utilisateur à bien été crée', 'success'])
-            logging.warning('L\'utilisateur à bien été crée')
-            return ['L\'utilisateur à bien été crée', 'success']
+                logging.warning('L\'utilisateur a bien été crée')
+                return (user, ['L\'utilisateur a bien été crée', 'success'])
+            logging.warning('L\'utilisateur a bien été crée')
+            return ['L\'utilisateur a bien été crée', 'success']
         else:
             if output:
                 return (user, user.unvalid)
@@ -48,8 +48,8 @@ def add_serie(serie_choice, specialite1, specialite2):
         if not serie.unvalid:
             db.session.add(serie)
             db.session.commit()
-            logging.warning('La série à bien été crée')
-            return ['La série à bien été crée', 'success']
+            logging.warning('La série a bien été créée')
+            return ['La série a bien été créée', 'success']
         else:
             return serie.unvalid
     except Exception:
@@ -90,8 +90,8 @@ def add_matiere(name, serie, temps_preparation, temps_preparation_tiers_temps, t
         if not matiere.unvalid:
             db.session.add(matiere)
             db.session.commit()
-            logging.warning('La matière à bien été crée')
-            return ['La matière à bien été crée', 'success']
+            logging.warning('La matière a bien été créée')
+            return ['La matière a bien été créée', 'success']
         else:
             return matiere.unvalid
     except Exception:
@@ -130,8 +130,8 @@ def add_salle(numero):
         if not salle.unvalid:
             db.session.add(salle)
             db.session.commit()
-            logging.warning('La salle à bien été crée')
-            return ['La salle à bien été crée', 'success']
+            logging.warning('La salle a bien été crée')
+            return ['La salle a bien été crée', 'success']
         else:
             return salle.unvalid
     except Exception:
@@ -170,8 +170,8 @@ def add_professeur(email, password, nom, prenom, matiere, salle):
         if not professeur.unvalid:
             db.session.add(professeur)
             db.session.commit()
-            logging.warning('Le professeur à bien été crée')
-            return ['Le professeur à bien été crée', 'success']
+            logging.warning('Le professeur a bien été crée')
+            return ['Le professeur a bien été crée', 'success']
         else:
             return professeur.unvalid
     except Exception:
@@ -199,9 +199,9 @@ def add_candidat(nom, prenom, id_serie, tiers_temps, output=False):
             db.session.add(candidat)
             db.session.commit()
             if output:
-                logging.warning('Le candidat à bien été crée')
-                return [candidat, 'Le candidat à bien été crée', 'success']
-            return ['Le candidat à bien été crée', 'success']
+                logging.warning('Le candidat a bien été crée')
+                return [candidat, 'Le candidat a bien été crée', 'success']
+            return ['Le candidat a bien été crée', 'success']
         else:
             if output:
                 return (candidat, candidat.unvalid)
@@ -236,8 +236,8 @@ def add_choix_matiere(id_candidat, matiere1, matiere2):
         if not choix_matiere.unvalid:
             db.session.add(choix_matiere)
             db.session.commit()
-            logging.warning('Les choix du candidat on bien été crée')
-            return ['Les choix du candidat on bien été crée', 'success']
+            logging.warning('Les choix du candidat ont bien été crées')
+            return ['Les choix du candidat ont bien été crées', 'success']
         else:
             return choix_matiere.unvalid
     except Exception:
@@ -254,15 +254,15 @@ def delete_choix_matiere(id):
         logging.warning('Erreur : ' + traceback.format_exc())
         return ['Erreur : ' + traceback.format_exc(), 'danger']
 
-def add_creneau(id_candidat, id_matiere, id_salle, debut_preparation, fin):
+def add_creneau(id_candidat, id_matiere, id_salle, debut_preparation, fin_preparation, fin):
     try:
-        logging.warning("new Créneau : ", id_candidat, id_matiere, id_salle, debut_preparation, fin)
-        creneau = CRENEAU(id_candidat, id_matiere, id_salle, debut_preparation, fin)
+        logging.warning("new Créneau : ", id_candidat, id_matiere, id_salle, debut_preparation, fin_preparation, fin)
+        creneau = CRENEAU(id_candidat, id_matiere, id_salle, debut_preparation, fin_preparation, fin)
         if not creneau.unvalid:
             db.session.add(creneau)
             db.session.commit()
-            logging.warning('Le créneau à correctement été crée')
-            return ['Le créneau à correctement été crée', 'success']
+            logging.warning('Le créneau a correctement été crée')
+            return ['Le créneau a correctement été crée', 'success']
         else:
             return creneau.unvalid
     except Exception:

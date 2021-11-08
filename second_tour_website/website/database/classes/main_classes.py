@@ -257,9 +257,10 @@ class CRENEAU(db.Model):
     id_matiere = db.Column(db.Integer, nullable=False)
     id_salle = db.Column(db.Integer, nullable=False)
     debut_preparation = db.Column(db.String(20), nullable=False)
+    fin_preparation = db.Column(db.String(20), nullable=False)
     fin = db.Column(db.String(20), nullable=False)
 
-    def __init__(self, id_candidat, id_matiere, id_salle, debut_preparation, fin):
+    def __init__(self, id_candidat, id_matiere, id_salle, debut_preparation, fin_preparation, fin):
         self.unvalid = False
 
         if res := self.unique_id_candidat_debut_preparation(id_candidat, debut_preparation):
@@ -277,6 +278,7 @@ class CRENEAU(db.Model):
         self.id_matiere = id_matiere
         self.id_salle = id_salle
         self.debut_preparation = debut_preparation
+        self.fin_preparation = fin_preparation
         self.fin = fin
 
     def unique_id_candidat_matiere(self, id_candidat, id_matiere):

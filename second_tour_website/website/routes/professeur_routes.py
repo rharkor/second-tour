@@ -10,8 +10,8 @@ professeur_routes = Blueprint('professeur_routes', __name__,
                         static_folder='static')
 
 @professeur_routes.route('/')
-@professeur_routes.route('/acceuil')
-def acceuil():
+@professeur_routes.route('/accueil')
+def accueil():
     if main_security.test_session_connected(session, False):
         id_matieres = []
         id_salles = []
@@ -24,7 +24,7 @@ def acceuil():
 
         all_candidats = CANDIDATS.query.all()
         all_creneaux = CRENEAU.query.all()
-        return render_template('professeur/acceuil.html', id_matieres=id_matieres, all_candidats=all_candidats, all_creneaux=all_creneaux, id_salles=id_salles)
+        return render_template('professeur/accueil.html', id_matieres=id_matieres, all_candidats=all_candidats, all_creneaux=all_creneaux, id_salles=id_salles)
     else:
         return redirect(url_for('main_routes.connexion'))
 

@@ -23,9 +23,9 @@ def index():
 def connexion():
     if request.method == 'GET':
             if main_security.test_session_connected(session, True):
-                return redirect(url_for('admin_routes.acceuil'))
+                return redirect(url_for('admin_routes.accueil'))
             elif main_security.test_session_connected(session, False):
-                return redirect(url_for('professeur_routes.acceuil'))
+                return redirect(url_for('professeur_routes.accueil'))
             else:
                 return render_template('connexion.html')
     else:
@@ -49,11 +49,14 @@ def connexion():
                     main_sessions.save_user(session, user)
                     # Go to dashboard
                     logging.warning('Connexion réussie')
-                    return redirect(url_for('admin_routes.acceuil'))
+                    return redirect(url_for('admin_routes.accueil'))
                 else:
                     flash('Cet utilisateur n\'existe pas', 'warning')
                     logging.warning('Cet utilisateur n\'existe pas')
-
+            else:
+                flash('Cet utilisateur n\'existe pas', 'warning')
+                logging.warning('Cet utilisateur n\'existe pas')
+            
         except Exception:
             flash('Cet utilisateur n\'existe pas', 'warning')
             logging.warning('Cet utilisateur n\'existe pas')

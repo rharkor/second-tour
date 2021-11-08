@@ -13,10 +13,10 @@
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
         <li class="nav-item">
-            <a href="{{url_for('admin_routes.acceuil')}}" {% if request.url_rule.endpoint=="admin_routes.acceuil"
+            <a href="{{url_for('admin_routes.accueil')}}" {% if request.url_rule.endpoint=="admin_routes.accueil"
                 %}class="nav-link active" aria-current="page" {% else %}class="nav-link text-white" {% endif %}>
                 <i class="fas fa-home"></i>
-                <span class="ms-2">Acceuil</span>
+                <span class="ms-2">accueil</span>
             </a>
         </li>
         <li>
@@ -60,7 +60,7 @@
             <a href="{{url_for('admin_routes.creneau')}}" {% if request.url_rule.endpoint=="admin_routes.creneau"
                 %}class="nav-link active" aria-current="page" {% else %}class="nav-link text-white" {% endif %}>
                 <i class="fas fa-calendar-alt"></i>
-                <span class="ms-2">Créneau</span>
+                <span class="ms-2">Créneaux</span>
             </a>
         </li>
         <li>
@@ -209,6 +209,13 @@
         var textOffset = (doc.internal.pageSize.width - textWidth) / 2;
         doc.text(textOffset, y, text);
     }
+</script>
+<script>
+    $('.deleteRow').click(function () {
+        var $myRowId = $(this).get(0).id;
+        name = document.getElementById("ModalSubmitButton").getAttribute("form");
+        $("#ModalSubmitButton").attr('form', name + $myRowId);
+    });
 </script>
 {% block sub_script %}
 {% endblock %}

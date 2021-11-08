@@ -173,7 +173,7 @@ def generation_calendrier():
                     if aucune_collision:
                         # Create the creneau
                         # logging.warning(matiere.id_matiere, heure_debut_preparation_voulue, temps_preparation_matiere, temps_passage_matiere)
-                        res = main_database.add_creneau(candidat.id_candidat, matiere.id_matiere, a_salle.id_salle, convert_from_decimal_time(heure_debut_preparation_voulue), convert_from_decimal_time(heure_debut_preparation_voulue + temps_preparation_matiere + temps_passage_matiere))
+                        res = main_database.add_creneau(candidat.id_candidat, matiere.id_matiere, a_salle.id_salle, convert_from_decimal_time(heure_debut_preparation_voulue), convert_from_decimal_time(heure_debut_preparation_voulue + temps_preparation_matiere), convert_from_decimal_time(heure_debut_preparation_voulue + temps_preparation_matiere + temps_passage_matiere))
                         if res[1] == 'danger':
                             logging.warning(res[0])
                         heure_debut_preparation_voulue = 20
@@ -233,7 +233,8 @@ def test_calendar_complete():
 
     if matiere_left > 0:
         logging.warning("Le calendrier n'est pas complet :", matiere_left, all_choix_matiere_left)
-        return [f'Le calendrier n\'est pas complet, il manque {matiere_left} créneau', 'danger']
+        text_creneau = 'créneau' if matiere_left <= 1 else 'créneaux'
+        return [f'Le calendrier n\'est pas complet, il manque {matiere_left} ' + text_creneau, 'danger']
     else:
         logging.warning("Le calendrier est complet !")
         return ['Calendrier généré avec succès', 'success']

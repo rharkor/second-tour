@@ -257,13 +257,6 @@
 
 {% block sub_script %}
 <script>
-    $('.deleteRow').click(function () {
-        var $myRowId = $(this).get(0).id;
-        name = document.getElementById("ModalSubmitButton").getAttribute("form");
-        $("#ModalSubmitButton").attr('form', name + $myRowId);
-    });
-</script>
-<script>
     function download_multiplePdf() {
         var zip = new JSZip();
         var all_salles = JSON.parse('{{all_salles|tojson}}');

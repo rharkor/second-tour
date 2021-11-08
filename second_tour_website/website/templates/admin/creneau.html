@@ -142,7 +142,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p style="color: orange;">Attention l'insertion de créneau manuelle ne prends pas en comptes les
+                    <p style="color: orange;">Attention l'insertion de créneaux manuelle ne prend pas en compte les
                         temps de pause.</p>
                     <form method="post" action="{{url_for('admin_routes.creneau')}}" id="addCreneauForm">
                         <div class="form-group">
@@ -190,6 +190,15 @@
                                 </select>
                             </div>
                             <div style="width: 50%; margin-left: 5px;">
+                                <label for="fin" class="col-form-label">Fin de préparation</label>
+                                <select class="form-select disabled" name="fin_prepa" id="fin_prepa-select" required>
+                                    <option selected></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group" style="display:flex; width:100%;">
+                            <div></div>
+                            <div style="width: 50%; margin-left: 5px;">
                                 <label for="fin" class="col-form-label">Fin</label>
                                 <select class="form-select disabled" name="fin" id="fin-select" required>
                                     <option selected></option>
@@ -219,7 +228,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p style="color: orange;">Attention la modification de créneau ne prends pas en comptes les
+                    <p style="color: orange;">Attention la modification de créneaux ne prend pas en compte les
                         temps de pause.</p>
                     <form method="post" action="{{url_for('admin_routes.creneau')}}" id="modifyCreneauForm">
                         <input id="id_creneau_modify" name="last_creneau_id" value="" hidden>
@@ -233,13 +242,15 @@
                         </div>
                         <div class="form-group">
                             <label for="matiere" class="col-form-label">Matière</label>
-                            <select class="form-select disabled" name="matiere" id="matiere-select-modif" required onchange="">
+                            <select class="form-select disabled" name="matiere" id="matiere-select-modif" required
+                                onchange="">
                                 <option selected></option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="salle" class="col-form-label">Salle</label>
-                            <select class="form-select" name="salle" id="salle-select-modif" required onchange="salleChange('-modif')">
+                            <select class="form-select" name="salle" id="salle-select-modif" required
+                                onchange="salleChange('-modif')">
                                 <option selected></option>
                             </select>
                         </div>
@@ -252,6 +263,15 @@
                                 </select>
                             </div>
                             <div style="width: 50%; margin-left: 5px;">
+                                <label for="fin" class="col-form-label">Fin de préparation</label>
+                                <select class="form-select disabled" name="fin" id="fin_prepa-select-modif" required>
+                                    <option selected></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group" style="display:flex; width:100%;">
+                            <div></div>
+                            <div style="width: 50%; margin-left: 5px;">
                                 <label for="fin" class="col-form-label">Fin</label>
                                 <select class="form-select disabled" name="fin" id="fin-select-modif" required>
                                     <option selected></option>
@@ -262,8 +282,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                    <button class="btn btn-warning" name="modify_button" type="submit"
-                        form="modifyCreneauForm">Modifier le créneau</button>
+                    <button class="btn btn-warning" name="modify_button" type="submit" form="modifyCreneauForm">Modifier
+                        le créneau</button>
                 </div>
             </div>
         </div>
@@ -297,13 +317,13 @@
 {% block sub_script %}
 <script>
     function candidatChange() {
-        cleanUp(["matiere-select", "salle-select", "debut-select", "fin-select"]);
+        cleanUp(["matiere-select", "salle-select", "debut-select", "fin_prepa-select", "fin-select"]);
 
         matiereChange();
     }
 
     function matiereChange() {
-        cleanUp(["salle-select", "debut-select", "fin-select"]);
+        cleanUp(["salle-select", "debut-select", "fin_prepa-select", "fin-select"]);
 
         let candidatSelect = document.getElementById("candidat-select");
 
@@ -359,12 +379,12 @@
     }
 
     function salleChange(opt = "") {
-        cleanUp(["debut-select" + opt, "fin-select" + opt]);
+        cleanUp(["debut-select" + opt, "fin_prepa-select" + opt, "fin-select" + opt]);
 
         //Salle
-        let salleSelect = document.getElementById("salle-select"+opt);
+        let salleSelect = document.getElementById("salle-select" + opt);
         let all_matieres = JSON.parse('{{all_matieres|tojson}}');
-        let matiereId = document.getElementById("matiere-select"+opt).value;
+        let matiereId = document.getElementById("matiere-select" + opt).value;
         let all_salles = JSON.parse('{{all_salles|tojson}}');
         let all_professeurs = JSON.parse('{{all_professeur|tojson}}');
         for (let i = 0; i < all_matieres.length; i++) {
@@ -388,23 +408,24 @@
     }
 
     function heureChange(opt = "") {
-        cleanUp(["fin-select"+opt]);
+        cleanUp(["fin_prepa-select" + opt, "fin-select" + opt]);
 
         //Heure
-        let heureDebutSelect = document.getElementById("debut-select"+opt);
-        let heureFinSelect = document.getElementById("fin-select"+opt);
+        let heureDebutSelect = document.getElementById("debut-select" + opt);
+        let heureFinPrepa = document.getElementById("fin_prepa-select" + opt);
+        let heureFinSelect = document.getElementById("fin-select" + opt);
         let all_matieres = JSON.parse('{{all_matieres|tojson}}');
-        let salleId = document.getElementById("salle-select"+opt).value;
+        let salleId = document.getElementById("salle-select" + opt).value;
         let all_salles = JSON.parse('{{all_salles|tojson}}');
         let all_creneaux = JSON.parse('{{all_creneau|tojson}}');
-        let matiereId = document.getElementById("matiere-select"+opt).value;
+        let matiereId = document.getElementById("matiere-select" + opt).value;
         let matiere;
         for (let i = 0; i < all_matieres.length; i++) {
             if (all_matieres[i].id_matiere == matiereId) {
                 matiere = all_matieres[i];
             }
         }
-        let candidatSelect = document.getElementById("candidat-select"+opt);
+        let candidatSelect = document.getElementById("candidat-select" + opt);
         let candidatId = candidatSelect.value;
         let all_candidats = JSON.parse('{{all_candidats|tojson}}');
         let candidat;
@@ -413,8 +434,16 @@
                 candidat = all_candidats[i];
             }
         }
-        let temps_passage_matiere = convert_to_decimal_time(convert_minute_to_string(matiere.temps_passage))
-        let temps_preparation_matiere = convert_to_decimal_time(convert_minute_to_string(matiere.temps_preparation))
+
+        var temps_passage_matiere;
+        var temps_preparation_matiere;
+        if (!candidat.tiers_temps) {
+            temps_passage_matiere = convert_to_decimal_time(convert_minute_to_string(matiere.temps_passage))
+            temps_preparation_matiere = convert_to_decimal_time(convert_minute_to_string(matiere.temps_preparation))
+        } else {
+            temps_passage_matiere = convert_to_decimal_time(convert_minute_to_string(matiere.temps_passage_tiers_temps))
+            temps_preparation_matiere = convert_to_decimal_time(convert_minute_to_string(matiere.temps_preparation_tiers_temps))
+        }
 
         let heure_debut_preparation_voulue = 8.00;
         while (heure_debut_preparation_voulue < 20.00) {
@@ -490,6 +519,10 @@
         optionFin.value = convert_from_decimal_time(heureDebutSelected + temps_passage_matiere + temps_preparation_matiere);
         optionFin.text = convert_from_decimal_time(heureDebutSelected + temps_passage_matiere + temps_preparation_matiere);
         heureFinSelect.append(optionFin);
+        let optionFinPrepa = document.createElement("option");
+        optionFinPrepa.value = convert_from_decimal_time(heureDebutSelected + temps_passage_matiere);
+        optionFinPrepa.text = convert_from_decimal_time(heureDebutSelected + temps_passage_matiere);
+        heureFinPrepa.append(optionFinPrepa)
 
         break_doublons();
     }
@@ -506,7 +539,7 @@
     }
 
     function break_doublons() {
-        let all = ["matiere-select", "salle-select", "debut-select", "fin-select"];
+        let all = ["matiere-select", "salle-select", "debut-select", "fin_prepa_select", "fin-select"];
         for (let i = 0; i < all.length; i++) {
             let options = []
             document.querySelectorAll('#' + all[i] + ' > option').forEach((option) => {
@@ -538,6 +571,7 @@
         let h = alls[0];
         let m = alls[1];
         let r = parseInt(h, 10) + parseFloat(m) / 60;
+        r = Math.round((r) * 100) / 100;
         return r;
     }
 
@@ -558,7 +592,7 @@
         hidden_input.value = creneauId;
 
         // Delete all
-        cleanUp(["candidat-select-modif", "matiere-select-modif", "salle-select-modif", "debut-select-modif", "fin-select-modif"]);
+        cleanUp(["candidat-select-modif", "matiere-select-modif", "salle-select-modif", "debut-select-modif", "fin_prepa-select-modif", "fin-select-modif"]);
 
         var all_creneau = JSON.parse('{{all_creneau|tojson}}');
         var creneau;
@@ -640,8 +674,8 @@
                                 new_option.text = all_salles[z].numero;
                             }
                         }
-                        if (new_option.text != ""){
-                        salleSelect.append(new_option);
+                        if (new_option.text != "") {
+                            salleSelect.append(new_option);
                         }
                     }
                 }

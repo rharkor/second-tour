@@ -14,8 +14,8 @@ admin_routes = Blueprint('admin_routes', __name__,
 
 
 @admin_routes.route('/')
-@admin_routes.route('/acceuil', methods=['POST', 'GET'])
-def acceuil():
+@admin_routes.route('/accueil', methods=['POST', 'GET'])
+def accueil():
     if main_security.test_session_connected(session, True):
         if request.method == 'POST':
             form = request.form
@@ -49,7 +49,7 @@ def acceuil():
         all_salles = []
         for salle in salles:
             all_salles.append(salle.as_dict())
-        return render_template('admin/acceuil.html',all_professeurs=all_professeurs, all_candidats=all_candidats, all_creneaux=all_creneaux, all_series=all_series, all_matieres=all_matieres, all_salles=all_salles)
+        return render_template('admin/accueil.html',all_professeurs=all_professeurs, all_candidats=all_candidats, all_creneaux=all_creneaux, all_series=all_series, all_matieres=all_matieres, all_salles=all_salles)
     else:
         return redirect(url_for('main_routes.connexion'))
 
@@ -300,14 +300,14 @@ def creneau():
         if request.method == 'POST':
             form = request.form
             if form.get('submit_button') is not None:
-                if 'candidat' in form and 'matiere' in form and 'salle' in form and 'debut' in form and 'fin' in form:
-                    result = main_database.add_creneau(form['candidat'], form['matiere'], form['salle'], form['debut'], form['fin'])
+                if 'candidat' in form and 'matiere' in form and 'salle' in form and 'debut' in form and 'fin_prepa' in form and 'fin' in form:
+                    result = main_database.add_creneau(form['candidat'], form['matiere'], form['salle'], form['debut'], form["fin_prepa"], form['fin'])
                     flash(result[0], result[1])
                     logging.warning(result[0])
             elif form.get('modify_button') is not None:
-                if 'last_creneau_id' in form and 'candidat' in form and 'matiere' in form and 'salle' in form and 'debut' in form and 'fin' in form:
+                if 'last_creneau_id' in form and 'candidat' in form and 'matiere' in form and 'salle' in form and 'debut' and 'fin_prepa' in form in form and 'fin' in form:
                     if not (res := main_database.delete_creneau(form['last_creneau_id'])):
-                        result = main_database.add_creneau(form['candidat'], form['matiere'], form['salle'], form['debut'], form['fin'])
+                        result = main_database.add_creneau(form['candidat'], form['matiere'], form['salle'], form['debut'], form["fin_prepa"], form['fin'])
                         flash(result[0], result[1])
                         logging.warning(result[0])
                     else:
