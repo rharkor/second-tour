@@ -73,6 +73,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            {% set i = namespace(total = 0) %}
                                             {% for a_prof in all_professeurs %}
                                             {% if a_prof.salle == a_salle.id_salle %}
                                             <tr class="clickable not-null" data-bs-toggle="collapse"
@@ -94,8 +95,7 @@
                                                     <div class="collapse" id="accordionProf{{a_prof.id_professeur}}"
                                                         style="margin: 15px 10px;">
                                                         <div class="table-responsive thumbnail">
-                                                            <table class="table table-light table-striped table-hover"
-                                                                id="tableAccordion{{a_salle.id_salle}}" id="calendar">
+                                                            <table class="table table-light table-striped table-hover tableAccordion{{a_salle.id_salle}}" id="tableAccordion{{a_salle.id_salle}}_{{i.total}}">
                                                                 <thead>
                                                                     <tr>
                                                                         <th scope="col">Nom</th>
@@ -134,6 +134,7 @@
                                                 </td>
                                             </tr>
                                             <tr class="no-border not-null"></tr>
+                                            {% set i.total = i.total + 1 %}
                                             {% endif %}
                                             {% endfor %}
 
@@ -152,8 +153,7 @@
                                                     <div class="collapse" id="accordionLoge{{a_salle.id_salle}}"
                                                         style="margin: 15px 10px;">
                                                         <div class="table-responsive thumbnail">
-                                                            <table class="table table-light table-striped table-hover"
-                                                                id="tableAccordion{{a_salle.id_salle}}" id="calendar">
+                                                            <table class="table table-light table-striped table-hover tableAccordion{{a_salle.id_salle}}" id="calendar">
                                                                 <thead>
                                                                     <tr>
                                                                         <th scope="col">Nom</th>
