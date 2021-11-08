@@ -33,7 +33,7 @@
                                     placeholder="">
                             </div>
                         </th>
-                        <th scope="col" style="width: 24%;">
+                        <th scope="col" style="width: 16%;">
                             <div class="th-inner">Matière</div>
                             <div class="filter-control">
                                 <select class="form-select finder" onchange="finder()">
@@ -63,6 +63,18 @@
                                     <option select></option>
                                     {% for creneau in all_creneau_deb %}
                                     <option>{{creneau.debut_preparation}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </th>
+                        <th scope="col" style="width: 10%;">
+                            <div class="th-inner">FinPrepa</div>
+                            <div class="filter-control">
+                                <select class="form-select finder break-doublons" onchange="finder()"
+                                    style="width: 100px;">
+                                    <option select></option>
+                                    {% for creneau in all_creneau_deb %}
+                                    <option>{{creneau.fin_preparation}}</option>
                                     {% endfor %}
                                 </select>
                             </div>
@@ -103,6 +115,7 @@
                         {% endif %}
                         {% endfor %}
                         <td scope="row">{{a_creneau.debut_preparation}}</td>
+                        <td scope="row">{{a_creneau.fin_preparation}}</td>
                         <td scope="row">{{a_creneau.fin}}</td>
                         <td scope="row">
                             <form method="post" action="{{url_for('admin_routes.creneau')}}"
