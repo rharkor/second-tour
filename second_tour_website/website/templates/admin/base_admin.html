@@ -203,12 +203,6 @@
 
         doc.save('Calendrier.pdf');
     }
-
-    function centered_text(text, y, doc) {
-        var textWidth = doc.getStringUnitWidth(text) * doc.internal.getFontSize() / doc.internal.scaleFactor;
-        var textOffset = (doc.internal.pageSize.width - textWidth) / 2;
-        doc.text(textOffset, y, text);
-    }
 </script>
 <script>
     $('.deleteRow').click(function () {

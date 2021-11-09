@@ -3,7 +3,7 @@
 {% block sub_content %}
 <div class="main-div-admin">
     <div class="name-finder align-items-end">
-        <button href="#" type="button" class="btn btn-info">
+        <button href="#" type="button" class="btn btn-info" onclick="downloadPDF()">
             Télécharger
             <i class="fas fa-print ml-s"></i>
         </button>
@@ -16,7 +16,7 @@
         </div>
         {%- endfor %}
         <div class="table-responsive thumbnail">
-            <table class="table table-light table-striped table-hover" id="calendar">
+            <table class="table table-light table-striped table-hover" id="tableAccordion1">
                 <thead>
                     <tr>
                         <th scope="col">Nom</th>
@@ -28,7 +28,7 @@
                 </thead>
                 <tbody>
                     {% for creneau in all_creneaux %}
-                    {% if creneau.id_matiere in id_matieres and creneau.id_salle in id_salles %}
+                    {% if creneau.id_matiere in id_matieres and creneau.id_salle in id_salle %}
                     <tr>
                         {% for candidat in all_candidats %}
                         {% if candidat.id_candidat == creneau.id_candidat %}
@@ -47,4 +47,22 @@
         </div>
     </div>
 </div>
+{% endblock %}
+{% block sub_script %}
+<script>
+function downloadPDF()
+{
+    var id_salle='{{id_salle[0]}}';
+    var all_salles = JSON.parse('{{all_salles|tojson}}');
+    var all_professeurs = JSON.parse('{{all_professeurs|tojson}}');
+    for (let i = 0; i < all_salles.length; i++) 
+    {
+        if(all_salles[i].id_salle==parseInt(id_salle, 10))
+        {
+            var name_salle=all_salles[i].numero;
+        }
+    }
+    var doc = downloadPDFWithBrowserPrint('tableAccordion1', name_salle);
+}
+</script>
 {% endblock %}
