@@ -7,7 +7,8 @@
     style="position: fixed; width: 250px; height: 100% !important;">
     <a href="{{url_for('main_routes.index')}}" style="width: 100%;"
         class="d-flex align-items-center justify-content-evenly mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-        <i class="fas fa-arrow-left fa-lg" style="font-size: 1.5em; display:flex; justify-content: center; align-items: center;height: 100%;padding-top: 3px;"></i>
+        <i class="fas fa-arrow-left fa-lg"
+            style="font-size: 1.5em; display:flex; justify-content: center; align-items: center;height: 100%;padding-top: 3px;"></i>
         <span class="fs-4">Espace admin</span>
     </a>
     <hr>
@@ -120,40 +121,81 @@
         //doc.text(200, y = y + 30, "Liste d'émargement");
         doc.setFontSize(20);
         centered_text("Liste d'émargement", 60, doc);
-        doc.autoTable({
-            html: '#' + name,
-            startY: 70,
-            theme: 'grid',
-            columnStyles: {
-                0: {
-                    cellWidth: 140,
+
+
+        if (document.getElementById(name)) {
+            doc.autoTable({
+                html: '#' + name,
+                startY: 70,
+                theme: 'grid',
+                columnStyles: {
+                    0: {
+                        cellWidth: 140,
+                    },
+                    1: {
+                        cellWidth: 140,
+                    },
+                    2: {
+                        cellWidth: 140,
+                    },
+                    3: {
+                        cellWidth: 140,
+                    },
                 },
-                1: {
-                    cellWidth: 140,
+                styles: {
+                    minCellHeight: 40
                 },
-                2: {
-                    cellWidth: 140,
-                },
-                3: {
-                    cellWidth: 140,
-                },
-            },
-            styles: {
-                minCellHeight: 40
-            },
-            didParseCell: function (table) {
-                if (table.section === 'head') {
-                    table.cell.styles.fillColor = '#4c5cff';
+                didParseCell: function (table) {
+                    if (table.section === 'head') {
+                        table.cell.styles.fillColor = '#4c5cff';
+                    }
                 }
-            }
-        })
-
-        if (!output) {
-            doc.save(num_salle.toString() + '_listeDEmargement.pdf');
+            });
         } else {
-            return doc;
-        }
+            var elements = document.getElementsByClassName(name);
+            for (var i = 0; i < elements.length; i++) {
+                if (i == 0) {
+                    var startY = 70;
+                } else {
+                    var startY = doc.lastAutoTable.finalY + 20;
+                }
+                doc.autoTable(
+                    {
+                        html: "#" + name + "_" + i.toString(),
+                        startY: startY,
+                        theme: 'grid',
+                        columnStyles: {
+                            0: {
+                                cellWidth: 140,
+                            },
+                            1: {
+                                cellWidth: 140,
+                            },
+                            2: {
+                                cellWidth: 140,
+                            },
+                            3: {
+                                cellWidth: 140,
+                            },
+                        },
+                        styles: {
+                            minCellHeight: 40
+                        },
+                        didParseCell: function (table) {
+                            if (table.section === 'head') {
+                                table.cell.styles.fillColor = '#4c5cff';
+                            }
+                        }
+                    });
+            }
 
+            if (!output) {
+                doc.save(num_salle.toString() + '_listeDEmargement.pdf');
+            } else {
+                return doc;
+            }
+
+        }
     }
 </script>
 <script>
