@@ -14,17 +14,24 @@ professeur_routes = Blueprint('professeur_routes', __name__,
 def accueil():
     if main_security.test_session_connected(session, False):
         id_matieres = []
-        id_salles = []
+        all_professeurs = []
+        professeurs = PROFESSEUR.query.all()
+        for professeur in professeurs:
+            all_professeurs.append(professeur.as_dict())
+        id_salle = []
         for utilisateur in UTILISATEURS.query.all():
             if utilisateur.email == session['email']:
                 for professeur in PROFESSEUR.query.all():
                     if professeur.id_utilisateur == utilisateur.id:
                         id_matieres.append(professeur.matiere)
-                        id_salles.append(professeur.salle)
-
+                        id_salle.append(professeur.salle)
+        salles = SALLE.query.all()
+        all_salles = []
+        for salle in salles:
+            all_salles.append(salle.as_dict())
         all_candidats = CANDIDATS.query.all()
         all_creneaux = CRENEAU.query.all()
-        return render_template('professeur/accueil.html', id_matieres=id_matieres, all_candidats=all_candidats, all_creneaux=all_creneaux, id_salles=id_salles)
+        return render_template('professeur/accueil.html', id_matieres=id_matieres, all_candidats=all_candidats, all_creneaux=all_creneaux, id_salle=id_salle, all_professeurs=all_professeurs, all_salles=all_salles)
     else:
         return redirect(url_for('main_routes.connexion'))
 
