@@ -261,4 +261,8 @@ option:disabled {
   background-color: #e9ecef;
   pointer-events: none;
 }
+
+.table-responsive {
+  overflow-x: clip;
+}
 /*# sourceMappingURL=main.css.map */

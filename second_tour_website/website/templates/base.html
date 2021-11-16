@@ -140,17 +140,18 @@
   </script>
   <script>
     window.addEventListener("DOMContentLoaded", (event) => {
-      let options = []
 
-      document.querySelectorAll('.break-doublons > option').forEach((option) => {
-        if (options.includes(option.value)) option.remove()
-        else options.push(option.value)
-      })
-
-      options = []
-      document.querySelectorAll('.break-doublons-1 > option').forEach((option) => {
-        if (options.includes(option.value)) option.remove()
-        else options.push(option.value)
+      document.querySelectorAll('select.break-doublons').forEach((select) => {
+        let options = [];
+        for(let index = 0; index < select.options.length; index++){
+          option = select.options[index];
+          if (options.includes(option.value)) {
+            option.remove();
+            index--;
+          }else{
+            options.push(option.value);
+          }
+        };
       })
     });
   </script>

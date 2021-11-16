@@ -36,10 +36,10 @@
                         <th scope="col">
                             <div class="th-inner">Matière</div>
                             <div class="filter-control">
-                                    <select class="form-select finder" onchange="finder()">
+                                    <select class="form-select finder break-doublons" onchange="finder()">
                                         <option select></option>
                                         {% for matiere in all_matieres %}
-                                        <option>{{matiere.nom_complet}}</option>
+                                        <option>{{matiere.nom}}</option>
                                         {% endfor %}
                                     </select>
                             </div>
