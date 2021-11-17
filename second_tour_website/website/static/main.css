@@ -265,4 +265,8 @@ option:disabled {
 .table-responsive {
   overflow-x: clip;
 }
+
+.align-text-top {
+  vertical-align: top;
+}
 /*# sourceMappingURL=main.css.map */

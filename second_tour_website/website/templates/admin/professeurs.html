@@ -55,7 +55,8 @@
                                     </select>
                             </div>
                         </th>
-                        <th scope="col" class="supprimer">Supprimer</th>
+                        <th scope="col" class="supprimer align-text-top">Modifier</th>
+                        <th scope="col" class="supprimer align-text-top">Supprimer</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -76,6 +77,15 @@
                             {{a_salle.numero}}
                             {% endif %}
                             {% endfor %}
+                        </td>
+                        <td scope="row">
+                            <form method="post" action="{{url_for('admin_routes.professeurs')}}"
+                                id="modifyCreneauForm{{a_prof.id_professeur}}">
+                                <input type="hidden" name="id" value="{{a_prof.id_professeur}}">
+                                <button type="button" id="{{a_prof.id_professeur}}" data-bs-toggle="modal"
+                                    data-bs-target="#modifyModal"
+                                    class="modifRow btn btn-outline-warning">Modifier</button>
+                            </form>
                         </td>
                         <td scope="row">
                             <form method="post" action="{{url_for('admin_routes.professeurs')}}"
@@ -162,14 +172,14 @@
                             <label for="name">Nom</label>
                             <div class="d-flex">
                                 <input type="text" class="form-control" id="name" name="name"
-                                    placeholder="Entrez un nom" required="required">
+                                    placeholder="Entrez un nom" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="surname">Prénom</label>
                             <div class="d-flex">
                                 <input type="text" class="form-control" id="surname" name="surname"
-                                    placeholder="Entrez un prénom" required="required">
+                                    placeholder="Entrez un prénom" required>
                             </div>
                         </div>
                         <div class="form-group">
@@ -184,6 +194,7 @@
                         <div class="form-group">
                             <label for="selectSalle">Salle</label>
                             <select class="form-control" id="selectSalle" name="salle">
+                                <option selected></option>
                                 {% for a_salle in all_salles %}
                                 <option id="salle{{a_salle.id_salle}}" value="{{a_salle.id_salle}}">{{a_salle.numero}}
                                 </option>
@@ -222,5 +233,113 @@
             </div>
         </div>
     </div>
+    <!-- Modal modification d'1 row professeur-->
+    <div class="modal fade" id="modifyModal" tabindex="-1" role="dialog" aria-labelledby="modifyModal"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modifier un professeur</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p style="color: orange;">[!] Si le prof est assigné à aucune salle, il n'aura aucun créneau.</p>
+                    <form method="post" action="{{url_for('admin_routes.professeurs')}}" id="modifyProfesseurForm">
+                        <input id="id_professeur_modify" name="prof_id" value="" hidden>
+                        <input id="id_utilisateur_modify" name="user" value="" hidden>
+
+                        <div class="form-group">
+                            <label for="name">Nom</label>
+                            <input type="text" class="form-control" id="name" name="name" aria-describedby="nameHelp"
+                                placeholder="Entrez un nom" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="surname">Prenom</label>
+                            <input type="text" class="form-control" id="surname" name="surname"
+                                aria-describedby="surnameHelp" placeholder="Entrez un prénom" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="matiere" class="col-form-label">Matière</label>
+                            <select class="form-select" name="matiere" id="matiere-select-modif">
+                                {% for matiere in all_matieres %}
+                                <option id="matiere_{{matiere.id_matiere}}" value="{{matiere.id_matiere}}">{{matiere.nom_complet}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="salle" class="col-form-label">Salle</label>
+                            <select class="form-select" name="salle" id="salle-select-modif" >
+                                <option selected></option>
+                                {% for a_salle in all_salles %}
+                                <option id="salle{{a_salle.id_salle}}" value="{{a_salle.id_salle}}">{{a_salle.numero}}
+                                </option>
+                                {% endfor %}
+                            </select>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                    <button class="btn btn-warning" name="modify_button" type="submit" id="ModalSubmitModifButton" form="modifyProfesseurForm">Modifier
+                        le professeur</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+{% endblock %}
+
+{% block sub_script %}
+<script>
+    $('.modifRow').click(function () {
+
+        var $myRowId = $(this).get(0).id;
+        name = document.getElementById("ModalSubmitModifButton").getAttribute("form");
+        name= name+$myRowId;
+        $("#id_professeur_modify").attr('value', $myRowId);
+
+        form_elements = document.getElementById("modifyProfesseurForm").elements;
+
+
+        myvar_matieres = '{{all_matieres|tojson}}';
+        var all_matieres = JSON.parse(myvar_matieres);
+        myvar_profs = '{{all_profs|tojson}}';
+        var all_professeurs = JSON.parse(myvar_profs);
+
+        var professeur;
+        for (var i = 0; i < all_professeurs.length; i++) {
+            if (all_professeurs[i]['id_professeur'] == $myRowId) {
+                professeur = all_professeurs[i];
+            }
+        }
+
+        var matiere;
+        for (var i = 0; i < all_matieres.length; i++) {
+            if (all_matieres[i]['id_matiere'] == professeur.matiere) {
+                matiere = all_matieres[i];
+            }
+        }
+
+
+
+        //Set the user
+        $("#id_utilisateur_modify").attr('value', professeur.id_utilisateur);
+
+        //Set the name surname
+        form_elements[2].value = professeur['nom'];
+        form_elements[3].value = professeur['prenom'];
+
+        //Set the matiere
+       if (matiere != null) {
+            id_matiere = matiere['id_matiere'];
+            select = form_elements[4];
+            for (var i = 0; i < select.length; i++) {
+                if (select.options[i].id == "matiere_" + id_matiere) {
+                    select.options[i].selected = true;
+                }
+            }
+        }
+    });
+</script>
 {% endblock %}

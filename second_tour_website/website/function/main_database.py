@@ -142,9 +142,8 @@ def delete_salle(id):
     try:
         salle = SALLE.query.filter_by(id_salle=id).one()
         # Delete the dependency
-        professeurs = PROFESSEUR.query.filter_by(salle=id)
-        for prof in professeurs:
-            db.session.delete(prof)
+        rows_changed = PROFESSEUR.query.filter_by(salle=id).update(dict(salle = None))
+        db.session.commit()
         # Delete the dependency
         creneaux = CRENEAU.query.filter_by(id_salle=id)
         for creneau in creneaux:
@@ -178,13 +177,24 @@ def add_professeur(email, password, nom, prenom, matiere, salle):
         logging.warning('Erreur : ' + traceback.format_exc())
         return ['Erreur : ' + traceback.format_exc(), 'danger']
 
+def add_professeur_wep(user, nom, prenom, matiere, salle):
+    try:
+        professeur = PROFESSEUR(user, nom, prenom, matiere, salle)
+        if not professeur.unvalid:
+            db.session.add(professeur)
+            db.session.commit()
+            logging.warning('Le professeur a bien été crée')
+            return ['Le professeur a bien été crée', 'success']
+        else:
+            return professeur.unvalid
+    except Exception:
+        logging.warning('Erreur : ' + traceback.format_exc())
+        return ['Erreur : ' + traceback.format_exc(), 'danger']
+
 def delete_professeur(id):
     try:
         professeur = PROFESSEUR.query.filter_by(id_professeur=id).one()
-        # Delete the dependency
-        user = UTILISATEURS.query.filter_by(id=professeur.id_utilisateur)
-        for an_user in user:
-            db.session.delete(an_user)
+
         db.session.delete(professeur)
         db.session.commit()
         return False
