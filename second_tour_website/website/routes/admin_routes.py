@@ -209,8 +209,25 @@ def professeurs():
                     if r := main_database.delete_professeur(form['id']):
                         flash(r[0], r[1])
                         logging.warning(r[0])
-        all_profs = PROFESSEUR.query.order_by(PROFESSEUR.nom).all()
-        all_matieres = MATIERES.query.all()
+            elif form.get('modify_button') is not None:
+                if 'user' in form and 'prof_id' in form and 'name' in form and 'surname' in form and 'matiere' in form and 'salle' in form:
+                    result = main_database.delete_professeur(form['prof_id'])
+                    print(form['prof_id'])
+                    result = main_database.add_professeur_wep(form['user'],
+                        form['name'], form['surname'], form['matiere'], form['salle'])
+                    flash(result[0], result[1])
+                    logging.warning(result[0])
+        
+        # Serialize PROFESSEUR
+        profs = PROFESSEUR.query.order_by(PROFESSEUR.nom).all()
+        all_profs = []
+        for a_professeur in profs:
+            all_profs.append(a_professeur.as_dict())
+        # Serialize TABLE
+        matieres = MATIERES.query.all()
+        all_matieres = []
+        for a_matiere in matieres:
+            all_matieres.append(a_matiere.as_dict())
         all_salles = SALLE.query.all()
         all_creneaux = CRENEAU.query.order_by(CRENEAU.debut_preparation).all()
         all_candidats = CANDIDATS.query.all()
