@@ -4,7 +4,7 @@
 <div class="main-div-admin">
     <div class="name-finder" style="justify-content: end;">
         <button href="#" type="button" class="btn btn-success" data-bs-toggle="modal"
-            data-bs-target="#addCandidatModal">
+            data-bs-target="#addCandidatModal" id="buttonAdd">
             Ajouter
             <i class="fas fa-plus ml-s"></i>
         </button>
@@ -74,7 +74,7 @@
                         <th scope="col">
                             <div class="th-inner">Tiers temps</div>
                             <div class="filter-control">
-                                <select class="form-select finder" onchange="finder()" style="width: 100px;">
+                                <select class="form-select finder" onchange="finder()" style="width: 80px;">
                                     <option selected></option>
                                     <option>Oui</option>
                                     <option>Non</option>
@@ -405,9 +405,10 @@
         }
     }
 
-    window.onload = function () {
+
+    $("#buttonAdd").click( () => {
         testMatiereCompatible();
-    };
+    })
 </script>
 
 <script>
