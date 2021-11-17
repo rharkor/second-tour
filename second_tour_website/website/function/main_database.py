@@ -142,9 +142,8 @@ def delete_salle(id):
     try:
         salle = SALLE.query.filter_by(id_salle=id).one()
         # Delete the dependency
-        professeurs = PROFESSEUR.query.filter_by(salle=id)
-        for prof in professeurs:
-            db.session.delete(prof)
+        rows_changed = PROFESSEUR.query.filter_by(salle=id).update(dict(salle = None))
+        db.session.commit()
         # Delete the dependency
         creneaux = CRENEAU.query.filter_by(id_salle=id)
         for creneau in creneaux:
