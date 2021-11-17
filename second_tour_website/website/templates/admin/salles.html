@@ -138,6 +138,7 @@
                                             {% endif %}
                                             {% endfor %}
 
+                                            {% set i = namespace(total = 0) %}
                                             {% for a_matiere_o in all_matieres %}
                                             {% if a_matiere_o.loge == a_salle.id_salle %}
                                             <tr class="clickable not-null" data-bs-toggle="collapse"
@@ -153,7 +154,7 @@
                                                     <div class="collapse" id="accordionLoge{{a_salle.id_salle}}"
                                                         style="margin: 15px 10px;">
                                                         <div class="table-responsive thumbnail">
-                                                            <table class="table table-light table-striped table-hover tableAccordion{{a_salle.id_salle}}" id="calendar">
+                                                            <table class="table table-light table-striped table-hover tableAccordion{{a_salle.id_salle}}" id="tableAccordion{{a_salle.id_salle}}_{{i.total}}">
                                                                 <thead>
                                                                     <tr>
                                                                         <th scope="col">Nom</th>
@@ -188,6 +189,7 @@
                                                     </div>
                                                 </td>
                                             </tr>
+                                            {% set i.total = i.total + 1 %}
                                             {% endif %}
                                             {% endfor %}
                                         </tbody>
