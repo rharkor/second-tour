@@ -129,7 +129,7 @@ class PROFESSEUR(db.Model):
     nom = db.Column(db.String(30), nullable=False)
     prenom = db.Column(db.String(30), nullable=False)
     matiere = db.Column(db.Integer, nullable=False)
-    salle = db.Column(db.Integer, nullable=False)
+    salle = db.Column(db.Integer, nullable=True)
 
     def __init__(self, id_utilisateur, nom, prenom, matiere, salle):
         self.unvalid = False

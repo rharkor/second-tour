@@ -109,7 +109,7 @@ main_database.add_creneau(1, 1, 1, '09:00', '09:10', '09:30')
 | id_matiere | id_serie |      nom      |            nom_complet            | temps_preparation | temps_preparation_tiers_temps | temps_passage | temps_passage_tiers_temps | loge |
 |:----------:|:--------:|:-------------:|:---------------------------------:|:-----------------:|:-----------------------------:|:-------------:|:-------------------------:|:----:|
 | 1          | 1        | mathématiques | mathématiques - mathématiques/svt | 30                | 40                            | 50            | 60                        | D302 |
-| 1          | 1        | svt           | svt - mathématiques/svt           | 30                | 40                            | 50            | 60                        | D201 |
+| 2          | 1        | svt           | svt - mathématiques/svt           | 30                | 40                            | 50            | 60                        | D201 |
 |            |          |               |                                   |                   |                               |               |                           |      |
 
 - Table CANDIDATS
