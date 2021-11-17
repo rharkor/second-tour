@@ -112,11 +112,11 @@ def delete_matiere(id):
         # Delete the dependency
         matieres1 = CHOIX_MATIERE.query.filter_by(matiere1=id)
         for matiere_actual in matieres1:
-            db.session.delete(matiere_actual)
+            matiere_actual.matiere1 = None
         # Delete the dependency
         matieres2 = CHOIX_MATIERE.query.filter_by(matiere2=id)
         for matiere_actual in matieres2:
-            db.session.delete(matiere_actual)
+            matiere_actual.matiere2 = None
         db.session.delete(matiere)
         db.session.commit()
         return False

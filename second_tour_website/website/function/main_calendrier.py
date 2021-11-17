@@ -62,10 +62,12 @@ def generation_calendrier():
         # Get prof for each matiere
         professeur_m1, professeur_m2 = [], []
         for professeur in all_professeurs:
-            if professeur.matiere == matiere1.id_matiere:
-                professeur_m1.append(professeur)
-            if professeur.matiere == matiere2.id_matiere:
-                professeur_m2.append(professeur)
+            if matiere1 is not None:
+                if professeur.matiere == matiere1.id_matiere:
+                    professeur_m1.append(professeur)
+            if matiere2 is not None:
+                if professeur.matiere == matiere2.id_matiere:
+                    professeur_m2.append(professeur)
 
         # salle for each matiere
         salle_m1, salle_m2 = [], []
@@ -88,19 +90,33 @@ def generation_calendrier():
 
         # Verify the disponibility
         # total time for matiere
-        temps_passage_m1 = convert_to_decimal_time(convert_minute_to_string(matiere1.temps_passage if not candidat.tiers_temps else matiere1.temps_passage_tiers_temps))
-        temps_passage_m2 = convert_to_decimal_time(convert_minute_to_string(matiere2.temps_passage if not candidat.tiers_temps else matiere2.temps_passage_tiers_temps))
-        temps_preparation_m1 = convert_to_decimal_time(convert_minute_to_string(matiere1.temps_preparation if not candidat.tiers_temps else matiere1.temps_preparation_tiers_temps))
-        temps_preparation_m2 = convert_to_decimal_time(convert_minute_to_string(matiere2.temps_preparation if not candidat.tiers_temps else matiere2.temps_preparation_tiers_temps))
+        if (not matiere1):
+            temps_passage_m1 = None
+        else:
+            temps_passage_m1 = convert_to_decimal_time(convert_minute_to_string(matiere1.temps_passage if not candidat.tiers_temps else matiere1.temps_passage_tiers_temps))
+        if (not matiere2):
+            temps_passage_m2 = None
+        else:
+            temps_passage_m2 = convert_to_decimal_time(convert_minute_to_string(matiere2.temps_passage if not candidat.tiers_temps else matiere2.temps_passage_tiers_temps))
+        if (not matiere1):
+            temps_passage_m1 = None
+        else:
+            temps_preparation_m1 = convert_to_decimal_time(convert_minute_to_string(matiere1.temps_preparation if not candidat.tiers_temps else matiere1.temps_preparation_tiers_temps))
+        if (not matiere2):
+            temps_passage_m2 = None
+        else:
+            temps_preparation_m2 = convert_to_decimal_time(convert_minute_to_string(matiere2.temps_preparation if not candidat.tiers_temps else matiere2.temps_preparation_tiers_temps))
         
 
         for x in range(0, 2):
 
             salle_matiere = salle_m1 if x == 0 else salle_m2
-            temps_passage_matiere = temps_passage_m1 if x == 0 else temps_passage_m2
-            temps_preparation_matiere = temps_preparation_m1 if x == 0 else temps_preparation_m2
             matiere = matiere1 if x == 0 else matiere2
-
+            temps_passage_matiere = temps_passage_m1 if x == 0 else temps_passage_m2
+            if (not matiere):
+                temps_preparation_matiere = None
+            else:
+                temps_preparation_matiere = temps_preparation_m1 if x == 0 else temps_preparation_m2
             heure_debut_preparation_voulue = 8.00
             while heure_debut_preparation_voulue < 20.00:
                 for a_salle in salle_matiere:
@@ -116,8 +132,8 @@ def generation_calendrier():
                                     matiere_creneau = a_matiere
                             temps_passage_creneau = convert_to_decimal_time(convert_minute_to_string(matiere_creneau.temps_passage))
                             temps_preparation_creneau = convert_to_decimal_time(convert_minute_to_string(matiere_creneau.temps_preparation))
-
-                            fin_passage_matiere = heure_debut_preparation_voulue + temps_preparation_matiere + temps_passage_matiere
+                            if(heure_debut_preparation_voulue is not None and temps_preparation_matiere is not None and temps_passage_matiere is not None):
+                                fin_passage_matiere = heure_debut_preparation_voulue + temps_preparation_matiere + temps_passage_matiere
 
                             # PRINT DEBUG HERE
                             if creneau.id_salle == a_salle.id_salle:
@@ -126,10 +142,11 @@ def generation_calendrier():
                                 pass
 
                             # Test if the salle is empty
-                            if creneau.id_salle == a_salle.id_salle \
-                            and not((heure_debut_preparation_voulue + temps_preparation_matiere >= fin_passage_creneau)
-                            or (heure_debut_preparation_voulue + temps_preparation_matiere + temps_passage_matiere <= debut_preparation_creneau + temps_preparation_creneau)):
-                                aucune_collision = False
+                            if(matiere is not None and heure_debut_preparation_voulue is not None and temps_preparation_matiere is not None and temps_passage_matiere is not None):
+                                if creneau.id_salle == a_salle.id_salle \
+                                and not((heure_debut_preparation_voulue + temps_preparation_matiere >= fin_passage_creneau)
+                                or (heure_debut_preparation_voulue + temps_preparation_matiere + temps_passage_matiere <= debut_preparation_creneau + temps_preparation_creneau)):
+                                    aucune_collision = False
                             
                             # Test if the user don't have already creneau and need a pause
                             if creneau.id_candidat == candidat.id_candidat \
@@ -173,9 +190,10 @@ def generation_calendrier():
                     if aucune_collision:
                         # Create the creneau
                         # logging.warning(matiere.id_matiere, heure_debut_preparation_voulue, temps_preparation_matiere, temps_passage_matiere)
-                        res = main_database.add_creneau(candidat.id_candidat, matiere.id_matiere, a_salle.id_salle, convert_from_decimal_time(heure_debut_preparation_voulue), convert_from_decimal_time(heure_debut_preparation_voulue + temps_preparation_matiere), convert_from_decimal_time(heure_debut_preparation_voulue + temps_preparation_matiere + temps_passage_matiere))
-                        if res[1] == 'danger':
-                            logging.warning(res[0])
+                        if(matiere is not None and heure_debut_preparation_voulue is not None and temps_preparation_matiere is not None and temps_passage_matiere is not None):
+                            res = main_database.add_creneau(candidat.id_candidat, matiere.id_matiere, a_salle.id_salle, convert_from_decimal_time(heure_debut_preparation_voulue), convert_from_decimal_time(heure_debut_preparation_voulue + temps_preparation_matiere), convert_from_decimal_time(heure_debut_preparation_voulue + temps_preparation_matiere + temps_passage_matiere))
+                            if res[1] == 'danger':
+                                logging.warning(res[0])
                         heure_debut_preparation_voulue = 20
                         break
                 heure_debut_preparation_voulue += 0.5

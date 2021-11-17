@@ -90,6 +90,7 @@
                         <td scope="row">
                             <div class="calendar-subject">
                                 {% for matiere in all_matieres %}
+
                                 {% if matiere.id_matiere == creneau.id_matiere %}
                                 <div>{{matiere.nom}} - {% if matiere.loge %}Loge {% for salle in all_salles %}{% if
                                     matiere.loge == salle.id_salle %}{{salle.numero}}{% endif %}{% endfor %}{% else %}
