@@ -55,7 +55,8 @@
                                     </select>
                             </div>
                         </th>
-                        <th scope="col" class="supprimer">Supprimer</th>
+                        <th scope="col" class="supprimer align-text-top">Modifier</th>
+                        <th scope="col" class="supprimer align-text-top">Supprimer</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -76,6 +77,15 @@
                             {{a_salle.numero}}
                             {% endif %}
                             {% endfor %}
+                        </td>
+                        <td scope="row">
+                            <form method="post" action="{{url_for('admin_routes.professeurs')}}"
+                                id="modifyCreneauForm{{a_prof.id_professeur}}">
+                                <input type="hidden" name="id" value="{{a_prof.id_professeur}}">
+                                <button type="button" id="{{a_prof.id_professeur}}" data-bs-toggle="modal"
+                                    data-bs-target="#modifyModal"
+                                    class="modifRow btn btn-outline-warning">Modifier</button>
+                            </form>
                         </td>
                         <td scope="row">
                             <form method="post" action="{{url_for('admin_routes.professeurs')}}"
@@ -218,6 +228,58 @@
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
                     <button type="submit" name="delete_button" id="ModalSubmitButton" value="" form="deleteProfForm"
                         class="btn btn-danger">Supprimer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal modification d'1 row professeur-->
+    <div class="modal fade" id="modifyModal" tabindex="-1" role="dialog" aria-labelledby="modifyModal"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modifier un professeur</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p style="color: orange;">[!] Si le prof est assigné à aucune salle, il n'aura aucun créneau.</p>
+                    <form method="post" action="{{url_for('admin_routes.professeurs')}}" id="modifyProfesseurForm">
+                        <input id="id_professeur_modify" name="last_professeurs_id" value="" hidden>
+
+                        <div class="form-group">
+                            <label for="nom" class="col-form-label">Nom</label>
+                            <select class="form-select disabled" name="nom" id="nom-select-modif" required
+                                onchange="">
+                                <option selected></option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="prénom" class="col-form-label">Prénom</label>
+                            <select class="form-select disabled" name="prénom" id="prénom-select-modif" required
+                                onchange="">
+                                <option selected></option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="matiere" class="col-form-label">Matière</label>
+                            <select class="form-select" name="matiere" id="matiere-select-modif" required>
+                                <option selected></option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="salle" class="col-form-label">Salle</label>
+                            <select class="form-select" name="salle" id="salle-select-modif" required>
+                                <option selected></option>
+                                
+                            </select>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                    <button class="btn btn-warning" name="modify_button" type="submit" form="modifyCreneauForm">Modifier
+                        le créneau</button>
                 </div>
             </div>
         </div>
