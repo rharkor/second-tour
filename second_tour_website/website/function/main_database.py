@@ -194,10 +194,7 @@ def add_professeur_wep(user, nom, prenom, matiere, salle):
 def delete_professeur(id):
     try:
         professeur = PROFESSEUR.query.filter_by(id_professeur=id).one()
-        # Delete the dependency
-        user = UTILISATEURS.query.filter_by(id=professeur.id_utilisateur)
-        for an_user in user:
-            db.session.delete(an_user)
+
         db.session.delete(professeur)
         db.session.commit()
         return False

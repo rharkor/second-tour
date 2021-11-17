@@ -194,6 +194,7 @@
                         <div class="form-group">
                             <label for="selectSalle">Salle</label>
                             <select class="form-control" id="selectSalle" name="salle">
+                                <option selected></option>
                                 {% for a_salle in all_salles %}
                                 <option id="salle{{a_salle.id_salle}}" value="{{a_salle.id_salle}}">{{a_salle.numero}}
                                 </option>
@@ -271,8 +272,9 @@
                             <label for="salle" class="col-form-label">Salle</label>
                             <select class="form-select" name="salle" id="salle-select-modif" >
                                 <option selected></option>
-                                {% for salle in all_salles %}
-                                <option >{{salle.numero}}</option>
+                                {% for a_salle in all_salles %}
+                                <option id="salle{{a_salle.id_salle}}" value="{{a_salle.id_salle}}">{{a_salle.numero}}
+                                </option>
                                 {% endfor %}
                             </select>
                     </form>
