@@ -7,6 +7,7 @@ def main():
 
 def test():
     from function import main_test_dependance
+    # from website.database.test import insert_user
     # insert_user.inser_admin()
     pass
 
