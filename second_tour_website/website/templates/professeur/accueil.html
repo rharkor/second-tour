@@ -18,7 +18,7 @@
                         <th scope="col">Heure de début préparation</th>
                         <th scope="col">Fin prépa</th>
                         <th scope="col">Heure de fin</th>
-                        <th scope="col">Emargement</th>
+                        <th scope="col" class="hide">Emargement</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -34,7 +34,7 @@
                         <td scope="row">{{creneau.debut_preparation}}</td>
                         <td scope="row">{{creneau.fin_preparation}}</td>
                         <td scope="row">{{creneau.fin}}</td>
-                        <td scope="row"></td>
+                        <td scope="row" class="hide"></td>
                     </tr>
                     {% endif %}
                     {% endfor %}
