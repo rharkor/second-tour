@@ -45,64 +45,6 @@
         $("#ModalSubmitButton").attr('form', name + $myRowId);
     });
 </script>
-<script>
-    function downloadPDFWithBrowserPrint(name, num_salle) {
-        var doc = new jsPDF('l', 'pt', 'a4');
-        var htmlstring = '';
-        var tempVarToCheckPageHeight = 0;
-        var pageHeight = 0;
-
-        pageHeight = doc.internal.pageSize.height;
-        specialElementHandlers = {
-            // element with id of "bypass" - jQuery style selector  
-            '#bypassme': function (element, renderer) {
-                // true = "handled elsewhere, bypass text extraction"  
-                return true
-            }
-        };
-        margins = {
-            top: 150,
-            bottom: 60,
-            left: 40,
-            right: 40,
-            width: 600
-        };
-        doc.setFontSize(10);
-        doc.setLineWidth(4);
-        doc.text(20, 20, 'Salle : ' + num_salle.toString());
-        //doc.text(200, y = y + 30, "Liste d'émargement");
-        doc.setFontSize(20);
-        centered_text("Liste d'émargement", 60, doc);
-        doc.autoTable({
-            html: '#' + name,
-            startY: 70,
-            theme: 'grid',
-            columnStyles: {
-                0: {
-                    cellWidth: 140,
-                },
-                1: {
-                    cellWidth: 140,
-                },
-                2: {
-                    cellWidth: 140,
-                },
-                3: {
-                    cellWidth: 140,
-                },
-            },
-            styles: {
-                minCellHeight: 40
-            },
-            didParseCell: function (table) {
-                if (table.section === 'head') {
-                    table.cell.styles.fillColor = '#4c5cff';
-                }
-            }
-        })
-        doc.save(num_salle.toString() + '_listeDEmargement.pdf');
-    }
-</script>
 {% block sub_script %}
 {% endblock %}
 {% endblock %}

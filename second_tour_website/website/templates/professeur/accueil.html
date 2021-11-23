@@ -2,12 +2,6 @@
 {% block title %}Administration{% endblock %}
 {% block sub_content %}
 <div class="main-div-admin">
-    <div class="name-finder align-items-end">
-        <button href="#" type="button" class="btn btn-info" onclick="downloadPDF()">
-            Télécharger
-            <i class="fas fa-print ml-s"></i>
-        </button>
-    </div>
     <div class="main-table-admin">
         {%- for category, message in get_flashed_messages(with_categories = true) %}
         <div class="alert alert-{{category}}  alert-dismissible fade show" role="alert">
@@ -49,22 +43,4 @@
         </div>
     </div>
 </div>
-{% endblock %}
-{% block sub_script %}
-<script>
-function downloadPDF()
-{
-    var id_salle='{{id_salle[0]}}';
-    var all_salles = JSON.parse('{{all_salles|tojson}}');
-    var all_professeurs = JSON.parse('{{all_professeurs|tojson}}');
-    for (let i = 0; i < all_salles.length; i++) 
-    {
-        if(all_salles[i].id_salle==parseInt(id_salle, 10))
-        {
-            var name_salle=all_salles[i].numero;
-        }
-    }
-    var doc = downloadPDFWithBrowserPrint('tableAccordion1', name_salle);
-}
-</script>
 {% endblock %}
