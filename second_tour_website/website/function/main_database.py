@@ -1,6 +1,8 @@
 import traceback
 import logging
 
+from flask.helpers import flash
+
 from . import main_security
 from ..database.main_database import *
 
@@ -230,12 +232,25 @@ def delete_candidat(id):
         for choix in choix_matiere:
             db.session.delete(choix)
         # Delete the dependency
-        creneaus = CRENEAU.query.filter_by(id_candidat=id)
-        for creneau in creneaus:
+        creneaux = CRENEAU.query.filter_by(id_candidat=id)
+        for creneau in creneaux:
             db.session.delete(creneau)
         db.session.delete(candidat)
         db.session.commit()
         return False
+    except Exception:
+        logging.warning('Erreur : ' + traceback.format_exc())
+        return ['Erreur : ' + traceback.format_exc(), 'danger']
+
+def delete_all_candidats():
+    try:
+        candidats = CANDIDATS.query.all()
+        for candidat in candidats:
+            logging.warning(f'Suppression du candidat {candidat.id_candidat}')
+            result = delete_candidat(candidat.id_candidat)
+            if result:
+                flash(result[0], result[1])
+        return ['Tous les candidats ont correctement été supprimés !', 'success']
     except Exception:
         logging.warning('Erreur : ' + traceback.format_exc())
         return ['Erreur : ' + traceback.format_exc(), 'danger']
