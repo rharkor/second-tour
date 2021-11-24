@@ -36,12 +36,3 @@ from .routes.professeur_routes import professeur_routes
 app.register_blueprint(main_routes, url_prefix='/')
 app.register_blueprint(admin_routes, url_prefix='/admin')
 app.register_blueprint(professeur_routes, url_prefix='/professeur')
-
-
-def run(debug_mode=False):
-    logging.warning("Run the server")
-    # Run the database
-    db.create_all()
-
-    # Run the website
-    app.run(host="0.0.0.0", port=5000, debug=debug_mode)

@@ -114,7 +114,7 @@
                         <td scope="row">{{salle.numero}}</td>
                         {% endif %}
                         {% endfor %}
-                        <td scope="row">{{a_creneau.debut_preparation}}</td>
+                        <td scope="row">{{a_creneau.debut_preparation.strftime('%Hh%M')}}</td>
                         <td scope="row">{{a_creneau.fin_preparation}}</td>
                         <td scope="row">{{a_creneau.fin}}</td>
                         <td scope="row">
