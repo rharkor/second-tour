@@ -282,11 +282,16 @@ def delete_choix_matiere(id):
 
 def add_creneau(id_candidat, id_matiere, id_salle, debut_preparation, fin_preparation, fin):
     try:
-        debut_preparation = datetime.strptime(debut_preparation.replace(r' GMT.*', ''), '%Y/%m/%d:%H:%M')
-        fin_preparation = datetime.strptime(fin_preparation.replace(r' GMT.*', ''), '%Y/%m/%d:%H:%M')
-        fin = datetime.strptime(fin.replace(r' GMT.*', ''), '%Y/%m/%d:%H:%M')
+        try:
+            debut_preparation = datetime.strptime(str(debut_preparation).replace(r' GMT.*', ''), '%Y/%m/%d:%H:%M')
+            fin_preparation = datetime.strptime(str(fin_preparation).replace(r' GMT.*', ''), '%Y/%m/%d:%H:%M')
+            fin = datetime.strptime(str(fin).replace(r' GMT.*', ''), '%Y/%m/%d:%H:%M')
+        except ValueError:
+            debut_preparation = datetime.strptime(str(debut_preparation).replace(r' GMT.*', ''), '%Y-%m-%d %H:%M:%S')
+            fin_preparation = datetime.strptime(str(fin_preparation).replace(r' GMT.*', ''), '%Y-%m-%d %H:%M:%S')
+            fin = datetime.strptime(str(fin).replace(r' GMT.*', ''), '%Y-%m-%d %H:%M:%S')
+            
         logging.warning("new Créneau : ", id_candidat, id_matiere, id_salle, debut_preparation, fin_preparation, fin)
-        print(type(debut_preparation))
         creneau = CRENEAU(id_candidat, id_matiere, id_salle, debut_preparation, fin_preparation, fin)
         if not creneau.unvalid:
             db.session.add(creneau)
