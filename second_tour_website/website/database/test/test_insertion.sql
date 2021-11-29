@@ -219,8 +219,8 @@ VALUES (NULL, 1, 'Teixera', 'Pénélope', 12, 12);
 
 
 --GENERATION AUTOMATIQUE APRES--
-INSERT INTO CRENEAU(id_creneau, id_candidat, id_matiere, id_salle, debut_preparation, fin_preparation, fin)
-VALUES (NULL, 1, 1, 2, datetime('2021-12-24 09:00'), datetime('2021-12-24 09:30'), datetime('2021-12-24 10:00'));
+-- INSERT INTO CRENEAU(id_creneau, id_candidat, id_matiere, id_salle, debut_preparation, fin_preparation, fin)
+-- VALUES (NULL, 1, 1, 2, datetime('2021-12-24 09:00'), datetime('2021-12-24 09:30'), datetime('2021-12-24 10:00'));
 
-INSERT INTO CRENEAU(id_creneau, id_candidat, id_matiere, id_salle, debut_preparation, fin_preparation, fin)
-VALUES (NULL, 1, 1, 2, datetime('2021-12-25 09:00'), datetime('2021-12-25 09:30'), datetime('2021-12-25 10:00'));
+-- INSERT INTO CRENEAU(id_creneau, id_candidat, id_matiere, id_salle, debut_preparation, fin_preparation, fin)
+-- VALUES (NULL, 1, 1, 2, datetime('2021-12-25 09:00'), datetime('2021-12-25 09:30'), datetime('2021-12-25 10:00'));
