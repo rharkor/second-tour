@@ -47,7 +47,7 @@
                         <th scope="col" style="width: 10%;">
                             <div class="th-inner">Salle</div>
                             <div class="filter-control">
-                                <select class="form-select finder" onchange="finder()" style="width: 100px;">
+                                <select class="form-select finder" onchange="finder()" style="width: 80px;">
                                     <option selected></option>
                                     {% for salle in all_salles %}
                                     <option>{{salle.numero}}</option>
@@ -56,13 +56,25 @@
                             </div>
                         </th>
                         <th scope="col" style="width: 10%;">
+                            <div class="th-inner">Jour</div>
+                            <div class="filter-control">
+                                <select class="form-select finder break-doublons" onchange="finder()"
+                                    style="width: 70px;">
+                                    <option selected></option>
+                                    {% for creneau in all_creneau_deb %}
+                                    <option>{{creneau.debut_preparation.strftime('%d')}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </th>
+                        <th scope="col" style="width: 10%;">
                             <div class="th-inner">Début</div>
                             <div class="filter-control">
                                 <select class="form-select finder break-doublons" onchange="finder()"
-                                    style="width: 80px;">
+                                    style="width: 70px;">
                                     <option selected></option>
                                     {% for creneau in all_creneau_deb %}
-                                    <option>{{creneau.debut_preparation}}</option>
+                                    <option>{{creneau.debut_preparation.strftime('%Hh%M')}}</option>
                                     {% endfor %}
                                 </select>
                             </div>
@@ -71,10 +83,10 @@
                             <div class="th-inner">Fin Prépa</div>
                             <div class="filter-control">
                                 <select class="form-select finder break-doublons" onchange="finder()"
-                                    style="width: 80px;">
+                                    style="width: 70px;">
                                     <option selected></option>
                                     {% for creneau in all_creneau_deb %}
-                                    <option>{{creneau.fin_preparation}}</option>
+                                    <option>{{creneau.fin_preparation.strftime('%Hh%M')}}</option>
                                     {% endfor %}
                                 </select>
                             </div>
@@ -83,10 +95,10 @@
                             <div class="th-inner">Fin</div>
                             <div class="filter-control">
                                 <select class="form-select finder break-doublons" onchange="finder()"
-                                    style="width: 80px;">
+                                    style="width: 70px;">
                                     <option selected></option>
                                     {% for creneau in all_creneau_deb %}
-                                    <option>{{creneau.fin}}</option>
+                                    <option>{{creneau.fin.strftime('%Hh%M')}}</option>
                                     {% endfor %}
                                 </select>
                             </div>
@@ -114,9 +126,10 @@
                         <td scope="row">{{salle.numero}}</td>
                         {% endif %}
                         {% endfor %}
+                        <td scope="row">{{a_creneau.debut_preparation.strftime('%d')}}</td>
                         <td scope="row">{{a_creneau.debut_preparation.strftime('%Hh%M')}}</td>
-                        <td scope="row">{{a_creneau.fin_preparation}}</td>
-                        <td scope="row">{{a_creneau.fin}}</td>
+                        <td scope="row">{{a_creneau.fin_preparation.strftime('%Hh%M')}}</td>
+                        <td scope="row">{{a_creneau.fin.strftime('%Hh%M')}}</td>
                         <td scope="row">
                             <form method="post" action="{{url_for('admin_routes.creneau')}}"
                                 id="modifyCreneauForm{{a_creneau.id_creneau}}">
@@ -457,83 +470,101 @@
             temps_passage_matiere = convert_to_decimal_time(convert_minute_to_string(matiere.temps_passage_tiers_temps))
             temps_preparation_matiere = convert_to_decimal_time(convert_minute_to_string(matiere.temps_preparation_tiers_temps))
         }
+        for (let jour_debut_preparation_voulue = 1; jour_debut_preparation_voulue < 4; jour_debut_preparation_voulue++) {
+            let heure_debut_preparation_voulue = 8.00;
+            while (heure_debut_preparation_voulue < 20.00) {
+                for (let i = 0; i < all_salles.length; i++) {
+                    if (all_salles[i].id_salle == salleId) {
+                        let a_salle = all_salles[i];
+                        // reset the var
+                        let aucune_collision = true;
+                        let all_creneaux = JSON.parse('{{all_creneau|tojson}}');
 
-        let heure_debut_preparation_voulue = 8.00;
-        while (heure_debut_preparation_voulue < 20.00) {
-            for (let i = 0; i < all_salles.length; i++) {
-                if (all_salles[i].id_salle == salleId) {
-                    let a_salle = all_salles[i];
-                    // reset the var
-                    let aucune_collision = true;
-                    let all_creneaux = JSON.parse('{{all_creneau|tojson}}');
+                        for (let x = 0; x < all_creneaux.length; x++) {
+                            let creneau = all_creneaux[x];
+                            debut_prepa_date = new Date(creneau.debut_preparation);
+                            if (debut_prepa_date.getDay() == jour_debut_preparation_voulue) {
+                                let debut_preparation_creneau = convert_to_decimal_time(creneau.debut_preparation)
+                                let fin_passage_creneau = convert_to_decimal_time(creneau.fin)
+                                let matiere_creneau;
+                                for (let z = 0; z < all_matieres.length; z++) {
+                                    if (all_matieres[z].id_matiere == creneau.id_matiere) {
+                                        matiere_creneau = all_matieres[z];
+                                    }
+                                }
+                                let temps_passage_creneau = convert_to_decimal_time(convert_minute_to_string(matiere_creneau.temps_passage));
+                                let temps_preparation_creneau = convert_to_decimal_time(convert_minute_to_string(matiere_creneau.temps_preparation));
 
-                    for (let x = 0; x < all_creneaux.length; x++) {
-                        let creneau = all_creneaux[x];
-                        let debut_preparation_creneau = convert_to_decimal_time(creneau.debut_preparation)
-                        let fin_passage_creneau = convert_to_decimal_time(creneau.fin)
-                        let matiere_creneau;
-                        for (let z = 0; z < all_matieres.length; z++) {
-                            if (all_matieres[z].id_matiere == creneau.id_matiere) {
-                                matiere_creneau = all_matieres[z];
+                                let fin_passage_matiere = heure_debut_preparation_voulue + temps_preparation_matiere + temps_passage_matiere;
+
+                                // Test if the salle is empty
+                                if (creneau.id_salle == a_salle.id_salle
+                                    && !((heure_debut_preparation_voulue + temps_preparation_matiere >= fin_passage_creneau)
+                                        || (heure_debut_preparation_voulue + temps_preparation_matiere + temps_passage_matiere <= debut_preparation_creneau + temps_preparation_creneau))) {
+                                    aucune_collision = false;
+                                }
+
+                                // Test if the user don't have already creneau and need a pause
+                                if (creneau.id_candidat == candidat.id_candidat
+                                    && !((fin_passage_matiere <= debut_preparation_creneau - 0.5)
+                                        || (heure_debut_preparation_voulue >= fin_passage_creneau + 0.5))) {
+                                    aucune_collision = false;
+                                }
+
+                                // Test for lunch
+                                if (creneau.id_salle == a_salle.id_salle
+                                    && ((heure_debut_preparation_voulue >= 13.00 && heure_debut_preparation_voulue < 14.00)
+                                        || (fin_passage_matiere > 13.00 && fin_passage_matiere <= 14.00)
+                                        || (heure_debut_preparation_voulue <= 13.00 && fin_passage_matiere >= 14.00))) {
+                                    aucune_collision = false;
+                                }
                             }
                         }
-                        let temps_passage_creneau = convert_to_decimal_time(convert_minute_to_string(matiere_creneau.temps_passage));
-                        let temps_preparation_creneau = convert_to_decimal_time(convert_minute_to_string(matiere_creneau.temps_preparation));
+                        let date = new Date();
+                        let year =  date.getYear()  + 1900;
+                        heure_debut_preparation_voulue_datetime = year + '/' + date.getMonth() + '/' + '0' + jour_debut_preparation_voulue + ':' + convert_from_decimal_time(heure_debut_preparation_voulue)
+                        fin_preparation_matiere_datetime = year + '/' + date.getMonth() + '/' + '0' + jour_debut_preparation_voulue + ':' + convert_from_decimal_time(heure_debut_preparation_voulue + temps_preparation_matiere)
+                        fin_passage_matiere_datetime = year + '/' + date.getMonth() + '/' + '0' + jour_debut_preparation_voulue + ':' + convert_from_decimal_time(heure_debut_preparation_voulue + temps_preparation_matiere + temps_passage_matiere)
 
-                        let fin_passage_matiere = heure_debut_preparation_voulue + temps_preparation_matiere + temps_passage_matiere;
+                        if (aucune_collision) {
+                            let optionDebut = document.createElement("option");
+                            optionDebut.value = heure_debut_preparation_voulue_datetime;
+                            optionDebut.text = "Jour " + jour_debut_preparation_voulue + "  | " + convert_from_decimal_time(heure_debut_preparation_voulue);
 
-                        // Test if the salle is empty
-                        if (creneau.id_salle == a_salle.id_salle
-                            && !((heure_debut_preparation_voulue + temps_preparation_matiere >= fin_passage_creneau)
-                                || (heure_debut_preparation_voulue + temps_preparation_matiere + temps_passage_matiere <= debut_preparation_creneau + temps_preparation_creneau))) {
-                            aucune_collision = false;
+                            //Append
+                            heureDebutSelect.append(optionDebut);
+                        } else {
+                            let optionDebut = document.createElement("option");
+                            optionDebut.value = heure_debut_preparation_voulue_datetime;
+                            optionDebut.text = "Jour " + jour_debut_preparation_voulue + " | " + convert_from_decimal_time(heure_debut_preparation_voulue);
+                            optionDebut.disabled = true;
+
+                            //Append
+                            heureDebutSelect.append(optionDebut);
                         }
-
-                        // Test if the user don't have already creneau and need a pause
-                        if (creneau.id_candidat == candidat.id_candidat
-                            && !((fin_passage_matiere <= debut_preparation_creneau - 0.5)
-                                || (heure_debut_preparation_voulue >= fin_passage_creneau + 0.5))) {
-                            aucune_collision = false;
-                        }
-
-                        // Test for lunch
-                        if (creneau.id_salle == a_salle.id_salle
-                            && ((heure_debut_preparation_voulue >= 13.00 && heure_debut_preparation_voulue < 14.00)
-                                || (fin_passage_matiere > 13.00 && fin_passage_matiere <= 14.00)
-                                || (heure_debut_preparation_voulue <= 13.00 && fin_passage_matiere >= 14.00))) {
-                            aucune_collision = false;
-                        }
-                    }
-
-                    if (aucune_collision) {
-                        let optionDebut = document.createElement("option");
-                        optionDebut.value = convert_from_decimal_time(heure_debut_preparation_voulue);
-                        optionDebut.text = convert_from_decimal_time(heure_debut_preparation_voulue);
-
-                        //Append
-                        heureDebutSelect.append(optionDebut);
-                    } else {
-                        let optionDebut = document.createElement("option");
-                        optionDebut.value = convert_from_decimal_time(heure_debut_preparation_voulue);
-                        optionDebut.text = convert_from_decimal_time(heure_debut_preparation_voulue);
-                        optionDebut.disabled = true;
-
-                        //Append
-                        heureDebutSelect.append(optionDebut);
                     }
                 }
+                heure_debut_preparation_voulue += 0.5
             }
-            heure_debut_preparation_voulue += 0.5
         }
+        const regex = /Jour .* | /;
+        let heureDebutSelected = convert_to_decimal_time(heureDebutSelect.options[heureDebutSelect.selectedIndex].text.replace(regex, ""));
+        let heureDebutSelected_datetime = heureDebutSelect.value;
 
-        let heureDebutSelected = convert_to_decimal_time(heureDebutSelect.value);
+        fin_matiere_datetime = new Date(heureDebutSelected_datetime);
+        fin_matiere_datetime.setHours(fin_matiere_datetime.getHours() +  + temps_preparation_matiere + temps_passage_matiere);
+
+        let year =  fin_matiere_datetime.getYear()  + 1900;
 
         let optionFin = document.createElement("option");
-        optionFin.value = convert_from_decimal_time(heureDebutSelected + temps_passage_matiere + temps_preparation_matiere);
+        optionFin.value = year + "/" + fin_matiere_datetime.getMonth() + "/" + fin_matiere_datetime.getDay() + ":" + convert_from_decimal_time(heureDebutSelected + temps_passage_matiere + temps_preparation_matiere);
         optionFin.text = convert_from_decimal_time(heureDebutSelected + temps_passage_matiere + temps_preparation_matiere);
         heureFinSelect.append(optionFin);
+
+        fin_preparation_matiere_datetime = new Date(heureDebutSelected_datetime);
+        fin_preparation_matiere_datetime.setHours(fin_preparation_matiere_datetime.getHours() + temps_preparation_matiere);
         let optionFinPrepa = document.createElement("option");
-        optionFinPrepa.value = convert_from_decimal_time(heureDebutSelected + temps_passage_matiere);
+        optionFinPrepa.value = year + "/" + fin_preparation_matiere_datetime.getMonth() + "/" + fin_preparation_matiere_datetime.getDay() + ":" + convert_from_decimal_time(heureDebutSelected + temps_passage_matiere);
         optionFinPrepa.text = convert_from_decimal_time(heureDebutSelected + temps_passage_matiere);
         heureFinPrepa.append(optionFinPrepa)
 

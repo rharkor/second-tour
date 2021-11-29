@@ -21,6 +21,12 @@
             <div class="name-finder" style="width: max-content;">
                 <input class="form-control" type="text" id="search-name" onkeyup="nameFinder()"
                     placeholder="Recherche par nom..">
+                <select class="form-select finder break-doublons" onchange="finder(3, 0)" style="width: 80px;">
+                    <option selected></option>
+                    <option value="2021-11-01">Jour 1</option>
+                    <option>Jour 2</option>
+                    <option>Jour 3</option>
+                </select>
             </div>
             <div class="thumbnail" style="overflow: hidden;">
                 <table class="table table-light table-striped" id="calendar">
@@ -61,7 +67,9 @@
                                         {% endif %}
                                         {% endfor %}
                                         {% endif %}</div>
-                                    <div>{{creneau.debut_preparation}} - {{creneau.fin}}</div>
+                                    <div>{{creneau.debut_preparation.strftime('%Hh%M')}} -
+                                        {{creneau.fin.strftime('%Hh%M')}}</div>
+                                    <div hidden>{{creneau.debut_preparation}}</div>
                                     {% endif %}
                                     {% endfor %}
                                 </div>

@@ -100,7 +100,7 @@
                                     {% endif %}
                                     {% endfor %}
                                     {% endif %}</div>
-                                <div>{{creneau.debut_preparation}} - {{creneau.fin}}</div>
+                                <div>{{creneau.debut_preparation.strftime('%d')}} | {{creneau.debut_preparation.strftime('%Hh%M')}} - {{creneau.fin.strftime('%Hh%M')}}</div>
                                 {% endif %}
                                 {% endfor %}
                             </div>

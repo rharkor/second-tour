@@ -1,3 +1,4 @@
+from datetime import datetime
 import traceback
 import logging
 
@@ -281,7 +282,11 @@ def delete_choix_matiere(id):
 
 def add_creneau(id_candidat, id_matiere, id_salle, debut_preparation, fin_preparation, fin):
     try:
+        debut_preparation = datetime.strptime(debut_preparation.replace(r' GMT.*', ''), '%Y/%m/%d:%H:%M')
+        fin_preparation = datetime.strptime(fin_preparation.replace(r' GMT.*', ''), '%Y/%m/%d:%H:%M')
+        fin = datetime.strptime(fin.replace(r' GMT.*', ''), '%Y/%m/%d:%H:%M')
         logging.warning("new Créneau : ", id_candidat, id_matiere, id_salle, debut_preparation, fin_preparation, fin)
+        print(type(debut_preparation))
         creneau = CRENEAU(id_candidat, id_matiere, id_salle, debut_preparation, fin_preparation, fin)
         if not creneau.unvalid:
             db.session.add(creneau)
@@ -293,6 +298,7 @@ def add_creneau(id_candidat, id_matiere, id_salle, debut_preparation, fin_prepar
     except Exception:
         logging.warning(traceback.format_exc())
         logging.warning('Erreur : ' + traceback.format_exc())
+        traceback.print_exc()
         return ['Erreur : ' + traceback.format_exc(), 'danger']
 
 def delete_creneau(id):

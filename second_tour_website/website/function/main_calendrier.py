@@ -1,7 +1,7 @@
 from ctypes import create_string_buffer, create_unicode_buffer
 import logging
 import traceback
-import datetime
+from datetime import datetime
 from flask.helpers import flash
 from copy import deepcopy
 
@@ -117,86 +117,96 @@ def generation_calendrier():
                 temps_preparation_matiere = None
             else:
                 temps_preparation_matiere = temps_preparation_m1 if x == 0 else temps_preparation_m2
-            heure_debut_preparation_voulue = 8.00
-            while heure_debut_preparation_voulue < 20.00:
-                for a_salle in salle_matiere:
-                    # reset the var
-                    aucune_collision = True
-                    all_creneaux = CRENEAU.query.all()
+            for jour_debut_preparation_voulue in range(1, 4):
+                heure_debut_preparation_voulue = 8.00
+                while heure_debut_preparation_voulue < 20.00:
+                    for a_salle in salle_matiere:
+                        
+                        # reset the var
+                        aucune_collision = True
+                        all_creneaux = CRENEAU.query.all()
 
-                    for creneau in all_creneaux:
-                            debut_preparation_creneau = convert_to_decimal_time(creneau.debut_preparation)
-                            fin_passage_creneau = convert_to_decimal_time(creneau.fin)
-                            for a_matiere in all_matieres:
-                                if a_matiere.id_matiere == creneau.id_matiere:
-                                    matiere_creneau = a_matiere
-                            temps_passage_creneau = convert_to_decimal_time(convert_minute_to_string(matiere_creneau.temps_passage))
-                            temps_preparation_creneau = convert_to_decimal_time(convert_minute_to_string(matiere_creneau.temps_preparation))
-                            if(heure_debut_preparation_voulue is not None and temps_preparation_matiere is not None and temps_passage_matiere is not None):
-                                fin_passage_matiere = heure_debut_preparation_voulue + temps_preparation_matiere + temps_passage_matiere
+                        for creneau in all_creneaux:
+                            if creneau.debut_preparation.replace(hour=0, minute=0, second=0, microsecond=0) == datetime(datetime.now().year, datetime.now().month, jour_debut_preparation_voulue):
+                                debut_preparation_creneau = convert_to_decimal_time(creneau.debut_preparation.strftime("%H:%M"))
+                                fin_passage_creneau = convert_to_decimal_time(creneau.fin.strftime("%H:%M"))
+                                for a_matiere in all_matieres:
+                                    if a_matiere.id_matiere == creneau.id_matiere:
+                                        matiere_creneau = a_matiere
+                                temps_passage_creneau = convert_to_decimal_time(convert_minute_to_string(matiere_creneau.temps_passage))
+                                temps_preparation_creneau = convert_to_decimal_time(convert_minute_to_string(matiere_creneau.temps_preparation))
+                                if(heure_debut_preparation_voulue is not None and temps_preparation_matiere is not None and temps_passage_matiere is not None):
+                                    fin_passage_matiere = heure_debut_preparation_voulue + temps_preparation_matiere + temps_passage_matiere
 
-                            # PRINT DEBUG HERE
-                            if creneau.id_salle == a_salle.id_salle:
-                                # logging.warning("DEBUG : ", "Matiere : ", heure_debut_preparation_voulue, temps_preparation_matiere, temps_passage_matiere, fin_passage_matiere)
-                                # logging.warning("DEBUG : ", "Creneau : ", debut_preparation_creneau, temps_preparation_creneau, temps_passage_creneau, fin_passage_creneau)
-                                pass
+                                # PRINT DEBUG HERE
+                                if creneau.id_salle == a_salle.id_salle:
+                                    # logging.warning("DEBUG : ", "Matiere : ", heure_debut_preparation_voulue, temps_preparation_matiere, temps_passage_matiere, fin_passage_matiere)
+                                    # logging.warning("DEBUG : ", "Creneau : ", debut_preparation_creneau, temps_preparation_creneau, temps_passage_creneau, fin_passage_creneau)
+                                    pass
 
-                            # Test if the salle is empty
-                            if(matiere is not None and heure_debut_preparation_voulue is not None and temps_preparation_matiere is not None and temps_passage_matiere is not None):
-                                if creneau.id_salle == a_salle.id_salle \
-                                and not((heure_debut_preparation_voulue + temps_preparation_matiere >= fin_passage_creneau)
-                                or (heure_debut_preparation_voulue + temps_preparation_matiere + temps_passage_matiere <= debut_preparation_creneau + temps_preparation_creneau)):
+                                # Test if the salle is empty
+                                if(matiere is not None and heure_debut_preparation_voulue is not None and temps_preparation_matiere is not None and temps_passage_matiere is not None):
+                                    if creneau.id_salle == a_salle.id_salle \
+                                    and not((heure_debut_preparation_voulue + temps_preparation_matiere >= fin_passage_creneau)
+                                    or (heure_debut_preparation_voulue + temps_preparation_matiere + temps_passage_matiere <= debut_preparation_creneau + temps_preparation_creneau)):
+                                        aucune_collision = False
+                                
+                                # Test if the user don't have already creneau and need a pause
+                                if creneau.id_candidat == candidat.id_candidat \
+                                and not ((fin_passage_matiere <= debut_preparation_creneau - 0.5)
+                                or (heure_debut_preparation_voulue >= fin_passage_creneau + 0.5)):
                                     aucune_collision = False
-                            
-                            # Test if the user don't have already creneau and need a pause
-                            if creneau.id_candidat == candidat.id_candidat \
-                            and not ((fin_passage_matiere <= debut_preparation_creneau - 0.5)
-                            or (heure_debut_preparation_voulue >= fin_passage_creneau + 0.5)):
-                                aucune_collision = False
 
-                            # Test for lunch
-                            if creneau.id_salle == a_salle.id_salle \
-                            and ((heure_debut_preparation_voulue >= 13.00 and heure_debut_preparation_voulue < 14.00)
-                            or (fin_passage_matiere > 13.00 and fin_passage_matiere <= 14.00)
-                            or (heure_debut_preparation_voulue <= 13.00 and fin_passage_matiere >= 14.00)):
-                                aucune_collision = False
+                                # Test for lunch
+                                if creneau.id_salle == a_salle.id_salle \
+                                and ((heure_debut_preparation_voulue >= 13.00 and heure_debut_preparation_voulue < 14.00)
+                                or (fin_passage_matiere > 13.00 and fin_passage_matiere <= 14.00)
+                                or (heure_debut_preparation_voulue <= 13.00 and fin_passage_matiere >= 14.00)):
+                                    aucune_collision = False
 
-                            # Test if the prof don't have too many course
-                            if aucune_collision:
-                                all_creneau_test_break = CRENEAU.query.order_by(CRENEAU.debut_preparation).filter_by(id_salle=a_salle.id_salle).all()
-                                break_time = 0
-                                creneau_prec = all_creneau_test_break[0] if len(all_creneau_test_break) > 0 else []
-                                x = 0
-                                for creneau_test in all_creneau_test_break:
-                                    if (res := (convert_to_decimal_time(creneau_test.debut_preparation) - (convert_to_decimal_time(creneau_prec.debut_preparation) + 0.5))) >= 0:
-                                        break_time += res
-                                    creneau_prec = creneau_test
-                                    x += 1
-                                    if x >= 4:
-                                        if break_time == 0 and convert_to_decimal_time(creneau_prec.debut_preparation) + 0.5 == heure_debut_preparation_voulue:
-                                            x = 0
-                                            aucune_collision = False
-                                            
-                            # Test only morning or only afternoon
+                                # Test if the prof don't have too many course
+                                if aucune_collision:
+                                    all_creneau_test_break = CRENEAU.query.order_by(CRENEAU.debut_preparation).filter_by(id_salle=a_salle.id_salle).all()
+                                    break_time = 0
+                                    creneau_prec = all_creneau_test_break[0] if len(all_creneau_test_break) > 0 else []
+                                    x = 0
+                                    for creneau_test in all_creneau_test_break:
+                                        if (res := (convert_to_decimal_time(creneau_test.debut_preparation.strftime("%H:%M")) - (convert_to_decimal_time(creneau_prec.debut_preparation.strftime("%H:%M")) + 0.5))) >= 0:
+                                            break_time += res
+                                        creneau_prec = creneau_test
+                                        x += 1
+                                        if x >= 4:
+                                            if break_time == 0 and convert_to_decimal_time(creneau_prec.debut_preparation.strftime("%H:%M")) + 0.5 == heure_debut_preparation_voulue:
+                                                x = 0
+                                                aucune_collision = False
+                                                
+                                # Test only morning or only afternoon
+                                first_creneau = CRENEAU.query.filter_by(id_candidat=candidat.id_candidat).first()
+                                if first_creneau \
+                                and ((convert_to_decimal_time(first_creneau.debut_preparation.strftime("%H:%M")) <= 13.00 and heure_debut_preparation_voulue >= 14.00)
+                                or (convert_to_decimal_time(first_creneau.debut_preparation.strftime("%H:%M")) >= 14.00 and heure_debut_preparation_voulue <= 13.00)):
+                                    aucune_collision = False
+                                    
+                            # Test both same day
                             first_creneau = CRENEAU.query.filter_by(id_candidat=candidat.id_candidat).first()
                             if first_creneau \
-                            and ((convert_to_decimal_time(first_creneau.debut_preparation) <= 13.00 and heure_debut_preparation_voulue >= 14.00)
-                            or (convert_to_decimal_time(first_creneau.debut_preparation) >= 14.00 and heure_debut_preparation_voulue <= 13.00)):
+                            and (first_creneau.debut_preparation.strftime("%d") != '0' + str(jour_debut_preparation_voulue)):
                                 aucune_collision = False
-                            
-                            
-                
+                    
 
-                    if aucune_collision:
-                        # Create the creneau
-                        # logging.warning(matiere.id_matiere, heure_debut_preparation_voulue, temps_preparation_matiere, temps_passage_matiere)
-                        if(matiere is not None and heure_debut_preparation_voulue is not None and temps_preparation_matiere is not None and temps_passage_matiere is not None):
-                            res = main_database.add_creneau(candidat.id_candidat, matiere.id_matiere, a_salle.id_salle, convert_from_decimal_time(heure_debut_preparation_voulue), convert_from_decimal_time(heure_debut_preparation_voulue + temps_preparation_matiere), convert_from_decimal_time(heure_debut_preparation_voulue + temps_preparation_matiere + temps_passage_matiere))
-                            if res[1] == 'danger':
-                                logging.warning(res[0])
-                        heure_debut_preparation_voulue = 20
-                        break
-                heure_debut_preparation_voulue += 0.5
+                        if aucune_collision:
+                            # Create the creneau
+                            # logging.warning(matiere.id_matiere, heure_debut_preparation_voulue, temps_preparation_matiere, temps_passage_matiere)
+                            if(matiere is not None and heure_debut_preparation_voulue is not None and temps_preparation_matiere is not None and temps_passage_matiere is not None):
+                                heure_debut_preparation_voulue_datetime = datetime.strptime(f'0{jour_debut_preparation_voulue}/{datetime.now().month}/{datetime.now().year} ' + convert_from_decimal_time(heure_debut_preparation_voulue), '%d/%m/%Y %H:%M')
+                                fin_preparation_matiere_datetime = datetime.strptime(f'0{jour_debut_preparation_voulue}/{datetime.now().month}/{datetime.now().year} ' + convert_from_decimal_time(heure_debut_preparation_voulue + temps_preparation_matiere), '%d/%m/%Y %H:%M')
+                                fin_passage_matiere_datetime = datetime.strptime(f'0{jour_debut_preparation_voulue}/{datetime.now().month}/{datetime.now().year} ' + convert_from_decimal_time(heure_debut_preparation_voulue + temps_preparation_matiere + temps_passage_matiere), '%d/%m/%Y %H:%M')
+                                res = main_database.add_creneau(candidat.id_candidat, matiere.id_matiere, a_salle.id_salle, heure_debut_preparation_voulue_datetime, fin_preparation_matiere_datetime, fin_passage_matiere_datetime)
+                                if res[1] == 'danger':
+                                    logging.warning(res[0])
+                            heure_debut_preparation_voulue = 20
+                            break
+                    heure_debut_preparation_voulue += 0.5
     
     result = test_calendar_complete()
     flash(result[0], result[1])
