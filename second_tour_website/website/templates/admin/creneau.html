@@ -3,6 +3,11 @@
 {% block sub_content %}
 <div class="main-div-admin">
     <div class="name-finder" style="justify-content:end;">
+        <button href="#" type="button" class="btn btn-danger me-3" data-bs-toggle="modal"
+            data-bs-target="#removeAllCreneauxModal" id="buttonDelete">
+            Supprimer tous les créneaux
+            <i class="fas fa-trash ml-s"></i>
+        </button>
         <button href="#" type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addCreneauModal">
             Ajouter
             <i class="fas fa-plus ml-s"></i>
@@ -338,6 +343,32 @@
         </div>
     </div>
 </div>
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+    <!-- Delete all creneaux modal -->
+    <div class="modal fade" id="removeAllCreneauxModal" tabindex="-1" role="dialog"
+        aria-labelledby="removeAllCreneauxModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Attention</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p style="color: orange;">Attention cette opération est irréversible !</p>
+                    <p>Êtes vous sûr de vouloir supprimer tous les créneaux ?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <form method="post">
+                        <button type="submit" name="delete_all_button" id="ModalSubmitButton" value=""
+                            class="btn btn-danger">Supprimer</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
 
 {% block sub_script %}
