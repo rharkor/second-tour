@@ -316,6 +316,19 @@ def delete_creneau(id):
         logging.warning('Erreur : ' + traceback.format_exc())
         return ['Erreur : ' + traceback.format_exc(), 'danger']
 
+def delete_all_creneaux():
+    try:
+        creneau = CRENEAU.query.all()
+        for creneau in creneau:
+            logging.warning(f'Suppression des creneaux {creneau.id_creneau}')
+            result = delete_creneau(creneau.id_creneau)
+            if result:
+                flash(result[0], result[1])
+        return ['Tous les créneaux ont correctement été supprimés !', 'success']
+    except Exception:
+        logging.warning('Erreur : ' + traceback.format_exc())
+        return ['Erreur : ' + traceback.format_exc(), 'danger']
+
 
 def to_dict(row):
     if row is None:

@@ -341,6 +341,9 @@ def creneau():
                     else:
                         flash("Le créneau à bien été supprimé", "success")
                         logging.warning("Le créneau à bien été supprimé")
+            elif form.get('delete_all_button') is not None:
+                result = main_database.delete_all_creneaux()
+                flash(result[0], result[1])
 
 
         # Serialize table
