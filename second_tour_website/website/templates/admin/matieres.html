@@ -134,7 +134,7 @@
                                             {% for a_choix_matiere in all_choix_matieres %}
                                             {% if a_choix_matiere.id_candidat == a_candidat.id_candidat %}
                                             {% if a_choix_matiere.matiere1 == a_matiere.id_matiere or a_choix_matiere.matiere2 == a_matiere.id_matiere %}
-                                            <tr class="clickable not-null">
+                                            <tr class="not-null">
                                                 <td scope="row">{{a_candidat.nom}}</td>
                                                 <td scope="row">{{a_candidat.prenom}}</td>
                                                 {% for a_serie in all_series %}

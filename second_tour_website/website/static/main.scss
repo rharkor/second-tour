@@ -230,3 +230,12 @@ option:disabled {
 .align-text-top{
     vertical-align: top;
 }
+.hide {
+    display: none;
+}
+.fa-caret-right {
+    transition: all 0.5s ease;
+}
+.rtoate180 {
+    transform: rotate(90deg);
+}
