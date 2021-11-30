@@ -269,4 +269,18 @@ option:disabled {
 .align-text-top {
   vertical-align: top;
 }
+
+.hide {
+  display: none;
+}
+
+.fa-caret-right {
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+.rtoate180 {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
 /*# sourceMappingURL=main.css.map */
