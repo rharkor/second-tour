@@ -256,9 +256,9 @@ class CRENEAU(db.Model):
     id_candidat = db.Column(db.Integer, nullable=False)
     id_matiere = db.Column(db.Integer, nullable=False)
     id_salle = db.Column(db.Integer, nullable=False)
-    debut_preparation = db.Column(db.String(20), nullable=False)
-    fin_preparation = db.Column(db.String(20), nullable=False)
-    fin = db.Column(db.String(20), nullable=False)
+    debut_preparation = db.Column(db.DateTime, nullable=False)
+    fin_preparation = db.Column(db.DateTime, nullable=False)
+    fin = db.Column(db.DateTime, nullable=False)
 
     def __init__(self, id_candidat, id_matiere, id_salle, debut_preparation, fin_preparation, fin):
         self.unvalid = False

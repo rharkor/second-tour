@@ -1,5 +1,8 @@
+from datetime import datetime
 import traceback
 import logging
+
+from flask.helpers import flash
 
 from . import main_security
 from ..database.main_database import *
@@ -230,12 +233,25 @@ def delete_candidat(id):
         for choix in choix_matiere:
             db.session.delete(choix)
         # Delete the dependency
-        creneaus = CRENEAU.query.filter_by(id_candidat=id)
-        for creneau in creneaus:
+        creneaux = CRENEAU.query.filter_by(id_candidat=id)
+        for creneau in creneaux:
             db.session.delete(creneau)
         db.session.delete(candidat)
         db.session.commit()
         return False
+    except Exception:
+        logging.warning('Erreur : ' + traceback.format_exc())
+        return ['Erreur : ' + traceback.format_exc(), 'danger']
+
+def delete_all_candidats():
+    try:
+        candidats = CANDIDATS.query.all()
+        for candidat in candidats:
+            logging.warning(f'Suppression du candidat {candidat.id_candidat}')
+            result = delete_candidat(candidat.id_candidat)
+            if result:
+                flash(result[0], result[1])
+        return ['Tous les candidats ont correctement été supprimés !', 'success']
     except Exception:
         logging.warning('Erreur : ' + traceback.format_exc())
         return ['Erreur : ' + traceback.format_exc(), 'danger']
@@ -266,6 +282,15 @@ def delete_choix_matiere(id):
 
 def add_creneau(id_candidat, id_matiere, id_salle, debut_preparation, fin_preparation, fin):
     try:
+        try:
+            debut_preparation = datetime.strptime(str(debut_preparation).replace(r' GMT.*', ''), '%Y/%m/%d:%H:%M')
+            fin_preparation = datetime.strptime(str(fin_preparation).replace(r' GMT.*', ''), '%Y/%m/%d:%H:%M')
+            fin = datetime.strptime(str(fin).replace(r' GMT.*', ''), '%Y/%m/%d:%H:%M')
+        except ValueError:
+            debut_preparation = datetime.strptime(str(debut_preparation).replace(r' GMT.*', ''), '%Y-%m-%d %H:%M:%S')
+            fin_preparation = datetime.strptime(str(fin_preparation).replace(r' GMT.*', ''), '%Y-%m-%d %H:%M:%S')
+            fin = datetime.strptime(str(fin).replace(r' GMT.*', ''), '%Y-%m-%d %H:%M:%S')
+            
         logging.warning("new Créneau : ", id_candidat, id_matiere, id_salle, debut_preparation, fin_preparation, fin)
         creneau = CRENEAU(id_candidat, id_matiere, id_salle, debut_preparation, fin_preparation, fin)
         if not creneau.unvalid:
@@ -278,6 +303,7 @@ def add_creneau(id_candidat, id_matiere, id_salle, debut_preparation, fin_prepar
     except Exception:
         logging.warning(traceback.format_exc())
         logging.warning('Erreur : ' + traceback.format_exc())
+        traceback.print_exc()
         return ['Erreur : ' + traceback.format_exc(), 'danger']
 
 def delete_creneau(id):
@@ -286,6 +312,19 @@ def delete_creneau(id):
         db.session.delete(creneau)
         db.session.commit()
         return False
+    except Exception:
+        logging.warning('Erreur : ' + traceback.format_exc())
+        return ['Erreur : ' + traceback.format_exc(), 'danger']
+
+def delete_all_creneaux():
+    try:
+        creneau = CRENEAU.query.all()
+        for creneau in creneau:
+            logging.warning(f'Suppression des creneaux {creneau.id_creneau}')
+            result = delete_creneau(creneau.id_creneau)
+            if result:
+                flash(result[0], result[1])
+        return ['Tous les créneaux ont correctement été supprimés !', 'success']
     except Exception:
         logging.warning('Erreur : ' + traceback.format_exc())
         return ['Erreur : ' + traceback.format_exc(), 'danger']

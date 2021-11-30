@@ -121,6 +121,9 @@ def candidats():
                                 else:
                                     flash(result[1][0], result[1][1])
                                     logging.warning(result[1][0])
+            elif form.get('delete_all_button') is not None:
+                result = main_database.delete_all_candidats()
+                flash(result[0], result[1])
         # Serialize TABLE
         candidats = CANDIDATS.query.order_by(CANDIDATS.nom).all()
         all_candidats = []
@@ -338,6 +341,9 @@ def creneau():
                     else:
                         flash("Le créneau à bien été supprimé", "success")
                         logging.warning("Le créneau à bien été supprimé")
+            elif form.get('delete_all_button') is not None:
+                result = main_database.delete_all_creneaux()
+                flash(result[0], result[1])
 
 
         # Serialize table

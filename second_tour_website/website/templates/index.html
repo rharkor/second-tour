@@ -21,6 +21,12 @@
             <div class="name-finder" style="width: max-content;">
                 <input class="form-control" type="text" id="search-name" onkeyup="nameFinder()"
                     placeholder="Recherche par nom..">
+                <select class="form-select finder break-doublons" onchange="finder(3, 0)" style="width: 80px;">
+                    <option selected></option>
+                    <option value="2021-11-01">Jour 1</option>
+                    <option>Jour 2</option>
+                    <option>Jour 3</option>
+                </select>
             </div>
             <div class="thumbnail" style="overflow: hidden;">
                 <table class="table table-light table-striped" id="calendar">
@@ -34,7 +40,9 @@
                         </tr>
                     </thead>
                     <tbody>
+                        {% for serie in all_series %}
                         {% for candidat in all_candidats %}
+                        {% if candidat.id_serie == serie.id_serie and serie.nom == "Générale" %}
                         <tr>
                             <td scope="row">{{candidat.nom}}</td>
                             <td scope="row">{{candidat.prenom}}</td>
@@ -61,7 +69,9 @@
                                         {% endif %}
                                         {% endfor %}
                                         {% endif %}</div>
-                                    <div>{{creneau.debut_preparation}} - {{creneau.fin}}</div>
+                                    <div>{{creneau.debut_preparation.strftime('%Hh%M')}} -
+                                        {{creneau.fin.strftime('%Hh%M')}}</div>
+                                    <div hidden>{{creneau.debut_preparation}}</div>
                                     {% endif %}
                                     {% endfor %}
                                 </div>
@@ -69,6 +79,66 @@
                             {% endif %}
                             {% endfor %}
                         </tr>
+                        {% endif %}
+                        {% endfor %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <br>
+            <div class="thumbnail" style="overflow: hidden;">
+                <table class="table table-light table-striped" id="calendar">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nom</th>
+                            <th scope="col">Prénom</th>
+                            <th scope="col">Série</th>
+                            <th scope="col">Epreuve 1</th>
+                            <th scope="col">Epreuve 2</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for serie in all_series %}
+                        {% for candidat in all_candidats %}
+                        {% if candidat.id_serie == serie.id_serie and serie.nom == "Technologique" %}
+                        <tr>
+                            <td scope="row">{{candidat.nom}}</td>
+                            <td scope="row">{{candidat.prenom}}</td>
+                            {% for serie in all_series %}
+                            {% if serie.id_serie == candidat.id_serie %}
+                            <td scope="row">
+                                {{serie.nom}} - {% if serie.specialite1 %}{{serie.specialite1}}{% endif %}{% if
+                                serie.specialite2 %}/{{serie.specialite2}}{% endif %}
+                            </td>
+                            {% endif %}
+                            {% endfor %}
+                            {% for creneau in all_creneaux %}
+                            {% if creneau.id_candidat == candidat.id_candidat %}
+                            <td scope="row">
+                                <div class="calendar-subject">
+                                    {% for matiere in all_matieres %}
+                                    {% if matiere.id_matiere == creneau.id_matiere %}
+                                    <div>{{matiere.nom}} - {% if matiere.loge %}Loge {% for salle in all_salles %}{% if
+                                        matiere.loge == salle.id_salle %}{{salle.numero}}{% endif %}{% endfor %}{% else
+                                        %}
+                                        {% for salle in all_salles %}
+                                        {% if salle.id_salle == creneau.id_salle %}
+                                        {{salle.numero}}
+                                        {% endif %}
+                                        {% endfor %}
+                                        {% endif %}</div>
+                                    <div>{{creneau.debut_preparation.strftime('%Hh%M')}} -
+                                        {{creneau.fin.strftime('%Hh%M')}}</div>
+                                    <div hidden>{{creneau.debut_preparation}}</div>
+                                    {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </td>
+                            {% endif %}
+                            {% endfor %}
+                        </tr>
+                        {% endif %}
+                        {% endfor %}
                         {% endfor %}
                     </tbody>
                 </table>
@@ -81,4 +151,63 @@
 {% endblock %}
 
 {% block script %}
+{% endblock %}
+
+{% block footer %}
+<!-- Grid container -->
+<div class="container p-1" style="font-size: small; ; ">
+    <!--Grid row-->
+    <div class="row" style="display: flex; justify-content: center" > 
+      <!--Grid column-->
+      
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+        <P class="text-uppercase mb-0">Adresse :</p>
+
+          <ul class="list-unstyled mb-0 text-white">
+            <li>
+              <p>118 rue des Gonthières, 17 026 La Rochelle CEDEX 01</p>
+            </li>
+         </ul>
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+        <p class="text-uppercase mb-0"></p>
+
+        <ul class="list-unstyled ">
+          <li>
+           <p>Telephone : <a class="text-white" href="tel:0546347932">05 46 34 79 32</a></p>
+          </li>
+          <li>
+            <p>Fax : 05 46 34 22 28</p>
+          </li>
+         </ul>
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+        <p class="text-uppercase mb-0">Adresse mail :</p>
+
+        <ul class="list-unstyled">
+          <li>
+            <a class="text-white" href="mailto:contact@lycee-vieljeux.fr">contact@lycee-vieljeux.fr</a>
+          </li>
+         </ul>
+      </div>
+      <!--Grid column-->
+    </div>
+    <!--Grid row-->
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center p-1" style="background-color: rgba(0, 0, 0, 0.2); font-size: medium;display: flex; justify-content: center; ">
+    <p>© 2021 Copyright : IUT de La Rochelle</p>
+  </div>
+  <!-- Copyright -->
 {% endblock %}
