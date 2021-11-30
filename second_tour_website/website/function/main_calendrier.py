@@ -1,7 +1,7 @@
 from ctypes import create_string_buffer, create_unicode_buffer
 import logging
 import traceback
-from datetime import datetime
+from datetime import date, datetime
 from flask.helpers import flash
 from copy import deepcopy
 
@@ -84,30 +84,22 @@ def generation_calendrier():
             if salle.id_salle in salle_m2_n:
                 salle_m2.append(salle)
 
-        # assign matiere
-        # FOR THE MOMENT 1 CANDIDAT PER SALLE 
-        # NO LUNCH PAUSE
-
         # Verify the disponibility
         # total time for matiere
         if (not matiere1):
             temps_passage_m1 = None
         else:
-            temps_passage_m1 = convert_to_decimal_time(convert_minute_to_string(matiere1.temps_passage if not candidat.tiers_temps else matiere1.temps_passage_tiers_temps))
-        if (not matiere2):
-            temps_passage_m2 = None
-        else:
-            temps_passage_m2 = convert_to_decimal_time(convert_minute_to_string(matiere2.temps_passage if not candidat.tiers_temps else matiere2.temps_passage_tiers_temps))
-        if (not matiere1):
-            temps_passage_m1 = None
-        else:
-            temps_preparation_m1 = convert_to_decimal_time(convert_minute_to_string(matiere1.temps_preparation if not candidat.tiers_temps else matiere1.temps_preparation_tiers_temps))
-        if (not matiere2):
-            temps_passage_m2 = None
-        else:
-            temps_preparation_m2 = convert_to_decimal_time(convert_minute_to_string(matiere2.temps_preparation if not candidat.tiers_temps else matiere2.temps_preparation_tiers_temps))
-        
+            temps_passage_m1 = datetime.strptime(convert_minute_to_string(matiere1.temps_passage if not candidat.tiers_temps else matiere1.temps_passage_tiers_temps), "%H:%M")
+            temps_preparation_m1 = datetime.strptime(convert_minute_to_string(matiere1.temps_preparation if not candidat.tiers_temps else matiere1.temps_preparation_tiers_temps), "%H:%M")
 
+        
+        if (not matiere2):
+            temps_passage_m2 = None
+        else:
+            temps_passage_m2 = datetime.strptime(convert_minute_to_string(matiere2.temps_passage if not candidat.tiers_temps else matiere2.temps_passage_tiers_temps), "%H:%M")
+            temps_preparation_m2 = datetime.strptime(convert_minute_to_string(matiere2.temps_preparation if not candidat.tiers_temps else matiere2.temps_preparation_tiers_temps), "%H:%M")
+
+        # Because two choix matieres
         for x in range(0, 2):
 
             salle_matiere = salle_m1 if x == 0 else salle_m2
@@ -117,9 +109,11 @@ def generation_calendrier():
                 temps_preparation_matiere = None
             else:
                 temps_preparation_matiere = temps_preparation_m1 if x == 0 else temps_preparation_m2
+            
+            # For the 3 days of interogation
             for jour_debut_preparation_voulue in range(1, 4):
-                heure_debut_preparation_voulue = 8.00
-                while heure_debut_preparation_voulue < 20.00:
+                heure_debut_preparation_voulue = datetime(hour=8)
+                while heure_debut_preparation_voulue < datetime(hour=20):
                     for a_salle in salle_matiere:
                         
                         # reset the var
@@ -127,14 +121,14 @@ def generation_calendrier():
                         all_creneaux = CRENEAU.query.all()
 
                         for creneau in all_creneaux:
-                            if creneau.debut_preparation.replace(hour=0, minute=0, second=0, microsecond=0) == datetime(datetime.now().year, datetime.now().month, jour_debut_preparation_voulue):
-                                debut_preparation_creneau = convert_to_decimal_time(creneau.debut_preparation.strftime("%H:%M"))
-                                fin_passage_creneau = convert_to_decimal_time(creneau.fin.strftime("%H:%M"))
+                            if creneau.debut_preparation.day == datetime(day=jour_debut_preparation_voulue):
+                                debut_preparation_creneau = creneau.debut_preparation
+                                fin_passage_creneau = creneau.fin
                                 for a_matiere in all_matieres:
                                     if a_matiere.id_matiere == creneau.id_matiere:
                                         matiere_creneau = a_matiere
-                                temps_passage_creneau = convert_to_decimal_time(convert_minute_to_string(matiere_creneau.temps_passage))
-                                temps_preparation_creneau = convert_to_decimal_time(convert_minute_to_string(matiere_creneau.temps_preparation))
+                                temps_passage_creneau = datetime.strptime(convert_minute_to_string(matiere_creneau.temps_passage), "%H:%M")
+                                temps_preparation_creneau = datetime.strptime(convert_minute_to_string(matiere_creneau.temps_preparation), "%H:%M")
                                 if(heure_debut_preparation_voulue is not None and temps_preparation_matiere is not None and temps_passage_matiere is not None):
                                     fin_passage_matiere = heure_debut_preparation_voulue + temps_preparation_matiere + temps_passage_matiere
 
@@ -159,38 +153,38 @@ def generation_calendrier():
 
                                 # Test for lunch
                                 if creneau.id_salle == a_salle.id_salle \
-                                and ((heure_debut_preparation_voulue >= 13.00 and heure_debut_preparation_voulue < 14.00)
-                                or (fin_passage_matiere > 13.00 and fin_passage_matiere <= 14.00)
-                                or (heure_debut_preparation_voulue <= 13.00 and fin_passage_matiere >= 14.00)):
+                                and ((heure_debut_preparation_voulue.hour >= 13.00 and heure_debut_preparation_voulue.hour < 14.00)
+                                or (fin_passage_matiere.hour > 13.00 and fin_passage_matiere.hour <= 14.00)
+                                or (heure_debut_preparation_voulue.hour <= 13.00 and fin_passage_matiere.hour >= 14.00)):
                                     aucune_collision = False
 
                                 # Test if the prof don't have too many course
                                 if aucune_collision:
                                     all_creneau_test_break = CRENEAU.query.order_by(CRENEAU.debut_preparation).filter_by(id_salle=a_salle.id_salle).all()
-                                    break_time = 0
+                                    break_time = datetime()
                                     creneau_prec = all_creneau_test_break[0] if len(all_creneau_test_break) > 0 else []
                                     x = 0
                                     for creneau_test in all_creneau_test_break:
-                                        if (res := (convert_to_decimal_time(creneau_test.debut_preparation.strftime("%H:%M")) - (convert_to_decimal_time(creneau_prec.debut_preparation.strftime("%H:%M")) + 0.5))) >= 0:
+                                        if (res := (creneau_test.debut_preparation - (creneau_prec.debut_preparation + datetime.timedelta(minute=30)))) >= datetime():
                                             break_time += res
                                         creneau_prec = creneau_test
                                         x += 1
                                         if x >= 4:
-                                            if break_time == 0 and convert_to_decimal_time(creneau_prec.debut_preparation.strftime("%H:%M")) + 0.5 == heure_debut_preparation_voulue:
+                                            if break_time == datetime() and creneau_prec.debut_preparation + datetime.timedelta(minute=30) == heure_debut_preparation_voulue:
                                                 x = 0
                                                 aucune_collision = False
                                                 
                                 # Test only morning or only afternoon
                                 first_creneau = CRENEAU.query.filter_by(id_candidat=candidat.id_candidat).first()
                                 if first_creneau \
-                                and ((convert_to_decimal_time(first_creneau.debut_preparation.strftime("%H:%M")) <= 13.00 and heure_debut_preparation_voulue >= 14.00)
-                                or (convert_to_decimal_time(first_creneau.debut_preparation.strftime("%H:%M")) >= 14.00 and heure_debut_preparation_voulue <= 13.00)):
+                                and (((first_creneau.debut_preparation) <= datetime.timedelta(hour=13) and heure_debut_preparation_voulue >= datetime.timedelta(hour=14))
+                                or ((first_creneau.debut_preparation) >= datetime.timedelta(hour=14) and heure_debut_preparation_voulue <= datetime.timedelta(hour=13))):
                                     aucune_collision = False
                                     
                             # Test both same day
                             first_creneau = CRENEAU.query.filter_by(id_candidat=candidat.id_candidat).first()
                             if first_creneau \
-                            and (first_creneau.debut_preparation.strftime("%d") != '0' + str(jour_debut_preparation_voulue)):
+                            and (first_creneau.debut_preparation.day != jour_debut_preparation_voulue):
                                 aucune_collision = False
                     
 
@@ -198,15 +192,15 @@ def generation_calendrier():
                             # Create the creneau
                             # logging.warning(matiere.id_matiere, heure_debut_preparation_voulue, temps_preparation_matiere, temps_passage_matiere)
                             if(matiere is not None and heure_debut_preparation_voulue is not None and temps_preparation_matiere is not None and temps_passage_matiere is not None):
-                                heure_debut_preparation_voulue_datetime = datetime.strptime(f'0{jour_debut_preparation_voulue}/{datetime.now().month}/{datetime.now().year} ' + convert_from_decimal_time(heure_debut_preparation_voulue), '%d/%m/%Y %H:%M')
-                                fin_preparation_matiere_datetime = datetime.strptime(f'0{jour_debut_preparation_voulue}/{datetime.now().month}/{datetime.now().year} ' + convert_from_decimal_time(heure_debut_preparation_voulue + temps_preparation_matiere), '%d/%m/%Y %H:%M')
-                                fin_passage_matiere_datetime = datetime.strptime(f'0{jour_debut_preparation_voulue}/{datetime.now().month}/{datetime.now().year} ' + convert_from_decimal_time(heure_debut_preparation_voulue + temps_preparation_matiere + temps_passage_matiere), '%d/%m/%Y %H:%M')
+                                heure_debut_preparation_voulue_datetime = datetime.strptime(f'{jour_debut_preparation_voulue.day}/{datetime.now().month}/{datetime.now().year} ' + (heure_debut_preparation_voulue).strftime('%H:%M'), '%d/%m/%Y %H:%M')
+                                fin_preparation_matiere_datetime = datetime.strptime(f'{jour_debut_preparation_voulue.day}/{datetime.now().month}/{datetime.now().year} ' + (heure_debut_preparation_voulue + temps_preparation_matiere).strftime('%H:%M'), '%d/%m/%Y %H:%M')
+                                fin_passage_matiere_datetime = datetime.strptime(f'{jour_debut_preparation_voulue.day}/{datetime.now().month}/{datetime.now().year} ' + (heure_debut_preparation_voulue + temps_preparation_matiere + temps_passage_matiere).strftime('%H:%M'), '%d/%m/%Y %H:%M')
                                 res = main_database.add_creneau(candidat.id_candidat, matiere.id_matiere, a_salle.id_salle, heure_debut_preparation_voulue_datetime, fin_preparation_matiere_datetime, fin_passage_matiere_datetime)
                                 if res[1] == 'danger':
                                     logging.warning(res[0])
-                            heure_debut_preparation_voulue = 20
+                            heure_debut_preparation_voulue = heure_debut_preparation_voulue.replace(hour=20)
                             break
-                    heure_debut_preparation_voulue += 0.5
+                    heure_debut_preparation_voulue += datetime.timedelta(minutes=30)
     
     result = test_calendar_complete()
     flash(result[0], result[1])

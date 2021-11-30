@@ -445,7 +445,7 @@
         let all_salles = JSON.parse('{{all_salles|tojson}}');
         let all_creneaux = JSON.parse('{{all_creneau|tojson}}');
         let matiereId = document.getElementById("matiere-select" + opt).value;
-        let matiere;
+        let matiere = null;
         for (let i = 0; i < all_matieres.length; i++) {
             if (all_matieres[i].id_matiere == matiereId) {
                 matiere = all_matieres[i];
@@ -483,9 +483,10 @@
                         for (let x = 0; x < all_creneaux.length; x++) {
                             let creneau = all_creneaux[x];
                             debut_prepa_date = new Date(creneau.debut_preparation);
+                            fin_creneau_date = new Date(creneau.fin);
                             if (debut_prepa_date.getDay() == jour_debut_preparation_voulue) {
-                                let debut_preparation_creneau = convert_to_decimal_time(creneau.debut_preparation)
-                                let fin_passage_creneau = convert_to_decimal_time(creneau.fin)
+                                let debut_preparation_creneau = convert_to_decimal_time(debut_prepa_date.getHours().toString() + ":" + debut_prepa_date.getMinutes().toString())
+                                let fin_passage_creneau = convert_to_decimal_time(fin_creneau_date.getHours().toString() + ":" + fin_creneau_date.getMinutes().toString())
                                 let matiere_creneau;
                                 for (let z = 0; z < all_matieres.length; z++) {
                                     if (all_matieres[z].id_matiere == creneau.id_matiere) {
@@ -498,10 +499,17 @@
                                 let fin_passage_matiere = heure_debut_preparation_voulue + temps_preparation_matiere + temps_passage_matiere;
 
                                 // Test if the salle is empty
-                                if (creneau.id_salle == a_salle.id_salle
-                                    && !((heure_debut_preparation_voulue + temps_preparation_matiere >= fin_passage_creneau)
-                                        || (heure_debut_preparation_voulue + temps_preparation_matiere + temps_passage_matiere <= debut_preparation_creneau + temps_preparation_creneau))) {
-                                    aucune_collision = false;
+                                if (matiere != null && heure_debut_preparation_voulue != null && temps_preparation_matiere != null && temps_passage_matiere != null) {
+                                    console.log(debut_preparation_creneau, debut_prepa_date.getHours());
+                                    if (debut_preparation_creneau == 8 && heure_debut_preparation_voulue == 8) {
+                                        console.log(matiere, heure_debut_preparation_voulue, temps_preparation_matiere, temps_passage_matiere, " | ", fin_passage_creneau, debut_preparation_creneau, temps_preparation_creneau);
+                                    }
+                                    if (creneau.id_salle == a_salle.id_salle
+                                        && !((heure_debut_preparation_voulue + temps_preparation_matiere >= fin_passage_creneau)
+                                            || (heure_debut_preparation_voulue + temps_preparation_matiere + temps_passage_matiere <= debut_preparation_creneau + temps_preparation_creneau))) {
+                                        aucune_collision = false;
+                                        console.log("Collision")
+                                    }
                                 }
 
                                 // Test if the user don't have already creneau and need a pause
@@ -521,7 +529,7 @@
                             }
                         }
                         let date = new Date();
-                        let year =  date.getYear()  + 1900;
+                        let year = date.getYear() + 1900;
                         heure_debut_preparation_voulue_datetime = year + '/' + date.getMonth() + '/' + '0' + jour_debut_preparation_voulue + ':' + convert_from_decimal_time(heure_debut_preparation_voulue)
                         fin_preparation_matiere_datetime = year + '/' + date.getMonth() + '/' + '0' + jour_debut_preparation_voulue + ':' + convert_from_decimal_time(heure_debut_preparation_voulue + temps_preparation_matiere)
                         fin_passage_matiere_datetime = year + '/' + date.getMonth() + '/' + '0' + jour_debut_preparation_voulue + ':' + convert_from_decimal_time(heure_debut_preparation_voulue + temps_preparation_matiere + temps_passage_matiere)
@@ -552,9 +560,9 @@
         let heureDebutSelected_datetime = heureDebutSelect.value;
 
         fin_matiere_datetime = new Date(heureDebutSelected_datetime);
-        fin_matiere_datetime.setHours(fin_matiere_datetime.getHours() +  + temps_preparation_matiere + temps_passage_matiere);
+        fin_matiere_datetime.setHours(fin_matiere_datetime.getHours() + + temps_preparation_matiere + temps_passage_matiere);
 
-        let year =  fin_matiere_datetime.getYear()  + 1900;
+        let year = fin_matiere_datetime.getYear() + 1900;
 
         let optionFin = document.createElement("option");
         optionFin.value = year + "/" + fin_matiere_datetime.getMonth() + "/" + fin_matiere_datetime.getDay() + ":" + convert_from_decimal_time(heureDebutSelected + temps_passage_matiere + temps_preparation_matiere);
