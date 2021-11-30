@@ -49,13 +49,9 @@
                         <th scope="col">
                             <div class="th-inner">Série</div>
                             <div class="filter-control">
-                                <select class="form-select finder" onchange="finder()">
-                                    <option select></option>
-                                    {% for serie in all_series %}
-                                    <option>{{serie.nom}} - {% if serie.specialite1 %}{{serie.specialite1}}{% endif %}{%
-                                        if serie.specialite2 %}/{{serie.specialite2}}{% endif %}</option>
-                                    {% endfor %}
-                                </select>
+                                
+                                    <input type="text" class="form-control finder" onkeyup="finder()" placeholder="">
+                                
                             </div>
                         </th>
                         <th scope="col">
