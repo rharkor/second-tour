@@ -531,15 +531,12 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 
                                 // Test if the salle is empty
                                 if (matiere != null && heure_debut_preparation_voulue != null && temps_preparation_matiere != null && temps_passage_matiere != null) {
-                                    console.log(debut_preparation_creneau, debut_prepa_date.getHours());
                                     if (debut_preparation_creneau == 8 && heure_debut_preparation_voulue == 8) {
-                                        console.log(matiere, heure_debut_preparation_voulue, temps_preparation_matiere, temps_passage_matiere, " | ", fin_passage_creneau, debut_preparation_creneau, temps_preparation_creneau);
                                     }
                                     if (creneau.id_salle == a_salle.id_salle
                                         && !((heure_debut_preparation_voulue + temps_preparation_matiere >= fin_passage_creneau)
                                             || (heure_debut_preparation_voulue + temps_preparation_matiere + temps_passage_matiere <= debut_preparation_creneau + temps_preparation_creneau))) {
                                         aucune_collision = false;
-                                        console.log("Collision")
                                     }
                                 }
 

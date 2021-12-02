@@ -69,8 +69,22 @@
       input = document.getElementById("search-name");
       filter = input.value.toUpperCase();
       table = document.getElementById("calendar");
-      tr = table.getElementsByTagName("tr");
 
+      if (table) {
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        nameFinder_sub(tr, filter);
+      }
+
+      // Do the same for the class
+      $(".calendar").each((index, table) => {
+        tr = table.getElementsByTagName("tr");
+        nameFinder_sub(tr, filter);
+      });
+    }
+
+    function nameFinder_sub(tr, filter) {
       // Loop through all table rows, and hide those who don't match the search query
       for (i = 0; i < tr.length; i++) {
         td = tr[i].getElementsByTagName("td")[0];
@@ -85,7 +99,6 @@
           } else {
             tr[i].style.display = "none";
           }
-          console.log(tr[i].getAttribute("class"))
         }
       }
     }
@@ -97,9 +110,22 @@
       var elements = document.getElementsByClassName("finder");
       var filter, table, tr, td, i, txtValue;
       table = document.getElementById("calendar");
-      tr = table.getElementsByTagName("tr");
 
-      // Loop through all table rows, and hide those who don't match the search query
+      if (table) {
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        finder_sub(tr, var_x, cur_filter, elements);
+      }
+
+      // Do the same for the class
+      $(".calendar").each((index, table) => {
+        tr = table.getElementsByTagName("tr");
+        finder_sub(tr, var_x, cur_filter, elements);
+      });
+    }
+
+    function finder_sub(tr, var_x = null, cur_filter = null, elements = null) {
       for (i = 0; i < tr.length; i++) {
         var match = true;
         if (var_x == null) {
@@ -139,7 +165,9 @@
           tr[i].style.display = "none";
         }
       }
+
     }
+
   </script>
   <script>
     const togglePassword = document.querySelector('#togglePassword');
@@ -158,39 +186,34 @@
   <script>
     window.addEventListener("DOMContentLoaded", (event) => {
 
-        var els = document.getElementsByClassName("clickable");
-        var tableArray = [];
-        var trArray = [];
-        for(var i = 0; i < els.length; i++)
-        {
-            var element = els[i];
-            var table = element.parentNode.parentNode;
-            if(tableArray.indexOf(table) === -1)
-            {
-                tableArray.push(table);
-            }
+      var els = document.getElementsByClassName("clickable");
+      var tableArray = [];
+      var trArray = [];
+      for (var i = 0; i < els.length; i++) {
+        var element = els[i];
+        var table = element.parentNode.parentNode;
+        if (tableArray.indexOf(table) === -1) {
+          tableArray.push(table);
         }
-        for(var i=0; i<tableArray.length; i++)
-        {
-            element = tableArray[i];
-            var unTruc = document.createElement("th");
-            var leHead = element.tHead.getElementsByTagName("tr")[0];
-            leHead.prepend(unTruc);
-            var aRow = element.getElementsByTagName('tbody')[0].getElementsByClassName('clickable');
-            var leBody;
-        
-            for(var k=0; k<aRow.length; k++)
-            {
-                leBody = element.tBodies[0].getElementsByClassName("clickable")[k];
-                if(trArray.indexOf(leBody) === -1)
-                {
-                    trArray.push(leBody);
-                    var unAutre = document.createElement("td");
-                    unAutre.innerHTML = '<td scope="row"> <i class="fas fa-caret-right"></i> </td>'
-                    leBody.prepend(unAutre);
-                }
-            }
+      }
+      for (var i = 0; i < tableArray.length; i++) {
+        element = tableArray[i];
+        var unTruc = document.createElement("th");
+        var leHead = element.tHead.getElementsByTagName("tr")[0];
+        leHead.prepend(unTruc);
+        var aRow = element.getElementsByTagName('tbody')[0].getElementsByClassName('clickable');
+        var leBody;
+
+        for (var k = 0; k < aRow.length; k++) {
+          leBody = element.tBodies[0].getElementsByClassName("clickable")[k];
+          if (trArray.indexOf(leBody) === -1) {
+            trArray.push(leBody);
+            var unAutre = document.createElement("td");
+            unAutre.innerHTML = '<td scope="row"> <i class="fas fa-caret-right"></i> </td>'
+            leBody.prepend(unAutre);
           }
+        }
+      }
 
 
       document.querySelectorAll('select.break-doublons').forEach((select) => {
@@ -218,20 +241,19 @@
   {% endblock %}
 </body>
 
-<<<<<<< HEAD
+
 </html>
 
 <script>
-  $(".clickable").click(function(){
-      $(this).find('td i').toggleClass("rtoate180");
+  $(".clickable").click(function () {
+    $(this).find('td i').toggleClass("rtoate180");
   });
 
 </script>
-=======
+
 <footer class="text-center text-white " style="background-color: #4c5bffa2; ;">
   {% block footer %}
   {% endblock %}
 </footer>
 
 </html>
->>>>>>> 33100e164ea7081f69a2ceb4b6614e7f4489bd8b
