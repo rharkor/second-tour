@@ -282,7 +282,10 @@ def delete_choix_matiere(id):
 
 def add_creneau(id_candidat, id_matiere, id_salle, debut_preparation, fin_preparation, fin):
     try:
-            
+        if type(debut_preparation) == str:
+            debut_preparation = datetime.strptime(debut_preparation, '%Y/%m/%d:%H:%M')
+            fin_preparation = datetime.strptime(fin_preparation, '%Y/%m/%d:%H:%M')
+            fin = datetime.strptime(fin, '%Y/%m/%d:%H:%M')
         logging.warning("new Créneau : " + str(id_candidat) + " | " + str(id_matiere) + " | " + str(id_salle))
         creneau = CRENEAU(id_candidat, id_matiere, id_salle, debut_preparation, fin_preparation, fin)
         if not creneau.unvalid:

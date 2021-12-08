@@ -343,7 +343,6 @@
         </div>
     </div>
 </div>
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
     <!-- Delete all creneaux modal -->
     <div class="modal fade" id="removeAllCreneauxModal" tabindex="-1" role="dialog"
         aria-labelledby="removeAllCreneauxModal" aria-hidden="true">
@@ -516,8 +515,8 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
                             debut_prepa_date = new Date(creneau.debut_preparation);
                             fin_creneau_date = new Date(creneau.fin);
                             if (debut_prepa_date.getDay() == jour_debut_preparation_voulue) {
-                                let debut_preparation_creneau = convert_to_decimal_time(debut_prepa_date.getHours().toString() + ":" + debut_prepa_date.getMinutes().toString())
-                                let fin_passage_creneau = convert_to_decimal_time(fin_creneau_date.getHours().toString() + ":" + fin_creneau_date.getMinutes().toString())
+                                let debut_preparation_creneau = debut_prepa_date;
+                                let fin_passage_creneau = fin_creneau_date;
                                 let matiere_creneau;
                                 for (let z = 0; z < all_matieres.length; z++) {
                                     if (all_matieres[z].id_matiere == creneau.id_matiere) {
@@ -531,8 +530,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 
                                 // Test if the salle is empty
                                 if (matiere != null && heure_debut_preparation_voulue != null && temps_preparation_matiere != null && temps_passage_matiere != null) {
-                                    if (debut_preparation_creneau == 8 && heure_debut_preparation_voulue == 8) {
-                                    }
                                     if (creneau.id_salle == a_salle.id_salle
                                         && !((heure_debut_preparation_voulue + temps_preparation_matiere >= fin_passage_creneau)
                                             || (heure_debut_preparation_voulue + temps_preparation_matiere + temps_passage_matiere <= debut_preparation_creneau + temps_preparation_creneau))) {

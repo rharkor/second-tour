@@ -28,21 +28,21 @@
                         <th scope="col">
                             <div class="th-inner">Nom</div>
                             <div class="filter-control">
-                                <input type="text" class="form-control finder" onkeyup="finder()" style="width: 100px;"
+                                <input type="text" class="form-control finder" onkeyup="finder(1, 0)" style="width: 100px;"
                                     placeholder="">
                             </div>
                         </th>
                         <th scope="col">
                             <div class="th-inner">Prénom</div>
                             <div class="filter-control">
-                                <input type="text" class="form-control finder" onkeyup="finder()" style="width: 100px;"
+                                <input type="text" class="form-control finder" onkeyup="finder(2, 1)" style="width: 100px;"
                                     placeholder="">
                             </div>
                         </th>
                         <th scope="col">
                             <div class="th-inner">Série</div>
                             <div class="filter-control">
-                                <select class="form-select finder" onchange="finder()" style="width: 200px;">
+                                <select class="form-select finder" onchange="finder(3, 2)" style="width: 200px;">
                                     <option selected></option>
                                     {% for a_serie in all_series %}
                                     <option>{{a_serie.nom}} - {% if a_serie.specialite1 %}{{a_serie.specialite1}}{%
@@ -55,7 +55,7 @@
                         <th scope="col">
                             <div class="th-inner">Matière1</div>
                             <div class="filter-control">
-                                <select class="form-select finder break-doublons" onchange="finder()"
+                                <select class="form-select finder break-doublons" onchange="finder(4, 3, false)"
                                     style="width: 200px;">
                                     <option selected></option>
                                     {% for matiere in all_matieres %}
@@ -67,7 +67,7 @@
                         <th scope="col">
                             <div class="th-inner">Matière2</div>
                             <div class="filter-control">
-                                <select class="form-select finder break-doublons" onchange="finder()"
+                                <select class="form-select finder break-doublons" onchange="finder(5, 4, false)"
                                     style="width: 200px;">
                                     <option selected></option>
                                     {% for matiere in all_matieres %}
@@ -79,7 +79,7 @@
                         <th scope="col">
                             <div class="th-inner">Tiers temps</div>
                             <div class="filter-control">
-                                <select class="form-select finder" onchange="finder()" style="width: 80px;">
+                                <select class="form-select finder" onchange="finder(6, 5)" style="width: 80px;">
                                     <option selected></option>
                                     <option>Oui</option>
                                     <option>Non</option>

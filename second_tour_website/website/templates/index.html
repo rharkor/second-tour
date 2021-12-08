@@ -21,12 +21,12 @@
             <div class="name-finder" style="width: max-content;">
                 <input class="form-control" type="text" id="search-name" onkeyup="nameFinder()"
                     placeholder="Recherche par nom..">
-                <select class="form-select finder break-doublons" onchange="finder(3, 0)" style="width: 80px;">
-                    <option selected></option>
-                    <option value="2021-11-01">Jour 1</option>
-                    <option>Jour 2</option>
-                    <option>Jour 3</option>
-                </select>
+                    <select class="form-select finder" onchange="multipleFinder([4, 6], 0)">
+                        <option selected></option>
+                        <option value="01">Jour 1</option>
+                        <option value="02">Jour 2</option>
+                        <option value="03">Jour 3</option>
+                    </select>
             </div>
             <div class="thumbnail" style="overflow: hidden;">
                 <table class="table table-light table-striped calendar">
@@ -37,6 +37,8 @@
                             <th scope="col">Série</th>
                             <th scope="col">Epreuve 1</th>
                             <th scope="col">Epreuve 2</th>
+                            <th scope="col" hidden>JourE1</th>
+                            <th scope="col" hidden>JourE2</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -71,10 +73,12 @@
                                         {% endif %}</div>
                                     <div>{{creneau.debut_preparation.strftime('%Hh%M')}} -
                                         {{creneau.fin.strftime('%Hh%M')}}</div>
-                                    <div hidden>{{creneau.debut_preparation}}</div>
                                     {% endif %}
                                     {% endfor %}
                                 </div>
+                            </td>
+                            <td hidden>
+                                {{creneau.debut_preparation.strftime('%d')}}
                             </td>
                             {% endif %}
                             {% endfor %}
@@ -95,6 +99,8 @@
                             <th scope="col">Série</th>
                             <th scope="col">Epreuve 1</th>
                             <th scope="col">Epreuve 2</th>
+                            <th scope="col" hidden>JourE1</th>
+                            <th scope="col" hidden>JourE2</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -129,10 +135,12 @@
                                         {% endif %}</div>
                                     <div>{{creneau.debut_preparation.strftime('%Hh%M')}} -
                                         {{creneau.fin.strftime('%Hh%M')}}</div>
-                                    <div hidden>{{creneau.debut_preparation}}</div>
                                     {% endif %}
                                     {% endfor %}
                                 </div>
+                            </td>
+                            <td hidden>
+                                {{creneau.debut_preparation.strftime('%d')}}
                             </td>
                             {% endif %}
                             {% endfor %}
@@ -157,57 +165,58 @@
 <!-- Grid container -->
 <div class="container p-1" style="font-size: small; ; ">
     <!--Grid row-->
-    <div class="row" style="display: flex; justify-content: center" > 
-      <!--Grid column-->
-      
-      <!--Grid column-->
+    <div class="row" style="display: flex; justify-content: center">
+        <!--Grid column-->
 
-      <!--Grid column-->
-      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-        <P class="text-uppercase mb-0">Adresse :</p>
+        <!--Grid column-->
 
-          <ul class="list-unstyled mb-0 text-white">
-            <li>
-              <p>118 rue des Gonthières, 17 026 La Rochelle CEDEX 01</p>
-            </li>
-         </ul>
-      </div>
-      <!--Grid column-->
+        <!--Grid column-->
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+            <P class="text-uppercase mb-0">Adresse :</p>
 
-      <!--Grid column-->
-      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-        <p class="text-uppercase mb-0"></p>
+            <ul class="list-unstyled mb-0 text-white">
+                <li>
+                    <p>118 rue des Gonthières, 17 026 La Rochelle CEDEX 01</p>
+                </li>
+            </ul>
+        </div>
+        <!--Grid column-->
 
-        <ul class="list-unstyled ">
-          <li>
-           <p>Telephone : <a class="text-white" href="tel:0546347932">05 46 34 79 32</a></p>
-          </li>
-          <li>
-            <p>Fax : 05 46 34 22 28</p>
-          </li>
-         </ul>
-      </div>
-      <!--Grid column-->
+        <!--Grid column-->
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+            <p class="text-uppercase mb-0"></p>
 
-      <!--Grid column-->
-      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-        <p class="text-uppercase mb-0">Adresse mail :</p>
+            <ul class="list-unstyled ">
+                <li>
+                    <p>Telephone : <a class="text-white" href="tel:0546347932">05 46 34 79 32</a></p>
+                </li>
+                <li>
+                    <p>Fax : 05 46 34 22 28</p>
+                </li>
+            </ul>
+        </div>
+        <!--Grid column-->
 
-        <ul class="list-unstyled">
-          <li>
-            <a class="text-white" href="mailto:contact@lycee-vieljeux.fr">contact@lycee-vieljeux.fr</a>
-          </li>
-         </ul>
-      </div>
-      <!--Grid column-->
+        <!--Grid column-->
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+            <p class="text-uppercase mb-0">Adresse mail :</p>
+
+            <ul class="list-unstyled">
+                <li>
+                    <a class="text-white" href="mailto:contact@lycee-vieljeux.fr">contact@lycee-vieljeux.fr</a>
+                </li>
+            </ul>
+        </div>
+        <!--Grid column-->
     </div>
     <!--Grid row-->
-  </div>
-  <!-- Grid container -->
+</div>
+<!-- Grid container -->
 
-  <!-- Copyright -->
-  <div class="text-center p-1" style="background-color: rgba(0, 0, 0, 0.2); font-size: medium;display: flex; justify-content: center; ">
+<!-- Copyright -->
+<div class="text-center p-1"
+    style="background-color: rgba(0, 0, 0, 0.2); font-size: medium;display: flex; justify-content: center; ">
     <p>© 2021 Copyright : IUT de La Rochelle</p>
-  </div>
-  <!-- Copyright -->
+</div>
+<!-- Copyright -->
 {% endblock %}

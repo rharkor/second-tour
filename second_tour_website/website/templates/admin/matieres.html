@@ -22,7 +22,7 @@
                         <th scope="col">
                             <div class="th-inner">Nom</div>
                             <div class="filter-control">
-                                <select class="form-select finder break-doublons" onchange="finder()">
+                                <select class="form-select finder break-doublons" onchange="finder(1, 0)">
                                     <option select></option>
                                     {% for matiere in all_matieres %}
                                     <option>{{matiere.nom}}</option>
@@ -33,7 +33,7 @@
                         <th scope="col">
                             <div class="th-inner">Série</div>
                             <div class="filter-control">
-                                <select class="form-select finder" onchange="finder()">
+                                <select class="form-select finder" onchange="finder(2, 1)">
                                     <option select></option>
                                     {% for a_serie in all_series %}
                                     <option>{{a_serie.nom}} - {% if a_serie.specialite1 %}{{a_serie.specialite1}}{%
@@ -46,19 +46,19 @@
                         <th scope="col">
                             <div class="th-inner">Temps de préparation</div>
                             <div class="filter-control">
-                                <input type="text" class="form-control finder" onkeyup="finder()" placeholder="">
+                                <input type="text" class="form-control finder" onkeyup="finder(3, 2)" placeholder="">
                             </div>
                         </th>
                         <th scope="col">
                             <div class="th-inner">Temps de passage</div>
                             <div class="filter-control">
-                                <input type="text" class="form-control finder" onkeyup="finder()" placeholder="">
+                                <input type="text" class="form-control finder" onkeyup="finder(4, 3)" placeholder="">
                             </div>
                         </th>
                         <th scope="col">
                             <div class="th-inner">Loge assignée</div>
                             <div class="filter-control">
-                                <select class="form-select finder" onchange="finder()">
+                                <select class="form-select finder" onchange="finder(5, 4)">
                                     <option select></option>
                                     {% for salle in all_salles %}
                                     <option>{{salle.numero}}</option>

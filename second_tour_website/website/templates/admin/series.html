@@ -22,7 +22,7 @@
                         <th scope="col">
                             <div class="th-inner">Série</div>
                             <div class="filter-control">
-                                <select class="form-select finder break-doublons" onchange="finder()">
+                                <select class="form-select finder break-doublons" onchange="finder(1, 0)">
                                     <option select></option>
                                     {% for an_serie in all_series %}
                                     <option>{{an_serie.nom}}</option>
