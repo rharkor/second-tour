@@ -181,40 +181,36 @@ VALUES (NULL, 23, 10, 9);
 -- VALUES (NULL, 1, 'Hubert', 'Jean', 1, 2); --PROF WITH ACCOUNT ALREADY MADE MANUALLY
 -- MATHS G
 INSERT INTO PROFESSEUR
-VALUES (NULL, 10, 'De Renaud', 'Julien', 1, 3);
+VALUES (NULL, 10, 'De Renaud', 'Julien', 3);
 -- SVT G
 INSERT INTO PROFESSEUR
-VALUES (NULL, 1, 'Pelletier-aubert', 'Aimé', 2, 4);
+VALUES (NULL, 1, 'Pelletier-aubert', 'Aimé', 4);
 -- FRANCAIS G
 INSERT INTO PROFESSEUR
-VALUES (NULL, 1, 'Langlois', 'Marie-Charlotte', 3, 5);
-INSERT INTO PROFESSEUR
-VALUES (NULL, 1, 'Langlois', 'Marie-Charlotte', 7, 5);
+VALUES (NULL, 1, 'Langlois', 'Marie-Charlotte', 5);
 -- PHILO G
 INSERT INTO PROFESSEUR
-VALUES (NULL, 1, 'Lacroix', 'Daisy', 4, 6);
-INSERT INTO PROFESSEUR
-VALUES (NULL, 1, 'Lacroix', 'Daisy', 8, 6);
+VALUES (NULL, 1, 'Lacroix', 'Daisy', 6);
 -- PYSIQUE G
 INSERT INTO PROFESSEUR
-VALUES (NULL, 1, 'Goncalves', 'Denis', 5, 7);
+VALUES (NULL, 1, 'Goncalves', 'Denis', 7);
 -- SI G
 INSERT INTO PROFESSEUR
-VALUES (NULL, 1, 'Renault', 'Thomas', 6, 8);
+VALUES (NULL, 1, 'Renault', 'Thomas', 8);
 -- 2I2D STI2D
 INSERT INTO PROFESSEUR
-VALUES (NULL, 1, 'Legendre', 'Rémy', 9, 9);
+VALUES (NULL, 1, 'Legendre', 'Rémy', 9);
 -- MATHS/PHYSIQUE 2I2D
 INSERT INTO PROFESSEUR
-VALUES (NULL, 1, 'Adam', 'Paul', 10, 10);
+VALUES (NULL, 1, 'Adam', 'Paul', 10);
 INSERT INTO PROFESSEUR
-VALUES (NULL, 1, 'Périer', 'Valérie', 10, 10);
+VALUES (NULL, 1, 'Périer', 'Valérie', 10);
 -- FRANCAIS STI2D
 INSERT INTO PROFESSEUR
-VALUES (NULL, 1, 'Devaux', 'Jacques', 11, 11);
+VALUES (NULL, 1, 'Devaux', 'Jacques', 11);
 -- PHILO STI2D
 INSERT INTO PROFESSEUR
-VALUES (NULL, 1, 'Teixera', 'Pénélope', 12, 12);
+VALUES (NULL, 1, 'Teixera', 'Pénélope', 12);
 
 
 

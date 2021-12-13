@@ -343,31 +343,31 @@
         </div>
     </div>
 </div>
-    <!-- Delete all creneaux modal -->
-    <div class="modal fade" id="removeAllCreneauxModal" tabindex="-1" role="dialog"
-        aria-labelledby="removeAllCreneauxModal" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Attention</h5>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p style="color: orange;">Attention cette opération est irréversible !</p>
-                    <p>Êtes vous sûr de vouloir supprimer tous les créneaux ?</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                    <form method="post">
-                        <button type="submit" name="delete_all_button" id="ModalSubmitButton" value=""
-                            class="btn btn-danger">Supprimer</button>
-                    </form>
-                </div>
+<!-- Delete all creneaux modal -->
+<div class="modal fade" id="removeAllCreneauxModal" tabindex="-1" role="dialog" aria-labelledby="removeAllCreneauxModal"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Attention</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p style="color: orange;">Attention cette opération est irréversible !</p>
+                <p>Êtes vous sûr de vouloir supprimer tous les créneaux ?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                <form method="post">
+                    <button type="submit" name="delete_all_button" id="ModalSubmitButton" value=""
+                        class="btn btn-danger">Supprimer</button>
+                </form>
             </div>
         </div>
     </div>
+</div>
 {% endblock %}
 
 {% block sub_script %}
@@ -443,19 +443,24 @@
         let matiereId = document.getElementById("matiere-select" + opt).value;
         let all_salles = JSON.parse('{{all_salles|tojson}}');
         let all_professeurs = JSON.parse('{{all_professeur|tojson}}');
+        let all_liste_matieres = JSON.parse('{{ all_liste_matieres|tojson }}')
         for (let i = 0; i < all_matieres.length; i++) {
             if (all_matieres[i].id_matiere == matiereId) {
                 let matiere = all_matieres[i];
                 for (let x = 0; x < all_professeurs.length; x++) {
-                    if (all_professeurs[x].matiere == matiere.id_matiere) {
-                        var option = document.createElement("option");
-                        option.value = all_professeurs[x].salle;
-                        for (let z = 0; z < all_salles.length; z++) {
-                            if (all_salles[z].id_salle == all_professeurs[x].salle) {
-                                option.text = all_salles[z].numero;
+                    for (let w = 0; w < all_liste_matieres.length; w++) {
+                        if (all_liste_matieres[w].id_professeur == all_professeurs[x].id_professeur) {
+                            if (all_liste_matieres[w].id_matiere == matiere.id_matiere) {
+                                var option = document.createElement("option");
+                                option.value = all_professeurs[x].salle;
+                                for (let z = 0; z < all_salles.length; z++) {
+                                    if (all_salles[z].id_salle == all_professeurs[x].salle) {
+                                        option.text = all_salles[z].numero;
+                                    }
+                                }
+                                salleSelect.append(option);
                             }
                         }
-                        salleSelect.append(option);
                     }
                 }
             }
@@ -770,57 +775,58 @@
 <!-- Grid container -->
 <div class="container p-1" style="font-size: small; ; ">
     <!--Grid row-->
-    <div class="row" style="display: flex; justify-content: right" >
-      <!--Grid column-->
-      
-      <!--Grid column-->
+    <div class="row" style="display: flex; justify-content: right">
+        <!--Grid column-->
 
-      <!--Grid column-->
-      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-        <P class="text-uppercase mb-0">Adresse :</p>
+        <!--Grid column-->
 
-          <ul class="list-unstyled mb-0 text-white">
-            <li>
-              <p>118 rue des Gonthières, 17 026 La Rochelle CEDEX 01</p>
-            </li>
-         </ul>
-      </div>
-      <!--Grid column-->
+        <!--Grid column-->
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+            <P class="text-uppercase mb-0">Adresse :</p>
 
-      <!--Grid column-->
-      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-        <p class="text-uppercase mb-0"></p>
+            <ul class="list-unstyled mb-0 text-white">
+                <li>
+                    <p>118 rue des Gonthières, 17 026 La Rochelle CEDEX 01</p>
+                </li>
+            </ul>
+        </div>
+        <!--Grid column-->
 
-        <ul class="list-unstyled ">
-          <li>
-           <p>Telephone : <a class="text-white" href="tel:0546347932">05 46 34 79 32</a></p>
-          </li>
-          <li>
-            <p>Fax : 05 46 34 22 28</p>
-          </li>
-         </ul>
-      </div>
-      <!--Grid column-->
+        <!--Grid column-->
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+            <p class="text-uppercase mb-0"></p>
 
-      <!--Grid column-->
-      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-        <p class="text-uppercase mb-0">Adresse mail :</p>
+            <ul class="list-unstyled ">
+                <li>
+                    <p>Telephone : <a class="text-white" href="tel:0546347932">05 46 34 79 32</a></p>
+                </li>
+                <li>
+                    <p>Fax : 05 46 34 22 28</p>
+                </li>
+            </ul>
+        </div>
+        <!--Grid column-->
 
-        <ul class="list-unstyled">
-          <li>
-            <a class="text-white" href="mailto:contact@lycee-vieljeux.fr">contact@lycee-vieljeux.fr</a>
-          </li>
-         </ul>
-      </div>
-      <!--Grid column-->
+        <!--Grid column-->
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+            <p class="text-uppercase mb-0">Adresse mail :</p>
+
+            <ul class="list-unstyled">
+                <li>
+                    <a class="text-white" href="mailto:contact@lycee-vieljeux.fr">contact@lycee-vieljeux.fr</a>
+                </li>
+            </ul>
+        </div>
+        <!--Grid column-->
     </div>
     <!--Grid row-->
-  </div>
-  <!-- Grid container -->
+</div>
+<!-- Grid container -->
 
-  <!-- Copyright -->
-  <div class="text-center p-1" style="background-color: rgba(0, 0, 0, 0.2); font-size: medium;display: flex; justify-content: right; ">
+<!-- Copyright -->
+<div class="text-center p-1"
+    style="background-color: rgba(0, 0, 0, 0.2); font-size: medium;display: flex; justify-content: right; ">
     <p>© 2021 Copyright : IUT de La Rochelle</p>
-  </div>
-  <!-- Copyright -->
+</div>
+<!-- Copyright -->
 {% endblock %}

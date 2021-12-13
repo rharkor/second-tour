@@ -20,6 +20,7 @@ def generation_calendrier():
 
     all_candidats = CANDIDATS.query.all()
     all_professeurs = PROFESSEUR.query.all()
+    all_liste_matiere = LISTE_MATIERE.query.all()
     all_choix_matieres = CHOIX_MATIERE.query.all()
     all_matieres = MATIERES.query.all()
     all_series = SERIE.query.all()
@@ -61,12 +62,14 @@ def generation_calendrier():
         # Get prof for each matiere
         professeur_m1, professeur_m2 = [], []
         for professeur in all_professeurs:
-            if matiere1 is not None:
-                if professeur.matiere == matiere1.id_matiere:
-                    professeur_m1.append(professeur)
-            if matiere2 is not None:
-                if professeur.matiere == matiere2.id_matiere:
-                    professeur_m2.append(professeur)
+            for liste_matiere in all_liste_matiere:
+                if liste_matiere.id_professeur == professeur.id_professeur:
+                    if matiere1 is not None:
+                        if liste_matiere.id_matiere == matiere1.id_matiere:
+                            professeur_m1.append(professeur)
+                    if matiere2 is not None:
+                        if liste_matiere.id_matiere == matiere2.id_matiere:
+                            professeur_m2.append(professeur)
 
         # salle for each matiere
         salle_m1, salle_m2 = [], []
@@ -90,18 +93,18 @@ def generation_calendrier():
             if (not matiere1):
                 temps_passage_m1 = None
             else:
-                temps_passage_m1 = timedelta(minutes=
-                    matiere1.temps_passage if not candidat.tiers_temps else matiere1.temps_passage_tiers_temps)
-                temps_preparation_m1 = timedelta(minutes=
-                    matiere1.temps_preparation if not candidat.tiers_temps else matiere1.temps_preparation_tiers_temps)
+                temps_passage_m1 = timedelta(
+                    minutes=matiere1.temps_passage if not candidat.tiers_temps else matiere1.temps_passage_tiers_temps)
+                temps_preparation_m1 = timedelta(
+                    minutes=matiere1.temps_preparation if not candidat.tiers_temps else matiere1.temps_preparation_tiers_temps)
 
             if (not matiere2):
                 temps_passage_m2 = None
             else:
-                temps_passage_m2 = timedelta(minutes=
-                    matiere2.temps_passage if not candidat.tiers_temps else matiere2.temps_passage_tiers_temps)
-                temps_preparation_m2 = timedelta(minutes=
-                    matiere2.temps_preparation if not candidat.tiers_temps else matiere2.temps_preparation_tiers_temps)
+                temps_passage_m2 = timedelta(
+                    minutes=matiere2.temps_passage if not candidat.tiers_temps else matiere2.temps_passage_tiers_temps)
+                temps_preparation_m2 = timedelta(
+                    minutes=matiere2.temps_preparation if not candidat.tiers_temps else matiere2.temps_preparation_tiers_temps)
 
         except Exception:
             traceback.print_exc()
@@ -149,7 +152,6 @@ def generation_calendrier():
                                     # logging.warning("DEBUG : ", "Creneau : ", debut_preparation_creneau, temps_preparation_creneau, temps_passage_creneau, fin_passage_creneau)
                                     pass
 
-
                                 # Test if the salle is empty
                                 if(matiere is not None and heure_debut_preparation_voulue is not None and temps_preparation_matiere is not None and temps_passage_matiere is not None):
                                     if creneau.id_salle == a_salle.id_salle \
@@ -158,9 +160,11 @@ def generation_calendrier():
                                         aucune_collision = False
 
                                 # Test if the user don't have already creneau and need a pause
-                                delta_m30 = (debut_preparation_creneau - timedelta(minutes=30))
-                                delta_p30 = (fin_passage_creneau + timedelta(minutes=30))
-                                
+                                delta_m30 = (
+                                    debut_preparation_creneau - timedelta(minutes=30))
+                                delta_p30 = (fin_passage_creneau +
+                                             timedelta(minutes=30))
+
                                 if creneau.id_candidat == candidat.id_candidat \
                                     and not ((fin_passage_matiere <= timedelta(hours=delta_m30.hour, minutes=delta_m30.minute))
                                              or (heure_debut_preparation_voulue >= timedelta(hours=delta_p30.hour, minutes=delta_p30.minute))):
@@ -183,7 +187,8 @@ def generation_calendrier():
                                     x = 0
                                     for creneau_test in all_creneau_test_break:
                                         if (res := (creneau_test.debut_preparation - (creneau_prec.debut_preparation + timedelta(minutes=30)))) >= timedelta(minutes=0):
-                                            break_time += res.seconds / 3600 + (res.seconds % 3600)
+                                            break_time += res.seconds / \
+                                                3600 + (res.seconds % 3600)
                                         creneau_prec = creneau_test
                                         x += 1
                                         if x >= 4:
@@ -205,7 +210,7 @@ def generation_calendrier():
                             if first_creneau \
                                     and (first_creneau.debut_preparation.day != jour_debut_preparation_voulue):
                                 aucune_collision = False
-                                
+
                             # if first_creneau and jour_debut_preparation_voulue == 1:
                             #     print(aucune_collision)
                             #     if(matiere is not None and heure_debut_preparation_voulue is not None and temps_preparation_matiere is not None and temps_passage_matiere is not None):
@@ -219,7 +224,7 @@ def generation_calendrier():
                             #         res = main_database.add_creneau(candidat.id_candidat, matiere.id_matiere, a_salle.id_salle,
                             #                                     heure_debut_preparation_voulue_datetime, fin_preparation_matiere_datetime, fin_passage_matiere_datetime)
                             #         print(res)
-                        
+
                         if aucune_collision:
                             # Create the creneau
                             # logging.warning(matiere.id_matiere, heure_debut_preparation_voulue, temps_preparation_matiere, temps_passage_matiere)
