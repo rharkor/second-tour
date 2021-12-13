@@ -22,21 +22,21 @@
                         <th scope="col">
                             <div class="th-inner">Nom</div>
                             <div class="filter-control">
-                                <input type="text" class="form-control finder" onkeyup="finder()"
+                                <input type="text" class="form-control finder" onkeyup="finder(1, 0)"
                                     placeholder="">
                             </div>
                         </th>
                         <th scope="col">
                             <div class="th-inner">Prénom</div>
                             <div class="filter-control">
-                                <input type="text" class="form-control finder" onkeyup="finder()"
+                                <input type="text" class="form-control finder" onkeyup="finder(2, 1)"
                                     placeholder="">
                             </div>
                         </th>
                         <th scope="col">
                             <div class="th-inner">Matière</div>
                             <div class="filter-control">
-                                    <select class="form-select finder break-doublons" onchange="finder()">
+                                    <select class="form-select finder break-doublons" onchange="finder(3, 2, false)">
                                         <option select></option>
                                         {% for matiere in all_matieres %}
                                         <option>{{matiere.nom}}</option>
@@ -47,7 +47,7 @@
                         <th scope="col">
                             <div class="th-inner">Salle</div>
                             <div class="filter-control">
-                                    <select class="form-select finder" onchange="finder()">
+                                    <select class="form-select finder" onchange="finder(4, 3)">
                                         <option select></option>
                                         {% for salle in all_salles %}
                                         <option>{{salle.numero}}</option>
@@ -342,4 +342,63 @@
         }
     });
 </script>
+{% endblock %}
+
+{% block footer %}
+<!-- Grid container -->
+<div class="container p-1" style="font-size: small; ; ">
+    <!--Grid row-->
+    <div class="row" style="display: flex; justify-content: right" >
+      <!--Grid column-->
+      
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+        <P class="text-uppercase mb-0">Adresse :</p>
+
+          <ul class="list-unstyled mb-0 text-white">
+            <li>
+              <p>118 rue des Gonthières, 17 026 La Rochelle CEDEX 01</p>
+            </li>
+         </ul>
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+        <p class="text-uppercase mb-0"></p>
+
+        <ul class="list-unstyled ">
+          <li>
+           <p>Telephone : <a class="text-white" href="tel:0546347932">05 46 34 79 32</a></p>
+          </li>
+          <li>
+            <p>Fax : 05 46 34 22 28</p>
+          </li>
+         </ul>
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+        <p class="text-uppercase mb-0">Adresse mail :</p>
+
+        <ul class="list-unstyled">
+          <li>
+            <a class="text-white" href="mailto:contact@lycee-vieljeux.fr">contact@lycee-vieljeux.fr</a>
+          </li>
+         </ul>
+      </div>
+      <!--Grid column-->
+    </div>
+    <!--Grid row-->
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center p-1" style="background-color: rgba(0, 0, 0, 0.2); font-size: medium;display: flex; justify-content: right; ">
+    <p>© 2021 Copyright : IUT de La Rochelle</p>
+  </div>
+  <!-- Copyright -->
 {% endblock %}

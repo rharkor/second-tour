@@ -69,8 +69,22 @@
       input = document.getElementById("search-name");
       filter = input.value.toUpperCase();
       table = document.getElementById("calendar");
-      tr = table.getElementsByTagName("tr");
 
+      if (table) {
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        nameFinder_sub(tr, filter);
+      }
+
+      // Do the same for the class
+      $(".calendar").each((index, table) => {
+        tr = table.getElementsByTagName("tr");
+        nameFinder_sub(tr, filter);
+      });
+    }
+
+    function nameFinder_sub(tr, filter) {
       // Loop through all table rows, and hide those who don't match the search query
       for (i = 0; i < tr.length; i++) {
         td = tr[i].getElementsByTagName("td")[0];
@@ -85,26 +99,44 @@
           } else {
             tr[i].style.display = "none";
           }
-          console.log(tr[i].getAttribute("class"))
         }
       }
     }
 
 
 
-    function finder(var_x = null, cur_filter = null) {
+    function finder(var_x = null, cur_filter = null, upper = true) {
+
+
       // Declare variables
       var elements = document.getElementsByClassName("finder");
       var filter, table, tr, td, i, txtValue;
       table = document.getElementById("calendar");
-      tr = table.getElementsByTagName("tr");
 
-      // Loop through all table rows, and hide those who don't match the search query
+      if (table) {
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        finder_sub(tr, var_x, cur_filter, elements, upper);
+      }
+
+      // Do the same for the class
+      $(".calendar").each((index, table) => {
+        tr = table.getElementsByTagName("tr");
+        finder_sub(tr, var_x, cur_filter, elements, upper);
+      });
+    }
+
+    function finder_sub(tr, var_x = null, cur_filter = null, elements = null, upper = true) {
       for (i = 0; i < tr.length; i++) {
         var match = true;
         if (var_x == null) {
           for (var x = 0; x < elements.length; x++) {
-            filter = elements[x].value.toUpperCase();
+            if (upper) {
+              filter = elements[x].value.toUpperCase();
+            } else {
+              filter = elements[x].value;
+            }
             td = tr[i].getElementsByTagName("td")[x];
             if (td) {
               txtValue = td.textContent || td.innerText;
@@ -119,11 +151,20 @@
             }
           }
         } else {
-          filter = elements[cur_filter].value.toUpperCase();
+          if (upper) {
+            filter = elements[cur_filter].value.toUpperCase();
+          } else {
+            filter = elements[cur_filter].value;
+          }
           td = tr[i].getElementsByTagName("td")[var_x];
           if (td) {
             txtValue = td.textContent || td.innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            if (upper) {
+              txtValueUpper = txtValue.toUpperCase();
+            } else {
+              txtValueUpper = txtValue;
+            }
+            if (txtValueUpper.indexOf(filter) > -1) {
             } else if (tr[i].getAttribute("class") != null) {
               if (!tr[i].getAttribute("class").includes("not-null")) {
                 match = false;
@@ -139,7 +180,95 @@
           tr[i].style.display = "none";
         }
       }
+
     }
+
+    function multipleFinder(var_x = null, cur_filter = null, upper = true) {
+
+
+      // Declare variables
+      var elements = document.getElementsByClassName("finder");
+      var filter, table, tr, td, i, txtValue;
+      table = document.getElementById("calendar");
+
+      if (table) {
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        multipleFinder_sub(tr, var_x, cur_filter, elements, upper);
+      }
+
+      // Do the same for the class
+      $(".calendar").each((index, table) => {
+        tr = table.getElementsByTagName("tr");
+        multipleFinder_sub(tr, var_x, cur_filter, elements, upper);
+      });
+    }
+
+    function multipleFinder_sub(tr, var_x = null, cur_filter = null, elements = null, upper = true) {
+      for (i = 0; i < tr.length; i++) {
+        var match = true;
+        if (var_x == null) {
+          for (var x = 0; x < elements.length; x++) {
+            if (upper) {
+              filter = elements[x].value.toUpperCase();
+            } else {
+              filter = elements[x].value;
+            }
+            td = tr[i].getElementsByTagName("td")[x];
+            if (td) {
+              txtValue = td.textContent || td.innerText;
+              if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              } else if (tr[i].getAttribute("class") != null) {
+                if (!tr[i].getAttribute("class").includes("not-null")) {
+                  match = false;
+                }
+              } else {
+                match = false;
+              }
+            }
+          }
+        } else {
+          if (upper) {
+            filter = elements[cur_filter].value.toUpperCase();
+          } else {
+            filter = elements[cur_filter].value;
+          }
+          match_s = true;
+          for (let y = 0; y < var_x.length; y++) {
+            match = true;
+            td = tr[i].getElementsByTagName("td")[var_x[y]];
+            if (td) {
+              txtValue = td.textContent || td.innerText;
+              if (upper) {
+                var txtValueUpper = txtValue.toUpperCase();
+              } else {
+                var txtValueUpper = txtValue;
+              }
+              if (txtValueUpper.indexOf(filter) > -1) {
+              } else if (tr[i].getAttribute("class") != null) {
+
+                if (!tr[i].getAttribute("class").includes("not-null")) {
+                  match = false;
+                }
+              } else {
+                match = false;
+              }
+            }
+            if(!match){
+              match_s=false;
+            }
+          }
+        }
+        if (match_s) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+
+    }
+
   </script>
   <script>
     const togglePassword = document.querySelector('#togglePassword');
@@ -157,6 +286,36 @@
   </script>
   <script>
     window.addEventListener("DOMContentLoaded", (event) => {
+
+      var els = document.getElementsByClassName("clickable");
+      var tableArray = [];
+      var trArray = [];
+      for (var i = 0; i < els.length; i++) {
+        var element = els[i];
+        var table = element.parentNode.parentNode;
+        if (tableArray.indexOf(table) === -1) {
+          tableArray.push(table);
+        }
+      }
+      for (var i = 0; i < tableArray.length; i++) {
+        element = tableArray[i];
+        var unTruc = document.createElement("th");
+        var leHead = element.tHead.getElementsByTagName("tr")[0];
+        leHead.prepend(unTruc);
+        var aRow = element.getElementsByTagName('tbody')[0].getElementsByClassName('clickable');
+        var leBody;
+
+        for (var k = 0; k < aRow.length; k++) {
+          leBody = element.tBodies[0].getElementsByClassName("clickable")[k];
+          if (trArray.indexOf(leBody) === -1) {
+            trArray.push(leBody);
+            var unAutre = document.createElement("td");
+            unAutre.innerHTML = '<td scope="row"> <i class="fas fa-caret-right"></i> </td>'
+            leBody.prepend(unAutre);
+          }
+        }
+      }
+
 
       document.querySelectorAll('select.break-doublons').forEach((select) => {
         let options = [];
@@ -182,5 +341,20 @@
   {% block script %}
   {% endblock %}
 </body>
+
+
+</html>
+
+<script>
+  $(".clickable").click(function () {
+    $(this).find('td i.fa-caret-right').toggleClass("rtoate180");
+  });
+
+</script>
+
+<footer class="text-center text-white " style="background-color: #4c5bffa2; ;">
+  {% block footer %}
+  {% endblock %}
+</footer>
 
 </html>

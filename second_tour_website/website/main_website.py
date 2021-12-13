@@ -12,7 +12,7 @@ app = Flask(__name__)
 file_handler = FileHandler(os.getcwd() + "/second_tour_website/logs/logs_info.txt")
 file_handler.setLevel(WARNING)
 logging.basicConfig(
-    level=ERROR,
+    level=WARNING,
     format="%(asctime)s %(message)s",
     handlers=[
         file_handler

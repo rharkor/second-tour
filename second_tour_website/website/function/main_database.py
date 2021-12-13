@@ -282,11 +282,11 @@ def delete_choix_matiere(id):
 
 def add_creneau(id_candidat, id_matiere, id_salle, debut_preparation, fin_preparation, fin):
     try:
-        debut_preparation = datetime.strptime(debut_preparation.replace(r' GMT.*', ''), '%Y/%m/%d:%H:%M')
-        fin_preparation = datetime.strptime(fin_preparation.replace(r' GMT.*', ''), '%Y/%m/%d:%H:%M')
-        fin = datetime.strptime(fin.replace(r' GMT.*', ''), '%Y/%m/%d:%H:%M')
-        logging.warning("new Créneau : ", id_candidat, id_matiere, id_salle, debut_preparation, fin_preparation, fin)
-        print(type(debut_preparation))
+        if type(debut_preparation) == str:
+            debut_preparation = datetime.strptime(debut_preparation, '%Y/%m/%d:%H:%M')
+            fin_preparation = datetime.strptime(fin_preparation, '%Y/%m/%d:%H:%M')
+            fin = datetime.strptime(fin, '%Y/%m/%d:%H:%M')
+        logging.warning("new Créneau : " + str(id_candidat) + " | " + str(id_matiere) + " | " + str(id_salle))
         creneau = CRENEAU(id_candidat, id_matiere, id_salle, debut_preparation, fin_preparation, fin)
         if not creneau.unvalid:
             db.session.add(creneau)
@@ -307,6 +307,19 @@ def delete_creneau(id):
         db.session.delete(creneau)
         db.session.commit()
         return False
+    except Exception:
+        logging.warning('Erreur : ' + traceback.format_exc())
+        return ['Erreur : ' + traceback.format_exc(), 'danger']
+
+def delete_all_creneaux():
+    try:
+        creneau = CRENEAU.query.all()
+        for creneau in creneau:
+            logging.warning(f'Suppression des creneaux {creneau.id_creneau}')
+            result = delete_creneau(creneau.id_creneau)
+            if result:
+                flash(result[0], result[1])
+        return ['Tous les créneaux ont correctement été supprimés !', 'success']
     except Exception:
         logging.warning('Erreur : ' + traceback.format_exc())
         return ['Erreur : ' + traceback.format_exc(), 'danger']

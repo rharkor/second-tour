@@ -29,7 +29,7 @@
                         <th scope="col">
                             <div class="th-inner">Numéro</div>
                             <div class="filter-control">
-                                <input type="text" class="form-control finder" onkeyup="finder()" placeholder="">
+                                <input type="text" class="form-control finder" onkeyup="finder(1, 0)" placeholder="">
                             </div>
                         </th>
                         <th scope="col" style="width: 15%;" class="align-text-top">Fiche d'émargement</th>
@@ -103,7 +103,7 @@
                                                                         <th scope="col">Heure de début préparation</th>
                                                                         <th scope="col">Heure de fin préparation</th>
                                                                         <th scope="col">Heure de fin de passage</th>
-                                                                        <th scope="col">Emargement</th>
+                                                                        <th scope="col" class="hide">Emargement</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
@@ -123,7 +123,7 @@
                                                                         <td scope="row">{{creneau.fin_preparation}}
                                                                         </td>
                                                                         <td scope="row">{{creneau.fin}}</td>
-                                                                        <td scope="row"></td>
+                                                                        <td scope="row" class="hide"></td>
                                                                     </tr>
                                                                     {% endif %}
                                                                     {% endfor %}
@@ -161,7 +161,7 @@
                                                                         <th scope="col">Prénom</th>
                                                                         <th scope="col">Heure de début préparation</th>
                                                                         <th scope="col">Heure de fin</th>
-                                                                        <th scope="col">Emargement</th>
+                                                                        <th scope="col" class="hide">Emargement</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
@@ -179,7 +179,7 @@
                                                                         <td scope="row">{{creneau.debut_preparation}}
                                                                         </td>
                                                                         <td scope="row">{{creneau.fin}}</td>
-                                                                        <td scope="row"></td>
+                                                                        <td scope="row" class="hide"></td>
                                                                     </tr>
                                                                     {% endif %}
                                                                     {% endfor %}
@@ -282,4 +282,63 @@
         });
     }
 </script>
+{% endblock %}
+
+{% block footer %}
+<!-- Grid container -->
+<div class="container p-1" style="font-size: small; ; ">
+    <!--Grid row-->
+    <div class="row" style="display: flex; justify-content: right" >
+      <!--Grid column-->
+      
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+        <P class="text-uppercase mb-0">Adresse :</p>
+
+          <ul class="list-unstyled mb-0 text-white">
+            <li>
+              <p>118 rue des Gonthières, 17 026 La Rochelle CEDEX 01</p>
+            </li>
+         </ul>
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+        <p class="text-uppercase mb-0"></p>
+
+        <ul class="list-unstyled ">
+          <li>
+           <p>Telephone : <a class="text-white" href="tel:0546347932">05 46 34 79 32</a></p>
+          </li>
+          <li>
+            <p>Fax : 05 46 34 22 28</p>
+          </li>
+         </ul>
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+        <p class="text-uppercase mb-0">Adresse mail :</p>
+
+        <ul class="list-unstyled">
+          <li>
+            <a class="text-white" href="mailto:contact@lycee-vieljeux.fr">contact@lycee-vieljeux.fr</a>
+          </li>
+         </ul>
+      </div>
+      <!--Grid column-->
+    </div>
+    <!--Grid row-->
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center p-1" style="background-color: rgba(0, 0, 0, 0.2); font-size: medium;display: flex; justify-content: right; ">
+    <p>© 2021 Copyright : IUT de La Rochelle</p>
+  </div>
+  <!-- Copyright -->
 {% endblock %}

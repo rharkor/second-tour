@@ -28,21 +28,21 @@
                         <th scope="col">
                             <div class="th-inner">Nom</div>
                             <div class="filter-control">
-                                <input type="text" class="form-control finder" onkeyup="finder()" style="width: 100px;"
+                                <input type="text" class="form-control finder" onkeyup="finder(1, 0)" style="width: 100px;"
                                     placeholder="">
                             </div>
                         </th>
                         <th scope="col">
                             <div class="th-inner">Prénom</div>
                             <div class="filter-control">
-                                <input type="text" class="form-control finder" onkeyup="finder()" style="width: 100px;"
+                                <input type="text" class="form-control finder" onkeyup="finder(2, 1)" style="width: 100px;"
                                     placeholder="">
                             </div>
                         </th>
                         <th scope="col">
                             <div class="th-inner">Série</div>
                             <div class="filter-control">
-                                <select class="form-select finder" onchange="finder()" style="width: 200px;">
+                                <select class="form-select finder" onchange="finder(3, 2)" style="width: 200px;">
                                     <option selected></option>
                                     {% for a_serie in all_series %}
                                     <option>{{a_serie.nom}} - {% if a_serie.specialite1 %}{{a_serie.specialite1}}{%
@@ -55,7 +55,7 @@
                         <th scope="col">
                             <div class="th-inner">Matière1</div>
                             <div class="filter-control">
-                                <select class="form-select finder break-doublons" onchange="finder()"
+                                <select class="form-select finder break-doublons" onchange="finder(4, 3, false)"
                                     style="width: 200px;">
                                     <option selected></option>
                                     {% for matiere in all_matieres %}
@@ -67,7 +67,7 @@
                         <th scope="col">
                             <div class="th-inner">Matière2</div>
                             <div class="filter-control">
-                                <select class="form-select finder break-doublons" onchange="finder()"
+                                <select class="form-select finder break-doublons" onchange="finder(5, 4, false)"
                                     style="width: 200px;">
                                     <option selected></option>
                                     {% for matiere in all_matieres %}
@@ -79,7 +79,7 @@
                         <th scope="col">
                             <div class="th-inner">Tiers temps</div>
                             <div class="filter-control">
-                                <select class="form-select finder" onchange="finder()" style="width: 80px;">
+                                <select class="form-select finder" onchange="finder(6, 5)" style="width: 80px;">
                                     <option selected></option>
                                     <option>Oui</option>
                                     <option>Non</option>
@@ -191,7 +191,7 @@
         </div>
     </div>
 
-    <!-- Modal -->
+    <!-- Modal Ajout candidat -->
     <div class="modal fade" id="addCandidatModal" tabindex="-1" role="dialog" aria-labelledby="addCandidatModal"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -230,13 +230,15 @@
                         </div>
                         <div class="form-group">
                             <label for="matiere1Select">Matière1</label>
-                            <select class="form-control" id="matiere1Select" name="matiere1">
+                            <select class="form-control" id="matiere1Select" name="matiere1"
+                            onchange="matiereGrise('matiere1Select', 'matiere2Select')">
                                 <option selected value></option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="matiere2Select">Matière2</label>
-                            <select class="form-control" id="matiere2Select" name="matiere2">
+                            <select class="form-control" id="matiere2Select" name="matiere2"
+                            onchange="matiereGrise('matiere2Select', 'matiere1Select')">
                                 <option selected value></option>
                             </select>
                         </div>
@@ -298,13 +300,15 @@
                         </div>
                         <div class="form-group">
                             <label for="matiere1SelectModif">Matière1</label>
-                            <select class="form-control" id="matiere1SelectModif" name="matiere1">
+                            <select class="form-control" id="matiere1SelectModif" name="matiere1"
+                            onchange="matiereGrise('matiere1SelectModif', 'matiere2SelectModif')">
                                 <option selected value></option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="matiere2SelectModif">Matière2</label>
-                            <select class="form-control" id="matiere2SelectModif" name="matiere2">
+                            <select class="form-control" id="matiere2SelectModif" name="matiere2"
+                            onchange="matiereGrise('matiere2SelectModif', 'matiere1SelectModif')">
                                 <option selected value></option>
                             </select>
                         </div>
@@ -440,6 +444,32 @@
     $("#buttonAdd").click(() => {
         testMatiereCompatible();
     })
+
+    //Griser la matière si déja séléctionnée par l'une des 2 case "matière"
+    function matiereGrise(id1, id2) {
+        
+        var matiereSelected = $("#" + id1);
+
+        var matiereGrised = $("#" + id2 + " option");
+        
+        (matiereGrised)
+
+        matiereGrised.each((index, element) => {
+            (matiereSelected.val(), element)
+            if (matiereSelected.val() == element.value && matiereSelected.val() != "")
+            {
+                //disabled
+                element.disabled = true;
+            }
+            else element.disabled = false;
+        })
+
+
+        // parcours les options (each)
+        // if vall id 1 == val id 2 
+        // ajoute attr disabled
+    }
+
 </script>
 
 <script>
@@ -539,4 +569,63 @@
         }
     });
 </script>
+{% endblock %}
+
+{% block footer %}
+<!-- Grid container -->
+<div class="container p-1" style="font-size: small; ; ">
+    <!--Grid row-->
+    <div class="row" style="display: flex; justify-content: right" >
+      <!--Grid column-->
+      
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+        <P class="text-uppercase mb-0">Adresse :</p>
+
+          <ul class="list-unstyled mb-0 text-white">
+            <li>
+              <p>118 rue des Gonthières, 17 026 La Rochelle CEDEX 01</p>
+            </li>
+         </ul>
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+        <p class="text-uppercase mb-0"></p>
+
+        <ul class="list-unstyled ">
+          <li>
+           <p>Telephone : <a class="text-white" href="tel:0546347932">05 46 34 79 32</a></p>
+          </li>
+          <li>
+            <p>Fax : 05 46 34 22 28</p>
+          </li>
+         </ul>
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+        <p class="text-uppercase mb-0">Adresse mail :</p>
+
+        <ul class="list-unstyled">
+          <li>
+            <a class="text-white" href="mailto:contact@lycee-vieljeux.fr">contact@lycee-vieljeux.fr</a>
+          </li>
+         </ul>
+      </div>
+      <!--Grid column-->
+    </div>
+    <!--Grid row-->
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center p-1" style="background-color: rgba(0, 0, 0, 0.2); font-size: medium;display: flex; justify-content: right; ">
+    <p>© 2021 Copyright : IUT de La Rochelle</p>
+  </div>
+  <!-- Copyright -->
 {% endblock %}

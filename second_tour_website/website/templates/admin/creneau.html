@@ -3,6 +3,11 @@
 {% block sub_content %}
 <div class="main-div-admin">
     <div class="name-finder" style="justify-content:end;">
+        <button href="#" type="button" class="btn btn-danger me-3" data-bs-toggle="modal"
+            data-bs-target="#removeAllCreneauxModal" id="buttonDelete">
+            Supprimer tous les créneaux
+            <i class="fas fa-trash ml-s"></i>
+        </button>
         <button href="#" type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addCreneauModal">
             Ajouter
             <i class="fas fa-plus ml-s"></i>
@@ -338,6 +343,31 @@
         </div>
     </div>
 </div>
+    <!-- Delete all creneaux modal -->
+    <div class="modal fade" id="removeAllCreneauxModal" tabindex="-1" role="dialog"
+        aria-labelledby="removeAllCreneauxModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Attention</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p style="color: orange;">Attention cette opération est irréversible !</p>
+                    <p>Êtes vous sûr de vouloir supprimer tous les créneaux ?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <form method="post">
+                        <button type="submit" name="delete_all_button" id="ModalSubmitButton" value=""
+                            class="btn btn-danger">Supprimer</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
 
 {% block sub_script %}
@@ -445,7 +475,7 @@
         let all_salles = JSON.parse('{{all_salles|tojson}}');
         let all_creneaux = JSON.parse('{{all_creneau|tojson}}');
         let matiereId = document.getElementById("matiere-select" + opt).value;
-        let matiere;
+        let matiere = null;
         for (let i = 0; i < all_matieres.length; i++) {
             if (all_matieres[i].id_matiere == matiereId) {
                 matiere = all_matieres[i];
@@ -483,9 +513,10 @@
                         for (let x = 0; x < all_creneaux.length; x++) {
                             let creneau = all_creneaux[x];
                             debut_prepa_date = new Date(creneau.debut_preparation);
+                            fin_creneau_date = new Date(creneau.fin);
                             if (debut_prepa_date.getDay() == jour_debut_preparation_voulue) {
-                                let debut_preparation_creneau = convert_to_decimal_time(creneau.debut_preparation)
-                                let fin_passage_creneau = convert_to_decimal_time(creneau.fin)
+                                let debut_preparation_creneau = debut_prepa_date;
+                                let fin_passage_creneau = fin_creneau_date;
                                 let matiere_creneau;
                                 for (let z = 0; z < all_matieres.length; z++) {
                                     if (all_matieres[z].id_matiere == creneau.id_matiere) {
@@ -498,10 +529,12 @@
                                 let fin_passage_matiere = heure_debut_preparation_voulue + temps_preparation_matiere + temps_passage_matiere;
 
                                 // Test if the salle is empty
-                                if (creneau.id_salle == a_salle.id_salle
-                                    && !((heure_debut_preparation_voulue + temps_preparation_matiere >= fin_passage_creneau)
-                                        || (heure_debut_preparation_voulue + temps_preparation_matiere + temps_passage_matiere <= debut_preparation_creneau + temps_preparation_creneau))) {
-                                    aucune_collision = false;
+                                if (matiere != null && heure_debut_preparation_voulue != null && temps_preparation_matiere != null && temps_passage_matiere != null) {
+                                    if (creneau.id_salle == a_salle.id_salle
+                                        && !((heure_debut_preparation_voulue + temps_preparation_matiere >= fin_passage_creneau)
+                                            || (heure_debut_preparation_voulue + temps_preparation_matiere + temps_passage_matiere <= debut_preparation_creneau + temps_preparation_creneau))) {
+                                        aucune_collision = false;
+                                    }
                                 }
 
                                 // Test if the user don't have already creneau and need a pause
@@ -521,7 +554,7 @@
                             }
                         }
                         let date = new Date();
-                        let year =  date.getYear()  + 1900;
+                        let year = date.getYear() + 1900;
                         heure_debut_preparation_voulue_datetime = year + '/' + date.getMonth() + '/' + '0' + jour_debut_preparation_voulue + ':' + convert_from_decimal_time(heure_debut_preparation_voulue)
                         fin_preparation_matiere_datetime = year + '/' + date.getMonth() + '/' + '0' + jour_debut_preparation_voulue + ':' + convert_from_decimal_time(heure_debut_preparation_voulue + temps_preparation_matiere)
                         fin_passage_matiere_datetime = year + '/' + date.getMonth() + '/' + '0' + jour_debut_preparation_voulue + ':' + convert_from_decimal_time(heure_debut_preparation_voulue + temps_preparation_matiere + temps_passage_matiere)
@@ -552,9 +585,9 @@
         let heureDebutSelected_datetime = heureDebutSelect.value;
 
         fin_matiere_datetime = new Date(heureDebutSelected_datetime);
-        fin_matiere_datetime.setHours(fin_matiere_datetime.getHours() +  + temps_preparation_matiere + temps_passage_matiere);
+        fin_matiere_datetime.setHours(fin_matiere_datetime.getHours() + + temps_preparation_matiere + temps_passage_matiere);
 
-        let year =  fin_matiere_datetime.getYear()  + 1900;
+        let year = fin_matiere_datetime.getYear() + 1900;
 
         let optionFin = document.createElement("option");
         optionFin.value = year + "/" + fin_matiere_datetime.getMonth() + "/" + fin_matiere_datetime.getDay() + ":" + convert_from_decimal_time(heureDebutSelected + temps_passage_matiere + temps_preparation_matiere);
@@ -731,4 +764,63 @@
     });
 
 </script>
+{% endblock %}
+
+{% block footer %}
+<!-- Grid container -->
+<div class="container p-1" style="font-size: small; ; ">
+    <!--Grid row-->
+    <div class="row" style="display: flex; justify-content: right" >
+      <!--Grid column-->
+      
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+        <P class="text-uppercase mb-0">Adresse :</p>
+
+          <ul class="list-unstyled mb-0 text-white">
+            <li>
+              <p>118 rue des Gonthières, 17 026 La Rochelle CEDEX 01</p>
+            </li>
+         </ul>
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+        <p class="text-uppercase mb-0"></p>
+
+        <ul class="list-unstyled ">
+          <li>
+           <p>Telephone : <a class="text-white" href="tel:0546347932">05 46 34 79 32</a></p>
+          </li>
+          <li>
+            <p>Fax : 05 46 34 22 28</p>
+          </li>
+         </ul>
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+        <p class="text-uppercase mb-0">Adresse mail :</p>
+
+        <ul class="list-unstyled">
+          <li>
+            <a class="text-white" href="mailto:contact@lycee-vieljeux.fr">contact@lycee-vieljeux.fr</a>
+          </li>
+         </ul>
+      </div>
+      <!--Grid column-->
+    </div>
+    <!--Grid row-->
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center p-1" style="background-color: rgba(0, 0, 0, 0.2); font-size: medium;display: flex; justify-content: right; ">
+    <p>© 2021 Copyright : IUT de La Rochelle</p>
+  </div>
+  <!-- Copyright -->
 {% endblock %}
