@@ -191,7 +191,7 @@
         </div>
     </div>
 
-    <!-- Modal -->
+    <!-- Modal Ajout candidat -->
     <div class="modal fade" id="addCandidatModal" tabindex="-1" role="dialog" aria-labelledby="addCandidatModal"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -230,13 +230,15 @@
                         </div>
                         <div class="form-group">
                             <label for="matiere1Select">Matière1</label>
-                            <select class="form-control" id="matiere1Select" name="matiere1">
+                            <select class="form-control" id="matiere1Select" name="matiere1"
+                            onchange="matiereGrise('matiere1Select', 'matiere2Select')">
                                 <option selected value></option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="matiere2Select">Matière2</label>
-                            <select class="form-control" id="matiere2Select" name="matiere2">
+                            <select class="form-control" id="matiere2Select" name="matiere2"
+                            onchange="matiereGrise('matiere2Select', 'matiere1Select')">
                                 <option selected value></option>
                             </select>
                         </div>
@@ -298,13 +300,15 @@
                         </div>
                         <div class="form-group">
                             <label for="matiere1SelectModif">Matière1</label>
-                            <select class="form-control" id="matiere1SelectModif" name="matiere1">
+                            <select class="form-control" id="matiere1SelectModif" name="matiere1"
+                            onchange="matiereGrise('matiere1SelectModif', 'matiere2SelectModif')">
                                 <option selected value></option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="matiere2SelectModif">Matière2</label>
-                            <select class="form-control" id="matiere2SelectModif" name="matiere2">
+                            <select class="form-control" id="matiere2SelectModif" name="matiere2"
+                            onchange="matiereGrise('matiere2SelectModif', 'matiere1SelectModif')">
                                 <option selected value></option>
                             </select>
                         </div>
@@ -440,6 +444,32 @@
     $("#buttonAdd").click(() => {
         testMatiereCompatible();
     })
+
+    //Griser la matière si déja séléctionnée par l'une des 2 case "matière"
+    function matiereGrise(id1, id2) {
+        
+        var matiereSelected = $("#" + id1);
+
+        var matiereGrised = $("#" + id2 + " option");
+        
+        (matiereGrised)
+
+        matiereGrised.each((index, element) => {
+            (matiereSelected.val(), element)
+            if (matiereSelected.val() == element.value && matiereSelected.val() != "")
+            {
+                //disabled
+                element.disabled = true;
+            }
+            else element.disabled = false;
+        })
+
+
+        // parcours les options (each)
+        // if vall id 1 == val id 2 
+        // ajoute attr disabled
+    }
+
 </script>
 
 <script>
