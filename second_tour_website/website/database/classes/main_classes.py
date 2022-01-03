@@ -365,3 +365,23 @@ class CRENEAU(db.Model):
 
     def as_dict(self):
         return {c.name: getattr(self, c.name) for c in self.__table__.columns}
+
+class TOKEN(db.Model):
+    __tablename__ = 'TOKEN'
+    id = db.Column('id', db.Integer, primary_key=True)
+    email = db.Column(db.String(200), nullable=False)
+    token = db.Column(db.String(200), nullable=False)
+    admin = db.Column(db.Boolean(False), nullable=False)
+    # __table_args__ = (
+    #     db.UniqueConstraint(email, name="UNQ_UTILISATEURS_email"),
+    # )
+
+    def __init__(self, email, token, admin):
+        self.unvalid = False
+
+        self.email = email
+        self.token = token
+        self.admin = admin
+
+    def as_dict(self):
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
