@@ -175,14 +175,24 @@ def delete_salle(id):
         logging.warning('Erreur : ' + traceback.format_exc())
         return ['Erreur : ' + traceback.format_exc(), 'danger']
 
+def add_token(email, token, admin):
+    print("here")
+    token = TOKEN(email, str(token), admin)
+    db.session.add(token)
+    db.session.commit()
 
-def add_professeur(email, password, nom, prenom, salle, matieres=None):
+    pass
+
+def add_professeur(email, nom, prenom, salle, matieres=None, token=None, admin=False):
     try:
-        user = add_account(email, password, 'Professeur', output=True)
+        # user = add_account(email, password, 'Professeur', output=True)
+        add_token(email, token, admin)
+
+        logging.warning('Le token a bien été crée')
         # if user[1][1] == 'danger':
         #     return user[1]
-        user = user[0]
-        professeur = PROFESSEUR(user.id, nom, prenom, salle)
+        # user = user[0]
+        professeur = PROFESSEUR(0, nom, prenom, salle)
         if not professeur.unvalid:
             db.session.add(professeur)
             db.session.commit()

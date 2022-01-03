@@ -3,6 +3,7 @@ from flask import Blueprint, render_template, session, request, redirect, url_fo
 from flask.helpers import flash
 import pandas as pd
 from zipfile import ZipFile
+from uuid import uuid4
 
 from ..function import main_security, main_sessions, main_database, main_calendrier
 from ..database.main_database import *
@@ -205,11 +206,13 @@ def professeurs():
         if request.method == 'POST':
             form = request.form
             if form.get('submit_button') is not None:
-                if 'email' in form and 'password' in form and 'name' in form and 'surname' in form and 'matieres[]' in form and 'salle' in form:
+                if 'email' in form and 'name' in form and 'surname' in form and 'matieres[]' in form and 'salle' in form:
+                    token = uuid4()
                     result = main_database.add_professeur(
-                        form['email'], form['password'], form['name'], form['surname'], form['salle'], form.getlist('matieres[]'))
+                        form['email'], form['name'], form['surname'], form['salle'], form.getlist('matieres[]'), token)
                     flash(result[0], result[1])
                     logging.warning(result[0])
+
             elif form.get('delete_button') is not None:
                 if 'id' in form:
                     if r := main_database.delete_professeur(form['id']):
