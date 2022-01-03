@@ -36,13 +36,17 @@ def add_account(email, password, user_type_string, output=False):
 def delete_account(id):
     try:
         user = UTILISATEURS.query.filter_by(id=id).one()
-        # Delete the dependency to
-        professeurs = PROFESSEUR.query.filter_by(id_utilisateur=id)
-        for a_professeur in professeurs:
-            db.session.delete(a_professeur)
-        db.session.delete(user)
-        db.session.commit()
-        return False
+        if user.admin == False:
+            # Delete the dependency to
+            professeurs = PROFESSEUR.query.filter_by(id_utilisateur=id)
+            for a_professeur in professeurs:
+                db.session.delete(a_professeur)
+            db.session.delete(user)
+            db.session.commit()
+            return False
+        else:
+            logging.warning('Impossible de supprimer cet utilisateur')
+            return ['Impossible de supprimer cet utilisateur', 'danger']
     except Exception:
         logging.warning('Erreur : ' + traceback.format_exc())
         return ['Erreur : ' + traceback.format_exc(), 'danger']
@@ -221,6 +225,35 @@ def add_professeur_wep(user, nom, prenom, salle, matieres=None):
                         db.session.add(liste_matiere)
                         db.session.commit()
                         logging.warning('La liste matière à bien été ajoutée')
+
+            return ['Le professeur a bien été crée', 'success']
+        else:
+            return professeur.unvalid
+    except Exception:
+        logging.warning('Erreur : ' + traceback.format_exc())
+        return ['Erreur : ' + traceback.format_exc(), 'danger']
+
+
+def update_professeur_wep(id, user, nom, prenom, salle, matieres=None):
+    try:
+        professeur = PROFESSEUR.query.filter_by(id_professeur=id).first()
+        if professeur:
+            professeur.id_utilisateur = user
+            professeur.nom = nom
+            professeur.prenom = prenom
+            professeur.salle = salle
+
+            logging.warning('Le professeur a bien été crée')
+
+            if matieres:
+                for matiere in matieres:
+                    liste_matiere = LISTE_MATIERE(
+                        professeur.id_professeur, matiere)
+                    if not liste_matiere.unvalid:
+                        db.session.add(liste_matiere)
+                        logging.warning('La liste matière à bien été ajoutée')
+
+            db.session.commit()
 
             return ['Le professeur a bien été crée', 'success']
         else:

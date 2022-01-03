@@ -88,7 +88,7 @@
                             <form method="post" action="{{url_for('admin_routes.professeurs')}}"
                                 id="modifyCreneauForm{{a_prof.id_professeur}}">
                                 <input type="hidden" name="id" value="{{a_prof.id_professeur}}">
-                                <button type="button" id="{{a_prof.id_professeur}}" data-bs-toggle="modal"
+                                <button type="button" id="modify-{{a_prof.id_professeur}}" data-bs-toggle="modal"
                                     data-bs-target="#modifyModal"
                                     class="modifRow btn btn-outline-warning">Modifier</button>
                             </form>
@@ -176,16 +176,16 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="name">Nom</label>
+                            <label for="nameAdd">Nom</label>
                             <div class="d-flex">
-                                <input type="text" class="form-control" id="name" name="name"
+                                <input type="text" class="form-control" id="nameAdd" name="name"
                                     placeholder="Entrez un nom" required>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="surname">Prénom</label>
+                            <label for="surnameAdd">Prénom</label>
                             <div class="d-flex">
-                                <input type="text" class="form-control" id="surname" name="surname"
+                                <input type="text" class="form-control" id="surnameAdd" name="surname"
                                     placeholder="Entrez un prénom" required>
                             </div>
                         </div>
@@ -320,7 +320,7 @@
 <script>
     $('.modifRow').click(function () {
 
-        var $myRowId = $(this).get(0).id;
+        var $myRowId = $(this).get(0).id.replace('modify-', '');
         name = document.getElementById("ModalSubmitModifButton").getAttribute("form");
         name = name + $myRowId;
         $("#id_professeur_modify").attr('value', $myRowId);
