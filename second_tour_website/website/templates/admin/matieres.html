@@ -321,3 +321,11 @@
   </div>
   <!-- Copyright -->
 {% endblock %}
+<script>
+    $("[data-toggle='collapse'] [data-toggle='modal']").click(function(event) {
+            event.stopPropagation();
+            console.log("test");
+            var thisModal = $(this).attr('data-target');
+            $(thisModal).modal('show');
+        });
+</script>
