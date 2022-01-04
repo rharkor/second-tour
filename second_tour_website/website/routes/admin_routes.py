@@ -3,6 +3,7 @@ from flask import Blueprint, render_template, session, request, redirect, url_fo
 from flask.helpers import flash
 import pandas as pd
 from zipfile import ZipFile
+from uuid import uuid4
 
 from ..function import main_security, main_sessions, main_database, main_calendrier
 from ..database.main_database import *
@@ -26,15 +27,18 @@ def accueil():
                 writer = pd.ExcelWriter(filename)
                 for table in [CRENEAU, CANDIDATS, PROFESSEUR, SALLE, SERIE, MATIERES, CHOIX_MATIERE, UTILISATEURS]:
                     records = db.session.query(table).all()
-                    data_list = [main_database.to_dict(item) for item in records]
+                    data_list = [main_database.to_dict(
+                        item) for item in records]
                     df = pd.DataFrame(data_list)
                     df.to_excel(writer, sheet_name=table.__table__.name)
                 writer.save()
                 return send_file(filename)
         else:
             result = main_calendrier.test_calendar_complete()
-            flash(result[0], result[1]) if result[1] == "danger" else flash("Le calendrier est complet !    ", result[1])
-            logging.warning(result[0] if result[1] == "danger" else "Le calendrier est complet")
+            flash(result[0], result[1]) if result[1] == "danger" else flash(
+                "Le calendrier est complet !    ", result[1])
+            logging.warning(result[0] if result[1] ==
+                            "danger" else "Le calendrier est complet")
         all_candidats = CANDIDATS.query.order_by(CANDIDATS.nom).all()
         all_creneaux = CRENEAU.query.order_by(CRENEAU.debut_preparation).all()
         all_series = SERIE.query.all()
@@ -49,7 +53,7 @@ def accueil():
         all_salles = []
         for salle in salles:
             all_salles.append(salle.as_dict())
-        return render_template('admin/accueil.html',all_professeurs=all_professeurs, all_candidats=all_candidats, all_creneaux=all_creneaux, all_series=all_series, all_matieres=all_matieres, all_salles=all_salles)
+        return render_template('admin/accueil.html', all_professeurs=all_professeurs, all_candidats=all_candidats, all_creneaux=all_creneaux, all_series=all_series, all_matieres=all_matieres, all_salles=all_salles)
     else:
         return redirect(url_for('main_routes.connexion'))
 
@@ -202,25 +206,26 @@ def professeurs():
         if request.method == 'POST':
             form = request.form
             if form.get('submit_button') is not None:
-                if 'email' in form and 'password' in form and 'name' in form and 'surname' in form and 'matiere' in form and 'salle' in form:
+                if 'email' in form and 'name' in form and 'surname' in form and 'matieres[]' in form and 'salle' in form:
+                    token = uuid4()
                     result = main_database.add_professeur(
-                        form['email'], form['password'], form['name'], form['surname'], form['matiere'], form['salle'])
+                        form['email'], form['name'], form['surname'], form['salle'], form.getlist('matieres[]'), token)
                     flash(result[0], result[1])
                     logging.warning(result[0])
+
             elif form.get('delete_button') is not None:
                 if 'id' in form:
                     if r := main_database.delete_professeur(form['id']):
                         flash(r[0], r[1])
                         logging.warning(r[0])
             elif form.get('modify_button') is not None:
-                if 'user' in form and 'prof_id' in form and 'name' in form and 'surname' in form and 'matiere' in form and 'salle' in form:
+                if 'user' in form and 'prof_id' in form and 'name' in form and 'surname' in form and 'matieres[]' in form and 'salle' in form:
                     result = main_database.delete_professeur(form['prof_id'])
-                    print(form['prof_id'])
                     result = main_database.add_professeur_wep(form['user'],
-                        form['name'], form['surname'], form['matiere'], form['salle'])
+                                                              form['name'], form['surname'], form['salle'], form.getlist('matieres[]'))
                     flash(result[0], result[1])
                     logging.warning(result[0])
-        
+
         # Serialize PROFESSEUR
         profs = PROFESSEUR.query.order_by(PROFESSEUR.nom).all()
         all_profs = []
@@ -234,7 +239,8 @@ def professeurs():
         all_salles = SALLE.query.all()
         all_creneaux = CRENEAU.query.order_by(CRENEAU.debut_preparation).all()
         all_candidats = CANDIDATS.query.all()
-        return render_template('admin/professeurs.html', all_profs=all_profs, all_matieres=all_matieres, all_salles=all_salles, all_creneaux=all_creneaux, all_candidats=all_candidats)
+        liste_matiere = LISTE_MATIERE.query.all()
+        return render_template('admin/professeurs.html', all_profs=all_profs, all_matieres=all_matieres, all_salles=all_salles, all_creneaux=all_creneaux, all_candidats=all_candidats, liste_matiere=liste_matiere)
     else:
         return redirect(url_for('main_routes.connexion'))
 
@@ -247,9 +253,16 @@ def series():
             if form.get('submit_button') is not None:
                 if 'serie' in form and 'specialite1' in form:
                     result = main_database.add_serie(
-                        form['serie'], form['specialite1'], form['specialite2'] if 'specialite2' in form else None)
-                    flash(result[0], result[1])
-                    logging.warning(result[0])
+                        form['serie'], form['specialite1'], form['specialite2'] if 'specialite2' in form else None, True)
+                    flash(result[0][0], result[0][1])
+                    logging.warning(result[0][0])
+                    if result[0][1] == 'success':
+                        result_s = main_database.add_matiere(
+                            'Français', result[1].id_serie, 30, 40, 30, 40, None)
+                        logging.warning(result_s[0])
+                        result_s = main_database.add_matiere(
+                            'Philosophie', result[1].id_serie, 30, 40, 30, 40, None)
+                        logging.warning(result_s[0])
             elif form.get('delete_button') is not None:
                 if 'id' in form:
                     if r := main_database.delete_serie(form['id']):
@@ -321,13 +334,15 @@ def creneau():
             form = request.form
             if form.get('submit_button') is not None:
                 if 'candidat' in form and 'matiere' in form and 'salle' in form and 'debut' in form and 'fin_prepa' in form and 'fin' in form:
-                    result = main_database.add_creneau(form['candidat'], form['matiere'], form['salle'], form['debut'], form["fin_prepa"], form['fin'])
+                    result = main_database.add_creneau(
+                        form['candidat'], form['matiere'], form['salle'], form['debut'], form["fin_prepa"], form['fin'])
                     flash(result[0], result[1])
                     logging.warning(result[0])
             elif form.get('modify_button') is not None:
                 if 'last_creneau_id' in form and 'candidat' in form and 'matiere' in form and 'salle' in form and 'debut' and 'fin_prepa' in form in form and 'fin' in form:
                     if not (res := main_database.delete_creneau(form['last_creneau_id'])):
-                        result = main_database.add_creneau(form['candidat'], form['matiere'], form['salle'], form['debut'], form["fin_prepa"], form['fin'])
+                        result = main_database.add_creneau(
+                            form['candidat'], form['matiere'], form['salle'], form['debut'], form["fin_prepa"], form['fin'])
                         flash(result[0], result[1])
                         logging.warning(result[0])
                     else:
@@ -345,13 +360,13 @@ def creneau():
                 result = main_database.delete_all_creneaux()
                 flash(result[0], result[1])
 
-
         # Serialize table
         creneaux = CRENEAU.query.order_by(CRENEAU.id_candidat).all()
         all_creneau = []
         for creneau in creneaux:
             all_creneau.append(creneau.as_dict())
-        all_creneau_deb = CRENEAU.query.order_by(CRENEAU.debut_preparation).all()
+        all_creneau_deb = CRENEAU.query.order_by(
+            CRENEAU.debut_preparation).all()
         # Serialize table
         candidats = CANDIDATS.query.order_by(CANDIDATS.nom).all()
         all_candidats = []
@@ -382,7 +397,12 @@ def creneau():
         all_professeur = []
         for professeur in professeurs:
             all_professeur.append(professeur.as_dict())
-        return render_template('admin/creneau.html',all_professeur=all_professeur, all_creneau=all_creneau, all_candidats=all_candidats, all_matieres=all_matieres, all_salles=all_salles, all_creneau_deb=all_creneau_deb, all_series=all_series, all_choix_matieres=all_choix_matieres)
+
+        liste_matieres = LISTE_MATIERE.query.all()
+        all_liste_matieres = []
+        for liste_matiere in liste_matieres:
+            all_liste_matieres.append(liste_matiere.as_dict())
+        return render_template('admin/creneau.html', all_professeur=all_professeur, all_creneau=all_creneau, all_candidats=all_candidats, all_matieres=all_matieres, all_salles=all_salles, all_creneau_deb=all_creneau_deb, all_series=all_series, all_choix_matieres=all_choix_matieres, all_liste_matieres=all_liste_matieres)
     else:
         return redirect(url_for('main_routes.connexion'))
 

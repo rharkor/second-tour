@@ -85,4 +85,8 @@ th.modifier {
 tr.no-border {
   border-style: hidden;
 }
+
+.select2-selection {
+  border-color: #ced4da !important;
+}
 /*# sourceMappingURL=admin.css.map */

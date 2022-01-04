@@ -9,7 +9,7 @@ html {
 }
 
 body {
-    background-image: radial-gradient( circle 469px at 51.2% 6%,  rgba(114,126,245,1) 0%, rgba(76,92,255,1) 100.2% );
+    background-image: radial-gradient(circle 469px at 51.2% 6%, rgba(114, 126, 245, 1) 0%, rgba(76, 92, 255, 1) 100.2%);
     height: 100%;
     width: 100%;
 }
@@ -23,7 +23,7 @@ main {
     position: relative;
 }
 
-table{
+table {
     margin-bottom: 0px !important;
 }
 
@@ -213,21 +213,20 @@ form * i {
     }
 }
 option:disabled {
-    background-color: #e9ecef;
+    background-color: #e9ecef !important;
 }
 
 .disabled {
     opacity: 1;
-    background-color: #e9ecef;
+    background-color: #e9ecef !important;
     pointer-events: none;
 }
-
 
 .table-responsive {
     overflow-x: clip;
 }
 
-.align-text-top{
+.align-text-top {
     vertical-align: top;
 }
 .hide {

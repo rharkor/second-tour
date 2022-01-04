@@ -1,28 +1,28 @@
-main{
+main {
     display: flex;
     flex-direction: row;
     width: 100%;
 }
 
 .nav-link:hover {
-    background-color: #525252 !important
+    background-color: #525252 !important;
 }
 
 .nav-link .fa {
-    transition: all 1s
+    transition: all 1s;
 }
 
 .nav-link:hover .fa {
-    transform: rotate(360deg)
+    transform: rotate(360deg);
 }
 
-.main-table-admin{
+.main-table-admin {
     display: flex;
     flex-direction: column;
     width: 100%;
 }
 
-.main-div-admin{
+.main-div-admin {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -31,7 +31,7 @@ main{
     align-items: center;
 }
 
-.name-finder{
+.name-finder {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -40,18 +40,22 @@ main{
     margin: 20px 15px 20px 15px;
 }
 
-.name-finder input{
+.name-finder input {
     width: 25%;
 }
 
-th.supprimer{
+th.supprimer {
     width: 10%;
 }
 
-th.modifier{
+th.modifier {
     width: 10%;
 }
 
-tr.no-border{
+tr.no-border {
     border-style: hidden;
+}
+
+.select2-selection {
+    border-color: #ced4da !important;
 }

@@ -253,12 +253,12 @@ form * i {
 }
 
 option:disabled {
-  background-color: #e9ecef;
+  background-color: #e9ecef !important;
 }
 
 .disabled {
   opacity: 1;
-  background-color: #e9ecef;
+  background-color: #e9ecef !important;
   pointer-events: none;
 }
 
