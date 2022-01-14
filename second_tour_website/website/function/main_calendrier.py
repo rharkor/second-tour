@@ -165,6 +165,7 @@ def generation_calendrier():
                                 delta_p30 = (fin_passage_creneau +
                                              timedelta(minutes=30))
 
+
                                 if creneau.id_candidat == candidat.id_candidat \
                                     and not ((fin_passage_matiere <= timedelta(hours=delta_m30.hour, minutes=delta_m30.minute))
                                              or (heure_debut_preparation_voulue >= timedelta(hours=delta_p30.hour, minutes=delta_p30.minute))):
@@ -225,7 +226,7 @@ def generation_calendrier():
                             #                                     heure_debut_preparation_voulue_datetime, fin_preparation_matiere_datetime, fin_passage_matiere_datetime)
                             #         print(res)
 
-                        if aucune_collision:
+                        if aucune_collision and not candidat.absent:
                             # Create the creneau
                             # logging.warning(matiere.id_matiere, heure_debut_preparation_voulue, temps_preparation_matiere, temps_passage_matiere)
                             if(matiere is not None and heure_debut_preparation_voulue is not None and temps_preparation_matiere is not None and temps_passage_matiere is not None):
@@ -272,6 +273,8 @@ def test_calendar_complete():
     # Because all_choix_matiere is immutable
     all_choix_matiere_left = deepcopy(all_choix_matiere)
     all_creneaux = CRENEAU.query.all()
+    
+    all_candidats = CANDIDATS.query.all()
 
     matiere_left = 0
     for _ in all_choix_matiere:
@@ -282,6 +285,10 @@ def test_calendar_complete():
 
     i = 0
     for choix_matiere in all_choix_matiere:
+        candidat = None
+        for a_candidat in all_candidats:
+            if a_candidat.id_candidat == choix_matiere.id_candidat:
+                candidat = a_candidat
         matiere1, matiere2 = False, False
         for creneau in all_creneaux:
             if creneau.id_candidat == choix_matiere.id_candidat:
@@ -291,6 +298,15 @@ def test_calendar_complete():
                 elif creneau.id_matiere == choix_matiere.matiere2:
                     matiere2 = True
                     matiere_left -= 1
+        if candidat.absent:
+            if not matiere1:
+                matiere_left -= 1 
+            else:
+                matiere1 = True
+            if not matiere2:
+                matiere_left -= 1 
+            else:
+                matiere2 = True
         if matiere1 and matiere2:
             all_choix_matiere_left.pop(i)
             i -= 1

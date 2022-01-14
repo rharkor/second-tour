@@ -22,8 +22,10 @@ def accueil():
         for utilisateur in UTILISATEURS.query.all():
             if utilisateur.email == session['email']:
                 for professeur in PROFESSEUR.query.all():
-                    if professeur.id_utilisateur == utilisateur.id:
-                        id_matieres.append(professeur.matiere)
+                    if professeur.id_professeur == utilisateur.id_professeur:
+                        for liste_matiere in LISTE_MATIERE.query.all():
+                            if liste_matiere.id_professeur == professeur.id_professeur:
+                                id_matieres.append(liste_matiere.id_matiere)
                         id_salle.append(professeur.salle)
         salles = SALLE.query.all()
         all_salles = []

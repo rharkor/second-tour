@@ -82,9 +82,13 @@
                                                 <td scope="row">{{a_prof.prenom}}</td>
                                                 <td scope="row">
                                                     {% for a_matiere in all_matieres %}
-                                                    {% if a_matiere.id_matiere == a_prof.matiere %}
+                                                    {% for liste_matiere in all_liste_matiere %}
+                                                    {% if liste_matiere.id_professeur == a_prof.id_professeur %}
+                                                    {% if a_matiere.id_matiere == liste_matiere.id_matiere %}
                                                     {{a_matiere.nom_complet}}
                                                     {% endif %}
+                                                    {% endif %}
+                                                    {% endfor %}
                                                     {% endfor %}
                                                 </td>
                                             </tr>
@@ -108,8 +112,9 @@
                                                                 </thead>
                                                                 <tbody>
                                                                     {% for creneau in all_creneaux %}
-                                                                    {% if creneau.id_matiere == a_prof.matiere and
-                                                                    creneau.id_salle == a_prof.salle %}
+                                                                    {% for liste_matiere in all_liste_matiere %}
+                                                                    {% if liste_matiere.id_professeur == a_prof.id_professeur %}
+                                                                    {% if creneau.id_matiere == liste_matiere.id_matiere %}
                                                                     <tr class="not-null">
                                                                         {% for candidat in all_candidats %}
                                                                         {% if candidat.id_candidat ==
@@ -126,6 +131,8 @@
                                                                         <td scope="row" class="hide"></td>
                                                                     </tr>
                                                                     {% endif %}
+                                                                    {% endif %}
+                                                                    {% endfor %}
                                                                     {% endfor %}
                                                                 </tbody>
                                                             </table>

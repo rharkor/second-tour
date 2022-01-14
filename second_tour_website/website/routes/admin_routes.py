@@ -64,9 +64,9 @@ def candidats():
         if request.method == 'POST':
             form = request.form
             if form.get('submit_button') is not None:
-                if 'name' in form and 'surname' in form and 'serie' in form and 'tiers_temps' in form:
+                if 'name' in form and 'surname' in form and 'serie' in form and 'tiers_temps' in form and 'absent' in form:
                     result = main_database.add_candidat(
-                        form['name'], form['surname'], form['serie'], form['tiers_temps'], output=True)
+                        form['name'], form['surname'], form['serie'], form['tiers_temps'], form['absent'], output=True)
                     if result[1][1] == 'danger':
                         flash(result[0], result[1])
                         logging.warning(result[0])
@@ -90,13 +90,13 @@ def candidats():
                         flash(r[0], r[1])
                         logging.warning(r[0])
             elif form.get('modif_button') is not None:
-                if 'name' in form and 'surname' in form and 'serie' in form and 'id' in form and 'tiers_temps' in form:
+                if 'name' in form and 'surname' in form and 'serie' in form and 'id' in form and 'tiers_temps' in form and 'absent' in form:
                     if r := main_database.delete_candidat(form['id']):
                         flash(r[0], r[1])
                         logging.warning(r[0])
                     else:
                         result = main_database.add_candidat(
-                            form['name'], form['surname'], form['serie'], form['tiers_temps'], output=True)
+                            form['name'], form['surname'], form['serie'], form['tiers_temps'], form['absent'], output=True)
                         if result[1][1] == 'danger':
                             flash(result[0], result[1])
                             logging.warning(resize[0])
@@ -195,7 +195,9 @@ def salles():
             all_salles.append(salle.as_dict())
 
         all_choix_matieres = CHOIX_MATIERE.query.all()
-        return render_template('admin/salles.html', all_salles=all_salles, all_professeurs=all_professeurs, all_matieres=all_matieres, all_creneaux=all_creneaux, all_candidats=all_candidats, all_choix_matieres=all_choix_matieres)
+        all_liste_matiere = LISTE_MATIERE.query.all()
+        
+        return render_template('admin/salles.html', all_salles=all_salles, all_professeurs=all_professeurs, all_matieres=all_matieres, all_creneaux=all_creneaux, all_candidats=all_candidats, all_choix_matieres=all_choix_matieres, all_liste_matiere=all_liste_matiere)
     else:
         return redirect(url_for('main_routes.connexion'))
 
@@ -206,13 +208,10 @@ def professeurs():
         if request.method == 'POST':
             form = request.form
             if form.get('submit_button') is not None:
-                if 'email' in form and 'password' in form and 'name' in form and 'surname' in form and 'salle' in form:
-                    result = main_database.add_professeur(
-                        form['email'], form['password'], form['name'], form['surname'], form['salle'], form.getlist('matieres[]') if 'matieres[]' in form else [])
-                if 'email' in form and 'name' in form and 'surname' in form and 'matieres[]' in form and 'salle' in form:
+                if 'email' in form and 'name' in form and 'surname' in form and 'salle' in form:
                     token = uuid4()
                     result = main_database.add_professeur(
-                        form['email'], form['name'], form['surname'], form['salle'], form.getlist('matieres[]'), token)
+                        form['email'], form['name'], form['surname'], form['salle'], form.getlist('matieres[]') if 'matieres[]' in form else [], token)
                     flash(result[0], result[1])
                     logging.warning(result[0])
 
@@ -242,8 +241,8 @@ def professeurs():
         all_salles = SALLE.query.all()
         all_creneaux = CRENEAU.query.order_by(CRENEAU.debut_preparation).all()
         all_candidats = CANDIDATS.query.all()
-        liste_matiere = LISTE_MATIERE.query.all()
-        return render_template('admin/professeurs.html', all_profs=all_profs, all_matieres=all_matieres, all_salles=all_salles, all_creneaux=all_creneaux, all_candidats=all_candidats, liste_matiere=liste_matiere)
+        all_liste_matiere = LISTE_MATIERE.query.all()
+        return render_template('admin/professeurs.html', all_profs=all_profs, all_matieres=all_matieres, all_salles=all_salles, all_creneaux=all_creneaux, all_candidats=all_candidats, all_liste_matiere=all_liste_matiere)
     else:
         return redirect(url_for('main_routes.connexion'))
 
@@ -335,6 +334,7 @@ def creneau():
     if main_security.test_session_connected(session, True):
         if request.method == 'POST':
             form = request.form
+            print(form)
             if form.get('submit_button') is not None:
                 if 'candidat' in form and 'matiere' in form and 'salle' in form and 'debut' in form and 'fin_prepa' in form and 'fin' in form:
                     result = main_database.add_creneau(

@@ -8,7 +8,7 @@ def inser_admin():
     email = 'admin@ac-poitiers.fr'
     password = 'L0calAdmin'
     hashed_password = main_security.hash_password(password)
-    user = UTILISATEURS(email, hashed_password, True)
+    user = UTILISATEURS(email, hashed_password, True, None)
     try:
         if user.unvalid == False:
             db.session.add(user)

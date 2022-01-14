@@ -188,7 +188,8 @@
                                     nbrCreneauForCandidat=namespace(value=0) %}{% for creneau in all_creneau %}{% if
                                     creneau.id_candidat==candidat.id_candidat %}{% set
                                     nbrCreneauForCandidat.value=nbrCreneauForCandidat.value + 1 %}{% endif %}{% endfor
-                                    %}{% if nbrCreneauForCandidat.value>= 2 %}disabled{% endif %}>
+                                    %}{% if nbrCreneauForCandidat.value>= 2 or candidat.absent == True %}disabled{%
+                                    endif %}>
                                     {{candidat.nom}} {{candidat.prenom}} |
                                     {{serie.nom}} - {% if serie.specialite1 %}{{serie.specialite1}}{% endif %}{% if
                                     serie.specialite2 %}/{{serie.specialite2}}{% endif %}
@@ -444,6 +445,7 @@
         let all_salles = JSON.parse('{{all_salles|tojson}}');
         let all_professeurs = JSON.parse('{{all_professeur|tojson}}');
         let all_liste_matieres = JSON.parse('{{ all_liste_matieres|tojson }}')
+
         for (let i = 0; i < all_matieres.length; i++) {
             if (all_matieres[i].id_matiere == matiereId) {
                 let matiere = all_matieres[i];
@@ -522,9 +524,9 @@
                             fin_creneau_date = new Date(creneau.fin);
                             if (debut_prepa_date.getDate() == jour_debut_preparation_voulue) {
                                 let debut_preparation_creneau_date = debut_prepa_date;
-                                let debut_preparation_creneau = debut_preparation_creneau_date.getUTCHours() + debut_preparation_creneau_date.getUTCMinutes()/60;
+                                let debut_preparation_creneau = debut_preparation_creneau_date.getUTCHours() + debut_preparation_creneau_date.getUTCMinutes() / 60;
                                 let fin_passage_creneau_date = fin_creneau_date;
-                                let fin_passage_creneau = fin_passage_creneau_date.getUTCHours() + fin_passage_creneau_date.getUTCMinutes()/60;
+                                let fin_passage_creneau = fin_passage_creneau_date.getUTCHours() + fin_passage_creneau_date.getUTCMinutes() / 60;
                                 let matiere_creneau;
                                 for (let z = 0; z < all_matieres.length; z++) {
                                     if (all_matieres[z].id_matiere == creneau.id_matiere) {
@@ -536,14 +538,14 @@
                                 let fin_passage_matiere = heure_debut_preparation_voulue + temps_preparation_matiere + temps_passage_matiere;
                                 // Test if the salle is empty
                                 if (matiere != null && heure_debut_preparation_voulue != null && temps_preparation_matiere != null && temps_passage_matiere != null) {
-                                    
+
                                     if (creneau.id_salle == a_salle.id_salle
                                         && !((heure_debut_preparation_voulue + temps_preparation_matiere >= fin_passage_creneau)
                                             || (heure_debut_preparation_voulue + temps_preparation_matiere + temps_passage_matiere <= debut_preparation_creneau + temps_preparation_creneau))) {
                                         aucune_collision = false;
                                     }
                                 }
-                                
+
                                 // Test if the user don't have already creneau and need a pause
                                 if (creneau.id_candidat == candidat.id_candidat
                                     && !((fin_passage_matiere <= debut_preparation_creneau - 0.5)
@@ -553,10 +555,10 @@
 
                                 // Test for lunch
                                 if (((heure_debut_preparation_voulue >= 13.00 && heure_debut_preparation_voulue < 14.00)
-                                        || (fin_passage_matiere > 13.00 && fin_passage_matiere <= 14.00)
-                                        || (heure_debut_preparation_voulue <= 13.00 && fin_passage_matiere >= 14.00))) {
+                                    || (fin_passage_matiere > 13.00 && fin_passage_matiere <= 14.00)
+                                    || (heure_debut_preparation_voulue <= 13.00 && fin_passage_matiere >= 14.00))) {
                                     aucune_collision = false;
-                                    
+
                                 }
                                 /*if (matiere != null && heure_debut_preparation_voulue != null && temps_preparation_matiere != null && temps_passage_matiere != null) {
                                     if (creneau.id_salle == a_salle.id_salle
@@ -575,9 +577,10 @@
                         }
                         let date = new Date();
                         let year = date.getYear() + 1900;
-                        heure_debut_preparation_voulue_datetime = year + '/' + date.getMonth() + '/' + '0' + jour_debut_preparation_voulue + ':' + convert_from_decimal_time(heure_debut_preparation_voulue)
-                        fin_preparation_matiere_datetime = year + '/' + date.getMonth() + '/' + '0' + jour_debut_preparation_voulue + ':' + convert_from_decimal_time(heure_debut_preparation_voulue + temps_preparation_matiere)
-                        fin_passage_matiere_datetime = year + '/' + date.getMonth() + '/' + '0' + jour_debut_preparation_voulue + ':' + convert_from_decimal_time(heure_debut_preparation_voulue + temps_preparation_matiere + temps_passage_matiere)
+                        let month = (date.getMonth() + 1)
+                        heure_debut_preparation_voulue_datetime = year + '/' + month + '/' + '0' + jour_debut_preparation_voulue + ':' + convert_from_decimal_time(heure_debut_preparation_voulue)
+                        fin_preparation_matiere_datetime = year + '/' + month + '/' + '0' + jour_debut_preparation_voulue + ':' + convert_from_decimal_time(heure_debut_preparation_voulue + temps_preparation_matiere)
+                        fin_passage_matiere_datetime = year + '/' + month + '/' + '0' + jour_debut_preparation_voulue + ':' + convert_from_decimal_time(heure_debut_preparation_voulue + temps_preparation_matiere + temps_passage_matiere)
 
                         if (aucune_collision) {
                             let optionDebut = document.createElement("option");
@@ -605,7 +608,7 @@
         let heureDebutSelected_datetime = heureDebutSelect.value;
 
         fin_matiere_datetime = new Date(heureDebutSelected_datetime);
-        fin_matiere_datetime.setHours(fin_matiere_datetime.getHours() + + temps_preparation_matiere + temps_passage_matiere);
+        fin_matiere_datetime.setHours(fin_matiere_datetime.getHours() + temps_preparation_matiere + temps_passage_matiere);
 
         let year = fin_matiere_datetime.getYear() + 1900;
 

@@ -7,9 +7,7 @@ def main():
 
 
 def test():
-    #from function import main_test_dependance
-    # from website.database.test import insert_user
-    # insert_user.inser_admin()
+    # from function import main_test_dependance
     pass
 
 
@@ -17,6 +15,9 @@ def run(debug_mode=False):
     logging.warning("Run the server")
     # Run the database
     db.create_all()
+    
+    from website.database.test import insert_user
+    insert_user.inser_admin()
 
     # Run the website
     app.run(host="0.0.0.0", port=5000, debug=debug_mode)

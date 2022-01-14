@@ -28,15 +28,15 @@
                         <th scope="col">
                             <div class="th-inner">Nom</div>
                             <div class="filter-control">
-                                <input type="text" class="form-control finder" onkeyup="finder(1, 0)" style="width: 100px;"
-                                    placeholder="">
+                                <input type="text" class="form-control finder" onkeyup="finder(1, 0)"
+                                    style="width: 100px;" placeholder="">
                             </div>
                         </th>
                         <th scope="col">
                             <div class="th-inner">Prénom</div>
                             <div class="filter-control">
-                                <input type="text" class="form-control finder" onkeyup="finder(2, 1)" style="width: 100px;"
-                                    placeholder="">
+                                <input type="text" class="form-control finder" onkeyup="finder(2, 1)"
+                                    style="width: 100px;" placeholder="">
                             </div>
                         </th>
                         <th scope="col">
@@ -92,7 +92,8 @@
                 </thead>
                 <tbody>
                     {% for candidat in all_candidats %}
-                    <tr class="clickable" data-bs-toggle="collapse" data-bs-target="#accordion{{candidat.id_candidat}}">
+                    <tr class="clickable {% if candidat.absent == False %}table-success{% else %}table-danger{% endif %}"
+                        data-bs-target="#accordion{{candidat.id_candidat}}" data-bs-toggle="collapse">
                         <td scope="row">{{candidat.nom}}</td>
                         <td scope="row">{{candidat.prenom}}</td>
                         <td scope="row">{% for a_serie in all_series %}
@@ -231,14 +232,14 @@
                         <div class="form-group">
                             <label for="matiere1Select">Matière1</label>
                             <select class="form-control" id="matiere1Select" name="matiere1"
-                            onchange="matiereGrise('matiere1Select', 'matiere2Select')">
+                                onchange="matiereGrise('matiere1Select', 'matiere2Select')">
                                 <option selected value></option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="matiere2Select">Matière2</label>
                             <select class="form-control" id="matiere2Select" name="matiere2"
-                            onchange="matiereGrise('matiere2Select', 'matiere1Select')">
+                                onchange="matiereGrise('matiere2Select', 'matiere1Select')">
                                 <option selected value></option>
                             </select>
                         </div>
@@ -246,6 +247,13 @@
                             <label for="tierstempsSelect">Tiers temps</label>
                             <select class="form-control" name="tiers_temps" id="tierstempsSelect" required>
                                 <option selected value="False">Non</option>
+                                <option value="True">Oui</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="absentselect">Absent</label>
+                            <select class="form-control" name="absent" id="absentSelect" required>
+                                <option value="False" selected>Non</option>
                                 <option value="True">Oui</option>
                             </select>
                         </div>
@@ -266,7 +274,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Ajouter un candidat</h5>
+                    <h5 class="modal-title">Modifier un candidat</h5>
                     <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -301,14 +309,14 @@
                         <div class="form-group">
                             <label for="matiere1SelectModif">Matière1</label>
                             <select class="form-control" id="matiere1SelectModif" name="matiere1"
-                            onchange="matiereGrise('matiere1SelectModif', 'matiere2SelectModif')">
+                                onchange="matiereGrise('matiere1SelectModif', 'matiere2SelectModif')">
                                 <option selected value></option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="matiere2SelectModif">Matière2</label>
                             <select class="form-control" id="matiere2SelectModif" name="matiere2"
-                            onchange="matiereGrise('matiere2SelectModif', 'matiere1SelectModif')">
+                                onchange="matiereGrise('matiere2SelectModif', 'matiere1SelectModif')">
                                 <option selected value></option>
                             </select>
                         </div>
@@ -316,6 +324,13 @@
                             <label for="tierstempsSelect">Tiers temps</label>
                             <select class="form-control" name="tiers_temps" id="tierstempsSelect" required>
                                 <option selected value="False">Non</option>
+                                <option value="True">Oui</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="absentselect">Absent</label>
+                            <select class="form-control" name="absent" id="absentSelect" required>
+                                <option value="False" selected>Non</option>
                                 <option value="True">Oui</option>
                             </select>
                         </div>
@@ -447,17 +462,16 @@
 
     //Griser la matière si déja séléctionnée par l'une des 2 case "matière"
     function matiereGrise(id1, id2) {
-        
+
         var matiereSelected = $("#" + id1);
 
         var matiereGrised = $("#" + id2 + " option");
-        
+
         (matiereGrised)
 
         matiereGrised.each((index, element) => {
             (matiereSelected.val(), element)
-            if (matiereSelected.val() == element.value && matiereSelected.val() != "")
-            {
+            if (matiereSelected.val() == element.value && matiereSelected.val() != "") {
                 //disabled
                 element.disabled = true;
             }
@@ -575,57 +589,58 @@
 <!-- Grid container -->
 <div class="container p-1" style="font-size: small; ; ">
     <!--Grid row-->
-    <div class="row" style="display: flex; justify-content: right" >
-      <!--Grid column-->
-      
-      <!--Grid column-->
+    <div class="row" style="display: flex; justify-content: right">
+        <!--Grid column-->
 
-      <!--Grid column-->
-      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-        <P class="text-uppercase mb-0">Adresse :</p>
+        <!--Grid column-->
 
-          <ul class="list-unstyled mb-0 text-white">
-            <li>
-              <p>118 rue des Gonthières, 17 026 La Rochelle CEDEX 01</p>
-            </li>
-         </ul>
-      </div>
-      <!--Grid column-->
+        <!--Grid column-->
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+            <P class="text-uppercase mb-0">Adresse :</p>
 
-      <!--Grid column-->
-      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-        <p class="text-uppercase mb-0"></p>
+            <ul class="list-unstyled mb-0 text-white">
+                <li>
+                    <p>118 rue des Gonthières, 17 026 La Rochelle CEDEX 01</p>
+                </li>
+            </ul>
+        </div>
+        <!--Grid column-->
 
-        <ul class="list-unstyled ">
-          <li>
-           <p>Telephone : <a class="text-white" href="tel:0546347932">05 46 34 79 32</a></p>
-          </li>
-          <li>
-            <p>Fax : 05 46 34 22 28</p>
-          </li>
-         </ul>
-      </div>
-      <!--Grid column-->
+        <!--Grid column-->
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+            <p class="text-uppercase mb-0"></p>
 
-      <!--Grid column-->
-      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-        <p class="text-uppercase mb-0">Adresse mail :</p>
+            <ul class="list-unstyled ">
+                <li>
+                    <p>Telephone : <a class="text-white" href="tel:0546347932">05 46 34 79 32</a></p>
+                </li>
+                <li>
+                    <p>Fax : 05 46 34 22 28</p>
+                </li>
+            </ul>
+        </div>
+        <!--Grid column-->
 
-        <ul class="list-unstyled">
-          <li>
-            <a class="text-white" href="mailto:contact@lycee-vieljeux.fr">contact@lycee-vieljeux.fr</a>
-          </li>
-         </ul>
-      </div>
-      <!--Grid column-->
+        <!--Grid column-->
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+            <p class="text-uppercase mb-0">Adresse mail :</p>
+
+            <ul class="list-unstyled">
+                <li>
+                    <a class="text-white" href="mailto:contact@lycee-vieljeux.fr">contact@lycee-vieljeux.fr</a>
+                </li>
+            </ul>
+        </div>
+        <!--Grid column-->
     </div>
     <!--Grid row-->
-  </div>
-  <!-- Grid container -->
+</div>
+<!-- Grid container -->
 
-  <!-- Copyright -->
-  <div class="text-center p-1" style="background-color: rgba(0, 0, 0, 0.2); font-size: medium;display: flex; justify-content: right; ">
+<!-- Copyright -->
+<div class="text-center p-1"
+    style="background-color: rgba(0, 0, 0, 0.2); font-size: medium;display: flex; justify-content: right; ">
     <p>© 2021 Copyright : IUT de La Rochelle</p>
-  </div>
-  <!-- Copyright -->
+</div>
+<!-- Copyright -->
 {% endblock %}

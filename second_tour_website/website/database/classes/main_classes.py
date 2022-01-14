@@ -8,24 +8,33 @@ class UTILISATEURS(db.Model):
     email = db.Column(db.String(200), nullable=False)
     password = db.Column(db.String(200), nullable=False)
     admin = db.Column(db.Boolean(False), nullable=False)
+    id_professeur = db.Column(db.Integer, nullable=True)
     # __table_args__ = (
     #     db.UniqueConstraint(email, name="UNQ_UTILISATEURS_email"),
     # )
 
-    def __init__(self, email, password, admin):
+    def __init__(self, email, password, admin, id_professeur):
         self.unvalid = False
 
         if res := self.unique_email_admin(email, admin):
+            self.unvalid = res
+        if res := self.test_id_prof(admin, id_professeur):
             self.unvalid = res
 
         self.email = email
         self.password = password
         self.admin = admin
+        self.id_professeur = id_professeur
 
     def unique_email_admin(self, email, admin):
         user = UTILISATEURS.query.filter_by(email=email, admin=admin).first()
         if user:
             return ["Cet utilisateur existe déjà", "danger"]
+        return False
+
+    def test_id_prof(self, admin, id_prof):
+        if not admin and id_prof is None:
+            return ["Veuillez spécifier un id professeur", "danger"]
         return False
 
     def as_dict(self):
@@ -132,36 +141,28 @@ class SALLE(db.Model):
 class PROFESSEUR(db.Model):
     __tablename__ = 'PROFESSEUR'
     id_professeur = db.Column('id_professeur', db.Integer, primary_key=True)
-    id_utilisateur = db.Column(db.Integer, nullable=False)
     nom = db.Column(db.String(30), nullable=False)
     prenom = db.Column(db.String(30), nullable=False)
     salle = db.Column(db.Integer, nullable=True)
 
-    def __init__(self, id_utilisateur, nom, prenom, salle):
+    def __init__(self, nom, prenom, salle):
         self.unvalid = False
-
-        if res := self.unique_iduser_nom_prenom(id_utilisateur, nom, prenom):
-            self.unvalid = res
-        if res := self.foreign_iduser(id_utilisateur):
-            self.unvalid = res
-
-        self.id_utilisateur = id_utilisateur
         self.nom = nom
         self.prenom = prenom
         self.salle = salle
 
-    def unique_iduser_nom_prenom(self, id_utilisateur, nom, prenom):
-        professeur = PROFESSEUR.query.filter_by(
-            id_utilisateur=id_utilisateur, nom=nom, prenom=prenom).first()
-        if professeur:
-            return ['Ce professeur existe déjà', 'danger']
-        return False
+    # def unique_iduser_nom_prenom(self, id_utilisateur, nom, prenom):
+    #     professeur = PROFESSEUR.query.filter_by(
+    #         id_utilisateur=id_utilisateur, nom=nom, prenom=prenom).first()
+    #     if professeur:
+    #         return ['Ce professeur existe déjà', 'danger']
+    #     return False
 
-    def foreign_iduser(self, id_utilisateur):
-        utilisateur = UTILISATEURS.query.filter_by(id=id_utilisateur).first()
-        if utilisateur:
-            return False
-        return ['Aucun utilisateur correspondant', 'danger']
+    # def foreign_iduser(self, id_utilisateur):
+    #     utilisateur = UTILISATEURS.query.filter_by(id=id_utilisateur).first()
+    #     if utilisateur:
+    #         return False
+    #     return ['Aucun utilisateur correspondant', 'danger']
 
     def as_dict(self):
         return {c.name: getattr(self, c.name) for c in self.__table__.columns}
@@ -221,8 +222,9 @@ class CANDIDATS(db.Model):
     prenom = db.Column(db.String(150), nullable=False)
     id_serie = db.Column(db.Integer, nullable=False)
     tiers_temps = db.Column(db.Boolean, nullable=False)
+    absent = db.Column(db.Boolean, nullable=False)
 
-    def __init__(self, nom, prenom, id_serie, tiers_temps):
+    def __init__(self, nom, prenom, id_serie, tiers_temps, absent):
         self.unvalid = False
 
         if res := self.foreign_id_serie(id_serie):
@@ -232,6 +234,7 @@ class CANDIDATS(db.Model):
         self.prenom = prenom
         self.id_serie = id_serie
         self.tiers_temps = tiers_temps
+        self.absent = absent
 
     def foreign_id_serie(self, id_serie):
         serie = SERIE.query.filter_by(id_serie=id_serie).first()
@@ -365,6 +368,7 @@ class CRENEAU(db.Model):
 
     def as_dict(self):
         return {c.name: getattr(self, c.name) for c in self.__table__.columns}
+
 
 class TOKEN(db.Model):
     __tablename__ = 'TOKEN'

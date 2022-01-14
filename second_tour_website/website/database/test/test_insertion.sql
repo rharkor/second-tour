@@ -62,117 +62,117 @@ VALUES (NULL, 3, 'Philosophie', 'Philosophie - STI2D', 30, 40, 30, 40, NULL);
 
 --INSERTION DES CANDIDATS--
 INSERT INTO CANDIDATS
-VALUES (NULL, 'Oumiri', 'Hakim', 1, true);
+VALUES (NULL, 'Oumiri', 'Hakim', 1, true, false);
 INSERT INTO CHOIX_MATIERE
 VALUES (NULL, 1, 1, 2);
 
 INSERT INTO CANDIDATS
-VALUES (NULL, 'Garland', 'Gamelin', 1, true);
+VALUES (NULL, 'Garland', 'Gamelin', 1, true, false);
 INSERT INTO CHOIX_MATIERE
 VALUES (NULL, 2, 1, 3);
 
 INSERT INTO CANDIDATS
-VALUES (NULL, 'Huon', 'Guimond', 2, false);
+VALUES (NULL, 'Huon', 'Guimond', 2, false, false);
 INSERT INTO CHOIX_MATIERE
 VALUES (NULL, 3, 5, 6);
 
 INSERT INTO CANDIDATS
-VALUES (NULL, 'Pinette', 'Agathe', 3, false);
+VALUES (NULL, 'Pinette', 'Agathe', 3, false, false);
 INSERT INTO CHOIX_MATIERE
 VALUES (NULL, 4, 9, 10);
 
 INSERT INTO CANDIDATS
-VALUES (NULL, 'Allain', 'Clothilde', 3, false);
+VALUES (NULL, 'Allain', 'Clothilde', 3, false, false);
 INSERT INTO CHOIX_MATIERE
 VALUES (NULL, 5, 9, 10);
 
 INSERT INTO CANDIDATS
-VALUES (NULL, 'Jalbert', 'Arienne', 3, false);
+VALUES (NULL, 'Jalbert', 'Arienne', 3, false, false);
 INSERT INTO CHOIX_MATIERE
 VALUES (NULL, 6, 9, 10);
 
 INSERT INTO CANDIDATS
-VALUES (NULL, 'Bernard', 'Noémie', 3, false);
+VALUES (NULL, 'Bernard', 'Noémie', 3, false, false);
 INSERT INTO CHOIX_MATIERE
 VALUES (NULL, 7, 9, 11);
 
 INSERT INTO CANDIDATS
-VALUES (NULL, 'Gousse', 'Maurice', 1, false);
+VALUES (NULL, 'Gousse', 'Maurice', 1, false, false);
 INSERT INTO CHOIX_MATIERE
 VALUES (NULL, 8, 1, 3);
 
 INSERT INTO CANDIDATS
-VALUES (NULL, 'Le mendes', 'Isaac', 1, false);
+VALUES (NULL, 'Le mendes', 'Isaac', 1, false, false);
 INSERT INTO CHOIX_MATIERE
 VALUES (NULL, 9, 2, 3);
 
 INSERT INTO CANDIDATS
-VALUES (NULL, 'Guillot', 'Henri', 1, false);
+VALUES (NULL, 'Guillot', 'Henri', 1, false, false);
 INSERT INTO CHOIX_MATIERE
 VALUES (NULL, 10, 1, 2);
 
 INSERT INTO CANDIDATS
-VALUES (NULL, 'Foucher', 'Charlotte', 2, false);
+VALUES (NULL, 'Foucher', 'Charlotte', 2, false, false);
 INSERT INTO CHOIX_MATIERE
 VALUES (NULL, 11, 5, 6);
 
 INSERT INTO CANDIDATS
-VALUES (NULL, 'Duhamel', 'Claire', 2, false);
+VALUES (NULL, 'Duhamel', 'Claire', 2, false, false);
 INSERT INTO CHOIX_MATIERE
 VALUES (NULL, 12, 5, 6);
 
 INSERT INTO CANDIDATS
-VALUES (NULL, 'Pons', 'Sebastien', 2, false);
+VALUES (NULL, 'Pons', 'Sebastien', 2, false, false);
 INSERT INTO CHOIX_MATIERE
 VALUES (NULL, 13, 5, 6);
 
 INSERT INTO CANDIDATS
-VALUES (NULL, 'Vincent', 'Noémie', 2, false);
+VALUES (NULL, 'Vincent', 'Noémie', 2, false, false);
 INSERT INTO CHOIX_MATIERE
 VALUES (NULL, 14, 5, 7);
 
 INSERT INTO CANDIDATS
-VALUES (NULL, 'Lefebvre', 'Gilles', 3, false);
+VALUES (NULL, 'Lefebvre', 'Gilles', 3, false, false);
 INSERT INTO CHOIX_MATIERE
 VALUES (NULL, 15, 9, 10);
 
 INSERT INTO CANDIDATS
-VALUES (NULL, 'Devaux', 'Marine', 3, false);
+VALUES (NULL, 'Devaux', 'Marine', 3, false, false);
 INSERT INTO CHOIX_MATIERE
 VALUES (NULL, 16, 9, 10);
 
 INSERT INTO CANDIDATS
-VALUES (NULL, 'Labbe', 'David', 3, false);
+VALUES (NULL, 'Labbe', 'David', 3, false, false);
 INSERT INTO CHOIX_MATIERE
 VALUES (NULL, 17, 9, 10);
 
 INSERT INTO CANDIDATS
-VALUES (NULL, 'Gomes', 'Aimé', 3, false);
+VALUES (NULL, 'Gomes', 'Aimé', 3, false, false);
 INSERT INTO CHOIX_MATIERE
 VALUES (NULL, 18, 9, 10);
 
 INSERT INTO CANDIDATS
-VALUES (NULL, 'Ribeiro', 'Alfred', 3, false);
+VALUES (NULL, 'Ribeiro', 'Alfred', 3, false, false);
 INSERT INTO CHOIX_MATIERE
 VALUES (NULL, 19, 9, 10);
 
 INSERT INTO CANDIDATS
-VALUES (NULL, 'Romero', 'Julio', 3, false);
+VALUES (NULL, 'Romero', 'Julio', 3, false, false);
 INSERT INTO CHOIX_MATIERE
 VALUES (NULL, 20, 9, 12);
 
 INSERT INTO CANDIDATS
-VALUES (NULL, 'Leroy', 'Benoît', 3, false);
+VALUES (NULL, 'Leroy', 'Benoît', 3, false, false);
 INSERT INTO CHOIX_MATIERE
 VALUES (NULL, 21, 10, 11);
 
 INSERT INTO CANDIDATS
-VALUES (NULL, 'Dias', 'Gilles', 3, false);
+VALUES (NULL, 'Dias', 'Gilles', 3, false, false);
 INSERT INTO CHOIX_MATIERE
 VALUES (NULL, 22, 10, 11);
 
 INSERT INTO CANDIDATS
-VALUES (NULL, 'Lemaire', 'Alain', 3, true);
+VALUES (NULL, 'Lemaire', 'Alain', 3, true, false);
 INSERT INTO CHOIX_MATIERE
 VALUES (NULL, 23, 10, 9);
 

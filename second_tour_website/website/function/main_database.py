@@ -8,10 +8,10 @@ from . import main_security
 from ..database.main_database import *
 
 
-def add_account(email, password, user_type_string, output=False):
+def add_account(email, password, user_type_string, output=False, id_prof=None):
     hashed_password = main_security.hash_password(password)
     user_type = True if user_type_string == "Administrateur" else False
-    user = UTILISATEURS(email, hashed_password, user_type)
+    user = UTILISATEURS(email, hashed_password, user_type, id_prof)
     try:
         if not user.unvalid:
             db.session.add(user)
@@ -179,24 +179,25 @@ def delete_salle(id):
         logging.warning('Erreur : ' + traceback.format_exc())
         return ['Erreur : ' + traceback.format_exc(), 'danger']
 
+
 def add_token(email, token, admin):
-    print("here")
     token = TOKEN(email, str(token), admin)
     db.session.add(token)
     db.session.commit()
 
     pass
 
+
 def add_professeur(email, nom, prenom, salle, matieres=None, token=None, admin=False):
     try:
-        # user = add_account(email, password, 'Professeur', output=True)
+        user = add_account(email, 'test123', 'Professeur', output=True, id_prof=1)
         add_token(email, token, admin)
 
         logging.warning('Le token a bien été crée')
         # if user[1][1] == 'danger':
         #     return user[1]
         # user = user[0]
-        professeur = PROFESSEUR(0, nom, prenom, salle)
+        professeur = PROFESSEUR(nom, prenom, salle)
         if not professeur.unvalid:
             db.session.add(professeur)
             db.session.commit()
@@ -221,7 +222,9 @@ def add_professeur(email, nom, prenom, salle, matieres=None, token=None, admin=F
 
 def add_professeur_wep(user, nom, prenom, salle, matieres=None):
     try:
-        professeur = PROFESSEUR(user, nom, prenom, salle)
+        professeur = PROFESSEUR(nom, prenom, salle)
+        user_c = UTILISATEURS.query.filter_by(id=user).first()
+        user_c.id_professeur = professeur.id_professeur
         if not professeur.unvalid:
             db.session.add(professeur)
             db.session.commit()
@@ -281,7 +284,7 @@ def delete_professeur(id):
         for liste_matiere in liste_matieres:
             db.session.delete(liste_matiere)
 
-        accounts = UTILISATEURS.query.filter_by(id=professeur.id_utilisateur)
+        accounts = UTILISATEURS.query.filter_by(id_professeur=professeur.id_professeur)
         for account in accounts:
             db.session.delete(account)
 
@@ -293,10 +296,10 @@ def delete_professeur(id):
         return ['Erreur : ' + traceback.format_exc(), 'danger']
 
 
-def add_candidat(nom, prenom, id_serie, tiers_temps, output=False):
+def add_candidat(nom, prenom, id_serie, tiers_temps, absent, output=False):
     try:
         candidat = CANDIDATS(nom, prenom, id_serie,
-                             True if tiers_temps == "True" else False)
+                             True if tiers_temps == "True" else False, True if absent == "True" else False)
         if not candidat.unvalid:
             db.session.add(candidat)
             db.session.commit()
