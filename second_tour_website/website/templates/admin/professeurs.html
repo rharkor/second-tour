@@ -69,7 +69,7 @@
                         <td scope="row">{{a_prof.prenom}}</td>
                         <td scope="row">
                             {% for a_matiere in all_matieres %}
-                            {% for lmatiere in liste_matiere %}
+                            {% for lmatiere in all_liste_matiere %}
                             {% if a_matiere.id_matiere == lmatiere.id_matiere and lmatiere.id_professeur ==
                             a_prof.id_professeur %}
                             {{a_matiere.nom_complet}}<br>
@@ -327,6 +327,8 @@
         var all_matieres = JSON.parse(myvar_matieres);
         myvar_profs = '{{all_profs|tojson}}';
         var all_professeurs = JSON.parse(myvar_profs);
+        myvar_liste_matiere = '{{all_liste_matiere|tojson}}';
+        var all_liste_matiere = JSON.parse(myvar_liste_matiere);
 
         var professeur;
         for (var i = 0; i < all_professeurs.length; i++) {
@@ -335,10 +337,10 @@
             }
         }
 
-        var matiere;
-        for (var i = 0; i < all_matieres.length; i++) {
-            if (all_matieres[i]['id_matiere'] == professeur.matiere) {
-                matiere = all_matieres[i];
+        var matieres = [];
+        for (var i = 0; i < all_liste_matiere.length; i++) {
+            if (all_liste_matiere[i]['id_professeur'] == professeur.id_professeur) {
+                matieres.push(all_matieres[i]);
             }
         }
 
@@ -352,14 +354,22 @@
         form_elements[3].value = professeur['prenom'];
 
         //Set the matiere
-        if (matiere != null) {
-            id_matiere = matiere['id_matiere'];
-            select = form_elements[4];
-            for (var i = 0; i < select.length; i++) {
-                if (select.options[i].id == "matiere_" + id_matiere) {
-                    select.options[i].selected = true;
-                }
+        if (matieres != null) {
+            for (let y = 0; y < matieres.length; y++) {
+                let matiere = matieres[y];
+                id_matiere = matiere['id_matiere'];
+                select = form_elements[4];
+                /* for (var i = 0; i < select.length; i++) {
+                    console.log(id_matiere, select.options[i].id)
+                    if (select.options[i].id == "matiere_" + id_matiere) {
+                        select.options[i].selected = true;
+                        console.log(select.options[i])
+                    }
+                } * /
+                
             }
+            console.log(select)
+            select.onchange();
         }
     });
 </script>

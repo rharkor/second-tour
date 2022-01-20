@@ -196,7 +196,7 @@ def salles():
 
         all_choix_matieres = CHOIX_MATIERE.query.all()
         all_liste_matiere = LISTE_MATIERE.query.all()
-        
+
         return render_template('admin/salles.html', all_salles=all_salles, all_professeurs=all_professeurs, all_matieres=all_matieres, all_creneaux=all_creneaux, all_candidats=all_candidats, all_choix_matieres=all_choix_matieres, all_liste_matiere=all_liste_matiere)
     else:
         return redirect(url_for('main_routes.connexion'))
@@ -241,7 +241,11 @@ def professeurs():
         all_salles = SALLE.query.all()
         all_creneaux = CRENEAU.query.order_by(CRENEAU.debut_preparation).all()
         all_candidats = CANDIDATS.query.all()
-        all_liste_matiere = LISTE_MATIERE.query.all()
+
+        liste_matieres = LISTE_MATIERE.query.all()
+        all_liste_matiere = []
+        for liste_matiere in liste_matieres:
+            all_liste_matiere.append(liste_matiere.as_dict())
         return render_template('admin/professeurs.html', all_profs=all_profs, all_matieres=all_matieres, all_salles=all_salles, all_creneaux=all_creneaux, all_candidats=all_candidats, all_liste_matiere=all_liste_matiere)
     else:
         return redirect(url_for('main_routes.connexion'))

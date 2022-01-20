@@ -190,7 +190,8 @@ def add_token(email, token, admin):
 
 def add_professeur(email, nom, prenom, salle, matieres=None, token=None, admin=False):
     try:
-        user = add_account(email, 'test123', 'Professeur', output=True, id_prof=1)
+        user = add_account(email, 'test123', 'Professeur',
+                           output=True, id_prof=1)
         add_token(email, token, admin)
 
         logging.warning('Le token a bien été crée')
@@ -256,7 +257,9 @@ def update_professeur_wep(id, user, nom, prenom, salle, matieres=None):
             professeur.prenom = prenom
             professeur.salle = salle
 
-            logging.warning('Le professeur a bien été crée')
+            logging.warning('Le professeur a bien été trouvé')
+
+            delete_liste_matiere_by_prof_id(id)
 
             if matieres:
                 for matiere in matieres:
@@ -268,12 +271,19 @@ def update_professeur_wep(id, user, nom, prenom, salle, matieres=None):
 
             db.session.commit()
 
-            return ['Le professeur a bien été crée', 'success']
+            return ['Le professeur a bien été modifié', 'success']
         else:
             return professeur.unvalid
     except Exception:
         logging.warning('Erreur : ' + traceback.format_exc())
         return ['Erreur : ' + traceback.format_exc(), 'danger']
+
+
+def delete_liste_matiere_by_prof_id(id_professeur):
+    all_liste_matiere = LISTE_MATIERE.query.filter_by(
+        id_professeur=id_professeur).all()
+    for liste_matiere in all_liste_matiere:
+        db.session.delete(liste_matiere)
 
 
 def delete_professeur(id):
@@ -284,7 +294,8 @@ def delete_professeur(id):
         for liste_matiere in liste_matieres:
             db.session.delete(liste_matiere)
 
-        accounts = UTILISATEURS.query.filter_by(id_professeur=professeur.id_professeur)
+        accounts = UTILISATEURS.query.filter_by(
+            id_professeur=professeur.id_professeur)
         for account in accounts:
             db.session.delete(account)
 
