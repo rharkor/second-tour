@@ -20,7 +20,7 @@ def register():
         if 'email' in form and 'token' in form and 'password' in form:
             try:
                 exist = TOKEN.query.filter_by(token=form['token']).one()
-                if exist:
+                if exist and exist.email == form['email']:
                     user = main_database.add_account(form['email'], form['password'], 'Professeur', output=True, id_prof=1)
                     if user[1][1] == 'danger':
                         flash(user[1][0], user[1][1])

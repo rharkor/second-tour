@@ -59,6 +59,56 @@
                 </tbody>
             </table>
         </div>
+        <div class="table-responsive thumbnail mt-lg-5">
+            <table class="table table-light table-striped table-hover" id="calendar">
+                <thead>
+                    <tr>
+                        <th scope="col">
+                            <div class="th-inner">Email</div>
+                            <div class="filter-control">
+                                <input type="text" class="form-control finder" onkeyup="finder()"
+                                    placeholder="">
+                            </div>
+                        </th>
+                        <th scope="col">
+                            <div class="th-inner">Type</div>
+                            <div class="filter-control">
+                                    <select class="form-select finder" onchange="finder()">
+                                        <option select></option>
+                                        <option>Admin</option>
+                                        <option>Professeur</option>
+                                    </select>
+                            </div>
+                        </th>
+                        <th scope="col">
+                            <div class="th-inner">Token</div>
+                            <div class="filter-control">
+                                <input type="text" class="form-control finder" onkeyup="finder()"
+                                    placeholder="">
+                            </div>
+                        </th>
+                        <th scope="col" class="supprimer align-text-top">Supprimer</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for token in all_tokens %}
+                    <tr>
+                        <td scope="row">{{token.email}}</td>
+                        <td scope="row">{% if token.admin %}Admin{% else %}Professeur{% endif %}</td>
+                        <td scope="row">{{ token.token }}</td>
+                        <td scope="row">
+                            <form method="post" action="{{url_for('admin_routes.comptes')}}"
+                                id="deleteTokenForm{{token.id}}">
+                                <input type="hidden" name="token" value="{{token.token}}">
+                                <button type="button" id="{{token.id}}" data-bs-toggle="modal"
+                                    data-bs-target="#confirmDeleteTokenModal" class="deleteRowToken btn btn-outline-danger">Supprimer</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <!-- Modal -->
@@ -81,26 +131,26 @@
                                 aria-describedby="emailHelp" placeholder="Entrez un email" required="required">
                         </div>
                         <div class="form-group">
-                            <label for="floatingPassword">Mot de passe</label>
-                            <div class="d-flex">
-                                <input type="password" class="form-control" id="floatingPassword" name="password"
-                                    placeholder="Entrez un mot de passe" required="required">
-                                <i class="bi bi-eye-slash d-flex justify-content-center align-items-center eye-form"
-                                    id="togglePassword"></i>
-                            </div>
-                        </div>
-                        <div class="form-group">
                             <label for="selectTypeUser">Type d'utilisateur</label>
-                            <select class="form-control" id="selectTypeUser" name="type">
+                            <select class="form-control" id="selectTypeUser" name="type" onchange="typeAdminChange()">
                                 <option>Administrateur</option>
+                                <option>Professeur</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group" id="prof-list-hidden" hidden>
+                            <label for="selectTypeUser">Professeur</label>
+                            <select class="form-control" id="selectProf" name="prof">
+                                {% for professeur in all_professeurs %}
+                                <option value="{{ professeur.id_professeur }}">{{ professeur.nom }} {{ professeur.prenom }}</option>
+                                {% endfor %}
                             </select>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                    <button class="btn btn-primary" name="submit_button" type="submit" form="addAccountForm">Sauvegarder
-                        les changements</button>
+                    <button class="btn btn-primary" name="submit_button" type="submit" form="addAccountForm">Ajouter</button>
                 </div>
             </div>
         </div>
@@ -122,6 +172,29 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
                     <button type="submit" name="delete_button" id="ModalSubmitButton" value="" form="deleteAccountForm"
+                        class="btn btn-danger">Supprimer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="confirmDeleteTokenModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteTokenModal"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Attention</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Êtes vous sûr de vouloir supprimer ce token ?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <button type="submit" name="delete_button_token" id="ModalSubmitButtonToken" value="" form="deleteTokenForm"
                         class="btn btn-danger">Supprimer</button>
                 </div>
             </div>
@@ -187,4 +260,18 @@
     <p>© 2021 Copyright : IUT de La Rochelle</p>
   </div>
   <!-- Copyright -->
+{% endblock %}
+
+
+{% block sub_script %}
+<script>
+    function typeAdminChange(){
+        if(document.getElementById("selectTypeUser").value === "Professeur"){
+document.getElementById("prof-list-hidden").hidden = false;
+        }else{
+            document.getElementById("prof-list-hidden").hidden = true;
+
+        }
+    }
+</script>
 {% endblock %}
