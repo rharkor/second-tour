@@ -7,6 +7,8 @@ from flask.helpers import flash
 from . import main_security
 from ..database.main_database import *
 
+from . import main_email
+
 
 def add_account(email, password, user_type_string, output=False, id_prof=None):
     hashed_password = main_security.hash_password(password)
@@ -180,21 +182,18 @@ def delete_salle(id):
         return ['Erreur : ' + traceback.format_exc(), 'danger']
 
 
-def add_token(email, token, admin):
-    token = TOKEN(email, str(token), admin)
-    db.session.add(token)
+def add_token(email, token, admin, id_prof):
+    token_db = TOKEN(email, str(token), id_prof, admin)
+    db.session.add(token_db)
     db.session.commit()
-
-    pass
+    main_email.send_email(email, token)
 
 
 def add_professeur(email, nom, prenom, salle, matieres=None, token=None, admin=False):
     try:
-        user = add_account(email, 'test123', 'Professeur',
-                           output=True, id_prof=1)
-        add_token(email, token, admin)
+        # user = add_account(email, 'test123', 'Professeur',
+        #                    output=True, id_prof=1)
 
-        logging.warning('Le token a bien été crée')
         # if user[1][1] == 'danger':
         #     return user[1]
         # user = user[0]
@@ -203,6 +202,10 @@ def add_professeur(email, nom, prenom, salle, matieres=None, token=None, admin=F
             db.session.add(professeur)
             db.session.commit()
             logging.warning('Le professeur a bien été crée')
+
+            # Token creation
+            add_token(email, token, admin, professeur.id_professeur)
+            logging.warning('Le token a bien été crée')
 
             if matieres:
                 for matiere in matieres:

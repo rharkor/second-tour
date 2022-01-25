@@ -24,8 +24,9 @@
         <div>
             <form method="post" action="{{url_for('register_routes.register')}}" style="width: 100%;"
                 class="d-flex flex-column align-items-center">
+                <input type="text" hidden value="{{ token }}">
                 <div class="form-login-input-lg margin-login-form">
-                    <input type="email" class="form-control" readonly id="floatingInput" value="name@exemple.com"
+                    <input type="email" class="form-control" readonly id="floatingInput" value="{{ email }}"
                         name="email" required="required">
                 </div>
                 <div class="form-floating form-login-input-lg margin-login-form d-flex">
@@ -62,6 +63,7 @@
             this.classList.toggle('bi-eye');
         });
     }
+
 </script>
 
 </html>

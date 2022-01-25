@@ -372,20 +372,34 @@ class CRENEAU(db.Model):
 
 class TOKEN(db.Model):
     __tablename__ = 'TOKEN'
+    __table_args__ = (
+        db.UniqueConstraint('token', name='unique_token'),
+    )
+    
     id = db.Column('id', db.Integer, primary_key=True)
     email = db.Column(db.String(200), nullable=False)
     token = db.Column(db.String(200), nullable=False)
+    id_professeur = db.Column(db.Integer, nullable=True)
     admin = db.Column(db.Boolean(False), nullable=False)
     # __table_args__ = (
     #     db.UniqueConstraint(email, name="UNQ_UTILISATEURS_email"),
     # )
 
-    def __init__(self, email, token, admin):
+    def __init__(self, email, token, id_professeur, admin):
         self.unvalid = False
+
+        if res := self.test_id_prof(admin, id_professeur):
+            self.unvalid = res
 
         self.email = email
         self.token = token
+        self.id_professeur = id_professeur
         self.admin = admin
+
+    def test_id_prof(self, admin, id_prof):
+        if not admin and id_prof is None:
+            return ["Veuillez spécifier un id professeur", "danger"]
+        return False
 
     def as_dict(self):
         return {c.name: getattr(self, c.name) for c in self.__table__.columns}
