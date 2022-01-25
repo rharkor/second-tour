@@ -188,6 +188,11 @@ def add_token(email, token, admin, id_prof):
     db.session.commit()
     main_email.send_email(email, token)
 
+def delete_token(token):
+    token_db = TOKEN.query.filter_by(token=token).one()
+    db.session.remove(token_db)
+    db.session.remove()
+
 
 def add_professeur(email, nom, prenom, salle, matieres=None, token=None, admin=False):
     try:
