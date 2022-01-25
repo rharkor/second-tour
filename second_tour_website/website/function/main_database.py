@@ -46,10 +46,6 @@ def delete_account(id):
     try:
         user = UTILISATEURS.query.filter_by(id=id).one()
         if user.admin == False:
-            # Delete the dependency to
-            professeurs = PROFESSEUR.query.filter_by(id_utilisateur=id)
-            for a_professeur in professeurs:
-                db.session.delete(a_professeur)
             db.session.delete(user)
             db.session.commit()
             return False
