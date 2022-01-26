@@ -34,12 +34,12 @@ app.config['UPLOAD_FOLDER'] = os.getcwd(
 # Configure the database
 mysql = MySQL()
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://secondtour:gMqKnLp9r4Fex8GH@10.35.50.10/secondtour'
+app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{os.getenv("DB_USER")}:{os.getenv("DB_PWD")}@{os.getenv("DB_HOST")}/{os.getenv("DB_NAME")}'
 
-app.config['MYSQL_DATABASE_HOST'] = '10.35.50.10'
-app.config['MYSQL_DATABASE_USER'] = 'secondtour'
-app.config['MYSQL_DATABASE_PASSWORD'] = 'gMqKnLp9r4Fex8GH'
-app.config['MYSQL_DATABASE_DB'] = 'secondtour'
+app.config['MYSQL_DATABASE_HOST'] = os.getenv('DB_HOST')
+app.config['MYSQL_DATABASE_USER'] = os.getenv('DB_USER')
+app.config['MYSQL_DATABASE_PASSWORD'] = os.getenv('DB_PWD')
+app.config['MYSQL_DATABASE_DB'] = os.getenv('DB_NAME')
 
 mysql.init_app(app)
 
