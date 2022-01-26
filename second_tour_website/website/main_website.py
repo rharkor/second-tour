@@ -11,7 +11,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__)))
 app = Flask(__name__)
 
 file_handler = FileHandler(
-    os.getcwd() + "/second_tour_website/logs/logs_info.txt")
+    os.getcwd() + "/logs/logs_info.txt")
 file_handler.setLevel(WARNING)
 logging.basicConfig(
     level=WARNING,
