@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flaskext.mysql import MySQL
 from datetime import timedelta
 from logging import WARNING, ERROR, FileHandler
 import logging
@@ -23,12 +24,24 @@ logging.basicConfig(
 
 
 # Configure the website
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/data.sqlite3'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 app.config['SECRET_KEY'] = "HEby4gbqFGFtSCeV"
 app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=3)
 app.config['UPLOAD_FOLDER'] = os.getcwd(
 ) + "/second_tour_website/website/upload"
+
+
+# Configure the database
+mysql = MySQL()
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:5BU58aH6Qqqv@localhost/dbSecondTour'
+
+app.config['MYSQL_DATABASE_HOST'] = 'localhost'
+app.config['MYSQL_DATABASE_USER'] = 'root'
+app.config['MYSQL_DATABASE_PASSWORD'] = '5BU58aH6Qqqv'
+app.config['MYSQL_DATABASE_DB'] = 'dbSecondTour'
+
+mysql.init_app(app)
 
 db = SQLAlchemy(app)
 
