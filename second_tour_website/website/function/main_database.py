@@ -400,7 +400,7 @@ def delete_choix_matiere(id):
         return ['Erreur : ' + traceback.format_exc(), 'danger']
 
 
-def add_creneau(id_candidat, id_matiere, id_salle, debut_preparation, fin_preparation, fin):
+def add_creneau(id_candidat, id_matiere, id_salle, debut_preparation, fin_preparation, fin, auto_commit=True):
     try:
         if type(debut_preparation) == str:
             debut_preparation = datetime.strptime(
@@ -414,7 +414,8 @@ def add_creneau(id_candidat, id_matiere, id_salle, debut_preparation, fin_prepar
                           debut_preparation, fin_preparation, fin)
         if not creneau.unvalid:
             db.session.add(creneau)
-            db.session.commit()
+            if auto_commit:
+                db.session.commit()
             logging.warning('Le créneau a correctement été crée')
             return ['Le créneau a correctement été crée', 'success']
         else:
