@@ -7,6 +7,8 @@ from flask.helpers import flash
 from . import main_security
 from ..database.main_database import *
 
+from . import main_email
+
 
 def add_account(email, password, user_type_string, output=False, id_prof=None):
     hashed_password = main_security.hash_password(password)
@@ -31,16 +33,19 @@ def add_account(email, password, user_type_string, output=False, id_prof=None):
             return (user, ['Erreur : ' + traceback.logging.warning_exc(), 'danger'])
         logging.warning('Erreur : ' + traceback.logging.warning_exc())
         return ['Erreur : ' + traceback.logging.warning_exc(), 'danger']
+    
+def add_account_token(email, token, user_type_string, id_prof):
+    # Token creation
+    user_type = True if user_type_string == "Administrateur" else False
+    add_token(email, token, user_type, id_prof)
+    logging.warning('Le token a bien été crée')
+    return ['L\'email à bien été envoyé', 'success']
 
 
 def delete_account(id):
     try:
         user = UTILISATEURS.query.filter_by(id=id).one()
         if user.admin == False:
-            # Delete the dependency to
-            professeurs = PROFESSEUR.query.filter_by(id_utilisateur=id)
-            for a_professeur in professeurs:
-                db.session.delete(a_professeur)
             db.session.delete(user)
             db.session.commit()
             return False
@@ -180,21 +185,23 @@ def delete_salle(id):
         return ['Erreur : ' + traceback.format_exc(), 'danger']
 
 
-def add_token(email, token, admin):
-    token = TOKEN(email, str(token), admin)
-    db.session.add(token)
+def add_token(email, token, admin, id_prof):
+    token_db = TOKEN(email, str(token), id_prof, admin)
+    db.session.add(token_db)
     db.session.commit()
+    main_email.send_email(email, token)
 
-    pass
+def delete_token(token):
+    token_db = TOKEN.query.filter_by(token=token).one()
+    db.session.delete(token_db)
+    db.session.commit()
 
 
 def add_professeur(email, nom, prenom, salle, matieres=None, token=None, admin=False):
     try:
-        user = add_account(email, 'test123', 'Professeur',
-                           output=True, id_prof=1)
-        add_token(email, token, admin)
+        # user = add_account(email, 'test123', 'Professeur',
+        #                    output=True, id_prof=1)
 
-        logging.warning('Le token a bien été crée')
         # if user[1][1] == 'danger':
         #     return user[1]
         # user = user[0]
@@ -203,6 +210,10 @@ def add_professeur(email, nom, prenom, salle, matieres=None, token=None, admin=F
             db.session.add(professeur)
             db.session.commit()
             logging.warning('Le professeur a bien été crée')
+
+            # Token creation
+            add_token(email, token, admin, professeur.id_professeur)
+            logging.warning('Le token a bien été crée')
 
             if matieres:
                 for matiere in matieres:
@@ -389,7 +400,7 @@ def delete_choix_matiere(id):
         return ['Erreur : ' + traceback.format_exc(), 'danger']
 
 
-def add_creneau(id_candidat, id_matiere, id_salle, debut_preparation, fin_preparation, fin):
+def add_creneau(id_candidat, id_matiere, id_salle, debut_preparation, fin_preparation, fin, auto_commit=True):
     try:
         if type(debut_preparation) == str:
             debut_preparation = datetime.strptime(
@@ -403,7 +414,8 @@ def add_creneau(id_candidat, id_matiere, id_salle, debut_preparation, fin_prepar
                           debut_preparation, fin_preparation, fin)
         if not creneau.unvalid:
             db.session.add(creneau)
-            db.session.commit()
+            if auto_commit:
+                db.session.commit()
             logging.warning('Le créneau a correctement été crée')
             return ['Le créneau a correctement été crée', 'success']
         else:

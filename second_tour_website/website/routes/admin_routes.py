@@ -320,9 +320,10 @@ def comptes():
         if request.method == 'POST':
             form = request.form
             if form.get('submit_button') is not None:
-                if 'email' in form and 'password' in form and 'type' in form:
-                    result = main_database.add_account(
-                        form['email'], form['password'], form['type'])
+                print(form)
+                if 'email' in form and 'type' in form and 'prof' in form:
+                    result = main_database.add_account_token(
+                        form['email'], uuid4(), form['type'], form['prof'])
                     flash(result[0], result[1])
                     logging.warning(result[0])
             elif form.get('delete_button') is not None:
@@ -330,8 +331,15 @@ def comptes():
                     if r := main_database.delete_account(form['id']):
                         flash(r[0], r[1])
                         logging.warning(r[0])
+            elif form.get('delete_button_token') is not None:
+                if 'token' in form:
+                    if r := main_database.delete_token(form['token']):
+                        flash(r[0], r[1])
+                        logging.warning(r[0])
         all_users = UTILISATEURS.query.all()
-        return render_template('admin/comptes.html', all_users=all_users)
+        all_tokens = TOKEN.query.all()
+        all_professeurs = PROFESSEUR.query.all()
+        return render_template('admin/comptes.html', all_users=all_users, all_tokens=all_tokens, all_professeurs=all_professeurs)
     else:
         return redirect(url_for('main_routes.connexion'))
 

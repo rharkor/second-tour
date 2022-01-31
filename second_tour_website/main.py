@@ -1,3 +1,5 @@
+from dotenv import load_dotenv
+load_dotenv()
 from website.main_website import app, db, logging
 
 
