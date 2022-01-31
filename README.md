@@ -20,7 +20,7 @@
 - [Pages administrateur](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Navigation#pages-administrateur)
 
 
-# 4. [Base de données](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Navigation)
+# 4. [Base de données](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Base-de-données)
 
 - [Dictionnaire des relations](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Base-de-donn%C3%A9es#1-dictionnaire-des-relations)
 - [Schéma des relations](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Base-de-donn%C3%A9es#2-schema-des-relations)
