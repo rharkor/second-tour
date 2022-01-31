@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -32,14 +31,23 @@
         <div>
             <form method="post" action="{{url_for('register_routes.register')}}" style="width: 100%;"
                 class="d-flex flex-column align-items-center" id="myform">
+<<<<<<< HEAD
+                <input type="text" hidden value="{{ token }}">
+=======
                 <input type="text" hidden value="{{ token }}" name="token">
+>>>>>>> 406b56e51b5cbb752dfb09fbad91d2342da82fdd
                 <div class="form-login-input-lg margin-login-form">
                     <input type="email" class="form-control" readonly id="floatingInput" value="{{ email }}"
                         name="email" required>
                 </div>
                 <div class="form-floating form-login-input-lg margin-login-form d-flex">
+<<<<<<< HEAD
+                    <input type="password" class="form-control" id="Password1" placeholder="MotDePasse"
+                        name="password" required="required">
+=======
                     <input type="password" class="form-control" id="floatingPassword" placeholder="MotDePasse"
                         name="password" required>
+>>>>>>> 406b56e51b5cbb752dfb09fbad91d2342da82fdd
                     <i class="bi bi-eye-slash d-flex justify-content-center align-items-center eye-form"
                         id="togglePassword"></i>
                     <label for="floatingPassword">Mot de passe</label>
@@ -64,7 +72,7 @@
 </body>
 
 <script>
-    const togglePassword = document.querySelector('#togglePassword');
+    const togglePassword = document.querySelector('#Password1');
     const password = document.querySelector('#floatingPassword');
 
     if (togglePassword && password) {
@@ -80,12 +88,21 @@
 
     function submit_form()
     {
+<<<<<<< HEAD
+        let password1 =document.querySelector('#Password1').value;
+        //let password1 document.getElementById('#Password1');//.elements
+        let password_confirm =document.querySelector('#floatingPassword').value
+        if (password1 != password_confirm)
+        {
+        console.log("les 2 mots de passe ne correspondent pas")
+=======
         let password1 =document.querySelector('#floatingPassword');
         //let password1 document.getElementById('#Password1');//.elements
         let password_confirm =document.querySelector('#floatingPasswordConfirmation');
         if (password1.value != password_confirm.value)
         {
             alert("Les deux mots de passe ne correspondent pas")
+>>>>>>> 406b56e51b5cbb752dfb09fbad91d2342da82fdd
         }
         else{
             document.forms['myform'].submit();
