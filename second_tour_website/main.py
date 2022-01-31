@@ -1,4 +1,5 @@
 from dotenv import load_dotenv
+load_dotenv()
 from website.main_website import app, db, logging
 
 
@@ -11,8 +12,6 @@ def test():
     # from function import main_test_dependance
     pass
 
-def dotenv_config():
-    load_dotenv()
 
 def run(debug_mode=False):
     logging.warning("Run the server")

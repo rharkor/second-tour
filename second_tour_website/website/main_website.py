@@ -36,12 +36,17 @@ mysql = MySQL()
 
 app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{os.getenv("DB_USER")}:{os.getenv("DB_PWD")}@{os.getenv("DB_HOST")}/{os.getenv("DB_NAME")}'
 
+
 app.config['MYSQL_DATABASE_HOST'] = os.getenv('DB_HOST')
 app.config['MYSQL_DATABASE_USER'] = os.getenv('DB_USER')
 app.config['MYSQL_DATABASE_PASSWORD'] = os.getenv('DB_PWD')
 app.config['MYSQL_DATABASE_DB'] = os.getenv('DB_NAME')
 
 mysql.init_app(app)
+
+
+# SQLITE LOCAL
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/data.sqlite3'
 
 db = SQLAlchemy(app)
 

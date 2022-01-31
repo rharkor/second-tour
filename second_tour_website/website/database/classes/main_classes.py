@@ -1,6 +1,63 @@
 from ctypes import resize
 from ..main_database import db
 
+class SALLE(db.Model):
+    __tablename__ = 'SALLE'
+    id_salle = db.Column('id_salle', db.Integer, primary_key=True)
+    numero = db.Column(db.String(50), nullable=False)
+    
+    __table_args__ = (
+        db.UniqueConstraint(numero, name="UNQ_NUMERO"),
+    )
+
+    def __init__(self, numero):
+        self.unvalid = False
+
+        if res := self.unique_numero(numero):
+            self.unvalid = res
+
+        self.numero = numero
+
+    def unique_numero(self, numero):
+        salle = SALLE.query.filter_by(numero=numero).first()
+        if salle:
+            return ["Une salle à déjà le même numéro", "danger"]
+        return False
+
+    def as_dict(self):
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
+
+
+
+class PROFESSEUR(db.Model):
+    __tablename__ = 'PROFESSEUR'
+    id_professeur = db.Column('id_professeur', db.Integer, primary_key=True)
+    nom = db.Column(db.String(30), nullable=False)
+    prenom = db.Column(db.String(30), nullable=False)
+    salle = db.Column(db.Integer, db.ForeignKey('SALLE.id_salle'), nullable=True)
+
+    def __init__(self, nom, prenom, salle):
+        self.unvalid = False
+        self.nom = nom
+        self.prenom = prenom
+        self.salle = salle
+
+    # def unique_iduser_nom_prenom(self, id_utilisateur, nom, prenom):
+    #     professeur = PROFESSEUR.query.filter_by(
+    #         id_utilisateur=id_utilisateur, nom=nom, prenom=prenom).first()
+    #     if professeur:
+    #         return ['Ce professeur existe déjà', 'danger']
+    #     return False
+
+    # def foreign_iduser(self, id_utilisateur):
+    #     utilisateur = UTILISATEURS.query.filter_by(id=id_utilisateur).first()
+    #     if utilisateur:
+    #         return False
+    #     return ['Aucun utilisateur correspondant', 'danger']
+
+    def as_dict(self):
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
+
 
 class UTILISATEURS(db.Model):
     __tablename__ = 'UTILISATEURS'
@@ -8,10 +65,11 @@ class UTILISATEURS(db.Model):
     email = db.Column(db.String(200), nullable=False)
     password = db.Column(db.String(200), nullable=False)
     admin = db.Column(db.Boolean(False), nullable=False)
-    id_professeur = db.Column(db.Integer, nullable=True)
-    # __table_args__ = (
-    #     db.UniqueConstraint(email, name="UNQ_UTILISATEURS_email"),
-    # )
+    id_professeur = db.Column(db.Integer, db.ForeignKey('PROFESSEUR.id_professeur'), nullable=True)
+    
+    __table_args__ = (
+        db.UniqueConstraint(email, admin, name="UNQ_UTILISATEURS_email"),
+    )
 
     def __init__(self, email, password, admin, id_professeur):
         self.unvalid = False
@@ -47,6 +105,10 @@ class SERIE(db.Model):
     nom = db.Column(db.String(40), nullable=False)
     specialite1 = db.Column(db.String(50), nullable=False)
     specialite2 = db.Column(db.String(50), nullable=True)
+    
+    __table_args__ = (
+        db.UniqueConstraint(nom, specialite1, specialite2, name="UNQ_NOM_SPE1_SPE2"),
+    )
 
     def __init__(self, nom, specialite1, specialite2=None):
         self.unvalid = False
@@ -72,7 +134,7 @@ class SERIE(db.Model):
 class MATIERES(db.Model):
     __tablename__ = 'MATIERES'
     id_matiere = db.Column(db.Integer, primary_key=True)
-    id_serie = db.Column(db.Integer, nullable=False)
+    id_serie = db.Column(db.Integer, db.ForeignKey('SERIE.id_serie'), nullable=False)
     nom = db.Column(db.String(30), nullable=False)
     nom_complet = db.Column(db.String(60), nullable=False)
     temps_preparation = db.Column(db.Integer, nullable=False)
@@ -80,6 +142,10 @@ class MATIERES(db.Model):
     temps_passage = db.Column(db.Integer, nullable=False)
     temps_passage_tiers_temps = db.Column(db.Integer, nullable=False)
     loge = db.Column(db.Integer, nullable=True)
+    
+    __table_args__ = (
+        db.UniqueConstraint(nom, nom_complet, temps_preparation, temps_passage, name="UNQ_NOM_NOMCOMP_TPS_PREPA"),
+    )
 
     def __init__(self, id_serie, nom, nom_complet, temps_preparation, temps_preparation_tiers_temps, temps_passage, temps_passage_tiers_temps, loge=None):
         self.unvalid = False
@@ -114,66 +180,16 @@ class MATIERES(db.Model):
     def as_dict(self):
         return {c.name: getattr(self, c.name) for c in self.__table__.columns}
 
-
-class SALLE(db.Model):
-    __tablename__ = 'SALLE'
-    id_salle = db.Column('id_salle', db.Integer, primary_key=True)
-    numero = db.Column(db.String(50), nullable=False)
-
-    def __init__(self, numero):
-        self.unvalid = False
-
-        if res := self.unique_numero(numero):
-            self.unvalid = res
-
-        self.numero = numero
-
-    def unique_numero(self, numero):
-        salle = SALLE.query.filter_by(numero=numero).first()
-        if salle:
-            return ["Une salle à déjà le même numéro", "danger"]
-        return False
-
-    def as_dict(self):
-        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
-
-
-class PROFESSEUR(db.Model):
-    __tablename__ = 'PROFESSEUR'
-    id_professeur = db.Column('id_professeur', db.Integer, primary_key=True)
-    nom = db.Column(db.String(30), nullable=False)
-    prenom = db.Column(db.String(30), nullable=False)
-    salle = db.Column(db.Integer, nullable=True)
-
-    def __init__(self, nom, prenom, salle):
-        self.unvalid = False
-        self.nom = nom
-        self.prenom = prenom
-        self.salle = salle
-
-    # def unique_iduser_nom_prenom(self, id_utilisateur, nom, prenom):
-    #     professeur = PROFESSEUR.query.filter_by(
-    #         id_utilisateur=id_utilisateur, nom=nom, prenom=prenom).first()
-    #     if professeur:
-    #         return ['Ce professeur existe déjà', 'danger']
-    #     return False
-
-    # def foreign_iduser(self, id_utilisateur):
-    #     utilisateur = UTILISATEURS.query.filter_by(id=id_utilisateur).first()
-    #     if utilisateur:
-    #         return False
-    #     return ['Aucun utilisateur correspondant', 'danger']
-
-    def as_dict(self):
-        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
-
-
 class LISTE_MATIERE(db.Model):
     __tablename__ = 'LISTE_MATIERE'
     id_liste_matiere = db.Column(
         'id_liste_matiere', db.Integer, primary_key=True)
-    id_professeur = db.Column(db.Integer, nullable=False)
-    id_matiere = db.Column(db.Integer, nullable=False)
+    id_professeur = db.Column(db.Integer, db.ForeignKey('PROFESSEUR.id_professeur'), nullable=False)
+    id_matiere = db.Column(db.Integer, db.ForeignKey('MATIERES.id_matiere'), nullable=False)
+    
+    __table_args__ = (
+        db.UniqueConstraint(id_professeur, id_matiere, name="UNQ_PROFESSEUR_MATIERE"),
+    )
 
     def __init__(self, id_professeur, id_matiere):
         self.unvalid = False
@@ -220,7 +236,7 @@ class CANDIDATS(db.Model):
     id_candidat = db.Column('id_candidat', db.Integer, primary_key=True)
     nom = db.Column(db.String(200), nullable=False)
     prenom = db.Column(db.String(150), nullable=False)
-    id_serie = db.Column(db.Integer, nullable=False)
+    id_serie = db.Column(db.Integer, db.ForeignKey('SERIE.id_serie'), nullable=False)
     tiers_temps = db.Column(db.Boolean, nullable=False)
     absent = db.Column(db.Boolean, nullable=False)
 
@@ -250,9 +266,13 @@ class CHOIX_MATIERE(db.Model):
     __tablename__ = 'CHOIX_MATIERE'
     id_choix_matiere = db.Column(
         'id_choix_matiere', db.Integer, primary_key=True)
-    id_candidat = db.Column(db.Integer, nullable=False)
-    matiere1 = db.Column(db.Integer, nullable=True)
-    matiere2 = db.Column(db.Integer, nullable=True)
+    id_candidat = db.Column(db.Integer, db.ForeignKey('CANDIDATS.id_candidat'),  nullable=False)
+    matiere1 = db.Column(db.Integer, db.ForeignKey('MATIERES.id_matiere'), nullable=True)
+    matiere2 = db.Column(db.Integer, db.ForeignKey('MATIERES.id_matiere'), nullable=True)
+    
+    __table_args__ = (
+        db.UniqueConstraint(id_candidat, name="UNQ_CANDIDAT"),
+    )
 
     def __init__(self, id_candidat, matiere1=None, matiere2=None):
         self.unvalid = False
@@ -306,12 +326,17 @@ class CHOIX_MATIERE(db.Model):
 class CRENEAU(db.Model):
     __tablename__ = 'CRENEAU'
     id_creneau = db.Column('id_creneau', db.Integer, primary_key=True)
-    id_candidat = db.Column(db.Integer, nullable=False)
-    id_matiere = db.Column(db.Integer, nullable=False)
-    id_salle = db.Column(db.Integer, nullable=False)
+    id_candidat = db.Column(db.Integer, db.ForeignKey('CANDIDATS.id_candidat'), nullable=False)
+    id_matiere = db.Column(db.Integer, db.ForeignKey('MATIERES.id_matiere'), nullable=False)
+    id_salle = db.Column(db.Integer, db.ForeignKey('SALLE.id_salle'), nullable=False)
     debut_preparation = db.Column(db.DateTime, nullable=False)
     fin_preparation = db.Column(db.DateTime, nullable=False)
     fin = db.Column(db.DateTime, nullable=False)
+    
+    __table_args__ = (
+        db.UniqueConstraint(id_candidat, debut_preparation, name="UNQ_CANDIDAT_PREPA"),
+        db.UniqueConstraint(id_candidat, id_matiere, name="UNQ_CANDIDAT_MATIERE"),
+    )
 
     def __init__(self, id_candidat, id_matiere, id_salle, debut_preparation, fin_preparation, fin):
         self.unvalid = False
@@ -379,7 +404,7 @@ class TOKEN(db.Model):
     id = db.Column('id', db.Integer, primary_key=True)
     email = db.Column(db.String(200), nullable=False)
     token = db.Column(db.String(200), nullable=False)
-    id_professeur = db.Column(db.Integer, nullable=True)
+    id_professeur = db.Column(db.Integer, db.ForeignKey('PROFESSEUR.id_professeur'), nullable=True)
     admin = db.Column(db.Boolean(False), nullable=False)
     # __table_args__ = (
     #     db.UniqueConstraint(email, name="UNQ_UTILISATEURS_email"),
