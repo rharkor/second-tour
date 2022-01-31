@@ -12,6 +12,9 @@ from ..database.main_database import *
 
 
 def generation_calendrier():
+    
+    
+    
     # Delete all creneaux
     all_creneaux = CRENEAU.query.all()
     for creneau in all_creneaux:
@@ -237,7 +240,7 @@ def generation_calendrier():
                                 fin_passage_matiere_datetime = datetime.strptime(f'{jour_debut_preparation_voulue}/{datetime.now().month}/{datetime.now().year} ' + str((
                                     heure_debut_preparation_voulue + temps_preparation_matiere + temps_passage_matiere)), '%d/%m/%Y %H:%M:%f')
                                 res = main_database.add_creneau(candidat.id_candidat, matiere.id_matiere, a_salle.id_salle,
-                                                                heure_debut_preparation_voulue_datetime, fin_preparation_matiere_datetime, fin_passage_matiere_datetime)
+                                                                heure_debut_preparation_voulue_datetime, fin_preparation_matiere_datetime, fin_passage_matiere_datetime, auto_commit=False)
                                 if res[1] == 'danger':
                                     logging.warning(res[0])
                             heure_debut_preparation_voulue = timedelta(
@@ -245,6 +248,9 @@ def generation_calendrier():
                             break
                     heure_debut_preparation_voulue += timedelta(minutes=30)
 
+    # commit
+    db.session.commit()
+    
     result = test_calendar_complete()
     flash(result[0], result[1])
 
