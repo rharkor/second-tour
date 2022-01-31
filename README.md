@@ -3,6 +3,7 @@
 - [Sujet de base](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Pr%C3%A9sentation-du-projet#sujet-de-base)
 - [Notre équipe](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Pr%C3%A9sentation-du-projet#notre-%C3%A9quipe)
 - [Logiciels/Applications utilisées](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Pr%C3%A9sentation-du-projet#logicielsapplications-utilis%C3%A9es)
+- [Type de fichier](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Pr%C3%A9sentation-du-projet#type-de-fichier)
 
 
 # 2. [Charte graphique](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Charte-graphique)
