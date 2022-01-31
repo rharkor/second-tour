@@ -168,6 +168,55 @@ class PROFESSEUR(db.Model):
         return {c.name: getattr(self, c.name) for c in self.__table__.columns}
 
 
+class HORAIRES(db.Model):
+    __tablename__ = 'HORAIRES'
+    id_horaires = db.Column('id_horaires', db.Integer, primary_key=True)
+    horaire_arr1 = db.Column(db.DateTime, nullable=False)
+    horaire_dep1 = db.Column(db.DateTime, nullable=False)
+    horaire_arr2 = db.Column(db.DateTime, nullable=False)
+    horaire_dep2 = db.Column(db.DateTime, nullable=False)
+    horaire_arr3 = db.Column(db.DateTime, nullable=False)
+    horaire_dep3 = db.Column(db.DateTime, nullable=False)
+    id_professeur = db.Column(db.Integer, nullable=False)
+
+    def __init__(self, horaire_arr1, horaire_dep1, horaire_arr2, horaire_dep2, horaire_arr3, horaire_dep3, id_professeur):
+        self.unvalid = False
+
+        if res := self.unique_id_professeur(id_professeur):
+            self.unvalid = res
+
+        if res := self.foreign_id_professeur(id_professeur):
+            self.unvalid = res
+        
+        self.horaire_arr1 = horaire_arr1
+        self.horaire_dep1 = horaire_dep1
+        self.horaire_arr2 = horaire_arr2
+        self.horaire_dep2 = horaire_dep2
+        self.horaire_arr3 = horaire_arr3
+        self.horaire_dep3 = horaire_dep3
+        self.id_professeur = id_professeur
+
+
+    def unique_id_professeur(self, id_professeur):
+        horaires = HORAIRES.query.filter_by(
+            id_professeur=id_professeur).first()
+        if horaires:
+            return ['L\'horaire pour ce professeur existe déjà', 'danger']
+        return False
+
+
+    def foreign_id_professeur(self, id_professeur):
+        professeur = PROFESSEUR.query.filter_by(
+            id_professeur=id_professeur).first()
+        if professeur:
+            return False
+        return ['Aucun professeur correspondant', 'danger']
+
+
+    def as_dict(self):
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
+
+
 class LISTE_MATIERE(db.Model):
     __tablename__ = 'LISTE_MATIERE'
     id_liste_matiere = db.Column(
