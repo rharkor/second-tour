@@ -254,6 +254,11 @@
         name = document.getElementById("ModalSubmitButton").getAttribute("form");
         $("#ModalSubmitButton").attr('form', name + $myRowId);
     });
+    $('.deleteRowToken').click(function () {
+        var $myRowId = $(this).get(0).id;
+        name = document.getElementById("ModalSubmitButtonToken").getAttribute("form");
+        $("#ModalSubmitButtonToken").attr('form', name + $myRowId);
+    });
 </script>
 
 {% block sub_script %}

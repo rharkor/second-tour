@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flaskext.mysql import MySQL
 from datetime import timedelta
 from logging import WARNING, ERROR, FileHandler
 import logging
@@ -11,7 +12,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__)))
 app = Flask(__name__)
 
 file_handler = FileHandler(
-    os.getcwd() + "/second_tour_website/logs/logs_info.txt")
+    os.getcwd() + "/logs/logs_info.txt")
 file_handler.setLevel(WARNING)
 logging.basicConfig(
     level=WARNING,
@@ -23,12 +24,24 @@ logging.basicConfig(
 
 
 # Configure the website
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/data.sqlite3'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 app.config['SECRET_KEY'] = "HEby4gbqFGFtSCeV"
 app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=3)
 app.config['UPLOAD_FOLDER'] = os.getcwd(
 ) + "/second_tour_website/website/upload"
+
+
+# Configure the database
+mysql = MySQL()
+
+app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{os.getenv("DB_USER")}:{os.getenv("DB_PWD")}@{os.getenv("DB_HOST")}/{os.getenv("DB_NAME")}'
+
+app.config['MYSQL_DATABASE_HOST'] = os.getenv('DB_HOST')
+app.config['MYSQL_DATABASE_USER'] = os.getenv('DB_USER')
+app.config['MYSQL_DATABASE_PASSWORD'] = os.getenv('DB_PWD')
+app.config['MYSQL_DATABASE_DB'] = os.getenv('DB_NAME')
+
+mysql.init_app(app)
 
 db = SQLAlchemy(app)
 
