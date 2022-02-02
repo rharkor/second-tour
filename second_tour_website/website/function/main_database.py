@@ -276,12 +276,14 @@ def add_professeur_wep(user, nom, prenom, salle, matieres=None):
 
 def update_professeur_wep(id, user, nom, prenom, salle, matieres=None, heure_arrivee1=None, heure_depart1=None, heure_arrivee2=None, heure_depart2=None, heure_arrivee3=None, heure_depart3=None):
     try:
+        
+        
         professeur = PROFESSEUR.query.filter_by(id_professeur=id).first()
         if professeur:
             professeur.id_utilisateur = user
             professeur.nom = nom
             professeur.prenom = prenom
-            professeur.salle = salle
+            professeur.salle = salle if salle else None
 
             logging.warning('Le professeur a bien été trouvé')
 

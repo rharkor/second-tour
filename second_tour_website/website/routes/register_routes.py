@@ -42,4 +42,5 @@ def register():
             return render_template('register/register.html', token=token, email=email)
         except Exception:
             traceback.print_exc()
+            logging.warning("Invalid token")
             return render_template('register/register.html', token="error", email="error")
