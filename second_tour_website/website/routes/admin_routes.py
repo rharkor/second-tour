@@ -25,7 +25,7 @@ def accueil():
             elif form.get('excel_button') is not None:
                 filename = app.config['UPLOAD_FOLDER'] + "/donees.xlsx"
                 writer = pd.ExcelWriter(filename)
-                for table in [CRENEAU, CANDIDATS, PROFESSEUR, SALLE, SERIE, MATIERES, CHOIX_MATIERE, UTILISATEURS]:
+                for table in [CRENEAU, CANDIDATS, PROFESSEUR, SALLE, SERIE, MATIERES, CHOIX_MATIERE, UTILISATEURS, LISTE_MATIERE, TOKEN]:
                     records = db.session.query(table).all()
                     data_list = [main_database.to_dict(
                         item) for item in records]
