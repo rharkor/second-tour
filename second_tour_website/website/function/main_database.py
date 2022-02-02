@@ -86,6 +86,9 @@ def delete_serie(id):
             db.session.delete(matiere)
         candidats = CANDIDATS.query.filter_by(id_serie=id)
         for candidat in candidats:
+            creneaux = CRENEAU.query.filter_by(id_candidat=candidat.id_candidat)
+            for crenau in creneaux:
+                db.session.delete(crenau)
             db.session.delete(candidat)
         db.session.delete(user)
         db.session.commit()
@@ -335,6 +338,10 @@ def delete_professeur(id):
             id_professeur=professeur.id_professeur)
         for account in accounts:
             db.session.delete(account)
+
+        creneaux = CRENEAU.query.filter_by(id_salle=professeur.salle)
+        for creneau in creneaux:
+            db.session.delete(creneau)
 
         horaires = HORAIRES.query.filter_by(id_professeur=id)
         for horaire in horaires:
