@@ -88,9 +88,15 @@
                         <td>
                             {% for a_horaire in all_horaires %}
                             {% if a_horaire.id_professeur == a_prof.id_professeur %}
+                            {% if a_horaire.horaire_arr1.strftime('%Hh%M') != '08h00' or a_horaire.horaire_dep1.strftime('%Hh%M') != '20h00' %}
                             <div>{{a_horaire.horaire_arr1.strftime('%d')}} : {{a_horaire.horaire_arr1.strftime('%Hh%M')}}-{{a_horaire.horaire_dep1.strftime('%Hh%M')}}</div>
+                            {% endif %}
+                            {% if a_horaire.horaire_arr2.strftime('%Hh%M') != '08h00' or a_horaire.horaire_dep2.strftime('%Hh%M') != '20h00' %}
                             <div>{{a_horaire.horaire_arr2.strftime('%d')}} : {{a_horaire.horaire_arr2.strftime('%Hh%M')}}-{{a_horaire.horaire_dep2.strftime('%Hh%M')}}</div>
+                            {% endif %}
+                            {% if a_horaire.horaire_arr3.strftime('%Hh%M') != '08h00' or a_horaire.horaire_dep3.strftime('%Hh%M') != '20h00' %}
                             <div>{{a_horaire.horaire_arr3.strftime('%d')}} : {{a_horaire.horaire_arr3.strftime('%Hh%M')}}-{{a_horaire.horaire_dep3.strftime('%Hh%M')}}</div>
+                            {% endif %}
                             {% endif %}
                             {% endfor %}
                         </td>
@@ -214,6 +220,34 @@
                                 {% endfor %}
                             </select>
                         </div>
+                        <div class="form-group">
+                            <label for="arrivee" class="col-form-label">Horaires</label>
+                            <div>
+                                <div class="d-flex justify-content-around" style="margin-top: 5px;">
+                                    <div style="margin: 0 5px;">
+                                        <p>jour 1 :</p>
+                                        <input type="text" class="form-control" id="heure_arrivee1" name="heure_arrivee1"
+                                        aria-describedby="heure_arrivee1_Help" value="08:00" style="margin-bottom: 5px;">
+                                        <input type="text" class="form-control" id="heure_depart1" name="heure_depart1"
+                                        aria-describedby="heure_depart1_Help" value="20:00">
+                                    </div>
+                                    <div style="margin: 0 5px;">
+                                        <p>jour 2 :</p>
+                                        <input type="text" class="form-control" id="heure_arrivee2" name="heure_arrivee2"
+                                        aria-describedby="heure_arrivee2_Help" value="08:00" style="margin-bottom: 5px;">
+                                        <input type="text" class="form-control" id="heure_depart2" name="heure_depart2"
+                                        aria-describedby="heure_depart2_Help" value="20:00">
+                                    </div>
+                                    <div style="margin: 0 5px;">
+                                        <p>jour 3 :</p>
+                                        <input type="text" class="form-control" id="heure_arrivee3" name="heure_arrivee3"
+                                        aria-describedby="heure_arrivee3_Help" value="08:00" style="margin-bottom: 5px;">
+                                        <input type="text" class="form-control" id="heure_depart3" name="heure_depart3"
+                                        aria-describedby="heure_depart3_Help" value="20:00">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -300,23 +334,23 @@
                                     <div style="margin: 0 5px;">
                                         <p>jour 1 :</p>
                                         <input type="text" class="form-control" id="heure_arrivee1" name="heure_arrivee1"
-                                        aria-describedby="heure_arrivee1_Help" placeholder="08:00" style="margin-bottom: 5px;">
+                                        aria-describedby="heure_arrivee1_Help" value="08:00" style="margin-bottom: 5px;">
                                         <input type="text" class="form-control" id="heure_depart1" name="heure_depart1"
-                                        aria-describedby="heure_depart1_Help" placeholder="20:00">
+                                        aria-describedby="heure_depart1_Help" value="20:00">
                                     </div>
                                     <div style="margin: 0 5px;">
                                         <p>jour 2 :</p>
                                         <input type="text" class="form-control" id="heure_arrivee2" name="heure_arrivee2"
-                                        aria-describedby="heure_arrivee2_Help" placeholder="08:00" style="margin-bottom: 5px;">
+                                        aria-describedby="heure_arrivee2_Help" value="08:00" style="margin-bottom: 5px;">
                                         <input type="text" class="form-control" id="heure_depart2" name="heure_depart2"
-                                        aria-describedby="heure_depart2_Help" placeholder="20:00">
+                                        aria-describedby="heure_depart2_Help" value="20:00">
                                     </div>
                                     <div style="margin: 0 5px;">
                                         <p>jour 3 :</p>
                                         <input type="text" class="form-control" id="heure_arrivee3" name="heure_arrivee3"
-                                        aria-describedby="heure_arrivee3_Help" placeholder="08:00" style="margin-bottom: 5px;">
+                                        aria-describedby="heure_arrivee3_Help" value="08:00" style="margin-bottom: 5px;">
                                         <input type="text" class="form-control" id="heure_depart3" name="heure_depart3"
-                                        aria-describedby="heure_depart3_Help" placeholder="20:00">
+                                        aria-describedby="heure_depart3_Help" value="20:00">
                                     </div>
                                 </div>
                             </div>

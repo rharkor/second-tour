@@ -211,7 +211,7 @@ def professeurs():
                 if 'email' in form and 'name' in form and 'surname' in form and 'salle' in form:
                     token = uuid4()
                     result = main_database.add_professeur(
-                        form['email'], form['name'], form['surname'], form['salle'], form.getlist('matieres[]') if 'matieres[]' in form else [], token)
+                        form['email'], form['name'], form['surname'], form['salle'], form.getlist('matieres[]') if 'matieres[]' in form else [], token, False, form['heure_arrivee1'], form['heure_depart1'], form['heure_arrivee2'], form['heure_depart2'], form['heure_arrivee3'], form['heure_depart3'])
                     flash(result[0], result[1])
                     logging.warning(result[0])
 
@@ -224,11 +224,10 @@ def professeurs():
                 if 'user' in form and 'prof_id' in form and 'name' in form and 'surname' in form and 'salle' in form:
                     # result = main_database.delete_professeur(form['prof_id'])
                     result = main_database.update_professeur_wep(form['prof_id'], form['user'],
-                                                                 form['name'], form['surname'], form['salle'], form.getlist('matieres[]') if 'matieres[]' in form else [])
+                                                                 form['name'], form['surname'], form['salle'], form.getlist('matieres[]') if 'matieres[]' in form else [], form['heure_arrivee1'], form['heure_depart1'], form['heure_arrivee2'], form['heure_depart2'], form['heure_arrivee3'], form['heure_depart3'])
                     flash(result[0], result[1])
                     logging.warning(result[0])
-                    print(form)
-
+                    
         # Serialize PROFESSEUR
         profs = PROFESSEUR.query.order_by(PROFESSEUR.nom).all()
         all_profs = []

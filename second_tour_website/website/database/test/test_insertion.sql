@@ -231,8 +231,8 @@ VALUES (NULL, 9, 10);
 --INSERTION DES HORAIRES--
 --  INSERT INTO HORAIRES
 -- VALUES 
-INSERT INTO HORAIRES
-VALUES (NULL, datetime('2021-12-24 08:00'), datetime('2021-12-24 22:00'), datetime('2021-12-25 08:00'), datetime('2021-12-25 22:00'), datetime('2021-12-26 08:00'), datetime('2021-12-26 22:00'), 1);
+--INSERT INTO HORAIRES
+--VALUES (NULL, datetime('2021-12-24 08:00'), datetime('2021-12-24 22:00'), datetime('2021-12-25 08:00'), datetime('2021-12-25 22:00'), datetime('2021-12-26 08:00'), datetime('2021-12-26 22:00'), 1);
 
 
 

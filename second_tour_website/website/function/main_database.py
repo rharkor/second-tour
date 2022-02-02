@@ -1,4 +1,6 @@
-from datetime import datetime
+from datetime import datetime, timedelta
+from tkinter import N
+from tkinter.messagebox import NO
 import traceback
 import logging
 
@@ -197,7 +199,7 @@ def delete_token(token):
     db.session.commit()
 
 
-def add_professeur(email, nom, prenom, salle, matieres=None, token=None, admin=False):
+def add_professeur(email, nom, prenom, salle, matieres=None, token=None, admin=False, heure_arrivee1=None, heure_depart1=None, heure_arrivee2=None, heure_depart2=None, heure_arrivee3=None, heure_depart3=None):
     try:
         # user = add_account(email, 'test123', 'Professeur',
         #                    output=True, id_prof=1)
@@ -209,11 +211,11 @@ def add_professeur(email, nom, prenom, salle, matieres=None, token=None, admin=F
         if not professeur.unvalid:
             db.session.add(professeur)
             db.session.commit()
-            logging.warning('Le professeur a bien été crée')
+            logging.warning('Le professeur a bien été créé')
 
             # Token creation
             add_token(email, token, admin, professeur.id_professeur)
-            logging.warning('Le token a bien été crée')
+            logging.warning('Le token a bien été créé')
 
             if matieres:
                 for matiere in matieres:
@@ -222,9 +224,22 @@ def add_professeur(email, nom, prenom, salle, matieres=None, token=None, admin=F
                     if not liste_matiere.unvalid:
                         db.session.add(liste_matiere)
                         db.session.commit()
-                        logging.warning('La liste matière à bien été ajoutée')
+                        logging.warning('La liste matière a bien été ajoutée')
 
-            return ['Le professeur a bien été crée', 'success']
+            if type(heure_arrivee1) == str:
+                heure_arrivee1 = datetime.strptime(heure_arrivee1, '%H:%M')
+                heure_depart1 = datetime.strptime(heure_depart1, '%H:%M')
+                heure_arrivee2 = datetime.strptime(heure_arrivee2, '%H:%M')+ timedelta(days=1)
+                heure_depart2 = datetime.strptime(heure_depart2, '%H:%M')+ timedelta(days=1)
+                heure_arrivee3 = datetime.strptime(heure_arrivee3, '%H:%M')+ timedelta(days=2)
+                heure_depart3 = datetime.strptime(heure_depart3, '%H:%M')+ timedelta(days=2)
+            horaires = HORAIRES(heure_arrivee1, heure_depart1, heure_arrivee2, heure_depart2, heure_arrivee3, heure_depart3, professeur.id_professeur)
+            if not horaires.unvalid:
+                db.session.add(horaires)
+                db.session.commit()
+                logging.warning('L\'horaire a bien été créé')
+
+            return ['Le professeur a bien été créé', 'success']
         else:
             return professeur.unvalid
     except Exception:
@@ -259,7 +274,7 @@ def add_professeur_wep(user, nom, prenom, salle, matieres=None):
         return ['Erreur : ' + traceback.format_exc(), 'danger']
 
 
-def update_professeur_wep(id, user, nom, prenom, salle, matieres=None):
+def update_professeur_wep(id, user, nom, prenom, salle, matieres=None, heure_arrivee1=None, heure_depart1=None, heure_arrivee2=None, heure_depart2=None, heure_arrivee3=None, heure_depart3=None):
     try:
         professeur = PROFESSEUR.query.filter_by(id_professeur=id).first()
         if professeur:
@@ -279,6 +294,15 @@ def update_professeur_wep(id, user, nom, prenom, salle, matieres=None):
                     if not liste_matiere.unvalid:
                         db.session.add(liste_matiere)
                         logging.warning('La liste matière à bien été ajoutée')
+            
+            horaire = HORAIRES.query.filter_by(id_professeur=id).first()
+            if horaire:
+                horaire.horaire_arr1=datetime.strptime(heure_arrivee1, '%H:%M')
+                horaire.horaire_dep1=datetime.strptime(heure_depart1, '%H:%M')
+                horaire.horaire_arr2=datetime.strptime(heure_arrivee2, '%H:%M')+ timedelta(days=1)
+                horaire.horaire_dep2=datetime.strptime(heure_depart2, '%H:%M')+ timedelta(days=1)
+                horaire.horaire_arr3=datetime.strptime(heure_arrivee3, '%H:%M')+ timedelta(days=2)
+                horaire.horaire_dep3=datetime.strptime(heure_depart3, '%H:%M')+ timedelta(days=2)
 
             db.session.commit()
 
@@ -309,6 +333,10 @@ def delete_professeur(id):
             id_professeur=professeur.id_professeur)
         for account in accounts:
             db.session.delete(account)
+
+        horaires = HORAIRES.query.filter_by(id_professeur=id)
+        for horaire in horaires:
+            db.session.delete(horaire)
 
         db.session.delete(professeur)
         db.session.commit()
