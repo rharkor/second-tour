@@ -17,6 +17,7 @@ def index():
     all_series = SERIE.query.all()
     all_matieres = MATIERES.query.all()
     all_salles = SALLE.query.all()
+    
     return render_template('index.html', all_candidats=all_candidats, all_creneaux=all_creneaux, all_series=all_series, all_matieres=all_matieres, all_salles=all_salles)
 
 @main_routes.route('/connexion', methods=['POST', 'GET'])

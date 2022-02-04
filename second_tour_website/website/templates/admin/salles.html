@@ -3,7 +3,8 @@
 {% block sub_content %}
 <div class="main-div-admin">
     <div class="d-flex flex-row" style="justify-content: space-between;align-items:center; width:100%;">
-        <button class="btn btn-primary" onclick="download_multiplePdf()" style="width: max-content; white-space:nowrap; background-color:blue;">
+        <button class="btn btn-primary" onclick="download_multiplePdf()"
+            style="width: max-content; white-space:nowrap; background-color:blue;">
             Télécharger les fiches d'émargement
             <i class=" fas fa-print ml-s"></i>
         </button>
@@ -60,7 +61,8 @@
                         </td>
                     </tr>
                     <tr style="--bs-table-hover-bg: transparent; --bs-table-accent-bg: transparent;" class="not-null">
-                        <td colspan="100%" style="padding: 0; background: transparent; --bs-table-accent-bg: transparent;">
+                        <td colspan="100%"
+                            style="padding: 0; background: transparent; --bs-table-accent-bg: transparent;">
                             <div class="collapse" id="accordion{{a_salle.id_salle}}" style="margin: 15px 10px;">
                                 <div class="table-responsive thumbnail">
                                     <table class="table table-light table-striped table-hover"
@@ -99,22 +101,28 @@
                                                     <div class="collapse" id="accordionProf{{a_prof.id_professeur}}"
                                                         style="margin: 15px 10px;">
                                                         <div class="table-responsive thumbnail">
-                                                            <table class="table table-light table-striped table-hover tableAccordion{{a_salle.id_salle}}" id="tableAccordion{{a_salle.id_salle}}_{{i.total}}">
+                                                            <table
+                                                                class="table table-light table-striped table-hover tableAccordion{{a_salle.id_salle}}"
+                                                                id="tableAccordion{{a_salle.id_salle}}_{{i.total}}">
                                                                 <thead>
                                                                     <tr>
                                                                         <th scope="col">Nom</th>
                                                                         <th scope="col">Prénom</th>
+                                                                        <th scope="col">Matière</th>
+                                                                        <th scope="col">Série</th>
                                                                         <th scope="col">Heure de début préparation</th>
                                                                         <th scope="col">Heure de fin préparation</th>
                                                                         <th scope="col">Heure de fin de passage</th>
-                                                                        <th scope="col" class="hide">Emargement</th>
+                                                                        <th scope="col">Emargement</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
                                                                     {% for creneau in all_creneaux %}
                                                                     {% for liste_matiere in all_liste_matiere %}
-                                                                    {% if liste_matiere.id_professeur == a_prof.id_professeur %}
-                                                                    {% if creneau.id_matiere == liste_matiere.id_matiere %}
+                                                                    {% if liste_matiere.id_professeur ==
+                                                                    a_prof.id_professeur %}
+                                                                    {% if creneau.id_matiere == liste_matiere.id_matiere
+                                                                    %}
                                                                     <tr class="not-null">
                                                                         {% for candidat in all_candidats %}
                                                                         {% if candidat.id_candidat ==
@@ -123,12 +131,35 @@
                                                                         <td scope="row">{{candidat.prenom}}</td>
                                                                         {% endif %}
                                                                         {% endfor %}
-                                                                        <td scope="row">{{creneau.debut_preparation}}
+                                                                        {% for matiere_scope in all_matieres %}
+                                                                        {% if matiere_scope.id_matiere ==
+                                                                        creneau.id_matiere %}
+                                                                        <td>
+                                                                            {{ matiere_scope.nom }}
+
                                                                         </td>
-                                                                        <td scope="row">{{creneau.fin_preparation}}
+                                                                        <td>{% for serie in all_series %}
+                                                                            {% if serie.id_serie ==
+                                                                            matiere_scope.id_serie %}
+                                                                            {{ serie.nom }}
+                                                                            {% endif%}
+                                                                            {% endfor %}
                                                                         </td>
-                                                                        <td scope="row">{{creneau.fin}}</td>
-                                                                        <td scope="row" class="hide"></td>
+                                                                        {% endif %}
+                                                                        {% endfor %}
+                                                                        <td scope="row">Jour
+                                                                            {{creneau.debut_preparation.strftime("%d")}}
+                                                                            |
+                                                                            {{creneau.debut_preparation.strftime("%H:%M")}}
+                                                                        </td>
+                                                                        <td scope="row">Jour
+                                                                            {{creneau.fin_preparation.strftime("%d")}} |
+                                                                            {{creneau.fin_preparation.strftime("%H:%M")}}
+                                                                        </td>
+                                                                        <td scope="row">Jour
+                                                                            {{creneau.fin.strftime("%d")}} |
+                                                                            {{creneau.fin.strftime("%H:%M")}}</td>
+                                                                        <td scope="row"></td>
                                                                     </tr>
                                                                     {% endif %}
                                                                     {% endif %}
@@ -161,20 +192,27 @@
                                                     <div class="collapse" id="accordionLoge{{a_salle.id_salle}}"
                                                         style="margin: 15px 10px;">
                                                         <div class="table-responsive thumbnail">
-                                                            <table class="table table-light table-striped table-hover tableAccordion{{a_salle.id_salle}}" id="tableAccordion{{a_salle.id_salle}}_{{i.total}}">
+                                                            <table
+                                                                class="table table-light table-striped table-hover tableAccordion{{a_salle.id_salle}}"
+                                                                id="tableAccordion{{a_salle.id_salle}}_{{i.total}}">
                                                                 <thead>
                                                                     <tr>
                                                                         <th scope="col">Nom</th>
                                                                         <th scope="col">Prénom</th>
+                                                                        <th scope="col">Matière</th>
+                                                                        <th scope="col">Série</th>
                                                                         <th scope="col">Heure de début préparation</th>
-                                                                        <th scope="col">Heure de fin</th>
-                                                                        <th scope="col" class="hide">Emargement</th>
+                                                                        <th scope="col">Heure de fin préparation</th>
+                                                                        <th scope="col">Heure de fin de passage</th>
+                                                                        <th scope="col">Emargement</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
                                                                     {% for creneau in all_creneaux %}
                                                                     {% if creneau.id_matiere == a_matiere_o.id_matiere
                                                                     %}
+
+
                                                                     <tr class="not-null">
                                                                         {% for candidat in all_candidats %}
                                                                         {% if candidat.id_candidat ==
@@ -183,10 +221,35 @@
                                                                         <td scope="row">{{candidat.prenom}}</td>
                                                                         {% endif %}
                                                                         {% endfor %}
-                                                                        <td scope="row">{{creneau.debut_preparation}}
+                                                                        {% for matiere_scope in all_matieres %}
+                                                                        {% if matiere_scope.id_matiere ==
+                                                                        creneau.id_matiere %}
+                                                                        <td>
+                                                                            {{ matiere_scope.nom }}
+
                                                                         </td>
-                                                                        <td scope="row">{{creneau.fin}}</td>
-                                                                        <td scope="row" class="hide"></td>
+                                                                        <td>{% for serie in all_series %}
+                                                                            {% if serie.id_serie ==
+                                                                            matiere_scope.id_serie %}
+                                                                            {{ serie.nom }}
+                                                                            {% endif%}
+                                                                            {% endfor %}
+                                                                        </td>
+                                                                        {% endif %}
+                                                                        {% endfor %}
+                                                                        <td scope="row">Jour
+                                                                            {{creneau.debut_preparation.strftime("%d")}}
+                                                                            |
+                                                                            {{creneau.debut_preparation.strftime("%H:%M")}}
+                                                                        </td>
+                                                                        <td scope="row">Jour
+                                                                            {{creneau.fin_preparation.strftime("%d")}} |
+                                                                            {{creneau.fin_preparation.strftime("%H:%M")}}
+                                                                        </td>
+                                                                        <td scope="row">Jour
+                                                                            {{creneau.fin.strftime("%d")}} |
+                                                                            {{creneau.fin.strftime("%H:%M")}}</td>
+                                                                        <td scope="row"></td>
                                                                     </tr>
                                                                     {% endif %}
                                                                     {% endfor %}
