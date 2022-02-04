@@ -1,0 +1,26 @@
+2022-02-02 10:15:03,468 Run the server
+2022-02-02 10:15:04,989 Run the server
+2022-02-02 10:15:05,050  * Debugger is active!
+2022-02-02 10:15:07,111  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2022-02-02 10:15:10,447 Le calendrier est complet !
+2022-02-02 10:15:10,448 Le calendrier est complet
+2022-02-02 10:15:16,731 Invalid token
+2022-02-02 10:15:48,538 Le calendrier est complet !
+2022-02-02 10:15:48,538 Le calendrier est complet
+2022-02-02 10:19:14,933 Le calendrier est complet !
+2022-02-02 10:19:14,934 Le calendrier est complet
+2022-02-02 10:23:44,717 Le calendrier est complet !
+2022-02-02 10:23:44,718 Le calendrier est complet
+2022-02-02 10:23:51,429 Le calendrier est complet !
+2022-02-02 10:23:51,429 Le calendrier est complet
+2022-02-02 10:28:27,914 Le candidat a bien été crée
+2022-02-02 10:28:27,950 Les choix du candidat ont bien été crées
+2022-02-02 10:28:27,951 Les choix du candidat ont bien été crées
+2022-02-02 10:28:36,832 Le calendrier n'est pas complet
+2022-02-02 10:28:36,832 Le calendrier n'est pas complet, il manque 2 créneaux
+2022-02-02 10:28:39,417 new Créneau : 1 | 1 | 1
+2022-02-02 10:28:39,428 Le créneau a correctement été crée
+2022-02-02 10:28:39,514 Le calendrier n'est pas complet
+2022-02-02 10:28:45,515 Le calendrier n'est pas complet
+2022-02-02 10:28:45,515 Le calendrier n'est pas complet, il manque 1 créneau
