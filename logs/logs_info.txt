@@ -24,3 +24,40 @@
 2022-02-02 10:28:39,514 Le calendrier n'est pas complet
 2022-02-02 10:28:45,515 Le calendrier n'est pas complet
 2022-02-02 10:28:45,515 Le calendrier n'est pas complet, il manque 1 créneau
+2022-02-02 11:07:57,766 Run the server
+2022-02-02 11:08:04,001 Run the server
+2022-02-02 11:08:05,323 Run the server
+2022-02-02 11:08:05,381  * Debugger is active!
+2022-02-02 11:08:06,644  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2022-02-02 11:21:52,921 Run the server
+2022-02-02 11:21:55,439 Run the server
+2022-02-02 11:21:55,559  * Debugger is active!
+2022-02-02 11:21:58,186  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2022-02-02 11:36:48,433 Invalid token
+2022-02-02 11:48:45,706 Le calendrier n'est pas complet
+2022-02-02 11:48:45,706 Le calendrier n'est pas complet, il manque 1 créneau
+2022-02-02 11:49:31,423 Le calendrier n'est pas complet
+2022-02-02 11:49:31,423 Le calendrier n'est pas complet, il manque 1 créneau
+2022-02-02 11:51:41,769 Le calendrier n'est pas complet
+2022-02-02 11:51:41,769 Le calendrier n'est pas complet, il manque 1 créneau
+2022-02-04 11:49:50,926 Run the server
+2022-02-04 11:49:53,183 Run the server
+2022-02-04 11:49:53,261  * Debugger is active!
+2022-02-04 11:49:55,376  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2022-02-04 11:49:58,808 Le calendrier n'est pas complet
+2022-02-04 11:49:58,808 Le calendrier n'est pas complet, il manque 1 créneau
+2022-02-04 11:50:26,976 Run the server
+2022-02-04 11:50:28,874 Run the server
+2022-02-04 11:50:28,936  * Debugger is active!
+2022-02-04 11:50:30,275  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2022-02-04 11:50:33,537 Le calendrier n'est pas complet
+2022-02-04 11:50:33,537 Le calendrier n'est pas complet, il manque 1 créneau
+2022-02-04 11:50:39,422 Invalid token
+2022-02-04 11:51:52,839 Le calendrier n'est pas complet
+2022-02-04 11:51:52,840 Le calendrier n'est pas complet, il manque 1 créneau
+2022-02-04 11:52:12,419 Le calendrier n'est pas complet
+2022-02-04 11:52:12,420 Le calendrier n'est pas complet, il manque 1 créneau
