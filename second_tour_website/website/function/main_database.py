@@ -11,6 +11,12 @@ from ..database.main_database import *
 
 from . import main_email
 
+def delete_all_content():
+    for mapper in db.Model.registry.mappers:
+        if str(mapper) == "mapped class UTILISATEURS->UTILISATEURS":
+            continue
+        db.session.query(mapper).delete()
+
 
 def add_account(email, password, user_type_string, output=False, id_prof=None):
     hashed_password = main_security.hash_password(password)
@@ -71,10 +77,10 @@ def add_serie(serie_choice, specialite1, specialite2, ret=False):
             else:
                 return [['La série a bien été créée', 'success'], serie]
         else:
-            return serie.unvalid
+            return [serie.unvalid]
     except Exception:
         logging.warning('Erreur : ' + traceback.format_exc())
-        return ['Erreur : ' + traceback.format_exc(), 'danger']
+        return [['Erreur : ' + traceback.format_exc(), 'danger']]
 
 
 def delete_serie(id):
@@ -98,7 +104,7 @@ def delete_serie(id):
         return ['Erreur : ' + traceback.format_exc(), 'danger']
 
 
-def add_matiere(name, serie, temps_preparation, temps_preparation_tiers_temps, temps_passage, temps_passage_tiers_temps, loge):
+def add_matiere(name, serie, temps_preparation, temps_preparation_tiers_temps, temps_passage, temps_passage_tiers_temps, loge, ret=False):
     try:
         serie = int(serie)
         all_series = SERIE.query.all()
@@ -117,8 +123,12 @@ def add_matiere(name, serie, temps_preparation, temps_preparation_tiers_temps, t
             db.session.add(matiere)
             db.session.commit()
             logging.warning('La matière a bien été créée')
+            if ret:
+                return [['La matière a bien été créée', 'success'], matiere]
             return ['La matière a bien été créée', 'success']
         else:
+            if ret:
+                return [matiere.unvalid]
             return matiere.unvalid
     except Exception:
         logging.warning('Erreur : ' + traceback.format_exc())
@@ -152,15 +162,19 @@ def delete_matiere(id):
         return ['Erreur : ' + traceback.format_exc(), 'danger']
 
 
-def add_salle(numero):
+def add_salle(numero, ret=False):
     try:
         salle = SALLE(numero)
         if not salle.unvalid:
             db.session.add(salle)
             db.session.commit()
             logging.warning('La salle a bien été crée')
+            if ret:
+                return [['La salle a bien été crée', 'success'], salle]
             return ['La salle a bien été crée', 'success']
         else:
+            if ret:
+                return [salle.unvalid]
             return salle.unvalid
     except Exception:
         logging.warning('Erreur : ' + traceback.format_exc())
@@ -202,7 +216,7 @@ def delete_token(token):
     db.session.commit()
 
 
-def add_professeur(email, nom, prenom, salle, matieres=None, token=None, admin=False, heure_arrivee1=None, heure_depart1=None, heure_arrivee2=None, heure_depart2=None, heure_arrivee3=None, heure_depart3=None):
+def add_professeur(email, nom, prenom, salle, matieres=None, token=None, admin=False, heure_arrivee1="08:00", heure_depart1="20:00", heure_arrivee2="08:00", heure_depart2="20:00", heure_arrivee3="08:00", heure_depart3="20:00", ret=False):
     try:
         # user = add_account(email, 'test123', 'Professeur',
         #                    output=True, id_prof=1)
@@ -217,8 +231,9 @@ def add_professeur(email, nom, prenom, salle, matieres=None, token=None, admin=F
             logging.warning('Le professeur a bien été créé')
 
             # Token creation
-            add_token(email, token, admin, professeur.id_professeur)
-            logging.warning('Le token a bien été créé')
+            if token:
+                add_token(email, token, admin, professeur.id_professeur)
+                logging.warning('Le token a bien été créé')
 
             if matieres:
                 for matiere in matieres:
@@ -241,9 +256,12 @@ def add_professeur(email, nom, prenom, salle, matieres=None, token=None, admin=F
                 db.session.add(horaires)
                 db.session.commit()
                 logging.warning('L\'horaire a bien été créé')
-
+            if ret:
+                return [['Le professeur a bien été créé', 'success'], professeur]
             return ['Le professeur a bien été créé', 'success']
         else:
+            if ret:
+                return [professeur.unvalid]
             return professeur.unvalid
     except Exception:
         logging.warning('Erreur : ' + traceback.format_exc())
@@ -368,7 +386,7 @@ def add_candidat(nom, prenom, id_serie, tiers_temps, absent, output=False):
             return ['Le candidat a bien été crée', 'success']
         else:
             if output:
-                return (candidat, candidat.unvalid)
+                return (candidat, candidat.unvalid[0], candidat.unvalid[1])
             return candidat.unvalid
     except Exception:
         if output:
@@ -437,7 +455,7 @@ def delete_choix_matiere(id):
         return ['Erreur : ' + traceback.format_exc(), 'danger']
 
 
-def add_creneau(id_candidat, id_matiere, id_salle, debut_preparation, fin_preparation, fin, auto_commit=True):
+def add_creneau(id_candidat, id_matiere, id_salle, debut_preparation, fin_preparation, fin, auto_commit=True, ret=False):
     try:
         if type(debut_preparation) == str:
             debut_preparation = datetime.strptime(
@@ -454,8 +472,12 @@ def add_creneau(id_candidat, id_matiere, id_salle, debut_preparation, fin_prepar
             if auto_commit:
                 db.session.commit()
             logging.warning('Le créneau a correctement été crée')
+            if ret:
+                return [['Le créneau a correctement été crée', 'success'], creneau]
             return ['Le créneau a correctement été crée', 'success']
         else:
+            if ret:
+                return [creneau.unvalid]
             return creneau.unvalid
     except Exception:
         logging.warning(traceback.format_exc())

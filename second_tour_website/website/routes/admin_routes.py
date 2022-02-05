@@ -25,7 +25,7 @@ def accueil():
             elif form.get('excel_button') is not None:
                 filename = app.config['UPLOAD_FOLDER'] + "/donees.xlsx"
                 writer = pd.ExcelWriter(filename)
-                for table in [CRENEAU, CANDIDATS, PROFESSEUR, SALLE, SERIE, MATIERES, CHOIX_MATIERE, UTILISATEURS, LISTE_MATIERE, TOKEN]:
+                for table in [CRENEAU, CANDIDATS, PROFESSEUR, SALLE, SERIE, MATIERES, CHOIX_MATIERE, UTILISATEURS, LISTE_MATIERE, TOKEN, HORAIRES]:
                     records = db.session.query(table).all()
                     data_list = [main_database.to_dict(
                         item) for item in records]
@@ -196,8 +196,9 @@ def salles():
 
         all_choix_matieres = CHOIX_MATIERE.query.all()
         all_liste_matiere = LISTE_MATIERE.query.all()
+        all_series = SERIE.query.all()
 
-        return render_template('admin/salles.html', all_salles=all_salles, all_professeurs=all_professeurs, all_matieres=all_matieres, all_creneaux=all_creneaux, all_candidats=all_candidats, all_choix_matieres=all_choix_matieres, all_liste_matiere=all_liste_matiere)
+        return render_template('admin/salles.html', all_salles=all_salles, all_professeurs=all_professeurs, all_matieres=all_matieres, all_creneaux=all_creneaux, all_candidats=all_candidats, all_choix_matieres=all_choix_matieres, all_liste_matiere=all_liste_matiere, all_series=all_series)
     else:
         return redirect(url_for('main_routes.connexion'))
 
