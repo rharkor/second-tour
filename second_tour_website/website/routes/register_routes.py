@@ -2,7 +2,8 @@ import logging
 import traceback
 from flask import Blueprint, render_template, session, request, redirect, url_for, send_file
 from flask.helpers import flash
-from itsdangerous import exc
+import os
+
 
 from ..function import main_security, main_sessions, main_database, main_calendrier
 from ..database.main_database import *
@@ -19,8 +20,12 @@ def register():
         form = request.form
         if 'email' in form and 'token' in form and 'password' in form:
             try:
-                exist = TOKEN.query.filter_by(token=form['token']).one()
-                if exist and exist.email == form['email']:
+                response = ask_api("data/fetchfilter/token", {"token": form['token']})
+                if response.status_code != 200:
+                    flash("Une erreur est survenue lors de la récupération des données", "danger")
+                exist = response.json()[0] if response else None
+                # exist = TOKEN.query.filter_by(token=form['token']).one()
+                if exist and exist['email'] == form['email']:
                     user = main_database.add_account(form['email'], form['password'], 'Professeur', output=True, id_prof=1)
                     if user[1][1] == 'danger':
                         flash(user[1][0], user[1][1])
@@ -38,7 +43,11 @@ def register():
     else:
         token = request.args.get('token')
         try:
-            email = TOKEN.query.filter_by(token=token).one().email
+            response = ask_api("data/fetchfilter/token", {"token": token})
+            if response.status_code != 200:
+                flash("Une erreur est survenue lors de la récupération des données", "danger")
+            email = response.json()[0]['email'] if response else None
+            # email = TOKEN.query.filter_by(token=token).one().email
             return render_template('register/register.html', token=token, email=email)
         except Exception:
             traceback.print_exc()

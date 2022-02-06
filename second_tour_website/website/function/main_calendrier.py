@@ -16,18 +16,26 @@ def generation_calendrier():
     
     
     # Delete all creneaux
-    all_creneaux = CRENEAU.query.all()
-    for creneau in all_creneaux:
-        db.session.delete(creneau)
-    db.session.commit()
+    # all_creneaux = CRENEAU.query.all()
+    # for creneau in all_creneaux:
+    #     db.session.delete(creneau)
+    # db.session.commit()
+    response = ask_api("data/delete/creneau")
+    if response.status_code != 200:
+        flash("Une erreur est survenue lors de la récupération des données", "danger")
 
-    all_candidats = CANDIDATS.query.all()
-    all_professeurs = PROFESSEUR.query.all()
-    all_liste_matiere = LISTE_MATIERE.query.all()
-    all_choix_matieres = CHOIX_MATIERE.query.all()
-    all_matieres = MATIERES.query.all()
-    all_series = SERIE.query.all()
-    all_salles = SALLE.query.all()
+    response = ask_api("data/fetch", ["candidat", "professeur", "liste_matiere", "choix_matiere", "matiere", "serie", "salle"])
+    if response.status_code != 200:
+        flash("Une erreur est survenue lors de la récupération des données", "danger")
+    all_candidats, all_professeurs, all_liste_matiere, all_choix_matieres, all_matieres, all_series, all_salles = response.json()
+    
+    # all_candidats = CANDIDATS.query.all()
+    # all_professeurs = PROFESSEUR.query.all()
+    # all_liste_matiere = LISTE_MATIERE.query.all()
+    # all_choix_matieres = CHOIX_MATIERE.query.all()
+    # all_matieres = MATIERES.query.all()
+    # all_series = SERIE.query.all()
+    # all_salles = SALLE.query.all()
 
     # Create a var that contain all serie general
     series_generale = []
@@ -285,12 +293,18 @@ def order_by(e):
 
 
 def test_calendar_complete():
-    all_choix_matiere = CHOIX_MATIERE.query.all()
+    response = ask_api("data/fetchmulti", ["creneau", "candidat", "choix_matiere"])
+    if response.status_code != 200:
+        flash("Une erreur est survenue lors de la récupération des données", "danger")
+    all_creneaux, all_candidats, all_choix_matiere = response.json()
+    
+    # all_choix_matiere = CHOIX_MATIERE.query.all()
     # Because all_choix_matiere is immutable
     all_choix_matiere_left = deepcopy(all_choix_matiere)
-    all_creneaux = CRENEAU.query.all()
     
-    all_candidats = CANDIDATS.query.all()
+    
+    # all_creneaux = CRENEAU.query.all()
+    # all_candidats = CANDIDATS.query.all()
 
     matiere_left = 0
     for _ in all_choix_matiere:

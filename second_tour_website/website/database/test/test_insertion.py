@@ -17,6 +17,9 @@ def main_insert():
     # First of all we suppress all the data
     main_database.delete_all_content()
     
+    # Insert admin
+    main_database.insert_admin()
+    
     
     
     # serie

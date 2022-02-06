@@ -3,9 +3,9 @@ load_dotenv()
 from website.main_website import app, db, logging
 
 
-def main():
+def main(debug_mode=True):
     test()
-    run(debug_mode=True)
+    run(debug_mode=debug_mode)
 
 
 def test():
