@@ -71,3 +71,7 @@ def connexion():
             flash('Cet utilisateur n\'existe pas', 'warning')
             logging.warning('Cet utilisateur n\'existe pas')
     return render_template('connexion.html')
+
+@main_routes.route('/cgu')
+def cgu():
+    return render_template('cgu.html')
