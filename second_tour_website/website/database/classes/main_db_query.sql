@@ -25,7 +25,7 @@ create table if not exists serie
     specialite1 varchar(50) not null,
     specialite2 varchar(50) null,
     constraint UNQ_NOM_SPE1_SPE2
-        unique (nom, specialite1, specialite2)
+        unique (nom, specialite1, specialite2),
 );
 
 create table if not exists candidat

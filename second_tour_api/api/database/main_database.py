@@ -21,14 +21,15 @@ class MySQLDatabase:
         
     def query(self, _query: string):
         if self.db:
-            mycursor = self.db.cursor(dictionary=True)
+            mycursor = self.db.cursor(dictionary=True, buffered=True)
             mycursor.execute(_query)
-            if "SELECT" in _query:
+            if "SELECT" in _query or "SHOW" in _query:
                 myresult = mycursor.fetchall()
                 output = json.loads(json.dumps(list(myresult), default = self.myconverter))
             else:
                 myresult = mycursor.lastrowid
                 output = json.loads(json.dumps({"id": myresult}, default = self.myconverter))
+            mycursor.close()
             return output
         else:
             raise Exception('Please connect the db first')

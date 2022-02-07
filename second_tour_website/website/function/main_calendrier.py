@@ -308,27 +308,27 @@ def test_calendar_complete():
 
     matiere_left = 0
     for _ in all_choix_matiere:
-        if _.matiere1:
+        if _["matiere1"]:
             matiere_left += 1
-        if _.matiere2:
+        if _["matiere2"]:
             matiere_left += 1
 
     i = 0
     for choix_matiere in all_choix_matiere:
         candidat = None
         for a_candidat in all_candidats:
-            if a_candidat.id_candidat == choix_matiere.id_candidat:
+            if a_candidat["id_candidat"] == choix_matiere["id_candidat"]:
                 candidat = a_candidat
         matiere1, matiere2 = False, False
         for creneau in all_creneaux:
-            if creneau.id_candidat == choix_matiere.id_candidat:
-                if creneau.id_matiere == choix_matiere.matiere1:
+            if creneau["id_candidat"] == choix_matiere["id_candidat"]:
+                if creneau["id_matiere"] == choix_matiere["matiere1"]:
                     matiere1 = True
                     matiere_left -= 1
-                elif creneau.id_matiere == choix_matiere.matiere2:
+                elif creneau["id_matiere"] == choix_matiere["matiere2"]:
                     matiere2 = True
                     matiere_left -= 1
-        if candidat.absent:
+        if candidat["absent"]:
             if not matiere1:
                 matiere_left -= 1 
             else:

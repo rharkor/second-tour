@@ -4,6 +4,7 @@ import logging
 from urllib import response
 
 from flask.helpers import flash
+from itsdangerous import json
 
 from . import main_security
 from ..database.main_database import *
@@ -94,12 +95,12 @@ def delete_account(id):
 
 def add_serie(serie_choice, specialite1, specialite2, ret=False):
     try:
-        serie = {"id_serie": "null", "nom": serie_choice, "specialite1": specialite1, "specialite2": specialite2}
+        serie = {"id_serie": "null", "nom": serie_choice, "specialite1": specialite1, "specialite2": specialite2 if specialite2 else "null"}
         response = ask_api("data/insert/serie", serie)
         if response.status_code != 201:
             logging.warning("Erreur lors de l'insertion d'une serie")
             if ret:
-                return (serie, "Erreur lors de l'insertion d'une serie")
+                return (["Erreur lors de l'insertion d'une serie", "danger"], serie)
             return "Erreur lors de l'insertion d'une serie", "danger"
         serie["id_serie"] = response.json()["id"]
         if not ret:
@@ -189,16 +190,20 @@ def add_matiere(name, serie_id, temps_preparation, temps_preparation_tiers_temps
         response = ask_api("data/fetchfilter/serie", serie_filter)
         if response.status_code != 200:
             logging.warning("Erreur lors de la récupération de la serie")
+            if ret:
+                return ("Erreur lors de la récupération des series", "danger")
             return "Erreur lors de la récupération des series", "danger"
         serie = response.json()[0]
         if serie:
             serie_name = serie["specialite1"] if serie["specialite2"] is None else serie["specialite1"] + "/" + serie["specialite2"]
         else:
             logging.warning(f"Erreur : No serie found at this id ({serie_id})")
+            if ret:
+                return ("Erreur lors de la récupération de la serie correspondantes", "danger")
             return "Erreur lors de la récupération de la serie correspondantes", "danger"
         name_complete = f"{name} - {serie_name}"
         
-        matiere = {"id_matiere": "null", "id_serie": serie, "nom": name, "nom_complet": name_complete, "temps_preparation": temps_preparation, "temps_preparation_tiers_temps": temps_preparation_tiers_temps, "temps_passage": temps_passage, "temps_passage_tiers_temps": temps_passage_tiers_temps, "loge": loge}
+        matiere = {"id_matiere": "null", "id_serie": serie['id_serie'], "nom": name, "nom_complet": name_complete, "temps_preparation": temps_preparation, "temps_preparation_tiers_temps": temps_preparation_tiers_temps, "temps_passage": temps_passage, "temps_passage_tiers_temps": temps_passage_tiers_temps, "loge": loge if loge else "null"}
         response = ask_api("data/insert/matiere", matiere)
         if response.status_code != 201:
             logging.warning("Erreur lors de l'insertion d'une matiere")
@@ -237,6 +242,8 @@ def add_matiere(name, serie_id, temps_preparation, temps_preparation_tiers_temps
         #     return matiere.unvalid
     except Exception:
         logging.warning('Erreur : ' + traceback.format_exc())
+        if not ret:
+            return [['Erreur : ' + traceback.format_exc(), 'danger']]
         return ['Erreur : ' + traceback.format_exc(), 'danger']
 
 
@@ -302,10 +309,11 @@ def add_salle(numero, ret=False):
         salle = {"id_salle": "null", "numero": numero}
         response = ask_api("data/insert/salle", salle)
         if response.status_code != 201:
+            # print(numero)
             logging.warning("Erreur lors de l'insertion d'une salle")
             if ret:
-                return (salle, "Erreur lors de l'insertion d'une salle")
-            return "Erreur lors de l'insertion d'une salle"
+                return (["Erreur lors de l'insertion d'une salle", "danger"],salle)
+            return "Erreur lors de l'insertion d'une salle", "danger"
         salle["id_salle"] = response.json()["id"]
         if not ret:
             return [['La salle a bien été crée', 'success']]
@@ -412,8 +420,8 @@ def add_professeur(email, nom, prenom, salle, matieres=None, token=None, admin=F
         if response.status_code != 201:
             logging.warning("Erreur lors de l'insertion d'un professeur")
             if ret:
-                return (professeur, "Erreur lors de l'insertion d'un professeur")
-            return "Erreur lors de l'insertion d'un professeur"
+                return (["Erreur lors de l'insertion d'un professeur", "danger"],professeur)
+            return "Erreur lors de l'insertion d'un professeur", "danger"
         professeur["id_professeur"] = response.json()["id"]
         
         if token:
@@ -427,23 +435,23 @@ def add_professeur(email, nom, prenom, salle, matieres=None, token=None, admin=F
                 if response.status_code != 201:
                     logging.warning("Erreur lors de l'ajout de la liste matiere")
                     if ret:
-                        return (liste_matiere, "Erreur lors de l'ajout de la liste matiere")
+                        return (["Erreur lors de l'ajout de la liste matiere", "danger"],liste_matiere)
                     return "Erreur lors de l'ajout de la liste matiere", "danger"
                 
         if type(heure_arrivee1) == str:
-            heure_arrivee1 = datetime.strptime(heure_arrivee1, '%H:%M')
-            heure_depart1 = datetime.strptime(heure_depart1, '%H:%M')
-            heure_arrivee2 = datetime.strptime(heure_arrivee2, '%H:%M')+ timedelta(days=1)
-            heure_depart2 = datetime.strptime(heure_depart2, '%H:%M')+ timedelta(days=1)
-            heure_arrivee3 = datetime.strptime(heure_arrivee3, '%H:%M')+ timedelta(days=2)
-            heure_depart3 = datetime.strptime(heure_depart3, '%H:%M')+ timedelta(days=2)
+            heure_arrivee1 = json.loads(json.dumps(datetime.strptime(heure_arrivee1, '%H:%M'), default = myconverter))
+            heure_depart1 = json.loads(json.dumps(datetime.strptime(heure_depart1, '%H:%M'), default = myconverter))
+            heure_arrivee2 = json.loads(json.dumps(datetime.strptime(heure_arrivee2, '%H:%M')+timedelta(days=1), default = myconverter))
+            heure_depart2 = json.loads(json.dumps(datetime.strptime(heure_depart2, '%H:%M')+timedelta(days=1), default = myconverter))
+            heure_arrivee3 = json.loads(json.dumps(datetime.strptime(heure_arrivee3, '%H:%M')+timedelta(days=2), default = myconverter))
+            heure_depart3 = json.loads(json.dumps(datetime.strptime(heure_depart3, '%H:%M')+timedelta(days=2), default = myconverter))
         # horaires = HORAIRE(heure_arrivee1, heure_depart1, heure_arrivee2, heure_depart2, heure_arrivee3, heure_depart3, professeur.id_professeur)
         horaire = {"id_horaire": "null", "horaire_arr1": heure_arrivee1, "horaire_dep1": heure_depart1, "horaire_arr2": heure_arrivee2, "horaire_dep2": heure_depart2, "horaire_arr3": heure_arrivee3, "horaire_dep3": heure_depart3, "id_professeur": professeur["id_professeur"]}
         response = ask_api("data/insert/horaire", horaire)
         if response.status_code != 201:
             logging.warning("Erreur lors de l'ajout des horaires du professeur")
             if ret:
-                return (horaire, "Erreur lors de l'ajout des horaires du professeur")
+                return (["Erreur lors de l'ajout des horaires du professeur", 'danger'], horaire)
             return "Erreur lors de l'ajout des horaires du professeur", "danger"
                 
         if ret:
@@ -564,12 +572,13 @@ def update_professeur_wep(id, user, nom, prenom, salle, matieres=None, heure_arr
                     logging.warning("Erreur lors de l'insertion des matieres du professeur")
                     return "Erreur lors de l'insertion des matieres du professeur", "danger"
                 
-        heure_arrivee1=datetime.strptime(heure_arrivee1, '%H:%M')
-        heure_depart1=datetime.strptime(heure_depart1, '%H:%M')
-        heure_arrivee2=datetime.strptime(heure_arrivee2, '%H:%M')+ timedelta(days=1)
-        heure_depart2=datetime.strptime(heure_depart2, '%H:%M')+ timedelta(days=1)
-        heure_arrivee3=datetime.strptime(heure_arrivee3, '%H:%M')+ timedelta(days=2)
-        heure_depart3=datetime.strptime(heure_depart3, '%H:%M')+ timedelta(days=2)
+        heure_arrivee1 = json.loads(json.dumps(datetime.strptime(heure_arrivee1, '%H:%M'), default = myconverter))
+        heure_depart1 = json.loads(json.dumps(datetime.strptime(heure_depart1, '%H:%M'), default = myconverter))
+        heure_arrivee2 = json.loads(json.dumps(datetime.strptime(heure_arrivee2, '%H:%M')+timedelta(days=1), default = myconverter))
+        heure_depart2 = json.loads(json.dumps(datetime.strptime(heure_depart2, '%H:%M')+timedelta(days=1), default = myconverter))
+        heure_arrivee3 = json.loads(json.dumps(datetime.strptime(heure_arrivee3, '%H:%M')+timedelta(days=2), default = myconverter))
+        heure_depart3 = json.loads(json.dumps(datetime.strptime(heure_depart3, '%H:%M')+timedelta(days=2), default = myconverter))
+        
 
                 
         horaire = {"filter": {"id_professeur": id}, "data": {"horaire_arr1": heure_arrivee1, "horaire_dep1": heure_depart1, "horaire_arr2": heure_arrivee2, "horaire_dep2": heure_depart2, "horaire_arr3": heure_arrivee3, "horaire_dep3": heure_depart3}}
@@ -797,7 +806,7 @@ def add_choix_matiere(id_candidat, matiere1, matiere2):
         if response.status_code != 201:
             logging.warning("Erreur lors de la creation du choix de matiere")
             return "Erreur lors de la creation du choix de matiere", 'danger'
-        
+        return ['Les choix du candidat ont bien été crées', 'success']
         # choix_matiere = CHOIX_MATIERE(id_candidat, matiere1, matiere2)
         # if not choix_matiere.unvalid:
         #     db.session.add(choix_matiere)
@@ -956,3 +965,7 @@ def to_dict(row):
     for key in keys:
         rtn_dict[key] = getattr(row, key)
     return rtn_dict
+
+def myconverter(o):
+    if isinstance(o, datetime):
+        return o.strftime("%a %b %d %H:%M:%S %Y")
