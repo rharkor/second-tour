@@ -117,7 +117,7 @@
             right: 40,
             width: 600
         };
-        doc.setFontSize(10);
+        doc.setFontSize(17);
         doc.setLineWidth(4);
         doc.text(20, 20, 'Salle : ' + num_salle.toString());
         //doc.text(200, y = y + 30, "Liste d'émargement");
@@ -132,17 +132,8 @@
                 startY: 70,
                 theme: 'grid',
                 columnStyles: {
-                    0: {
-                        cellWidth: 140,
-                    },
-                    1: {
-                        cellWidth: 140,
-                    },
-                    2: {
-                        cellWidth: 140,
-                    },
-                    3: {
-                        cellWidth: 140,
+                    7: {
+                        cellWidth: 200,
                     },
                 },
                 styles: {
@@ -168,17 +159,8 @@
                         startY: startY,
                         theme: 'grid',
                         columnStyles: {
-                            0: {
-                                cellWidth: 140,
-                            },
-                            1: {
-                                cellWidth: 140,
-                            },
-                            2: {
-                                cellWidth: 140,
-                            },
-                            3: {
-                                cellWidth: 140,
+                            7: {
+                                cellWidth: 200,
                             },
                         },
                         styles: {
@@ -202,7 +184,7 @@
     }
 </script>
 <script>
-    function downloadCalendar(calendar_id) {
+    function downloadCalendar(calendar_id, name='Calendrier.pdf') {
         var doc = new jsPDF('l', 'pt', 'a4');
         var htmlstring = '';
         var tempVarToCheckPageHeight = 0;
@@ -244,9 +226,7 @@
                 }
             }
         })
-
-
-        doc.save('Calendrier.pdf');
+        doc.save(name);
     }
 </script>
 <script>
@@ -291,6 +271,9 @@
         <ul class="list-unstyled ">
           <li>
            <p>Telephone : <a class="text-white" href="tel:0546347932">05 46 34 79 32</a></p>
+          </li>
+          <li>
+            <a class="text-white" href="{{url_for('main_routes.cgu')}}">conditions générales d'utilisation</a>
           </li>
           <li>
             <p>Fax : 05 46 34 22 28</p>

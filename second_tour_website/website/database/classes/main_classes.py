@@ -50,7 +50,7 @@ class PROFESSEUR(db.Model):
     #     return False
 
     # def foreign_iduser(self, id_utilisateur):
-    #     utilisateur = UTILISATEURS.query.filter_by(id=id_utilisateur).first()
+    #     utilisateur = UTILISATEUR.query.filter_by(id=id_utilisateur).first()
     #     if utilisateur:
     #         return False
     #     return ['Aucun utilisateur correspondant', 'danger']
@@ -59,16 +59,16 @@ class PROFESSEUR(db.Model):
         return {c.name: getattr(self, c.name) for c in self.__table__.columns}
 
 
-class UTILISATEURS(db.Model):
-    __tablename__ = 'UTILISATEURS'
-    id = db.Column('id', db.Integer, primary_key=True)
+class UTILISATEUR(db.Model):
+    __tablename__ = 'UTILISATEUR'
+    id_UTILISATEUR = db.Column('id_utilisateur', db.Integer, primary_key=True)
     email = db.Column(db.String(200), nullable=False)
     password = db.Column(db.String(200), nullable=False)
     admin = db.Column(db.Boolean(False), nullable=False)
     id_professeur = db.Column(db.Integer, db.ForeignKey('PROFESSEUR.id_professeur'), nullable=True)
     
     __table_args__ = (
-        db.UniqueConstraint(email, admin, name="UNQ_UTILISATEURS_email"),
+        db.UniqueConstraint(email, admin, name="UNQ_UTILISATEUR_email"),
     )
 
     def __init__(self, email, password, admin, id_professeur):
@@ -85,7 +85,7 @@ class UTILISATEURS(db.Model):
         self.id_professeur = id_professeur
 
     def unique_email_admin(self, email, admin):
-        user = UTILISATEURS.query.filter_by(email=email, admin=admin).first()
+        user = UTILISATEUR.query.filter_by(email=email, admin=admin).first()
         if user:
             return ["Cet utilisateur existe déjà", "danger"]
         return False
@@ -131,8 +131,8 @@ class SERIE(db.Model):
         return {c.name: getattr(self, c.name) for c in self.__table__.columns}
 
 
-class MATIERES(db.Model):
-    __tablename__ = 'MATIERES'
+class MATIERE(db.Model):
+    __tablename__ = 'MATIERE'
     id_matiere = db.Column(db.Integer, primary_key=True)
     id_serie = db.Column(db.Integer, db.ForeignKey('SERIE.id_serie'), nullable=False)
     nom = db.Column(db.String(30), nullable=False)
@@ -165,7 +165,7 @@ class MATIERES(db.Model):
         self.loge = loge
 
     def unique_nom_nom_comp_tps_prepa(self, nom, nom_complet, tpsprepa, tpspassage):
-        matiere = MATIERES.query.filter_by(
+        matiere = MATIERE.query.filter_by(
             nom=nom, nom_complet=nom_complet, temps_preparation=tpsprepa, temps_passage=tpspassage).first()
         if matiere:
             return ["Cette matière existe déja", "danger"]
@@ -185,7 +185,7 @@ class LISTE_MATIERE(db.Model):
     id_liste_matiere = db.Column(
         'id_liste_matiere', db.Integer, primary_key=True)
     id_professeur = db.Column(db.Integer, db.ForeignKey('PROFESSEUR.id_professeur'), nullable=False)
-    id_matiere = db.Column(db.Integer, db.ForeignKey('MATIERES.id_matiere'), nullable=False)
+    id_matiere = db.Column(db.Integer, db.ForeignKey('MATIERE.id_matiere'), nullable=False)
     
     __table_args__ = (
         db.UniqueConstraint(id_professeur, id_matiere, name="UNQ_PROFESSEUR_MATIERE"),
@@ -221,7 +221,7 @@ class LISTE_MATIERE(db.Model):
         return ['Aucun professeur correspondant', 'danger']
 
     def foreign_id_matiere(self, id_matiere):
-        matiere = MATIERES.query.filter_by(
+        matiere = MATIERE.query.filter_by(
             id_matiere=id_matiere).first()
         if matiere:
             return False
@@ -231,8 +231,8 @@ class LISTE_MATIERE(db.Model):
         return {c.name: getattr(self, c.name) for c in self.__table__.columns}
 
 
-class CANDIDATS(db.Model):
-    __tablename__ = 'CANDIDATS'
+class CANDIDAT(db.Model):
+    __tablename__ = 'CANDIDAT'
     id_candidat = db.Column('id_candidat', db.Integer, primary_key=True)
     nom = db.Column(db.String(200), nullable=False)
     prenom = db.Column(db.String(150), nullable=False)
@@ -266,9 +266,9 @@ class CHOIX_MATIERE(db.Model):
     __tablename__ = 'CHOIX_MATIERE'
     id_choix_matiere = db.Column(
         'id_choix_matiere', db.Integer, primary_key=True)
-    id_candidat = db.Column(db.Integer, db.ForeignKey('CANDIDATS.id_candidat'),  nullable=False)
-    matiere1 = db.Column(db.Integer, db.ForeignKey('MATIERES.id_matiere'), nullable=True)
-    matiere2 = db.Column(db.Integer, db.ForeignKey('MATIERES.id_matiere'), nullable=True)
+    id_candidat = db.Column(db.Integer, db.ForeignKey('CANDIDAT.id_candidat'),  nullable=False)
+    matiere1 = db.Column(db.Integer, db.ForeignKey('MATIERE.id_matiere'), nullable=True)
+    matiere2 = db.Column(db.Integer, db.ForeignKey('MATIERE.id_matiere'), nullable=True)
     
     __table_args__ = (
         db.UniqueConstraint(id_candidat, name="UNQ_CANDIDAT"),
@@ -298,14 +298,14 @@ class CHOIX_MATIERE(db.Model):
         return False
 
     def foreign_id_candidat(self, id_candidat):
-        candidat = CANDIDATS.query.filter_by(id_candidat=id_candidat).first()
+        candidat = CANDIDAT.query.filter_by(id_candidat=id_candidat).first()
         if candidat:
             return False
         return ['Aucun candidat correspondant', 'danger']
 
     def foreign_matiere1(self, matiere1):
         if matiere1:
-            matiere = MATIERES.query.filter_by(id_matiere=matiere1).first()
+            matiere = MATIERE.query.filter_by(id_matiere=matiere1).first()
             if matiere:
                 return False
             return ['Aucune matiere correspondante', 'danger']
@@ -313,7 +313,7 @@ class CHOIX_MATIERE(db.Model):
 
     def foreign_matiere2(self, matiere2):
         if matiere2:
-            matiere = MATIERES.query.filter_by(id_matiere=matiere2).first()
+            matiere = MATIERE.query.filter_by(id_matiere=matiere2).first()
             if matiere:
                 return False
             return ['Aucune matiere correspondante', 'danger']
@@ -326,8 +326,8 @@ class CHOIX_MATIERE(db.Model):
 class CRENEAU(db.Model):
     __tablename__ = 'CRENEAU'
     id_creneau = db.Column('id_creneau', db.Integer, primary_key=True)
-    id_candidat = db.Column(db.Integer, db.ForeignKey('CANDIDATS.id_candidat'), nullable=False)
-    id_matiere = db.Column(db.Integer, db.ForeignKey('MATIERES.id_matiere'), nullable=False)
+    id_candidat = db.Column(db.Integer, db.ForeignKey('CANDIDAT.id_candidat'), nullable=False)
+    id_matiere = db.Column(db.Integer, db.ForeignKey('MATIERE.id_matiere'), nullable=False)
     id_salle = db.Column(db.Integer, db.ForeignKey('SALLE.id_salle'), nullable=False)
     debut_preparation = db.Column(db.DateTime, nullable=False)
     fin_preparation = db.Column(db.DateTime, nullable=False)
@@ -374,13 +374,13 @@ class CRENEAU(db.Model):
         return False
 
     def foreign_id_candidat(self, id_candidat):
-        candidat = CANDIDATS.query.filter_by(id_candidat=id_candidat).first()
+        candidat = CANDIDAT.query.filter_by(id_candidat=id_candidat).first()
         if candidat:
             return False
         return ["Aucun candidat correspondant", "danger"]
 
     def foreign_id_matiere(self, id_matiere):
-        matiere = MATIERES.query.filter_by(id_matiere=id_matiere).first()
+        matiere = MATIERE.query.filter_by(id_matiere=id_matiere).first()
         if matiere:
             return False
         return ["Aucune matière correspondante", "danger"]
@@ -401,13 +401,13 @@ class TOKEN(db.Model):
         db.UniqueConstraint('token', name='unique_token'),
     )
     
-    id = db.Column('id', db.Integer, primary_key=True)
+    id_token = db.Column('id_token', db.Integer, primary_key=True)
     email = db.Column(db.String(200), nullable=False)
     token = db.Column(db.String(200), nullable=False)
     id_professeur = db.Column(db.Integer, db.ForeignKey('PROFESSEUR.id_professeur'), nullable=True)
     admin = db.Column(db.Boolean(False), nullable=False)
     # __table_args__ = (
-    #     db.UniqueConstraint(email, name="UNQ_UTILISATEURS_email"),
+    #     db.UniqueConstraint(email, name="UNQ_UTILISATEUR_email"),
     # )
 
     def __init__(self, email, token, id_professeur, admin):
@@ -429,9 +429,9 @@ class TOKEN(db.Model):
     def as_dict(self):
         return {c.name: getattr(self, c.name) for c in self.__table__.columns}
 
-class HORAIRES(db.Model):
-    __tablename__ = 'HORAIRES'
-    id_horaires = db.Column('id_horaires', db.Integer, primary_key=True)
+class HORAIRE(db.Model):
+    __tablename__ = 'HORAIRE'
+    id_horaire = db.Column('id_horaire', db.Integer, primary_key=True)
     horaire_arr1 = db.Column(db.DateTime, nullable=False)
     horaire_dep1 = db.Column(db.DateTime, nullable=False)
     horaire_arr2 = db.Column(db.DateTime, nullable=False)
@@ -459,9 +459,9 @@ class HORAIRES(db.Model):
 
 
     def unique_id_professeur(self, id_professeur):
-        horaires = HORAIRES.query.filter_by(
+        horaire = HORAIRE.query.filter_by(
             id_professeur=id_professeur).first()
-        if horaires:
+        if horaire:
             return ['L\'horaire pour ce professeur existe déjà', 'danger']
         return False
 

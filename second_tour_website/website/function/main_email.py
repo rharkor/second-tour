@@ -1,6 +1,7 @@
 import smtplib
 import logging
 from email.message import EmailMessage
+import os
 
 EMAIL_ADDRESS = 'secondtourdubac@gmail.com'
 EMAIL_PASSWORD = 'scrum123'
@@ -28,7 +29,7 @@ def send_email(email, token):
                 <p style="text-align: center; color:#444444; font-size: 20px">Bonjour le lycée Vieljeux vous invite à créer
                     votre compte pour pouvoir accéder en direct à vôtre emploi
                     du temps pour le second tour du bac</p>
-                <a href="http://10.13.1.135:5000/register?token=''' + str(token) + '''"
+                <a href="''' + os.getenv("WEBSITE_URL") + '''register?token=''' + str(token) + '''"
                     style="font-size: 14px; padding: 6px 12px; margin-bottom: 0; display: inline-block; text-decoration: none; text-align: center; white-space: nowrap; vertical-align: middle;    background-image: none; border: 1px solid transparent; padding: 0.375rem 0.75rem; font-size: 1rem; border-radius: 0.25rem; color: #fff; background-color: #198754; border-color: #198754; margin: 0.25rem 0.125rem; width: 50%"
                     align="center">Cliquez
                     ici pour créer votre compte</a>

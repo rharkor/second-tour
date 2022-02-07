@@ -3,9 +3,9 @@ load_dotenv()
 from website.main_website import app, db, logging
 
 
-def main():
+def main(debug_mode=True):
     test()
-    run(debug_mode=True)
+    run(debug_mode=debug_mode)
 
 
 def test():
@@ -15,11 +15,11 @@ def test():
 
 def run(debug_mode=False):
     logging.warning("Run the server")
-    # Run the database
-    db.create_all()
+    # Create db with the framwork sql alchemy
+    # db.create_all()
     
-    from website.database.test import insert_user
-    insert_user.inser_admin()
+    # from website.database.test import insert_user
+    # insert_user.inser_admin()
 
     # Run the website
     app.run(host="0.0.0.0", port=5000, debug=debug_mode)

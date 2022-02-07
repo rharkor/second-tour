@@ -1,3 +1,4 @@
+from flask import flash
 from pbkdf2 import crypt
 import os
 import traceback
@@ -25,11 +26,16 @@ def test_password(password, user):
 
 def test_session_connected(session, admin):
     if 'email' in session and 'password' in session and 'admin' in session:
-        user = UTILISATEURS.query.filter_by(email=session['email'], admin=session['admin']).first()
+        response = ask_api("data/fetchfilter/utilisateur", {"email": session["email"], "admin": str(session["admin"]).lower()})
+        if response.status_code != 200:
+            flash("Une erreur est survenue lors de la récupérations des utilisateurs", "danger")
+            return False
+        user = response.json()[0] if response else None
+        # user = UTILISATEUR.query.filter_by(email=session['email'], admin=session['admin']).first()
         if user:
-            if session['password'] == user.password:
+            if session['password'] == user['password']:
                 if admin:
-                    return user.admin == True
+                    return user['admin'] == True
                 else:
                     return True
     return False

@@ -9,7 +9,7 @@
                 data-bs-target="#generateCalendarModal">Générer le calendrier</button>
         </form>
         <div class="d-flex flex-row">
-            <button class="btn btn-primary" onclick="downloadCalendar('calendar')"
+            <button class="btn btn-primary" onclick="download_multiplePdf()"
                 style="width: max-content; white-space:nowrap; background-color:blue;">
                 Télécharger
                 <i class=" fas fa-print ml-s"></i>
@@ -31,7 +31,7 @@
         </div>
         {% endfor %}
         <div class="table-responsive thumbnail">
-            <table class="table table-light table-striped" id="calendar">
+            <table class="table table-light table-striped calendar" id="calendarG">
                 <thead>
                     <tr>
                         <th scope="col">
@@ -49,9 +49,9 @@
                         <th scope="col">
                             <div class="th-inner">Série</div>
                             <div class="filter-control">
-                                
-                                    <input type="text" class="form-control finder" onkeyup="finder()" placeholder="">
-                                
+
+                                <input type="text" class="form-control finder" onkeyup="finder()" placeholder="">
+
                             </div>
                         </th>
                         <th scope="col">
@@ -70,17 +70,16 @@
                 </thead>
                 <tbody>
                     {% for candidat in all_candidats %}
+                    {% for serie in all_series %}
+                    {% if serie.id_serie == candidat.id_serie and serie.nom == "Générale" %}
                     <tr>
                         <td scope="row">{{candidat.nom}}</td>
                         <td scope="row">{{candidat.prenom}}</td>
-                        {% for serie in all_series %}
-                        {% if serie.id_serie == candidat.id_serie %}
+
                         <td scope="row">
                             {{serie.nom}} - {% if serie.specialite1 %}{{serie.specialite1}}{% endif %}{% if
                             serie.specialite2 %}/{{serie.specialite2}}{% endif %}
                         </td>
-                        {% endif %}
-                        {% endfor %}
                         {% for creneau in all_creneaux %}
                         {% if creneau.id_candidat == candidat.id_candidat %}
                         <td scope="row">
@@ -96,7 +95,9 @@
                                     {% endif %}
                                     {% endfor %}
                                     {% endif %}</div>
-                                <div>{{creneau.debut_preparation.strftime('%d')}} | {{creneau.debut_preparation.strftime('%Hh%M')}} - {{creneau.fin.strftime('%Hh%M')}}</div>
+                                <div>{{creneau.debut_preparation.strftime('%d')}} |
+                                    {{creneau.debut_preparation.strftime('%Hh%M')}} - {{creneau.fin.strftime('%Hh%M')}}
+                                </div>
                                 {% endif %}
                                 {% endfor %}
                             </div>
@@ -104,6 +105,74 @@
                         {% endif %}
                         {% endfor %}
                     </tr>
+                    {% endif %}
+                    {% endfor %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <br>
+        <div class="table-responsive thumbnail">
+            <table class="table table-light table-striped calendar" id="calendarT">
+                <thead>
+                    <tr>
+                        <th scope="col">
+                            <div class="th-inner">Nom</div>
+                        </th>
+                        <th scope="col">
+                            <div class="th-inner">Prénom</div>
+                        </th>
+                        <th scope="col">
+                            <div class="th-inner">Série</div>
+                        </th>
+                        <th scope="col">
+                            <div class="th-inner">Epreuve 1</div>
+                        </th>
+                        <th scope="col">
+                            <div class="th-inner">Epreuve 2</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for candidat in all_candidats %}
+                    {% for serie in all_series %}
+                    {% if serie.id_serie == candidat.id_serie and serie.nom == "Technologique" %}
+                    <tr>
+                        <td scope="row">{{candidat.nom}}</td>
+                        <td scope="row">{{candidat.prenom}}</td>
+
+                        <td scope="row">
+                            {{serie.nom}} - {% if serie.specialite1 %}{{serie.specialite1}}{% endif %}{% if
+                            serie.specialite2 %}/{{serie.specialite2}}{% endif %}
+                        </td>
+
+                        {% for creneau in all_creneaux %}
+                        {% if creneau.id_candidat == candidat.id_candidat %}
+                        <td scope="row">
+                            <div class="calendar-subject">
+                                {% for matiere in all_matieres %}
+
+                                {% if matiere.id_matiere == creneau.id_matiere %}
+                                <div>{{matiere.nom}} - {% if matiere.loge %}Loge {% for salle in all_salles %}{% if
+                                    matiere.loge == salle.id_salle %}{{salle.numero}}{% endif %}{% endfor %}{% else %}
+                                    {% for salle in all_salles %}
+                                    {% if salle.id_salle == creneau.id_salle %}
+                                    {{salle.numero}}
+                                    {% endif %}
+                                    {% endfor %}
+                                    {% endif %}</div>
+                                <div>{{creneau.debut_preparation.strftime('%d')}} |
+                                    {{creneau.debut_preparation.strftime('%Hh%M')}} - {{creneau.fin.strftime('%Hh%M')}}
+                                </div>
+                                {% endif %}
+                                {% endfor %}
+                            </div>
+                        </td>
+                        {% endif %}
+                        {% endfor %}
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
                     {% endfor %}
                 </tbody>
             </table>
@@ -155,4 +224,13 @@
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block sub_script %}
+<script>
+    function download_multiplePdf() {
+        downloadCalendar('calendarG', 'calendrierSerieGenerale');
+        downloadCalendar('calendarT', 'calendrierSerieTechnologique');
+    }
+</script>
 {% endblock %}

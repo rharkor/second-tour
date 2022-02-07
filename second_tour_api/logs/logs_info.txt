@@ -1,0 +1,72 @@
+2022-02-06 17:13:39,729 Updating rows in salle, rows informations : {'id_salle': '239', 'numero': 'D150'}
+2022-02-06 17:13:39,731 Traceback (most recent call last):
+  File "C:\users\louid\appdata\local\programs\python\python39\lib\site-packages\mysql\connector\connection_cext.py", line 523, in cmd_query
+    self._cmysql.query(query,
+_mysql_connector.MySQLInterfaceError: Erreur de syntaxe près de ''id_salle' = 239 , 'numero' = 'D150' WHERE id_salle = 239' à la ligne 1
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\louid\OneDrive\Documents\EspaceDeTravail\S2\PTS\pts2021_sujet14\second_tour_api\.\api\routes\advanced_auto_conf_routes\main_advanced_routes.py", line 226, in update_table_by_filter
+    content = db.query(f"UPDATE {table} SET " + row_content + f" WHERE id_{table} = {content['id_' + table]};")
+  File "C:\Users\louid\OneDrive\Documents\EspaceDeTravail\S2\PTS\pts2021_sujet14\second_tour_api\.\api\database\main_database.py", line 25, in query
+    mycursor.execute(_query)
+  File "C:\users\louid\appdata\local\programs\python\python39\lib\site-packages\mysql\connector\cursor_cext.py", line 269, in execute
+    result = self._cnx.cmd_query(stmt, raw=self._raw,
+  File "C:\users\louid\appdata\local\programs\python\python39\lib\site-packages\mysql\connector\connection_cext.py", line 528, in cmd_query
+    raise errors.get_mysql_exception(exc.errno, msg=exc.msg,
+mysql.connector.errors.ProgrammingError: 1064 (42000): Erreur de syntaxe près de ''id_salle' = 239 , 'numero' = 'D150' WHERE id_salle = 239' à la ligne 1
+
+2022-02-06 17:14:43,415 Updating rows in salle, rows informations : {'id_salle': '239', 'numero': 'D150'}
+2022-02-06 17:23:25,946 Updating rows in salle, rows informations : {'filter': {'id_salle': 239}, 'data': {'numero': 'D151'}}
+2022-02-06 17:23:25,947 Traceback (most recent call last):
+  File "C:\Users\louid\OneDrive\Documents\EspaceDeTravail\S2\PTS\pts2021_sujet14\second_tour_api\.\api\routes\advanced_auto_conf_routes\main_advanced_routes.py", line 232, in update_table_by_filter
+    condition += filter_content.keys()[i] + " = " + filter_content.values()[i]
+TypeError: 'dict_keys' object is not subscriptable
+
+2022-02-06 17:23:55,767 Updating rows in salle, rows informations : {'filter': {'id_salle': 239}, 'data': {'numero': 'D151'}}
+2022-02-06 17:23:55,767 Traceback (most recent call last):
+  File "C:\Users\louid\OneDrive\Documents\EspaceDeTravail\S2\PTS\pts2021_sujet14\second_tour_api\.\api\routes\advanced_auto_conf_routes\main_advanced_routes.py", line 232, in update_table_by_filter
+    condition += list(filter_content.keys())[i] + " = " + list(filter_content.values())[i]
+TypeError: can only concatenate str (not "int") to str
+
+2022-02-06 17:24:02,711 Updating rows in salle, rows informations : {'filter': {'id_salle': '239'}, 'data': {'numero': 'D151'}}
+2022-02-06 17:46:50,505 Inserting row in utilisateur, row informations : {'id_utilisateur': 'null', 'email': 'test@gmail.com', 'password': 'test123', 'admin': 'false', 'id_professeur': 'null'}
+2022-02-06 17:50:09,337 Inserting row in utilisateur, row informations : {'id_utilisateur': 'null', 'email': 'test@gmail.com', 'password': 'test123', 'admin': 'false', 'id_professeur': 'null'}
+2022-02-06 17:50:09,349 Traceback (most recent call last):
+  File "C:\users\louid\appdata\local\programs\python\python39\lib\site-packages\mysql\connector\connection_cext.py", line 523, in cmd_query
+    self._cmysql.query(query,
+_mysql_connector.MySQLInterfaceError: Duplicata du champ 'test@gmail.com-0' pour la clef 'UNQ_utilisateur_email'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\louid\OneDrive\Documents\EspaceDeTravail\S2\PTS\pts2021_sujet14\second_tour_api\.\api\routes\advanced_auto_conf_routes\main_advanced_routes.py", line 130, in insert_a_row
+    content = db.query(f"INSERT INTO {table} ({keys}) VALUES ({values});")
+  File "C:\Users\louid\OneDrive\Documents\EspaceDeTravail\S2\PTS\pts2021_sujet14\second_tour_api\.\api\database\main_database.py", line 25, in query
+    mycursor.execute(_query)
+  File "C:\users\louid\appdata\local\programs\python\python39\lib\site-packages\mysql\connector\cursor_cext.py", line 269, in execute
+    result = self._cnx.cmd_query(stmt, raw=self._raw,
+  File "C:\users\louid\appdata\local\programs\python\python39\lib\site-packages\mysql\connector\connection_cext.py", line 528, in cmd_query
+    raise errors.get_mysql_exception(exc.errno, msg=exc.msg,
+mysql.connector.errors.IntegrityError: 1062 (23000): Duplicata du champ 'test@gmail.com-0' pour la clef 'UNQ_utilisateur_email'
+
+2022-02-06 17:50:23,468 Inserting row in utilisateur, row informations : {'id_utilisateur': 'null', 'email': 'test@gmail.com', 'password': 'test123', 'admin': 'false', 'id_professeur': 'null'}
+2022-02-06 17:50:23,469 Traceback (most recent call last):
+  File "C:\Users\louid\OneDrive\Documents\EspaceDeTravail\S2\PTS\pts2021_sujet14\second_tour_api\.\api\routes\advanced_auto_conf_routes\main_advanced_routes.py", line 130, in insert_a_row
+    content = db.query(f"INSERT INTO {table} ({keys}) VALUES ({values});")
+  File "C:\Users\louid\OneDrive\Documents\EspaceDeTravail\S2\PTS\pts2021_sujet14\second_tour_api\.\api\database\main_database.py", line 30, in query
+    myresult = mycursor.lastrow
+AttributeError: 'CMySQLCursorDict' object has no attribute 'lastrow'
+
+2022-02-06 17:51:50,064 Inserting row in utilisateur, row informations : {'id_utilisateur': 'null', 'email': 'test@gmail.com', 'password': 'test123', 'admin': 'false', 'id_professeur': 'null'}
+2022-02-06 17:51:50,070 Traceback (most recent call last):
+  File "C:\Users\louid\OneDrive\Documents\EspaceDeTravail\S2\PTS\pts2021_sujet14\second_tour_api\.\api\routes\advanced_auto_conf_routes\main_advanced_routes.py", line 130, in insert_a_row
+    content = db.query(f"INSERT INTO {table} ({keys}) VALUES ({values});")
+  File "C:\Users\louid\OneDrive\Documents\EspaceDeTravail\S2\PTS\pts2021_sujet14\second_tour_api\.\api\database\main_database.py", line 31, in query
+    output = json.loads(json.dumps(list(myresult), default = self.myconverter))
+TypeError: 'int' object is not iterable
+
+2022-02-06 17:53:13,280 Inserting row in utilisateur, row informations : {'id_utilisateur': 'null', 'email': 'test@gmail.com', 'password': 'test123', 'admin': 'false', 'id_professeur': 'null'}
+2022-02-06 19:26:23,559 Selecting rows in serie, rows informations : {'id_serie': '54'}
+2022-02-06 19:37:11,996 delete_row: table=horaire id=None

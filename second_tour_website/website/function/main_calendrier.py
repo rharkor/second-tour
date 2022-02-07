@@ -16,18 +16,26 @@ def generation_calendrier():
     
     
     # Delete all creneaux
-    all_creneaux = CRENEAU.query.all()
-    for creneau in all_creneaux:
-        db.session.delete(creneau)
-    db.session.commit()
+    # all_creneaux = CRENEAU.query.all()
+    # for creneau in all_creneaux:
+    #     db.session.delete(creneau)
+    # db.session.commit()
+    response = ask_api("data/delete/creneau")
+    if response.status_code != 200:
+        flash("Une erreur est survenue lors de la récupération des données", "danger")
 
-    all_candidats = CANDIDATS.query.all()
-    all_professeurs = PROFESSEUR.query.all()
-    all_liste_matiere = LISTE_MATIERE.query.all()
-    all_choix_matieres = CHOIX_MATIERE.query.all()
-    all_matieres = MATIERES.query.all()
-    all_series = SERIE.query.all()
-    all_salles = SALLE.query.all()
+    response = ask_api("data/fetch", ["candidat", "professeur", "liste_matiere", "choix_matiere", "matiere", "serie", "salle"])
+    if response.status_code != 200:
+        flash("Une erreur est survenue lors de la récupération des données", "danger")
+    all_candidats, all_professeurs, all_liste_matiere, all_choix_matieres, all_matieres, all_series, all_salles = response.json()
+    
+    # all_candidats = CANDIDATS.query.all()
+    # all_professeurs = PROFESSEUR.query.all()
+    # all_liste_matiere = LISTE_MATIERE.query.all()
+    # all_choix_matieres = CHOIX_MATIERE.query.all()
+    # all_matieres = MATIERES.query.all()
+    # all_series = SERIE.query.all()
+    # all_salles = SALLE.query.all()
 
     # Create a var that contain all serie general
     series_generale = []
@@ -113,6 +121,8 @@ def generation_calendrier():
             traceback.print_exc()
             logging.warning(traceback.format_exc())
 
+        local_creneau = CRENEAU.query.all()
+
         # Because two choix matieres
         for x in range(0, 2):
 
@@ -132,7 +142,7 @@ def generation_calendrier():
                     for a_salle in salle_matiere:
                         # reset the var
                         aucune_collision = True
-                        all_creneaux = CRENEAU.query.all()
+                        all_creneaux = local_creneau
 
                         for creneau in all_creneaux:
                             if creneau.debut_preparation.day == jour_debut_preparation_voulue:
@@ -183,8 +193,12 @@ def generation_calendrier():
 
                                 # Test if the prof don't have too many course
                                 if aucune_collision:
-                                    all_creneau_test_break = CRENEAU.query.order_by(
-                                        CRENEAU.debut_preparation).filter_by(id_salle=a_salle.id_salle).all()
+
+                                    local_creneau_test_break = local_creneau
+                                    local_creneau_test_break.sort(key=order_by)
+                                    local_creneau_test_break_filtered = filter(lambda creneau: creneau.id_salle == a_salle.id_salle, local_creneau_test_break)
+                                                                            
+                                    all_creneau_test_break = list(local_creneau_test_break_filtered)
                                     break_time = 0
                                     creneau_prec = all_creneau_test_break[0] if len(
                                         all_creneau_test_break) > 0 else []
@@ -201,16 +215,16 @@ def generation_calendrier():
                                                 aucune_collision = False
 
                                 # Test only morning or only afternoon
-                                first_creneau = CRENEAU.query.filter_by(
-                                    id_candidat=candidat.id_candidat).first()
+                                first_creneau = list(filter(lambda creneau: creneau.id_candidat == candidat.id_candidat, local_creneau))
+                                first_creneau = first_creneau[0] if first_creneau else None
                                 if first_creneau \
                                     and (((first_creneau.debut_preparation.hour) <= 13 and heure_debut_preparation_voulue >= timedelta(hours=14))
                                          or ((first_creneau.debut_preparation.hour) >= 14 and heure_debut_preparation_voulue <= timedelta(hours=13))):
                                     aucune_collision = False
 
                             # Test both same day
-                            first_creneau = CRENEAU.query.filter_by(
-                                id_candidat=candidat.id_candidat).first()
+                            first_creneau = list(filter(lambda creneau: creneau.id_candidat == candidat.id_candidat, local_creneau))
+                            first_creneau = first_creneau[0] if first_creneau else None
                             if first_creneau \
                                     and (first_creneau.debut_preparation.day != jour_debut_preparation_voulue):
                                 aucune_collision = False
@@ -240,9 +254,10 @@ def generation_calendrier():
                                 fin_passage_matiere_datetime = datetime.strptime(f'{jour_debut_preparation_voulue}/{datetime.now().month}/{datetime.now().year} ' + str((
                                     heure_debut_preparation_voulue + temps_preparation_matiere + temps_passage_matiere)), '%d/%m/%Y %H:%M:%f')
                                 res = main_database.add_creneau(candidat.id_candidat, matiere.id_matiere, a_salle.id_salle,
-                                                                heure_debut_preparation_voulue_datetime, fin_preparation_matiere_datetime, fin_passage_matiere_datetime, auto_commit=False)
+                                                                heure_debut_preparation_voulue_datetime, fin_preparation_matiere_datetime, fin_passage_matiere_datetime, auto_commit=False, ret=True)
                                 if res[1] == 'danger':
                                     logging.warning(res[0])
+                                local_creneau.append(res[1])
                             heure_debut_preparation_voulue = timedelta(
                                 hours=20)
                             break
@@ -273,14 +288,23 @@ def convert_minute_to_string(time):
     h, m = int(time/60), int(time % 60)
     return f"{h}:{m}"
 
+def order_by(e):
+  return e.debut_preparation
+
 
 def test_calendar_complete():
-    all_choix_matiere = CHOIX_MATIERE.query.all()
+    response = ask_api("data/fetchmulti", ["creneau", "candidat", "choix_matiere"])
+    if response.status_code != 200:
+        flash("Une erreur est survenue lors de la récupération des données", "danger")
+    all_creneaux, all_candidats, all_choix_matiere = response.json()
+    
+    # all_choix_matiere = CHOIX_MATIERE.query.all()
     # Because all_choix_matiere is immutable
     all_choix_matiere_left = deepcopy(all_choix_matiere)
-    all_creneaux = CRENEAU.query.all()
     
-    all_candidats = CANDIDATS.query.all()
+    
+    # all_creneaux = CRENEAU.query.all()
+    # all_candidats = CANDIDATS.query.all()
 
     matiere_left = 0
     for _ in all_choix_matiere:
