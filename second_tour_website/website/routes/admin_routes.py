@@ -49,6 +49,10 @@ def accueil():
         all_candidats, all_creneaux, all_series, all_matieres, all_professeurs, all_salles = response.json()
         all_candidats.sort(key=lambda candidat: candidat['nom'])
         all_creneaux.sort(key=lambda creneau: creneau['debut_preparation'])
+        for creneau in all_creneaux:
+                    creneau["debut_preparation"] = datetime.strptime(creneau["debut_preparation"], '%a %b %d %H:%M:%S %Y') if type(creneau["debut_preparation"]) == str else creneau["debut_preparation"]
+                    creneau["fin_preparation"] = datetime.strptime(creneau["fin_preparation"], '%a %b %d %H:%M:%S %Y') if type(creneau["fin_preparation"]) == str else creneau["fin_preparation"]
+                    creneau["fin"] = datetime.strptime(creneau["fin"], '%a %b %d %H:%M:%S %Y') if type(creneau["fin"]) == str else creneau["fin"]
         
         # all_candidats = CANDIDAT.query.order_by(CANDIDAT.nom).all()
         # all_creneaux = CRENEAU.query.order_by(CRENEAU.debut_preparation).all()
@@ -146,6 +150,12 @@ def candidats():
         all_candidats, all_choix_matieres, all_series, all_matieres, all_professeurs, all_salles,all_creneaux = response.json()
         all_candidats.sort(key=lambda candidat: candidat['nom'])
         all_creneaux.sort(key=lambda creneau: creneau['debut_preparation'])
+        
+        for creneau in all_creneaux:
+            creneau["debut_preparation"] = datetime.strptime(creneau["debut_preparation"], '%a %b %d %H:%M:%S %Y') if type(creneau["debut_preparation"]) == str else creneau["debut_preparation"]
+            creneau["fin_preparation"] = datetime.strptime(creneau["fin_preparation"], '%a %b %d %H:%M:%S %Y') if type(creneau["fin_preparation"]) == str else creneau["fin_preparation"]
+            creneau["fin"] = datetime.strptime(creneau["fin"], '%a %b %d %H:%M:%S %Y') if type(creneau["fin"]) == str else creneau["fin"]
+
         
                 
         # candidats = CANDIDATS.query.order_by(CANDIDATS.nom).all()
@@ -450,9 +460,16 @@ def creneau():
             flash("Une erreur est survenue lors de la récupération des données", "danger")
         all_candidats, all_series, all_matieres, all_salles, all_choix_matieres, all_professeur, all_creneau, all_liste_matieres = response.json()
         all_creneau.sort(key=lambda creneau: creneau['id_candidat'])
+        for creneau in all_creneau:
+            creneau["debut_preparation"] = datetime.strptime(creneau["debut_preparation"], '%a %b %d %H:%M:%S %Y') if type(creneau["debut_preparation"]) == str else creneau["debut_preparation"]
+            creneau["fin_preparation"] = datetime.strptime(creneau["fin_preparation"], '%a %b %d %H:%M:%S %Y') if type(creneau["fin_preparation"]) == str else creneau["fin_preparation"]
+            creneau["fin"] = datetime.strptime(creneau["fin"], '%a %b %d %H:%M:%S %Y') if type(creneau["fin"]) == str else creneau["fin"]
+
         all_creneau_deb = all_creneau.copy()
         all_creneau.sort(key=lambda creneau: creneau['debut_preparation'])
         all_candidats.sort(key=lambda candidat: candidat['nom'])
+        
+  
 
         # Serialize table
         # creneaux = CRENEAU.query.order_by(CRENEAU.id_candidat).all()

@@ -42,7 +42,6 @@ def connexion():
             response = ask_api("data/fetchfilter/utilisateur", {"email": email, "admin": "true"})
             if response.status_code != 200:
                 flash("Une erreur est survenue lors de la récupération des données", "danger")
-            print(response.json())
             user = response.json()[0] if response else None
             # user = UTILISATEUR.query.filter_by(email=email, admin=True).first()
             if not user:
