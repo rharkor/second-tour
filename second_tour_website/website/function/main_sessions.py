@@ -1,7 +1,7 @@
 def save_user(session, user):
-    session['email'] = user.email
-    session['password'] = user.password
-    session['admin'] = user.admin
+    session['email'] = user["email"]
+    session['password'] = user["password"]
+    session['admin'] = user["admin"]
     session.permanent = True
 
 def delete_user(session):

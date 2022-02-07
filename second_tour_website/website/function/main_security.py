@@ -13,16 +13,18 @@ def hash_password(password):
     # return password
 
 def test_password(password, user):
-    hashed = user.password
+        
+    hashed = user['password']
     
     try:
         test_key = crypt(password, hashed, iterations=1000)
     except Exception:
         traceback.print_exc()
+        
     if test_key == hashed:
         return True
     # return False
-    return password == user.password
+    return password == user['password']
 
 def test_session_connected(session, admin):
     if 'email' in session and 'password' in session and 'admin' in session:
@@ -30,6 +32,7 @@ def test_session_connected(session, admin):
         if response.status_code != 200:
             flash("Une erreur est survenue lors de la récupérations des utilisateurs", "danger")
             return False
+        print(response.json())
         user = response.json()[0] if response else None
         # user = UTILISATEUR.query.filter_by(email=session['email'], admin=session['admin']).first()
         if user:

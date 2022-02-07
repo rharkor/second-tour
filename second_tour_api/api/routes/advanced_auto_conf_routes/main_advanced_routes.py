@@ -1,3 +1,4 @@
+from datetime import datetime
 from http.client import HTTPException
 import logging
 from sqlite3 import ProgrammingError
@@ -69,11 +70,11 @@ def get_table_by_filter(table: str, user: UserContentTableDescription):
         values_brute = list(content.values())
         values = []
         for value in values_brute:
-            values.append(value if value == "null" or value.isnumeric() or value == "true" or value == "false" else f"'{value}'")
+            values.append(value if value == "null" or str(value).isnumeric() or value == "true" or value == "false" else f"'{value}'")
         try:
             condition = ""
             for i in range(0, len(keys)):
-                condition += keys[i] + " = " + values[i] + " AND "
+                condition += keys[i] + " = " + str(values[i]) + " AND "
             content = db.query(f"SELECT * FROM {table} WHERE " + condition +" 1 = 1;")
             output = JSONResponse(status_code=status.HTTP_200_OK, content=content)
         except mysql.connector.errors.ProgrammingError:
@@ -124,7 +125,10 @@ def insert_a_row(table: str, user: UserContentTableDescription):
         values_brute = list(content.values())
         values = []
         for value in values_brute:
-            values.append(value if value == "null" or value.isnumeric() or value == "true" or value == "false" else f"'{value}'")
+            try:
+                values.append("'"+datetime.strptime(value, "%a %b %d %H:%M:%S %Y").strftime('%Y-%m-%d %H:%M:%S')+"'")
+            except Exception:
+                values.append(str(value) if value == "null" or str(value).isnumeric() or value == "true" or value == "false" else f"'{value}'")
         values = ",".join(values)
         try:
             content = db.query(f"INSERT INTO {table} ({keys}) VALUES ({values});")
