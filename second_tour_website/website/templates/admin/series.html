@@ -32,6 +32,7 @@
                         </th>
                         <th scope="col" class="align-text-top">Spécialité 1</th>
                         <th scope="col" class="align-text-top">Spécialité 2</th>
+                        <th scope="col" class="modifier align-text-top">Modifier</th>
                         <th scope="col" class="supprimer align-text-top">Supprimer</th>
                     </tr>
                 </thead>
@@ -42,6 +43,14 @@
                         <td scope="row">{% if an_serie.specialite1: %}{{an_serie.specialite1}}{% endif %}
                         </td>
                         <td scope="row">{% if an_serie.specialite2: %}{{an_serie.specialite2}}{% endif %}
+                        </td>
+                        <td scope="row">
+                            <form method="post" action="{{url_for('admin_routes.series')}}" id="modifySerieForm{{an_serie.id_serie}}">
+                                <input type="hidden" name="id" value="{{an_serie.id_serie}}">
+                                <button type="button" id="{{an_serie.id_serie}}" data-bs-toggle="modal"
+                                    data-bs-target="#modifyModal"
+                                    class="modifRow btn btn-outline-danger">Modifier</button>
+                            </form>
                         </td>
                         <td scope="row">
                             <form method="post" action="{{url_for('admin_routes.series')}}"
@@ -168,6 +177,43 @@
         </div>
     </div>
 
+    <div class="modal fade" id="modifySerieModal" tabindex="-1" role="dialog" aria-labelledby="modifySerieModal"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modifier une série</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="{{url_for('admin_routes.series')}}" id="modifySerieForm">
+                        <div class="form-group">
+                            <label for="selectTypeUser">Nom de la fillière</label>
+                            <select class="form-control" id="selectTypeUser" name="serie" onchange="testSpeciality('-modif')">
+                                <option>Générale</option>
+                                <option>Technologique</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="specialite1">Première spécialité</label>
+                            <input type="text" class="form-control" id="specialite1-modif" name="specialite1"
+                                placeholder="Entrez une spécialité" required="required">
+                        </div>
+                        <div class="form-group">
+                            <label for="specialite2">Seconde spécialité</label>
+                            <input type="text" class="form-control" id="specialite2-modif" name="specialite2"
+                                placeholder="Entrez une spécialité" required="required">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                    <button class="btn btn-primary" name="submit_button" type="submit" form="modifySerieForm">Sauvegarder
+                        les changements</button>
+                </div>
+
     <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModal"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -194,7 +240,7 @@
 
 {% block sub_script %}
 <script>
-    function testSpeciality() {
+    function testSpeciality(opt="") {
         d = document.getElementById("selectTypeUser").value;
         second = document.getElementById("specialite2");
         if (d === "Technologique") {

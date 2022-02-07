@@ -66,6 +66,7 @@
                                 </select>
                             </div>
                         </th>
+                        <th scope="col" class="modifier align-text-top">Modifier</th>
                         <th scope="col" class="supprimer align-text-top">Supprimer</th>
                     </tr>
                 </thead>
@@ -95,7 +96,14 @@
                             {{a_salle.numero}}
                             {% endif %}
                             {% endfor %}
-                            {% endif %}</td>
+                            {% endif %}
+                        </td>
+                        <td scope="row">
+                            <form method="post" action="{{url_for('admin_routes.matieres')}}" id="modifyMatiereForm{{a_matiere.id_matiere}}">
+                                <input type="hidden" name="id" value="{{a_matiere.id_matiere}}">
+                                <button type="button" id="{{a_matiere.id_matiere}}" data-bs-toggle="modal" data-bs-target="#modifyModal" class="modifRow btn btn-outline-warning">Modifier</button>
+                            </form>
+                        </td>
                         <td scope="row">
                             <form method="post" action="{{url_for('admin_routes.matieres')}}"
                                 id="deleteMatiereForm{{a_matiere.id_matiere}}">
@@ -253,6 +261,76 @@
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
                     <button type="submit" name="delete_button" id="ModalSubmitButton" value="" form="deleteMatiereForm"
                         class="btn btn-danger">Supprimer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modifyModal" role="dialog" aria-labelledby="modifyModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modifier une matière</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="{{url_for('admin_routes.matieres')}}" id="modifyMatiereForm">
+                        <div class="form-group">
+                            <label for="matiereName">Nom de la matière</label>
+                            <input type="text" class="form-control" id="matiereName" name="matiereName" placeholder="Entrez le nom de la matière" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="selectSerie">Série</label>
+                            <select class="form-control" id="select-serie-modif" name="serie" required onchange="">
+                                {% for a_serie in all_series %}
+                                <option id="serie{{a_serie.id_serie}}" value="{{a_serie.id_serie}}">{{a_serie.nom}} - {%
+                                    if a_serie.specialite1
+                                    %}{{a_serie.specialite1}}{% endif %}{% if a_serie.specialite2
+                                    %}/{{a_serie.specialite2}}{% endif %}
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="loge">Loge (si besoin)</label>
+                            <select class="form-control" id="select-loge-modif" name="loge">
+                                {% for a_salle in all_salles %}
+                                <option id="salle{{a_salle.id_salle}}" value="{{a_salle.id_salle}}">
+                                    {{a_salle.numero}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="temps_preparation">Temps de préparation (minutes)</label>
+                            <input type="number" class="form-control" id="temps_preparation-modif" name="temps_preparation"
+                                placeholder="Entrez un temps de préparation" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="temps_preparation_tiers_temps">Temps de préparation tiers temps</label>
+                            <input type="number" class="form-control" id="temps_preparation_tiers_temps-modif"
+                                name="temps_preparation_tiers_temps"
+                                placeholder="Entrez un temps de préparation pour les tiers temps" required>
+                        </div>
+                        <div class="form-group" style="margin-top: 20px;">
+                            <label for="temps_passage">Temps de passage (minutes)</label>
+                            <input type="number" class="form-control" id="temps_passage-modif" name="temps_passage"
+                                placeholder="Entrez un temps de passage" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="temps_passage_tiers_temps">Temps de passage tiers temps</label>
+                            <input type="number" class="form-control" id="temps_passage_tiers_temps-modif"
+                                name="temps_passage_tiers_temps"
+                                placeholder="Entrez un temps de passage pour les tiers temps" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                    <button class="btn btn-primary" name="submit_button" type="submit" form="modifyMatiereForm">Sauvegarder
+                        les changements</button>
                 </div>
             </div>
         </div>

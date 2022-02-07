@@ -34,6 +34,7 @@
                             </div>
                         </th>
                         <th scope="col" style="width: 15%;" class="align-text-top">Fiche d'émargement</th>
+                        <th scope="col" class="modifier align-text-top">Modifier</th>
                         <th scope="col" class="supprimer align-text-top">Supprimer</th>
                     </tr>
                 </thead>
@@ -49,6 +50,12 @@
                                     Télécharger
                                     <i class="fas fa-print ml-s"></i></button>
                             </div>
+                        </td>
+                        <td scope="row">
+                            <form method="post" action="{{url_for('admin_routes.salles')}}" id="modifySalleForm{{a_salle.id_salle}}">
+                                <input type="hidden" name="id" value="{{a_salle.id_salle}}">
+                                <button type="button" id="{{a_salle.id_salle}}" data-bs-toggle="modal" data-bs-target="#modifyModal" class="modifRow btn btn-outline-warning">Modifier</button>
+                            </form>
                         </td>
                         <td scope="row">
                             <form method="post" action="{{url_for('admin_routes.salles')}}"
@@ -300,6 +307,34 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
                     <button class="btn btn-primary" name="submit_button" type="submit" form="addSalleForm">Sauvegarder
+                        les changements</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modifyModal" role="dialog" aria-labelledby="modifyModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modifier une salle</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="{{url_for('admin_routes.salles')}}" id="modifySalleForm">
+                        <div class="form-group">
+                            <label for="salleNum">Numéro</label>
+                            <input type="text" class="form-control" id="salleNum-modif" name="numero"
+                                aria-describedby="salleNumHelp" placeholder="Entrez un numéro de salle"
+                                required="required">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                    <button class="btn btn-primary" name="submit_button" type="submit" form="modifySalleForm">Sauvegarder
                         les changements</button>
                 </div>
             </div>
