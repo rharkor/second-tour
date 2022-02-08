@@ -4,7 +4,6 @@ import logging
 from sqlite3 import ProgrammingError
 import traceback
 from typing import Optional
-from eth_utils import is_boolean
 from fastapi import APIRouter, status
 from fastapi.responses import JSONResponse
 import mysql.connector
@@ -12,7 +11,6 @@ from pydantic import BaseModel
 from pydantic import BaseModel, Field
 import os
 
-from pyparsing import dictOf
 from security import main_security
 
 router = APIRouter()

@@ -98,6 +98,7 @@ def add_serie(serie_choice, specialite1, specialite2, ret=False):
         serie = {"id_serie": "null", "nom": serie_choice, "specialite1": specialite1, "specialite2": specialite2 if specialite2 else "null"}
         response = ask_api("data/insert/serie", serie)
         if response.status_code != 201:
+            print(response.json())
             logging.warning("Erreur lors de l'insertion d'une serie")
             if ret:
                 return (["Erreur lors de l'insertion d'une serie", "danger"], serie)
