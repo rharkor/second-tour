@@ -842,11 +842,19 @@ def delete_choix_matiere(id):
 def add_creneau(id_candidat, id_matiere, id_salle, debut_preparation, fin_preparation, fin, auto_commit=True, ret=False):
     try:
         if type(debut_preparation) == str:
-            debut_preparation = datetime.strptime(
-                debut_preparation, '%Y/%m/%d:%H:%M')
-            fin_preparation = datetime.strptime(
-                fin_preparation, '%Y/%m/%d:%H:%M')
-            fin = datetime.strptime(fin, '%Y/%m/%d:%H:%M')
+            debut_preparation = json.loads(json.dumps(datetime.strptime(
+                debut_preparation, '%Y/%m/%d:%H:%M'), default = myconverter))
+            
+            fin_preparation = json.loads(json.dumps(datetime.strptime(
+                fin_preparation, '%Y/%m/%d:%H:%M'), default = myconverter))
+                                        
+            fin = json.loads(json.dumps(datetime.strptime(fin, '%Y/%m/%d:%H:%M'), default = myconverter))
+        else:
+            debut_preparation = json.loads(json.dumps(debut_preparation, default = myconverter))
+            
+            fin_preparation = json.loads(json.dumps(fin_preparation, default = myconverter))
+                                        
+            fin = json.loads(json.dumps(fin, default = myconverter))
         logging.warning("new Créneau : " + str(id_candidat) +
                         " | " + str(id_matiere) + " | " + str(id_salle))
         
@@ -854,10 +862,12 @@ def add_creneau(id_candidat, id_matiere, id_salle, debut_preparation, fin_prepar
         response = ask_api("data/insert/creneau", creneau)
         if response.status_code != 201:
             logging.warning("Erreur lors de la creation du créneau")
+            if ret:
+                return [creneau, ['Erreur lors de la creation du créneau', 'danger']]
             return "Erreur lors de la creation du créneau", 'danger'
         
         if ret:
-            return [['Le créneau a correctement été crée', 'success'], creneau]
+            return [creneau, ['Le créneau a correctement été crée', 'success'], ]
         return ['Le créneau a correctement été crée', 'success']
         # creneau = CRENEAU(id_candidat, id_matiere, id_salle,
         #                   debut_preparation, fin_preparation, fin)

@@ -32,7 +32,6 @@ def test_session_connected(session, admin):
         if response.status_code != 200:
             flash("Une erreur est survenue lors de la récupérations des utilisateurs", "danger")
             return False
-        print(response.json())
         user = response.json()[0] if response else None
         # user = UTILISATEUR.query.filter_by(email=session['email'], admin=session['admin']).first()
         if user:
