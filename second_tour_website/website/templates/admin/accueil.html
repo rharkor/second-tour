@@ -9,7 +9,7 @@
                 data-bs-target="#generateCalendarModal">Générer le calendrier</button>
         </form>
         <div class="d-flex flex-row">
-            <button class="btn btn-primary" onclick="download_multiplePdf()"
+            <button class="btn btn-primary" v-on:click="download_multiplePdf()"
                 style="width: max-content; white-space:nowrap; background-color:blue;">
                 Télécharger
                 <i class=" fas fa-print ml-s"></i>
@@ -37,33 +37,33 @@
                         <th scope="col">
                             <div class="th-inner">Nom</div>
                             <div class="filter-control">
-                                <input type="text" class="form-control finder" onkeyup="finder()" placeholder="">
+                                <input type="text" class="form-control finder" v-on:keyup="finder()" placeholder="">
                             </div>
                         </th>
                         <th scope="col">
                             <div class="th-inner">Prénom</div>
                             <div class="filter-control">
-                                <input type="text" class="form-control finder" onkeyup="finder()" placeholder="">
+                                <input type="text" class="form-control finder" v-on:keyup="finder()" placeholder="">
                             </div>
                         </th>
                         <th scope="col">
                             <div class="th-inner">Série</div>
                             <div class="filter-control">
 
-                                <input type="text" class="form-control finder" onkeyup="finder()" placeholder="">
+                                <input type="text" class="form-control finder" v-on:keyup="finder()" placeholder="">
 
                             </div>
                         </th>
                         <th scope="col">
                             <div class="th-inner">Epreuve 1</div>
                             <div class="filter-control">
-                                <input type="text" class="form-control finder" onkeyup="finder()" placeholder="">
+                                <input type="text" class="form-control finder" v-on:keyup="finder()" placeholder="">
                             </div>
                         </th>
                         <th scope="col">
                             <div class="th-inner">Epreuve 2</div>
                             <div class="filter-control">
-                                <input type="text" class="form-control finder" onkeyup="finder()" placeholder="">
+                                <input type="text" class="form-control finder" v-on:keyup="finder()" placeholder="">
                             </div>
                         </th>
                     </tr>
@@ -228,9 +228,6 @@
 
 {% block sub_script %}
 <script>
-    function download_multiplePdf() {
-        downloadCalendar('calendarG', 'calendrierSerieGenerale');
-        downloadCalendar('calendarT', 'calendrierSerieTechnologique');
-    }
+
 </script>
 {% endblock %}
