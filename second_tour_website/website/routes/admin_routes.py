@@ -31,10 +31,10 @@ def accueil():
                     flash("Une erreur est survenue lors de la récupération des données", "danger")
                 tables = response.json()
                 for table in tables:
-                    data_list = [main_database.to_dict(
-                        item) for item in table]
+                    data_list = table
                     df = pd.DataFrame(data_list)
-                    df.to_excel(writer, sheet_name=table.__table__.name)
+                    if table:
+                        df.to_excel(writer, sheet_name=list(table[0].keys())[0].replace("id_", ""))
                 writer.save()
                 return send_file(filename)
         else:
@@ -207,7 +207,12 @@ def salles():
             flash("Une erreur est survenue lors de la récupération des données", "danger")
         all_candidats, all_choix_matieres, all_series, all_matieres, all_professeurs, all_salles, all_creneaux, all_liste_matiere = response.json()
         all_creneaux.sort(key=lambda creneau: creneau['debut_preparation'])
+        for creneau in all_creneaux:
+            creneau["debut_preparation"] = datetime.strptime(creneau["debut_preparation"], '%a %b %d %H:%M:%S %Y') if type(creneau["debut_preparation"]) == str else creneau["debut_preparation"]
+            creneau["fin_preparation"] = datetime.strptime(creneau["fin_preparation"], '%a %b %d %H:%M:%S %Y') if type(creneau["fin_preparation"]) == str else creneau["fin_preparation"]
+            creneau["fin"] = datetime.strptime(creneau["fin"], '%a %b %d %H:%M:%S %Y') if type(creneau["fin"]) == str else creneau["fin"]
 
+        
         # all_matieres = MATIERES.query.all()
         # all_creneaux = CRENEAU.query.order_by(CRENEAU.debut_preparation).all()
         # # Serialize table

@@ -30,7 +30,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 app.config['SECRET_KEY'] = "HEby4gbqFGFtSCeV"
 app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=3)
 app.config['UPLOAD_FOLDER'] = os.getcwd(
-) + "/second_tour_website/website/upload"
+) + "/website/upload"
 
 
 # Configure the database

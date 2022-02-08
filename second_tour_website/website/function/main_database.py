@@ -972,6 +972,7 @@ def to_dict(row):
         return None
 
     rtn_dict = dict()
+    print(row)
     keys = row.__table__.columns.keys()
     for key in keys:
         rtn_dict[key] = getattr(row, key)
