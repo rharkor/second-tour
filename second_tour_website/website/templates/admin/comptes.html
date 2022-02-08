@@ -22,18 +22,17 @@
                         <th scope="col">
                             <div class="th-inner">Email</div>
                             <div class="filter-control">
-                                <input type="text" class="form-control finder" onkeyup="finder()"
-                                    placeholder="">
+                                <input type="text" class="form-control finder" v-on:keyup="finder()" placeholder="">
                             </div>
                         </th>
                         <th scope="col">
                             <div class="th-inner">Type</div>
                             <div class="filter-control">
-                                    <select class="form-select finder" onchange="finder()">
-                                        <option select></option>
-                                        <option>Admin</option>
-                                        <option>Professeur</option>
-                                    </select>
+                                <select class="form-select finder" v-on:schange="finder()">
+                                    <option select></option>
+                                    <option>Admin</option>
+                                    <option>Professeur</option>
+                                </select>
                             </div>
                         </th>
                         <th scope="col" class="supprimer align-text-top">Supprimer</th>
@@ -66,25 +65,23 @@
                         <th scope="col">
                             <div class="th-inner">Email</div>
                             <div class="filter-control">
-                                <input type="text" class="form-control finder" onkeyup="finder()"
-                                    placeholder="">
+                                <input type="text" class="form-control finder" v-on:keyup="finder()" placeholder="">
                             </div>
                         </th>
                         <th scope="col">
                             <div class="th-inner">Type</div>
                             <div class="filter-control">
-                                    <select class="form-select finder" onchange="finder()">
-                                        <option select></option>
-                                        <option>Admin</option>
-                                        <option>Professeur</option>
-                                    </select>
+                                <select class="form-select finder" v-on:change="finder()">
+                                    <option select></option>
+                                    <option>Admin</option>
+                                    <option>Professeur</option>
+                                </select>
                             </div>
                         </th>
                         <th scope="col">
                             <div class="th-inner">Token</div>
                             <div class="filter-control">
-                                <input type="text" class="form-control finder" onkeyup="finder()"
-                                    placeholder="">
+                                <input type="text" class="form-control finder" v-on:keyup="finder()" placeholder="">
                             </div>
                         </th>
                         <th scope="col" class="supprimer align-text-top">Supprimer</th>
@@ -101,7 +98,8 @@
                                 id="deleteTokenForm{{token.id}}">
                                 <input type="hidden" name="token" value="{{token.token}}">
                                 <button type="button" id="{{token.id}}" data-bs-toggle="modal"
-                                    data-bs-target="#confirmDeleteTokenModal" class="deleteRowToken btn btn-outline-danger">Supprimer</button>
+                                    data-bs-target="#confirmDeleteTokenModal"
+                                    class="deleteRowToken btn btn-outline-danger">Supprimer</button>
                             </form>
                         </td>
                     </tr>
@@ -142,7 +140,8 @@
                             <label for="selectTypeUser">Professeur</label>
                             <select class="form-control" id="selectProf" name="prof">
                                 {% for professeur in all_professeurs %}
-                                <option value="{{ professeur.id_professeur }}">{{ professeur.nom }} {{ professeur.prenom }}</option>
+                                <option value="{{ professeur.id_professeur }}">{{ professeur.nom }} {{ professeur.prenom
+                                    }}</option>
                                 {% endfor %}
                             </select>
                         </div>
@@ -150,7 +149,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                    <button class="btn btn-primary" name="submit_button" type="submit" form="addAccountForm">Ajouter</button>
+                    <button class="btn btn-primary" name="submit_button" type="submit"
+                        form="addAccountForm">Ajouter</button>
                 </div>
             </div>
         </div>
@@ -179,8 +179,8 @@
     </div>
 
 
-    <div class="modal fade" id="confirmDeleteTokenModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteTokenModal"
-        aria-hidden="true">
+    <div class="modal fade" id="confirmDeleteTokenModal" tabindex="-1" role="dialog"
+        aria-labelledby="confirmDeleteTokenModal" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -194,8 +194,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                    <button type="submit" name="delete_button_token" id="ModalSubmitButtonToken" value="" form="deleteTokenForm"
-                        class="btn btn-danger">Supprimer</button>
+                    <button type="submit" name="delete_button_token" id="ModalSubmitButtonToken" value=""
+                        form="deleteTokenForm" class="btn btn-danger">Supprimer</button>
                 </div>
             </div>
         </div>
@@ -206,10 +206,10 @@
 
 {% block sub_script %}
 <script>
-    function typeAdminChange(){
-        if(document.getElementById("selectTypeUser").value === "Professeur"){
-document.getElementById("prof-list-hidden").hidden = false;
-        }else{
+    function typeAdminChange() {
+        if (document.getElementById("selectTypeUser").value === "Professeur") {
+            document.getElementById("prof-list-hidden").hidden = false;
+        } else {
             document.getElementById("prof-list-hidden").hidden = true;
 
         }

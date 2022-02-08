@@ -19,14 +19,14 @@
     <div class="padding-main-calendar">
         <div class="calendar table-responsive">
             <div class="name-finder" style="width: max-content;">
-                <input class="form-control" type="text" id="search-name" onkeyup="nameFinder()"
+                <input class="form-control" type="text" id="search-name" v-on:keyup="nameFinder()"
                     placeholder="Recherche par nom..">
-                    <select class="form-select finder" onchange="multipleFinder([4, 6], 0)">
-                        <option selected></option>
-                        <option value="01">Jour 1</option>
-                        <option value="02">Jour 2</option>
-                        <option value="03">Jour 3</option>
-                    </select>
+                <select class="form-select finder" v-on:change="multipleFinder([4, 6], 0)">
+                    <option selected></option>
+                    <option value="01">Jour 1</option>
+                    <option value="02">Jour 2</option>
+                    <option value="03">Jour 3</option>
+                </select>
             </div>
             <div class="thumbnail" style="overflow: hidden;">
                 <table class="table table-light table-striped calendar">

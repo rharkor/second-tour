@@ -28,21 +28,21 @@
                         <th scope="col">
                             <div class="th-inner">Nom</div>
                             <div class="filter-control">
-                                <input type="text" class="form-control finder" onkeyup="finder(1, 0)"
+                                <input type="text" class="form-control finder" v-on:keyup="finder(1, 0)"
                                     style="width: 100px;" placeholder="">
                             </div>
                         </th>
                         <th scope="col">
                             <div class="th-inner">Prénom</div>
                             <div class="filter-control">
-                                <input type="text" class="form-control finder" onkeyup="finder(2, 1)"
+                                <input type="text" class="form-control finder" v-on:keyup="finder(2, 1)"
                                     style="width: 100px;" placeholder="">
                             </div>
                         </th>
                         <th scope="col">
                             <div class="th-inner">Série</div>
                             <div class="filter-control">
-                                <select class="form-select finder" onchange="finder(3, 2)" style="width: 200px;">
+                                <select class="form-select finder" v-on:change="finder(3, 2)" style="width: 200px;">
                                     <option selected></option>
                                     {% for a_serie in all_series %}
                                     <option>{{a_serie.nom}} - {% if a_serie.specialite1 %}{{a_serie.specialite1}}{%
@@ -55,7 +55,7 @@
                         <th scope="col">
                             <div class="th-inner">Matière1</div>
                             <div class="filter-control">
-                                <select class="form-select finder break-doublons" onchange="finder(4, 3, false)"
+                                <select class="form-select finder break-doublons" v-on:change="finder(4, 3, false)"
                                     style="width: 200px;">
                                     <option selected></option>
                                     {% for matiere in all_matieres %}
@@ -67,7 +67,7 @@
                         <th scope="col">
                             <div class="th-inner">Matière2</div>
                             <div class="filter-control">
-                                <select class="form-select finder break-doublons" onchange="finder(5, 4, false)"
+                                <select class="form-select finder break-doublons" v-on:change="finder(5, 4, false)"
                                     style="width: 200px;">
                                     <option selected></option>
                                     {% for matiere in all_matieres %}
@@ -79,7 +79,7 @@
                         <th scope="col">
                             <div class="th-inner">Tiers temps</div>
                             <div class="filter-control">
-                                <select class="form-select finder" onchange="finder(6, 5)" style="width: 80px;">
+                                <select class="form-select finder" v-on:change="finder(6, 5)" style="width: 80px;">
                                     <option selected></option>
                                     <option>Oui</option>
                                     <option>Non</option>
@@ -399,27 +399,29 @@
 
 {% block sub_script %}
 <script>
+
     function testMatiereCompatible() {
 
 
         myvar = '{{all_matieres|tojson}}';
-        var all_matieres = JSON.parse(myvar);
+        let all_matieres = JSON.parse(myvar);
 
 
-        var selectMatiereObject1 = document.getElementById('matiere1Select');
-        var selectMatiereObject2 = document.getElementById('matiere2Select');
-        var selectSerieObject = document.getElementById('serieSelect');
-        var id_serie = selectSerieObject.value;
+        let selectMatiereObject1 = document.getElementById('matiere1Select');
+        let selectMatiereObject2 = document.getElementById('matiere2Select');
+        let selectSerieObject = document.getElementById('serieSelect');
+        let id_serie = selectSerieObject.value;
         manage_option(selectMatiereObject1, selectMatiereObject2, id_serie, all_matieres);
 
 
 
-        var selectMatiereObject1 = document.getElementById('matiere1SelectModif');
-        var selectMatiereObject2 = document.getElementById('matiere2SelectModif');
-        var selectSerieObject = document.getElementById('serieSelectModif');
-        var id_serie = selectSerieObject.value;
+        let selectMatiereObject1 = document.getElementById('matiere1SelectModif');
+        let selectMatiereObject2 = document.getElementById('matiere2SelectModif');
+        let selectSerieObject = document.getElementById('serieSelectModif');
+        let id_serie = selectSerieObject.value;
         manage_option(selectMatiereObject1, selectMatiereObject2, id_serie, all_matieres);
     }
+
 
     function manage_option(selectMatiereObject1, selectMatiereObject2, id_serie, all_matieres) {
         //Delete all before
@@ -430,23 +432,23 @@
             selectMatiereObject2.remove(0);
         }
 
-        var empty1 = document.createElement("option");
+        let empty1 = document.createElement("option");
         empty1.selected = true;
         selectMatiereObject1.append(empty1);
-        var empty2 = document.createElement("option");
+        let empty2 = document.createElement("option");
         empty2.selected = true;
         selectMatiereObject2.append(empty2);
 
-        for (var i = 0; i < Object.keys(all_matieres).length; i++) {
+        for (let i = 0; i < Object.keys(all_matieres).length; i++) {
             if (all_matieres[i]['id_serie'] == id_serie) {
 
-                var opt1 = document.createElement("option");
+                let opt1 = document.createElement("option");
                 opt1.id = "matiere1_" + all_matieres[i]['id_matiere'];
                 opt1.value = all_matieres[i]['id_matiere'];
                 opt1.text = all_matieres[i]['nom'];
                 selectMatiereObject1.append(opt1);
 
-                var opt2 = document.createElement("option");
+                let opt2 = document.createElement("option");
                 opt2.id = "matiere2_" + all_matieres[i]['id_matiere'];
                 opt2.value = all_matieres[i]['id_matiere'];
                 opt2.text = all_matieres[i]['nom'];

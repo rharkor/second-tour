@@ -3,7 +3,7 @@
 {% block sub_content %}
 <div class="main-div-admin">
     <div class="d-flex flex-row" style="justify-content: space-between;align-items:center; width:100%;">
-        <button class="btn btn-primary" onclick="download_multiplePdf()"
+        <button class="btn btn-primary" v-on:click="download_multiplePdfSalle()"
             style="width: max-content; white-space:nowrap; background-color:blue;">
             Télécharger les fiches d'émargement
             <i class=" fas fa-print ml-s"></i>
@@ -30,7 +30,7 @@
                         <th scope="col">
                             <div class="th-inner">Numéro</div>
                             <div class="filter-control">
-                                <input type="text" class="form-control finder" onkeyup="finder(1, 0)" placeholder="">
+                                <input type="text" class="form-control finder" v-on:keyup="finder(1, 0)" placeholder="">
                             </div>
                         </th>
                         <th scope="col" style="width: 15%;" class="align-text-top">Fiche d'émargement</th>
@@ -46,15 +46,18 @@
                         <td scope="row">
                             <div class="align-items-end">
                                 <button class="btn btn-primary"
-                                    onclick="downloadPDFWithBrowserPrint('tableAccordion{{a_salle.id_salle}}', '{{a_salle.numero}}')">
+                                    v-on:click="downloadPDFWithBrowserPrint('tableAccordion{{a_salle.id_salle}}', '{{a_salle.numero}}')">
                                     Télécharger
                                     <i class="fas fa-print ml-s"></i></button>
                             </div>
                         </td>
                         <td scope="row">
-                            <form method="post" action="{{url_for('admin_routes.salles')}}" id="modifySalleForm{{a_salle.id_salle}}">
+                            <form method="post" action="{{url_for('admin_routes.salles')}}"
+                                id="modifySalleForm{{a_salle.id_salle}}">
                                 <input type="hidden" name="id" value="{{a_salle.id_salle}}">
-                                <button type="button" id="{{a_salle.id_salle}}" data-bs-toggle="modal" data-bs-target="#modifyModal" class="modifRow btn btn-outline-warning">Modifier</button>
+                                <button type="button" id="{{a_salle.id_salle}}" data-bs-toggle="modal"
+                                    data-bs-target="#modifyModal"
+                                    class="modifRow btn btn-outline-warning">Modifier</button>
                             </form>
                         </td>
                         <td scope="row">
@@ -334,7 +337,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                    <button class="btn btn-primary" name="submit_button" type="submit" form="modifySalleForm">Sauvegarder
+                    <button class="btn btn-primary" name="submit_button" type="submit"
+                        form="modifySalleForm">Sauvegarder
                         les changements</button>
                 </div>
             </div>
@@ -367,24 +371,6 @@
 
 {% block sub_script %}
 <script>
-    function download_multiplePdf() {
-        var zip = new JSZip();
-        var all_salles = JSON.parse('{{all_salles|tojson}}');
-        var all_professeurs = JSON.parse('{{all_professeurs|tojson}}');
 
-        for (let i = 0; i < all_salles.length; i++) {
-            var salle = all_salles[i];
-            var doc = downloadPDFWithBrowserPrint('tableAccordion' + salle.id_salle.toString(), salle.numero, true);
-            try {
-                zip.file(salle.numero.toString() + '_listeDEmargement.pdf', doc.output('blob'));
-            }
-            catch {
-                console.error('Something went wrong!');
-            }
-        }
-        zip.generateAsync({ type: 'blob' }).then(function (content) {
-            saveAs(content, 'listesDEmargement.zip');
-        });
-    }
 </script>
 {% endblock %}
