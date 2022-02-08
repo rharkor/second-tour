@@ -39,6 +39,10 @@ tags_metadata = [
         "name": "choix_matiere",
         "description": "Access to all configured function of the table **choix_matiere**",
     },
+    {
+        "name": "version",
+        "description": "Access to the version of the API",
+    },
 ]
 
 
@@ -110,4 +114,11 @@ if bool(os.getenv('DIST_DB')):
         choix_matiere_routes.router,
         prefix="/choix_matiere",
         tags=["choix_matiere"]
+    )
+
+    from routes.api_informations import main_api_informations
+    app.include_router(
+        main_api_informations.router,
+        prefix="/version",
+        tags=["version"]
     )
