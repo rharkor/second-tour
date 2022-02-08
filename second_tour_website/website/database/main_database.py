@@ -1,7 +1,6 @@
 import logging
 from datetime import datetime
 
-from pyparsing import col
 from ..main_website import db
 import requests
 import os
