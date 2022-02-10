@@ -124,6 +124,19 @@ def add_serie(serie_choice, specialite1, specialite2, ret=False):
         return [['Erreur : ' + traceback.format_exc(), 'danger']]
 
 
+def update_serie(id, nom, specialite1, specialite2):
+    try:
+        serie = {"filter": {"id_serie":id}, "data": {"id_serie":id, "nom":nom, "specialite1":specialite1, "specialite2":specialite2}}
+        response=ask_api("data/updatefilter/serie", serie)
+        if response.status_code != 200:
+            print("test")
+            logging.warning("Erreur lors de l'insertion des séries")
+            return "Erreur lors de l'insertion des séries", "danger"
+
+    except Exception:
+        logging.warning('Erreur : ' + traceback.format_exc())
+        return ['Erreur : ' + traceback.format_exc(), 'danger']
+
 def delete_serie(id):
     try:
         candidat_filter = {"id_serie": id}
@@ -336,6 +349,18 @@ def add_salle(numero, ret=False):
         logging.warning('Erreur : ' + traceback.format_exc())
         return ['Erreur : ' + traceback.format_exc(), 'danger']
 
+
+def update_salle(id, numero):
+    try:
+        salle = {"filter": {"id_salle": id}, "data": {"id_salle": id, "numero": numero}}
+        response = ask_api("data/updatefilter/salle", salle)
+        if response.status_code != 200:
+            logging.warning("Erreur lors de l'insertion des salles")
+            return "Erreur lors de l'insertion des salles", "danger"
+
+    except Exception:
+        logging.warning('Erreur : ' + traceback.format_exc())
+        return ['Erreur : ' + traceback.format_exc(), 'danger']
 
 def delete_salle(id):
     try:
@@ -554,11 +579,23 @@ def add_professeur_wep(user, nom, prenom, salle, matieres=None):
         return ['Erreur : ' + traceback.format_exc(), 'danger']
 
 
+def update_matiere(id, nom, id_serie, temps_preparation, temps_preparation_tiers_temps, temps_passage, temps_passage_tiers_temps, loge):
+    try:
+        matiere = {"filter": {"id_matiere":id}, "data": {"id_matiere":id, "id_serie":id_serie, "nom":nom, "temps_preparation":temps_preparation, "temps_preparation_tiers_temps":temps_preparation_tiers_temps, "temps_passage":temps_passage, "temps_passage_tiers_temps":temps_passage_tiers_temps, "loge":loge}}
+        response = ask_api("data/updatefilter/matiere", matiere)
+        if response.status_code != 200:
+            logging.warning("Erreur lors de l'insertion des matieres")
+            return "Erreur lors de l'insertion des matieres", "danger"
+
+    except Exception:
+        logging.warning('Erreur : ' + traceback.format_exc())
+        return ['Erreur : ' + traceback.format_exc(), 'danger']
+
 def update_professeur_wep(id, user, nom, prenom, salle, matieres=None, heure_arrivee1=None, heure_depart1=None, heure_arrivee2=None, heure_depart2=None, heure_arrivee3=None, heure_depart3=None):
     try:
         professeur = {"filter": {"id_professeur": id}, "data": {"id_utilisateur": user, "nom": nom, "prenom": prenom, "salle": salle}}
         response = ask_api("data/updatefilter/professeur", professeur)
-        if response.status_code != 201:
+        if response.status_code != 200:
             logging.warning("Erreur lors de l'insertion des matieres du professeur")
             return "Erreur lors de l'insertion des matieres du professeur", "danger"
         

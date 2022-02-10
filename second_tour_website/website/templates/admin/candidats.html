@@ -558,6 +558,14 @@
             form_elements[5].options[0].selected = true;
             form_elements[5].options[1].selected = false;
         }
+        //Set absent
+        if (candidat['absent'] == true) {
+            form_elements[6].options[0].selected = false;
+            form_elements[6].options[1].selected = true;
+        } else {
+            form_elements[6].options[0].selected = true;
+            form_elements[6].options[1].selected = false;
+        }
 
         testMatiereCompatible();
 

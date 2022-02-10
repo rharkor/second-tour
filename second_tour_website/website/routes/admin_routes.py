@@ -196,6 +196,11 @@ def salles():
                     result = main_database.add_salle(form['numero'])
                     flash(result[0], result[1])
                     logging.warning(result[0])
+            elif form.get('modify_button') is not None:
+                if 'id' in form and 'numero' in form:
+                    if r := main_database.update_salle(form['id'], form['numero']):
+                        flash(r[0], r[1])
+                        logging.warning(r[0])
             elif form.get('delete_button') is not None:
                 if 'id' in form:
                     if r := main_database.delete_salle(form['id']):
@@ -328,6 +333,11 @@ def series():
                         result_s = main_database.add_matiere(
                             'Philosophie', result[1]['id_serie'], 30, 40, 30, 40, None)
                         logging.warning(result_s[0])
+            elif form.get('modify_button') is not None:
+                if 'id' in form and 'serie' in form and 'specialite1' in form:
+                    if r := main_database.update_serie(form['id'], form['serie'], form['specialite1'], form['specialite2'] if 'specialite2' in form else None):
+                        flash(r[0], r[1])
+                        logging.warning(r[0])
             elif form.get('delete_button') is not None:
                 if 'id' in form:
                     if r := main_database.delete_serie(form['id']):
@@ -362,6 +372,12 @@ def matieres():
                         form['name'], form['serie'], form['temps_preparation'], form['temps_preparation_tiers_temps'], form['temps_passage'], form['temps_passage_tiers_temps'], form['loge'] if 'loge' in form else None)
                     flash(result[0], result[1])
                     logging.warning(result[0])
+            elif form.get('modif_button') is not None:
+                if 'id' in form and 'matiereName' in form and 'serie' in form and 'temps_preparation' in form and 'temps_preparation_tiers_temps' in form and 'temps_passage' in form and 'temps_passage_tiers_temps' in form:
+                    if r := main_database.update_matiere(form['id'], form['matiereName'], form['serie'], form['temps_preparation'], form['temps_preparation_tiers_temps'], form['temps_passage'], form['temps_passage_tiers_temps'], form['loge'] if 'loge' in form else None):
+                        flash(r[0], r[1])
+                        logging.warning(r[0])
+
             elif form.get('delete_button') is not None:
                 if 'id' in form:
                     if r := main_database.delete_matiere(form['id']):
@@ -391,7 +407,6 @@ def comptes():
         if request.method == 'POST':
             form = request.form
             if form.get('submit_button') is not None:
-                print(form)
                 if 'email' in form and 'type' in form and 'prof' in form:
                     result = main_database.add_account_token(
                         form['email'], uuid4(), form['type'], form['prof'])
@@ -426,7 +441,6 @@ def creneau():
     if main_security.test_session_connected(session, True):
         if request.method == 'POST':
             form = request.form
-            print(form)
             if form.get('submit_button') is not None:
                 if 'candidat' in form and 'matiere' in form and 'salle' in form and 'debut' in form and 'fin_prepa' in form and 'fin' in form:
                     result = main_database.add_creneau(

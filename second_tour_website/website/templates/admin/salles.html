@@ -330,11 +330,12 @@
                                 aria-describedby="salleNumHelp" placeholder="Entrez un numéro de salle"
                                 required="required">
                         </div>
+                        <input type="hidden" name="id" id="hiddenIdModif">
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                    <button class="btn btn-primary" name="submit_button" type="submit" form="modifySalleForm">Sauvegarder
+                    <button class="btn btn-primary" name="modify_button" type="submit" id=ModalSubmitModifButton form="modifySalleForm">Sauvegarder
                         les changements</button>
                 </div>
             </div>
@@ -365,6 +366,8 @@
 </div>
 {% endblock %}
 
+
+
 {% block sub_script %}
 <script>
     function download_multiplePdf() {
@@ -386,5 +389,28 @@
             saveAs(content, 'listesDEmargement.zip');
         });
     }
+
+    $('.modifRow').click(function (){
+
+        var $myRowId = $(this).get(0).id;
+
+        name = document.getElementById("ModalSubmitModifButton").getAttribute("form");
+        $("#hiddenIdModif").attr('value', $myRowId);
+
+        form_elements = document.getElementById("modifySalleForm").elements;
+
+        myvar_salles = '{{all_salles|tojson}}';
+        var all_salles = JSON.parse(myvar_salles);
+
+        var salle;
+        for (var i = 0; i < all_salles.length; i++) {
+            if (all_salles[i]['id_salle'] == $myRowId) {
+                salle = all_salles[i];
+            }
+        }
+
+        //set salle
+        form_elements[0].value=salle['numero'];
+    })
 </script>
 {% endblock %}

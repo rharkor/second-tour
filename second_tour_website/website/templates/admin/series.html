@@ -48,8 +48,8 @@
                             <form method="post" action="{{url_for('admin_routes.series')}}" id="modifySerieForm{{an_serie.id_serie}}">
                                 <input type="hidden" name="id" value="{{an_serie.id_serie}}">
                                 <button type="button" id="{{an_serie.id_serie}}" data-bs-toggle="modal"
-                                    data-bs-target="#modifyModal"
-                                    class="modifRow btn btn-outline-danger">Modifier</button>
+                                    data-bs-target="#modifySerieModal"
+                                    class="modifRow btn btn-outline-warning">Modifier</button>
                             </form>
                         </td>
                         <td scope="row">
@@ -191,7 +191,7 @@
                     <form method="post" action="{{url_for('admin_routes.series')}}" id="modifySerieForm">
                         <div class="form-group">
                             <label for="selectTypeUser">Nom de la fillière</label>
-                            <select class="form-control" id="selectTypeUser" name="serie" onchange="testSpeciality('-modif')">
+                            <select class="form-control" id="selectTypeUsermodif" name="serie" onchange="testSpecialityModif()">
                                 <option>Générale</option>
                                 <option>Technologique</option>
                             </select>
@@ -206,13 +206,17 @@
                             <input type="text" class="form-control" id="specialite2-modif" name="specialite2"
                                 placeholder="Entrez une spécialité" required="required">
                         </div>
+                        <input type="hidden" name="id" id="hiddenIdModif">
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                    <button class="btn btn-primary" name="submit_button" type="submit" form="modifySerieForm">Sauvegarder
+                    <button class="btn btn-primary" name="modify_button" type="submit" id="ModalSubmitModifButton" form="modifySerieForm">Sauvegarder
                         les changements</button>
                 </div>
+            </div>
+        </div>
+    </div>
 
     <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModal"
         aria-hidden="true">
@@ -245,9 +249,61 @@
         second = document.getElementById("specialite2");
         if (d === "Technologique") {
             second.setAttribute('disabled', 'true');
+            second.value=null;
         } else {
             second.removeAttribute('disabled');
         }
     }
+
+    function testSpecialityModif(){
+        d=document.getElementById("selectTypeUsermodif").value;
+        second = document.getElementById("specialite2-modif");
+        if (d === "Technologique") {
+            second.setAttribute('disabled', 'true');
+            second.value=null;
+        } else {
+            second.removeAttribute('disabled');
+        }
+    }
+
+    $('.modifRow').click(function (){
+
+        var $myRowId = $(this).get(0).id;
+        
+        name = document.getElementById("ModalSubmitModifButton").getAttribute("form");
+        $("#hiddenIdModif").attr('value', $myRowId);
+
+        form_elements = document.getElementById("modifySerieForm").elements;
+
+        myvar_series = '{{all_series|tojson}}';
+        var all_series = JSON.parse(myvar_series);
+
+        var serie;
+        for (var i = 0; i < all_series.length; i++) {
+            if (all_series[i]['id_serie'] == $myRowId) {
+                serie = all_series[i];
+            }
+        }
+
+        select = form_elements[0];
+        for (var i=0; i<select.length; i++){
+            if(select.options[i].innerHTML == serie['nom']){
+                select.options[i].selected = true;
+            }
+        }
+
+        form_elements[1].value=null;
+        form_elements[2].value=null;
+
+
+        if(serie['specialite1']!=null){
+            form_elements[1].value=serie['specialite1'];
+        }
+
+        if(serie['specialite2']!=null){
+            form_elements[2].value=serie['specialite2'];
+        }
+    })
+
 </script>
 {% endblock %}
