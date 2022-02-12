@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S'enregistrer</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='main.css')}}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" />
+
+    <link rel="shortcut icon" type="image/x-icon" href="{{url_for('static', filename='img/logo_square.ico')}}" />
+
+</head>
+
+<body>
+    <main id="main" style="height: 100%;">
+        <div class="d-flex justify-content-center align-items-center mt-5 mb-4" style="height: 30%;">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="logo" style="height: 30%; width:auto;">
+        </div>
+        <div class="m-5">
+            {%- for category, message in get_flashed_messages(with_categories = true) %}
+            <div class="alert alert-{{category}}  alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {%- endfor %}
+        </div>
+        <div>
+            <form method="post" action="{{url_for('register_routes.register')}}" style="width: 100%;"
+                class="d-flex flex-column align-items-center" id="myform">
+                <input type="text" hidden value="{{ token }}" name="token">
+                <div class="form-login-input-lg margin-login-form">
+                    <input type="email" class="form-control" readonly id="floatingInput" value="{{ email }}"
+                        name="email" required>
+                </div>
+                <div class="form-floating form-login-input-lg margin-login-form d-flex">
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="MotDePasse"
+                        name="password" required>
+                    <i class="bi bi-eye-slash d-flex justify-content-center align-items-center eye-form"
+                        id="togglePassword"></i>
+                    <label for="floatingPassword">Mot de passe</label>
+                </div>
+                <div class="form-floating form-login-input-lg margin-login-form d-flex needs-validation">
+                    <input type="password" class="form-control" id="floatingPasswordConfirmation"
+                        placeholder="MotDePasse" name="password_confirm" required>
+                    <label for="floatingPassword">Confirmer le mot de passe</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault" style="color:white">
+                        En cochant cette case vous confirmez avoir lu et accepté les <a
+                            href="{{url_for('main_routes.cgu')}}" style="color:blue">conditions générales
+                            d'utilisation.</a>
+                    </label>
+                </div>
+                <div class="form-login-input-lg">
+                    <button class="w-100 btn btn-lg btn-primary margin-login-form btn-success" type="button"
+                        onclick="submit_form_register()">S'inscrire</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+</body>
+
+<script>
+    /*
+    const togglePassword = document.querySelector('#togglePassword');
+    const password = document.querySelector('#floatingPassword');
+
+    if (togglePassword && password) {
+        togglePassword.addEventListener('click', function (e) {
+            // toggle the type attribute
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+            // toggle the eye / eye slash icon
+            this.classList.toggle('bi-eye');
+        });
+    } */
+
+</script>
+
+</html>

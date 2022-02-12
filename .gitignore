@@ -1,3 +1,7 @@
 second_tour_website/logs/logs_info.txt
 second_tour_website/website/database/data.sqlite3
 second_tour_api/logs/logs_info.txt
+
+stack/api/secondtour_api/apienv
+stack/website/secondtour_website/websiteenv
+stack/website/secondtour_website/website.sock

@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% block title %} Se connecter {% endblock %}
+{% block content %}
+<div class="d-flex flex-column align-items-center min-width-max-content pt-m maxh">
+  <div class="mb-m">
+    <a href="{{url_for('main_routes.index')}}">
+      <img alt="logo" src="{{url_for('static', filename='img/logo.png')}}" class="image-m"></a>
+  </div>
+  <div class="d-flex flex-column align-items-center justify-content-center mt-xxl" style="width:80%;">
+    <form method="post" action="{{url_for('main_routes.connexion')}}" style="width: 100%;" class="d-flex flex-column align-items-center">
+      <div class="form-floating form-login-input-lg margin-login-form">
+        <input type="email" class="form-control" id="floatingInput" placeholder="name@exemple.com" name="email"
+          required="required">
+        <label for="floatingInput">Adresse email</label>
+      </div>
+      <div class="form-floating form-login-input-lg margin-login-form d-flex">
+        <input type="password" class="form-control" id="floatingPassword" placeholder="MotDePasse" name="password"
+          required="required">
+        <i class="bi bi-eye-slash d-flex justify-content-center align-items-center eye-form" id="togglePassword"></i>
+        <label for="floatingPassword">Mot de passe</label>
+      </div>
+      <div class="form-login-input-lg">
+        <button class="w-100 btn btn-lg btn-primary margin-login-form btn-success" type="submit">Se connecter</button>
+      </div>
+    </form>
+    {%- for category, message in get_flashed_messages(with_categories = true) %}
+    <div class="alert alert-{{category}}  alert-dismissible fade show" role="alert">
+      {{ message }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {%- endfor %}
+  </div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+{% endblock %}
+
+{% block footer %}
+<!-- Grid container -->
+<div class="container p-1" style="font-size: small; ; ">
+    <!--Grid row-->
+    <div class="row" style="display: flex; justify-content: center" >
+      <!--Grid column-->
+      
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+        <P class="text-uppercase mb-0">Adresse :</p>
+
+          <ul class="list-unstyled mb-0 text-white">
+            <li>
+              <p>118 rue des Gonthières, 17 026 La Rochelle CEDEX 01</p>
+            </li>
+         </ul>
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+        <p class="text-uppercase mb-0"></p>
+
+        <ul class="list-unstyled ">
+          <li>
+           <p>Telephone : <a class="text-white" href="tel:0546347932">05 46 34 79 32</a></p>
+          </li>
+          <li>
+            <p>Fax : 05 46 34 22 28</p>
+          </li>
+         </ul>
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+        <p class="text-uppercase mb-0">Adresse mail :</p>
+
+        <ul class="list-unstyled">
+          <li>
+            <a class="text-white" href="mailto:contact@lycee-vieljeux.fr">contact@lycee-vieljeux.fr</a>
+          </li>
+         </ul>
+      </div>
+      <!--Grid column-->
+    </div>
+    <!--Grid row-->
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center p-1" style="background-color: rgba(0, 0, 0, 0.2); font-size: medium;display: flex; justify-content: center; ">
+    <p>© 2021 Copyright : IUT de La Rochelle</p>
+  </div>
+  <!-- Copyright -->
+{% endblock %}
