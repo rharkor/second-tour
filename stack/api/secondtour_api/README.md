@@ -2,6 +2,8 @@ Official website link : https://fastapi.tiangolo.com/
 
 To run it : 
 ```console
+python -m uvicorn main:app --reload
+or
 uvicorn main:app --reload
 ```
 

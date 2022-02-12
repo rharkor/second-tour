@@ -2,7 +2,6 @@ from dotenv import load_dotenv
 load_dotenv()
 from api.main_api import app, logging
 
-
 def main(debug_mode=True):
     run(debug_mode=debug_mode)
 

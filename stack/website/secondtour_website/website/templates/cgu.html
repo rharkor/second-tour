@@ -6,7 +6,7 @@
     <a href="{{url_for('main_routes.index')}}">
       <img alt="logo" src="{{url_for('static', filename='img/logo.png')}}" class="image-m"></a>
   </div>
-  <embed src={{url_for('static', filename='pdf-docx/cgu.pdf')}} width=1200 height=800 type='application/pdf'/>
+  <embed src={{url_for('static', filename='pdf-docx/cgu.pdf')}} width=1200 height=800 type='application/pdf' frameBorder="0"  scrolling="auto"/>
 </div>
 
 {% endblock %}
