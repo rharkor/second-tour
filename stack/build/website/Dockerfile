@@ -3,7 +3,7 @@ ARG VERSION
 # Dev image
 FROM ubuntu:latest
 
-# Update & install nginx
+# Update & install nginx & python
 RUN apt-get update && apt-get install -y nginx
 RUN apt-get install nano
 RUN apt install -y python3-pip python3-dev build-essential libssl-dev libffi-dev python3-setuptools
@@ -21,8 +21,6 @@ RUN mkdir -p /app/website/secondtour_website
 # Install the requirements
 COPY ./website/secondtour_website/requirements.txt /app/website/secondtour_website/requirements.txt
 RUN pip install -r /app/website/secondtour_website/requirements.txt
-COPY ./api/secondtour_api/requirements.txt /app/api/secondtour_api/requirements.txt
-RUN pip install -r /app/api/secondtour_api/requirements.txt
 
 
 # RUN systemctl start secondtour_website
@@ -32,6 +30,6 @@ RUN pip install -r /app/api/secondtour_api/requirements.txt
 COPY ./build/website/start.sh /app/scripts/start.sh
 
 # Prod image
-EXPOSE 80 443
+EXPOSE 80
 
 CMD ["/app/scripts/start.sh"]

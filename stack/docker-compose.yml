@@ -8,17 +8,29 @@ services:
     image: secondtour-website
     container_name: secondtour-website
     volumes:
-      - ./api:/app/api
       - ./website:/app/website
+      - ./mysql/mysqld:/var/run/mysqld
+    depends_on:
+      - api
+    networks:
+      - back-network
+    ports:
+      - 80:80
+  api:
+    build:
+      context: .
+      dockerfile: ./build/api/Dockerfile
+    image: secondtour-api
+    container_name: secondtour-api
+    volumes:
+      - ./api:/app/api
       - ./mysql/mysqld:/var/run/mysqld
     depends_on:
       - mysql
     networks:
       - back-network
     ports:
-      - 80:80
       - 443:443
-      - 8000:8000
   mysql:
     build:
       args:
