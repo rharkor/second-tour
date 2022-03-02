@@ -1,6 +1,14 @@
 from dotenv import load_dotenv
 load_dotenv()
 from website.main_website import app, db, logging
+import os
+import requests
+import logging
+
+def ask_api(what: str):
+    url = os.getenv("API_URL") + what
+    logging.info("Asking API on : ", url)
+    return requests.get(url)
 
 
 def main(debug_mode=True):
@@ -10,7 +18,15 @@ def main(debug_mode=True):
 
 def test():
     # from function import main_test_dependance
-    pass
+    try:
+        response = ask_api("version")
+        if response.status_code != 200:
+            raise Exception
+    except Exception as e:
+        logging.warning("Vérifiez que l'Api est bien lancée.")
+        quit("L'api n'est pas lancée")
+
+
 
 
 def run(debug_mode=False):

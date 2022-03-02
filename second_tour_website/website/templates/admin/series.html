@@ -22,7 +22,7 @@
                         <th scope="col">
                             <div class="th-inner">Série</div>
                             <div class="filter-control">
-                                <select class="form-select finder break-doublons" onchange="finder(1, 0)">
+                                <select class="form-select finder break-doublons" v-on:change="finder(1, 0)">
                                     <option select></option>
                                     {% for an_serie in all_series %}
                                     <option>{{an_serie.nom}}</option>
@@ -45,7 +45,8 @@
                         <td scope="row">{% if an_serie.specialite2: %}{{an_serie.specialite2}}{% endif %}
                         </td>
                         <td scope="row">
-                            <form method="post" action="{{url_for('admin_routes.series')}}" id="modifySerieForm{{an_serie.id_serie}}">
+                            <form method="post" action="{{url_for('admin_routes.series')}}"
+                                id="modifySerieForm{{an_serie.id_serie}}">
                                 <input type="hidden" name="id" value="{{an_serie.id_serie}}">
                                 <button type="button" id="{{an_serie.id_serie}}" data-bs-toggle="modal"
                                     data-bs-target="#modifySerieModal"
@@ -218,29 +219,29 @@
         </div>
     </div>
 
-    <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModal"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Attention</h5>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>Êtes vous sûr de vouloir supprimer cette série ?</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                    <button type="submit" name="delete_button" id="ModalSubmitButton" value="" form="deleteSerieForm"
-                        class="btn btn-danger">Supprimer</button>
+                <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog"
+                    aria-labelledby="confirmDeleteModal" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Attention</h5>
+                                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Êtes vous sûr de vouloir supprimer cette série ?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                                <button type="submit" name="delete_button" id="ModalSubmitButton" value=""
+                                    form="deleteSerieForm" class="btn btn-danger">Supprimer</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
-{% endblock %}
+            {% endblock %}
 
 {% block sub_script %}
 <script>
