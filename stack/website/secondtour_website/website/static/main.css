@@ -1,0 +1,292 @@
+html {
+  height: 100%;
+  width: 100%;
+  min-width: -webkit-max-content;
+  min-width: -moz-max-content;
+  min-width: max-content;
+}
+
+body {
+  background-color: #4c5cff;
+  height: 100%;
+  width: 100%;
+}
+
+#app{
+  min-height: 100%;
+  height: max-content;
+  display: contents;
+}
+
+main {
+  min-height: 100%;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: relative;
+}
+
+table {
+  margin-bottom: 0px !important;
+}
+
+.background {
+  position: absolute;
+  min-height: 100%;
+  display: block;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.top-layer {
+  position: relative;
+  top: 0;
+  right: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 10px 10px 0 0;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.left {
+  left: 0;
+  right: unset;
+  margin: 0 0 10px 10px;
+}
+
+.image-login {
+  width: 35px;
+  height: auto;
+  -webkit-filter: invert(100%);
+          filter: invert(100%);
+}
+
+.image-xl {
+  width: 300px;
+  height: auto;
+}
+
+.image-l {
+  width: 200px;
+  height: auto;
+}
+
+.image-m {
+  width: 100px;
+  height: auto;
+}
+
+.image-xm {
+  width: 150px;
+  height: auto;
+}
+
+.image-s {
+  width: 50px;
+  height: auto;
+}
+
+.form-login {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+.form-login form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.form-login .checkbox {
+  font-weight: 400;
+}
+
+.form-login .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-login input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-login input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+div.form-login-input-lg {
+  width: 500px;
+}
+
+@media only screen and (max-width: 600px) {
+  div.form-login-input-lg {
+    width: 100%;
+  }
+}
+
+.padding-main-calendar {
+  padding: 20px 5% 20px 5%;
+  width: 100%;
+}
+
+.pt-m {
+  padding-top: 20px;
+}
+
+.mb-m {
+  margin-bottom: 20px;
+}
+
+.mt-xxl {
+  margin-top: 10%;
+}
+
+.ml-m {
+  margin-left: 20px;
+}
+
+.ml-s {
+  margin-left: 10px;
+}
+
+.maxw {
+  width: 100%;
+}
+
+.maxh {
+  height: 100%;
+}
+
+.calendar {
+  width: 100%;
+}
+
+.min-width-max-content {
+  min-width: -webkit-max-content;
+  min-width: -moz-max-content;
+  min-width: max-content;
+}
+
+div.thumbnail {
+  border-radius: 5px;
+}
+
+.name-finder {
+  position: relative;
+  top: 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
+}
+
+.margin-login-form {
+  margin: 10px 0 10px 0;
+}
+
+form * i {
+  margin-left: -30px;
+  cursor: pointer;
+}
+
+.eye-form {
+  font-size: 120%;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.loader {
+  border: 16px solid #f3f3f3;
+  /* Light grey */
+  border-top: 16px solid #34cc55;
+  /* Blue */
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  -webkit-animation: spin 1s linear infinite;
+          animation: spin 1s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+option:disabled {
+  background-color: #e9ecef !important;
+}
+
+.disabled {
+  opacity: 1;
+  background-color: #e9ecef !important;
+  pointer-events: none;
+}
+
+.table-responsive {
+  overflow-x: clip;
+}
+
+.align-text-top {
+  vertical-align: top;
+}
+
+.hide {
+  display: none;
+}
+
+.fa-caret-right {
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+.rtoate180 {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+/*# sourceMappingURL=main.css.map */

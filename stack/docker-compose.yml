@@ -1,0 +1,56 @@
+version: '3.7'
+
+services:
+  website:
+    build:
+      context: .
+      dockerfile: ./build/website/Dockerfile
+    image: secondtour-website
+    container_name: secondtour-website
+    volumes:
+      - ./website:/app/website
+      - ./mysql/mysqld:/var/run/mysqld
+    depends_on:
+      - api
+    networks:
+      - back-network
+    ports:
+      - 80:80
+  api:
+    build:
+      context: .
+      dockerfile: ./build/api/Dockerfile
+    image: secondtour-api
+    container_name: secondtour-api
+    volumes:
+      - ./api:/app/api
+      - ./mysql/mysqld:/var/run/mysqld
+    depends_on:
+      - mysql
+    networks:
+      - back-network
+    ports:
+      - 443:443
+  mysql:
+    build:
+      args:
+        VERSION: $MYSQL_VERSION
+      context: .
+      dockerfile: ./build/mysql/Dockerfile
+    image: secondtour-mysql
+    container_name: secondtour-mysql
+    ports:
+      - 3306:3306
+    volumes:
+      - ./mysql/db:/var/lib/mysql
+      - ./mysql/mysqld:/var/run/mysqld
+    environment:
+      MYSQL_DATABASE: secondtour
+      MYSQL_ROOT_PASSWORD: rootPassword
+      MYSQL_USER: api
+      MYSQL_PASSWORD: api
+    networks:
+      - back-network
+networks:
+  back-network: 
+    driver: bridge

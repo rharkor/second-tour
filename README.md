@@ -1,3 +1,5 @@
+Pour lancer la stack `docker compose up --build`
+
 # 1. [Présentation du projet](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Pr%C3%A9sentation-du-projet)
 
 - [Sujet de base](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Pr%C3%A9sentation-du-projet#sujet-de-base)

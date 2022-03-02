@@ -1,0 +1,233 @@
+{% extends "admin/base_admin.html" %}
+{% block title %}Administration{% endblock %}
+{% block sub_content %}
+<div class="main-div-admin">
+    <h1 class="text-white text-decoration-none" style="margin-bottom: 10px;">Accueil</h1>
+    <div class="d-flex" style="width: 100%; justify-content:space-between;">
+        <form method="post">
+            <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                data-bs-target="#generateCalendarModal">Générer le calendrier</button>
+        </form>
+        <div class="d-flex flex-row">
+            <button class="btn btn-primary" v-on:click="download_multiplePdf()"
+                style="width: max-content; white-space:nowrap; background-color:blue;">
+                Télécharger
+                <i class=" fas fa-print ml-s"></i>
+            </button>
+            <form method="post">
+                <button class="btn btn-success" type="submit"
+                    style="background-color: green; width: max-content;white-space:nowrap;" name="excel_button">
+                    Exporter au format XLSX
+                    <i class="fas fa-file-excel ml-s"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+    <div class="main-table-admin" style="margin: 20px 0 0 0;">
+        {% for category, message in get_flashed_messages(with_categories = true) %}
+        <div class="alert alert-{{category}}  alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+        <div class="table-responsive thumbnail">
+            <table class="table table-light table-striped calendar" id="calendarG">
+                <thead>
+                    <tr>
+                        <th scope="col">
+                            <div class="th-inner">Nom</div>
+                            <div class="filter-control">
+                                <input type="text" class="form-control finder" v-on:keyup="finder()" placeholder="">
+                            </div>
+                        </th>
+                        <th scope="col">
+                            <div class="th-inner">Prénom</div>
+                            <div class="filter-control">
+                                <input type="text" class="form-control finder" v-on:keyup="finder()" placeholder="">
+                            </div>
+                        </th>
+                        <th scope="col">
+                            <div class="th-inner">Série</div>
+                            <div class="filter-control">
+
+                                <input type="text" class="form-control finder" v-on:keyup="finder()" placeholder="">
+
+                            </div>
+                        </th>
+                        <th scope="col">
+                            <div class="th-inner">Epreuve 1</div>
+                            <div class="filter-control">
+                                <input type="text" class="form-control finder" v-on:keyup="finder()" placeholder="">
+                            </div>
+                        </th>
+                        <th scope="col">
+                            <div class="th-inner">Epreuve 2</div>
+                            <div class="filter-control">
+                                <input type="text" class="form-control finder" v-on:keyup="finder()" placeholder="">
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for candidat in all_candidats %}
+                    {% for serie in all_series %}
+                    {% if serie.id_serie == candidat.id_serie and serie.nom == "Générale" %}
+                    <tr>
+                        <td scope="row">{{candidat.nom}}</td>
+                        <td scope="row">{{candidat.prenom}}</td>
+
+                        <td scope="row">
+                            {{serie.nom}} - {% if serie.specialite1 %}{{serie.specialite1}}{% endif %}{% if
+                            serie.specialite2 %}/{{serie.specialite2}}{% endif %}
+                        </td>
+                        {% for creneau in all_creneaux %}
+                        {% if creneau.id_candidat == candidat.id_candidat %}
+                        <td scope="row">
+                            <div class="calendar-subject">
+                                {% for matiere in all_matieres %}
+
+                                {% if matiere.id_matiere == creneau.id_matiere %}
+                                <div>{{matiere.nom}} - {% if matiere.loge %}Loge {% for salle in all_salles %}{% if
+                                    matiere.loge == salle.id_salle %}{{salle.numero}}{% endif %}{% endfor %}{% else %}
+                                    {% for salle in all_salles %}
+                                    {% if salle.id_salle == creneau.id_salle %}
+                                    {{salle.numero}}
+                                    {% endif %}
+                                    {% endfor %}
+                                    {% endif %}</div>
+                                <div>{{creneau.debut_preparation.strftime('%d')}} |
+                                    {{creneau.debut_preparation.strftime('%Hh%M')}} - {{creneau.fin.strftime('%Hh%M')}}
+                                </div>
+                                {% endif %}
+                                {% endfor %}
+                            </div>
+                        </td>
+                        {% endif %}
+                        {% endfor %}
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <br>
+        <div class="table-responsive thumbnail">
+            <table class="table table-light table-striped calendar" id="calendarT">
+                <thead>
+                    <tr>
+                        <th scope="col">
+                            <div class="th-inner">Nom</div>
+                        </th>
+                        <th scope="col">
+                            <div class="th-inner">Prénom</div>
+                        </th>
+                        <th scope="col">
+                            <div class="th-inner">Série</div>
+                        </th>
+                        <th scope="col">
+                            <div class="th-inner">Epreuve 1</div>
+                        </th>
+                        <th scope="col">
+                            <div class="th-inner">Epreuve 2</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for candidat in all_candidats %}
+                    {% for serie in all_series %}
+                    {% if serie.id_serie == candidat.id_serie and serie.nom == "Technologique" %}
+                    <tr>
+                        <td scope="row">{{candidat.nom}}</td>
+                        <td scope="row">{{candidat.prenom}}</td>
+
+                        <td scope="row">
+                            {{serie.nom}} - {% if serie.specialite1 %}{{serie.specialite1}}{% endif %}{% if
+                            serie.specialite2 %}/{{serie.specialite2}}{% endif %}
+                        </td>
+
+                        {% for creneau in all_creneaux %}
+                        {% if creneau.id_candidat == candidat.id_candidat %}
+                        <td scope="row">
+                            <div class="calendar-subject">
+                                {% for matiere in all_matieres %}
+
+                                {% if matiere.id_matiere == creneau.id_matiere %}
+                                <div>{{matiere.nom}} - {% if matiere.loge %}Loge {% for salle in all_salles %}{% if
+                                    matiere.loge == salle.id_salle %}{{salle.numero}}{% endif %}{% endfor %}{% else %}
+                                    {% for salle in all_salles %}
+                                    {% if salle.id_salle == creneau.id_salle %}
+                                    {{salle.numero}}
+                                    {% endif %}
+                                    {% endfor %}
+                                    {% endif %}</div>
+                                <div>{{creneau.debut_preparation.strftime('%d')}} |
+                                    {{creneau.debut_preparation.strftime('%Hh%M')}} - {{creneau.fin.strftime('%Hh%M')}}
+                                </div>
+                                {% endif %}
+                                {% endfor %}
+                            </div>
+                        </td>
+                        {% endif %}
+                        {% endfor %}
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="generateCalendarModal" tabindex="-1" role="dialog"
+        aria-labelledby="generateCalendarModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Générer le calendrier</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Êtes vous sûr de vouloir générer le calendrier ?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
+                    <form method="post">
+                        <button name="generate_button" type="submit" class="btn btn-warning" data-bs-toggle="modal"
+                            data-bs-target="#loadingModal">Confirmer</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="loadingModal" tabindex="-1" role="dialog" aria-labelledby="generateCalendarModal"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Chargement...</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body d-flex justify-content-center align-items-center flex-column">
+                    <div class="loader" style="margin-bottom: 10px;"></div>
+                    <p>Chargement...</p>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block sub_script %}
+<script>
+
+</script>
+{% endblock %}
