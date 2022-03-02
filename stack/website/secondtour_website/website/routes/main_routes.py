@@ -43,12 +43,14 @@ def connexion():
             response = ask_api("data/fetchfilter/utilisateur", {"email": email, "admin": "true"})
             if response.status_code != 200:
                 flash("Une erreur est survenue lors de la récupération des données", "danger")
+                logging.warning("Une erreur est survenue lors de la recuperation des donnees utilisateur")
             user = response.json()[0] if response.json() else None
             # user = UTILISATEUR.query.filter_by(email=email, admin=True).first()
             if not user:
                 response = ask_api("data/fetchfilter/utilisateur", {"email": email, "admin": "false"})
                 if response.status_code != 200:
                     flash("Une erreur est survenue lors de la récupération des données", "danger")
+                    logging.warning("Une erreur est survenue lors de la recuperation des donnees utilisateur")
                 user = response.json()[0] if response.json() else None
                 # user = UTILISATEUR.query.filter_by(email=email, admin=False).first()
             # Verify that the user exist
@@ -63,15 +65,17 @@ def connexion():
                     return redirect(url_for('admin_routes.accueil'))
                 else:
                     flash('Cet utilisateur n\'existe pas', 'warning')
-                    logging.warning('Cet utilisateur n\'existe pas')
+                    logging.warning('Cet utilisateur n\'existe pas (incorrect password)')
+                    return render_template('connexion.html'), 401
             else:
                 flash('Cet utilisateur n\'existe pas', 'warning')
                 logging.warning('Cet utilisateur n\'existe pas')
+                return render_template('connexion.html'), 401
             
         except Exception:
             flash('Cet utilisateur n\'existe pas', 'warning')
             logging.warning(traceback.format_exc().encode("utf-8"))
-            logging.warning('Cet utilisateur n\'existe pas')
+            logging.warning('Cet utilisateur n\'existe pas + erreur code')
     return render_template('connexion.html')
 
 @main_routes.route('/cgu')

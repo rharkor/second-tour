@@ -1,0 +1,10 @@
+{
+  "projectId": "kq4o2q",
+  "env": {
+    "API_URL": "http://127.0.0.1:443",
+    "API_USERNAME": "admin",
+    "API_PASSWORD": "L0calAdmin",
+    "WEBSITE_URL": "http://127.0.0.1"
+  },
+  "baseUrl": "http://127.0.0.1"
+}
