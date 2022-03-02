@@ -15,8 +15,10 @@ class MySQLDatabase:
             host=_host,
             user=_user,
             password=_password,
-            database=_database
+            database=_database,
+            autocommit=True
             )
+            print("Connected !")
         except mysql.connector.errors.DatabaseError:
             if _it < 10:
                 traceback.print_exc()

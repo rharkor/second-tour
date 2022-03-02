@@ -19,7 +19,7 @@
             <table class="table table-light table-striped table-hover" id="calendar">
                 <thead>
                     <tr>
-                        <th scope="col">
+                        <th scope="col"  style="width: 10%;">
                             <div class="th-inner">Nom</div>
                             <div class="filter-control">
                                 <select class="form-select finder break-doublons" v-on:change="finder(1, 0)">
@@ -43,13 +43,13 @@
                                 </select>
                             </div>
                         </th>
-                        <th scope="col">
+                        <th scope="col"  style="width: 10%;">
                             <div class="th-inner">Temps de préparation</div>
                             <div class="filter-control">
                                 <input type="text" class="form-control finder" v-on:keyup="finder(3, 2)" placeholder="">
                             </div>
                         </th>
-                        <th scope="col">
+                        <th scope="col"  style="width: 10%;">
                             <div class="th-inner">Temps de passage</div>
                             <div class="filter-control">
                                 <input type="text" class="form-control finder" v-on:keyup="finder(4, 3)" placeholder="">

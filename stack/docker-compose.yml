@@ -9,7 +9,6 @@ services:
     container_name: secondtour-website
     volumes:
       - ./website:/app/website
-      - ./mysql/mysqld:/var/run/mysqld
     depends_on:
       - api
     networks:
@@ -24,7 +23,6 @@ services:
     container_name: secondtour-api
     volumes:
       - ./api:/app/api
-      - ./mysql/mysqld:/var/run/mysqld
     depends_on:
       - mysql
     networks:
@@ -33,17 +31,15 @@ services:
       - 443:443
   mysql:
     build:
-      args:
-        VERSION: $MYSQL_VERSION
       context: .
       dockerfile: ./build/mysql/Dockerfile
     image: secondtour-mysql
+    command: --default-authentication-plugin=mysql_native_password
     container_name: secondtour-mysql
     ports:
       - 3306:3306
     volumes:
       - ./mysql/db:/var/lib/mysql
-      - ./mysql/mysqld:/var/run/mysqld
     environment:
       MYSQL_DATABASE: secondtour
       MYSQL_ROOT_PASSWORD: rootPassword

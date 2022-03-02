@@ -22,7 +22,7 @@ def delete_all_content():
 
 def insert_admin():
     response = ask_api("data/insert/utilisateur", {"id_utilisateur": "null", "email": "admin@ac-poitiers.fr", "password": "$p5k2$3e8$AfpOzesj$.KoGR.raCRkA3gne.aZrF1bQobRfdSIH", "admin": "true", "id_professeur": "null"})
-    if response.status_code != 202:
+    if response.status_code != 201:
         logging.warning("Erreur lors de la suppression des données")
 
 
@@ -76,7 +76,7 @@ def delete_account(id):
     try:
         user = {"id_utilisateur": id, "admin": "false"}
         response = ask_api(f"data/deletefilter/utilisateur", {user})
-        if response.status_code != 200:
+        if response.status_code != 202:
             logging.warning("Impossible de supprimer cet utilisateur")
             return ['Impossible de supprimer cet utilisateur', 'danger']
         return False
@@ -137,31 +137,31 @@ def delete_serie(id):
             # delete creneau
             creneau = {"id_candidat": candidat['id_candidat']}
             response = ask_api(f"data/deletefilter/creneau", creneau)
-            if response.status_code != 200:
+            if response.status_code != 202:
                 logging.warning("Impossible de supprimer les creneaux des candidats correspondants à cette serie")
                 return ['Impossible de supprimer les creneaux des candidats correspondants à cette serie', 'danger']
             # delete choix_matiere
             choix_matiere = {"id_candidat": candidat['id_candidat']}
             response = ask_api(f"data/deletefilter/choix_matiere", choix_matiere)
-            if response.status_code != 200:
+            if response.status_code != 202:
                 logging.warning("Impossible de supprimer les choix matiere des candidats correspondants à cette serie")
                 return ['Impossible de supprimer les choix matiere des candidats correspondants à cette serie', 'danger']
         
         response = ask_api(f"data/deletefilter/candidat", candidat_filter)
-        if response.status_code != 200:
+        if response.status_code != 202:
             logging.warning("Impossible de supprimer les candidats correspondants à cette serie")
             return ['Impossible de supprimer les candidats correspondants à cette serie', 'danger']
 
         matiere_filter = {"id_serie": id}
         response = ask_api(f"data/deletefilter/matiere", matiere_filter)
-        if response.status_code != 200:
+        if response.status_code != 202:
             logging.warning("Impossible de supprimer les matieres correspondantes")
             return ['Impossible de supprimer les matieres correspondantes', 'danger']
 
                 
         serie_filter = {"id_serie": id}
         response = ask_api(f"data/deletefilter/serie", serie_filter)
-        if response.status_code != 200:
+        if response.status_code != 202:
             logging.warning("Impossible de supprimer cette serie", "danger")
             return ['Impossible de supprimer cette serie', 'danger']
         
@@ -213,7 +213,7 @@ def add_matiere(name, serie_id, temps_preparation, temps_preparation_tiers_temps
             return "Erreur lors de l'insertion d'une matiere", "danger"
         matiere["id_matiere"] = response.json()["id"]
         if not ret:
-            return [['La matiere a bien été créée', 'success']]
+            return 'La matiere a bien été créée', 'success'
         else:
             return [['La matiere a bien été créée', 'success'], matiere]
         
@@ -253,30 +253,30 @@ def delete_matiere(id):
         # liste matiere
         liste_matiere_filter = {"id_matiere": id}
         response = ask_api(f"data/deletefilter/liste_matiere", liste_matiere_filter)
-        if response.status_code != 200:
+        if response.status_code != 202:
             logging.warning("Impossible de supprimer la matière liés au professeurs")
             return ['Impossible de supprimer la matière liés au professeurs', 'danger']
         # creneaux
         creneau_filter = {"id_matiere": id}
         response = ask_api(f"data/deletefilter/creneau", creneau_filter)
-        if response.status_code != 200:
+        if response.status_code != 202:
             logging.warning("Impossible de supprimer les creneaux liés à la matiere")
             return ['Impossible de supprimer les creneaux liés à la matiere', 'danger']
         # choix matieres
         choix_matiere_filter = {"matiere1": id}
         response = ask_api(f"data/deletefilter/choix_matiere", choix_matiere_filter)
-        if response.status_code != 200:
+        if response.status_code != 202:
             logging.warning("Impossible de supprimer cette matiere dans le choix des candidats")
             return ['Impossible de supprimer cette matiere dans le choix des candidats', 'danger']
         choix_matiere_filter = {"matiere2": id}
         response = ask_api(f"data/deletefilter/choix_matiere", choix_matiere_filter)
-        if response.status_code != 200:
+        if response.status_code != 202:
             logging.warning("Impossible de supprimer cette matiere dans le choix des candidats")
             return ['Impossible de supprimer cette matiere dans le choix des candidats', 'danger']
         
         matiere_filter = {"id_matiere": id}
         response = ask_api(f"data/deletefilter/matiere", matiere_filter)
-        if response.status_code != 200:
+        if response.status_code != 202:
             logging.warning("Impossible de supprimer cette matiere")
             return ['Impossible de supprimer cette matiere', 'danger']
         
@@ -311,13 +311,13 @@ def add_salle(numero, ret=False):
         response = ask_api("data/insert/salle", salle)
         if response.status_code != 201:
             # print(numero)
-            logging.warning("Erreur lors de l'insertion d'une salle")
+            logging.warning("Erreur lors de l'insertion d'une salle", response.content)
             if ret:
                 return (["Erreur lors de l'insertion d'une salle", "danger"],salle)
             return "Erreur lors de l'insertion d'une salle", "danger"
         salle["id_salle"] = response.json()["id"]
         if not ret:
-            return [['La salle a bien été crée', 'success']]
+            return ['La salle a bien été crée', 'success']
         else:
             return [['La salle a bien été crée', 'success'], salle]
         # salle = SALLE(numero)
@@ -341,27 +341,27 @@ def delete_salle(id):
     try:
         # update professeur
         professeur = {"filter": {"salle": id},"data": {"salle": "null"}}
-        response = ask_api(f"data/deletefilter/professeur", professeur)
-        if response.status_code != 200:
+        response = ask_api(f"data/updatefilter/professeur", professeur)
+        if response.status_code != 202:
             logging.warning("Impossible de supprimer les professeurs associés à cette salle")
             return ['Impossible de supprimer les professeurs associés à cette salle', 'danger']
         
         # creneaux
         creneau_filter = {"id_salle": id}
         response = ask_api(f"data/deletefilter/creneau", creneau_filter)
-        if response.status_code != 200:
+        if response.status_code != 202:
             logging.warning("Impossible de supprimer les creneaux liés à la salle")
             return ['Impossible de supprimer les creneaux liés à la salle', 'danger']
         # matiere
-        matiere_filter = {"id_salle": id}
+        matiere_filter = {"loge": id}
         response = ask_api(f"data/deletefilter/matiere", matiere_filter)
-        if response.status_code != 200:
+        if response.status_code != 202:
             logging.warning("Impossible de supprimer les matieres liés à la salle")
             return ['Impossible de supprimer les matieres liés à la salle', 'danger']
         
         salle_filter = {"id_salle": id}
         response = ask_api(f"data/deletefilter/salle", salle_filter)
-        if response.status_code != 200:
+        if response.status_code != 202:
             logging.warning("Impossible de supprimer cette salle")
             return ['Impossible de supprimer cette salle', 'danger']
         
@@ -399,7 +399,7 @@ def add_token(email, token, admin, id_prof):
 def delete_token(token):
     token_filter = {"id_token": token}
     response = ask_api("data/deletefilter/token", token_filter)
-    if response.status_code != 200:
+    if response.status_code != 202:
         logging.warning("Erreur lors de la suppression du token")
     # token_db = TOKEN.query.filter_by(token=token).one()
     # db.session.delete(token_db)
@@ -515,7 +515,7 @@ def add_professeur_wep(user, nom, prenom, salle, matieres=None):
         
         user = {"filter": {"id_utilisateur": user}, "data": {"id_professeur": professeur["id_professeur"]}}
         response = ask_api("data/updatefilter/utilisateur", user)
-        if response.status_code != 200:
+        if response.status_code != 202:
             logging.warning("Erreur lors de la modification de l'utilisateur")
             return "Erreur lors de la modification de l'utilisateur", "danger"
         
@@ -558,7 +558,7 @@ def update_professeur_wep(id, user, nom, prenom, salle, matieres=None, heure_arr
     try:
         professeur = {"filter": {"id_professeur": id}, "data": {"id_utilisateur": user, "nom": nom, "prenom": prenom, "salle": salle}}
         response = ask_api("data/updatefilter/professeur", professeur)
-        if response.status_code != 201:
+        if response.status_code != 202:
             logging.warning("Erreur lors de l'insertion des matieres du professeur")
             return "Erreur lors de l'insertion des matieres du professeur", "danger"
         
@@ -584,7 +584,7 @@ def update_professeur_wep(id, user, nom, prenom, salle, matieres=None, heure_arr
                 
         horaire = {"filter": {"id_professeur": id}, "data": {"horaire_arr1": heure_arrivee1, "horaire_dep1": heure_depart1, "horaire_arr2": heure_arrivee2, "horaire_dep2": heure_depart2, "horaire_arr3": heure_arrivee3, "horaire_dep3": heure_depart3}}
         response = ask_api("data/updatefilter/horaire", horaire)
-        if response.status_code != 200:
+        if response.status_code != 202:
             logging.warning("Erreur lors de l'insertion des matieres du professeur")
             return "Erreur lors de l'insertion des matieres du professeur", "danger"
         
@@ -629,7 +629,7 @@ def update_professeur_wep(id, user, nom, prenom, salle, matieres=None, heure_arr
 def delete_liste_matiere_by_prof_id(id_professeur):
     liste_matiere = {"id_professeur": id_professeur}
     response = ask_api("data/deletefilter/profesliste_matiereseur", liste_matiere)
-    if response.status_code != 200:
+    if response.status_code != 202:
         logging.warning("Erreur lors de la suppression du choix des matieres lié au professeur")
         return "Erreur lors de la suppression du choix des matieres lié au professeur", "danger"
     # all_liste_matiere = LISTE_MATIERE.query.filter_by(
@@ -647,7 +647,7 @@ def delete_professeur(id):
         # accounts
         accounts = {"id_professeur": id}
         response = ask_api("data/deletefilter/utilisateur", accounts)
-        if response.status_code != 200:
+        if response.status_code != 202:
             logging.warning("Erreur lors de la suppression du compte du professeur")
             return "Erreur lors de la suppression du compte du professeur", "danger"
         
@@ -662,21 +662,21 @@ def delete_professeur(id):
         
         creneaux = {"id_salle": professeur['id_salle']}
         response = ask_api("data/deletefilter/creneaux", creneaux)
-        if response.status_code != 200:
+        if response.status_code != 202:
             logging.warning("Erreur lors de la suppression des creneaux associé à ce professeur")
             return "Erreur lors de la suppression des creneaux associé à ce professeur", "danger"
 
         # horaires
         horaires = {"id_professeur": id}
         response = ask_api("data/deletefilter/horaires", horaires)
-        if response.status_code != 200:
+        if response.status_code != 202:
             logging.warning("Erreur lors de la suppression des horaires du professeur")
             return "Erreur lors de la suppression des horaires du professeur", "danger"
 
         
         professeur = {"id_professeur": id}
         response = ask_api("data/deletefilter/professeur", professeur)
-        if response.status_code != 200:
+        if response.status_code != 202:
             logging.warning("Erreur lors de la suppression du professeur")
             return "Erreur lors de la suppression du professeur", "danger"
         
@@ -748,20 +748,20 @@ def delete_candidat(id):
         # choix matiere
         choix_matiere = {"id_candidat": id}
         response = ask_api("data/deletefilter/choix_matiere", choix_matiere)
-        if response.status_code != 200:
+        if response.status_code != 202:
             logging.warning("Erreur lors de la suppression des choix de matieres du candidat")
             return "Erreur lors de la suppression des choix de matieres du candidat", "danger"
         
         # creneaux
         creneau = {"id_candidat": id}
         response = ask_api("data/deletefilter/creneau", creneau)
-        if response.status_code != 200:
+        if response.status_code != 202:
             logging.warning("Erreur lors de la suppression des creneaux du candidat")
             return "Erreur lors de la suppression des creneaux du candidat", "danger"
         
         candidat_filter = {"id_candidat": id}
         response = ask_api("data/deletefilter/candidat", candidat_filter)
-        if response.status_code != 200:
+        if response.status_code != 202:
             logging.warning("Erreur lors de la suppression du candidat")
             return "Erreur lors de la suppression du candidat", "danger"
         
@@ -825,7 +825,7 @@ def delete_choix_matiere(id):
     try:
         choix_matiere = {"id_choix_matiere": id}
         response = ask_api("data/deletefilter/choix_matiere", choix_matiere)
-        if response.status_code != 200:
+        if response.status_code != 202:
             logging.warning("Erreur lors de la suppression du choix de matieres")
             return "Erreur lors de la suppression du choix de matieres", "danger"
         
@@ -894,7 +894,7 @@ def delete_creneau(id):
     try:
         creneau = {"id_creneau": id}
         response = ask_api("data/deletefilter/creneau", creneau)
-        if response.status_code != 200:
+        if response.status_code != 202:
             logging.warning("Erreur lors de la suppression du creneau")
             return "Erreur lors de la suppression du creneau", "danger"
         
@@ -953,7 +953,7 @@ def delete_liste_matiere(id_liste_matiere):
     try:
         liste_matiere = {"id_liste_matiere": id_liste_matiere}
         response = ask_api("data/deletefilter/liste_matiere", liste_matiere)
-        if response.status_code != 200:
+        if response.status_code != 202:
             logging.warning("Erreur lors de la suppression des listes matieres")
             return "Erreur lors de la suppression des listes matieres", "danger"
         

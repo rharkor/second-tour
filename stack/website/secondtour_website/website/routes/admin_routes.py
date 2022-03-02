@@ -15,7 +15,7 @@ admin_routes = Blueprint('admin_routes', __name__,
                          static_folder='static')
 
 
-@admin_routes.route('/')
+@admin_routes.route('/', methods=['POST', 'GET'])
 @admin_routes.route('/accueil', methods=['POST', 'GET'])
 def accueil():
     if main_security.test_session_connected(session, True):

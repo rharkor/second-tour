@@ -5,3 +5,6 @@ stack/second_tour_api/logs/logs_info.txt
 stack/api/secondtour_api/apienv
 stack/website/secondtour_website/websiteenv
 stack/website/secondtour_website/website.sock
+tests/node_modules
+stack/mysql/db 
+stack/api/secondtour_api_v2/node_modules

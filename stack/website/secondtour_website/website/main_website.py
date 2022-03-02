@@ -2,7 +2,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flaskext.mysql import MySQL
 from datetime import timedelta
-from logging import WARNING, ERROR, FileHandler
+from logging import WARNING, ERROR, FileHandler, INFO
 import logging
 import os
 import sys
@@ -14,11 +14,11 @@ sys.path.append(os.path.join(os.path.dirname(__file__)))
 app = Flask(__name__)
 
 file_handler = FileHandler(
-    os.getcwd() + "/logs/logs_info.txt")
-file_handler.setLevel(WARNING)
+    os.getcwd() + "/logs/logs_info.txt", encoding='utf8')
+file_handler.setLevel(INFO)
 logging.basicConfig(
-    level=WARNING,
-    format="%(asctime)s %(message)s",
+    level=INFO,
+    format=u"%(asctime)s %(message)s",
     handlers=[
         file_handler
     ]

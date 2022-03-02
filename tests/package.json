@@ -1,0 +1,27 @@
+{
+  "name": "tests",
+  "version": "1.0.0",
+  "description": "Le but de ce dossier est de tester toutes le fonctionnalitées de la base de donnée / api / site.",
+  "main": "api.test.js",
+  "scripts": {
+    "test": "jest --verbose --testPathPattern=./tests/tests",
+    "cypress:open": "cypress open",
+    "test:ui": "cypress open"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "timers": "real"
+  },
+  "author": "HUORT Louis",
+  "license": "ISC",
+  "dependencies": {
+    "@types/jest": "^27.4.0",
+    "axios": "^0.26.0",
+    "cypress": "^9.5.0",
+    "dotenv": "^16.0.0",
+    "jest": "^27.5.1",
+    "mysql2": "^2.3.3",
+    "supertest": "^6.2.2",
+    "supertest-session": "^4.1.0"
+  }
+}

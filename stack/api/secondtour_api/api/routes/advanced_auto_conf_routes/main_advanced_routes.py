@@ -3,11 +3,10 @@ from http.client import HTTPException
 import logging
 from sqlite3 import ProgrammingError
 import traceback
-from typing import Optional
+from typing import Optional, List, Dict
 from fastapi import APIRouter, status
 from fastapi.responses import JSONResponse
 import mysql.connector
-from pydantic import BaseModel
 from pydantic import BaseModel, Field
 import os
 
@@ -19,21 +18,128 @@ from database.config import db
 
 sensible_tables = os.getenv('SENSIBLE_TABLES').split(",")
 
+'''OBJECTS IN'''
+
 class User(BaseModel):
     username: str = Field(None, title='Username')
     password: str = Field(None, title='Password')
+    class Config:
+        schema_extra = {
+            "example": {
+                "username": "Admin",
+                "password": "AdminPassword",
+            }
+        }
     
 class UserContentTableName(BaseModel):
     username: str = Field(None, title='Username')
     password: str = Field(None, title='Password')
-    content: dict = Field({}, title='Name of all the table you want to retreive. ex:{"candidats": "", "matieres": ""}')
+    content: dict = Field({}, title='Name of all the table you want to retreive')
+    class Config:
+        schema_extra = {
+            "example": {
+                "username": "Admin",
+                "password": "AdminPassword",
+                "content": {
+                    "creneau": "",
+                    "salle": "",
+                    "liste_matiere": ""
+                }
+            }
+        }
     
 class UserContentTableDescription(BaseModel):
     username: str = Field(None, title='Username')
     password: str = Field(None, title='Password')
-    content: dict = Field({}, title='The necessary elements to insert a row. ex:{"name": "Obama", "email": "obama@gmail.com"}')
+    content: dict = Field({}, title='The necessary elements to insert a row')
+    class Config:
+        schema_extra = {
+            "example": {
+                "username": "Admin",
+                "password": "AdminPassword",
+                "content": {
+                    "numero": "D002"
+                }
+            }
+        }
+        
+class UserContentTableDescriptionFull(BaseModel):
+    username: str = Field(None, title='Username')
+    password: str = Field(None, title='Password')
+    content: dict = Field({}, title='The necessary elements to insert a row')
+    class Config:
+        schema_extra = {
+            "example": {
+                "username": "Admin",
+                "password": "AdminPassword",
+                "content": {
+                    "id_salle": "null",
+                    "numero": "D002"
+                }
+            }
+        }
+        
+class UserContentUpdate(BaseModel):
+    username: str = Field(None, title='Username')
+    password: str = Field(None, title='Password')
+    content: dict = Field({}, title='The necessary elements to insert a row')
+    class Config:
+        schema_extra = {
+            "example": {
+                "username": "Admin",
+                "password": "AdminPassword",
+                "content": {
+                    "filter": {
+                        "id_salle": "1"
+                    },
+                    "data": {
+                        "numero": "D002"
+                    }
+                }
+            }
+        }
+        
+        
+'''OBJECTS OUT'''
+class fetchOut(BaseModel):
+    rows_list: List[Dict] = [{
+        "id_salle": 1,
+        "numero": "D001"
+    },
+    {
+        "id_salle": 2,
+        "numero": "D002"
+    }]
 
-@router.post("/fetch/{table}")
+class fetchFilterOut(BaseModel):
+    rows_list: List[Dict] = [{
+        "id_salle": 2,
+        "numero": "D002"
+    }]
+
+class fetchMultiOut(BaseModel):
+    tables_list: List[List] = [
+        [],
+        [{
+            "id_salle": 1,
+            "numero": "D001"
+        },
+        {
+            "id_salle": 2,
+            "numero": "D002"
+        }],
+        [{
+            "id_liste_matiere": 1,
+            "id_professeur": 1,
+            "id_matiere": 1
+        }]
+    ]
+
+class returnId(BaseModel):
+    id: int = 1
+
+
+@router.post("/fetch/{table}", status_code=200, response_model=fetchOut)
 def get_table(table: str, user: User, row_id: Optional[int] = None):
     if not main_security.test_connection(user):
         logging.warning(f"Incorrect username or password, {user}")
@@ -56,7 +162,7 @@ def get_table(table: str, user: User, row_id: Optional[int] = None):
             output = JSONResponse(status_code=status.HTTP_404_NOT_FOUND ,content={'error': traceback.format_exc()})
     return output
 
-@router.post("/fetchfilter/{table}")
+@router.post("/fetchfilter/{table}", status_code=200, response_model=fetchFilterOut)
 def get_table_by_filter(table: str, user: UserContentTableDescription):
     if not main_security.test_connection(user):
         logging.warning(f"Incorrect username or password, {user}")
@@ -84,7 +190,7 @@ def get_table_by_filter(table: str, user: UserContentTableDescription):
     return output
 
 
-@router.post("/fetchmulti")
+@router.post("/fetchmulti", status_code=200, response_model=fetchMultiOut)
 def get_many_tables(user: UserContentTableName):
     if not main_security.test_connection(user):
         logging.warning(f"Incorrect username or password, {user}")
@@ -103,6 +209,7 @@ def get_many_tables(user: UserContentTableName):
                 except Exception:
                     output_in = {'error': traceback.format_exc()}
                 output.append(output_in)
+            output = JSONResponse(status_code=status.HTTP_200_OK ,content=output)
         except mysql.connector.errors.ProgrammingError:
             logging.warning(traceback.format_exc())
             output = JSONResponse(status_code=status.HTTP_404_NOT_FOUND ,content={'error': "Error while fetching data"})
@@ -111,8 +218,8 @@ def get_many_tables(user: UserContentTableName):
             output = JSONResponse(status_code=status.HTTP_404_NOT_FOUND ,content={'error': traceback.format_exc()})
     return output
 
-@router.post("/insert/{table}")
-def insert_a_row(table: str, user: UserContentTableDescription):
+@router.post("/insert/{table}", status_code=201, response_model=returnId)
+def insert_a_row(table: str, user: UserContentTableDescriptionFull):
     if not main_security.test_connection(user):
         logging.warning(f"Incorrect username or password, {user}")
         output = JSONResponse(status_code=status.HTTP_400_BAD_REQUEST, content={'error': "Incorrect identifiers"})
@@ -139,7 +246,7 @@ def insert_a_row(table: str, user: UserContentTableDescription):
             output = JSONResponse(status_code=status.HTTP_404_NOT_FOUND ,content={'error': traceback.format_exc()})
     return output
 
-@router.post("/delete/{table}")
+@router.post("/delete/{table}", status_code=202, response_model=returnId)
 def delete_row(table: str, user: User, row_id: Optional[int] = None):
     if not main_security.test_connection(user):
         logging.warning(f"Incorrect username or password, {user}")
@@ -159,7 +266,7 @@ def delete_row(table: str, user: User, row_id: Optional[int] = None):
             output = JSONResponse(status_code=status.HTTP_404_NOT_FOUND ,content={'error': traceback.format_exc()})
     return output
 
-@router.post("/deletefilter/{table}")
+@router.post("/deletefilter/{table}", status_code=200, response_model=returnId)
 def delete_row(table: str, user: UserContentTableDescription):
     if not main_security.test_connection(user):
         logging.warning(f"Incorrect username or password, {user}")
@@ -187,7 +294,7 @@ def delete_row(table: str, user: UserContentTableDescription):
     return output
 
 
-@router.post("/deleteall")
+@router.post("/deleteall", status_code=202, response_model=returnId)
 def delete_all_the_database(user: User):
     if not main_security.test_connection(user):
         logging.warning(f"Incorrect username or password, {user}")
@@ -206,8 +313,8 @@ def delete_all_the_database(user: User):
             output = JSONResponse(status_code=status.HTTP_404_NOT_FOUND ,content={'error': traceback.format_exc()})
     return output
 
-@router.post('/updatefilter/{table}')
-def update_table_by_filter(table: str, user: UserContentTableDescription):
+@router.post('/updatefilter/{table}', status_code=200, response_model=returnId)
+def update_table_by_filter(table: str, user: UserContentUpdate):
     if not main_security.test_connection(user):
         logging.warning(f"Incorrect username or password, {user}")
         output = JSONResponse(status_code=status.HTTP_400_BAD_REQUEST, content={'error': "Incorrect identifiers"})

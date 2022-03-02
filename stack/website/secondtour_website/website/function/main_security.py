@@ -2,6 +2,7 @@ from flask import flash
 from pbkdf2 import crypt
 import os
 import traceback
+import logging
 
 from ..database.main_database import *
  
