@@ -381,8 +381,11 @@
             </div>
         </div>
     </div>
-</div>
 
+
+{% endblock %}
+
+{% block sub_script %}
 <script>
     $(document).ready(function () {
         $('.matiere-choice-multiselect1').select2({
@@ -397,9 +400,7 @@
         $('.js-example-basic-multiple').select2();
     });
 </script>
-{% endblock %}
 
-{% block sub_script %}
 <script>
     $('.modifRow').click(function () {
 

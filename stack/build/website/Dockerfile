@@ -32,4 +32,4 @@ COPY ./build/website/start.sh /app/scripts/start.sh
 # Prod image
 EXPOSE 80
 
-CMD ["/app/scripts/start.sh"]
+CMD ["sh", "/app/scripts/start.sh"]

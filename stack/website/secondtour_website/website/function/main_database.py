@@ -449,9 +449,10 @@ def add_professeur(email, nom, prenom, salle, matieres=None, token=None, admin=F
                 return (["Erreur lors de l'insertion d'un professeur", "danger"],professeur)
             return "Erreur lors de l'insertion d'un professeur", "danger"
         professeur["id_professeur"] = response.json()["id"]
-        
+        print("test")
         if token:
-            add_token(email, token, admin, professeur.id_professeur)
+            
+            add_token(email, token, admin, professeur["id_professeur"])
             logging.warning('Le token a bien été créé')
             
         if matieres:
