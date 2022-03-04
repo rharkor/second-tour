@@ -379,8 +379,8 @@ function download_multiplePdfSalle() {
         let all_professeurs = JSON.parse('{{all_professeurs|tojson}}');
 
         for (let i = 0; i < all_salles.length; i++) {
-            var salle = all_salles[i];
-            var doc = downloadPDFWithBrowserPrint('tableAccordion' + salle.id_salle.toString(), salle.numero, true);
+            let salle = all_salles[i];
+            let doc = downloadPDFWithBrowserPrint('tableAccordion' + salle.id_salle.toString(), salle.numero, true);
             try {
                 zip.file(salle.numero.toString() + '_listeDEmargement.pdf', doc.output('blob'));
             }
@@ -417,7 +417,7 @@ $('.modifRow').click(function (){
     myvar_salles = '{{all_salles|tojson}}';
     var all_salles = JSON.parse(myvar_salles);
 
-    var salle;
+    let salle;
     for (var i = 0; i < all_salles.length; i++) {
         if (all_salles[i]['id_salle'] == $myRowId) {
             salle = all_salles[i];
