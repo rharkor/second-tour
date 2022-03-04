@@ -381,27 +381,26 @@
             </div>
         </div>
     </div>
-
-
+</div>
 {% endblock %}
 
 {% block sub_script %}
 <script>
-    $(document).ready(function () {
-        $('.matiere-choice-multiselect1').select2({
-            dropdownParent: $('#addProfModal'),
-            width: 'resolve'
-        });
-        $('.matiere-choice-multiselect2').select2({
-            dropdownParent: $('#modifyModal'),
-            width: 'resolve'
-        });
 
-        $('.js-example-basic-multiple').select2();
+
+    $('.matiere-choice-multiselect1').select2({
+        dropdownParent: $('#addProfModal'),
+        width: 'resolve'
     });
-</script>
+    $('.matiere-choice-multiselect2').select2({
+        dropdownParent: $('#modifyModal'),
+        width: 'resolve'
+    });
 
-<script>
+    $('.js-example-basic-multiple').select2();
+
+
+
     $('.modifRow').click(function () {
 
         var $myRowId = $(this).get(0).id.replace('modify-', '');

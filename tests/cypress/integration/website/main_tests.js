@@ -99,122 +99,127 @@ describe('Testing the website UI',function () {
     cy.get('table#calendar tbody tr td').eq(1).should("contain.text", "D001")
   })
 
-  it('Add a new série technologique', () => {
-    cy.login("admin@ac-poitiers.fr", "L0calAdmin")
-    goTo('/admin/series')
-    cy.url().should('match', /\/admin\/serie/)
-    cy.get('[data-bs-target="#addSerieModal"]').click({force: true})
-    cy.get('#addSerieModal').should('be.visible')
+  // it('Add a new série technologique', () => {
+  //   cy.login("admin@ac-poitiers.fr", "L0calAdmin")
+  //   goTo('/admin/series')
+  //   cy.url().should('match', /\/admin\/serie/)
+  //   cy.get('[data-bs-target="#addSerieModal"]').click({force: true})
+  //   cy.get('#addSerieModal').should('be.visible')
 
-    cy.get('#addSerieForm div select[name="serie"]').select('Technologique').should('contain.value', "Technologique")
-    cy.get('#addSerieForm div input[name="specialite1"]').type('STI2D').should('contain.value', "STI2D")
-
-
-    cy.get('button[form="addSerieForm"][name="submit_button"]').should("be.visible").click()
-    cy.expectAlert('success', 'La série a bien été crée')
-    cy.get('table#calendar tbody tr td').eq(1).should("contain.text", "Technologique")
-    cy.get('table#calendar tbody tr td').eq(2).should("contain.text", "STI2D")
-  })
-
-  it('Add a new série générale', () => {
-    cy.login("admin@ac-poitiers.fr", "L0calAdmin")
-    goTo('/admin/series')
-    cy.url().should('match', /\/admin\/serie/)
-    cy.get('[data-bs-target="#addSerieModal"]').click({force: true})
-    cy.get('#addSerieModal').should('be.visible')
-
-    cy.get('#addSerieForm div select[name="serie"]').select('Générale').should('contain.value', "Générale")
-    cy.get('#addSerieForm div input[name="specialite1"]').type('Mathématiques').should('contain.value', "Mathématiques")
-    cy.get('#addSerieForm div input[name="specialite2"]').type('SVT').should('contain.value', "SVT")
+  //   cy.get('#addSerieForm div select[name="serie"]').select('Technologique').should('contain.value', "Technologique")
+  //   cy.get('#addSerieForm div input[name="specialite1"]').type('STI2D').should('contain.value', "STI2D")
 
 
-    cy.get('button[form="addSerieForm"][name="submit_button"]').should("be.visible").click()
-    cy.expectAlert('success', 'La série a bien été crée')
-    cy.get('table#calendar tbody tr td').eq(1).should("contain.text", "Générale")
-    cy.get('table#calendar tbody tr td').eq(2).should("contain.text", "Mathématiques")
-    cy.get('table#calendar tbody tr td').eq(3).should("contain.text", "SVT")
-  })
+  //   cy.get('button[form="addSerieForm"][name="submit_button"]').should("be.visible").click()
+  //   cy.expectAlert('success', 'La série a bien été crée')
+  //   cy.get('table#calendar tbody tr td').eq(1).should("contain.text", "Technologique")
+  //   cy.get('table#calendar tbody tr td').eq(2).should("contain.text", "STI2D")
+  // })
 
-  it('Verify that matieres are automatically generated', () => {
-    cy.login("admin@ac-poitiers.fr", "L0calAdmin")
-    goTo('/admin/matieres')
-    cy.url().should('match', /\/admin\/matieres/)
+  // it('Add a new série générale', () => {
+  //   cy.login("admin@ac-poitiers.fr", "L0calAdmin")
+  //   goTo('/admin/series')
+  //   cy.url().should('match', /\/admin\/serie/)
+  //   cy.get('[data-bs-target="#addSerieModal"]').click({force: true})
+  //   cy.get('#addSerieModal').should('be.visible')
+
+  //   cy.get('#addSerieForm div select[name="serie"]').select('Générale').should('contain.value', "Générale")
+  //   cy.get('#addSerieForm div input[name="specialite1"]').type('Mathématiques').should('contain.value', "Mathématiques")
+  //   cy.get('#addSerieForm div input[name="specialite2"]').type('SVT').should('contain.value', "SVT")
+
+
+  //   cy.get('button[form="addSerieForm"][name="submit_button"]').should("be.visible").click()
+  //   cy.expectAlert('success', 'La série a bien été crée')
+  //   cy.get('table#calendar tbody tr td').eq(1).should("contain.text", "Générale")
+  //   cy.get('table#calendar tbody tr td').eq(2).should("contain.text", "Mathématiques")
+  //   cy.get('table#calendar tbody tr td').eq(3).should("contain.text", "SVT")
+  // })
+
+  // it('Verify that matieres are automatically generated', () => {
+  //   cy.login("admin@ac-poitiers.fr", "L0calAdmin")
+  //   goTo('/admin/matieres')
+  //   cy.url().should('match', /\/admin\/matieres/)
     
-    let row = 0
-    for(let i = 0; i < 2; i++){
-      for(let y = 0; y < 2; y++){
-        let serie = y == 0 ? "Technologique - STI2D" : "Générale - Mathématiques/SVT"
-        let matiere = i == 0 ? "Français" : "Philosophie"
-        cy.get(`#calendar > tbody > tr:nth-child(${(1+(row)*3)}) > td:nth-child(2)`).should("contain.text", matiere)
-        cy.get(`#calendar > tbody > tr:nth-child(${(1+(row)*3)}) > td:nth-child(3)`).should("contain.text", serie)
-        row++
-      }
-    }
-  })
+  //   let row = 0
+  //   for(let i = 0; i < 2; i++){
+  //     for(let y = 0; y < 2; y++){
+  //       let serie = y == 0 ? "Technologique - STI2D" : "Générale - Mathématiques/SVT"
+  //       let matiere = i == 0 ? "Français" : "Philosophie"
+  //       cy.get(`#calendar > tbody > tr:nth-child(${(1+(row)*3)}) > td:nth-child(2)`).should("contain.text", matiere)
+  //       cy.get(`#calendar > tbody > tr:nth-child(${(1+(row)*3)}) > td:nth-child(3)`).should("contain.text", serie)
+  //       row++
+  //     }
+  //   }
+  // })
 
-  it('Add a new matière', () => {
-    cy.login("admin@ac-poitiers.fr", "L0calAdmin")
-    goTo('/admin/matieres')
-    cy.url().should('match', /\/admin\/matieres/)
-    cy.get('[data-bs-target="#addMatiereModal"]').click({force: true})
-    cy.get('#addMatiereModal').should('be.visible')
+  // it('Add a new matière', () => {
+  //   cy.login("admin@ac-poitiers.fr", "L0calAdmin")
+  //   goTo('/admin/matieres')
+  //   cy.url().should('match', /\/admin\/matieres/)
+  //   cy.get('[data-bs-target="#addMatiereModal"]').click({force: true})
+  //   cy.get('#addMatiereModal').should('be.visible')
 
-    cy.get('#addMatiereForm div input[name="name"]').type('Mathématiques', {force: true}).should('contain.value', "Mathématiques")
-    cy.get('#addMatiereForm div select[name="serie"]').select('Générale - Mathématiques/SVT').should('contain.text', "Générale - Mathématiques/SVT")
-    cy.get('#addMatiereForm div input[name="temps_preparation"]').type('30').should('contain.value', "30")
-    cy.get('#addMatiereForm div input[name="temps_preparation_tiers_temps"]').type('45').should('contain.value', "45")
-    cy.get('#addMatiereForm div input[name="temps_passage"]').type('30').should('contain.value', "30")
-    cy.get('#addMatiereForm div input[name="temps_passage_tiers_temps"]').type('45').should('contain.value', "45")
-
-
-    cy.get('button[form="addMatiereForm"][name="submit_button"]').should("be.visible").click()
-    cy.expectAlert('success', 'La matiere a bien été créée')
-
-    cy.get('#calendar > tbody > tr > td:nth-child(2)').should("contain.text", "Mathématiques")
-    cy.get('#calendar > tbody > tr > td:nth-child(3)').should("contain.text", "Générale - Mathématiques/SVT")
-  })
-
-  it('Add some new candidats', () => {
-    cy.login("admin@ac-poitiers.fr", "L0calAdmin")
-    goTo('/admin/candidats')
-    cy.url().should('match', /\/admin\/candidats/)
-    cy.get('[data-bs-target="#addCandidatModal"]').click({force: true})
-    cy.get('#addCandidatModal').should('be.visible')
-
-    cy.get('#addCandidatsForm div input[name="name"]').type('Pavet', {force: true}).should('contain.value', "Pavet")
-    cy.get('#addCandidatsForm div input[name="surname"]').type('Bastien').should('contain.value', "Bastien")
-    cy.get('#addCandidatsForm div select[name="serie"]').select('Générale - Mathématiques/SVT').should('contain.text', "Générale - Mathématiques/SVT")
-    cy.get('#addCandidatsForm div select[name="matiere1"]').select('Mathématiques').should('contain.text', "Mathématiques")
-    cy.get('#addCandidatsForm div select[name="matiere2"]').select('Français').should('contain.text', "Français")
+  //   cy.get('#addMatiereForm div input[name="name"]').type('Mathématiques', {force: true}).should('contain.value', "Mathématiques")
+  //   cy.get('#addMatiereForm div select[name="serie"]').select('Générale - Mathématiques/SVT').should('contain.text', "Générale - Mathématiques/SVT")
+  //   cy.get('#addMatiereForm div input[name="temps_preparation"]').type('30').should('contain.value', "30")
+  //   cy.get('#addMatiereForm div input[name="temps_preparation_tiers_temps"]').type('45').should('contain.value', "45")
+  //   cy.get('#addMatiereForm div input[name="temps_passage"]').type('30').should('contain.value', "30")
+  //   cy.get('#addMatiereForm div input[name="temps_passage_tiers_temps"]').type('45').should('contain.value', "45")
 
 
-    cy.get('button[form="addCandidatsForm"][name="submit_button"]').should("be.visible").click()
-    cy.expectAlert('success', 'Les choix du candidat ont bien été crées')
+  //   cy.get('button[form="addMatiereForm"][name="submit_button"]').should("be.visible").click()
+  //   cy.expectAlert('success', 'La matiere a bien été créée')
 
-    cy.get('#calendar > tbody > tr > td:nth-child(2)').should("contain.text", "Pavet")
-    cy.get('#calendar > tbody > tr > td:nth-child(3)').should("contain.text", "Bastien")
+  //   cy.get('#calendar > tbody > tr > td:nth-child(2)').should("contain.text", "Mathématiques")
+  //   cy.get('#calendar > tbody > tr > td:nth-child(3)').should("contain.text", "Générale - Mathématiques/SVT")
+  // })
+
+  // it('Add some new candidats', () => {
+  //   cy.login("admin@ac-poitiers.fr", "L0calAdmin")
+  //   goTo('/admin/candidats')
+  //   cy.url().should('match', /\/admin\/candidats/)
+  //   cy.get('[data-bs-target="#addCandidatModal"]').click({force: true})
+  //   cy.get('#addCandidatModal').should('be.visible')
+
+  //   cy.get('#addCandidatsForm div input[name="name"]').type('Pavet', {force: true}).should('contain.value', "Pavet")
+  //   cy.get('#addCandidatsForm div input[name="surname"]').type('Bastien').should('contain.value', "Bastien")
+  //   cy.get('#addCandidatsForm div select[name="serie"]').select('Générale - Mathématiques/SVT').should('contain.text', "Générale - Mathématiques/SVT")
+  //   cy.get('#addCandidatsForm div select[name="matiere1"]').select('Mathématiques').should('contain.text', "Mathématiques")
+  //   cy.get('#addCandidatsForm div select[name="matiere2"]').select('Français').should('contain.text', "Français")
+
+
+  //   cy.get('button[form="addCandidatsForm"][name="submit_button"]').should("be.visible").click()
+  //   cy.expectAlert('success', 'Les choix du candidat ont bien été crées')
+
+  //   cy.get('#calendar > tbody > tr > td:nth-child(2)').should("contain.text", "Pavet")
+  //   cy.get('#calendar > tbody > tr > td:nth-child(3)').should("contain.text", "Bastien")
 
 
     
 
 
-    // Second candidat
+  //   // Second candidat
 
-    cy.get('[data-bs-target="#addCandidatModal"]').click({force: true})
-    cy.get('#addCandidatModal').should('be.visible')
+  //   cy.get('[data-bs-target="#addCandidatModal"]').click({force: true})
+  //   cy.get('#addCandidatModal').should('be.visible')
 
-    cy.get('#addCandidatsForm div input[name="name"]').type('Galland', {force: true}).should('contain.value', "Galland")
-    cy.get('#addCandidatsForm div input[name="surname"]').type('Jérémy').should('contain.value', "Jérémy")
-    cy.get('#addCandidatsForm div select[name="serie"]').select('Technologique - STI2D').should('contain.text', "Technologique - STI2D")
-    cy.get('#addCandidatsForm div select[name="matiere1"]').select('Philosophie').should('contain.text', "Philosophie")
-    cy.get('#addCandidatsForm div select[name="matiere2"]').select('Français').should('contain.text', "Français")
-    cy.get('#addCandidatsForm div select[name="absent"]').select('Oui').should('contain.text', "Oui")
+  //   cy.get('#addCandidatsForm div input[name="name"]').type('Galland', {force: true}).should('contain.value', "Galland")
+  //   cy.get('#addCandidatsForm div input[name="surname"]').type('Jérémy').should('contain.value', "Jérémy")
+  //   cy.get('#addCandidatsForm div select[name="serie"]').select('Technologique - STI2D').should('contain.text', "Technologique - STI2D")
+  //   cy.get('#addCandidatsForm div select[name="matiere1"]').select('Philosophie').should('contain.text', "Philosophie")
+  //   cy.get('#addCandidatsForm div select[name="matiere2"]').select('Français').should('contain.text', "Français")
+  //   cy.get('#addCandidatsForm div select[name="absent"]').select('Oui').should('contain.text', "Oui")
 
 
-    cy.get('button[form="addCandidatsForm"][name="submit_button"]').should("be.visible").click()
-    cy.expectAlert('success', 'Les choix du candidat ont bien été crées')
+  //   cy.get('button[form="addCandidatsForm"][name="submit_button"]').should("be.visible").click()
+  //   cy.expectAlert('success', 'Les choix du candidat ont bien été crées')
 
-    cy.get('#calendar > tbody > tr.table-danger > td:nth-child(2)').should("contain.text", "Galland")
-    cy.get('#calendar > tbody > tr.table-danger > td:nth-child(3)').should("contain.text", "Jérémy")
-  })
+  //   cy.get('#calendar > tbody > tr.table-danger > td:nth-child(2)').should("contain.text", "Galland")
+  //   cy.get('#calendar > tbody > tr.table-danger > td:nth-child(3)').should("contain.text", "Jérémy")
+  // })
+
+
+  // it('Add some new candidats', () => {
+
+  // })
 })

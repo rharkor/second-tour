@@ -58,6 +58,8 @@ describe('WEBSITE RESPONSE', () => {
     requestApi = supertest(process.env.API_URL)
   })
 
+
+
   it('Return the index of the website', async () => {
     const res = await request.get('/')
     expect(res.statusCode).toBeBetween(200, 300)
