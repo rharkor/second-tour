@@ -36,6 +36,11 @@ describe('API', () => {
     request = supertest(process.env.API_URL)
   })
 
+  it('Clean all the tables content', async () => {
+    const res = await request.delete('/data/deleteall').send(getContent())
+    expect(res.statusCode).toBeBetween(200, 300)
+  })
+
   it('Return the version of the api', async () => {
     const res = await request.get('/version')
     expect(res.statusCode).toBeBetween(200, 302)

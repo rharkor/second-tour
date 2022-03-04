@@ -97656,3 +97656,3611 @@ RESPONSE :
 	Status Code : 200
 	Body : No body
 
+1646226260326
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : DELETE
+	Url : /deleteall
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 202
+	Body : No body
+
+1646226260352
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /version
+	Body : {}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226260365
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /
+	Body : No body
+RESPONSE :
+	Status Code : 301
+	Body : No body
+
+1646226260435
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/candidat
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226260438
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","salle"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226260444
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/choix_matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226260455
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226260464
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/horaire
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226260473
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/liste_matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226260481
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226260490
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/professeur
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226260498
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226260506
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226260514
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/token
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226260521
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226260533
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : DELETE
+	Url : /deleteall
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 202
+	Body : No body
+
+1646226260549
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_salle":"null","numero":"D001"}}
+RESPONSE :
+	Status Code : 201
+	Body : No body
+
+1646226260558
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226260568
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{"numero":"D001"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226260576
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{"numero":"D002"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226260588
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_serie":"null","nom":"Generale","specialite1":"Mathématiques","specialite2":"SVT"}}
+RESPONSE :
+	Status Code : 201
+	Body : No body
+
+1646226260597
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["salle","serie"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226260605
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226260616
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PATCH
+	Url : /updatefilter/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{"filter":{"id_salle":"229"},"data":{"numero":"D002"}}}
+RESPONSE :
+	Status Code : 202
+	Body : No body
+
+1646226260627
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226260641
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : DELETE
+	Url : /delete/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 202
+	Body : No body
+
+1646226260650
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226260659
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : DELETE
+	Url : /deletefilter/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{"nom":"ThisNameDoesntExist"}}
+RESPONSE :
+	Status Code : 202
+	Body : No body
+
+1646226260668
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226260683
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : DELETE
+	Url : /deletefilter/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{"nom":"Generale"}}
+RESPONSE :
+	Status Code : 202
+	Body : No body
+
+1646226260692
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226260699
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : DELETE
+	Url : /deletefilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr"}}
+RESPONSE :
+	Status Code : 202
+	Body : No body
+
+1646226260711
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_utilisateur":"null","email":"admin@ac-poitiers.fr","password":"$p5k2$3e8$AfpOzesj$.KoGR.raCRkA3gne.aZrF1bQobRfdSIH","admin":"true","id_professeur":"null"}}
+RESPONSE :
+	Status Code : 201
+	Body : No body
+
+1646226260830
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"unAdmin@ac-poitiers.fr","admin":"true"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226260837
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"unAdmin@ac-poitiers.fr","admin":"false"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226260850
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"true"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226260884
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226260891
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["creneau","candidat","choix_matiere"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226260900
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","professeur","salle"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226287173
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : DELETE
+	Url : /deleteall
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 202
+	Body : No body
+
+1646226287206
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /version
+	Body : {}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226287216
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /
+	Body : No body
+RESPONSE :
+	Status Code : 301
+	Body : No body
+
+1646226287223
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/candidat
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226287231
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/choix_matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226287238
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226287244
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/horaire
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226287251
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/liste_matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226287258
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226287264
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/professeur
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226287271
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226287277
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226287285
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/token
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226287294
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226287304
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : DELETE
+	Url : /deleteall
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 202
+	Body : No body
+
+1646226287315
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_salle":"null","numero":"D001"}}
+RESPONSE :
+	Status Code : 201
+	Body : No body
+
+1646226287323
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226287334
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{"numero":"D001"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226287341
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{"numero":"D002"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226287354
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_serie":"null","nom":"Generale","specialite1":"Mathématiques","specialite2":"SVT"}}
+RESPONSE :
+	Status Code : 201
+	Body : No body
+
+1646226287361
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["salle","serie"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226287369
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226287380
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PATCH
+	Url : /updatefilter/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{"filter":{"id_salle":"230"},"data":{"numero":"D002"}}}
+RESPONSE :
+	Status Code : 202
+	Body : No body
+
+1646226287390
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226287407
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : DELETE
+	Url : /delete/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 202
+	Body : No body
+
+1646226287417
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226287430
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : DELETE
+	Url : /deletefilter/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{"nom":"ThisNameDoesntExist"}}
+RESPONSE :
+	Status Code : 202
+	Body : No body
+
+1646226287439
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226287462
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : DELETE
+	Url : /deletefilter/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{"nom":"Generale"}}
+RESPONSE :
+	Status Code : 202
+	Body : No body
+
+1646226287468
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","salle"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226287476
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226287483
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : DELETE
+	Url : /deletefilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr"}}
+RESPONSE :
+	Status Code : 202
+	Body : No body
+
+1646226287493
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_utilisateur":"null","email":"admin@ac-poitiers.fr","password":"$p5k2$3e8$AfpOzesj$.KoGR.raCRkA3gne.aZrF1bQobRfdSIH","admin":"true","id_professeur":"null"}}
+RESPONSE :
+	Status Code : 201
+	Body : No body
+
+1646226287618
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"unAdmin@ac-poitiers.fr","admin":"true"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226287623
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"unAdmin@ac-poitiers.fr","admin":"false"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226287636
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"true"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226287663
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226287670
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["creneau","candidat","choix_matiere"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226287678
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","professeur","salle"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226389724
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : DELETE
+	Url : /deleteall
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 202
+	Body : No body
+
+1646226389782
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_utilisateur":"null","email":"admin@ac-poitiers.fr","password":"$p5k2$3e8$AfpOzesj$.KoGR.raCRkA3gne.aZrF1bQobRfdSIH","admin":"true","id_professeur":"null"}}
+RESPONSE :
+	Status Code : 201
+	Body : No body
+
+1646226389847
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","salle"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226391698
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"unmail@gmail.com","admin":"true"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226391703
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"unmail@gmail.com","admin":"false"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226393125
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"true"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226393197
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226393207
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["creneau","candidat","choix_matiere"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226393219
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","professeur","salle"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226393447
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"true"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226393498
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226393503
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["creneau","candidat","choix_matiere"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226393517
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","professeur","salle"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226393618
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226393629
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["creneau","candidat","choix_matiere"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226393637
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","professeur","salle"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226394234
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226394244
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : DELETE
+	Url : /delete/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 202
+	Body : No body
+
+1646226394254
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","professeur","liste_matiere","choix_matiere","matiere","serie","salle","creneau"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226394318
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["creneau","candidat","choix_matiere"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226394334
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","professeur","salle"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226394573
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"true"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226394633
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226394647
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["creneau","candidat","choix_matiere"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226394663
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","professeur","salle"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226394767
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226394782
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","choix_matiere","serie","matiere","professeur","salle","creneau","liste_matiere"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226395580
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226395591
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_salle":"null","numero":"D001"}}
+RESPONSE :
+	Status Code : 201
+	Body : No body
+
+1646226395605
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","choix_matiere","serie","matiere","professeur","salle","creneau","liste_matiere"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226395840
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"true"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226395896
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226395902
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["creneau","candidat","choix_matiere"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226395916
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","professeur","salle"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226396001
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226396014
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","serie","matiere","salle","choix_matiere"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226398335
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226398346
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_serie":"null","nom":"Technologique","specialite1":"STI2D","specialite2":"null"}}
+RESPONSE :
+	Status Code : 201
+	Body : No body
+
+1646226398353
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_serie":201}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226398364
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_matiere":"null","id_serie":201,"nom":"Français","nom_complet":"Français - STI2D","temps_preparation":30,"temps_preparation_tiers_temps":40,"temps_passage":30,"temps_passage_tiers_temps":40,"loge":"null"}}
+RESPONSE :
+	Status Code : 201
+	Body : No body
+
+1646226398372
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_serie":201}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226398387
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_matiere":"null","id_serie":201,"nom":"Philosophie","nom_complet":"Philosophie - STI2D","temps_preparation":30,"temps_preparation_tiers_temps":40,"temps_passage":30,"temps_passage_tiers_temps":40,"loge":"null"}}
+RESPONSE :
+	Status Code : 201
+	Body : No body
+
+1646226398398
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","serie","matiere","salle","choix_matiere"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226399286
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"true"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226399330
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226399337
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["creneau","candidat","choix_matiere"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226399348
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","professeur","salle"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226400281
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226400288
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","serie","matiere","salle","choix_matiere"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226403959
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226403969
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_serie":"null","nom":"Générale","specialite1":"Mathématiques","specialite2":"SVT"}}
+RESPONSE :
+	Status Code : 201
+	Body : No body
+
+1646226403976
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_serie":202}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226403989
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_matiere":"null","id_serie":202,"nom":"Français","nom_complet":"Français - Mathématiques/SVT","temps_preparation":30,"temps_preparation_tiers_temps":40,"temps_passage":30,"temps_passage_tiers_temps":40,"loge":"null"}}
+RESPONSE :
+	Status Code : 201
+	Body : No body
+
+1646226403999
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_serie":202}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226404011
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_matiere":"null","id_serie":202,"nom":"Philosophie","nom_complet":"Philosophie - Mathématiques/SVT","temps_preparation":30,"temps_preparation_tiers_temps":40,"temps_passage":30,"temps_passage_tiers_temps":40,"loge":"null"}}
+RESPONSE :
+	Status Code : 201
+	Body : No body
+
+1646226404020
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","serie","matiere","salle","choix_matiere"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226405274
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"true"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226405324
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226405334
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["creneau","candidat","choix_matiere"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226405345
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","professeur","salle"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226406148
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226406154
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","serie","matiere","salle","choix_matiere"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226406519
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"true"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226406570
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226406578
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["creneau","candidat","choix_matiere"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226406592
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","professeur","salle"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226406788
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226406803
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","serie","matiere","salle","choix_matiere"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226409293
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226409305
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_serie":"202"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226409320
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_matiere":"null","id_serie":202,"nom":"Mathématiques","nom_complet":"Mathématiques - Mathématiques/SVT","temps_preparation":"30","temps_preparation_tiers_temps":"45","temps_passage":"30","temps_passage_tiers_temps":"45","loge":"null"}}
+RESPONSE :
+	Status Code : 201
+	Body : No body
+
+1646226409335
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","serie","matiere","salle","choix_matiere"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226409648
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"true"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226409704
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226409711
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["creneau","candidat","choix_matiere"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226409727
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","professeur","salle"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226409856
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226409873
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","choix_matiere","serie","matiere","professeur","salle","creneau"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226411757
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226411772
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/candidat
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_candidat":"null","nom":"Pavet","prenom":"Bastien","id_serie":"202","tiers_temps":"false","absent":"false"}}
+RESPONSE :
+	Status Code : 201
+	Body : No body
+
+1646226411788
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/choix_matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_choix_matiere":"null","id_candidat":7,"matiere1":"124","matiere2":"122"}}
+RESPONSE :
+	Status Code : 201
+	Body : No body
+
+1646226411804
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","choix_matiere","serie","matiere","professeur","salle","creneau"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226413874
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226413890
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/candidat
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_candidat":"null","nom":"Galland","prenom":"Jérémy","id_serie":"201","tiers_temps":"false","absent":"true"}}
+RESPONSE :
+	Status Code : 201
+	Body : No body
+
+1646226413904
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/choix_matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_choix_matiere":"null","id_candidat":8,"matiere1":"121","matiere2":"120"}}
+RESPONSE :
+	Status Code : 201
+	Body : No body
+
+1646226413922
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","choix_matiere","serie","matiere","professeur","salle","creneau"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226946329
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /
+	Body : No body
+RESPONSE :
+	Status Code : 301
+	Body : No body
+
+1646226946339
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /
+	Body : No body
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226946714
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-init.js
+	Body : No body
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226946735
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui.css
+	Body : No body
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226946760
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-bundle.js
+	Body : No body
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226946878
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-standalone-preset.js
+	Body : No body
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646226947087
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /favicon-32x32.png
+	Body : No body
+RESPONSE :
+	Status Code : 304
+	Body : No body
+
+1646226947448
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /favicon-32x32.png
+	Body : No body
+RESPONSE :
+	Status Code : 304
+	Body : No body
+
+1646226970705
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /favicon-32x32.png
+	Body : No body
+RESPONSE :
+	Status Code : 304
+	Body : No body
+
+1646227016622
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/salle
+	Body : {"username":"admin","password":"L0calAdmin"}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646227027300
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/salle
+	Body : {"username":"admin","password":"L0calAdmin"}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646227032910
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/salle
+	Body : {"username":"admin","password":"L0calAdmin"}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646227078734
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /favicon-32x32.png
+	Body : No body
+RESPONSE :
+	Status Code : 304
+	Body : No body
+
+1646227082940
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /favicon-32x32.png
+	Body : No body
+RESPONSE :
+	Status Code : 304
+	Body : No body
+
+1646227087961
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /favicon-32x32.png
+	Body : No body
+RESPONSE :
+	Status Code : 304
+	Body : No body
+
+1646227482863
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /
+	Body : No body
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646227483221
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-init.js
+	Body : No body
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646227483231
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui.css
+	Body : No body
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646227483243
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-standalone-preset.js
+	Body : No body
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646227483275
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-bundle.js
+	Body : No body
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646227483524
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /favicon-32x32.png
+	Body : No body
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646227483901
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /favicon-32x32.png
+	Body : No body
+RESPONSE :
+	Status Code : 304
+	Body : No body
+
+1646228214946
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","salle"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646231734749
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"true"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646231734793
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646231734804
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["creneau","candidat","choix_matiere"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646231734818
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","professeur","salle"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646231738706
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646231738720
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","choix_matiere","serie","matiere","professeur","salle","creneau"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646231747589
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646231747602
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["creneau","candidat","choix_matiere"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646231747613
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","professeur","salle"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646231767143
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646231767156
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","horaire","matiere","professeur","salle","creneau","liste_matiere"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646231840189
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646231840200
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","serie","matiere","salle","choix_matiere"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232015507
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /favicon-32x32.png
+	Body : No body
+RESPONSE :
+	Status Code : 304
+	Body : No body
+
+1646232075191
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /favicon-32x32.png
+	Body : No body
+RESPONSE :
+	Status Code : 304
+	Body : No body
+
+1646232177447
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /favicon-32x32.png
+	Body : No body
+RESPONSE :
+	Status Code : 304
+	Body : No body
+
+1646232179475
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /favicon-32x32.png
+	Body : No body
+RESPONSE :
+	Status Code : 304
+	Body : No body
+
+1646232180069
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /favicon-32x32.png
+	Body : No body
+RESPONSE :
+	Status Code : 304
+	Body : No body
+
+1646232311155
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /favicon-32x32.png
+	Body : No body
+RESPONSE :
+	Status Code : 304
+	Body : No body
+
+1646232314590
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /favicon-32x32.png
+	Body : No body
+RESPONSE :
+	Status Code : 304
+	Body : No body
+
+1646232356798
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /favicon-32x32.png
+	Body : No body
+RESPONSE :
+	Status Code : 304
+	Body : No body
+
+1646232434157
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : DELETE
+	Url : /deleteall
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 202
+	Body : No body
+
+1646232434190
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /version
+	Body : {}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232434205
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /
+	Body : No body
+RESPONSE :
+	Status Code : 301
+	Body : No body
+
+1646232434222
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/candidat
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232434226
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","salle"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232434232
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/choix_matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232434240
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232434247
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/horaire
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232434255
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/liste_matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232434262
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232434270
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/professeur
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232434276
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232434284
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232434292
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/token
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232434303
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232434316
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : DELETE
+	Url : /deleteall
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 202
+	Body : No body
+
+1646232434347
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_salle":"null","numero":"D001"}}
+RESPONSE :
+	Status Code : 201
+	Body : No body
+
+1646232434355
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232434365
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{"numero":"D001"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232434364
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"unAdmin@ac-poitiers.fr","admin":"true"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232434372
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"unAdmin@ac-poitiers.fr","admin":"false"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232434374
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{"numero":"D002"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232434388
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_serie":"null","nom":"Generale","specialite1":"Mathématiques","specialite2":"SVT"}}
+RESPONSE :
+	Status Code : 201
+	Body : No body
+
+1646232434394
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"true"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232434397
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["salle","serie"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232434401
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"false"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232434405
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232434420
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PATCH
+	Url : /updatefilter/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{"filter":{"id_salle":"232"},"data":{"numero":"D002"}}}
+RESPONSE :
+	Status Code : 202
+	Body : No body
+
+1646232434424
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_utilisateur":"null","email":"admin@ac-poitiers.fr","password":"$p5k2$3e8$AfpOzesj$.KoGR.raCRkA3gne.aZrF1bQobRfdSIH","admin":"true","id_professeur":"null"}}
+RESPONSE :
+	Status Code : 201
+	Body : No body
+
+1646232434436
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232434444
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"true"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232434451
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : DELETE
+	Url : /delete/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 202
+	Body : No body
+
+1646232434462
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232434470
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : DELETE
+	Url : /deletefilter/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{"nom":"ThisNameDoesntExist"}}
+RESPONSE :
+	Status Code : 202
+	Body : No body
+
+1646232434478
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232434489
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : DELETE
+	Url : /deletefilter/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{"nom":"Generale"}}
+RESPONSE :
+	Status Code : 202
+	Body : No body
+
+1646232434498
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232434505
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232434512
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : DELETE
+	Url : /deletefilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr"}}
+RESPONSE :
+	Status Code : 202
+	Body : No body
+
+1646232434514
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["creneau","candidat","choix_matiere"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232434525
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_utilisateur":"null","email":"admin@ac-poitiers.fr","password":"$p5k2$3e8$AfpOzesj$.KoGR.raCRkA3gne.aZrF1bQobRfdSIH","admin":"true","id_professeur":"null"}}
+RESPONSE :
+	Status Code : 201
+	Body : No body
+
+1646232434531
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","professeur","salle"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232464733
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : DELETE
+	Url : /deleteall
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 202
+	Body : No body
+
+1646232464789
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_utilisateur":"null","email":"admin@ac-poitiers.fr","password":"$p5k2$3e8$AfpOzesj$.KoGR.raCRkA3gne.aZrF1bQobRfdSIH","admin":"true","id_professeur":"null"}}
+RESPONSE :
+	Status Code : 201
+	Body : No body
+
+1646232464855
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","salle"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232466563
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"unmail@gmail.com","admin":"true"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232466568
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"unmail@gmail.com","admin":"false"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232467960
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"true"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232468011
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232468018
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["creneau","candidat","choix_matiere"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232468032
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","professeur","salle"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232468252
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"true"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232468311
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232468318
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["creneau","candidat","choix_matiere"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232468335
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","professeur","salle"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232468435
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232468445
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["creneau","candidat","choix_matiere"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232468452
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","professeur","salle"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232469095
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232469102
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : DELETE
+	Url : /delete/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 202
+	Body : No body
+
+1646232469120
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","professeur","liste_matiere","choix_matiere","matiere","serie","salle","creneau"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232469152
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["creneau","candidat","choix_matiere"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232469169
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","professeur","salle"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232469400
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"true"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232469449
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232469459
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["creneau","candidat","choix_matiere"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232469469
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","professeur","salle"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232469567
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232469577
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","choix_matiere","serie","matiere","professeur","salle","creneau","liste_matiere"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232470260
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232470271
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_salle":"null","numero":"D001"}}
+RESPONSE :
+	Status Code : 201
+	Body : No body
+
+1646232470285
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","choix_matiere","serie","matiere","professeur","salle","creneau","liste_matiere"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232470537
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"true"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232470585
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232470595
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["creneau","candidat","choix_matiere"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232470607
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","professeur","salle"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232470695
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232470700
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","serie","matiere","salle","choix_matiere"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232472701
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232472714
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_serie":"null","nom":"Technologique","specialite1":"STI2D","specialite2":"null"}}
+RESPONSE :
+	Status Code : 201
+	Body : No body
+
+1646232472721
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_serie":204}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232472734
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_matiere":"null","id_serie":204,"nom":"Français","nom_complet":"Français - STI2D","temps_preparation":30,"temps_preparation_tiers_temps":40,"temps_passage":30,"temps_passage_tiers_temps":40,"loge":"null"}}
+RESPONSE :
+	Status Code : 201
+	Body : No body
+
+1646232472742
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_serie":204}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232472755
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_matiere":"null","id_serie":204,"nom":"Philosophie","nom_complet":"Philosophie - STI2D","temps_preparation":30,"temps_preparation_tiers_temps":40,"temps_passage":30,"temps_passage_tiers_temps":40,"loge":"null"}}
+RESPONSE :
+	Status Code : 201
+	Body : No body
+
+1646232472766
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","serie","matiere","salle","choix_matiere"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232473897
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"true"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232473941
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232473948
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["creneau","candidat","choix_matiere"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232473958
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","professeur","salle"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232474662
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232474669
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","serie","matiere","salle","choix_matiere"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232478510
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232478521
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_serie":"null","nom":"Générale","specialite1":"Mathématiques","specialite2":"SVT"}}
+RESPONSE :
+	Status Code : 201
+	Body : No body
+
+1646232478531
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_serie":205}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232478544
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_matiere":"null","id_serie":205,"nom":"Français","nom_complet":"Français - Mathématiques/SVT","temps_preparation":30,"temps_preparation_tiers_temps":40,"temps_passage":30,"temps_passage_tiers_temps":40,"loge":"null"}}
+RESPONSE :
+	Status Code : 201
+	Body : No body
+
+1646232478554
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_serie":205}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232478565
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_matiere":"null","id_serie":205,"nom":"Philosophie","nom_complet":"Philosophie - Mathématiques/SVT","temps_preparation":30,"temps_preparation_tiers_temps":40,"temps_passage":30,"temps_passage_tiers_temps":40,"loge":"null"}}
+RESPONSE :
+	Status Code : 201
+	Body : No body
+
+1646232478577
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","serie","matiere","salle","choix_matiere"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232480006
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"true"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232480060
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232480067
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["creneau","candidat","choix_matiere"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232480078
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","professeur","salle"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232480721
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232480734
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","serie","matiere","salle","choix_matiere"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232481122
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"true"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232481223
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232481236
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["creneau","candidat","choix_matiere"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232481253
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","professeur","salle"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232481359
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232481367
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","serie","matiere","salle","choix_matiere"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232483587
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232483597
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_serie":"205"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232483613
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_matiere":"null","id_serie":205,"nom":"Mathématiques","nom_complet":"Mathématiques - Mathématiques/SVT","temps_preparation":"30","temps_preparation_tiers_temps":"45","temps_passage":"30","temps_passage_tiers_temps":"45","loge":"null"}}
+RESPONSE :
+	Status Code : 201
+	Body : No body
+
+1646232483626
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","serie","matiere","salle","choix_matiere"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232483972
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"true"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232484021
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232484032
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["creneau","candidat","choix_matiere"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232484046
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","professeur","salle"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232484141
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646232484152
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","choix_matiere","serie","matiere","professeur","salle","creneau"]}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
