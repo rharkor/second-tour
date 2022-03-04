@@ -302,6 +302,7 @@
                         <div class="form-group">
                             <label for="loge">Loge (si besoin)</label>
                             <select class="form-control" id="select-loge-modif" name="loge">
+                                <option selected value></option>
                                 {% for a_salle in all_salles %}
                                 <option id="salle{{a_salle.id_salle}}" value="{{a_salle.id_salle}}">
                                     {{a_salle.numero}}</option>
@@ -330,19 +331,77 @@
                                 name="temps_passage_tiers_temps"
                                 placeholder="Entrez un temps de passage pour les tiers temps" required>
                         </div>
+                        <input type="hidden" name="id" id="hiddenIdModif">
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                    <button class="btn btn-primary" name="submit_button" type="submit"
-                        form="modifyMatiereForm">Sauvegarder
+                    <button class="btn btn-primary" name="modif_button" type="submit" id=ModalSubmitModifButton form="modifyMatiereForm">Sauvegarder
                         les changements</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+
 {% endblock %}
 
 {% block sub_script %}
+
+<script>
+    
+    $('.modifRow').click(function (){
+
+        var $myRowId = $(this).get(0).id;
+
+        name = document.getElementById("ModalSubmitModifButton").getAttribute("form");
+        $("#hiddenIdModif").attr('value', $myRowId);
+
+        form_elements = document.getElementById("modifyMatiereForm").elements;
+
+        myvar_matieres = '{{all_matieres|tojson}}';
+        var all_matieres = JSON.parse(myvar_matieres);
+        myvar_serie = '{{all_series|tojson}}';
+        var all_series = JSON.parse(myvar_serie);
+
+        var matiere;
+        for (var i = 0; i < all_matieres.length; i++) {
+            if (all_matieres[i]['id_matiere'] == $myRowId) {
+                matiere = all_matieres[i];
+            }
+        }
+
+        var serie;
+        for (var i = 0; i < all_series.length; i++) {
+            if (all_series[i]['id_serie'] == matiere['id_serie']) {
+                serie = all_series[i];
+            }
+        }
+
+        form_elements[0].value = matiere['nom'];
+        id_serie = serie['id_serie'];
+        select=form_elements[1];
+        for (var i = 0; i < select.length; i++) {
+            if (select.options[i].id == "serie" + id_serie) {
+                select.options[i].selected = true;
+            }
+        }
+        form_elements[2].value=null;
+        select=form_elements[2];
+        if(matiere['loge']!=null){
+            for (var i = 0; i < select.length; i++) {
+                if (select.options[i].id == "salle" + matiere['loge']) {
+                    select.options[i].selected = true;
+                }
+            }
+        }
+        form_elements[3].value=matiere['temps_preparation'];
+        form_elements[4].value=matiere['temps_preparation_tiers_temps'];
+        form_elements[5].value=matiere['temps_passage'];
+        form_elements[6].value=matiere['temps_passage_tiers_temps'];
+    })
+
+</script>
+
 {% endblock %}
