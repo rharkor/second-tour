@@ -350,11 +350,11 @@
 {% block sub_script %}
 
 <script>
-    
+    console.log("test")
     $('.modifRow').click(function (){
 
         var $myRowId = $(this).get(0).id;
-
+        console.log("test")
         name = document.getElementById("ModalSubmitModifButton").getAttribute("form");
         $("#hiddenIdModif").attr('value', $myRowId);
 

@@ -407,13 +407,14 @@ function download_multiplePdfSalle() {
 }
 $('.modifRow').click(function (){
 
+    console.log("test")
     var $myRowId = $(this).get(0).id;
 
     name = document.getElementById("ModalSubmitModifButton").getAttribute("form");
     $("#hiddenIdModif").attr('value', $myRowId);
 
     form_elements = document.getElementById("modifySalleForm").elements;
-
+    
     myvar_salles = '{{all_salles|tojson}}';
     var all_salles = JSON.parse(myvar_salles);
 
