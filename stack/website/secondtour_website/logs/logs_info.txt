@@ -554,3 +554,47 @@ KeyError: 'id_professeur'
 2022-03-06 22:24:48,935 127.0.0.1 - - [06/Mar/2022 22:24:48] "GET /static/main.css.map HTTP/1.1" 200 -
 2022-03-06 22:24:49,130 127.0.0.1 - - [06/Mar/2022 22:24:49] "[36mGET /static/img/logo_square.ico HTTP/1.1[0m" 304 -
 2022-03-06 22:24:49,264 127.0.0.1 - - [06/Mar/2022 22:24:49] "[36mGET /static/img/logo_square.ico HTTP/1.1[0m" 304 -
+2022-03-06 22:25:15,398 Asking API on : http://127.0.0.1:443/version
+2022-03-06 22:25:15,415 Run the server
+2022-03-06 22:25:15,457  * Restarting with stat
+2022-03-06 22:25:19,097 Asking API on : http://127.0.0.1:443/version
+2022-03-06 22:25:19,114 Run the server
+2022-03-06 22:25:19,139  * Debugger is active!
+2022-03-06 22:25:19,150  * Debugger PIN: 298-853-937
+2022-03-06 22:25:20,718  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2022-03-06 22:25:20,718  * Running on http://192.168.1.200:5000/ (Press CTRL+C to quit)
+2022-03-06 22:25:28,417 Asking API on : http://127.0.0.1:443/data/fetchfilter/utilisateur BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'email': 'admin@ac-poitiers.fr', 'admin': '1'}}
+2022-03-06 22:25:28,442 Asking API on : http://127.0.0.1:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['candidat', 'serie', 'matiere', 'salle', 'choix_matiere', 'professeur', 'creneau', 'liste_matiere']}
+2022-03-06 22:25:28,742 127.0.0.1 - - [06/Mar/2022 22:25:28] "GET /admin/creneau HTTP/1.1" 200 -
+2022-03-06 22:25:30,662 127.0.0.1 - - [06/Mar/2022 22:25:30] "[36mGET /static/admin.css HTTP/1.1[0m" 304 -
+2022-03-06 22:25:30,664 127.0.0.1 - - [06/Mar/2022 22:25:30] "[36mGET /static/main.css HTTP/1.1[0m" 304 -
+2022-03-06 22:25:30,972 127.0.0.1 - - [06/Mar/2022 22:25:30] "GET /static/main.css.map HTTP/1.1" 200 -
+2022-03-06 22:25:30,975 127.0.0.1 - - [06/Mar/2022 22:25:30] "GET /static/admin.css.map HTTP/1.1" 200 -
+2022-03-06 22:25:30,986 127.0.0.1 - - [06/Mar/2022 22:25:30] "[36mGET /static/img/logo_square.ico HTTP/1.1[0m" 304 -
+2022-03-06 22:25:31,080 127.0.0.1 - - [06/Mar/2022 22:25:31] "[36mGET /static/img/logo_square.ico HTTP/1.1[0m" 304 -
+2022-03-06 22:25:44,401 Asking API on : http://127.0.0.1:443/data/fetchfilter/utilisateur BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'email': 'admin@ac-poitiers.fr', 'admin': '1'}}
+2022-03-06 22:25:44,424 Asking API on : http://127.0.0.1:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['creneau', 'candidat', 'choix_matiere']}
+2022-03-06 22:25:44,458 Le calendrier n'est pas complet
+2022-03-06 22:25:44,459 Le calendrier n'est pas complet, il manque 2 créneaux
+2022-03-06 22:25:44,459 Asking API on : http://127.0.0.1:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['candidat', 'creneau', 'serie', 'matiere', 'professeur', 'salle']}
+2022-03-06 22:25:44,590 127.0.0.1 - - [06/Mar/2022 22:25:44] "GET /admin/accueil HTTP/1.1" 200 -
+2022-03-06 22:25:45,529 127.0.0.1 - - [06/Mar/2022 22:25:45] "[36mGET /static/main.css HTTP/1.1[0m" 304 -
+2022-03-06 22:25:45,536 127.0.0.1 - - [06/Mar/2022 22:25:45] "[36mGET /static/admin.css HTTP/1.1[0m" 304 -
+2022-03-06 22:25:45,798 127.0.0.1 - - [06/Mar/2022 22:25:45] "[36mGET /static/img/logo_square.ico HTTP/1.1[0m" 304 -
+2022-03-06 22:25:45,886 127.0.0.1 - - [06/Mar/2022 22:25:45] "[36mGET /static/img/logo_square.ico HTTP/1.1[0m" 304 -
+2022-03-06 22:25:48,076 Asking API on : http://127.0.0.1:443/data/fetchfilter/utilisateur BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'email': 'admin@ac-poitiers.fr', 'admin': '1'}}
+2022-03-06 22:25:48,090 Asking API on : http://127.0.0.1:443/data/delete/creneau BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {}}
+2022-03-06 22:25:48,105 Asking API on : http://127.0.0.1:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['candidat', 'professeur', 'liste_matiere', 'choix_matiere', 'matiere', 'serie', 'salle', 'creneau']}
+2022-03-06 22:25:48,137 new Créneau : 16 | 148 | 238
+2022-03-06 22:25:48,137 Asking API on : http://127.0.0.1:443/data/insert/creneau BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'id_creneau': 'null', 'id_candidat': 16, 'id_matiere': 148, 'id_salle': 238, 'debut_preparation': 'Tue Mar 01 08:00:00 2022', 'fin_preparation': 'Tue Mar 01 08:30:00 2022', 'fin': 'Tue Mar 01 09:00:00 2022'}}
+2022-03-06 22:25:48,176 new Créneau : 16 | 149 | 238
+2022-03-06 22:25:48,177 Asking API on : http://127.0.0.1:443/data/insert/creneau BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'id_creneau': 'null', 'id_candidat': 16, 'id_matiere': 149, 'id_salle': 238, 'debut_preparation': 'Tue Mar 01 09:30:00 2022', 'fin_preparation': 'Tue Mar 01 10:00:00 2022', 'fin': 'Tue Mar 01 10:30:00 2022'}}
+2022-03-06 22:25:48,300 Asking API on : http://127.0.0.1:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['creneau', 'candidat', 'choix_matiere']}
+2022-03-06 22:25:48,344 Le calendrier est complet !
+2022-03-06 22:25:48,346 Asking API on : http://127.0.0.1:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['candidat', 'creneau', 'serie', 'matiere', 'professeur', 'salle']}
+2022-03-06 22:25:48,425 127.0.0.1 - - [06/Mar/2022 22:25:48] "POST /admin/accueil HTTP/1.1" 200 -
+2022-03-06 22:25:49,212 127.0.0.1 - - [06/Mar/2022 22:25:49] "[36mGET /static/main.css HTTP/1.1[0m" 304 -
+2022-03-06 22:25:49,214 127.0.0.1 - - [06/Mar/2022 22:25:49] "[36mGET /static/admin.css HTTP/1.1[0m" 304 -
+2022-03-06 22:25:49,365 127.0.0.1 - - [06/Mar/2022 22:25:49] "[36mGET /static/img/logo_square.ico HTTP/1.1[0m" 304 -
+2022-03-06 22:25:49,431 127.0.0.1 - - [06/Mar/2022 22:25:49] "[36mGET /static/img/logo_square.ico HTTP/1.1[0m" 304 -
