@@ -48,7 +48,7 @@
                             <form method="post" action="{{url_for('admin_routes.series')}}"
                                 id="modifySerieForm{{an_serie.id_serie}}">
                                 <input type="hidden" name="id" value="{{an_serie.id_serie}}">
-                                <button type="button" id="{{an_serie.id_serie}}" data-bs-toggle="modal"
+                                <button type="button" id="{{an_serie.id_serie}}" data-bs-toggle="modal" onclick="testSpecialityModif()"
                                     data-bs-target="#modifySerieModal"
                                     class="modifRow btn btn-outline-warning">Modifier</button>
                             </form>
@@ -205,7 +205,7 @@
                         <div class="form-group">
                             <label for="specialite2">Seconde spécialité</label>
                             <input type="text" class="form-control" id="specialite2-modif" name="specialite2"
-                                placeholder="Entrez une spécialité" required="required">
+                                placeholder="Entrez une spécialité" required="required" onclick="testSpecialityModif()">
                         </div>
                         <input type="hidden" name="id" id="hiddenIdModif">
                     </form>

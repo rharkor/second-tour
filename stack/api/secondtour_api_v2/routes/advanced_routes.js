@@ -165,14 +165,20 @@ router.route('/insert/:table').put(async (req, res) => {
   })
   values += ') VALUES ('
   Object.keys(content).forEach((element, index) => {
-    if (
-      content[element] === 'null' ||
-      !isNaN(content[element]) ||
-      content[element] === 'true' ||
-      content[element] === 'false'
-    )
+    if (content[element].toString().match(/... ... [0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2} [0-9]{4}/)) {
+      content[element] =
+        "STR_TO_DATE('" + content[element] + "', '%a %b %d %H:%i:%s %Y')"
       values += content[element]
-    else values += "'" + content[element] + "'"
+    } else {
+      if (
+        content[element] === 'null' ||
+        !isNaN(content[element]) ||
+        content[element] === 'true' ||
+        content[element] === 'false'
+      )
+        values += content[element]
+      else values += "'" + content[element] + "'"
+    }
     if (index != Object.keys(content).length - 1) values += ', '
   })
   values += ')'
@@ -291,13 +297,14 @@ router.route('/deleteall').delete(async (req, res) => {
     res.status(500).send(e)
   })
   let result = []
-  tables
-    .forEach(async table => {
-      let a_result = await db.query(`DELETE FROM ${table['Tables_in_secondtour']};`).catch(e => {
+  tables.forEach(async table => {
+    let a_result = await db
+      .query(`DELETE FROM ${table['Tables_in_secondtour']};`)
+      .catch(e => {
         res.status(500).send(e)
       })
-      result.push(a_result)
-    })
+    result.push(a_result)
+  })
   res.status(202).send(result)
 })
 
@@ -346,6 +353,11 @@ router.route('/updatefilter/:table').patch(async (req, res) => {
   let content_data = content['data']
   let data = ''
   Object.keys(content_data).forEach((element, index) => {
+    if (content_data[element].toString().match(/... ... [0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2} [0-9]{4}/)) {
+      content_data[element] =
+        "STR_TO_DATE('" + content_data[element] + "', '%a %b %d %H:%i:%s %Y')"
+        data += element + ' = ' + content_data[element]
+    }else{
     if (
       content_data[element] === 'null' ||
       !isNaN(content_data[element]) ||
@@ -354,6 +366,7 @@ router.route('/updatefilter/:table').patch(async (req, res) => {
     )
       data += element + ' = ' + content_data[element]
     else data += element + ' = ' + "'" + content_data[element] + "'"
+    }
     if (index != Object.keys(content_data).length - 1) data += ', '
   })
   let result = await db

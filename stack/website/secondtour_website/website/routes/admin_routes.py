@@ -328,7 +328,7 @@ def series():
             if form.get('submit_button') is not None:
                 if 'serie' in form and 'specialite1' in form:
                     result = main_database.add_serie(
-                        form['serie'], form['specialite1'], form['specialite2'] if 'specialite2' in form else None, True)
+                        form['serie'], form['specialite1'], form['specialite2'] if 'specialite2' in form else "null", True)
                     flash(result[0][0], result[0][1])
                     logging.warning(result[0][0])
                     if result[0][1] == 'success':
@@ -340,7 +340,7 @@ def series():
                         logging.warning(result_s[0])
             elif form.get('modify_button') is not None:
                 if 'id' in form and 'serie' in form and 'specialite1' in form:
-                    if r := main_database.update_serie(form['id'], form['serie'], form['specialite1'], form['specialite2'] if 'specialite2' in form else None):
+                    if r := main_database.update_serie(form['id'], form['serie'], form['specialite1'], form['specialite2'] if 'specialite2' in form else "null"):
                         flash(r[0], r[1])
                         logging.warning(r[0])
             elif form.get('delete_button') is not None:

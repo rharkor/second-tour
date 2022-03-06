@@ -517,7 +517,6 @@
                         // reset the var
                         let aucune_collision = true;
                         let all_creneaux = JSON.parse('{{all_creneau|tojson}}');
-
                         for (let x = 0; x < all_creneaux.length; x++) {
                             let creneau = all_creneaux[x];
                             debut_prepa_date = new Date(creneau.debut_preparation);
@@ -552,6 +551,8 @@
                                         || (heure_debut_preparation_voulue >= fin_passage_creneau + 0.5))) {
                                     aucune_collision = false;
                                 }
+
+
 
                                 // Test for lunch
                                 /*
