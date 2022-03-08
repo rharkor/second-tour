@@ -285,3 +285,6 @@ const main_routes = require('./routes/main_routes')
 app.use('/', main_routes)
 const advanced_routes = require('./routes/advanced_routes')
 app.use('/data', advanced_routes)
+const basics_routes = require('./routes/basics_routes')
+app.use('/api', basics_routes)
+
