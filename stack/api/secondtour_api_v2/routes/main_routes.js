@@ -42,35 +42,37 @@ router.route('/version').get((req, res) => {
  */
  router.route('/:table').post(async (req, res) => {
     let table = req.params['table']
-    let result = await db.query(`SELECT * FROM ${table};`).catch(e => {
-        res.status(500).send(e)
+    let content = req.body['content']
+    let condition = ''
+    Object.keys(content).forEach((element, index) => {
+      if (index != 0) condition += ' AND '
+      if (
+        content[element] === 'null' ||
+        !isNaN(content[element]) ||
+        content[element] === 'true' ||
+        content[element] === 'false'
+      )
+        condition += element + ' = ' + content[element]
+      else condition += element + " = '" + content[element] + "'"
     })
+    let result = await db
+      .query(`SELECT * FROM ${table} WHERE ${condition};`)
+      .catch(e => {
+        res.status(500).send(e)
+      })
     res.send(result)
-  })
-/*
- router.route('/:table').post(async (req, res) => {
- let table = req.params['table']
- let content = req.body['content']
- let condition = ''
- Object.keys(content).forEach((element, index) => {
-   if (index != 0) condition += ' AND '
-   if (
-     content[element] === 'null' ||
-     !isNaN(content[element]) ||
-     content[element] === 'true' ||
-     content[element] === 'false'
-   )
-     condition += element + ' = ' + content[element]
-   else condition += element + " = '" + content[element] + "'"
- })
- let result = await db
-   .query(`SELECT * FROM ${table} WHERE ${condition};`)
-   .catch(e => {
-     res.status(500).send(e)
    })
- res.send(result)
-})
-*/
+
+//  router.route('/:table').post(async (req, res) => {
+//     let table = req.params['table']
+//     let result = await db.query(`SELECT * FROM ${table};`).catch(e => {
+//         res.status(500).send(e)
+//     })
+//     res.send(result)
+//   })
+
+
+
 /*
  router.route('/:table').post(async (req, res) => {
     console.log("here")

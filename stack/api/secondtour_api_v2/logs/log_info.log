@@ -113301,3 +113301,10 @@ REQUEST :
 	Url : /fetchmulti
 	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","choix_matiere","serie","matiere","professeur","salle","creneau"]}
 >>>>>>> adb974f8ddae9245337ce3b3372d69e97a679520
+1646755080382
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /salle
+	Body : {}
