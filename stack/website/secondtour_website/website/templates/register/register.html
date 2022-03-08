@@ -6,9 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>S'enregistrer</title>
-    <link rel="stylesheet" href="{{url_for('static', filename='main.css')}}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{url_for('static', filename='main.css')}}">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" />
 
@@ -52,18 +53,14 @@
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                     <label class="form-check-label" for="flexCheckDefault" style="color:white">
-<<<<<<< HEAD
-                      En cochant cette case vous confirmez<br> avoir lu et accepté les <a href="{{url_for('main_routes.cgu')}}" style="color:blue">conditions générales d'utilisation.</a>
-=======
                         En cochant cette case vous confirmez avoir lu et accepté les <a
                             href="{{url_for('main_routes.cgu')}}" style="color:blue">conditions générales
                             d'utilisation.</a>
->>>>>>> 3edde0254ff59be5009260b5b119550dfd0cb21a
                     </label>
                 </div>
                 <div class="form-login-input-lg">
                     <button class="w-100 btn btn-lg btn-primary margin-login-form btn-success" type="button"
-                        onclick="submit_form_register()">S'inscrire</button>
+                        onclick="submit_form()">S'inscrire</button>
                 </div>
             </form>
         </div>
@@ -76,7 +73,7 @@
 </body>
 
 <script>
-    /*
+
     const togglePassword = document.querySelector('#togglePassword');
     const password = document.querySelector('#floatingPassword');
 
@@ -88,7 +85,26 @@
             // toggle the eye / eye slash icon
             this.classList.toggle('bi-eye');
         });
-    } */
+    }
+
+
+    function submit_form() {
+        let password1 = document.querySelector('#floatingPassword');
+        //let password1 document.getElementById('#Password1');//.elements
+        let password_confirm = document.querySelector('#floatingPasswordConfirmation');
+        let CGUcheck = document.querySelector('#flexCheckDefault').checked;
+        if (password1.value != password_confirm.value) {
+            alert("Les deux mots de passe ne correspondent pas")
+        }
+        else if (CGUcheck == false) {
+            alert("Vous devez accepter les conditions générales d'utilisation")
+        }
+        else {
+            document.forms['myform'].submit();
+        }
+    }
+
+
 
 </script>
 

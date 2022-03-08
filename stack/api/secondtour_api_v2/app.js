@@ -20,12 +20,7 @@ app.use(function (req, res, next) {
       '\n\tUrl : ' +
       req.url +
       '\n\tBody : ' +
-      (JSON.stringify(req.body) || "No body") +
-      '\nRESPONSE :\n\tStatus Code : ' +
-      res.statusCode +
-      '\n\tBody : ' +
-      (JSON.stringify(res.body) || "No body") +
-      "\n\n"
+      (JSON.stringify(req.body) || "No body")
     fs.appendFile('./logs/log_info.log', data, err => {
       // In case of a error throw err.
       if (err) throw err

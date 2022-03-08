@@ -45,9 +45,9 @@
                         <td scope="row">{% if an_user.admin %}Admin{% else %}Professeur{% endif %}</td>
                         <td scope="row">
                             <form method="post" action="{{url_for('admin_routes.comptes')}}"
-                                id="deleteAccountForm{{an_user.id}}">
-                                <input type="hidden" name="id" value="{{an_user.id}}">
-                                <button type="button" id="{{an_user.id}}" data-bs-toggle="modal"
+                                id="deleteAccountForm{{an_user.id_utilisateur}}">
+                                <input type="hidden" name="id" value="{{an_user.id_utilisateur}}">
+                                <button type="button" id="{{an_user.id_utilisateur}}" data-bs-toggle="modal"
                                     data-bs-target="#confirmDeleteModal" class="deleteRow btn btn-outline-danger" {% if
                                     an_user.email=='admin@ac-poitiers.fr' and an_user.admin %}disabled{% endif
                                     %}>Supprimer</button>

@@ -1,3 +1,4 @@
+import traceback
 from dotenv import load_dotenv
 load_dotenv()
 from website.main_website import app, db, logging
@@ -7,16 +8,17 @@ import logging
 
 def ask_api(what: str):
     url = os.getenv("API_URL") + what
-    logging.info("Asking API on : ", url)
+        
+    logging.info("Asking API on : " + url)
     return requests.get(url)
 
 
-def main(debug_mode=True):
-    # test()
+def main(debug_mode=True, dev=False):
+    test(dev)
     run(debug_mode=debug_mode)
 
 
-def test():
+def test(dev):
     # from function import main_test_dependance
     try:
         response = ask_api("version")
@@ -24,6 +26,7 @@ def test():
             raise Exception
     except Exception as e:
         logging.warning("Vérifiez que l'Api est bien lancée.")
+        traceback.print_exc()
         quit("L'api n'est pas lancée")
 
 

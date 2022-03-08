@@ -217,4 +217,5 @@ describe('Testing the website UI',function () {
     cy.get('#calendar > tbody > tr.table-danger > td:nth-child(2)').should("contain.text", "Galland")
     cy.get('#calendar > tbody > tr.table-danger > td:nth-child(3)').should("contain.text", "Jérémy")
   })
+
 })
