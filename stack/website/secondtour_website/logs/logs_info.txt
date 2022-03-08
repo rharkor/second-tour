@@ -1378,3 +1378,13 @@ UnicodeEncodeError: 'ascii' codec can't encode character '\xe9' in position 73: 
 2022-03-02 14:48:04,035 Asking API on : http://api:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['candidat', 'creneau', 'serie', 'matiere', 'professeur', 'salle']}
 2022-03-02 14:48:04,137 Asking API on : http://api:443/data/fetchfilter/utilisateur BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'email': 'admin@ac-poitiers.fr', 'admin': '1'}}
 2022-03-02 14:48:04,142 Asking API on : http://api:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['candidat', 'choix_matiere', 'serie', 'matiere', 'professeur', 'salle', 'creneau']}
+2022-03-04 10:07:18,371 Vérifiez que l'Api est bien lancée.
+2022-03-04 10:08:38,755 Vérifiez que l'Api est bien lancée.
+2022-03-04 10:09:00,263 Run the server
+2022-03-04 10:09:01,350  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2022-03-04 10:09:01,351  * Running on http://10.13.34.227:5000/ (Press CTRL+C to quit)
+2022-03-04 09:12:26,954 Run the server
+2022-03-04 09:12:26,967  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2022-03-04 09:12:26,968  * Running on http://172.18.0.4:5000/ (Press CTRL+C to quit)

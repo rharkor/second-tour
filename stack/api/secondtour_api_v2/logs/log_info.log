@@ -101264,3 +101264,707 @@ RESPONSE :
 	Status Code : 200
 	Body : No body
 
+1646384794435
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /version
+	Body : {}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646387415262
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /version
+	Body : {}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646387430175
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /versio
+	Body : {}
+RESPONSE :
+	Status Code : 404
+	Body : No body
+
+1646387433441
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /version
+	Body : {}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646387506315
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /
+	Body : {}
+RESPONSE :
+	Status Code : 404
+	Body : No body
+
+1646387529697
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /fetch/salle
+	Body : {}
+RESPONSE :
+	Status Code : 404
+	Body : No body
+
+1646387533603
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /fetch/salles
+	Body : {}
+RESPONSE :
+	Status Code : 404
+	Body : No body
+
+1646387636310
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /fetch/SALLE
+	Body : {}
+RESPONSE :
+	Status Code : 404
+	Body : No body
+
+1646387658230
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /fetch/PROFESSEUR
+	Body : {}
+RESPONSE :
+	Status Code : 404
+	Body : No body
+
+1646387807450
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /fetch/professeur
+	Body : {}
+RESPONSE :
+	Status Code : 404
+	Body : No body
+
+1646387809715
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /fetch/professeurs
+	Body : {}
+RESPONSE :
+	Status Code : 404
+	Body : No body
+
+1646387832207
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/professeurs
+	Body : {}
+RESPONSE :
+	Status Code : 404
+	Body : No body
+
+1646387924963
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/professeurs
+	Body : {"username":"admin","pasword":"L0calAdmin"}
+RESPONSE :
+	Status Code : 404
+	Body : No body
+
+1646387941079
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/professeur
+	Body : {"username":"admin","pasword":"L0calAdmin"}
+RESPONSE :
+	Status Code : 404
+	Body : No body
+
+1646387984860
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /
+	Body : {"username":"admin","pasword":"L0calAdmin"}
+RESPONSE :
+	Status Code : 401
+	Body : No body
+
+1646388011366
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/professeur
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 500
+	Body : No body
+
+1646728048608
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/professeur
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 500
+	Body : No body
+
+1646728074096
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /data/fetch/professeur
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 404
+	Body : No body
+
+1646728111077
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646728125556
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646728135155
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646728136630
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646728137623
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646728196298
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646728293743
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /data/fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 404
+	Body : No body
+
+1646728309676
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /
+	Body : {"username":"adminaaaaaaaa","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 401
+	Body : No body
+
+1646728321318
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646728953647
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /
+	Body : No body
+RESPONSE :
+	Status Code : 301
+	Body : No body
+
+1646728953676
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /
+	Body : No body
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646728953796
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-init.js
+	Body : No body
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646728953837
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui.css
+	Body : No body
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646728954058
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-standalone-preset.js
+	Body : No body
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646728954108
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-bundle.js
+	Body : No body
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646728954685
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /favicon-32x32.png
+	Body : No body
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646728997611
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /version
+	Body : {}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646729163627
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /
+	Body : {}
+RESPONSE :
+	Status Code : 401
+	Body : No body
+
+1646729169675
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /
+	Body : {}
+RESPONSE :
+	Status Code : 401
+	Body : No body
+
+1646729217126
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /
+	Body : {}
+RESPONSE :
+	Status Code : 401
+	Body : No body
+
+1646729241486
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /
+	Body : {"username":"Admin","password":"Password123","content":{"id_salle":"null","numero":"D002"}}
+RESPONSE :
+	Status Code : 401
+	Body : No body
+
+1646729290062
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /
+	Body : {}
+RESPONSE :
+	Status Code : 401
+	Body : No body
+
+1646729324964
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/SALLE
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_salle":"null","numero":"D002"}}
+RESPONSE :
+	Status Code : 201
+	Body : No body
+
+1646729351433
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /
+	Body : {}
+RESPONSE :
+	Status Code : 401
+	Body : No body
+
+1646729547637
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/SALLE
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_salle":"1000","numero":"A10"}}
+RESPONSE :
+	Status Code : 201
+	Body : No body
+
+1646729962690
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_salle":"1000","numero":"A10"}}
+RESPONSE :
+	Status Code : 201
+	Body : No body
+
+1646730056680
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_salle":"1000","numero":"A10"}}
+RESPONSE :
+	Status Code : 201
+	Body : No body
+
+1646731280590
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /
+	Body : {"username":"Admin","password":"Password123","content":{"id_salle":"1000"}}
+RESPONSE :
+	Status Code : 401
+	Body : No body
+
+1646731298937
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_salle":"1000"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646731320029
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{"numero":"A10"}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646731363606
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_salle":1000}}
+RESPONSE :
+	Status Code : 200
+	Body : No body
+
+1646731716999
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /
+	Body : No body
+RESPONSE :
+	Status Code : 304
+	Body : No body
+
+1646731717099
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-bundle.js
+	Body : No body
+RESPONSE :
+	Status Code : 304
+	Body : No body
+
+1646731717101
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui.css
+	Body : No body
+RESPONSE :
+	Status Code : 304
+	Body : No body
+
+1646731717106
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-standalone-preset.js
+	Body : No body
+RESPONSE :
+	Status Code : 304
+	Body : No body
+
+1646731717187
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-init.js
+	Body : No body
+RESPONSE :
+	Status Code : 304
+	Body : No body
+
+1646731717986
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /favicon-32x32.png
+	Body : No body
+RESPONSE :
+	Status Code : 304
+	Body : No body
+
+1646731793263
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /
+	Body : No body
+RESPONSE :
+	Status Code : 304
+	Body : No body
+
+1646731793344
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-standalone-preset.js
+	Body : No body
+RESPONSE :
+	Status Code : 304
+	Body : No body
+
+1646731793351
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui.css
+	Body : No body
+RESPONSE :
+	Status Code : 304
+	Body : No body
+
+1646731793353
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-bundle.js
+	Body : No body
+RESPONSE :
+	Status Code : 304
+	Body : No body
+
+1646731793341
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-init.js
+	Body : No body
+RESPONSE :
+	Status Code : 304
+	Body : No body
+
+1646731794489
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /favicon-32x32.png
+	Body : No body
+RESPONSE :
+	Status Code : 304
+	Body : No body
+
+1646732207104
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /salle
+	Body : {}
+RESPONSE :
+	Status Code : 404
+	Body : No body
+
+1646732218066
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /salle
+	Body : {}
+RESPONSE :
+	Status Code : 404
+	Body : No body
+
+1646732250959
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /salle
+	Body : {}
+RESPONSE :
+	Status Code : 404
+	Body : No body
+

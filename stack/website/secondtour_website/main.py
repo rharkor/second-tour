@@ -12,7 +12,7 @@ def ask_api(what: str):
 
 
 def main(debug_mode=True):
-    test()
+    # test()
     run(debug_mode=debug_mode)
 
 
