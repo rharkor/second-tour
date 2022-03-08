@@ -2,6 +2,7 @@ stack/second_tour_website/logs/logs_info.txt
 stack/second_tour_website/website/database/data.sqlite3
 stack/second_tour_api/logs/logs_info.txt
 stack/website/secondtour_website/logs/logs_info.txt
+stack\api\secondtour_api_v2\logs\log_info.log
 
 stack/api/secondtour_api/apienv
 stack/website/secondtour_website/websiteenv
