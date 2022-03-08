@@ -26,10 +26,8 @@ RUN pip install -r /app/website/secondtour_website/requirements.txt
 # RUN systemctl start secondtour_website
 # RUN systemctl enable secondtour_website
 
-# Copy the startup script
-COPY ./build/website/start.sh /app/scripts/start.sh
 
 # Prod image
 EXPOSE 80
 
-CMD ["sh", "/app/scripts/start.sh"]
+CMD ["uwsgi","/app/website/secondtour_website/website.ini"]
