@@ -6,7 +6,7 @@ import random
 
 faker = Faker("fr_FR")
 
-load_dotenv()
+load_dotenv("./.env_test")
 from website.function import main_database
     
 

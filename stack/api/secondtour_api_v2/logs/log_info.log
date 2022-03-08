@@ -109283,4 +109283,2596 @@ FROM:
 REQUEST :
 	Method : POST
 	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","salle"]}1646735208751
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","salle"]}1646735227315
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646735227340
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646735227357
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["creneau","candidat","choix_matiere"]}1646735227377
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","professeur","salle"]}1646735229619
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","salle"]}1646735330829
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /
+	Body : No body1646735331223
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-init.js
+	Body : No body1646735331257
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui.css
+	Body : No body1646735331278
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-bundle.js
+	Body : No body1646735331544
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-standalone-preset.js
+	Body : No body1646735331890
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /favicon-32x32.png
+	Body : No body1646735332072
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /favicon-32x32.png
+	Body : No body1646735334565
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646735334582
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646735334588
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["creneau","candidat","choix_matiere"]}1646735334602
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","professeur","salle"]}1646735337406
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646735337419
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","choix_matiere","serie","matiere","professeur","salle","creneau","liste_matiere"]}1646735338831
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646735338837
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","serie","matiere","salle","choix_matiere"]}1646735339890
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646735339899
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","serie","matiere","salle","choix_matiere"]}1646735340851
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646735340859
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","choix_matiere","serie","matiere","professeur","salle","creneau"]}1646735342235
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646735342247
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","horaire","matiere","professeur","salle","creneau","liste_matiere"]}1646735343669
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646735343677
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","serie","matiere","salle","choix_matiere","professeur","creneau","liste_matiere"]}1646735344653
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646735344664
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["utilisateur","token","professeur"]}1646735350023
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646735350028
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["creneau","candidat","choix_matiere"]}1646735350038
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","professeur","salle"]}1646735364298
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646735364306
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","choix_matiere","serie","matiere","professeur","salle","creneau","liste_matiere"]}1646735369984
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646735369992
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","serie","matiere","salle","choix_matiere"]}1646735372169
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646735372177
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","serie","matiere","salle","choix_matiere"]}1646735373965
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646735373971
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","choix_matiere","serie","matiere","professeur","salle","creneau"]}1646735375596
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646735375604
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","horaire","matiere","professeur","salle","creneau","liste_matiere"]}1646735840450
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /version
+	Body : {}1646735841863
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /version
+	Body : {}1646735847046
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646735847059
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","horaire","matiere","professeur","salle","creneau","liste_matiere"]}1646735960957
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /version
+	Body : {}1646736018608
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /version
+	Body : {}1646736357669
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /version
+	Body : {}1646736365412
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : DELETE
+	Url : /deleteall
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1646736365431
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_utilisateur":"null","email":"admin@ac-poitiers.fr","password":"$p5k2$3e8$AfpOzesj$.KoGR.raCRkA3gne.aZrF1bQobRfdSIH","admin":"true","id_professeur":"null"}}1646736365463
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_serie":"null","nom":"Générale","specialite1":"Mathématiques","specialite2":"SES"}}1646736365472
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_serie":1}}1646736365487
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_matiere":"null","id_serie":1,"nom":"Francais","nom_complet":"Francais - Mathématiques/SES","temps_preparation":30,"temps_preparation_tiers_temps":40,"temps_passage":30,"temps_passage_tiers_temps":40,"loge":"null"}}1646736365497
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_serie":1}}1646736365509
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_matiere":"null","id_serie":1,"nom":"Philosophie","nom_complet":"Philosophie - Mathématiques/SES","temps_preparation":30,"temps_preparation_tiers_temps":40,"temps_passage":30,"temps_passage_tiers_temps":40,"loge":"null"}}1646736365521
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_serie":"null","nom":"Technologique","specialite1":"STI2D","specialite2":"null"}}1646736365530
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_serie":2}}1646736365567
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_matiere":"null","id_serie":2,"nom":"Francais","nom_complet":"Francais - STI2D","temps_preparation":30,"temps_preparation_tiers_temps":40,"temps_passage":30,"temps_passage_tiers_temps":40,"loge":"null"}}1646736365575
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_serie":2}}1646736365586
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_matiere":"null","id_serie":2,"nom":"Philosophie","nom_complet":"Philosophie - STI2D","temps_preparation":30,"temps_preparation_tiers_temps":40,"temps_passage":30,"temps_passage_tiers_temps":40,"loge":"null"}}1646736365598
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_serie":"null","nom":"Générale","specialite1":"SVT","specialite2":"SES"}}1646736365606
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_serie":3}}1646736365616
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_matiere":"null","id_serie":3,"nom":"Francais","nom_complet":"Francais - SVT/SES","temps_preparation":30,"temps_preparation_tiers_temps":40,"temps_passage":30,"temps_passage_tiers_temps":40,"loge":"null"}}1646736365624
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_serie":3}}1646736365635
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_matiere":"null","id_serie":3,"nom":"Philosophie","nom_complet":"Philosophie - SVT/SES","temps_preparation":30,"temps_preparation_tiers_temps":40,"temps_passage":30,"temps_passage_tiers_temps":40,"loge":"null"}}1646736365647
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_serie":"null","nom":"Générale","specialite1":"Physique","specialite2":"SVT"}}1646736365654
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_serie":4}}1646736365665
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_matiere":"null","id_serie":4,"nom":"Francais","nom_complet":"Francais - Physique/SVT","temps_preparation":30,"temps_preparation_tiers_temps":40,"temps_passage":30,"temps_passage_tiers_temps":40,"loge":"null"}}1646736365672
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_serie":4}}1646736365683
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_matiere":"null","id_serie":4,"nom":"Philosophie","nom_complet":"Philosophie - Physique/SVT","temps_preparation":30,"temps_preparation_tiers_temps":40,"temps_passage":30,"temps_passage_tiers_temps":40,"loge":"null"}}1646736365693
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_serie":"null","nom":"Technologique","specialite1":"STMG","specialite2":"null"}}1646736365701
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_serie":5}}1646736365712
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_matiere":"null","id_serie":5,"nom":"Francais","nom_complet":"Francais - STMG","temps_preparation":30,"temps_preparation_tiers_temps":40,"temps_passage":30,"temps_passage_tiers_temps":40,"loge":"null"}}1646736365721
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_serie":5}}1646736365733
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_matiere":"null","id_serie":5,"nom":"Philosophie","nom_complet":"Philosophie - STMG","temps_preparation":30,"temps_preparation_tiers_temps":40,"temps_passage":30,"temps_passage_tiers_temps":40,"loge":"null"}}1646736365774
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_serie":"null","nom":"Générale","specialite1":"SVT","specialite2":"Mathématiques"}}1646736365783
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_serie":6}}1646736365795
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_matiere":"null","id_serie":6,"nom":"Francais","nom_complet":"Francais - SVT/Mathématiques","temps_preparation":30,"temps_preparation_tiers_temps":40,"temps_passage":30,"temps_passage_tiers_temps":40,"loge":"null"}}1646736365803
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_serie":6}}1646736365815
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_matiere":"null","id_serie":6,"nom":"Philosophie","nom_complet":"Philosophie - SVT/Mathématiques","temps_preparation":30,"temps_preparation_tiers_temps":40,"temps_passage":30,"temps_passage_tiers_temps":40,"loge":"null"}}1646736365824
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_serie":1}}1646736365835
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_matiere":"null","id_serie":1,"nom":"Mathématiques","nom_complet":"Mathématiques - Mathématiques/SES","temps_preparation":30,"temps_preparation_tiers_temps":40,"temps_passage":30,"temps_passage_tiers_temps":40,"loge":"null"}}1646736365844
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_serie":1}}1646736365856
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_matiere":"null","id_serie":1,"nom":"SES","nom_complet":"SES - Mathématiques/SES","temps_preparation":30,"temps_preparation_tiers_temps":40,"temps_passage":30,"temps_passage_tiers_temps":40,"loge":"null"}}1646736365870
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_salle":"null","numero":"D100"}}1646736365879
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_serie":2}}1646736365891
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_matiere":"null","id_serie":2,"nom":"2I2D","nom_complet":"2I2D - STI2D","temps_preparation":60,"temps_preparation_tiers_temps":80,"temps_passage":30,"temps_passage_tiers_temps":40,"loge":1}}1646736365900
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_serie":2}}1646736365912
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_matiere":"null","id_serie":2,"nom":"Mathématiques/Physique","nom_complet":"Mathématiques/Physique - STI2D","temps_preparation":30,"temps_preparation_tiers_temps":40,"temps_passage":30,"temps_passage_tiers_temps":40,"loge":"null"}}1646736365920
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_serie":3}}1646736365933
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_matiere":"null","id_serie":3,"nom":"SVT","nom_complet":"SVT - SVT/SES","temps_preparation":30,"temps_preparation_tiers_temps":40,"temps_passage":30,"temps_passage_tiers_temps":40,"loge":"null"}}1646736365942
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_serie":3}}1646736365955
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_matiere":"null","id_serie":3,"nom":"SES","nom_complet":"SES - SVT/SES","temps_preparation":30,"temps_preparation_tiers_temps":40,"temps_passage":30,"temps_passage_tiers_temps":40,"loge":"null"}}1646736365964
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_serie":4}}1646736365976
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_matiere":"null","id_serie":4,"nom":"Physique","nom_complet":"Physique - Physique/SVT","temps_preparation":30,"temps_preparation_tiers_temps":40,"temps_passage":30,"temps_passage_tiers_temps":40,"loge":"null"}}1646736365987
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_serie":4}}1646736366001
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_matiere":"null","id_serie":4,"nom":"SVT","nom_complet":"SVT - Physique/SVT","temps_preparation":30,"temps_preparation_tiers_temps":40,"temps_passage":30,"temps_passage_tiers_temps":40,"loge":"null"}}1646736366013
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_serie":5}}1646736366027
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_matiere":"null","id_serie":5,"nom":"SGN","nom_complet":"SGN - STMG","temps_preparation":30,"temps_preparation_tiers_temps":40,"temps_passage":30,"temps_passage_tiers_temps":40,"loge":"null"}}1646736366037
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_serie":5}}1646736366087
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_matiere":"null","id_serie":5,"nom":"Mathématiques/Physique","nom_complet":"Mathématiques/Physique - STMG","temps_preparation":30,"temps_preparation_tiers_temps":40,"temps_passage":30,"temps_passage_tiers_temps":40,"loge":"null"}}1646736366095
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_serie":6}}1646736366107
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_matiere":"null","id_serie":6,"nom":"SVT","nom_complet":"SVT - SVT/Mathématiques","temps_preparation":30,"temps_preparation_tiers_temps":40,"temps_passage":30,"temps_passage_tiers_temps":40,"loge":"null"}}1646736366115
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_serie":6}}1646736366129
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_matiere":"null","id_serie":6,"nom":"Mathématiques","nom_complet":"Mathématiques - SVT/Mathématiques","temps_preparation":30,"temps_preparation_tiers_temps":40,"temps_passage":30,"temps_passage_tiers_temps":40,"loge":"null"}}1646736366142
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_salle":"null","numero":"D000"}}1646736366154
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_salle":"null","numero":"D001"}}1646736366165
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_salle":"null","numero":"D002"}}1646736366176
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_salle":"null","numero":"D003"}}1646736366188
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_salle":"null","numero":"D004"}}1646736366200
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_salle":"null","numero":"D005"}}1646736366211
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_salle":"null","numero":"D006"}}1646736366223
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_salle":"null","numero":"D007"}}1646736366235
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_salle":"null","numero":"D008"}}1646736366248
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_salle":"null","numero":"D009"}}1646736366261
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_salle":"null","numero":"D010"}}1646736366290
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_salle":"null","numero":"D011"}}1646736366303
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_salle":"null","numero":"D012"}}1646736366319
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_salle":"null","numero":"D013"}}1646736366363
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_salle":"null","numero":"D014"}}1646736366378
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_salle":"null","numero":"D015"}}1646736366427
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_salle":"null","numero":"D016"}}1646736366437
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_salle":"null","numero":"D017"}}1646736366447
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_salle":"null","numero":"D018"}}1646736366457
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_salle":"null","numero":"D019"}}1646736366468
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_salle":"null","numero":"D020"}}1646736366479
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_salle":"null","numero":"D021"}}1646736366490
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_salle":"null","numero":"D022"}}1646736366502
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_salle":"null","numero":"D023"}}1646736366517
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/professeur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_professeur":"null","nom":"Valérie","prenom":"Charles","salle":2}}1646736366532
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/horaire
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_horaire":"null","horaire_arr1":"STR_TO_DATE('Mon Jan 01 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep1":"STR_TO_DATE('Mon Jan 01 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_arr2":"STR_TO_DATE('Tue Jan 02 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep2":"STR_TO_DATE('Tue Jan 02 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_arr3":"STR_TO_DATE('Wed Jan 03 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep3":"STR_TO_DATE('Wed Jan 03 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","id_professeur":1}}1646736366544
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/professeur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_professeur":"null","nom":"Charles","prenom":"Loiseau","salle":3}}1646736366557
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/horaire
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_horaire":"null","horaire_arr1":"STR_TO_DATE('Mon Jan 01 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep1":"STR_TO_DATE('Mon Jan 01 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_arr2":"STR_TO_DATE('Tue Jan 02 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep2":"STR_TO_DATE('Tue Jan 02 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_arr3":"STR_TO_DATE('Wed Jan 03 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep3":"STR_TO_DATE('Wed Jan 03 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","id_professeur":2}}1646736366571
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/professeur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_professeur":"null","nom":"Arnaude","prenom":"Ollivier","salle":4}}1646736366584
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/horaire
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_horaire":"null","horaire_arr1":"STR_TO_DATE('Mon Jan 01 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep1":"STR_TO_DATE('Mon Jan 01 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_arr2":"STR_TO_DATE('Tue Jan 02 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep2":"STR_TO_DATE('Tue Jan 02 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_arr3":"STR_TO_DATE('Wed Jan 03 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep3":"STR_TO_DATE('Wed Jan 03 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","id_professeur":3}}1646736366596
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/professeur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_professeur":"null","nom":"Danielle","prenom":"Rodrigues","salle":5}}1646736366626
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/horaire
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_horaire":"null","horaire_arr1":"STR_TO_DATE('Mon Jan 01 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep1":"STR_TO_DATE('Mon Jan 01 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_arr2":"STR_TO_DATE('Tue Jan 02 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep2":"STR_TO_DATE('Tue Jan 02 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_arr3":"STR_TO_DATE('Wed Jan 03 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep3":"STR_TO_DATE('Wed Jan 03 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","id_professeur":4}}1646736366639
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/professeur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_professeur":"null","nom":"Louise","prenom":"Lebrun","salle":6}}1646736366651
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/horaire
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_horaire":"null","horaire_arr1":"STR_TO_DATE('Mon Jan 01 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep1":"STR_TO_DATE('Mon Jan 01 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_arr2":"STR_TO_DATE('Tue Jan 02 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep2":"STR_TO_DATE('Tue Jan 02 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_arr3":"STR_TO_DATE('Wed Jan 03 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep3":"STR_TO_DATE('Wed Jan 03 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","id_professeur":5}}1646736366663
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/professeur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_professeur":"null","nom":"Odette","prenom":"Rémy","salle":7}}1646736366677
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/horaire
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_horaire":"null","horaire_arr1":"STR_TO_DATE('Mon Jan 01 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep1":"STR_TO_DATE('Mon Jan 01 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_arr2":"STR_TO_DATE('Tue Jan 02 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep2":"STR_TO_DATE('Tue Jan 02 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_arr3":"STR_TO_DATE('Wed Jan 03 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep3":"STR_TO_DATE('Wed Jan 03 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","id_professeur":6}}1646736366689
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/professeur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_professeur":"null","nom":"Alex","prenom":"Guillou","salle":8}}1646736366703
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/horaire
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_horaire":"null","horaire_arr1":"STR_TO_DATE('Mon Jan 01 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep1":"STR_TO_DATE('Mon Jan 01 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_arr2":"STR_TO_DATE('Tue Jan 02 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep2":"STR_TO_DATE('Tue Jan 02 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_arr3":"STR_TO_DATE('Wed Jan 03 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep3":"STR_TO_DATE('Wed Jan 03 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","id_professeur":7}}1646736366714
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/professeur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_professeur":"null","nom":"Hugues","prenom":"Cordier","salle":9}}1646736366726
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/horaire
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_horaire":"null","horaire_arr1":"STR_TO_DATE('Mon Jan 01 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep1":"STR_TO_DATE('Mon Jan 01 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_arr2":"STR_TO_DATE('Tue Jan 02 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep2":"STR_TO_DATE('Tue Jan 02 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_arr3":"STR_TO_DATE('Wed Jan 03 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep3":"STR_TO_DATE('Wed Jan 03 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","id_professeur":8}}1646736366737
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/professeur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_professeur":"null","nom":"Alfred","prenom":"Jacquet","salle":10}}1646736366749
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/horaire
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_horaire":"null","horaire_arr1":"STR_TO_DATE('Mon Jan 01 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep1":"STR_TO_DATE('Mon Jan 01 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_arr2":"STR_TO_DATE('Tue Jan 02 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep2":"STR_TO_DATE('Tue Jan 02 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_arr3":"STR_TO_DATE('Wed Jan 03 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep3":"STR_TO_DATE('Wed Jan 03 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","id_professeur":9}}1646736366763
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/professeur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_professeur":"null","nom":"Valentine","prenom":"Leduc","salle":11}}1646736366776
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/horaire
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_horaire":"null","horaire_arr1":"STR_TO_DATE('Mon Jan 01 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep1":"STR_TO_DATE('Mon Jan 01 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_arr2":"STR_TO_DATE('Tue Jan 02 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep2":"STR_TO_DATE('Tue Jan 02 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_arr3":"STR_TO_DATE('Wed Jan 03 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep3":"STR_TO_DATE('Wed Jan 03 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","id_professeur":10}}1646736366788
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/professeur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_professeur":"null","nom":"Luc","prenom":"Pichon","salle":12}}1646736366799
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/horaire
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_horaire":"null","horaire_arr1":"STR_TO_DATE('Mon Jan 01 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep1":"STR_TO_DATE('Mon Jan 01 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_arr2":"STR_TO_DATE('Tue Jan 02 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep2":"STR_TO_DATE('Tue Jan 02 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_arr3":"STR_TO_DATE('Wed Jan 03 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep3":"STR_TO_DATE('Wed Jan 03 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","id_professeur":11}}1646736366833
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/professeur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_professeur":"null","nom":"Théodore","prenom":"Barre","salle":13}}1646736366845
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/horaire
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_horaire":"null","horaire_arr1":"STR_TO_DATE('Mon Jan 01 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep1":"STR_TO_DATE('Mon Jan 01 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_arr2":"STR_TO_DATE('Tue Jan 02 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep2":"STR_TO_DATE('Tue Jan 02 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_arr3":"STR_TO_DATE('Wed Jan 03 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep3":"STR_TO_DATE('Wed Jan 03 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","id_professeur":12}}1646736366857
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/professeur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_professeur":"null","nom":"Pierre","prenom":"Torres","salle":14}}1646736366868
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/horaire
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_horaire":"null","horaire_arr1":"STR_TO_DATE('Mon Jan 01 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep1":"STR_TO_DATE('Mon Jan 01 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_arr2":"STR_TO_DATE('Tue Jan 02 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep2":"STR_TO_DATE('Tue Jan 02 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_arr3":"STR_TO_DATE('Wed Jan 03 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep3":"STR_TO_DATE('Wed Jan 03 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","id_professeur":13}}1646736366879
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/professeur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_professeur":"null","nom":"Agathe","prenom":"Rocher","salle":15}}1646736366890
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/horaire
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_horaire":"null","horaire_arr1":"STR_TO_DATE('Mon Jan 01 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep1":"STR_TO_DATE('Mon Jan 01 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_arr2":"STR_TO_DATE('Tue Jan 02 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep2":"STR_TO_DATE('Tue Jan 02 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_arr3":"STR_TO_DATE('Wed Jan 03 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep3":"STR_TO_DATE('Wed Jan 03 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","id_professeur":14}}1646736366902
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/professeur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_professeur":"null","nom":"Agnès","prenom":"Salmon","salle":16}}1646736366913
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/horaire
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_horaire":"null","horaire_arr1":"STR_TO_DATE('Mon Jan 01 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep1":"STR_TO_DATE('Mon Jan 01 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_arr2":"STR_TO_DATE('Tue Jan 02 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep2":"STR_TO_DATE('Tue Jan 02 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_arr3":"STR_TO_DATE('Wed Jan 03 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep3":"STR_TO_DATE('Wed Jan 03 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","id_professeur":15}}1646736366924
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/professeur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_professeur":"null","nom":"Anastasie","prenom":"Giraud","salle":17}}1646736366937
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/horaire
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_horaire":"null","horaire_arr1":"STR_TO_DATE('Mon Jan 01 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep1":"STR_TO_DATE('Mon Jan 01 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_arr2":"STR_TO_DATE('Tue Jan 02 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep2":"STR_TO_DATE('Tue Jan 02 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_arr3":"STR_TO_DATE('Wed Jan 03 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep3":"STR_TO_DATE('Wed Jan 03 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","id_professeur":16}}1646736366948
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/professeur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_professeur":"null","nom":"Bernadette","prenom":"Vaillant","salle":18}}1646736366959
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/horaire
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_horaire":"null","horaire_arr1":"STR_TO_DATE('Mon Jan 01 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep1":"STR_TO_DATE('Mon Jan 01 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_arr2":"STR_TO_DATE('Tue Jan 02 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep2":"STR_TO_DATE('Tue Jan 02 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_arr3":"STR_TO_DATE('Wed Jan 03 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep3":"STR_TO_DATE('Wed Jan 03 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","id_professeur":17}}1646736366970
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/professeur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_professeur":"null","nom":"Benoît","prenom":"Laporte","salle":19}}1646736366982
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/horaire
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_horaire":"null","horaire_arr1":"STR_TO_DATE('Mon Jan 01 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep1":"STR_TO_DATE('Mon Jan 01 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_arr2":"STR_TO_DATE('Tue Jan 02 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep2":"STR_TO_DATE('Tue Jan 02 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_arr3":"STR_TO_DATE('Wed Jan 03 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep3":"STR_TO_DATE('Wed Jan 03 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","id_professeur":18}}1646736366995
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/professeur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_professeur":"null","nom":"Madeleine","prenom":"Ferreira","salle":20}}1646736367038
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/horaire
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_horaire":"null","horaire_arr1":"STR_TO_DATE('Mon Jan 01 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep1":"STR_TO_DATE('Mon Jan 01 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_arr2":"STR_TO_DATE('Tue Jan 02 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep2":"STR_TO_DATE('Tue Jan 02 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_arr3":"STR_TO_DATE('Wed Jan 03 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep3":"STR_TO_DATE('Wed Jan 03 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","id_professeur":19}}1646736367050
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/professeur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_professeur":"null","nom":"Élise","prenom":"Prévost","salle":21}}1646736367062
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/horaire
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_horaire":"null","horaire_arr1":"STR_TO_DATE('Mon Jan 01 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep1":"STR_TO_DATE('Mon Jan 01 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_arr2":"STR_TO_DATE('Tue Jan 02 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep2":"STR_TO_DATE('Tue Jan 02 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_arr3":"STR_TO_DATE('Wed Jan 03 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep3":"STR_TO_DATE('Wed Jan 03 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","id_professeur":20}}1646736367074
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/professeur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_professeur":"null","nom":"Clémence","prenom":"Fournier","salle":22}}1646736367087
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/horaire
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_horaire":"null","horaire_arr1":"STR_TO_DATE('Mon Jan 01 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep1":"STR_TO_DATE('Mon Jan 01 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_arr2":"STR_TO_DATE('Tue Jan 02 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep2":"STR_TO_DATE('Tue Jan 02 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_arr3":"STR_TO_DATE('Wed Jan 03 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep3":"STR_TO_DATE('Wed Jan 03 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","id_professeur":21}}1646736367098
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/professeur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_professeur":"null","nom":"Audrey","prenom":"Blanchet","salle":23}}1646736367109
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/horaire
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_horaire":"null","horaire_arr1":"STR_TO_DATE('Mon Jan 01 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep1":"STR_TO_DATE('Mon Jan 01 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_arr2":"STR_TO_DATE('Tue Jan 02 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep2":"STR_TO_DATE('Tue Jan 02 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_arr3":"STR_TO_DATE('Wed Jan 03 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep3":"STR_TO_DATE('Wed Jan 03 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","id_professeur":22}}1646736367120
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/professeur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_professeur":"null","nom":"Brigitte","prenom":"Durand","salle":24}}1646736367131
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/horaire
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_horaire":"null","horaire_arr1":"STR_TO_DATE('Mon Jan 01 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep1":"STR_TO_DATE('Mon Jan 01 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_arr2":"STR_TO_DATE('Tue Jan 02 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep2":"STR_TO_DATE('Tue Jan 02 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_arr3":"STR_TO_DATE('Wed Jan 03 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep3":"STR_TO_DATE('Wed Jan 03 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","id_professeur":23}}1646736367142
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/professeur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_professeur":"null","nom":"Zoé","prenom":"Allain","salle":25}}1646736367153
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/horaire
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_horaire":"null","horaire_arr1":"STR_TO_DATE('Mon Jan 01 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep1":"STR_TO_DATE('Mon Jan 01 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_arr2":"STR_TO_DATE('Tue Jan 02 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep2":"STR_TO_DATE('Tue Jan 02 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_arr3":"STR_TO_DATE('Wed Jan 03 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep3":"STR_TO_DATE('Wed Jan 03 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","id_professeur":24}}1646736367166
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/liste_matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_liste_matiere":"null","id_professeur":1,"id_matiere":1}}1646736367179
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/liste_matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_liste_matiere":"null","id_professeur":2,"id_matiere":2}}1646736367192
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/liste_matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_liste_matiere":"null","id_professeur":3,"id_matiere":3}}1646736367206
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/liste_matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_liste_matiere":"null","id_professeur":4,"id_matiere":4}}1646736367220
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/liste_matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_liste_matiere":"null","id_professeur":5,"id_matiere":5}}1646736367245
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/liste_matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_liste_matiere":"null","id_professeur":6,"id_matiere":6}}1646736367258
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/liste_matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_liste_matiere":"null","id_professeur":7,"id_matiere":7}}1646736367270
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/liste_matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_liste_matiere":"null","id_professeur":8,"id_matiere":8}}1646736367283
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/liste_matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_liste_matiere":"null","id_professeur":9,"id_matiere":9}}1646736367295
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/liste_matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_liste_matiere":"null","id_professeur":10,"id_matiere":10}}1646736367308
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/liste_matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_liste_matiere":"null","id_professeur":11,"id_matiere":11}}1646736367322
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/liste_matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_liste_matiere":"null","id_professeur":12,"id_matiere":12}}1646736367337
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/liste_matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_liste_matiere":"null","id_professeur":13,"id_matiere":13}}1646736367351
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/liste_matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_liste_matiere":"null","id_professeur":14,"id_matiere":14}}1646736367401
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/liste_matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_liste_matiere":"null","id_professeur":15,"id_matiere":15}}1646736367419
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/professeur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_professeur":"null","nom":"Roger","prenom":"Adam","salle":17}}1646736367432
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/horaire
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_horaire":"null","horaire_arr1":"STR_TO_DATE('Mon Jan 01 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep1":"STR_TO_DATE('Mon Jan 01 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_arr2":"STR_TO_DATE('Tue Jan 02 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep2":"STR_TO_DATE('Tue Jan 02 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_arr3":"STR_TO_DATE('Wed Jan 03 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep3":"STR_TO_DATE('Wed Jan 03 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","id_professeur":25}}1646736367446
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/liste_matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_liste_matiere":"null","id_professeur":25,"id_matiere":16}}1646736367459
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/liste_matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_liste_matiere":"null","id_professeur":16,"id_matiere":16}}1646736367474
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/liste_matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_liste_matiere":"null","id_professeur":17,"id_matiere":17}}1646736367522
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/liste_matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_liste_matiere":"null","id_professeur":18,"id_matiere":18}}1646736367533
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/liste_matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_liste_matiere":"null","id_professeur":19,"id_matiere":19}}1646736367546
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/liste_matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_liste_matiere":"null","id_professeur":20,"id_matiere":20}}1646736367557
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/liste_matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_liste_matiere":"null","id_professeur":21,"id_matiere":21}}1646736367570
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/professeur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_professeur":"null","nom":"Honoré","prenom":"Lebreton","salle":23}}1646736367584
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/horaire
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_horaire":"null","horaire_arr1":"STR_TO_DATE('Mon Jan 01 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep1":"STR_TO_DATE('Mon Jan 01 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_arr2":"STR_TO_DATE('Tue Jan 02 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep2":"STR_TO_DATE('Tue Jan 02 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_arr3":"STR_TO_DATE('Wed Jan 03 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep3":"STR_TO_DATE('Wed Jan 03 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","id_professeur":26}}1646736367598
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/liste_matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_liste_matiere":"null","id_professeur":26,"id_matiere":22}}1646736367610
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/liste_matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_liste_matiere":"null","id_professeur":22,"id_matiere":22}}1646736367623
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/liste_matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_liste_matiere":"null","id_professeur":23,"id_matiere":23}}1646736367636
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/liste_matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_liste_matiere":"null","id_professeur":24,"id_matiere":24}}1646736367652
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/candidat
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_candidat":"null","nom":"Denise","prenom":"Jacquet","id_serie":5,"tiers_temps":"false","absent":"false"}}1646736367668
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/choix_matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_choix_matiere":"null","id_candidat":1,"matiere1":9,"matiere2":10}}1646736367683
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/candidat
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_candidat":"null","nom":"Thomas","prenom":"Ruiz","id_serie":3,"tiers_temps":"false","absent":"false"}}1646736367718
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/choix_matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_choix_matiere":"null","id_candidat":2,"matiere1":18,"matiere2":5}}1646736367731
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/candidat
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_candidat":"null","nom":"Sabine","prenom":"Ribeiro","id_serie":3,"tiers_temps":"false","absent":"false"}}1646736367745
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/choix_matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_choix_matiere":"null","id_candidat":3,"matiere1":6,"matiere2":17}}1646736367757
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/candidat
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_candidat":"null","nom":"Corinne","prenom":"Didier","id_serie":1,"tiers_temps":"false","absent":"false"}}1646736367770
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/choix_matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_choix_matiere":"null","id_candidat":4,"matiere1":14,"matiere2":13}}1646736367782
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/candidat
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_candidat":"null","nom":"Michèle","prenom":"Arnaud","id_serie":1,"tiers_temps":"false","absent":"false"}}1646736367795
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/choix_matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_choix_matiere":"null","id_candidat":5,"matiere1":13,"matiere2":1}}1646736367809
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/candidat
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_candidat":"null","nom":"Jules","prenom":"Roche","id_serie":2,"tiers_temps":"false","absent":"false"}}1646736367825
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/choix_matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_choix_matiere":"null","id_candidat":6,"matiere1":15,"matiere2":3}}1646736367839
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/candidat
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_candidat":"null","nom":"Dorothée","prenom":"Parent","id_serie":4,"tiers_temps":"false","absent":"false"}}1646736367854
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/choix_matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_choix_matiere":"null","id_candidat":7,"matiere1":8,"matiere2":20}}1646736367868
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/candidat
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_candidat":"null","nom":"Guy","prenom":"De Oliveira","id_serie":6,"tiers_temps":"false","absent":"false"}}1646736367904
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/choix_matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_choix_matiere":"null","id_candidat":8,"matiere1":11,"matiere2":12}}1646736367919
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/candidat
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_candidat":"null","nom":"Olivie","prenom":"Morin","id_serie":2,"tiers_temps":"false","absent":"false"}}1646736367933
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/choix_matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_choix_matiere":"null","id_candidat":9,"matiere1":4,"matiere2":15}}1646736367946
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/candidat
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_candidat":"null","nom":"Camille","prenom":"Moulin","id_serie":1,"tiers_temps":"false","absent":"false"}}1646736367960
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/choix_matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_choix_matiere":"null","id_candidat":10,"matiere1":2,"matiere2":1}}1646736367977
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/candidat
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_candidat":"null","nom":"Sébastien","prenom":"Valette","id_serie":5,"tiers_temps":"false","absent":"false"}}1646736367993
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/choix_matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_choix_matiere":"null","id_candidat":11,"matiere1":10,"matiere2":9}}1646736368009
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/candidat
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_candidat":"null","nom":"Élisabeth","prenom":"Collin","id_serie":5,"tiers_temps":"false","absent":"false"}}1646736368023
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/choix_matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_choix_matiere":"null","id_candidat":12,"matiere1":21,"matiere2":10}}1646736368059
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/candidat
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_candidat":"null","nom":"Christelle","prenom":"Bernier","id_serie":1,"tiers_temps":"false","absent":"false"}}1646736368074
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/choix_matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_choix_matiere":"null","id_candidat":13,"matiere1":2,"matiere2":1}}1646736368090
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/candidat
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_candidat":"null","nom":"Julie","prenom":"Millet","id_serie":4,"tiers_temps":"false","absent":"false"}}1646736368109
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/choix_matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_choix_matiere":"null","id_candidat":14,"matiere1":19,"matiere2":20}}1646736368124
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/candidat
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_candidat":"null","nom":"Luce","prenom":"Bonnet","id_serie":1,"tiers_temps":"false","absent":"false"}}1646736368139
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/choix_matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_choix_matiere":"null","id_candidat":15,"matiere1":14,"matiere2":1}}1646736368154
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/candidat
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_candidat":"null","nom":"Aurore","prenom":"Étienne","id_serie":3,"tiers_temps":"true","absent":"false"}}1646736368171
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/choix_matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_choix_matiere":"null","id_candidat":16,"matiere1":5,"matiere2":18}}1646736368185
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/candidat
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_candidat":"null","nom":"Aimée","prenom":"Schneider","id_serie":4,"tiers_temps":"false","absent":"false"}}1646736368197
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/choix_matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_choix_matiere":"null","id_candidat":17,"matiere1":20,"matiere2":7}}1646736368210
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/candidat
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_candidat":"null","nom":"Jeannine","prenom":"Guillet","id_serie":1,"tiers_temps":"false","absent":"false"}}1646736368222
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/choix_matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_choix_matiere":"null","id_candidat":18,"matiere1":2,"matiere2":14}}1646736368268
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/candidat
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_candidat":"null","nom":"Adèle","prenom":"Lenoir","id_serie":3,"tiers_temps":"false","absent":"false"}}1646736368280
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/choix_matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_choix_matiere":"null","id_candidat":19,"matiere1":6,"matiere2":17}}1646736368291
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/candidat
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_candidat":"null","nom":"Sébastien","prenom":"Bodin","id_serie":6,"tiers_temps":"false","absent":"false"}}1646736368302
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/choix_matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_choix_matiere":"null","id_candidat":20,"matiere1":11,"matiere2":12}}1646736368314
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/candidat
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_candidat":"null","nom":"Susan","prenom":"Clerc","id_serie":6,"tiers_temps":"false","absent":"false"}}1646736368327
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/choix_matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_choix_matiere":"null","id_candidat":21,"matiere1":23,"matiere2":11}}1646736368340
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/candidat
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_candidat":"null","nom":"William","prenom":"Cousin","id_serie":3,"tiers_temps":"false","absent":"false"}}1646736368352
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/choix_matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_choix_matiere":"null","id_candidat":22,"matiere1":6,"matiere2":18}}1646736368364
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/candidat
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_candidat":"null","nom":"Amélie","prenom":"Lacroix","id_serie":5,"tiers_temps":"false","absent":"false"}}1646736368374
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/choix_matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_choix_matiere":"null","id_candidat":23,"matiere1":22,"matiere2":21}}1646736368385
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/candidat
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_candidat":"null","nom":"Claire","prenom":"Bailly","id_serie":3,"tiers_temps":"false","absent":"false"}}1646736368396
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/choix_matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_choix_matiere":"null","id_candidat":24,"matiere1":5,"matiere2":6}}1646736372295
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646736372444
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","horaire","matiere","professeur","salle","creneau","liste_matiere"]}1646736377694
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646736377704
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["utilisateur","token","professeur"]}1646736422112
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646736422129
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","choix_matiere","serie","matiere","professeur","salle","creneau","liste_matiere"]}1646736436419
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646736436427
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["creneau","candidat","choix_matiere"]}1646736436442
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","professeur","salle"]}1646736468171
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646736468189
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","choix_matiere","serie","matiere","professeur","salle","creneau","liste_matiere"]}1646736479261
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646736479273
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["creneau","candidat","choix_matiere"]}1646736479286
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","professeur","salle"]}1646736592412
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646736592426
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : DELETE
+	Url : /delete/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1646736592436
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","professeur","liste_matiere","choix_matiere","matiere","serie","salle","creneau"]}1646736592453
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":23,"id_matiere":22,"id_salle":23,"debut_preparation":"STR_TO_DATE('Tue Mar 01 08:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 08:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 09:00:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736592520
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":23,"id_matiere":21,"id_salle":22,"debut_preparation":"STR_TO_DATE('Tue Mar 01 09:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 10:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 10:30:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736592533
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":12,"id_matiere":21,"id_salle":22,"debut_preparation":"STR_TO_DATE('Tue Mar 01 08:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 08:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 09:00:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736592547
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":12,"id_matiere":10,"id_salle":11,"debut_preparation":"STR_TO_DATE('Tue Mar 01 09:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 10:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 10:30:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736592562
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":11,"id_matiere":10,"id_salle":11,"debut_preparation":"STR_TO_DATE('Tue Mar 01 08:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 08:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 09:00:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736592580
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":11,"id_matiere":9,"id_salle":10,"debut_preparation":"STR_TO_DATE('Tue Mar 01 09:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 10:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 10:30:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736592599
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":9,"id_matiere":4,"id_salle":5,"debut_preparation":"STR_TO_DATE('Tue Mar 01 08:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 08:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 09:00:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736592617
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":9,"id_matiere":15,"id_salle":16,"debut_preparation":"STR_TO_DATE('Tue Mar 01 09:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 10:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 11:00:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736592636
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":6,"id_matiere":15,"id_salle":16,"debut_preparation":"STR_TO_DATE('Tue Mar 01 08:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 09:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 09:30:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736592660
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":6,"id_matiere":3,"id_salle":4,"debut_preparation":"STR_TO_DATE('Tue Mar 01 10:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 10:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 11:00:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736592678
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":1,"id_matiere":9,"id_salle":10,"debut_preparation":"STR_TO_DATE('Tue Mar 01 08:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 08:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 09:00:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736592698
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":1,"id_matiere":10,"id_salle":11,"debut_preparation":"STR_TO_DATE('Tue Mar 01 10:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 10:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 11:00:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736592718
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":2,"id_matiere":18,"id_salle":19,"debut_preparation":"STR_TO_DATE('Tue Mar 01 08:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 08:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 09:00:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736592742
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":2,"id_matiere":5,"id_salle":6,"debut_preparation":"STR_TO_DATE('Tue Mar 01 09:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 10:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 10:30:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736592761
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":3,"id_matiere":6,"id_salle":7,"debut_preparation":"STR_TO_DATE('Tue Mar 01 08:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 08:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 09:00:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736592783
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":3,"id_matiere":17,"id_salle":18,"debut_preparation":"STR_TO_DATE('Tue Mar 01 09:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 10:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 10:30:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736592800
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":4,"id_matiere":14,"id_salle":15,"debut_preparation":"STR_TO_DATE('Tue Mar 01 08:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 08:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 09:00:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736592820
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":4,"id_matiere":13,"id_salle":14,"debut_preparation":"STR_TO_DATE('Tue Mar 01 09:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 10:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 10:30:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736592840
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":5,"id_matiere":13,"id_salle":14,"debut_preparation":"STR_TO_DATE('Tue Mar 01 08:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 08:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 09:00:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736592862
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":5,"id_matiere":1,"id_salle":2,"debut_preparation":"STR_TO_DATE('Tue Mar 01 09:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 10:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 10:30:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736592883
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":7,"id_matiere":8,"id_salle":9,"debut_preparation":"STR_TO_DATE('Tue Mar 01 08:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 08:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 09:00:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736592907
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":7,"id_matiere":20,"id_salle":21,"debut_preparation":"STR_TO_DATE('Tue Mar 01 09:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 10:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 10:30:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736592929
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":8,"id_matiere":11,"id_salle":12,"debut_preparation":"STR_TO_DATE('Tue Mar 01 08:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 08:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 09:00:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736592956
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":8,"id_matiere":12,"id_salle":13,"debut_preparation":"STR_TO_DATE('Tue Mar 01 09:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 10:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 10:30:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736592977
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":10,"id_matiere":2,"id_salle":3,"debut_preparation":"STR_TO_DATE('Tue Mar 01 08:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 08:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 09:00:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736593005
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":10,"id_matiere":1,"id_salle":2,"debut_preparation":"STR_TO_DATE('Tue Mar 01 10:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 10:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 11:00:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736593028
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":13,"id_matiere":2,"id_salle":3,"debut_preparation":"STR_TO_DATE('Tue Mar 01 08:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 09:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 09:30:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736593055
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":13,"id_matiere":1,"id_salle":2,"debut_preparation":"STR_TO_DATE('Tue Mar 01 10:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 11:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 11:30:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736593080
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":14,"id_matiere":19,"id_salle":20,"debut_preparation":"STR_TO_DATE('Tue Mar 01 08:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 08:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 09:00:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736593114
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":14,"id_matiere":20,"id_salle":21,"debut_preparation":"STR_TO_DATE('Tue Mar 01 10:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 10:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 11:00:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736593139
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":15,"id_matiere":14,"id_salle":15,"debut_preparation":"STR_TO_DATE('Tue Mar 01 08:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 09:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 09:30:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736593174
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":15,"id_matiere":1,"id_salle":2,"debut_preparation":"STR_TO_DATE('Tue Mar 01 11:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 11:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 12:00:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736593200
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":16,"id_matiere":5,"id_salle":6,"debut_preparation":"STR_TO_DATE('Tue Mar 01 08:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 08:40:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 09:20:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736593230
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":16,"id_matiere":18,"id_salle":19,"debut_preparation":"STR_TO_DATE('Tue Mar 01 10:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 10:40:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 11:20:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736593260
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":17,"id_matiere":20,"id_salle":21,"debut_preparation":"STR_TO_DATE('Tue Mar 01 08:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 08:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 09:00:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736593296
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":17,"id_matiere":7,"id_salle":8,"debut_preparation":"STR_TO_DATE('Tue Mar 01 09:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 10:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 10:30:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736593329
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":18,"id_matiere":2,"id_salle":3,"debut_preparation":"STR_TO_DATE('Tue Mar 01 09:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 09:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 10:00:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736593407
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":18,"id_matiere":14,"id_salle":15,"debut_preparation":"STR_TO_DATE('Tue Mar 01 10:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 11:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 11:30:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736593469
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":19,"id_matiere":6,"id_salle":7,"debut_preparation":"STR_TO_DATE('Tue Mar 01 08:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 09:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 09:30:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736593544
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":19,"id_matiere":17,"id_salle":18,"debut_preparation":"STR_TO_DATE('Tue Mar 01 10:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 10:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 11:00:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736593588
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":20,"id_matiere":11,"id_salle":12,"debut_preparation":"STR_TO_DATE('Tue Mar 01 08:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 09:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 09:30:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736593643
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":20,"id_matiere":12,"id_salle":13,"debut_preparation":"STR_TO_DATE('Tue Mar 01 10:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 10:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 11:00:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736593677
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":21,"id_matiere":23,"id_salle":24,"debut_preparation":"STR_TO_DATE('Tue Mar 01 08:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 08:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 09:00:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736593711
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":21,"id_matiere":11,"id_salle":12,"debut_preparation":"STR_TO_DATE('Tue Mar 01 09:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 10:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 10:30:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736593746
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":22,"id_matiere":6,"id_salle":7,"debut_preparation":"STR_TO_DATE('Tue Mar 01 09:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 09:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 10:00:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736593927
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":22,"id_matiere":18,"id_salle":19,"debut_preparation":"STR_TO_DATE('Tue Mar 01 11:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 11:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 12:00:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736594018
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":24,"id_matiere":5,"id_salle":6,"debut_preparation":"STR_TO_DATE('Tue Mar 01 09:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 09:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 10:00:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736594093
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":24,"id_matiere":6,"id_salle":7,"debut_preparation":"STR_TO_DATE('Tue Mar 01 10:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 11:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 11:30:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736594283
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["creneau","candidat","choix_matiere"]}1646736594368
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","professeur","salle"]}1646736602422
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646736602472
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","choix_matiere","serie","matiere","professeur","salle","creneau","liste_matiere"]}1646736603599
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646736603645
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["creneau","candidat","choix_matiere"]}1646736603695
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","professeur","salle"]}1646736606334
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646736606375
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","choix_matiere","serie","matiere","professeur","salle","creneau","liste_matiere"]}1646736803666
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646736803679
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","serie","matiere","salle","choix_matiere"]}1646736804710
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646736804725
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","serie","matiere","salle","choix_matiere"]}1646736806183
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646736806222
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","choix_matiere","serie","matiere","professeur","salle","creneau"]}1646736807364
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646736807430
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","horaire","matiere","professeur","salle","creneau","liste_matiere"]}1646736809885
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646736809929
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","choix_matiere","serie","matiere","professeur","salle","creneau"]}1646736811370
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646736811408
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["creneau","candidat","choix_matiere"]}1646736811447
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","professeur","salle"]}1646736813444
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646736813462
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : DELETE
+	Url : /delete/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1646736813482
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","professeur","liste_matiere","choix_matiere","matiere","serie","salle","creneau"]}1646736813499
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":23,"id_matiere":22,"id_salle":23,"debut_preparation":"STR_TO_DATE('Tue Mar 01 08:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 08:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 09:00:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736813515
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":23,"id_matiere":21,"id_salle":22,"debut_preparation":"STR_TO_DATE('Tue Mar 01 09:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 10:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 10:30:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736813531
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":12,"id_matiere":21,"id_salle":22,"debut_preparation":"STR_TO_DATE('Tue Mar 01 08:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 08:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 09:00:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736813547
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":12,"id_matiere":10,"id_salle":11,"debut_preparation":"STR_TO_DATE('Tue Mar 01 09:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 10:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 10:30:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736813565
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":11,"id_matiere":10,"id_salle":11,"debut_preparation":"STR_TO_DATE('Tue Mar 01 08:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 08:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 09:00:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736813581
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":11,"id_matiere":9,"id_salle":10,"debut_preparation":"STR_TO_DATE('Tue Mar 01 09:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 10:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 10:30:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736813598
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":9,"id_matiere":4,"id_salle":5,"debut_preparation":"STR_TO_DATE('Tue Mar 01 08:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 08:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 09:00:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736813617
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":9,"id_matiere":15,"id_salle":16,"debut_preparation":"STR_TO_DATE('Tue Mar 01 09:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 10:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 11:00:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736813634
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":6,"id_matiere":15,"id_salle":16,"debut_preparation":"STR_TO_DATE('Tue Mar 01 08:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 09:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 09:30:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736813653
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":6,"id_matiere":3,"id_salle":4,"debut_preparation":"STR_TO_DATE('Tue Mar 01 10:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 10:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 11:00:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736813673
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":1,"id_matiere":9,"id_salle":10,"debut_preparation":"STR_TO_DATE('Tue Mar 01 08:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 08:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 09:00:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736813693
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":1,"id_matiere":10,"id_salle":11,"debut_preparation":"STR_TO_DATE('Tue Mar 01 10:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 10:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 11:00:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736813710
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":2,"id_matiere":18,"id_salle":19,"debut_preparation":"STR_TO_DATE('Tue Mar 01 08:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 08:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 09:00:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736813736
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":2,"id_matiere":5,"id_salle":6,"debut_preparation":"STR_TO_DATE('Tue Mar 01 09:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 10:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 10:30:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736813760
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":3,"id_matiere":6,"id_salle":7,"debut_preparation":"STR_TO_DATE('Tue Mar 01 08:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 08:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 09:00:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736813790
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":3,"id_matiere":17,"id_salle":18,"debut_preparation":"STR_TO_DATE('Tue Mar 01 09:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 10:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 10:30:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736813814
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":4,"id_matiere":14,"id_salle":15,"debut_preparation":"STR_TO_DATE('Tue Mar 01 08:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 08:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 09:00:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736813837
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":4,"id_matiere":13,"id_salle":14,"debut_preparation":"STR_TO_DATE('Tue Mar 01 09:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 10:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 10:30:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736813862
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":5,"id_matiere":13,"id_salle":14,"debut_preparation":"STR_TO_DATE('Tue Mar 01 08:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 08:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 09:00:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736813884
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":5,"id_matiere":1,"id_salle":2,"debut_preparation":"STR_TO_DATE('Tue Mar 01 09:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 10:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 10:30:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736813906
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":7,"id_matiere":8,"id_salle":9,"debut_preparation":"STR_TO_DATE('Tue Mar 01 08:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 08:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 09:00:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736813931
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":7,"id_matiere":20,"id_salle":21,"debut_preparation":"STR_TO_DATE('Tue Mar 01 09:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 10:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 10:30:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736813950
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":8,"id_matiere":11,"id_salle":12,"debut_preparation":"STR_TO_DATE('Tue Mar 01 08:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 08:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 09:00:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736813971
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":8,"id_matiere":12,"id_salle":13,"debut_preparation":"STR_TO_DATE('Tue Mar 01 09:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 10:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 10:30:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736813991
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":10,"id_matiere":2,"id_salle":3,"debut_preparation":"STR_TO_DATE('Tue Mar 01 08:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 08:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 09:00:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736814020
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":10,"id_matiere":1,"id_salle":2,"debut_preparation":"STR_TO_DATE('Tue Mar 01 10:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 10:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 11:00:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736814045
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":13,"id_matiere":2,"id_salle":3,"debut_preparation":"STR_TO_DATE('Tue Mar 01 08:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 09:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 09:30:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736814073
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":13,"id_matiere":1,"id_salle":2,"debut_preparation":"STR_TO_DATE('Tue Mar 01 10:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 11:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 11:30:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736814098
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":14,"id_matiere":19,"id_salle":20,"debut_preparation":"STR_TO_DATE('Tue Mar 01 08:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 08:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 09:00:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736814130
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":14,"id_matiere":20,"id_salle":21,"debut_preparation":"STR_TO_DATE('Tue Mar 01 10:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 10:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 11:00:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736814157
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":15,"id_matiere":14,"id_salle":15,"debut_preparation":"STR_TO_DATE('Tue Mar 01 08:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 09:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 09:30:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736814196
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":15,"id_matiere":1,"id_salle":2,"debut_preparation":"STR_TO_DATE('Tue Mar 01 11:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 11:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 12:00:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736814220
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":16,"id_matiere":5,"id_salle":6,"debut_preparation":"STR_TO_DATE('Tue Mar 01 08:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 08:40:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 09:20:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736814253
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":16,"id_matiere":18,"id_salle":19,"debut_preparation":"STR_TO_DATE('Tue Mar 01 10:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 10:40:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 11:20:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736814283
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":17,"id_matiere":20,"id_salle":21,"debut_preparation":"STR_TO_DATE('Tue Mar 01 08:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 08:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 09:00:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736814318
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":17,"id_matiere":7,"id_salle":8,"debut_preparation":"STR_TO_DATE('Tue Mar 01 09:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 10:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 10:30:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736814354
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":18,"id_matiere":2,"id_salle":3,"debut_preparation":"STR_TO_DATE('Tue Mar 01 09:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 09:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 10:00:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736814405
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":18,"id_matiere":14,"id_salle":15,"debut_preparation":"STR_TO_DATE('Tue Mar 01 10:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 11:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 11:30:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736814447
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":19,"id_matiere":6,"id_salle":7,"debut_preparation":"STR_TO_DATE('Tue Mar 01 08:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 09:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 09:30:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736814487
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":19,"id_matiere":17,"id_salle":18,"debut_preparation":"STR_TO_DATE('Tue Mar 01 10:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 10:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 11:00:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736814520
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":20,"id_matiere":11,"id_salle":12,"debut_preparation":"STR_TO_DATE('Tue Mar 01 08:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 09:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 09:30:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736814562
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":20,"id_matiere":12,"id_salle":13,"debut_preparation":"STR_TO_DATE('Tue Mar 01 10:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 10:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 11:00:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736814594
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":21,"id_matiere":23,"id_salle":24,"debut_preparation":"STR_TO_DATE('Tue Mar 01 08:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 08:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 09:00:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736814634
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":21,"id_matiere":11,"id_salle":12,"debut_preparation":"STR_TO_DATE('Tue Mar 01 09:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 10:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 10:30:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736814671
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":22,"id_matiere":6,"id_salle":7,"debut_preparation":"STR_TO_DATE('Tue Mar 01 09:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 09:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 10:00:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736814718
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":22,"id_matiere":18,"id_salle":19,"debut_preparation":"STR_TO_DATE('Tue Mar 01 11:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 11:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 12:00:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736814753
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":24,"id_matiere":5,"id_salle":6,"debut_preparation":"STR_TO_DATE('Tue Mar 01 09:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 09:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 10:00:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736814799
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":24,"id_matiere":6,"id_salle":7,"debut_preparation":"STR_TO_DATE('Tue Mar 01 10:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 11:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 11:30:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646736814855
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["creneau","candidat","choix_matiere"]}1646736814910
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","professeur","salle"]}1646736840492
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646736840504
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","serie","matiere","salle","choix_matiere"]}1646736859960
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646736860047
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","choix_matiere","serie","matiere","professeur","salle","creneau","liste_matiere"]}1646737005419
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646737005463
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","choix_matiere","serie","matiere","professeur","salle","creneau","liste_matiere"]}1646737227272
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646737227316
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","choix_matiere","serie","matiere","professeur","salle","creneau","liste_matiere"]}1646737261967
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646737262032
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","choix_matiere","serie","matiere","professeur","salle","creneau","liste_matiere"]}1646737494769
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646737494810
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","choix_matiere","serie","matiere","professeur","salle","creneau","liste_matiere"]}1646737544009
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646737544059
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","choix_matiere","serie","matiere","professeur","salle","creneau","liste_matiere"]}1646737627221
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646737627294
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","choix_matiere","serie","matiere","professeur","salle","creneau","liste_matiere"]}1646737660608
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646737660659
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","choix_matiere","serie","matiere","professeur","salle","creneau","liste_matiere"]}1646737763389
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646737763398
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","serie","matiere","salle","choix_matiere"]}1646748559624
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","salle"]}1646748585342
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","salle"]}1646748626505
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646748626562
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["creneau","candidat","choix_matiere"]}1646748626636
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","professeur","salle"]}1646748795946
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /version
+	Body : {}1646748798270
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /version
+	Body : {}1646748888643
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646748888755
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["creneau","candidat","choix_matiere"]}1646748888877
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","professeur","salle"]}1646748892702
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","salle"]}1646749012278
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /version
+	Body : {}1646749013791
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /version
+	Body : {}1646749016656
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
 	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","salle"]}

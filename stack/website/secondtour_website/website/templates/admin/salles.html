@@ -3,7 +3,7 @@
 {% block sub_content %}
 <div class="main-div-admin">
     <div class="d-flex flex-row" style="justify-content: space-between;align-items:center; width:100%;">
-        <button class="btn btn-primary" v-on:click="download_multiplePdfSalle()"
+        <button class="btn btn-primary" onclick="download_multiplePdfSalle()"
             style="width: max-content; white-space:nowrap; background-color:blue;">
             Télécharger les fiches d'émargement
             <i class=" fas fa-print ml-s"></i>
@@ -338,7 +338,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                    <button class="btn btn-primary" name="modify_button" type="submit" id=ModalSubmitModifButton form="modifySalleForm">Sauvegarder
+                    <button class="btn btn-primary" name="modify_button" type="submit" id=ModalSubmitModifButton
+                        form="modifySalleForm">Sauvegarder
                         les changements</button>
                 </div>
             </div>
@@ -373,8 +374,101 @@
 
 {% block sub_script %}
 <script>
-function download_multiplePdfSalle() {
-    let zip = new JSZip();
+    function centered_text (text, y, doc) {
+        let textWidth = doc.getStringUnitWidth(text) * doc.internal.getFontSize() / doc.internal.scaleFactor;
+        let textOffset = (doc.internal.pageSize.width - textWidth) / 2;
+        doc.text(textOffset, y, text);
+      }
+
+    function downloadPDFWithBrowserPrint(name, num_salle, output = false) {
+        let doc = new jsPDF('l', 'pt', 'a4');
+        let htmlstring = '';
+        let tempVarToCheckPageHeight = 0;
+        let pageHeight = 0;
+
+        pageHeight = doc.internal.pageSize.height;
+        specialElementHandlers = {
+            // element with id of "bypass" - jQuery style selector  
+            '#bypassme': function (element, renderer) {
+                // true = "handled elsewhere, bypass text extraction"  
+                return true
+            }
+        };
+        margins = {
+            top: 150,
+            bottom: 60,
+            left: 40,
+            right: 40,
+            width: 600
+        };
+        doc.setFontSize(17);
+        doc.setLineWidth(4);
+        doc.text(20, 20, 'Salle : ' + num_salle.toString());
+        //doc.text(200, y = y + 30, "Liste d'émargement");
+        doc.setFontSize(20);
+        centered_text("Liste d'émargement", 60, doc);
+
+
+
+        if (document.getElementById(name)) {
+            doc.autoTable({
+                html: '#' + name,
+                startY: 70,
+                theme: 'grid',
+                columnStyles: {
+                    7: {
+                        cellWidth: 200,
+                    },
+                },
+                styles: {
+                    minCellHeight: 40
+                },
+                didParseCell: function (table) {
+                    if (table.section === 'head') {
+                        table.cell.styles.fillColor = '#4c5cff';
+                    }
+                }
+            });
+        } else {
+            let elements = document.getElementsByClassName(name);
+            for (let i = 0; i < elements.length; i++) {
+                let startY;
+                if (i == 0) {
+                    startY = 70;
+                } else {
+                    startY = doc.lastAutoTable.finalY + 20;
+                }
+                doc.autoTable(
+                    {
+                        html: "#" + name + "_" + i.toString(),
+                        startY: startY,
+                        theme: 'grid',
+                        columnStyles: {
+                            7: {
+                                cellWidth: 200,
+                            },
+                        },
+                        styles: {
+                            minCellHeight: 40
+                        },
+                        didParseCell: function (table) {
+                            if (table.section === 'head') {
+                                table.cell.styles.fillColor = '#4c5cff';
+                            }
+                        }
+                    });
+            }
+
+            if (!output) {
+                doc.save(num_salle.toString() + '_listeDEmargement.pdf');
+            } else {
+                return doc;
+            }
+        }
+    }
+
+    function download_multiplePdfSalle() {
+        let zip = new JSZip();
         let all_salles = JSON.parse('{{all_salles|tojson}}');
         let all_professeurs = JSON.parse('{{all_professeurs|tojson}}');
 
@@ -392,8 +486,8 @@ function download_multiplePdfSalle() {
             saveAs(content, 'listesDEmargement.zip');
         });
 
-    
-        let salle = all_salles[i];
+
+        /* let salle = all_salles[all_salles.length-1];
         let doc = downloadPDFWithBrowserPrint('tableAccordion' + salle.id_salle.toString(), salle.numero, true);
         try {
             zip.file(salle.numero.toString() + '_listeDEmargement.pdf', doc.output('blob'));
@@ -402,31 +496,31 @@ function download_multiplePdfSalle() {
             console.error('Something went wrong!');
         }
         zip.generateAsync({ type: 'blob' }).then(function (content) {
-        saveAs(content, 'listesDEmargement.zip');
-        });
-}
-$('.modifRow').click(function (){
-
-    console.log("test")
-    var $myRowId = $(this).get(0).id;
-
-    name = document.getElementById("ModalSubmitModifButton").getAttribute("form");
-    $("#hiddenIdModif").attr('value', $myRowId);
-
-    form_elements = document.getElementById("modifySalleForm").elements;
-    
-    myvar_salles = '{{all_salles|tojson}}';
-    var all_salles = JSON.parse(myvar_salles);
-
-    let salle;
-    for (var i = 0; i < all_salles.length; i++) {
-        if (all_salles[i]['id_salle'] == $myRowId) {
-            salle = all_salles[i];
-        }
+            saveAs(content, 'listesDEmargement.zip');
+        }); */
     }
 
-    //set salle
-    form_elements[0].value=salle['numero'];
-})
+    $('.modifRow').click(function () {
+
+        var $myRowId = $(this).get(0).id;
+
+        name = document.getElementById("ModalSubmitModifButton").getAttribute("form");
+        $("#hiddenIdModif").attr('value', $myRowId);
+
+        form_elements = document.getElementById("modifySalleForm").elements;
+
+        myvar_salles = '{{all_salles|tojson}}';
+        var all_salles = JSON.parse(myvar_salles);
+
+        let salle;
+        for (var i = 0; i < all_salles.length; i++) {
+            if (all_salles[i]['id_salle'] == $myRowId) {
+                salle = all_salles[i];
+            }
+        }
+
+        //set salle
+        form_elements[0].value = salle['numero'];
+    })
 </script>
 {% endblock %}

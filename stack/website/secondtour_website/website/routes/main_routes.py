@@ -20,6 +20,12 @@ def index():
         flash("Une erreur est survenue lors de la récupération des données", "danger")
     all_candidats, all_creneaux, all_series, all_matieres, all_salles = response.json()
     
+    all_creneaux.sort(key=lambda creneau: creneau['debut_preparation'])
+    for creneau in all_creneaux:
+                creneau["debut_preparation"] = datetime.strptime(creneau["debut_preparation"], '%a %b %d %H:%M:%S %Y') if type(creneau["debut_preparation"]) == str else creneau["debut_preparation"]
+                creneau["fin_preparation"] = datetime.strptime(creneau["fin_preparation"], '%a %b %d %H:%M:%S %Y') if type(creneau["fin_preparation"]) == str else creneau["fin_preparation"]
+                creneau["fin"] = datetime.strptime(creneau["fin"], '%a %b %d %H:%M:%S %Y') if type(creneau["fin"]) == str else creneau["fin"]
+
     return render_template('index.html', all_candidats=all_candidats, all_creneaux=all_creneaux, all_series=all_series, all_matieres=all_matieres, all_salles=all_salles)
 
 @main_routes.route('/connexion', methods=['POST', 'GET'])

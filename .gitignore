@@ -9,3 +9,5 @@ stack/website/secondtour_website/website.sock
 tests/node_modules
 stack/mysql/db
 stack/api/secondtour_api_v2/node_modules
+
+*.pyc
