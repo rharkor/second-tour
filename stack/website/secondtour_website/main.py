@@ -6,10 +6,10 @@ import os
 import requests
 import logging
 
-def ask_api(what: str, dev):
+def ask_api(what: str):
     url = os.getenv("API_URL") + what
         
-    logging.info("Asking API on : ", url)
+    logging.info("Asking API on : " + url)
     return requests.get(url)
 
 
@@ -21,7 +21,7 @@ def main(debug_mode=True, dev=False):
 def test(dev):
     # from function import main_test_dependance
     try:
-        response = ask_api("version", dev)
+        response = ask_api("version")
         if response.status_code != 200:
             raise Exception
     except Exception as e:
