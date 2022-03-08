@@ -1,5 +1,8 @@
 const express = require('express')
 const router = express.Router()
+const UUIDv4 = require('UUID').v4;
+
+
 
 
 /**
@@ -366,6 +369,11 @@ router.route('/updatefilter/:table').patch(async (req, res) => {
       res.status(500).send(e)
     })
   res.status(202).send(result)
+})
+
+
+router.route('/token').post(async (req, res) => {
+  res.status(200).send({"token":UUIDv4()})
 })
 
 module.exports = router

@@ -16,6 +16,7 @@
     "moment": "^2.29.1",
     "mysql": "^2.18.1",
     "swagger-jsdoc": "^3.4.0",
-    "swagger-ui-express": "^4.0.7"
+    "swagger-ui-express": "^4.0.7",
+    "uuid": "^8.3.2"
   }
 }
