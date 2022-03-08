@@ -42,3 +42,194 @@ Traceback (most recent call last):
 ValueError: too many values to unpack (expected 5)
 2022-03-08 10:22:58,949 Asking API on : http://api:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['candidat', 'creneau', 'serie', 'matiere', 'salle']}
 2022-03-08 10:23:03,190 Asking API on : http://api:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['candidat', 'creneau', 'serie', 'matiere', 'salle']}
+2022-03-08 10:35:22,416 Asking API on : http://api:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['candidat', 'creneau', 'serie', 'matiere', 'salle']}
+2022-03-08 10:36:03,711 Asking API on : http://api:443/data/fetchfilter/utilisateur BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'email': 'admin@ac-poitiers.fr', 'admin': 'true'}}
+2022-03-08 10:36:03,805 Connexion reussie
+2022-03-08 10:36:03,824 Asking API on : http://api:443/data/fetchfilter/utilisateur BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'email': 'admin@ac-poitiers.fr', 'admin': '1'}}
+2022-03-08 10:36:03,835 Asking API on : http://api:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['creneau', 'candidat', 'choix_matiere']}
+2022-03-08 10:36:03,861 Le calendrier est complet !
+2022-03-08 10:36:03,862 Le calendrier est complet
+2022-03-08 10:36:03,862 Asking API on : http://api:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['candidat', 'creneau', 'serie', 'matiere', 'professeur', 'salle']}
+2022-03-08 10:36:10,385 Asking API on : http://api:443/data/fetchfilter/utilisateur BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'email': 'admin@ac-poitiers.fr', 'admin': '1'}}
+2022-03-08 10:36:10,404 Asking API on : http://api:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['candidat', 'choix_matiere', 'serie', 'matiere', 'professeur', 'salle', 'creneau', 'liste_matiere']}
+2022-03-08 10:36:15,085 Asking API on : http://api:443/data/fetchfilter/utilisateur BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'email': 'admin@ac-poitiers.fr', 'admin': '1'}}
+2022-03-08 10:36:15,108 Asking API on : http://api:443/data/insert/salle BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'id_salle': 'null', 'numero': 'D013'}}
+2022-03-08 10:36:15,153 La salle a bien été crée
+2022-03-08 10:36:15,156 Asking API on : http://api:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['candidat', 'choix_matiere', 'serie', 'matiere', 'professeur', 'salle', 'creneau', 'liste_matiere']}
+2022-03-08 10:36:24,149 Asking API on : http://api:443/data/fetchfilter/utilisateur BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'email': 'admin@ac-poitiers.fr', 'admin': '1'}}
+2022-03-08 10:36:24,163 Asking API on : http://api:443/data/updatefilter/salle BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'filter': {'id_salle': '1'}, 'data': {'id_salle': '1', 'numero': 'D012'}}}
+2022-03-08 10:36:24,196 Asking API on : http://api:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['candidat', 'choix_matiere', 'serie', 'matiere', 'professeur', 'salle', 'creneau', 'liste_matiere']}
+2022-03-08 10:36:26,512 Asking API on : http://api:443/data/fetchfilter/utilisateur BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'email': 'admin@ac-poitiers.fr', 'admin': '1'}}
+2022-03-08 10:36:26,526 Asking API on : http://api:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['candidat', 'serie', 'matiere', 'salle', 'choix_matiere']}
+2022-03-08 10:36:32,368 Asking API on : http://api:443/data/fetchfilter/utilisateur BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'email': 'admin@ac-poitiers.fr', 'admin': '1'}}
+2022-03-08 10:36:32,390 Asking API on : http://api:443/data/insert/serie BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'id_serie': 'null', 'nom': 'Technologique', 'specialite1': 'SVT', 'specialite2': 'null'}}
+2022-03-08 10:36:32,412 La série a bien été crée
+2022-03-08 10:36:32,415 Asking API on : http://api:443/data/fetchfilter/serie BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'id_serie': 1}}
+2022-03-08 10:36:32,431 Asking API on : http://api:443/data/insert/matiere BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'id_matiere': 'null', 'id_serie': 1, 'nom': 'Français', 'nom_complet': 'Français - SVT', 'temps_preparation': 30, 'temps_preparation_tiers_temps': 40, 'temps_passage': 30, 'temps_passage_tiers_temps': 40, 'loge': 'null'}}
+2022-03-08 10:36:32,457 La matiere a bien été créée
+2022-03-08 10:36:32,458 Asking API on : http://api:443/data/fetchfilter/serie BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'id_serie': 1}}
+2022-03-08 10:36:32,475 Asking API on : http://api:443/data/insert/matiere BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'id_matiere': 'null', 'id_serie': 1, 'nom': 'Philosophie', 'nom_complet': 'Philosophie - SVT', 'temps_preparation': 30, 'temps_preparation_tiers_temps': 40, 'temps_passage': 30, 'temps_passage_tiers_temps': 40, 'loge': 'null'}}
+2022-03-08 10:36:32,495 La matiere a bien été créée
+2022-03-08 10:36:32,497 Asking API on : http://api:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['candidat', 'serie', 'matiere', 'salle', 'choix_matiere']}
+2022-03-08 10:36:48,583 Asking API on : http://api:443/data/fetchfilter/utilisateur BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'email': 'admin@ac-poitiers.fr', 'admin': '1'}}
+2022-03-08 10:36:48,595 Asking API on : http://api:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['candidat', 'serie', 'matiere', 'salle', 'choix_matiere']}
+2022-03-08 10:36:52,702 Asking API on : http://api:443/data/fetchfilter/utilisateur BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'email': 'admin@ac-poitiers.fr', 'admin': '1'}}
+2022-03-08 10:36:52,717 Asking API on : http://api:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['candidat', 'horaire', 'matiere', 'professeur', 'salle', 'creneau', 'liste_matiere']}
+2022-03-08 10:36:54,948 Asking API on : http://api:443/data/fetchfilter/utilisateur BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'email': 'admin@ac-poitiers.fr', 'admin': '1'}}
+2022-03-08 10:36:54,964 Asking API on : http://api:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['candidat', 'serie', 'matiere', 'salle', 'choix_matiere']}
+2022-03-08 10:36:56,051 Asking API on : http://api:443/data/fetchfilter/utilisateur BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'email': 'admin@ac-poitiers.fr', 'admin': '1'}}
+2022-03-08 10:36:56,067 Asking API on : http://api:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['candidat', 'choix_matiere', 'serie', 'matiere', 'professeur', 'salle', 'creneau', 'liste_matiere']}
+2022-03-08 10:36:57,428 Asking API on : http://api:443/data/fetchfilter/utilisateur BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'email': 'admin@ac-poitiers.fr', 'admin': '1'}}
+2022-03-08 10:36:57,445 Asking API on : http://api:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['candidat', 'serie', 'matiere', 'salle', 'choix_matiere']}
+2022-03-08 10:36:58,072 Asking API on : http://api:443/data/fetchfilter/utilisateur BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'email': 'admin@ac-poitiers.fr', 'admin': '1'}}
+2022-03-08 10:36:58,085 Asking API on : http://api:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['candidat', 'serie', 'matiere', 'salle', 'choix_matiere']}
+2022-03-08 10:37:00,399 Asking API on : http://api:443/data/fetchfilter/utilisateur BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'email': 'admin@ac-poitiers.fr', 'admin': '1'}}
+2022-03-08 10:37:00,413 Asking API on : http://api:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['candidat', 'choix_matiere', 'serie', 'matiere', 'professeur', 'salle', 'creneau']}
+2022-03-08 10:37:02,133 Asking API on : http://api:443/data/fetchfilter/utilisateur BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'email': 'admin@ac-poitiers.fr', 'admin': '1'}}
+2022-03-08 10:37:02,146 Asking API on : http://api:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['candidat', 'serie', 'matiere', 'salle', 'choix_matiere']}
+2022-03-08 10:37:08,611 Asking API on : http://api:443/data/fetchfilter/utilisateur BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'email': 'admin@ac-poitiers.fr', 'admin': '1'}}
+2022-03-08 10:37:08,629 Asking API on : http://api:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['candidat', 'choix_matiere', 'serie', 'matiere', 'professeur', 'salle', 'creneau']}
+2022-03-08 10:37:23,450 Asking API on : http://api:443/data/fetchfilter/utilisateur BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'email': 'admin@ac-poitiers.fr', 'admin': '1'}}
+2022-03-08 10:37:23,471 Asking API on : http://api:443/data/insert/candidat BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'id_candidat': 'null', 'nom': 'blab', 'prenom': 'blabla', 'id_serie': '1', 'tiers_temps': 'false', 'absent': 'false'}}
+2022-03-08 10:37:23,497 Le candidat a bien été crée
+2022-03-08 10:37:23,498 Asking API on : http://api:443/data/insert/choix_matiere BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'id_choix_matiere': 'null', 'id_candidat': 1, 'matiere1': '1', 'matiere2': '2'}}
+2022-03-08 10:37:23,521 Les choix du candidat ont bien été crées
+2022-03-08 10:37:23,522 Asking API on : http://api:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['candidat', 'choix_matiere', 'serie', 'matiere', 'professeur', 'salle', 'creneau']}
+2022-03-08 10:37:28,166 Asking API on : http://api:443/data/fetchfilter/utilisateur BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'email': 'admin@ac-poitiers.fr', 'admin': '1'}}
+2022-03-08 10:37:28,180 Asking API on : http://api:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['candidat', 'horaire', 'matiere', 'professeur', 'salle', 'creneau', 'liste_matiere']}
+2022-03-08 10:37:51,923 Asking API on : http://api:443/data/fetchfilter/utilisateur BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'email': 'admin@ac-poitiers.fr', 'admin': '1'}}
+2022-03-08 10:37:51,950 Asking API on : http://api:443/data/insert/professeur BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'id_professeur': 'null', 'nom': 'blab', 'prenom': 'blabla', 'salle': '1'}}
+2022-03-08 10:37:51,977 Asking API on : http://api:443/data/insert/token BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'id_token': 'null', 'email': 'test@test.fr', 'token': 'f8992366-6351-410f-a522-fcaace8b72fe', 'id_professeur': 1, 'admin': 'false'}}
+2022-03-08 10:37:53,631 Email envoyé à test@test.fr | token : f8992366-6351-410f-a522-fcaace8b72fe
+2022-03-08 10:37:53,676 Le token a bien été créé
+2022-03-08 10:37:53,677 Asking API on : http://api:443/data/insert/liste_matiere BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'id_liste_matiere': 'null', 'id_professeur': 1, 'id_matiere': '1'}}
+2022-03-08 10:37:53,707 Asking API on : http://api:443/data/insert/horaire BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'id_horaire': 'null', 'horaire_arr1': 'Mon Jan 01 08:00:00 1900', 'horaire_dep1': 'Mon Jan 01 20:00:00 1900', 'horaire_arr2': 'Tue Jan 02 08:00:00 1900', 'horaire_dep2': 'Tue Jan 02 20:00:00 1900', 'horaire_arr3': 'Wed Jan 03 08:00:00 1900', 'horaire_dep3': 'Wed Jan 03 20:00:00 1900', 'id_professeur': 1}}
+2022-03-08 10:37:53,731 Le professeur a bien été créé
+2022-03-08 10:37:53,731 Asking API on : http://api:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['candidat', 'horaire', 'matiere', 'professeur', 'salle', 'creneau', 'liste_matiere']}
+2022-03-08 10:37:59,757 Asking API on : http://api:443/data/fetchfilter/utilisateur BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'email': 'admin@ac-poitiers.fr', 'admin': '1'}}
+2022-03-08 10:37:59,772 Asking API on : http://api:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['creneau', 'candidat', 'choix_matiere']}
+2022-03-08 10:37:59,787 Le calendrier n'est pas complet
+2022-03-08 10:37:59,788 Le calendrier n'est pas complet, il manque 2 créneaux
+2022-03-08 10:37:59,791 Asking API on : http://api:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['candidat', 'creneau', 'serie', 'matiere', 'professeur', 'salle']}
+2022-03-08 10:38:02,682 Asking API on : http://api:443/data/fetchfilter/utilisateur BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'email': 'admin@ac-poitiers.fr', 'admin': '1'}}
+2022-03-08 10:38:02,697 Asking API on : http://api:443/data/delete/creneau BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {}}
+2022-03-08 10:38:02,726 Asking API on : http://api:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['candidat', 'professeur', 'liste_matiere', 'choix_matiere', 'matiere', 'serie', 'salle', 'creneau']}
+2022-03-08 10:38:02,762 new Créneau : 1 | 1 | 1
+2022-03-08 10:38:02,763 Asking API on : http://api:443/data/insert/creneau BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'id_creneau': 'null', 'id_candidat': 1, 'id_matiere': 1, 'id_salle': 1, 'debut_preparation': 'Tue Mar 01 08:00:00 2022', 'fin_preparation': 'Tue Mar 01 08:30:00 2022', 'fin': 'Tue Mar 01 09:00:00 2022'}}
+2022-03-08 10:38:02,891 Asking API on : http://api:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['creneau', 'candidat', 'choix_matiere']}
+2022-03-08 10:38:02,902 Le calendrier n'est pas complet
+2022-03-08 10:38:02,903 Asking API on : http://api:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['candidat', 'creneau', 'serie', 'matiere', 'professeur', 'salle']}
+2022-03-08 11:12:18,995 Asking API on : http://api:443/data/fetchfilter/utilisateur BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'email': 'admin@ac-poitiers.fr', 'admin': '1'}}
+2022-03-08 11:12:19,777 Asking API on : http://api:443/data/delete/creneau BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {}}
+2022-03-08 11:12:19,877 Asking API on : http://api:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['candidat', 'professeur', 'liste_matiere', 'choix_matiere', 'matiere', 'serie', 'salle', 'creneau']}
+2022-03-08 11:12:20,275 new Créneau : 1 | 1 | 1
+2022-03-08 11:12:20,283 Asking API on : http://api:443/data/insert/creneau BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'id_creneau': 'null', 'id_candidat': 1, 'id_matiere': 1, 'id_salle': 1, 'debut_preparation': 'Tue Mar 01 08:00:00 2022', 'fin_preparation': 'Tue Mar 01 08:30:00 2022', 'fin': 'Tue Mar 01 09:00:00 2022'}}
+2022-03-08 11:12:23,084 Asking API on : http://api:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['creneau', 'candidat', 'choix_matiere']}
+2022-03-08 11:12:23,177 Le calendrier n'est pas complet
+2022-03-08 11:12:23,185 Asking API on : http://api:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['candidat', 'creneau', 'serie', 'matiere', 'professeur', 'salle']}
+2022-03-08 11:12:50,805 Asking API on : http://api:443/data/fetchfilter/utilisateur BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'email': 'admin@ac-poitiers.fr', 'admin': '1'}}
+2022-03-08 11:12:50,961 Asking API on : http://api:443/data/delete/creneau BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {}}
+2022-03-08 11:12:50,987 Asking API on : http://api:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['candidat', 'professeur', 'liste_matiere', 'choix_matiere', 'matiere', 'serie', 'salle', 'creneau']}
+2022-03-08 11:12:51,048 new Créneau : 1 | 1 | 1
+2022-03-08 11:12:51,050 Asking API on : http://api:443/data/insert/creneau BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'id_creneau': 'null', 'id_candidat': 1, 'id_matiere': 1, 'id_salle': 1, 'debut_preparation': 'Tue Mar 01 08:00:00 2022', 'fin_preparation': 'Tue Mar 01 08:30:00 2022', 'fin': 'Tue Mar 01 09:00:00 2022'}}
+2022-03-08 11:12:51,134 Asking API on : http://api:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['creneau', 'candidat', 'choix_matiere']}
+2022-03-08 11:12:51,163 Le calendrier n'est pas complet
+2022-03-08 11:12:51,165 Asking API on : http://api:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['candidat', 'creneau', 'serie', 'matiere', 'professeur', 'salle']}
+2022-03-08 11:13:44,206 Asking API on : http://api:443/data/fetchfilter/utilisateur BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'email': 'admin@ac-poitiers.fr', 'admin': '1'}}
+2022-03-08 11:13:44,346 Asking API on : http://api:443/data/delete/creneau BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {}}
+2022-03-08 11:13:44,363 Asking API on : http://api:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['candidat', 'professeur', 'liste_matiere', 'choix_matiere', 'matiere', 'serie', 'salle', 'creneau']}
+2022-03-08 11:13:44,433 new Créneau : 1 | 1 | 1
+2022-03-08 11:13:44,434 Asking API on : http://api:443/data/insert/creneau BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'id_creneau': 'null', 'id_candidat': 1, 'id_matiere': 1, 'id_salle': 1, 'debut_preparation': 'Tue Mar 01 08:00:00 2022', 'fin_preparation': 'Tue Mar 01 08:30:00 2022', 'fin': 'Tue Mar 01 09:00:00 2022'}}
+2022-03-08 11:13:44,677 Asking API on : http://api:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['creneau', 'candidat', 'choix_matiere']}
+2022-03-08 11:13:44,707 Le calendrier n'est pas complet
+2022-03-08 11:13:44,715 Asking API on : http://api:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['candidat', 'creneau', 'serie', 'matiere', 'professeur', 'salle']}
+2022-03-08 15:03:42,867 Asking API on : http://api:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['candidat', 'creneau', 'serie', 'matiere', 'salle']}
+2022-03-08 15:03:44,079 Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/app/website/secondtour_website/./website/routes/main_routes.py", line 23, in index
+    return render_template('index.html', all_candidats=all_candidats, all_creneaux=all_creneaux, all_series=all_series, all_matieres=all_matieres, all_salles=all_salles)
+  File "/usr/local/lib/python3.8/dist-packages/flask/templating.py", line 147, in render_template
+    return _render(
+  File "/usr/local/lib/python3.8/dist-packages/flask/templating.py", line 128, in _render
+    rv = template.render(context)
+  File "/usr/local/lib/python3.8/dist-packages/jinja2/environment.py", line 1291, in render
+    self.environment.handle_exception()
+  File "/usr/local/lib/python3.8/dist-packages/jinja2/environment.py", line 925, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/app/website/secondtour_website/website/templates/index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/app/website/secondtour_website/website/templates/base.html", line 33, in top-level template code
+    {% block content %}{% endblock %}
+  File "/app/website/secondtour_website/website/templates/index.html", line 136, in block 'content'
+    <div>{{creneau.debut_preparation.strftime('%Hh%M')}} -
+  File "/usr/local/lib/python3.8/dist-packages/jinja2/utils.py", line 84, in from_obj
+    if hasattr(obj, "jinja_pass_arg"):
+jinja2.exceptions.UndefinedError: 'str object' has no attribute 'strftime'
+2022-03-08 15:06:06,344 Asking API on : http://api:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['candidat', 'creneau', 'serie', 'matiere', 'salle']}
+2022-03-08 15:06:06,664 Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/app/website/secondtour_website/./website/routes/main_routes.py", line 23, in index
+    return render_template('index.html', all_candidats=all_candidats, all_creneaux=all_creneaux, all_series=all_series, all_matieres=all_matieres, all_salles=all_salles)
+  File "/usr/local/lib/python3.8/dist-packages/flask/templating.py", line 147, in render_template
+    return _render(
+  File "/usr/local/lib/python3.8/dist-packages/flask/templating.py", line 128, in _render
+    rv = template.render(context)
+  File "/usr/local/lib/python3.8/dist-packages/jinja2/environment.py", line 1291, in render
+    self.environment.handle_exception()
+  File "/usr/local/lib/python3.8/dist-packages/jinja2/environment.py", line 925, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/app/website/secondtour_website/website/templates/index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/app/website/secondtour_website/website/templates/base.html", line 33, in top-level template code
+    {% block content %}{% endblock %}
+  File "/app/website/secondtour_website/website/templates/index.html", line 136, in block 'content'
+    <div>{{creneau.debut_preparation.strftime('%Hh%M')}} -
+  File "/usr/local/lib/python3.8/dist-packages/jinja2/utils.py", line 84, in from_obj
+    if hasattr(obj, "jinja_pass_arg"):
+jinja2.exceptions.UndefinedError: 'str object' has no attribute 'strftime'
+2022-03-08 15:08:19,369 Asking API on : http://api:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['candidat', 'creneau', 'serie', 'matiere', 'salle']}
+2022-03-08 15:08:20,117 Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/app/website/secondtour_website/./website/routes/main_routes.py", line 23, in index
+    return render_template('index.html', all_candidats=all_candidats, all_creneaux=all_creneaux, all_series=all_series, all_matieres=all_matieres, all_salles=all_salles)
+  File "/usr/local/lib/python3.8/dist-packages/flask/templating.py", line 147, in render_template
+    return _render(
+  File "/usr/local/lib/python3.8/dist-packages/flask/templating.py", line 128, in _render
+    rv = template.render(context)
+  File "/usr/local/lib/python3.8/dist-packages/jinja2/environment.py", line 1291, in render
+    self.environment.handle_exception()
+  File "/usr/local/lib/python3.8/dist-packages/jinja2/environment.py", line 925, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/app/website/secondtour_website/website/templates/index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/app/website/secondtour_website/website/templates/base.html", line 33, in top-level template code
+    {% block content %}{% endblock %}
+  File "/app/website/secondtour_website/website/templates/index.html", line 136, in block 'content'
+    <div>{{creneau.debut_preparation.strftime('%Hh%M')}} -
+  File "/usr/local/lib/python3.8/dist-packages/jinja2/utils.py", line 84, in from_obj
+    if hasattr(obj, "jinja_pass_arg"):
+jinja2.exceptions.UndefinedError: 'str object' has no attribute 'strftime'

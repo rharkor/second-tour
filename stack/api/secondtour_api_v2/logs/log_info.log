@@ -109283,4 +109283,496 @@ FROM:
 REQUEST :
 	Method : POST
 	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","salle"]}1646735723700
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","salle"]}1646735763758
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"true"}}1646735763831
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646735763859
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["creneau","candidat","choix_matiere"]}1646735763889
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","professeur","salle"]}1646735770401
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646735770443
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","choix_matiere","serie","matiere","professeur","salle","creneau","liste_matiere"]}1646735775103
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646735775147
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_salle":"null","numero":"D013"}}1646735775193
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","choix_matiere","serie","matiere","professeur","salle","creneau","liste_matiere"]}1646735784160
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646735784194
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : PATCH
+	Url : /updatefilter/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{"filter":{"id_salle":"1"},"data":{"id_salle":"1","numero":"D012"}}}1646735784225
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","choix_matiere","serie","matiere","professeur","salle","creneau","liste_matiere"]}1646735786524
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646735786542
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","serie","matiere","salle","choix_matiere"]}1646735792386
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646735792410
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_serie":"null","nom":"Technologique","specialite1":"SVT","specialite2":"null"}}1646735792427
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_serie":1}}1646735792455
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_matiere":"null","id_serie":1,"nom":"Français","nom_complet":"Français - SVT","temps_preparation":30,"temps_preparation_tiers_temps":40,"temps_passage":30,"temps_passage_tiers_temps":40,"loge":"null"}}1646735792472
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_serie":1}}1646735792493
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_matiere":"null","id_serie":1,"nom":"Philosophie","nom_complet":"Philosophie - SVT","temps_preparation":30,"temps_preparation_tiers_temps":40,"temps_passage":30,"temps_passage_tiers_temps":40,"loge":"null"}}1646735792519
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","serie","matiere","salle","choix_matiere"]}1646735808591
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646735808606
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","serie","matiere","salle","choix_matiere"]}1646735812713
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646735812751
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","horaire","matiere","professeur","salle","creneau","liste_matiere"]}1646735814961
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646735814982
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","serie","matiere","salle","choix_matiere"]}1646735816062
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646735816095
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","choix_matiere","serie","matiere","professeur","salle","creneau","liste_matiere"]}1646735817438
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646735817461
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","serie","matiere","salle","choix_matiere"]}1646735818083
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646735818103
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","serie","matiere","salle","choix_matiere"]}1646735820407
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646735820435
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","choix_matiere","serie","matiere","professeur","salle","creneau"]}1646735822144
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646735822165
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","serie","matiere","salle","choix_matiere"]}1646735828622
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646735828643
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","choix_matiere","serie","matiere","professeur","salle","creneau"]}1646735843467
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646735843488
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/candidat
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_candidat":"null","nom":"blab","prenom":"blabla","id_serie":"1","tiers_temps":"false","absent":"false"}}1646735843518
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/choix_matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_choix_matiere":"null","id_candidat":1,"matiere1":"1","matiere2":"2"}}1646735843543
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","choix_matiere","serie","matiere","professeur","salle","creneau"]}1646735848178
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646735848200
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","horaire","matiere","professeur","salle","creneau","liste_matiere"]}1646735871946
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646735871974
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/professeur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_professeur":"null","nom":"blab","prenom":"blabla","salle":"1"}}1646735872015
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/token
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_token":"null","email":"test@test.fr","token":"f8992366-6351-410f-a522-fcaace8b72fe","id_professeur":1,"admin":"false"}}1646735873694
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/liste_matiere
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_liste_matiere":"null","id_professeur":1,"id_matiere":"1"}}1646735873729
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/horaire
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_horaire":"null","horaire_arr1":"STR_TO_DATE('Mon Jan 01 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep1":"STR_TO_DATE('Mon Jan 01 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_arr2":"STR_TO_DATE('Tue Jan 02 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep2":"STR_TO_DATE('Tue Jan 02 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_arr3":"STR_TO_DATE('Wed Jan 03 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep3":"STR_TO_DATE('Wed Jan 03 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","id_professeur":1}}1646735873815
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","horaire","matiere","professeur","salle","creneau","liste_matiere"]}1646735879767
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646735879784
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["creneau","candidat","choix_matiere"]}1646735879808
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","professeur","salle"]}1646735882695
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646735882724
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : DELETE
+	Url : /delete/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1646735882750
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","professeur","liste_matiere","choix_matiere","matiere","serie","salle","creneau"]}1646735882791
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":1,"id_matiere":1,"id_salle":1,"debut_preparation":"STR_TO_DATE('Tue Mar 01 08:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 08:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 09:00:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646735882900
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["creneau","candidat","choix_matiere"]}1646735882916
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","professeur","salle"]}1646737939683
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646737939875
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : DELETE
+	Url : /delete/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1646737940020
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","professeur","liste_matiere","choix_matiere","matiere","serie","salle","creneau"]}1646737940356
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":1,"id_matiere":1,"id_salle":1,"debut_preparation":"STR_TO_DATE('Tue Mar 01 08:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 08:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 09:00:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646737943175
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["creneau","candidat","choix_matiere"]}1646737943270
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","professeur","salle"]}1646737970919
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646737970985
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : DELETE
+	Url : /delete/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1646737971023
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","professeur","liste_matiere","choix_matiere","matiere","serie","salle","creneau"]}1646737971072
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":1,"id_matiere":1,"id_salle":1,"debut_preparation":"STR_TO_DATE('Tue Mar 01 08:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 08:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 09:00:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646737971160
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["creneau","candidat","choix_matiere"]}1646737971203
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","professeur","salle"]}1646738024302
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646738024362
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : DELETE
+	Url : /delete/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1646738024392
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","professeur","liste_matiere","choix_matiere","matiere","serie","salle","creneau"]}1646738024451
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/creneau
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_creneau":"null","id_candidat":1,"id_matiere":1,"id_salle":1,"debut_preparation":"STR_TO_DATE('Tue Mar 01 08:00:00 2022', '%a %b %d %H:%i:%s %Y')","fin_preparation":"STR_TO_DATE('Tue Mar 01 08:30:00 2022', '%a %b %d %H:%i:%s %Y')","fin":"STR_TO_DATE('Tue Mar 01 09:00:00 2022', '%a %b %d %H:%i:%s %Y')"}}1646738024699
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["creneau","candidat","choix_matiere"]}1646738024977
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","professeur","salle"]}1646751823868
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","salle"]}1646751966414
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","salle"]}1646752099939
+FROM:
+	IP :::ffff:172.21.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
 	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","salle"]}

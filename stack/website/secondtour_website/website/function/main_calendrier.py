@@ -25,10 +25,10 @@ def generation_calendrier():
     if response.status_code != 202:
         flash("Une erreur est survenue lors de la suppression des données", "danger")
 
-    response = ask_api("data/fetchmulti", ["candidat", "professeur", "liste_matiere", "choix_matiere", "matiere", "serie", "salle", "creneau"])
+    response = ask_api("data/fetchmulti", ["candidat", "professeur", "liste_matiere", "choix_matiere", "matiere", "serie", "salle", "creneau", "horaire"])
     if response.status_code != 200:
         flash("Une erreur est survenue lors de la récupération des données", "danger")
-    all_candidats, all_professeurs, all_liste_matiere, all_choix_matieres, all_matieres, all_series, all_salles, local_creneau = response.json()
+    all_candidats, all_professeurs, all_liste_matiere, all_choix_matieres, all_matieres, all_series, all_salles, local_creneau, all_horaires = response.json()
     # all_candidats = CANDIDATS.query.all()
     # all_professeurs = PROFESSEUR.query.all()
     # all_liste_matiere = LISTE_MATIERE.query.all()
@@ -81,6 +81,7 @@ def generation_calendrier():
                     if matiere2 is not None:
                         if liste_matiere["id_matiere"] == matiere2["id_matiere"]:
                             professeur_m2.append(professeur)
+        
 
         # salle for each matiere
         salle_m1, salle_m2 = [], []
@@ -151,6 +152,7 @@ def generation_calendrier():
                         all_creneaux = local_creneau
                         
 
+
                         for creneau in all_creneaux:
                             if creneau["debut_preparation"].day == jour_debut_preparation_voulue:
                                 debut_preparation_creneau = creneau["debut_preparation"]
@@ -178,6 +180,11 @@ def generation_calendrier():
                                         and not((heure_debut_preparation_voulue + temps_preparation_matiere >= timedelta(hours=fin_passage_creneau.hour, minutes=fin_passage_creneau.minute))
                                                 or (heure_debut_preparation_voulue + temps_preparation_matiere + temps_passage_matiere <= timedelta(hours=(debut_preparation_creneau.hour + temps_preparation_creneau.hour), minutes=(debut_preparation_creneau.minute + temps_preparation_creneau.minute)))):
                                         aucune_collision = False
+
+                                for horaires in all_horaires:
+                                    for professeurs in all_professeurs:
+                                        if horaires['id_professeur']==professeurs['id_professeur']:
+                                            print("teqmsùldqùmdlùmsldùqmlsdùmlqsùdmlqsùdlqùsmdlùqsldmùqmsldùqmsldùmsqlsq:dmùqsdùmqsdst")
 
                                 # Test if the user don't have already creneau and need a pause
                                 delta_m30 = (
