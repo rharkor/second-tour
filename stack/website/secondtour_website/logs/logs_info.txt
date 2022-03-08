@@ -62,3 +62,20 @@ jinja2.exceptions.UndefinedError: 'str object' has no attribute 'strftime'
 2022-03-08 15:14:53,550 127.0.0.1 - - [08/Mar/2022 15:14:53] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
 2022-03-08 15:16:48,509  * Detected change in 'C:\\Users\\louid\\OneDrive\\Documents\\EspaceDeTravail\\S2\\PTS\\pts2021_sujet14\\stack\\website\\secondtour_website\\website\\routes\\main_routes.py', reloading
 2022-03-08 15:16:48,687  * Restarting with stat
+2022-03-08 15:16:52,266 Asking API on : http://127.0.0.1:443/version
+2022-03-08 15:16:52,280 Run the server
+2022-03-08 15:16:52,303  * Restarting with stat
+2022-03-08 15:16:53,782 Asking API on : http://127.0.0.1:443/version
+2022-03-08 15:16:53,792 Run the server
+2022-03-08 15:16:53,805  * Debugger is active!
+2022-03-08 15:16:53,812  * Debugger PIN: 298-853-937
+2022-03-08 15:16:55,092  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2022-03-08 15:16:55,093  * Running on http://10.13.1.135:5000/ (Press CTRL+C to quit)
+2022-03-08 15:16:56,586 Asking API on : http://127.0.0.1:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['candidat', 'creneau', 'serie', 'matiere', 'salle']}
+2022-03-08 15:16:56,727 127.0.0.1 - - [08/Mar/2022 15:16:56] "GET / HTTP/1.1" 200 -
+2022-03-08 15:16:57,908 127.0.0.1 - - [08/Mar/2022 15:16:57] "[36mGET /static/main.css HTTP/1.1[0m" 304 -
+2022-03-08 15:16:57,916 127.0.0.1 - - [08/Mar/2022 15:16:57] "GET /static/img/logo.png HTTP/1.1" 200 -
+2022-03-08 15:16:57,916 127.0.0.1 - - [08/Mar/2022 15:16:57] "GET /static/img/user.png HTTP/1.1" 200 -
+2022-03-08 15:16:58,084 127.0.0.1 - - [08/Mar/2022 15:16:58] "[36mGET /static/img/logo_square.ico HTTP/1.1[0m" 304 -
+2022-03-08 15:16:58,194 127.0.0.1 - - [08/Mar/2022 15:16:58] "[36mGET /static/img/logo_square.ico HTTP/1.1[0m" 304 -
