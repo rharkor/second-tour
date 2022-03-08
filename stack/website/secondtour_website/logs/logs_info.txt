@@ -1730,3 +1730,23 @@ KeyError: 'id_professeur'
 2022-03-08 10:23:15,810 Asking API on : http://api:443/version
 2022-03-08 10:24:01,884 Asking API on : http://api:443/version
 2022-03-08 10:24:22,919 Vérifiez que l'Api est bien lancée.
+2022-03-08 10:32:01,755 Asking API on : http://127.0.0.1:443/version
+2022-03-08 10:32:01,765 Run the server
+2022-03-08 10:32:01,786  * Restarting with stat
+2022-03-08 10:32:03,152 Asking API on : http://127.0.0.1:443/version
+2022-03-08 10:32:03,161 Run the server
+2022-03-08 10:32:03,171  * Debugger is active!
+2022-03-08 10:32:03,176  * Debugger PIN: 298-853-937
+2022-03-08 10:32:04,018  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2022-03-08 10:32:04,019  * Running on http://10.13.1.135:5000/ (Press CTRL+C to quit)
+2022-03-08 10:32:28,726 Asking API on : http://127.0.0.1:443/data/fetchfilter/utilisateur BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'email': 'admin@ac-poitiers.fr', 'admin': '1'}}
+2022-03-08 10:32:28,734 Asking API on : http://127.0.0.1:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['creneau', 'candidat', 'choix_matiere']}
+2022-03-08 10:32:28,748 Le calendrier est complet !
+2022-03-08 10:32:28,748 Le calendrier est complet
+2022-03-08 10:32:28,749 Asking API on : http://127.0.0.1:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['candidat', 'creneau', 'serie', 'matiere', 'professeur', 'salle']}
+2022-03-08 10:32:28,841 127.0.0.1 - - [08/Mar/2022 10:32:28] "GET /admin/accueil HTTP/1.1" 200 -
+2022-03-08 10:32:29,648 127.0.0.1 - - [08/Mar/2022 10:32:29] "[36mGET /static/main.css HTTP/1.1[0m" 304 -
+2022-03-08 10:32:29,649 127.0.0.1 - - [08/Mar/2022 10:32:29] "[36mGET /static/admin.css HTTP/1.1[0m" 304 -
+2022-03-08 10:32:29,836 127.0.0.1 - - [08/Mar/2022 10:32:29] "[36mGET /static/img/logo_square.ico HTTP/1.1[0m" 304 -
+2022-03-08 10:32:29,892 127.0.0.1 - - [08/Mar/2022 10:32:29] "[36mGET /static/img/logo_square.ico HTTP/1.1[0m" 304 -

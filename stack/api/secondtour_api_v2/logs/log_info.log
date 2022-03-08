@@ -109211,3 +109211,46 @@ RESPONSE :
 	Body : No body
 
 >>>>>>> 4381a957ce6e23f2f8d630215f977921724cfd9a
+1646731809417
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["salle","serie"]}1646731900908
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["salle","serie"]}1646731921764
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /version
+	Body : {}1646731923160
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /version
+	Body : {}1646731948733
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1646731948747
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["creneau","candidat","choix_matiere"]}1646731948759
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","professeur","salle"]}
