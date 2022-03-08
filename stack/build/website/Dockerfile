@@ -32,4 +32,4 @@ COPY ./build/website/start.sh /app/scripts/start.sh
 # Prod image
 EXPOSE 80
 
-CMD ["sh", "/app/scripts/start.sh"]
+CMD ["uwsgi","/app/website/secondtour_website/website.ini"]

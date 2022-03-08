@@ -1727,3 +1727,6 @@ KeyError: 'id_professeur'
 2022-03-04 10:46:15,396 Asking API on : http://api:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['candidat', 'horaire', 'matiere', 'professeur', 'salle', 'creneau', 'liste_matiere']}
 >>>>>>> edcfe3891374ea016ef958979a407452591d964b
 >>>>>>> 4381a957ce6e23f2f8d630215f977921724cfd9a
+2022-03-08 10:23:15,810 Asking API on : http://api:443/version
+2022-03-08 10:24:01,884 Asking API on : http://api:443/version
+2022-03-08 10:24:22,919 Vérifiez que l'Api est bien lancée.
