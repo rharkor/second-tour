@@ -113301,3 +113301,94 @@ REQUEST :
 	Url : /fetchmulti
 	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","choix_matiere","serie","matiere","professeur","salle","creneau"]}
 >>>>>>> adb974f8ddae9245337ce3b3372d69e97a679520
+1646754817399
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /token
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_utilisateur":"","admin":"false"}}1646754818105
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /token
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_utilisateur":"","admin":"false"}}1646754818898
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /token
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_utilisateur":"","admin":"false"}}1646754885832
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_utilisateur":"","admin":"false"}}1646754896466
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_utilisateur":"","admin":"false"}}1646754909794
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /api/serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_utilisateur":"","admin":"false"}}1646754913464
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_utilisateur":"","admin":"false"}}1646755039241
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /api/wow
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_utilisateur":"","admin":"false"}}1646755051666
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /data/wow
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_utilisateur":"","admin":"false"}}1646755064808
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /data/wow
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_utilisateur":"","admin":"false"}}1646755072586
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /data/wow
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_utilisateur":"","admin":"false"}}1646755093845
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /data/wow
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1646755252194
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /data/wow
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1646755257077
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /api/wow
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1646755260454
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /wow
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
