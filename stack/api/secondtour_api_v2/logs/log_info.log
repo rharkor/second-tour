@@ -111879,3 +111879,952 @@ REQUEST :
 	Url : /fetchmulti
 	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","salle"]}
 >>>>>>> e38738058621f42f1229f5ca6a5493c2a0930b81
+1646750582738
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /
+	Body : No body1646750582837
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-init.js
+	Body : No body1646750582851
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-standalone-preset.js
+	Body : No body1646750582855
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui.css
+	Body : No body1646750582865
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-bundle.js
+	Body : No body1646750583600
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /favicon-32x32.png
+	Body : No body1646750613655
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-init.js
+	Body : No body1646750613661
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui.css
+	Body : No body1646750613663
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-standalone-preset.js
+	Body : No body1646750613664
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-bundle.js
+	Body : No body1646750652135
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /
+	Body : {"username":"admin@ac-poitiers.fr","password":"L0calAdmin"}1646750673442
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /
+	Body : No body1646750673493
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui.css
+	Body : No body1646750673497
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-standalone-preset.js
+	Body : No body1646750673495
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-bundle.js
+	Body : No body1646750673558
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-init.js
+	Body : No body1646750674026
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /favicon-32x32.png
+	Body : No body1646750687587
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /
+	Body : {"username":"admin@ac-poitiers.fr","password":"L0calAdmin"}1646750995315
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/salle
+	Body : {"username":"admin","password":"L0calAdmin"}1646751040905
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /salle
+	Body : {"username":"admin","password":"L0calAdmin"}1646751072859
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /
+	Body : No body1646751072912
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-bundle.js
+	Body : No body1646751072913
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui.css
+	Body : No body1646751072910
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-init.js
+	Body : No body1646751072914
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-standalone-preset.js
+	Body : No body1646751073481
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /favicon-32x32.png
+	Body : No body1646751089679
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /
+	Body : No body1646751089723
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui.css
+	Body : No body1646751089721
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-standalone-preset.js
+	Body : No body1646751089719
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-init.js
+	Body : No body1646751089722
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-bundle.js
+	Body : No body1646751090123
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /favicon-32x32.png
+	Body : No body1646751304406
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /
+	Body : No body1646751304436
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui.css
+	Body : No body1646751304439
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-bundle.js
+	Body : No body1646751304444
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-standalone-preset.js
+	Body : No body1646751304485
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-init.js
+	Body : No body1646751304906
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /favicon-32x32.png
+	Body : No body1646751327930
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /
+	Body : No body1646751327971
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui.css
+	Body : No body1646751327974
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-bundle.js
+	Body : No body1646751327981
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-init.js
+	Body : No body1646751327984
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-standalone-preset.js
+	Body : No body1646751328246
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /favicon-32x32.png
+	Body : No body1646751332661
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /
+	Body : No body1646751332689
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui.css
+	Body : No body1646751332694
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-bundle.js
+	Body : No body1646751332696
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-standalone-preset.js
+	Body : No body1646751332698
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-init.js
+	Body : No body1646751332935
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /favicon-32x32.png
+	Body : No body1646751341442
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /
+	Body : No body1646751341483
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui.css
+	Body : No body1646751341487
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-bundle.js
+	Body : No body1646751341490
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-init.js
+	Body : No body1646751341492
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-standalone-preset.js
+	Body : No body1646751341742
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /favicon-32x32.png
+	Body : No body1646751364405
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /
+	Body : No body1646751364442
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui.css
+	Body : No body1646751364448
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-init.js
+	Body : No body1646751364450
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-bundle.js
+	Body : No body1646751364452
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-standalone-preset.js
+	Body : No body1646751364768
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /favicon-32x32.png
+	Body : No body1646751365458
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /
+	Body : No body1646751365489
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-init.js
+	Body : No body1646751365491
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui.css
+	Body : No body1646751365493
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-bundle.js
+	Body : No body1646751365495
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-standalone-preset.js
+	Body : No body1646751365757
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /favicon-32x32.png
+	Body : No body1646751388491
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /
+	Body : No body1646751388498
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /
+	Body : No body1646751388540
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui.css
+	Body : No body1646751388543
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-bundle.js
+	Body : No body1646751388547
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-init.js
+	Body : No body1646751388549
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-standalone-preset.js
+	Body : No body1646751433922
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /
+	Body : No body1646751433992
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui.css
+	Body : No body1646751433995
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-bundle.js
+	Body : No body1646751433997
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-standalone-preset.js
+	Body : No body1646751434013
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-init.js
+	Body : No body1646751434553
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /favicon-32x32.png
+	Body : No body1646751465009
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /
+	Body : No body1646751465097
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-init.js
+	Body : No body1646751465104
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui.css
+	Body : No body1646751465108
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-bundle.js
+	Body : No body1646751465111
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-standalone-preset.js
+	Body : No body1646751465592
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /favicon-32x32.png
+	Body : No body1646751531096
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /salle
+	Body : {"username":"admin","password":"L0calAdmin"}1646751585269
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_salle":"1004","numero":"A15"}}1646751598496
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /salle
+	Body : {"username":"admin","password":"L0calAdmin"}1646751718538
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /salle
+	Body : {"username":"admin","password":"L0calAdmin"}1646751887942
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /
+	Body : No body1646751887991
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui.css
+	Body : No body1646751887997
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-standalone-preset.js
+	Body : No body1646751887993
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-bundle.js
+	Body : No body1646751888063
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-init.js
+	Body : No body1646751888568
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /favicon-32x32.png
+	Body : No body1646751912389
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchou/salle
+	Body : {"username":"admin","password":"L0calAdmin"}1646752291895
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /
+	Body : No body1646752291939
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui.css
+	Body : No body1646752291943
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-bundle.js
+	Body : No body1646752291948
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-standalone-preset.js
+	Body : No body1646752291996
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-init.js
+	Body : No body1646752292391
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /favicon-32x32.png
+	Body : No body1646752316392
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /api/fetchou/salle
+	Body : {"username":"admin","password":"L0calAdmin"}1646752456707
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /api/fetchou/salle
+	Body : {}1646752466141
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /data/fetchou/salle
+	Body : {}1646752471547
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/salle
+	Body : {}1646752484153
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /api/
+	Body : {}1646752492746
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /api/fetchou/salle
+	Body : {}1646752512385
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /api/fetchou/salle
+	Body : {}1646752588427
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /api/fetchou/salle
+	Body : {}1646752618033
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /version
+	Body : {}1646752622087
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /version
+	Body : {}1646752639878
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /version
+	Body : {}1646752645962
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /fetchou/salle
+	Body : {}1646752648902
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchou/salle
+	Body : {}1646752669512
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchou/salle
+	Body : {}1646752691622
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchou/salle
+	Body : {}1646752721619
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /api/fetchou/salle
+	Body : {}1646752736808
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /api/
+	Body : {}1646752753379
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /apihh/fetchou/salle
+	Body : {}1646752773115
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /apihh/fetchou/salle
+	Body : {}1646752821194
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /apihh/fetchou/salle
+	Body : {}1646752824245
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchou/salle
+	Body : {}1646752841634
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchou/salle
+	Body : {}1646752863300
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchou/salle
+	Body : {}1646753042274
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchou/salle
+	Body : {}1646753929608
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /
+	Body : No body1646753929689
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-init.js
+	Body : No body1646753929695
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui.css
+	Body : No body1646753929697
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-bundle.js
+	Body : No body1646753929699
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-standalone-preset.js
+	Body : No body1646753930173
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /favicon-32x32.png
+	Body : No body1646753951981
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /
+	Body : No body1646753952037
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui.css
+	Body : No body1646753952041
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-bundle.js
+	Body : No body1646753952048
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-init.js
+	Body : No body1646753952053
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-standalone-preset.js
+	Body : No body1646753952583
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /favicon-32x32.png
+	Body : No body1646754065187
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /
+	Body : No body1646754065243
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui.css
+	Body : No body1646754065277
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-init.js
+	Body : No body1646754065281
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-bundle.js
+	Body : No body1646754065284
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-standalone-preset.js
+	Body : No body1646754065619
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /favicon-32x32.png
+	Body : No body1646754132152
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /
+	Body : No body1646754132198
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui.css
+	Body : No body1646754132201
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-bundle.js
+	Body : No body1646754132207
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-standalone-preset.js
+	Body : No body1646754132210
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-init.js
+	Body : No body1646754132942
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /favicon-32x32.png
+	Body : No body1646754209591
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_salle":1000}}1646754269975
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_salle":1000}}1646754360389
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_salle":1000}}1646754469829
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /salle
+	Body : {}1646754504845
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /salle
+	Body : {}1646754510218
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /salle
+	Body : {}1646754518309
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /salle
+	Body : {}

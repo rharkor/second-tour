@@ -1,10 +1,9 @@
 const express = require('express')
 const router = express.Router()
 
-
 /**
  * @swagger
- * /{table}:
+ * /api/fetchou/{table}:
  *    post:
  *      tags:
  *          - Automated Data Operation
@@ -28,11 +27,13 @@ const router = express.Router()
  *          '401':
  *              description: Your authentification identifiers are not correct
  */
- router.route('/:table').post(async (req, res) => {
-  let table = req.params['table']
-  let result = await db.query(`SELECT * FROM ${table};`).catch(e => {
-    res.status(500).send(e)
-  })
-  res.send(result)
+ router.route('/fetchou/:table').post(async (req, res) => {
+  //  console.log("here")
+  // let table = req.params['table']
+  // let result = await db.query(`SELECT * FROM ${table};`).catch(e => {
+  //   res.status(500).send(e)
+  // })
+  res.send("here")
 })
+
 module.exports = router
