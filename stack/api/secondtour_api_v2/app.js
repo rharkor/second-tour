@@ -285,7 +285,15 @@ app.use(express.json())
 
 
 // Middleware
-app.use('/*', (req, res, next) => {
+app.use('/data', (req, res, next) => {
+  if (test_connection(req.body)) {
+    next()
+  } else {
+    res.status(401).send('Invalid auth : ' + req.body.username)
+  }
+})
+
+app.use('/api', (req, res, next) => {
   if (test_connection(req.body)) {
     next()
   } else {
