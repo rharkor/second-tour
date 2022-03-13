@@ -3,33 +3,30 @@ ARG VERSION
 # Dev image
 FROM ubuntu:latest
 
+
+
+
 # Update & install nginx & python
-RUN apt-get update && apt-get install -y nginx
-RUN apt-get install nano
-RUN apt install -y python3-pip python3-dev build-essential libssl-dev libffi-dev python3-setuptools
+RUN apt-get update && apt-get install -y nginx \
+    && apt-get install nano \
+    && apt install -y python3-pip python3-dev build-essential libssl-dev libffi-dev python3-setuptools \
+    && rm /etc/nginx/sites-enabled/default
+RUN mkdir -p /app/website/secondtour_website 
+
+COPY ./website/secondtour_website/requirements.txt /app/website/secondtour_website/requirements.txt
+COPY ./build/website/start.sh /app/scripts/start.sh
+
+RUN pip install -r /app/website/secondtour_website/requirements.txt
 
 # Copy nginx config
 COPY ./build/website/uwsgi.conf /etc/nginx/uwsgi_params
 COPY ./build/website/default.conf /etc/nginx/sites-enabled/secondtour_website
-# Remove the default file
-RUN rm /etc/nginx/sites-enabled/default
 
 
-# Create de app directory
-RUN mkdir -p /app/website/secondtour_website
+# CMD ["nginx", "-g", "daemon", "off;"]
+# CMD ["uwsgi", "/app/website/secondtour_website/website.ini"]
+CMD ["bash", "/app/scripts/start.sh"]
 
-# Install the requirements
-COPY ./website/secondtour_website/requirements.txt /app/website/secondtour_website/requirements.txt
-RUN pip install -r /app/website/secondtour_website/requirements.txt
-
-
-# RUN systemctl start secondtour_website
-# RUN systemctl enable secondtour_website
-
-# Copy the startup script
-COPY ./build/website/start.sh /app/scripts/start.sh
-
-# Prod image
 EXPOSE 80
 
-CMD ["sh", "/app/scripts/start.sh"]
+
