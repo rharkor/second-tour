@@ -29,12 +29,9 @@ const router = express.Router()
  */
 router.route('/:table').post(async (req, res) => {
   let content = req.body['content']
-  let emptycontent ="{}";
-  console.log(emptycontent);
-  console.log(content)
-  if (content!=emptycontent || content ) {
+  if (!(JSON.stringify(content) === "{}")) {
     let table = req.params['table']
-console.log("on detecte le content");
+    console.log('on detecte le content')
     let condition = ''
     Object.keys(content).forEach((element, index) => {
       if (index != 0) condition += ' AND '
@@ -53,9 +50,8 @@ console.log("on detecte le content");
         res.status(500).send(e)
       })
     res.send(result)
-  } 
-  else {
-    console.log("SELECT TOUT")
+  } else {
+    console.log('SELECT TOUT')
     let table = req.params['table']
     let result = await db.query(`SELECT * FROM ${table};`).catch(e => {
       res.status(500).send(e)
@@ -90,7 +86,7 @@ console.log("on detecte le content");
  *          '401':
  *              description: Your authentification identifiers are not correct
  */
-router.route('/insert/:table').put(async (req, res) => {
+router.route('/:table').put(async (req, res) => {
   let table = req.params['table']
   let content = req.body['content']
   let values = '('
@@ -130,7 +126,7 @@ router.route('/insert/:table').put(async (req, res) => {
 
 /**
  * @swagger
- * /api/delete/{table}:
+ * /api/{table}:
  *    delete:
  *      tags:
  *          - Automated Data Operation
@@ -154,10 +150,9 @@ router.route('/insert/:table').put(async (req, res) => {
  *          '401':
  *              description: Your authentification identifiers are not correct
  */
- router.route('/:table').delete(async (req, res) => {
-  let content = req.body['content'];
-  if(content)
-  {
+router.route('/:table').delete(async (req, res) => {
+  let content = req.body['content']
+  if (!(JSON.stringify(content) === "{}")) {
     let table = req.params['table']
     let condition = ''
     Object.keys(content).forEach((element, index) => {
@@ -177,8 +172,7 @@ router.route('/insert/:table').put(async (req, res) => {
         res.status(500).send(e)
       })
     res.status(202).send(result)
-  }
-  else{
+  } else {
     let table = req.params['table']
     let result = await db.query(`DELETE FROM ${table};`).catch(e => {
       res.status(500).send(e)
@@ -189,7 +183,7 @@ router.route('/insert/:table').put(async (req, res) => {
 
 /**
  * @swagger
- * /api/updatefilter/{table}:
+ * /api/{table}:
  *    patch:
  *      tags:
  *          - Automated Data Operation
