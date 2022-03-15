@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const UUIDv4 = require('UUID').v4;
+const UUIDv4 = require('uuid').v4;
 
 /**
  * @swagger
