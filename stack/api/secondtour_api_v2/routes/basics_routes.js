@@ -62,7 +62,7 @@ router.route('/:table').post(async (req, res) => {
 
 /**
  * @swagger
- * /api/insert/{table}:
+ * /api/{table}:
  *    put:
  *      tags:
  *          - Automated Data Operation
@@ -86,7 +86,7 @@ router.route('/:table').post(async (req, res) => {
  *          '401':
  *              description: Your authentification identifiers are not correct
  */
-router.route('/insert/:table').put(async (req, res) => {
+router.route('/:table').put(async (req, res) => {
   let table = req.params['table']
   let content = req.body['content']
   let values = '('
@@ -123,48 +123,14 @@ router.route('/insert/:table').put(async (req, res) => {
   res.status(201).send(result)
 })
 
-/**
- * @swagger
- * /api/fetchmultii:
- *    post:
- *      tags:
- *          - Automated Data Operation
- *      description: Return all the table and rows you asked
- *      parameters:
- *          - in: body
- *            name: User auth + Rows name
- *            type: object
- *            schema:
- *              $ref: '#definitions/UserContentTableName'
- *      responses:
- *          '200':
- *              description: Table retreive correctly
- *              schema:
- *                  $ref: '#definitions/fetchMultiOut'
- *          '401':
- *              description: Your authentification identifiers are not correct
- */
-router.route('/fetchmulti').post(async (req, res) => {
-  let tables = req.body['content']
-  let result = []
-  for (let i = 0; i < tables.length; i++) {
-    let table = tables[i]
-    let a_result = await db.query(`SELECT * FROM ${table};`).catch(e => {
-      res.status(500).send(e)
-    })
-    result.push(a_result)
-  }
-
-  res.send(result)
-})
 
 /**
  * @swagger
- * /api/delete/{table}:
+ * /api/{table}:
  *    delete:
  *      tags:
  *          - Automated Data Operation
- *      description: Delete all the rows in the table you want
+ *      description: Delete all the rows in the table you want or Only the selected rows
  *      parameters:
  *          - in: path
  *            name: table
@@ -186,7 +152,7 @@ router.route('/fetchmulti').post(async (req, res) => {
  */
 router.route('/:table').delete(async (req, res) => {
   let content = req.body['content']
-  if (content) {
+  if (!(JSON.stringify(content) === "{}")) {
     let table = req.params['table']
     let condition = ''
     Object.keys(content).forEach((element, index) => {
@@ -217,56 +183,7 @@ router.route('/:table').delete(async (req, res) => {
 
 /**
  * @swagger
- * /api/deletefilter/{table}:
- *    delete:
- *      tags:
- *          - Automated Data Operation
- *      description: Delete all the rows of a table that match with your filter
- *      parameters:
- *          - in: path
- *            name: table
- *            type: string
- *            required: true
- *            description: The table you where you want to delete rows
- *          - in: body
- *            name: User auth + Filter
- *            type: object
- *            schema:
- *              $ref: '#definitions/UserContentTableDescription'
- *      responses:
- *          '202':
- *              description: Rows successfully deleted
- *              schema:
- *                  $ref: '#definitions/returnId'
- *          '401':
- *              description: Your authentification identifiers are not correct
- */
-router.route('/deletefilter/:table').delete(async (req, res) => {
-  let table = req.params['table']
-  let content = req.body['content']
-  let condition = ''
-  Object.keys(content).forEach((element, index) => {
-    if (index != 0) condition += ' AND '
-    if (
-      content[element] === 'null' ||
-      !isNaN(content[element]) ||
-      content[element] === 'true' ||
-      content[element] === 'false'
-    )
-      condition += element + ' = ' + content[element]
-    else condition += element + " = '" + content[element] + "'"
-  })
-  let result = await db
-    .query(`DELETE FROM ${table} WHERE ${condition};`)
-    .catch(e => {
-      res.status(500).send(e)
-    })
-  res.status(202).send(result)
-})
-
-/**
- * @swagger
- * /api/updatefilter/{table}:
+ * /api/{table}:
  *    patch:
  *      tags:
  *          - Automated Data Operation
