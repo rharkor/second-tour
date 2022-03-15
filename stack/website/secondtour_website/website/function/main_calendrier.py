@@ -1,6 +1,7 @@
 from ctypes import create_string_buffer, create_unicode_buffer
 import logging
 from threading import local
+from time import strftime
 import traceback
 from datetime import date, datetime, timedelta
 from flask.helpers import flash
@@ -13,7 +14,6 @@ from ..database.main_database import *
 
 
 def generation_calendrier():
-    
     
     
     # Delete all creneaux
@@ -180,12 +180,7 @@ def generation_calendrier():
                                         and not((heure_debut_preparation_voulue + temps_preparation_matiere >= timedelta(hours=fin_passage_creneau.hour, minutes=fin_passage_creneau.minute))
                                                 or (heure_debut_preparation_voulue + temps_preparation_matiere + temps_passage_matiere <= timedelta(hours=(debut_preparation_creneau.hour + temps_preparation_creneau.hour), minutes=(debut_preparation_creneau.minute + temps_preparation_creneau.minute)))):
                                         aucune_collision = False
-
-                                for horaires in all_horaires:
-                                    for professeurs in all_professeurs:
-                                        if horaires['id_professeur']==professeurs['id_professeur']:
-                                            print("teqmsùldqùmdlùmsldùqmlsdùmlqsùdmlqsùdlqùsmdlùqsldmùqmsldùqmsldùmsqlsq:dmùqsdùmqsdst")
-
+                                
                                 # Test if the user don't have already creneau and need a pause
                                 delta_m30 = (
                                     debut_preparation_creneau - timedelta(minutes=30))
@@ -256,6 +251,20 @@ def generation_calendrier():
                             #         res = main_database.add_creneau(candidat.id_candidat, matiere.id_matiere, a_salle.id_salle,
                             #                                     heure_debut_preparation_voulue_datetime, fin_preparation_matiere_datetime, fin_passage_matiere_datetime)
                             #         print(res)
+                        
+                        for professeur in all_professeurs:
+                            for liste_matiere in all_liste_matiere:
+                                if liste_matiere["id_professeur"]==professeur["id_professeur"] and liste_matiere["id_matiere"]==matiere["id_matiere"]:
+                                    for horaire in all_horaires:
+                                        if horaire["id_professeur"] == professeur["id_professeur"]:  
+                                            heure_debut_preparation_voulue_datetime = datetime.strptime(
+                                                f'{jour_debut_preparation_voulue}/{datetime.now().month}/{datetime.now().year} ' + str(heure_debut_preparation_voulue), '%d/%m/%Y %H:%M:%f')
+                                            horaire_arr = datetime.strptime(horaire["horaire_arr"+str(int(jour_debut_preparation_voulue))], '%a %b %d %H:%M:%S %Y')
+                                            horaire_dep = datetime.strptime(horaire["horaire_dep"+str(int(jour_debut_preparation_voulue))], '%a %b %d %H:%M:%S %Y')
+                                            fin_passage_matiere_datetime = datetime.strptime(f'{jour_debut_preparation_voulue}/{datetime.now().month}/{datetime.now().year} ' + str((heure_debut_preparation_voulue + temps_preparation_matiere + temps_passage_matiere)), '%d/%m/%Y %H:%M:%f')
+                                            if int(horaire_arr.strftime('%d'))==int(jour_debut_preparation_voulue) and (horaire_arr.strftime('%H:%M:%S')>heure_debut_preparation_voulue_datetime.strftime('%H:%M:%S') or horaire_dep.strftime('%H:%M:%S')<fin_passage_matiere_datetime.strftime('%H:%M:%S')):
+                                                aucune_collision = False
+                                                
 
                         if aucune_collision and not candidat["absent"]:
                             # Create the creneau
