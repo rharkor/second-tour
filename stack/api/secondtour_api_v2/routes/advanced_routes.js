@@ -120,64 +120,64 @@ router.route('/fetchmulti').post(async (req, res) => {
   res.send(result)
 })
 
-// /**
-//  * @swagger
-//  * /data/insert/{table}:
-//  *    put:
-//  *      tags:
-//  *          - Automated Data Operation
-//  *      description: Insert a row in the table selected
-//  *      parameters:
-//  *          - in: path
-//  *            name: table
-//  *            type: string
-//  *            required: true
-//  *            description: The table you want to insert in the row
-//  *          - in: body
-//  *            name: User auth + Row content
-//  *            type: object
-//  *            schema:
-//  *              $ref: '#definitions/UserContentTableDescriptionFull'
-//  *      responses:
-//  *          '201':
-//  *              description: Table created successfully
-//  *              schema:
-//  *                  $ref: '#definitions/returnId'
-//  *          '401':
-//  *              description: Your authentification identifiers are not correct
-//  */
-// router.route('/insert/:table').put(async (req, res) => {
-//   let table = req.params['table']
-//   let content = req.body['content']
-//   let values = '('
-//   Object.keys(content).forEach((element, index) => {
-//     values += element
-//     if (index != Object.keys(content).length - 1) values += ', '
-//   })
-//   values += ') VALUES ('
-//   Object.keys(content).forEach((element, index) => {
-//     if (content[element].toString().match(/... ... [0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2} [0-9]{4}/)) {
-//       content[element] =
-//         "STR_TO_DATE('" + content[element] + "', '%a %b %d %H:%i:%s %Y')"
-//       values += content[element]
-//     } else {
-//       if (
-//         content[element] === 'null' ||
-//         !isNaN(content[element]) ||
-//         content[element] === 'true' ||
-//         content[element] === 'false'
-//       )
-//         values += content[element]
-//       else values += "'" + content[element] + "'"
-//     }
-//     if (index != Object.keys(content).length - 1) values += ', '
-//   })
-//   values += ')'
-//   let result = await db.query(`INSERT INTO ${table} ${values};`).catch(e => {
-//     res.status(500).send(e)
-//   })
-//   res.status(201).send(result)
-// })
+/**
+ * @swagger
+ * /data/insert/{table}:
+ *    put:
+ *      tags:
+ *          - Automated Data Operation
+ *      description: Insert a row in the table selected
+ *      parameters:
+ *          - in: path
+ *            name: table
+ *            type: string
+ *            required: true
+ *            description: The table you want to insert in the row
+ *          - in: body
+ *            name: User auth + Row content
+ *            type: object
+ *            schema:
+ *              $ref: '#definitions/UserContentTableDescriptionFull'
+ *      responses:
+ *          '201':
+ *              description: Table created successfully
+ *              schema:
+ *                  $ref: '#definitions/returnId'
+ *          '401':
+ *              description: Your authentification identifiers are not correct
+ */
+router.route('/insert/:table').put(async (req, res) => {
+  let table = req.params['table']
+  let content = req.body['content']
+  let values = '('
+  Object.keys(content).forEach((element, index) => {
+    values += element
+    if (index != Object.keys(content).length - 1) values += ', '
+  })
+  values += ') VALUES ('
+  Object.keys(content).forEach((element, index) => {
+    if (content[element].toString().match(/... ... [0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2} [0-9]{4}/)) {
+      content[element] =
+        "STR_TO_DATE('" + content[element] + "', '%a %b %d %H:%i:%s %Y')"
+      values += content[element]
+    } else {
+      if (
+        content[element] === 'null' ||
+        !isNaN(content[element]) ||
+        content[element] === 'true' ||
+        content[element] === 'false'
+      )
+        values += content[element]
+      else values += "'" + content[element] + "'"
+    }
+    if (index != Object.keys(content).length - 1) values += ', '
+  })
+  values += ')'
+  let result = await db.query(`INSERT INTO ${table} ${values};`).catch(e => {
+    res.status(500).send(e)
+  })
+  res.status(201).send(result)
+})
 
 /**
  * @swagger
