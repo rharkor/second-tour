@@ -1,0 +1,13 @@
+1647355960648
+FROM:
+	IP :::1 : 
+REQUEST :
+	Method : POST
+	Url : /serie
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1647355974313
+FROM:
+	IP :::1 : 
+REQUEST :
+	Method : POST
+	Url : /api/serie
+	Body : {}
