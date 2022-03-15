@@ -14,7 +14,7 @@ def ask_api(what: str):
 
 
 def main(debug_mode=True, dev=False):
-    test(dev)
+    # test(dev)
     run(debug_mode=debug_mode)
 
 

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node ./run_dev.js",
     "start": "node ./app.js"
   },
   "author": "HUORT Louis",
@@ -16,6 +16,7 @@
     "moment": "^2.29.1",
     "mysql": "^2.18.1",
     "swagger-jsdoc": "^3.4.0",
-    "swagger-ui-express": "^4.0.7"
+    "swagger-ui-express": "^4.0.7",
+    "uuid": "^8.3.2"
   }
 }

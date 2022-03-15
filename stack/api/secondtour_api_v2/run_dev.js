@@ -2,10 +2,8 @@ const express = require('express')
 const app = express()
 const swaggerJsDoc = require('swagger-jsdoc')
 const swaggerUi = require('swagger-ui-express')
-require('dotenv').config()
+require('dotenv').config({path:".env_dev"})
 const fs = require('fs')
-const test_connection = require('./security/main_security')
-
 
 // Database
 var db = require('./database/config')
@@ -283,27 +281,10 @@ app.listen(port, () => {
 
 app.use(express.json())
 
-
-// Middleware
-app.use('/data', (req, res, next) => {
-  if (test_connection(req.body)) {
-    next()
-  } else {
-    res.status(401).send('Invalid auth : ' + req.body.username)
-  }
-})
-
-app.use('/api', (req, res, next) => {
-  if (test_connection(req.body)) {
-    next()
-  } else {
-    res.status(401).send('Invalid auth : ' + req.body.username)
-  }
-})
-
 const main_routes = require('./routes/main_routes')
 app.use('/', main_routes)
 const advanced_routes = require('./routes/advanced_routes')
 app.use('/data', advanced_routes)
 const basics_routes = require('./routes/basics_routes')
 app.use('/api', basics_routes)
+
