@@ -130,7 +130,7 @@ router.route('/:table').put(async (req, res) => {
  *    delete:
  *      tags:
  *          - Automated Data Operation
- *      description: Delete all the rows in the table you want
+ *      description: Delete all the rows in the table you want or Only the selected rows
  *      parameters:
  *          - in: path
  *            name: table
