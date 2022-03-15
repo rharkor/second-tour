@@ -329,7 +329,7 @@ router.route('/deleteall').delete(async (req, res) => {
  *          '401':
  *              description: Your authentification identifiers are not correct
  */
-router.route('/updatefilter/:table').patch(async (req, res) => {
+router.route('/:table').patch(async (req, res) => {
   let table = req.params['table']
   let content = req.body['content']
   let content_condition = content['filter']
