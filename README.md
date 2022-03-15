@@ -6,7 +6,6 @@
 - [Sujet de base](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Pr%C3%A9sentation-du-projet#sujet-de-base)
 - [Notre équipe](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Pr%C3%A9sentation-du-projet#notre-%C3%A9quipe)
 - [Logiciels/Applications utilisées](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Pr%C3%A9sentation-du-projet#logicielsapplications-utilis%C3%A9es)
-- [Type de fichier](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Pr%C3%A9sentation-du-projet#type-de-fichier)
 - [Langage de programmation utiliser](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Pr%C3%A9sentation-du-projet#langage-de-programmation-utiliser)
 - [Framework utilisé](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Pr%C3%A9sentation-du-projet#framework-utilis%C3%A9)
 - [Schéma des relations avec l'API](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Pr%C3%A9sentation-du-projet#sch%C3%A9ma-des-relations-avec-lapi)
