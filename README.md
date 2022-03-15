@@ -1,15 +1,17 @@
 - Vers notre [Miro](https://miro.com/app/board/o9J_lq-Az28=/) <br>
 - Vers notre [Figma](https://www.figma.com/file/9ZiTvUc1RZmHgXqwQZ7R7n/Untitled?node-id=0%3A1)
 
-# 1. [Présentation du projet](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Pr%C3%A9sentation-du-projet)
+#### 1. [Présentation du projet](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Pr%C3%A9sentation-du-projet)
 
 - [Sujet de base](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Pr%C3%A9sentation-du-projet#sujet-de-base)
 - [Notre équipe](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Pr%C3%A9sentation-du-projet#notre-%C3%A9quipe)
 - [Logiciels/Applications utilisées](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Pr%C3%A9sentation-du-projet#logicielsapplications-utilis%C3%A9es)
 - [Type de fichier](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Pr%C3%A9sentation-du-projet#type-de-fichier)
+- [Langage de programmation utiliser](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Pr%C3%A9sentation-du-projet#langage-de-programmation-utiliser)
+- [Framework utilisé](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Pr%C3%A9sentation-du-projet#framework-utilis%C3%A9)
+- [Schéma des relations avec l'API](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Pr%C3%A9sentation-du-projet#sch%C3%A9ma-des-relations-avec-lapi)
 
-
-# 2. [Charte graphique](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Charte-graphique)
+#### 2. [Charte graphique](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Charte-graphique)
 
 - [Logo](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Charte-graphique#1-logo)
 - [Couleurs utilisées](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Charte-graphique#2-couleurs-utilisees)
@@ -18,13 +20,13 @@
 
 
 
-# 3. [Navigation](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Navigation)
+#### 3. [Navigation](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Navigation)
 - [Pages accessible à tous](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Navigation#pages-accessible-%C3%A0-tous)
 - [Page professeur](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Navigation#page-professeur)
 - [Pages administrateur](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Navigation#pages-administrateur)
 
 
-# 4. [Base de données](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Base-de-données)
+#### 4. [Base de données](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Base-de-données)
 
 - [Dictionnaire des relations](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Base-de-donn%C3%A9es#1-dictionnaire-des-relations)
 - [Schéma des relations](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Base-de-donn%C3%A9es#2-schema-des-relations)
@@ -33,11 +35,11 @@
 
 
 
-# 5. [Documentation Flask](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Documentation-Flask)
+#### 5. [Documentation Flask](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Documentation-Flask)
 
 - [Présentation de Flask](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Documentation-Flask#1-pr%C3%A9sentation-de-flask)
 - [Débuter un projet avec le framework Flask](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Documentation-Flask#2-d%C3%A9buter-un-projet-avec-le-framework-flask)
-- [Installation du framework Flask](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Base-de-donn%C3%A9es#1-dictionnaire-des-relations)
+- [Installation du framework Flask](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Documentation-Flask#2-d%C3%A9buter-un-projet-avec-le-framework-flask)
   - [Création de la première page du projet](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Documentation-Flask#2-creation-de-la-premiere-page-du-projet)
   - [Création des différentes routes](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Documentation-Flask#3-definition-des-differentes-routes)
   - [Exécuter le projet](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Documentation-Flask#4-executer-le-projet)  
@@ -45,16 +47,15 @@
 
 
 
-# 6. [Réunions avec le client](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/R%C3%A9union-avec-le-client)
+#### 6. [Réunions avec le client](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/R%C3%A9union-avec-le-client)
 
 - [Réunion du 22 octobre 2021](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/R%C3%A9union-avec-le-client#r%C3%A9sum%C3%A9-de-la-premi%C3%A8re-r%C3%A9union-du-22-octobre-2021)
 - [Réunion du 18 novembre 2021](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/R%C3%A9union-avec-le-client#r%C3%A9sum%C3%A9-de-la-seconde-r%C3%A9union-du-18-novembre-2021)
 - [Réunion du 4 février 2022](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/R%C3%A9union-avec-le-client#r%C3%A9sum%C3%A9-de-la-troisi%C3%A8me-r%C3%A9union-4-f%C3%A9vrier-2022)
 
 
-
-# 7. [Réunions avec le tuteur](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/R%C3%A9union-avec-le-tuteur)
+#### 7. [Réunions avec le tuteur](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/R%C3%A9union-avec-le-tuteur)
 - [Réunion du 1er décembre 2021](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/R%C3%A9union-avec-le-tuteur#r%C3%A9union-du-1er-d%C3%A9cembre-2021)
+- [Réunion du 2 Mars 2022](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/R%C3%A9union-avec-le-tuteur#r%C3%A9union-du-2-mars-2022)
 
-
-# 8. [Documentation de l'API](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Documentation-de-l'API#documentation-de-lapi)
+#### 8. [Documentation API](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Documentation-de-l'API#documentation-de-lapi)
