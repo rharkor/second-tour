@@ -8,7 +8,7 @@ const router = express.Router()
  *    post:
  *      tags:
  *          - Automated Data Operation
- *      description: Return all the rows of a table
+ *      description: Return all the rows of a table or the rows filtered
  *      parameters:
  *          - in: path
  *            name: table
@@ -29,65 +29,42 @@ const router = express.Router()
  *              description: Your authentification identifiers are not correct
  */
  router.route('/:table').post(async (req, res) => {
-  let table = req.params['table']
+  let content = req.body['content'];
+  console.log(content);
+  if (content)
+  {
+    let table = req.params['table']
   let result = await db.query(`SELECT * FROM ${table};`).catch(e => {
     res.status(500).send(e)
   })
   res.send(result)
+  }
+  else
+  {
+      let table = req.params['table']
+
+      let condition = ''
+      Object.keys(content).forEach((element, index) => {
+        if (index != 0) condition += ' AND '
+        if (
+          content[element] === 'null' ||
+          !isNaN(content[element]) ||
+          content[element] === 'true' ||
+          content[element] === 'false'
+        )
+          condition += element + ' = ' + content[element]
+        else condition += element + " = '" + content[element] + "'"
+      })
+      let result = await db
+        .query(`SELECT * FROM ${table} WHERE ${condition};`)
+        .catch(e => {
+          res.status(500).send(e)
+        })
+      res.send(result)
+  }
 })
 
 
-
-/**
- * @swagger
- * /api/filter/{table}:
- *    post:
- *      tags:
- *          - Automated Data Operation
- *      description: Return all the rows of a table that match with your filter
- *      parameters:
- *          - in: path
- *            name: table
- *            type: string
- *            required: true
- *            description: The table you want to fetch
- *          - in: body
- *            name: User auth + Filter
- *            type: object
- *            schema:
- *              $ref: '#definitions/UserContentTableDescription'
- *      responses:
- *          '200':
- *              description: Table retreive correctly
- *              schema:
- *                  $ref: '#definitions/fetchFilterOut'
- *          '401':
- *              description: Your authentification identifiers are not correct
- */
- router.route('/filter/:table').post(async (req, res) => {
-  let table = req.params['table']
-  let content = req.body['content']
-  let condition = ''
-  Object.keys(content).forEach((element, index) => {
-    if (index != 0) condition += ' AND '
-    if (
-      content[element] === 'null' ||
-      !isNaN(content[element]) ||
-      content[element] === 'true' ||
-      content[element] === 'false'
-    )
-      condition += element + ' = ' + content[element]
-    else condition += element + " = '" + content[element] + "'"
-  })
-  let result = await db
-    .query(`SELECT * FROM ${table} WHERE ${condition};`)
-    .catch(e => {
-      res.status(500).send(e)
-    })
-  res.send(result)
-})
-
-//Insert
 
 /**
  * @swagger
@@ -169,7 +146,7 @@ const router = express.Router()
  *          '401':
  *              description: Your authentification identifiers are not correct
  */
- router.route('/fetchmultii').post(async (req, res) => {
+ router.route('/fetchmulti').post(async (req, res) => {
   let tables = req.body['content']
   let result = []
   for (let i = 0; i < tables.length; i++) {
@@ -182,6 +159,7 @@ const router = express.Router()
 
   res.send(result)
 })
+
 
 /**
  * @swagger
@@ -209,12 +187,39 @@ const router = express.Router()
  *          '401':
  *              description: Your authentification identifiers are not correct
  */
- router.route('/delete/:table').delete(async (req, res) => {
-  let table = req.params['table']
+ router.route('/:table').delete(async (req, res) => {
+  let content = req.body['content'];
+  console.log(content);
+  let table = req.params['table'];
+  if (content)
+  {
+    console.log("nofilter");
   let result = await db.query(`DELETE FROM ${table};`).catch(e => {
     res.status(500).send(e)
   })
   res.status(202).send(result)
+  }
+  else 
+  let condition = ''
+  console.log("filter");
+    Object.keys(content).forEach((element, index) => {
+      if (index != 0) condition += ' AND '
+      if (
+        content[element] === 'null' ||
+        !isNaN(content[element]) ||
+        content[element] === 'true' ||
+        content[element] === 'false'
+      )
+        condition += element + ' = ' + content[element]
+      else condition += element + " = '" + content[element] + "'"
+    })
+    let result = await db
+      .query(`DELETE FROM ${table} WHERE ${condition};`)
+      .catch(e => {
+        res.status(500).send(e)
+      })
+    res.status(202).send(result)
+  
 })
 
 /**

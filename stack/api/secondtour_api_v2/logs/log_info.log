@@ -1,0 +1,607 @@
+1647200537494
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /version
+	Body : {}1647200554307
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /version
+	Body : {}1647200558042
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /fetchmultii
+	Body : {}1647200576540
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /fetchmulti
+	Body : {}1647200577645
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /fetchmulti
+	Body : {}1647200581067
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /fetchmulti
+	Body : {}1647200586617
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /fetchmulti
+	Body : {}1647200590413
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /fetchmulti
+	Body : {}1647200593941
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /
+	Body : No body1647200594274
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-standalone-preset.js
+	Body : No body1647200594272
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui.css
+	Body : No body1647200594271
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-bundle.js
+	Body : No body1647200594280
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-init.js
+	Body : No body1647200595428
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /favicon-32x32.png
+	Body : No body1647200631164
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["salle","creneau","utilisateur"]}1647200649492
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /fetchmulti
+	Body : {}1647200650981
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /fetchmulti
+	Body : {}1647200667399
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["salle","serie"]}1647200705434
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /
+	Body : No body1647200705536
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui.css
+	Body : No body1647200705548
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-init.js
+	Body : No body1647200705555
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-standalone-preset.js
+	Body : No body1647200705539
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-bundle.js
+	Body : No body1647200706593
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /favicon-32x32.png
+	Body : No body1647200717891
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["salle","serie"]}1647200726242
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /fetchmulti
+	Body : {}1647200732770
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /data/fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["salle","serie"]}1647200741824
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["salle","serie"]}1647200818471
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmultii
+	Body : {"username":"admin","password":"L0calAdmin","content":["salle","serie"]}1647204563977
+FROM:
+	IP :::1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["salle","serie"]}1647204572229
+FROM:
+	IP :::1 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["salle","serie"]}1647205377861
+FROM:
+	IP :::1 : 
+REQUEST :
+	Method : POST
+	Url : /salle
+	Body : {"username":"admin","password":"L0calAdmin","content":["salle"]}1647205402127
+FROM:
+	IP :::1 : 
+REQUEST :
+	Method : POST
+	Url : /salle
+	Body : {"username":"admin","password":"L0calAdmin","content":["salle"]}1647205403286
+FROM:
+	IP :::1 : 
+REQUEST :
+	Method : POST
+	Url : /salle
+	Body : {"username":"admin","password":"L0calAdmin","content":["salle"]}1647205404078
+FROM:
+	IP :::1 : 
+REQUEST :
+	Method : POST
+	Url : /salle
+	Body : {"username":"admin","password":"L0calAdmin","content":["salle"]}1647205433451
+FROM:
+	IP :::1 : 
+REQUEST :
+	Method : POST
+	Url : /salle
+	Body : {"username":"admin","password":"L0calAdmin","content":["salle"]}1647205472800
+FROM:
+	IP :::1 : 
+REQUEST :
+	Method : POST
+	Url : /salle
+	Body : {"username":"admin","password":"L0calAdmin","content":["salle"]}1647205517292
+FROM:
+	IP :::1 : 
+REQUEST :
+	Method : POST
+	Url : /salle
+	Body : {"username":"admin","password":"L0calAdmin","content":["salle"]}1647205518479
+FROM:
+	IP :::1 : 
+REQUEST :
+	Method : POST
+	Url : /salle
+	Body : {"username":"admin","password":"L0calAdmin","content":["salle"]}1647205562863
+FROM:
+	IP :::1 : 
+REQUEST :
+	Method : POST
+	Url : /sallevrgb
+	Body : {"username":"admin","password":"L0calAdmin","content":["salle"]}1647205567605
+FROM:
+	IP :::1 : 
+REQUEST :
+	Method : POST
+	Url : /salle
+	Body : {"username":"admin","password":"L0calAdmin","content":["salle"]}1647205823134
+FROM:
+	IP :::1 : 
+REQUEST :
+	Method : POST
+	Url : /salle
+	Body : {"username":"admin","password":"L0calAdmin","content":["salle"]}1647205924292
+FROM:
+	IP :::1 : 
+REQUEST :
+	Method : POST
+	Url : /salle
+	Body : {"username":"admin","password":"L0calAdmin","content":[]}1647205962075
+FROM:
+	IP :::1 : 
+REQUEST :
+	Method : POST
+	Url : /salle
+	Body : {"username":"admin","password":"L0calAdmin","content":[]}1647205978750
+FROM:
+	IP :::1 : 
+REQUEST :
+	Method : POST
+	Url : /api/salle
+	Body : {}1647206142737
+FROM:
+	IP :::1 : 
+REQUEST :
+	Method : POST
+	Url : /api/salle
+	Body : {}1647206162752
+FROM:
+	IP :::1 : 
+REQUEST :
+	Method : POST
+	Url : /api/salle
+	Body : {}1647206423192
+FROM:
+	IP :::1 : 
+REQUEST :
+	Method : POST
+	Url : /salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{"numero":"A10"}}1647206648734
+FROM:
+	IP :::1 : 
+REQUEST :
+	Method : POST
+	Url : /api/salle
+	Body : {}1647206770866
+FROM:
+	IP :::1 : 
+REQUEST :
+	Method : POST
+	Url : /salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{"numero":"A10"}}1647206776020
+FROM:
+	IP :::1 : 
+REQUEST :
+	Method : POST
+	Url : /salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1647206779605
+FROM:
+	IP :::1 : 
+REQUEST :
+	Method : POST
+	Url : /api/salle
+	Body : {}1647206863915
+FROM:
+	IP :::1 : 
+REQUEST :
+	Method : POST
+	Url : /salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1647206869351
+FROM:
+	IP :::1 : 
+REQUEST :
+	Method : POST
+	Url : /salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{"numero":"A10"}}1647206873743
+FROM:
+	IP :::1 : 
+REQUEST :
+	Method : POST
+	Url : /salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1647206907687
+FROM:
+	IP :::1 : 
+REQUEST :
+	Method : POST
+	Url : /salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1647206908620
+FROM:
+	IP :::1 : 
+REQUEST :
+	Method : POST
+	Url : /salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1647206909270
+FROM:
+	IP :::1 : 
+REQUEST :
+	Method : POST
+	Url : /salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1647206993609
+FROM:
+	IP :::1 : 
+REQUEST :
+	Method : POST
+	Url : /salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1647207037165
+FROM:
+	IP :::1 : 
+REQUEST :
+	Method : POST
+	Url : /salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1647207072507
+FROM:
+	IP :::1 : 
+REQUEST :
+	Method : POST
+	Url : /salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1647207107442
+FROM:
+	IP :::1 : 
+REQUEST :
+	Method : POST
+	Url : /salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1647207108621
+FROM:
+	IP :::1 : 
+REQUEST :
+	Method : POST
+	Url : /salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1647207159175
+FROM:
+	IP :::1 : 
+REQUEST :
+	Method : POST
+	Url : /salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1647207180789
+FROM:
+	IP :::1 : 
+REQUEST :
+	Method : POST
+	Url : /salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1647207205367
+FROM:
+	IP :::1 : 
+REQUEST :
+	Method : POST
+	Url : /salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1647207397736
+FROM:
+	IP :::1 : 
+REQUEST :
+	Method : POST
+	Url : /salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1647207405642
+FROM:
+	IP :::1 : 
+REQUEST :
+	Method : POST
+	Url : /salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1647207454351
+FROM:
+	IP :::1 : 
+REQUEST :
+	Method : POST
+	Url : /salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1647207456688
+FROM:
+	IP :::1 : 
+REQUEST :
+	Method : POST
+	Url : /salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1647207457740
+FROM:
+	IP :::1 : 
+REQUEST :
+	Method : POST
+	Url : /salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1647207566499
+FROM:
+	IP :::1 : 
+REQUEST :
+	Method : POST
+	Url : /salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1647207614498
+FROM:
+	IP :::1 : 
+REQUEST :
+	Method : POST
+	Url : /salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1647208758093
+FROM:
+	IP :::1 : 
+REQUEST :
+	Method : POST
+	Url : /salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1647208767310
+FROM:
+	IP :::1 : 
+REQUEST :
+	Method : POST
+	Url : /api/salle
+	Body : {}1647208887278
+FROM:
+	IP :::1 : 
+REQUEST :
+	Method : POST
+	Url : /salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1647208906879
+FROM:
+	IP :::1 : 
+REQUEST :
+	Method : POST
+	Url : /salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1647208930098
+FROM:
+	IP :::1 : 
+REQUEST :
+	Method : POST
+	Url : /salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1647208967236
+FROM:
+	IP :::1 : 
+REQUEST :
+	Method : POST
+	Url : /salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1647209016150
+FROM:
+	IP :::1 : 
+REQUEST :
+	Method : POST
+	Url : /salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1647209033621
+FROM:
+	IP :::1 : 
+REQUEST :
+	Method : POST
+	Url : /salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1647209047955
+FROM:
+	IP :::1 : 
+REQUEST :
+	Method : POST
+	Url : /salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1647209109651
+FROM:
+	IP :::1 : 
+REQUEST :
+	Method : POST
+	Url : /salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1647209152029
+FROM:
+	IP :::1 : 
+REQUEST :
+	Method : POST
+	Url : /salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{"numero":"A10"}}1647209177183
+FROM:
+	IP :::1 : 
+REQUEST :
+	Method : POST
+	Url : /salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1647241931485
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /
+	Body : No body1647241931600
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-init.js
+	Body : No body1647241931606
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-bundle.js
+	Body : No body1647241931608
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-standalone-preset.js
+	Body : No body1647241931609
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui.css
+	Body : No body1647241932729
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /favicon-32x32.png
+	Body : No body1647241934611
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /
+	Body : No body1647241934677
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-init.js
+	Body : No body1647241934693
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui.css
+	Body : No body1647241934696
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-bundle.js
+	Body : No body1647241934691
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-standalone-preset.js
+	Body : No body1647241935429
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /favicon-32x32.png
+	Body : No body1647245667906
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-init.js
+	Body : No body1647245667922
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-bundle.js
+	Body : No body1647245667925
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui.css
+	Body : No body1647245667934
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : GET
+	Url : /swagger-ui-standalone-preset.js
+	Body : No body
