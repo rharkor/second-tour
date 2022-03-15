@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 1647358440408
 FROM:
 	IP :::ffff:172.18.0.1 : 
@@ -2183,3 +2184,186 @@ REQUEST :
 	Method : PUT
 	Url : /insert/candidat
 	Body : {"username":"admin","password":"L0calAdmin","content":{"id_candidat":"null","nom":"Alix","prenom":"Lefebvre","id_serie":"null","tiers_temps":"false","absent":"false"}}
+=======
+>>>>>>> f4bfab5f5020cf0bc2ed27847be18e4afc0fd11b
+1647359344452
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /horaire
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_professeur":"28"}}1647359351370
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /horaire
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1647359355845
+FROM:
+	IP :::ffff:172.18.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /horaire
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_professeur":"28"}}1647359369200
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /horaire
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_professeur":"28"}}1647359373699
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /horaire
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1647359379601
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /horaire
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1647359404748
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /horaire
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1647359415168
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /horaire
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_professeur":"28"}}1647359487663
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /horaire
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1647359511695
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /horaire
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1647359517849
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /horaire
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_professeur":"28"}}1647359523475
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /horaire
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_professeur":"58"}}1647359529464
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /horaire
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1647359544432
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /horaire
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1647359557637
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /horaire
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1647359611288
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /horaire
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1647359663609
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /horaire
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1647359674205
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /horaire
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1647359683749
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /horaire
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1647359700015
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /horaire
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1647359711884
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /horaire
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1647359729855
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /horaire
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1647359741442
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /horaire
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1647359748600
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /horaire
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_professeur":"28"}}1647359765943
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /horaire
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_professeur":"28"}}1647359773306
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /horaire
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_professeur":"28"}}1647359789632
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /horaire
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_professeur":"28"}}1647359794595
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /horaire
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_professeur":"58"}}1647359807746
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /horaire
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_professeur":"58"}}1647359814885
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /horaire
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}

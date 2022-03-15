@@ -29,16 +29,9 @@ const router = express.Router()
  */
 router.route('/:table').post(async (req, res) => {
   let content = req.body['content']
-  console.log(content)
-  if (content) {
+  if (!(JSON.stringify(content) === "{}")) {
     let table = req.params['table']
-    let result = await db.query(`SELECT * FROM ${table};`).catch(e => {
-      res.status(500).send(e)
-    })
-    res.send(result)
-  } else {
-    let table = req.params['table']
-
+    console.log('on detecte le content')
     let condition = ''
     Object.keys(content).forEach((element, index) => {
       if (index != 0) condition += ' AND '
@@ -56,6 +49,13 @@ router.route('/:table').post(async (req, res) => {
       .catch(e => {
         res.status(500).send(e)
       })
+    res.send(result)
+  } else {
+    console.log('SELECT TOUT')
+    let table = req.params['table']
+    let result = await db.query(`SELECT * FROM ${table};`).catch(e => {
+      res.status(500).send(e)
+    })
     res.send(result)
   }
 })
@@ -186,17 +186,9 @@ router.route('/fetchmulti').post(async (req, res) => {
  */
 router.route('/:table').delete(async (req, res) => {
   let content = req.body['content']
-  console.log(content)
-  let table = req.params['table']
   if (content) {
-    console.log('nofilter')
-    let result = await db.query(`DELETE FROM ${table};`).catch(e => {
-      res.status(500).send(e)
-    })
-    res.status(202).send(result)
-  } else {
+    let table = req.params['table']
     let condition = ''
-    console.log('filter')
     Object.keys(content).forEach((element, index) => {
       if (index != 0) condition += ' AND '
       if (
@@ -213,6 +205,12 @@ router.route('/:table').delete(async (req, res) => {
       .catch(e => {
         res.status(500).send(e)
       })
+    res.status(202).send(result)
+  } else {
+    let table = req.params['table']
+    let result = await db.query(`DELETE FROM ${table};`).catch(e => {
+      res.status(500).send(e)
+    })
     res.status(202).send(result)
   }
 })
@@ -263,43 +261,6 @@ router.route('/deletefilter/:table').delete(async (req, res) => {
     .catch(e => {
       res.status(500).send(e)
     })
-  res.status(202).send(result)
-})
-
-/**
- * @swagger
- * /api/deleteall:
- *    post:
- *      tags:
- *          - Automated Data Operation
- *      description: Delete all the rows of all the tables
- *      parameters:
- *          - in: body
- *            name: User auth
- *            type: object
- *            schema:
- *              $ref: '#definitions/User'
- *      responses:
- *          '202':
- *              description: Rows successfully deleted
- *              schema:
- *                  $ref: '#definitions/fetchMultiOut'
- *          '401':
- *              description: Your authentification identifiers are not correct
- */
-router.route('/deleteall').delete(async (req, res) => {
-  let tables = await db.query(`SHOW TABLES;`).catch(e => {
-    res.status(500).send(e)
-  })
-  let result = []
-  tables.forEach(async table => {
-    let a_result = await db
-      .query(`DELETE FROM ${table['Tables_in_secondtour']};`)
-      .catch(e => {
-        res.status(500).send(e)
-      })
-    result.push(a_result)
-  })
   res.status(202).send(result)
 })
 
