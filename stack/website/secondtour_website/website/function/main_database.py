@@ -183,6 +183,22 @@ def delete_serie(id):
             logging.warning(
                 "Impossible de supprimer les candidats correspondants à cette serie")
             return ['Impossible de supprimer les candidats correspondants à cette serie', 'danger']
+        
+        liste_matieres_filter = {"id_serie": id}
+        response = ask_api(f"data/fetchfilter/matiere", liste_matieres_filter)
+        if response.status_code != 200:
+            logging.warning(
+                "Impossible de récupérer la liste des matières")
+            return ['Impossible de récupérer la liste des matières', 'danger']
+        liste_matieres = response.json()
+        
+        for matiere in liste_matieres:
+            response = ask_api(f"data/deletefilter/liste_matiere", {"id_matiere": matiere["id_matiere"]})
+            if response.status_code != 202:
+                logging.warning(
+                    "Impossible de supprimer le lien de la série avec les professeurs")
+                return ['Impossible de supprimer le lien de la série avec les professeurs', 'danger']
+            
 
         matiere_filter = {"id_serie": id}
         response = ask_api(f"data/deletefilter/matiere", matiere_filter)

@@ -1,12 +1,119 @@
-2022-03-11 15:12:11,505 Run the server
-2022-03-11 15:12:11,515  * Running on all addresses.
+2022-03-15 15:14:53,301 Asking API on : http://api:443/data/fetchfilter/utilisateur BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'email': 'admin@ac-poitiers.fr', 'admin': '1'}}
+2022-03-15 15:14:53,309 Asking API on : http://api:443/data/fetchfilter/candidat BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'id_serie': '8'}}
+2022-03-15 15:14:53,315 Asking API on : http://api:443/data/deletefilter/candidat BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'id_serie': '8'}}
+2022-03-15 15:14:53,320 Asking API on : http://api:443/data/deletefilter/matiere BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'id_serie': '8'}}
+2022-03-15 15:14:53,334 Impossible de supprimer les matieres correspondantes
+2022-03-15 15:14:53,335 Impossible de supprimer les matieres correspondantes
+2022-03-15 15:14:53,336 Asking API on : http://api:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['candidat', 'serie', 'matiere', 'salle', 'choix_matiere']}
+2022-03-15 16:25:32,299 Asking API on : http://127.0.0.1:443/version
+2022-03-15 16:25:32,311 Run the server
+2022-03-15 16:25:32,334  * Restarting with stat
+2022-03-15 16:25:33,946 Asking API on : http://127.0.0.1:443/version
+2022-03-15 16:25:33,957 Run the server
+2022-03-15 16:25:33,972  * Debugger is active!
+2022-03-15 16:25:33,980  * Debugger PIN: 298-853-937
+2022-03-15 16:25:35,594  * Running on all addresses.
    WARNING: This is a development server. Do not use it in a production deployment.
-2022-03-11 15:12:11,515  * Running on http://172.18.0.4:5000/ (Press CTRL+C to quit)
-2022-03-11 15:13:43,932 Run the server
-2022-03-11 15:13:43,938  * Running on all addresses.
+2022-03-15 16:25:35,594  * Running on http://10.13.1.135:5000/ (Press CTRL+C to quit)
+2022-03-15 16:25:35,657 Asking API on : http://127.0.0.1:443/data/fetchfilter/utilisateur BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'email': 'admin@ac-poitiers.fr', 'admin': '1'}}
+2022-03-15 16:25:35,666 Asking API on : http://127.0.0.1:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['candidat', 'serie', 'matiere', 'salle', 'choix_matiere']}
+2022-03-15 16:25:35,714 127.0.0.1 - - [15/Mar/2022 16:25:35] "GET /admin/series HTTP/1.1" 200 -
+2022-03-15 16:25:36,896 127.0.0.1 - - [15/Mar/2022 16:25:36] "GET /static/main.css HTTP/1.1" 200 -
+2022-03-15 16:25:36,901 127.0.0.1 - - [15/Mar/2022 16:25:36] "GET /static/admin.css HTTP/1.1" 200 -
+2022-03-15 16:25:37,048 127.0.0.1 - - [15/Mar/2022 16:25:37] "GET /static/img/logo_square.ico HTTP/1.1" 200 -
+2022-03-15 16:25:37,094 127.0.0.1 - - [15/Mar/2022 16:25:37] "[36mGET /static/img/logo_square.ico HTTP/1.1[0m" 304 -
+2022-03-15 16:25:42,549 Asking API on : http://127.0.0.1:443/data/fetchfilter/utilisateur BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'email': 'admin@ac-poitiers.fr', 'admin': '1'}}
+2022-03-15 16:25:42,565 Asking API on : http://127.0.0.1:443/data/fetchfilter/candidat BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'id_serie': '8'}}
+2022-03-15 16:25:42,576 Asking API on : http://127.0.0.1:443/data/deletefilter/candidat BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'id_serie': '8'}}
+2022-03-15 16:25:42,584 Asking API on : http://127.0.0.1:443/data/fetchfilter/matiere BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'id_serie': '8'}}
+2022-03-15 16:25:42,598 Erreur : Traceback (most recent call last):
+  File "C:\Users\louid\OneDrive\Documents\EspaceDeTravail\S2\PTS\pts2021_sujet14\stack\website\secondtour_website\website\function\main_database.py", line 195, in delete_serie
+    response = ask_api(f"data/deletefilter/liste_matiere", {"id_matiere": matiere["id_matiere"]})
+TypeError: byte indices must be integers or slices, not str
+
+2022-03-15 16:25:42,599 Erreur : Traceback (most recent call last):
+  File "C:\Users\louid\OneDrive\Documents\EspaceDeTravail\S2\PTS\pts2021_sujet14\stack\website\secondtour_website\website\function\main_database.py", line 195, in delete_serie
+    response = ask_api(f"data/deletefilter/liste_matiere", {"id_matiere": matiere["id_matiere"]})
+TypeError: byte indices must be integers or slices, not str
+
+2022-03-15 16:25:42,599 Asking API on : http://127.0.0.1:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['candidat', 'serie', 'matiere', 'salle', 'choix_matiere']}
+2022-03-15 16:25:42,618 127.0.0.1 - - [15/Mar/2022 16:25:42] "POST /admin/series HTTP/1.1" 200 -
+2022-03-15 16:25:43,117 127.0.0.1 - - [15/Mar/2022 16:25:43] "[36mGET /static/main.css HTTP/1.1[0m" 304 -
+2022-03-15 16:25:43,119 127.0.0.1 - - [15/Mar/2022 16:25:43] "[36mGET /static/admin.css HTTP/1.1[0m" 304 -
+2022-03-15 16:25:43,249 127.0.0.1 - - [15/Mar/2022 16:25:43] "[36mGET /static/img/logo_square.ico HTTP/1.1[0m" 304 -
+2022-03-15 16:25:43,294 127.0.0.1 - - [15/Mar/2022 16:25:43] "[36mGET /static/img/logo_square.ico HTTP/1.1[0m" 304 -
+2022-03-15 16:26:08,225  * Detected change in 'C:\\Users\\louid\\OneDrive\\Documents\\EspaceDeTravail\\S2\\PTS\\pts2021_sujet14\\stack\\website\\secondtour_website\\website\\function\\main_database.py', reloading
+2022-03-15 16:26:08,350  * Restarting with stat
+2022-03-15 16:26:10,020 Asking API on : http://127.0.0.1:443/version
+2022-03-15 16:26:10,035 Run the server
+2022-03-15 16:26:10,056  * Debugger is active!
+2022-03-15 16:26:10,070  * Debugger PIN: 298-853-937
+2022-03-15 16:26:11,333  * Running on all addresses.
    WARNING: This is a development server. Do not use it in a production deployment.
-2022-03-11 15:13:43,939  * Running on http://172.18.0.4:5000/ (Press CTRL+C to quit)
-2022-03-11 18:58:29,949 Asking API on : http://api:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['candidat', 'creneau', 'serie', 'matiere', 'salle']}
-2022-03-11 19:03:09,865 Asking API on : http://api:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['candidat', 'creneau', 'serie', 'matiere', 'salle']}
-2022-03-11 19:18:02,569 Asking API on : http://api:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['candidat', 'creneau', 'serie', 'matiere', 'salle']}
-2022-03-11 20:30:53,868 Asking API on : http://api:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['candidat', 'creneau', 'serie', 'matiere', 'salle']}
+2022-03-15 16:26:11,334  * Running on http://10.13.1.135:5000/ (Press CTRL+C to quit)
+2022-03-15 16:26:11,793 Asking API on : http://127.0.0.1:443/data/fetchfilter/utilisateur BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'email': 'admin@ac-poitiers.fr', 'admin': '1'}}
+2022-03-15 16:26:11,803 Asking API on : http://127.0.0.1:443/data/fetchfilter/candidat BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'id_serie': '8'}}
+2022-03-15 16:26:11,812 Asking API on : http://127.0.0.1:443/data/deletefilter/candidat BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'id_serie': '8'}}
+2022-03-15 16:26:11,822 Asking API on : http://127.0.0.1:443/data/fetchfilter/matiere BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'id_serie': '8'}}
+2022-03-15 16:26:11,832 Erreur : Traceback (most recent call last):
+  File "C:\Users\louid\OneDrive\Documents\EspaceDeTravail\S2\PTS\pts2021_sujet14\stack\website\secondtour_website\website\function\main_database.py", line 196, in delete_serie
+    response = ask_api(f"data/deletefilter/liste_matiere", {"id_matiere": matiere["id_matiere"]})
+TypeError: byte indices must be integers or slices, not str
+
+2022-03-15 16:26:11,833 Erreur : Traceback (most recent call last):
+  File "C:\Users\louid\OneDrive\Documents\EspaceDeTravail\S2\PTS\pts2021_sujet14\stack\website\secondtour_website\website\function\main_database.py", line 196, in delete_serie
+    response = ask_api(f"data/deletefilter/liste_matiere", {"id_matiere": matiere["id_matiere"]})
+TypeError: byte indices must be integers or slices, not str
+
+2022-03-15 16:26:11,834 Asking API on : http://127.0.0.1:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['candidat', 'serie', 'matiere', 'salle', 'choix_matiere']}
+2022-03-15 16:26:11,962 127.0.0.1 - - [15/Mar/2022 16:26:11] "POST /admin/series HTTP/1.1" 200 -
+2022-03-15 16:26:13,396 127.0.0.1 - - [15/Mar/2022 16:26:13] "[36mGET /static/main.css HTTP/1.1[0m" 304 -
+2022-03-15 16:26:13,398 127.0.0.1 - - [15/Mar/2022 16:26:13] "[36mGET /static/admin.css HTTP/1.1[0m" 304 -
+2022-03-15 16:26:13,486 127.0.0.1 - - [15/Mar/2022 16:26:13] "[36mGET /static/img/logo_square.ico HTTP/1.1[0m" 304 -
+2022-03-15 16:26:13,526 127.0.0.1 - - [15/Mar/2022 16:26:13] "[36mGET /static/img/logo_square.ico HTTP/1.1[0m" 304 -
+2022-03-15 16:27:18,686  * Detected change in 'C:\\Users\\louid\\OneDrive\\Documents\\EspaceDeTravail\\S2\\PTS\\pts2021_sujet14\\stack\\website\\secondtour_website\\website\\function\\main_database.py', reloading
+2022-03-15 16:27:18,839  * Restarting with stat
+2022-03-15 16:27:20,629 Asking API on : http://127.0.0.1:443/version
+2022-03-15 16:27:20,638 Run the server
+2022-03-15 16:27:20,652  * Debugger is active!
+2022-03-15 16:27:20,659  * Debugger PIN: 298-853-937
+2022-03-15 16:27:21,819  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2022-03-15 16:27:21,819  * Running on http://10.13.1.135:5000/ (Press CTRL+C to quit)
+2022-03-15 16:27:22,751 Asking API on : http://127.0.0.1:443/data/fetchfilter/utilisateur BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'email': 'admin@ac-poitiers.fr', 'admin': '1'}}
+2022-03-15 16:27:22,764 Asking API on : http://127.0.0.1:443/data/fetchfilter/candidat BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'id_serie': '8'}}
+2022-03-15 16:27:22,772 Asking API on : http://127.0.0.1:443/data/deletefilter/candidat BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'id_serie': '8'}}
+2022-03-15 16:27:22,782 Asking API on : http://127.0.0.1:443/data/fetchfilter/matiere BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'id_serie': '8'}}
+2022-03-15 16:27:22,790 Asking API on : http://127.0.0.1:443/data/deletefilter/liste_matiere BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'id_matiere': 25}}
+2022-03-15 16:27:22,808 Asking API on : http://127.0.0.1:443/data/deletefilter/liste_matiere BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'id_matiere': 26}}
+2022-03-15 16:27:22,822 Asking API on : http://127.0.0.1:443/data/deletefilter/liste_matiere BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'id_matiere': 31}}
+2022-03-15 16:27:22,837 Asking API on : http://127.0.0.1:443/data/deletefilter/liste_matiere BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'id_matiere': 32}}
+2022-03-15 16:27:22,853 Asking API on : http://127.0.0.1:443/data/deletefilter/matiere BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'id_serie': '8'}}
+2022-03-15 16:27:22,870 Asking API on : http://127.0.0.1:443/data/deletefilter/serie BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'id_serie': '8'}}
+2022-03-15 16:27:22,927 Asking API on : http://127.0.0.1:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['candidat', 'serie', 'matiere', 'salle', 'choix_matiere']}
+2022-03-15 16:27:22,976 127.0.0.1 - - [15/Mar/2022 16:27:22] "POST /admin/series HTTP/1.1" 200 -
+2022-03-15 16:27:23,951 127.0.0.1 - - [15/Mar/2022 16:27:23] "[36mGET /static/main.css HTTP/1.1[0m" 304 -
+2022-03-15 16:27:23,952 127.0.0.1 - - [15/Mar/2022 16:27:23] "[36mGET /static/admin.css HTTP/1.1[0m" 304 -
+2022-03-15 16:27:24,031 127.0.0.1 - - [15/Mar/2022 16:27:24] "[36mGET /static/img/logo_square.ico HTTP/1.1[0m" 304 -
+2022-03-15 16:27:24,089 127.0.0.1 - - [15/Mar/2022 16:27:24] "[36mGET /static/img/logo_square.ico HTTP/1.1[0m" 304 -
+2022-03-15 16:27:25,183 Asking API on : http://127.0.0.1:443/data/fetchfilter/utilisateur BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'email': 'admin@ac-poitiers.fr', 'admin': '1'}}
+2022-03-15 16:27:25,191 Asking API on : http://127.0.0.1:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['candidat', 'serie', 'matiere', 'salle', 'choix_matiere']}
+2022-03-15 16:27:25,234 127.0.0.1 - - [15/Mar/2022 16:27:25] "GET /admin/matieres HTTP/1.1" 200 -
+2022-03-15 16:27:25,709 127.0.0.1 - - [15/Mar/2022 16:27:25] "[36mGET /static/main.css HTTP/1.1[0m" 304 -
+2022-03-15 16:27:25,711 127.0.0.1 - - [15/Mar/2022 16:27:25] "[36mGET /static/admin.css HTTP/1.1[0m" 304 -
+2022-03-15 16:27:25,872 127.0.0.1 - - [15/Mar/2022 16:27:25] "[36mGET /static/img/logo_square.ico HTTP/1.1[0m" 304 -
+2022-03-15 16:27:25,901 127.0.0.1 - - [15/Mar/2022 16:27:25] "[36mGET /static/img/logo_square.ico HTTP/1.1[0m" 304 -
+2022-03-15 16:27:27,964 Asking API on : http://127.0.0.1:443/data/fetchfilter/utilisateur BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'email': 'admin@ac-poitiers.fr', 'admin': '1'}}
+2022-03-15 16:27:27,973 Asking API on : http://127.0.0.1:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['candidat', 'serie', 'matiere', 'salle', 'choix_matiere']}
+2022-03-15 16:27:27,990 127.0.0.1 - - [15/Mar/2022 16:27:27] "GET /admin/series HTTP/1.1" 200 -
+2022-03-15 16:27:28,729 127.0.0.1 - - [15/Mar/2022 16:27:28] "[36mGET /static/main.css HTTP/1.1[0m" 304 -
+2022-03-15 16:27:28,734 127.0.0.1 - - [15/Mar/2022 16:27:28] "[36mGET /static/admin.css HTTP/1.1[0m" 304 -
+2022-03-15 16:27:28,956 127.0.0.1 - - [15/Mar/2022 16:27:28] "[36mGET /static/img/logo_square.ico HTTP/1.1[0m" 304 -
+2022-03-15 16:27:29,005 127.0.0.1 - - [15/Mar/2022 16:27:29] "[36mGET /static/img/logo_square.ico HTTP/1.1[0m" 304 -
+2022-03-15 16:28:02,238 Asking API on : http://127.0.0.1:443/data/fetchfilter/utilisateur BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': {'email': 'admin@ac-poitiers.fr', 'admin': '1'}}
+2022-03-15 16:28:02,248 Asking API on : http://127.0.0.1:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['candidat', 'choix_matiere', 'serie', 'matiere', 'professeur', 'salle', 'creneau']}
+2022-03-15 16:28:02,301 127.0.0.1 - - [15/Mar/2022 16:28:02] "GET /admin/candidats HTTP/1.1" 200 -
+2022-03-15 16:28:02,854 127.0.0.1 - - [15/Mar/2022 16:28:02] "[36mGET /static/main.css HTTP/1.1[0m" 304 -
+2022-03-15 16:28:02,854 127.0.0.1 - - [15/Mar/2022 16:28:02] "[36mGET /static/admin.css HTTP/1.1[0m" 304 -
+2022-03-15 16:28:02,992 127.0.0.1 - - [15/Mar/2022 16:28:02] "[36mGET /static/img/logo_square.ico HTTP/1.1[0m" 304 -
+2022-03-15 16:28:03,056 127.0.0.1 - - [15/Mar/2022 16:28:03] "[36mGET /static/img/logo_square.ico HTTP/1.1[0m" 304 -
