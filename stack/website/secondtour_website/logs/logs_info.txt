@@ -9,3 +9,4 @@
 2022-03-11 18:58:29,949 Asking API on : http://api:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['candidat', 'creneau', 'serie', 'matiere', 'salle']}
 2022-03-11 19:03:09,865 Asking API on : http://api:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['candidat', 'creneau', 'serie', 'matiere', 'salle']}
 2022-03-11 19:18:02,569 Asking API on : http://api:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['candidat', 'creneau', 'serie', 'matiere', 'salle']}
+2022-03-11 20:30:53,868 Asking API on : http://api:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['candidat', 'creneau', 'serie', 'matiere', 'salle']}

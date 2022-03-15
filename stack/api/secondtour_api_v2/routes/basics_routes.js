@@ -1,7 +1,6 @@
 const express = require('express')
 const router = express.Router()
 
-
 /**
  * @swagger
  * /api/{table}:
@@ -28,43 +27,38 @@ const router = express.Router()
  *          '401':
  *              description: Your authentification identifiers are not correct
  */
- router.route('/:table').post(async (req, res) => {
-  let content = req.body['content'];
-  console.log(content);
-  if (content)
-  {
+router.route('/:table').post(async (req, res) => {
+  let content = req.body['content']
+  console.log(content)
+  if (content) {
     let table = req.params['table']
-  let result = await db.query(`SELECT * FROM ${table};`).catch(e => {
-    res.status(500).send(e)
-  })
-  res.send(result)
-  }
-  else
-  {
-      let table = req.params['table']
+    let result = await db.query(`SELECT * FROM ${table};`).catch(e => {
+      res.status(500).send(e)
+    })
+    res.send(result)
+  } else {
+    let table = req.params['table']
 
-      let condition = ''
-      Object.keys(content).forEach((element, index) => {
-        if (index != 0) condition += ' AND '
-        if (
-          content[element] === 'null' ||
-          !isNaN(content[element]) ||
-          content[element] === 'true' ||
-          content[element] === 'false'
-        )
-          condition += element + ' = ' + content[element]
-        else condition += element + " = '" + content[element] + "'"
+    let condition = ''
+    Object.keys(content).forEach((element, index) => {
+      if (index != 0) condition += ' AND '
+      if (
+        content[element] === 'null' ||
+        !isNaN(content[element]) ||
+        content[element] === 'true' ||
+        content[element] === 'false'
+      )
+        condition += element + ' = ' + content[element]
+      else condition += element + " = '" + content[element] + "'"
+    })
+    let result = await db
+      .query(`SELECT * FROM ${table} WHERE ${condition};`)
+      .catch(e => {
+        res.status(500).send(e)
       })
-      let result = await db
-        .query(`SELECT * FROM ${table} WHERE ${condition};`)
-        .catch(e => {
-          res.status(500).send(e)
-        })
-      res.send(result)
+    res.send(result)
   }
 })
-
-
 
 /**
  * @swagger
@@ -92,7 +86,7 @@ const router = express.Router()
  *          '401':
  *              description: Your authentification identifiers are not correct
  */
- router.route('/insert/:table').put(async (req, res) => {
+router.route('/insert/:table').put(async (req, res) => {
   let table = req.params['table']
   let content = req.body['content']
   let values = '('
@@ -102,7 +96,11 @@ const router = express.Router()
   })
   values += ') VALUES ('
   Object.keys(content).forEach((element, index) => {
-    if (content[element].toString().match(/... ... [0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2} [0-9]{4}/)) {
+    if (
+      content[element]
+        .toString()
+        .match(/... ... [0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2} [0-9]{4}/)
+    ) {
       content[element] =
         "STR_TO_DATE('" + content[element] + "', '%a %b %d %H:%i:%s %Y')"
       values += content[element]
@@ -146,7 +144,7 @@ const router = express.Router()
  *          '401':
  *              description: Your authentification identifiers are not correct
  */
- router.route('/fetchmulti').post(async (req, res) => {
+router.route('/fetchmulti').post(async (req, res) => {
   let tables = req.body['content']
   let result = []
   for (let i = 0; i < tables.length; i++) {
@@ -159,7 +157,6 @@ const router = express.Router()
 
   res.send(result)
 })
-
 
 /**
  * @swagger
@@ -187,21 +184,19 @@ const router = express.Router()
  *          '401':
  *              description: Your authentification identifiers are not correct
  */
- router.route('/:table').delete(async (req, res) => {
-  let content = req.body['content'];
-  console.log(content);
-  let table = req.params['table'];
-  if (content)
-  {
-    console.log("nofilter");
-  let result = await db.query(`DELETE FROM ${table};`).catch(e => {
-    res.status(500).send(e)
-  })
-  res.status(202).send(result)
-  }
-  else 
-  let condition = ''
-  console.log("filter");
+router.route('/:table').delete(async (req, res) => {
+  let content = req.body['content']
+  console.log(content)
+  let table = req.params['table']
+  if (content) {
+    console.log('nofilter')
+    let result = await db.query(`DELETE FROM ${table};`).catch(e => {
+      res.status(500).send(e)
+    })
+    res.status(202).send(result)
+  } else {
+    let condition = ''
+    console.log('filter')
     Object.keys(content).forEach((element, index) => {
       if (index != 0) condition += ' AND '
       if (
@@ -219,7 +214,7 @@ const router = express.Router()
         res.status(500).send(e)
       })
     res.status(202).send(result)
-  
+  }
 })
 
 /**
@@ -248,7 +243,7 @@ const router = express.Router()
  *          '401':
  *              description: Your authentification identifiers are not correct
  */
- router.route('/deletefilter/:table').delete(async (req, res) => {
+router.route('/deletefilter/:table').delete(async (req, res) => {
   let table = req.params['table']
   let content = req.body['content']
   let condition = ''
@@ -292,7 +287,7 @@ const router = express.Router()
  *          '401':
  *              description: Your authentification identifiers are not correct
  */
- router.route('/deleteall').delete(async (req, res) => {
+router.route('/deleteall').delete(async (req, res) => {
   let tables = await db.query(`SHOW TABLES;`).catch(e => {
     res.status(500).send(e)
   })
@@ -334,7 +329,7 @@ const router = express.Router()
  *          '401':
  *              description: Your authentification identifiers are not correct
  */
- router.route('/updatefilter/:table').patch(async (req, res) => {
+router.route('/updatefilter/:table').patch(async (req, res) => {
   let table = req.params['table']
   let content = req.body['content']
   let content_condition = content['filter']
@@ -353,19 +348,23 @@ const router = express.Router()
   let content_data = content['data']
   let data = ''
   Object.keys(content_data).forEach((element, index) => {
-    if (content_data[element].toString().match(/... ... [0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2} [0-9]{4}/)) {
+    if (
+      content_data[element]
+        .toString()
+        .match(/... ... [0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2} [0-9]{4}/)
+    ) {
       content_data[element] =
         "STR_TO_DATE('" + content_data[element] + "', '%a %b %d %H:%i:%s %Y')"
-        data += element + ' = ' + content_data[element]
-    }else{
-    if (
-      content_data[element] === 'null' ||
-      !isNaN(content_data[element]) ||
-      content_data[element] === 'true' ||
-      content_data[element] === 'false'
-    )
       data += element + ' = ' + content_data[element]
-    else data += element + ' = ' + "'" + content_data[element] + "'"
+    } else {
+      if (
+        content_data[element] === 'null' ||
+        !isNaN(content_data[element]) ||
+        content_data[element] === 'true' ||
+        content_data[element] === 'false'
+      )
+        data += element + ' = ' + content_data[element]
+      else data += element + ' = ' + "'" + content_data[element] + "'"
     }
     if (index != Object.keys(content_data).length - 1) data += ', '
   })
@@ -377,9 +376,8 @@ const router = express.Router()
   res.status(202).send(result)
 })
 
-
 router.route('/token').post(async (req, res) => {
-  res.status(200).send({"token":UUIDv4()})
+  res.status(200).send({ token: UUIDv4() })
 })
 
 module.exports = router
