@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 2022-03-08 14:09:45,287 Asking API on : http://api:443/data/fetchmulti BODY : {'username': 'admin', 'password': 'L0calAdmin', 'content': ['candidat', 'creneau', 'serie', 'matiere', 'salle']}
 2022-03-08 14:09:45,349 Exception on / [GET]
 Traceback (most recent call last):
@@ -10965,3 +10966,5 @@ IndexError: list index out of range
 2022-03-18 11:01:40,711 127.0.0.1 - - [18/Mar/2022 11:01:40] "[36mGET /static/admin.css HTTP/1.1[0m" 304 -
 2022-03-18 11:01:40,915 127.0.0.1 - - [18/Mar/2022 11:01:40] "GET /static/main.css.map HTTP/1.1" 200 -
 2022-03-18 11:01:40,918 127.0.0.1 - - [18/Mar/2022 11:01:40] "GET /static/admin.css.map HTTP/1.1" 200 -
+=======
+>>>>>>> a8888a9d0216f3f1ab0b74a4ddc89a9015dbbbc7
