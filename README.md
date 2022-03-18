@@ -58,3 +58,5 @@
 - [Réunion du 2 Mars 2022](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/R%C3%A9union-avec-le-tuteur#r%C3%A9union-du-2-mars-2022)
 
 #### 8. [Documentation API](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Documentation-de-l'API#documentation-de-lapi)
+- [Présentation de l'API](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Documentation-de-l'API#1-pr%C3%A9sentation-de-lapi)
+- [Définition des routes](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Documentation-de-l'API#2-d%C3%A9finition-des-routes)
