@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 1646600836569
 FROM:
 	IP :::ffff:172.18.0.1 : 
@@ -146349,3 +146350,5 @@ REQUEST :
 	Method : POST
 	Url : /fetchmulti
 	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","creneau","serie","matiere","professeur","salle"]}
+=======
+>>>>>>> fe5f5bd8769c0d6f368aadc8a21e82ac6a233a36
