@@ -444,7 +444,7 @@
         let matiereId = document.getElementById("matiere-select" + opt).value;
         let all_salles = JSON.parse('{{all_salles|tojson}}');
         let all_professeurs = JSON.parse('{{all_professeur|tojson}}');
-        let all_liste_matieres = JSON.parse('{{ all_liste_matieres|tojson }}')
+        let all_liste_matieres = JSON.parse('{{ all_liste_matieres|tojson }}');
 
         for (let i = 0; i < all_matieres.length; i++) {
             if (all_matieres[i].id_matiere == matiereId) {
@@ -481,6 +481,9 @@
         let salleId = document.getElementById("salle-select" + opt).value;
         let all_salles = JSON.parse('{{all_salles|tojson}}');
         let all_creneaux = JSON.parse('{{all_creneau|tojson}}');
+        let all_professeur = JSON.parse('{{all_professeur|tojson}}');
+        let all_liste_matiere = JSON.parse('{{ all_liste_matieres|tojson }}');
+        let all_horaires = JSON.parse('{{ all_horaires|tojson }}');
         let matiereId = document.getElementById("matiere-select" + opt).value;
         let matiere = null;
         for (let i = 0; i < all_matieres.length; i++) {
@@ -570,7 +573,24 @@
                         heure_debut_preparation_voulue_datetime = year + '/' + month + '/' + '0' + jour_debut_preparation_voulue + ':' + convert_from_decimal_time(heure_debut_preparation_voulue)
                         fin_preparation_matiere_datetime = year + '/' + month + '/' + '0' + jour_debut_preparation_voulue + ':' + convert_from_decimal_time(heure_debut_preparation_voulue + temps_preparation_matiere)
                         fin_passage_matiere_datetime = year + '/' + month + '/' + '0' + jour_debut_preparation_voulue + ':' + convert_from_decimal_time(heure_debut_preparation_voulue + temps_preparation_matiere + temps_passage_matiere)
-
+                        all_professeur.forEach(professeur => {
+                            all_liste_matiere.forEach(liste_matiere =>{
+                                if(liste_matiere["id_professeur"]==professeur["id_professeur"] && liste_matiere["id_matiere"]==matiere["id_matiere"]){
+                                    all_horaires.forEach(horaire =>{
+                                        if(horaire["id_professeur"] == professeur["id_professeur"]){
+                                            //console.log(heure_debut_preparation_voulue)
+                                            
+                                            let horaire_arr = new Date(horaire["horaire_arr"+(parseInt(jour_debut_preparation_voulue))]);
+                                            let horaire_dep = new Date(horaire["horaire_dep"+(parseInt(jour_debut_preparation_voulue))]);
+                                            if(horaire_arr.getDay()==jour_debut_preparation_voulue && ((horaire_arr.getHours()+(horaire_arr.getMinutes()/60))>heure_debut_preparation_voulue)){
+                                                aucune_collision=false;
+                                            }
+                                        }
+                                    });
+                                }
+                            });
+                        });
+                        
                         if (aucune_collision) {
                             let optionDebut = document.createElement("option");
                             optionDebut.value = heure_debut_preparation_voulue_datetime;

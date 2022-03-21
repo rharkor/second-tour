@@ -89,9 +89,9 @@
           }
           for (let i = 0; i < tableArray.length; i++) {
             element = tableArray[i];
-            let unTruc = document.createElement("th");
+            let unTh = document.createElement("th");
             let leHead = element.tHead.getElementsByTagName("tr")[0];
-            leHead.prepend(unTruc);
+            leHead.prepend(unTh);
             let aRow = element.getElementsByTagName('tbody')[0].getElementsByClassName('clickable');
             let leBody;
 
@@ -99,9 +99,9 @@
               leBody = element.tBodies[0].getElementsByClassName("clickable")[k];
               if (trArray.indexOf(leBody) === -1) {
                 trArray.push(leBody);
-                let unAutre = document.createElement("td");
-                unAutre.innerHTML = '<td scope="row"> <i class="fas fa-caret-right"></i> </td>'
-                leBody.prepend(unAutre);
+                let unTd = document.createElement("td");
+                unTd.innerHTML = '<td scope="row"> <i class="fas fa-caret-right"></i> </td>'
+                leBody.prepend(unTd);
               }
             }
           }
