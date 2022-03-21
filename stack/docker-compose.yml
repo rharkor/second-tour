@@ -14,7 +14,7 @@ services:
     networks:
       - back-network
     ports:
-      - 80:80
+      - 8000:80
   api:
     build:
       context: .
@@ -28,7 +28,7 @@ services:
     networks:
       - back-network
     ports:
-      - 443:443
+      - 44300:443
   mysql:
     build:
       context: .
@@ -37,7 +37,7 @@ services:
     command: --default-authentication-plugin=mysql_native_password
     container_name: secondtour-mysql
     ports:
-      - 3306:3306
+      - 33060:3306
     volumes:
       - ./mysql/db:/var/lib/mysql
     environment:
