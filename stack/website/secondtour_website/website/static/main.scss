@@ -20,8 +20,14 @@ body {
     display: contents;
 }
 
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
 main {
-    min-height: 100%;
     height: max-content;
     width: 100%;
     display: flex;
