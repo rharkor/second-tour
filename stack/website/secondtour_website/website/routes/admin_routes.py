@@ -502,10 +502,10 @@ def creneau():
                 flash(result[0], result[1])
 
         response = ask_api("data/fetchmulti", ["candidat", "serie", "matiere",
-                           "salle", "choix_matiere", "professeur", "creneau", "liste_matiere"])
+                           "salle", "choix_matiere", "professeur", "creneau", "liste_matiere", "horaire"])
         if response.status_code != 200:
             flash("Une erreur est survenue lors de la récupération des données", "danger")
-        all_candidats, all_series, all_matieres, all_salles, all_choix_matieres, all_professeur, all_creneau, all_liste_matieres = response.json()
+        all_candidats, all_series, all_matieres, all_salles, all_choix_matieres, all_professeur, all_creneau, all_liste_matieres, all_horaires = response.json()
         all_creneau.sort(key=lambda creneau: creneau['id_candidat'])
         for creneau in all_creneau:
             creneau["debut_preparation"] = datetime.strptime(creneau["debut_preparation"], '%a %b %d %H:%M:%S %Y') if type(
@@ -561,7 +561,7 @@ def creneau():
         # all_liste_matieres = []
         # for liste_matiere in liste_matieres:
         #     all_liste_matieres.append(liste_matiere.as_dict())
-        return render_template('admin/creneau.html', all_professeur=all_professeur, all_creneau=all_creneau, all_candidats=all_candidats, all_matieres=all_matieres, all_salles=all_salles, all_creneau_deb=all_creneau_deb, all_series=all_series, all_choix_matieres=all_choix_matieres, all_liste_matieres=all_liste_matieres)
+        return render_template('admin/creneau.html', all_professeur=all_professeur, all_creneau=all_creneau, all_candidats=all_candidats, all_matieres=all_matieres, all_salles=all_salles, all_creneau_deb=all_creneau_deb, all_series=all_series, all_choix_matieres=all_choix_matieres, all_liste_matieres=all_liste_matieres, all_horaires=all_horaires)
     else:
         return redirect(url_for('main_routes.connexion'))
 

@@ -4,7 +4,7 @@ from email.message import EmailMessage
 import os
 
 EMAIL_ADDRESS = 'secondtourdubac@gmail.com'
-EMAIL_PASSWORD = 'scrum123'
+EMAIL_PASSWORD = 'ScruMdeLamort1412!-'
 
 
 def send_email(email, token):

@@ -1,7 +1,7 @@
 ARG VERSION
 
 # Dev image
-FROM ubuntu:latest
+FROM ubuntu
 
 
 
@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y nginx \
     && apt-get install nano \
     && apt install -y python3-pip python3-dev build-essential libssl-dev libffi-dev python3-setuptools \
     && rm /etc/nginx/sites-enabled/default
+
 RUN mkdir -p /app/website/secondtour_website 
 
 COPY ./website/secondtour_website/requirements.txt /app/website/secondtour_website/requirements.txt
