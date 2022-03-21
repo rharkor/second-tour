@@ -146006,3 +146006,82 @@ REQUEST :
 =======
 >>>>>>> a8888a9d0216f3f1ab0b74a4ddc89a9015dbbbc7
 >>>>>>> 8163691104e1cc811b0c7e9b9e6681bda06eb8b1
+1647599479227
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1647599479236
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["utilisateur","token","professeur"]}1647599481826
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1647599481842
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","horaire","matiere","professeur","salle","creneau","liste_matiere"]}1647599485309
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchfilter/utilisateur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"email":"admin@ac-poitiers.fr","admin":"1"}}1647599485314
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /token
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1647599485327
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/professeur
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_professeur":"null","nom":"HUORT","prenom":"Louis","salle":"null"}}1647599485338
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/token
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_token":"null","email":"louid.huort@gmail.com","token":"488c33b0-3623-49a9-8313-2080205eddba","id_professeur":100,"admin":"false"}}1647599486519
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : PUT
+	Url : /insert/horaire
+	Body : {"username":"admin","password":"L0calAdmin","content":{"id_horaire":"null","horaire_arr1":"STR_TO_DATE('Mon Jan 01 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep1":"STR_TO_DATE('Mon Jan 01 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_arr2":"STR_TO_DATE('Tue Jan 02 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep2":"STR_TO_DATE('Tue Jan 02 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_arr3":"STR_TO_DATE('Wed Jan 03 08:00:00 1900', '%a %b %d %H:%i:%s %Y')","horaire_dep3":"STR_TO_DATE('Wed Jan 03 20:00:00 1900', '%a %b %d %H:%i:%s %Y')","id_professeur":100}}1647599486534
+FROM:
+	IP :::ffff:172.18.0.4 : 
+REQUEST :
+	Method : POST
+	Url : /fetchmulti
+	Body : {"username":"admin","password":"L0calAdmin","content":["candidat","horaire","matiere","professeur","salle","creneau","liste_matiere"]}1647867549066
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1647867771942
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}1647868118932
+FROM:
+	IP :::ffff:127.0.0.1 : 
+REQUEST :
+	Method : POST
+	Url : /fetch/salle
+	Body : {"username":"admin","password":"L0calAdmin","content":{}}
