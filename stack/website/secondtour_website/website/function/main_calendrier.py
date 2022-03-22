@@ -61,6 +61,8 @@ def generation_calendrier():
         for a_choix_matiere in all_choix_matieres:
             if a_choix_matiere["id_candidat"] == candidat["id_candidat"]:
                 choix_matiere = a_choix_matiere
+        if not choix_matiere:
+            continue
 
         # Get both matiere
         matiere1, matiere2 = None, None
