@@ -292,7 +292,7 @@ router.route('/deleteall').delete(async (req, res) => {
     let a_result = await db
       .query(`DELETE FROM ${table['Tables_in_secondtour']};`)
       .catch(e => {
-        res.status(500).send(e)
+        console.log(e)
       })
     result.push(a_result)
   })

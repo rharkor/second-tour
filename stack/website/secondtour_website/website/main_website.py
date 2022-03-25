@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flaskext.mysql import MySQL
 from datetime import timedelta
@@ -59,6 +59,12 @@ else:
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/data.sqlite3'
 
 db = SQLAlchemy(app)
+
+
+@app.errorhandler(404)
+def page_not_found(e):
+    # note that we set the 404 status explicitly
+    return render_template('404.html'), 404
 
 # Configure the routes blueprint
 from .routes.register_routes import register_routes

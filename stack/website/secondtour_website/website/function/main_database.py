@@ -54,7 +54,7 @@ def add_account(email, password, user_type_string, output=False):
                 "Impossible de récupérer tout les tokens")
             return ['Impossible de récupérer tout les tokens', 'danger']
         id_prof = response.json()[0]["id_professeur"]
-        
+
         user = {"id_utilisateur": "null", "email": email, "password": hashed_password,
                 "admin": "true" if user_type else "false", "id_professeur": id_prof}
         response = ask_api("data/insert/utilisateur", user)
@@ -183,7 +183,7 @@ def delete_serie(id):
             logging.warning(
                 "Impossible de supprimer les candidats correspondants à cette serie")
             return ['Impossible de supprimer les candidats correspondants à cette serie', 'danger']
-        
+
         liste_matieres_filter = {"id_serie": id}
         response = ask_api(f"data/fetchfilter/matiere", liste_matieres_filter)
         if response.status_code != 200:
@@ -191,14 +191,14 @@ def delete_serie(id):
                 "Impossible de récupérer la liste des matières")
             return ['Impossible de récupérer la liste des matières', 'danger']
         liste_matieres = response.json()
-        
+
         for matiere in liste_matieres:
-            response = ask_api(f"data/deletefilter/liste_matiere", {"id_matiere": matiere["id_matiere"]})
+            response = ask_api(f"data/deletefilter/liste_matiere",
+                               {"id_matiere": matiere["id_matiere"]})
             if response.status_code != 202:
                 logging.warning(
                     "Impossible de supprimer le lien de la série avec les professeurs")
                 return ['Impossible de supprimer le lien de la série avec les professeurs', 'danger']
-            
 
         matiere_filter = {"id_serie": id}
         response = ask_api(f"data/deletefilter/matiere", matiere_filter)
@@ -737,7 +737,7 @@ def update_professeur_wep(id, user, nom, prenom, salle, matieres=None, heure_arr
         #     return ['Le professeur a bien été modifié', 'success']
         # else:
         #     return professeur.unvalid
-        return ['Le professeur a bien été modifié', 'success'] 
+        return ['Le professeur a bien été modifié', 'success']
     except Exception:
         logging.warning('Erreur : ' + traceback.format_exc())
         return ['Erreur : ' + traceback.format_exc(), 'danger']
@@ -913,13 +913,23 @@ def delete_candidat(id):
 
 def delete_all_candidats():
     try:
-        # candidats = CANDIDAT.query.all()
-        # for candidat in candidats:
-        #     logging.warning(f'Suppression du candidat {candidat.id_candidat}')
-        #     result = delete_candidat(candidat.id_candidat)
-        #     if result:
-        #         flash(result[0], result[1])
+        # choix matiere
+        response = ask_api("data/delete/choix_matiere", {})
+        if response.status_code != 202:
+            logging.warning(
+                "Erreur lors de la suppression des choix de matieres du candidat")
+            return "Erreur lors de la suppression des choix de matieres du candidat", "danger"
+
+        # creneaux
+        response = ask_api("data/delete/creneau", {})
+        if response.status_code != 202:
+            logging.warning(
+                "Erreur lors de la suppression des creneaux du candidat")
+            return "Erreur lors de la suppression des creneaux du candidat", "danger"
         response = ask_api("data/delete/candidat", {})
+
+        print(response.text)
+
         if response.status_code != 202:
             logging.warning("Erreur lors de la suppression des candidats")
             return "Erreur lors de la suppression des candidats", "danger"

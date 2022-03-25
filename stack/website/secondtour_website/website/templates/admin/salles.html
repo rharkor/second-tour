@@ -133,6 +133,7 @@
                                                                     a_prof.id_professeur %}
                                                                     {% if creneau.id_matiere == liste_matiere.id_matiere
                                                                     %}
+                                                                    {% if creneau.id_salle == a_prof.salle %}
                                                                     <tr class="not-null">
                                                                         {% for candidat in all_candidats %}
                                                                         {% if candidat.id_candidat ==
@@ -171,6 +172,7 @@
                                                                             {{creneau.fin.strftime("%H:%M")}}</td>
                                                                         <td scope="row"></td>
                                                                     </tr>
+                                                                    {% endif %}
                                                                     {% endif %}
                                                                     {% endif %}
                                                                     {% endfor %}
