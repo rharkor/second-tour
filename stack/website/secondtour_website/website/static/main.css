@@ -18,8 +18,14 @@ body {
   display: contents;
 }
 
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
 main {
-  min-height: 100%;
   height: -webkit-max-content;
   height: -moz-max-content;
   height: max-content;
