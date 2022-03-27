@@ -30,8 +30,7 @@
                                 </select>
                             </div>
                         </th>
-                        <th scope="col" class="align-text-top">Spécialité 1</th>
-                        <th scope="col" class="align-text-top">Spécialité 2</th>
+                        <th scope="col" class="align-text-top">Spécialité</th>
                         <th scope="col" class="modifier align-text-top">Modifier</th>
                         <th scope="col" class="supprimer align-text-top">Supprimer</th>
                     </tr>
@@ -41,8 +40,6 @@
                     <tr class="clickable" data-bs-toggle="collapse" data-bs-target="#accordion{{an_serie.id_serie}}">
                         <td scope="row">{{an_serie.nom}}</td>
                         <td scope="row">{% if an_serie.specialite1: %}{{an_serie.specialite1}}{% endif %}
-                        </td>
-                        <td scope="row">{% if an_serie.specialite2: %}{{an_serie.specialite2}}{% endif %}
                         </td>
                         <td scope="row">
                             <form method="post" action="{{url_for('admin_routes.series')}}"
@@ -158,14 +155,9 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="specialite1">Première spécialité</label>
-                            <input type="text" class="form-control" id="specialite1" name="specialite1"
-                                placeholder="Entrez une spécialité" required="required">
-                        </div>
-                        <div class="form-group">
-                            <label for="specialite2">Seconde spécialité</label>
-                            <input type="text" class="form-control" id="specialite2" name="specialite2"
-                                placeholder="Entrez une spécialité" required="required">
+                            <label for="specialite1">Spécialité</label>
+                            <input type="text" class="form-control" disabled="true" id="specialite1" name="specialite1"
+                                placeholder="Entrez la spécialité" required="required" onclick="testSpecialityModif()">
                         </div>
                     </form>
                 </div>
@@ -198,14 +190,9 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="specialite1">Première spécialité</label>
+                            <label for="specialite1">Spécialité</label>
                             <input type="text" class="form-control" id="specialite1-modif" name="specialite1"
-                                placeholder="Entrez une spécialité" required="required">
-                        </div>
-                        <div class="form-group">
-                            <label for="specialite2">Seconde spécialité</label>
-                            <input type="text" class="form-control" id="specialite2-modif" name="specialite2"
-                                placeholder="Entrez une spécialité" required="required" onclick="testSpecialityModif()">
+                                placeholder="Entrez la spécialité" required="required" onclick="testSpecialityModif()">
                         </div>
                         <input type="hidden" name="id" id="hiddenIdModif">
                     </form>
@@ -247,23 +234,23 @@
 <script>
     function testSpeciality(opt="") {
         d = document.getElementById("selectTypeUser").value;
-        second = document.getElementById("specialite2");
-        if (d === "Technologique") {
-            second.setAttribute('disabled', 'true');
-            second.value=null;
+        first = document.getElementById("specialite1");
+        if (d === "Générale") {
+            first.setAttribute('disabled', 'true');
+            first.value=null;
         } else {
-            second.removeAttribute('disabled');
+            first.removeAttribute('disabled');
         }
     }
 
     function testSpecialityModif(){
         d=document.getElementById("selectTypeUsermodif").value;
-        second = document.getElementById("specialite2-modif");
-        if (d === "Technologique") {
-            second.setAttribute('disabled', 'true');
-            second.value=null;
+        first = document.getElementById("specialite1-modif");
+        if (d === "Générale") {
+            first.setAttribute('disabled', 'true');
+            first.value=null;
         } else {
-            second.removeAttribute('disabled');
+            first.removeAttribute('disabled');
         }
     }
 
@@ -294,15 +281,10 @@
         }
 
         form_elements[1].value=null;
-        form_elements[2].value=null;
 
 
         if(serie['specialite1']!=null){
             form_elements[1].value=serie['specialite1'];
-        }
-
-        if(serie['specialite2']!=null){
-            form_elements[2].value=serie['specialite2'];
         }
     })
 

@@ -297,6 +297,13 @@ def professeurs():
         all_candidats, all_horaires, all_matieres, all_professeurs, all_salles, all_creneaux, all_liste_matiere = response.json()
         all_professeurs.sort(key=lambda professeur: professeur['nom'])
         all_creneaux.sort(key=lambda creneau: creneau['debut_preparation'])
+        for creneau in all_creneaux:
+            creneau["debut_preparation"] = datetime.strptime(creneau["debut_preparation"], '%a %b %d %H:%M:%S %Y') if type(
+                creneau["debut_preparation"]) == str else creneau["debut_preparation"]
+            creneau["fin_preparation"] = datetime.strptime(creneau["fin_preparation"], '%a %b %d %H:%M:%S %Y') if type(
+                creneau["fin_preparation"]) == str else creneau["fin_preparation"]
+            creneau["fin"] = datetime.strptime(creneau["fin"], '%a %b %d %H:%M:%S %Y') if type(
+                creneau["fin"]) == str else creneau["fin"]
         all_horaires_unsort = all_horaires.copy()
         all_horaires = transform_dict_strptime(all_horaires_unsort, [
                                                "horaire_arr1", "horaire_dep1", "horaire_arr2", "horaire_dep2", "horaire_arr3", "horaire_dep3"])
@@ -344,9 +351,9 @@ def series():
         if request.method == 'POST':
             form = request.form
             if form.get('submit_button') is not None:
-                if 'serie' in form and 'specialite1' in form:
+                if 'serie' in form:
                     result = main_database.add_serie(
-                        form['serie'], form['specialite1'], form['specialite2'] if 'specialite2' in form else "null", True)
+                        form['serie'], form['specialite1'] if 'specialite1' in form else 'null', form['specialite2'] if 'specialite2' in form else "null", True)
                     flash(result[0][0], result[0][1])
                     logging.warning(result[0][0])
                     if result[0][1] == 'success':
@@ -356,9 +363,34 @@ def series():
                         result_s = main_database.add_matiere(
                             'Philosophie', result[1]['id_serie'], 30, 40, 30, 40, None)
                         logging.warning(result_s[0])
+                    if form['serie'] == "Générale":
+                        result_s = main_database.add_matiere(
+                            'Anglais', result[1]['id_serie'], 20, 27, 20, 27, None)
+                        logging.warning(result_s[0])
+                        result_s = main_database.add_matiere(
+                            'Espagnol', result[1]['id_serie'], 20, 27, 20, 27, None)
+                        logging.warning(result_s[0])
+                        result_s = main_database.add_matiere(
+                            'HGGSP', result[1]['id_serie'], 20, 27, 20, 27, None)
+                        logging.warning(result_s[0])
+                        result_s = main_database.add_matiere(
+                            'Math-NSI', result[1]['id_serie'], 20, 27, 20, 27, None)
+                        logging.warning(result_s[0])
+                        result_s = main_database.add_matiere(
+                            'Mathématiques', result[1]['id_serie'], 20, 27, 20, 27, None)
+                        logging.warning(result_s[0])
+                        result_s = main_database.add_matiere(
+                            'Physique', result[1]['id_serie'], 20, 27, 20, 27, None)
+                        logging.warning(result_s[0])
+                        result_s = main_database.add_matiere(
+                            'SES', result[1]['id_serie'], 20, 27, 30, 40, None)
+                        logging.warning(result_s[0])
+                        result_s = main_database.add_matiere(
+                            'SVT', result[1]['id_serie'], 20, 27, 20, 27, None)
+                        logging.warning(result_s[0])
             elif form.get('modify_button') is not None:
-                if 'id' in form and 'serie' in form and 'specialite1' in form:
-                    if r := main_database.update_serie(form['id'], form['serie'], form['specialite1'], form['specialite2'] if 'specialite2' in form else "null"):
+                if 'id' in form and 'serie' in form:
+                    if r := main_database.update_serie(form['id'], form['serie'], form['specialite1'] if 'specialite1' in form else 'null', form['specialite2'] if 'specialite2' in form else "null"):
                         flash(r[0], r[1])
                         logging.warning(r[0])
             elif form.get('delete_button') is not None:
