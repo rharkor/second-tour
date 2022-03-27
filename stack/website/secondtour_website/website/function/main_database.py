@@ -108,7 +108,7 @@ def delete_account(id):
 
 def add_serie(serie_choice, specialite1, specialite2, ret=False):
     try:
-        serie = {"id_serie": "null", "nom": serie_choice, "specialite1": specialite1,
+        serie = {"id_serie": "null", "nom": serie_choice, "specialite1": specialite1 if specialite1 else "null",
                  "specialite2": specialite2 if specialite2 else "null"}
         response = ask_api("data/insert/serie", serie)
         if response.status_code != 201:
@@ -648,7 +648,7 @@ def add_professeur_wep(user, nom, prenom, salle, matieres=None):
 def update_matiere(id, nom, id_serie, temps_preparation, temps_preparation_tiers_temps, temps_passage, temps_passage_tiers_temps, loge):
     try:
         matiere = {"filter": {"id_matiere": id}, "data": {"id_matiere": id, "id_serie": id_serie, "nom": nom, "temps_preparation": temps_preparation,
-                                                          "temps_preparation_tiers_temps": temps_preparation_tiers_temps, "temps_passage": temps_passage, "temps_passage_tiers_temps": temps_passage_tiers_temps, "loge": loge}}
+                                                          "temps_preparation_tiers_temps": temps_preparation_tiers_temps, "temps_passage": temps_passage, "temps_passage_tiers_temps": temps_passage_tiers_temps, "loge": loge if loge else "null"}}
         response = ask_api("data/updatefilter/matiere", matiere)
         if response.status_code != 202:
             logging.warning("Erreur lors de l'insertion des matieres")

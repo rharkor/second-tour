@@ -156,8 +156,11 @@
                                                 <td scope="row">{{candidat.prenom}}</td>
                                                 {% endif %}
                                                 {% endfor %}
-                                                <td scope="row">{{creneau.debut_preparation}}</td>
-                                                <td scope="row">{{creneau.fin}}</td>
+                                                <td scope="row">Jour
+                                                    {{creneau.debut_preparation.strftime("%d")}} |
+                                                    {{creneau.debut_preparation.strftime("%H:%M")}}</td>
+                                                <td scope="row">{{creneau.fin.strftime("%d")}} |
+                                                    {{creneau.fin.strftime("%H:%M")}}</td>
                                                 <td scope="row" class="hide"></td>
                                             </tr>
                                             {% endif %}

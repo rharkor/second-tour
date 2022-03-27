@@ -22,7 +22,7 @@ create table if not exists serie
     id_serie    int auto_increment
         primary key,
     nom         varchar(40) not null,
-    specialite1 varchar(50) not null,
+    specialite1 varchar(50) null,
     specialite2 varchar(50) null,
     constraint UNQ_NOM_SPE1_SPE2
         unique (nom, specialite1, specialite2)

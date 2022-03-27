@@ -77,7 +77,7 @@
                         <td scope="row">
                             {% for a_serie in all_series %}
                             {% if a_serie.id_serie == a_matiere.id_serie %}
-                            {{a_serie.nom}} - {% if a_serie.specialite1 %}{{a_serie.specialite1}}{% endif %}{% if
+                            {{a_serie.nom}}{% if a_serie.specialite1 %} - {{a_serie.specialite1}}{% endif %}{% if
                             a_serie.specialite2 %}/{{a_serie.specialite2}}{% endif %}
                             {% endif %}
                             {% endfor %}
