@@ -358,10 +358,10 @@ def series():
                     logging.warning(result[0][0])
                     if result[0][1] == 'success':
                         result_s = main_database.add_matiere(
-                            'Français', result[1]['id_serie'], 30, 40, 30, 40, None)
+                            'Français', result[1]['id_serie'], 30, 40, 20, 27, None)
                         logging.warning(result_s[0])
                         result_s = main_database.add_matiere(
-                            'Philosophie', result[1]['id_serie'], 30, 40, 30, 40, None)
+                            'Philosophie', result[1]['id_serie'], 20, 27, 20, 27, None)
                         logging.warning(result_s[0])
                     if form['serie'] == "Générale":
                         result_s = main_database.add_matiere(
