@@ -9,7 +9,7 @@
 - Planification du passage des candidats au second groupe d'épreuves du Baccalauréat (Oraux de rattrapage)
 seconde année de DUT Informatique promotion 2022
 
-#### Introduction : Présentation du sujet (contexte, objectifs et enjeux):
+#### Présentation du sujet:
 
 ##### Contexte :
 Le Lycée Vieljeux de La Rochelle (Lycée général et technologique) à fait appel aux étudiants du DUT informatique de La Rochelle afin qu’ils puissent leur apporter une application permettant de générer automatiquement le planning des rattrapages du BAC. Pour rappel, un candidat du baccalauréat est amené à participer aux oraux de rattrapage lorsqu’il termine les épreuves du baccalauréat avec une moyenne située entre 8 et 10 sur 20. Le jour même de son rattrapage, l’élève choisit deux matières parmi celles qui ont fait l'objet d'épreuves écrites lors des épreuves du baccalauréat (Philosophie, Français, ses deux spécialités).
