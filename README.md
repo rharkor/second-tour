@@ -1,12 +1,24 @@
 - Vers notre [Miro](https://miro.com/app/board/o9J_lq-Az28=/) <br>
 - Vers notre [Figma](https://www.figma.com/file/9ZiTvUc1RZmHgXqwQZ7R7n/Untitled?node-id=0%3A1)
 
-Tuteur : Jammal Malki
+#### Différents partis du projet:
 
-Client : Patrick Spiteri
+- Élèves : HUORT Louis / HACALA Maude / DESCROIX Max / FESNEAU Matthéo / SANTAGUILIANA Théau
+- Clients : SPITERI Patrick, proviseur adjoint du Lycée Vieljeux de La Rochelle ainsi que GIRAUD Jean-Michel qui a suivi le projet durant son déroulement.
+- Tuteur : MALKI Jamal
+- Planification du passage des candidats au second groupe d'épreuves du Baccalauréat (Oraux de rattrapage)
+seconde année de DUT Informatique promotion 2022
 
-Client 2 : Jean-Michel Girault
+#### Introduction : Présentation du sujet (contexte, objectifs et enjeux):
 
+##### Contexte :
+Le Lycée Vieljeux de La Rochelle (Lycée général et technologique) à fait appel aux étudiants du DUT informatique de La Rochelle afin qu’ils puissent leur apporter une application permettant de générer automatiquement le planning des rattrapages du BAC. Pour rappel, un candidat du baccalauréat est amené à participer aux oraux de rattrapage lorsqu’il termine les épreuves du baccalauréat avec une moyenne située entre 8 et 10 sur 20. Le jour même de son rattrapage, l’élève choisit deux matières parmi celles qui ont fait l'objet d'épreuves écrites lors des épreuves du baccalauréat (Philosophie, Français, ses deux spécialités).
+
+##### Objectifs :
+L'objectif du projet est de créer une application permettant de proposer à l'affichage un planning de passage pour chaque candidat admis au second groupe d'épreuves(rattrapage). Ce planning devra, en fonction des choix des candidats et des capacités du centre d'examen, mentionner les horaires de passage ainsi que la salle d'interrogation.
+
+##### Enjeux :
+Il faut que l’application soit fonctionnelle avant les épreuves du baccalauréat 2022 (Avant juin 2022) afin qu'elle puisse être utilisée pour celles-ci.
 
 #### 1. [Présentation du projet](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Pr%C3%A9sentation-du-projet)
 
