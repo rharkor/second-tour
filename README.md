@@ -1,6 +1,11 @@
 - Vers notre [Miro](https://miro.com/app/board/o9J_lq-Az28=/) <br>
 - Vers notre [Figma](https://www.figma.com/file/9ZiTvUc1RZmHgXqwQZ7R7n/Untitled?node-id=0%3A1)
 
+Tuteur : Jammal Malki
+Client : Patrick Spiteri
+Client 2 : Jean-Michel Girault
+
+
 #### 1. [Présentation du projet](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Pr%C3%A9sentation-du-projet)
 
 - [Sujet de base](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Pr%C3%A9sentation-du-projet#sujet-de-base)
