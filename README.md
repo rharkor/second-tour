@@ -2,7 +2,9 @@
 - Vers notre [Figma](https://www.figma.com/file/9ZiTvUc1RZmHgXqwQZ7R7n/Untitled?node-id=0%3A1)
 
 Tuteur : Jammal Malki
+
 Client : Patrick Spiteri
+
 Client 2 : Jean-Michel Girault
 
 
