@@ -6,6 +6,7 @@ from logging import WARNING, ERROR, FileHandler, INFO
 import logging
 import os
 import sys
+import requests
 
 from sqlalchemy import false
 sys.path.append(os.path.join(os.path.dirname(__file__)))
@@ -75,3 +76,29 @@ app.register_blueprint(main_routes, url_prefix='/')
 app.register_blueprint(admin_routes, url_prefix='/admin')
 app.register_blueprint(professeur_routes, url_prefix='/professeur')
 app.register_blueprint(register_routes, url_prefix='/register')
+
+if(os.getenv("NETWORK_VISU") == "true"):
+    requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+            "type": "node",
+            "name": "website",
+            "data": {
+                "name": "website",
+                "id": "website",
+                "size": 123,
+                "fsize": 50
+            },
+            "position": {
+                "x": 472,
+                "y": 578
+            }
+        })
+    requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+            "type": "edge",
+            "name": "website:api",
+            "data": {
+                "id": "website:api",
+                "weight": 1,
+                "source": "website",
+                "target": "api"
+            }
+        })

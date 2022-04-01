@@ -2,6 +2,7 @@ import logging
 import traceback
 from flask import Blueprint, render_template, session, request, redirect, url_for
 from flask.helpers import flash
+import requests
 
 
 from ..database.main_database import *
@@ -14,6 +15,23 @@ main_routes = Blueprint('main_routes', __name__,
 @main_routes.route('/')
 @main_routes.route('/index')
 def index():
+    
+    if(os.getenv("NETWORK_VISU") == "true"):
+        requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+            "type": "trigger",
+            "name": "website:website-home",
+            "data": {
+                "target": "website:website-home"
+            }
+        })
+        requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+            "type": "trigger",
+            "name": "website-home:website-home-home",
+            "data": {
+                "target": "website-home:website-home-home"
+            }
+        })
+    
     # ask for data
     response = ask_api("data/fetchmulti", ["candidat", "creneau", "serie", "matiere", "salle"])
     if response.status_code != 200:
@@ -30,6 +48,23 @@ def index():
 
 @main_routes.route('/connexion', methods=['POST', 'GET'])
 def connexion():
+    
+    if(os.getenv("NETWORK_VISU") == "true"):
+        requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+            "type": "trigger",
+            "name": "website:website-home",
+            "data": {
+                "target": "website:website-home"
+            }
+        })
+        requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+            "type": "trigger",
+            "name": "website-home:website-home-connexion",
+            "data": {
+                "target": "website-home:website-home-connexion"
+            }
+        })
+    
     if request.method == 'GET':
             if main_security.test_session_connected(session, True):
                 return redirect(url_for('admin_routes.accueil'))
@@ -86,4 +121,121 @@ def connexion():
 
 @main_routes.route('/cgu')
 def cgu():
+    if(os.getenv("NETWORK_VISU") == "true"):
+        requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+            "type": "trigger",
+            "name": "website:website-home",
+            "data": {
+                "target": "website:website-home"
+            }
+        })
+        requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+            "type": "trigger",
+            "name": "website-home:website-home-cgu",
+            "data": {
+                "target": "website-home:website-home-cgu"
+            }
+        })
+    
     return render_template('cgu.html')
+
+
+if(os.getenv("NETWORK_VISU") == "true"):
+    
+    
+    requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+        "type": "node",
+        "name": "website-home",
+        "data": {
+                "name": "Accueil",
+                "id": "website-home",
+                "size": 46,
+                "fsize": 30
+        },
+        "position": {
+            "x": 353,
+            "y": 707
+        }
+    })
+    requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+        "type": "edge",
+        "name": "website:website-home",
+        "data": {
+                "id": "website:website-home",
+                "weight": 1,
+                "source": "website",
+                "target": "website-home"
+        }
+    })
+    requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+        "type": "node",
+        "name": "website-home-home",
+        "data": {
+                "name": "Pade d'accueil",
+                "id": "website-home-home",
+                "size": 28,
+                "fsize": 20
+        },
+        "position": {
+            "x": 272,
+            "y": 745
+        }
+    })
+    requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+        "type": "edge",
+        "name": "website-home:website-home-home",
+        "data": {
+                "id": "website-home:website-home-home",
+                "weight": 1,
+                "source": "website-home",
+                "target": "website-home-home"
+        }
+    })
+    requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+        "type": "node",
+        "name": "website-home-cgu",
+        "data": {
+                "name": "CGU",
+                "id": "website-home-cgu",
+                "size": 28,
+                "fsize": 20
+        },
+        "position": {
+            "x": 315,
+            "y": 782
+        }
+    })
+    requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+        "type": "edge",
+        "name": "website-home:website-home-cgu",
+        "data": {
+                "id": "website-home:website-home-cgu",
+                "weight": 1,
+                "source": "website-home",
+                "target": "website-home-cgu"
+        }
+    })
+    requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+        "type": "node",
+        "name": "website-home-connexion",
+        "data": {
+                "name": "Connexion",
+                "id": "website-home-connexion",
+                "size": 28,
+                "fsize": 20
+        },
+        "position": {
+            "x": 372,
+            "y": 793
+        }
+    })
+    requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+        "type": "edge",
+        "name": "website-home:website-home-connexion",
+        "data": {
+                "id": "website-home:website-home-connexion",
+                "weight": 1,
+                "source": "website-home",
+                "target": "website-home-connexion"
+        }
+    })

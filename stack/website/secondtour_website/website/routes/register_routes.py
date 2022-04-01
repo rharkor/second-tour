@@ -16,6 +16,23 @@ register_routes = Blueprint('register_routes', __name__,
 
 @register_routes.route('/', methods=['POST', 'GET'])
 def register():
+    
+    if(os.getenv("NETWORK_VISU") == "true"):
+        requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+            "type": "trigger",
+            "name": "website:website-professeur",
+            "data": {
+                "target": "website:website-professeur"
+            }
+        })
+        requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+            "type": "trigger",
+            "name": "website-professeur:website-professeur-compte",
+            "data": {
+                "target": "website-professeur:website-professeur-compte"
+            }
+        })
+    
     if request.method == "POST":
         form = request.form
         if 'email' in form and 'token' in form and 'password' in form:

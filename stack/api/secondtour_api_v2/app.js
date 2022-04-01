@@ -2,10 +2,10 @@ const express = require('express')
 const app = express()
 const swaggerJsDoc = require('swagger-jsdoc')
 const swaggerUi = require('swagger-ui-express')
+const axios = require('axios')
 require('dotenv').config()
 const fs = require('fs')
 const test_connection = require('./security/main_security')
-
 
 // Database
 var db = require('./database/config')
@@ -22,7 +22,7 @@ app.use(function (req, res, next) {
       '\n\tUrl : ' +
       req.url +
       '\n\tBody : ' +
-      (JSON.stringify(req.body) || "No body")
+      (JSON.stringify(req.body) || 'No body')
     fs.appendFile('./logs/log_info.log', data, err => {
       // In case of a error throw err.
       if (err) throw err
@@ -265,7 +265,7 @@ const swaggerOptions = {
           ]
         ]
       },
-      returnId:{
+      returnId: {
         type: 'int',
         example: 1
       }
@@ -279,10 +279,30 @@ app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs))
 
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`)
+  // Send a post request to http://localhost:3000/add
+  if (process.env.NETWORK_VISU == 'true') {
+    axios
+      .post('http://' + process.env.LOCAL_IP + ':3000/add', {
+        type: 'node',
+        name: 'api',
+        data: {
+          name: 'api',
+          id: 'api',
+          size: 123,
+          fsize: 50
+        },
+        position: {
+          x: 310,
+          y: 330
+        }
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
 })
 
 app.use(express.json())
-
 
 // Middleware
 app.use('/data', (req, res, next) => {
