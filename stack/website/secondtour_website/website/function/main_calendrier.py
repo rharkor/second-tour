@@ -46,13 +46,48 @@ def generation_calendrier():
     # Start with techno serie
     # Create a var that contain the candidates order by techno then general
     candidat_ordened = []
+    candidat_general = []
+    candidat_techno = []
     for candidat in all_candidats:
         if candidat["id_serie"] in series_generale:
+            candidat_general.append(candidat)
+        else:
+            candidat_techno.append(candidat)
+    # Order by tiers temps
+    candidat_techno_orderned = []
+    for candidat in candidat_techno:
+        if candidat["tiers_temps"] == True:
             # Push at the end
-            candidat_ordened.append(candidat)
+            candidat_techno_orderned.append(candidat)
         else:
             # Push at the begining
-            candidat_ordened.insert(0, candidat)
+            candidat_techno_orderned.insert(0, candidat)
+    candidat_general_orderned = []
+    for candidat in candidat_general:
+        if candidat["tiers_temps"] == True:
+            # Push at the end
+            candidat_general_orderned.append(candidat)
+        else:
+            # Push at the begining
+            candidat_general_orderned.insert(0, candidat)
+            
+    # candidat_ordened.append(candidat_techno_orderned)
+    # candidat_ordened.append(candidat_general_orderned)
+    # print(candidat_ordened)
+
+    # Append all candidat order by techno then general in candidat_ordened
+    for candidat in candidat_techno_orderned:
+        candidat_ordened.append(candidat)
+    for candidat in candidat_general_orderned:
+        candidat_ordened.append(candidat)
+    
+    # for candidat in all_candidats:
+    #     if candidat["id_serie"] in series_generale:
+    #         # Push at the end
+    #         candidat_ordened.append(candidat)
+    #     else:
+    #         # Push at the begining
+    #         candidat_ordened.insert(0, candidat)
 
     # Create the creneau for each candidate
     for candidat in candidat_ordened:

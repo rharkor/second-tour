@@ -156,8 +156,8 @@ def main_insert():
         for i in tqdm (range (random.randint(3 * len(series), 6 * len(series))), desc="Uploading 'Candidats'"):
             output = ['', '', 'danger']
             while output[2] == 'danger':
-                nom = faker.first_name()
-                prenom = faker.last_name()
+                prenom = faker.first_name()
+                nom = faker.last_name()
                 serie = series[random.randint(0, len(series)-1)]["id_serie"]
                 output = main_database.add_candidat(nom, prenom, serie, str(not bool(random.randint(0,7))), False, output=True)
                 try:
