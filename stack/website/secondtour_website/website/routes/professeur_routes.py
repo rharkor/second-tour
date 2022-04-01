@@ -48,6 +48,13 @@ def accueil():
         response_creneau = ask_api(
             "data/fetch/creneau", {})
         all_creneaux = response_creneau.json()
+        for creneau in all_creneaux:
+            creneau["debut_preparation"] = datetime.strptime(creneau["debut_preparation"], '%a %b %d %H:%M:%S %Y') if type(
+                creneau["debut_preparation"]) == str else creneau["debut_preparation"]
+            creneau["fin_preparation"] = datetime.strptime(creneau["fin_preparation"], '%a %b %d %H:%M:%S %Y') if type(
+                creneau["fin_preparation"]) == str else creneau["fin_preparation"]
+            creneau["fin"] = datetime.strptime(creneau["fin"], '%a %b %d %H:%M:%S %Y') if type(
+                creneau["fin"]) == str else creneau["fin"]
         return render_template('professeur/accueil.html', id_matieres=id_matieres, all_candidats=all_candidats, all_creneaux=all_creneaux, id_salle=id_salle, all_professeurs=all_professeurs, all_salles=all_salles)
     else:
         return redirect(url_for('main_routes.connexion'))
