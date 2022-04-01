@@ -1,6 +1,26 @@
 - Vers notre [Miro](https://miro.com/app/board/o9J_lq-Az28=/) <br>
 - Vers notre [Figma](https://www.figma.com/file/9ZiTvUc1RZmHgXqwQZ7R7n/Untitled?node-id=0%3A1)
 
+#### Lancer le projet:
+Pour lancer le projet il faut lancer la stack docker.
+
+Se placer dans la stack:
+```console
+cd stack
+```
+
+Lancer la stack:
+```console
+docker-compose up --build
+```
+
+Pour accéder aux conteneurs individuels il faut éxecuter (*la stack doit être entrain de tourner*):
+```console
+docker exec -it nom-du-conteneur bash
+```
+
+*ps: Le site et l'API ont un fichier de log accessible à leur racine.*
+
 #### Différents partis du projet:
 
 - Élèves : HUORT Louis / HACALA Maude / DESCROIX Max / FESNEAU Matthéo / SANTAGUILIANA Théau
