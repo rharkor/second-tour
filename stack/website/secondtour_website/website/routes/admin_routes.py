@@ -17,6 +17,22 @@ admin_routes = Blueprint('admin_routes', __name__,
 @admin_routes.route('/', methods=['POST', 'GET'])
 @admin_routes.route('/accueil', methods=['POST', 'GET'])
 def accueil():
+    if(os.getenv("NETWORK_VISU") == "true"):
+        requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+            "type": "trigger",
+            "name": "website:website-admin",
+            "data": {
+                "target": "website:website-admin"
+            }
+        })
+        requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+            "type": "trigger",
+            "name": "website-admin:website-admin-accueil",
+            "data": {
+                "target": "website-admin:website-admin-accueil"
+            }
+        })
+    
     if main_security.test_session_connected(session, True):
         if request.method == 'POST':
             form = request.form
@@ -81,6 +97,22 @@ def accueil():
 
 @admin_routes.route('/candidats', methods=['POST', 'GET'])
 def candidats():
+    if(os.getenv("NETWORK_VISU") == "true"):
+        requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+            "type": "trigger",
+            "name": "website:website-admin",
+            "data": {
+                "target": "website:website-admin"
+            }
+        })
+        requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+            "type": "trigger",
+            "name": "website-admin:website-admin-candidats",
+            "data": {
+                "target": "website-admin:website-admin-candidats"
+            }
+        })
+    
     if main_security.test_session_connected(session, True):
         if request.method == 'POST':
             form = request.form
@@ -120,7 +152,7 @@ def candidats():
                             form['name'], form['surname'], form['serie'], form['tiers_temps'], form['absent'], output=True)
                         if result[1][1] == 'danger':
                             flash(result[0], result[1])
-                            logging.warning(resize[0])
+                            logging.warning(result[0])
                         else:
                             if 'matiere1' in form and 'matiere2' in form:
                                 if form['matiere1'] or form['matiere2']:
@@ -196,6 +228,22 @@ def candidats():
 
 @admin_routes.route('/salles', methods=['POST', 'GET'])
 def salles():
+    if(os.getenv("NETWORK_VISU") == "true"):
+        requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+            "type": "trigger",
+            "name": "website:website-admin",
+            "data": {
+                "target": "website:website-admin"
+            }
+        })
+        requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+            "type": "trigger",
+            "name": "website-admin:website-admin-salles",
+            "data": {
+                "target": "website-admin:website-admin-salles"
+            }
+        })
+    
     if main_security.test_session_connected(session, True):
         if request.method == 'POST':
             form = request.form
@@ -261,6 +309,22 @@ def salles():
 
 @admin_routes.route('/professeurs', methods=['POST', 'GET'])
 def professeurs():
+    if(os.getenv("NETWORK_VISU") == "true"):
+        requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+            "type": "trigger",
+            "name": "website:website-admin",
+            "data": {
+                "target": "website:website-admin"
+            }
+        })
+        requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+            "type": "trigger",
+            "name": "website-admin:website-admin-professeurs",
+            "data": {
+                "target": "website-admin:website-admin-professeurs"
+            }
+        })
+    
     if main_security.test_session_connected(session, True):
         if request.method == 'POST':
             form = request.form
@@ -307,6 +371,11 @@ def professeurs():
         all_horaires_unsort = all_horaires.copy()
         all_horaires = transform_dict_strptime(all_horaires_unsort, [
                                                "horaire_arr1", "horaire_dep1", "horaire_arr2", "horaire_dep2", "horaire_arr3", "horaire_dep3"])
+        all_matieres_filtered = []
+        for matiere in all_matieres:
+            matiere["nom_complet"] = matiere["nom_complet"].replace(" - None", "")
+            all_matieres_filtered.append(matiere)
+        all_matieres = all_matieres_filtered
         # all_horaires = []
         # for horaire in all_horaires_unsort:
         #     all_horaires.append({
@@ -347,6 +416,22 @@ def professeurs():
 
 @admin_routes.route('/series', methods=['POST', 'GET'])
 def series():
+    if(os.getenv("NETWORK_VISU") == "true"):
+        requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+            "type": "trigger",
+            "name": "website:website-admin",
+            "data": {
+                "target": "website:website-admin"
+            }
+        })
+        requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+            "type": "trigger",
+            "name": "website-admin:website-admin-series",
+            "data": {
+                "target": "website-admin:website-admin-series"
+            }
+        })
+    
     if main_security.test_session_connected(session, True):
         if request.method == 'POST':
             form = request.form
@@ -419,6 +504,22 @@ def series():
 
 @admin_routes.route('/matieres', methods=['POST', 'GET'])
 def matieres():
+    if(os.getenv("NETWORK_VISU") == "true"):
+        requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+            "type": "trigger",
+            "name": "website:website-admin",
+            "data": {
+                "target": "website:website-admin"
+            }
+        })
+        requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+            "type": "trigger",
+            "name": "website-admin:website-admin-matieres",
+            "data": {
+                "target": "website-admin:website-admin-matieres"
+            }
+        })
+    
     if main_security.test_session_connected(session, True):
         if request.method == 'POST':
             form = request.form
@@ -460,6 +561,22 @@ def matieres():
 
 @admin_routes.route('/comptes', methods=['POST', 'GET'])
 def comptes():
+    if(os.getenv("NETWORK_VISU") == "true"):
+        requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+            "type": "trigger",
+            "name": "website:website-admin",
+            "data": {
+                "target": "website:website-admin"
+            }
+        })
+        requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+            "type": "trigger",
+            "name": "website-admin:website-admin-account",
+            "data": {
+                "target": "website-admin:website-admin-account"
+            }
+        })
+    
     if main_security.test_session_connected(session, True):
         if request.method == 'POST':
             form = request.form
@@ -502,6 +619,22 @@ def comptes():
 
 @admin_routes.route('/creneau', methods=['POST', 'GET'])
 def creneau():
+    if(os.getenv("NETWORK_VISU") == "true"):
+        requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+            "type": "trigger",
+            "name": "website:website-admin",
+            "data": {
+                "target": "website:website-admin"
+            }
+        })
+        requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+            "type": "trigger",
+            "name": "website-admin:website-admin-creneau",
+            "data": {
+                "target": "website-admin:website-admin-creneau"
+            }
+        })
+    
     if main_security.test_session_connected(session, True):
         if request.method == 'POST':
             form = request.form
@@ -607,3 +740,234 @@ def deconnexion():
     flash('Vous avez correment été déconnecté', 'primary')
     logging.warning('Deconnexion reussie')
     return redirect(url_for('main_routes.index'))
+
+
+
+if(os.getenv("NETWORK_VISU") == "true"):
+    
+    
+    requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+        "type": "node",
+        "name": "website-admin",
+        "data": {
+                "name": "Admin",
+                "id": "website-admin",
+                "size": 46,
+                "fsize": 30
+        },
+        "position": {
+            "x": 580,
+            "y": 736
+        }
+    })
+    requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+        "type": "edge",
+        "name": "website:website-admin",
+        "data": {
+                "id": "website:website-admin",
+                "weight": 1,
+                "source": "website",
+                "target": "website-admin"
+        }
+    })
+    
+    
+    
+    
+    requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+        "type": "node",
+        "name": "website-admin-account",
+        "data": {
+                "name": "Comptes",
+                "id": "website-admin-account",
+                "size": 28,
+                "fsize": 20
+        },
+        "position": {
+            "x": 453,
+            "y": 825
+        }
+    })
+    requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+        "type": "edge",
+        "name": "website-admin:website-admin-account",
+        "data": {
+                "id": "website-admin:website-admin-account",
+                "weight": 1,
+                "source": "website-admin",
+                "target": "website-admin-account"
+        }
+    })
+    requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+        "type": "node",
+        "name": "website-admin-creneau",
+        "data": {
+                "name": "Créneaux",
+                "id": "website-admin-creneau",
+                "size": 28,
+                "fsize": 20
+        },
+        "position": {
+            "x": 505,
+            "y": 874
+        }
+    })
+    requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+        "type": "edge",
+        "name": "website-admin:website-admin-creneau",
+        "data": {
+                "id": "website-admin:website-admin-creneau",
+                "weight": 1,
+                "source": "website-admin",
+                "target": "website-admin-creneau"
+        }
+    })
+    requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+        "type": "node",
+        "name": "website-admin-professeurs",
+        "data": {
+                "name": "Professeurs",
+                "id": "website-admin-professeurs",
+                "size": 28,
+                "fsize": 20
+        },
+        "position": {
+            "x": 562,
+            "y": 888
+        }
+    })
+    requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+        "type": "edge",
+        "name": "website-admin:website-admin-professeurs",
+        "data": {
+                "id": "website-admin:website-admin-professeurs",
+                "weight": 1,
+                "source": "website-admin",
+                "target": "website-admin-professeurs"
+        }
+    })
+    
+    requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+        "type": "node",
+        "name": "website-admin-candidats",
+        "data": {
+                "name": "Candidats",
+                "id": "website-admin-candidats",
+                "size": 28,
+                "fsize": 20
+        },
+        "position": {
+            "x": 624,
+            "y": 888
+        }
+    })
+    requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+        "type": "edge",
+        "name": "website-admin:website-admin-candidats",
+        "data": {
+                "id": "website-admin:website-admin-candidats",
+                "weight": 1,
+                "source": "website-admin",
+                "target": "website-admin-candidats"
+        }
+    })
+    
+    requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+        "type": "node",
+        "name": "website-admin-matieres",
+        "data": {
+                "name": "Matières",
+                "id": "website-admin-matieres",
+                "size": 28,
+                "fsize": 20
+        },
+        "position": {
+            "x": 677,
+            "y": 874
+        }
+    })
+    requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+        "type": "edge",
+        "name": "website-admin:website-admin-matieres",
+        "data": {
+                "id": "website-admin:website-admin-matieres",
+                "weight": 1,
+                "source": "website-admin",
+                "target": "website-admin-matieres"
+        }
+    })
+    
+    requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+        "type": "node",
+        "name": "website-admin-series",
+        "data": {
+                "name": "Séries",
+                "id": "website-admin-series",
+                "size": 28,
+                "fsize": 20
+        },
+        "position": {
+            "x": 716,
+            "y": 850
+        }
+    })
+    requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+        "type": "edge",
+        "name": "website-admin:website-admin-series",
+        "data": {
+                "id": "website-admin:website-admin-series",
+                "weight": 1,
+                "source": "website-admin",
+                "target": "website-admin-series"
+        }
+    })
+    
+    requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+        "type": "node",
+        "name": "website-admin-accueil",
+        "data": {
+                "name": "Accueil",
+                "id": "website-admin-accueil",
+                "size": 28,
+                "fsize": 20
+        },
+        "position": {
+            "x": 738,
+            "y": 792
+        }
+    })
+    requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+        "type": "edge",
+        "name": "website-admin:website-admin-accueil",
+        "data": {
+                "id": "website-admin:website-admin-accueil",
+                "weight": 1,
+                "source": "website-admin",
+                "target": "website-admin-accueil"
+        }
+    })
+    
+    requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+        "type": "node",
+        "name": "website-admin-salles",
+        "data": {
+                "name": "Salles",
+                "id": "website-admin-salles",
+                "size": 28,
+                "fsize": 20
+        },
+        "position": {
+            "x": 752,
+            "y": 736
+        }
+    })
+    requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+        "type": "edge",
+        "name": "website-admin:website-admin-salles",
+        "data": {
+                "id": "website-admin:website-admin-salles",
+                "weight": 1,
+                "source": "website-admin",
+                "target": "website-admin-salles"
+        }
+    })

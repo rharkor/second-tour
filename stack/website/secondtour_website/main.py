@@ -1,14 +1,15 @@
 import traceback
 from dotenv import load_dotenv
 load_dotenv()
-from website.main_website import app, db, logging
-import os
-import requests
 import logging
+import requests
+import os
+from website.main_website import app, db, logging
+
 
 def ask_api(what: str):
     url = os.getenv("API_URL") + what
-        
+
     logging.info("Asking API on : " + url)
     return requests.get(url)
 
@@ -30,13 +31,11 @@ def test(dev):
         quit("L'api n'est pas lancée")
 
 
-
-
 def run(debug_mode=False):
     logging.warning("Run the server")
     # Create db with the framwork sql alchemy
     # db.create_all()
-    
+
     # from website.database.test import insert_user
     # insert_user.inser_admin()
 

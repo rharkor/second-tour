@@ -6,6 +6,7 @@ import traceback
 from datetime import date, datetime, timedelta
 from flask.helpers import flash
 from copy import deepcopy
+import requests
 
 import flask
 
@@ -14,8 +15,7 @@ from ..database.main_database import *
 
 
 def generation_calendrier():
-    
-    
+
     # Delete all creneaux
     # all_creneaux = CRENEAU.query.all()
     # for creneau in all_creneaux:
@@ -25,7 +25,8 @@ def generation_calendrier():
     if response.status_code != 202:
         flash("Une erreur est survenue lors de la suppression des données", "danger")
 
-    response = ask_api("data/fetchmulti", ["candidat", "professeur", "liste_matiere", "choix_matiere", "matiere", "serie", "salle", "creneau", "horaire"])
+    response = ask_api("data/fetchmulti", ["candidat", "professeur", "liste_matiere",
+                       "choix_matiere", "matiere", "serie", "salle", "creneau", "horaire"])
     if response.status_code != 200:
         flash("Une erreur est survenue lors de la récupération des données", "danger")
     all_candidats, all_professeurs, all_liste_matiere, all_choix_matieres, all_matieres, all_series, all_salles, local_creneau, all_horaires = response.json()
@@ -70,7 +71,7 @@ def generation_calendrier():
         else:
             # Push at the begining
             candidat_general_orderned.insert(0, candidat)
-            
+
     # candidat_ordened.append(candidat_techno_orderned)
     # candidat_ordened.append(candidat_general_orderned)
     # print(candidat_ordened)
@@ -80,7 +81,7 @@ def generation_calendrier():
         candidat_ordened.append(candidat)
     for candidat in candidat_general_orderned:
         candidat_ordened.append(candidat)
-    
+
     # for candidat in all_candidats:
     #     if candidat["id_serie"] in series_generale:
     #         # Push at the end
@@ -91,6 +92,14 @@ def generation_calendrier():
 
     # Create the creneau for each candidate
     for candidat in candidat_ordened:
+        if(os.getenv("NETWORK_VISU") == "true"):
+            requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+                "type": "trigger",
+                "name": "website:website-calendar",
+                "data": {
+                    "target": "website:website-calendar"
+                }
+            })
         # Find the choix matiere correspondant
         choix_matiere = None
         for a_choix_matiere in all_choix_matieres:
@@ -118,7 +127,6 @@ def generation_calendrier():
                     if matiere2 is not None:
                         if liste_matiere["id_matiere"] == matiere2["id_matiere"]:
                             professeur_m2.append(professeur)
-        
 
         # salle for each matiere
         salle_m1, salle_m2 = [], []
@@ -178,17 +186,16 @@ def generation_calendrier():
                     for a_salle in salle_matiere:
                         # reset the var
                         aucune_collision = True
-                        
-                        for creneau in local_creneau:
-                            creneau["debut_preparation"] = datetime.strptime(creneau["debut_preparation"], '%a %b %d %H:%M:%S %Y') if type(creneau["debut_preparation"]) == str else creneau["debut_preparation"]
-                            creneau["fin_preparation"] = datetime.strptime(creneau["fin_preparation"], '%a %b %d %H:%M:%S %Y') if type(creneau["fin_preparation"]) == str else creneau["fin_preparation"]
-                            creneau["fin"] = datetime.strptime(creneau["fin"], '%a %b %d %H:%M:%S %Y') if type(creneau["fin"]) == str else creneau["fin"]
-                            
-                        
-                        
-                        all_creneaux = local_creneau
-                        
 
+                        for creneau in local_creneau:
+                            creneau["debut_preparation"] = datetime.strptime(creneau["debut_preparation"], '%a %b %d %H:%M:%S %Y') if type(
+                                creneau["debut_preparation"]) == str else creneau["debut_preparation"]
+                            creneau["fin_preparation"] = datetime.strptime(creneau["fin_preparation"], '%a %b %d %H:%M:%S %Y') if type(
+                                creneau["fin_preparation"]) == str else creneau["fin_preparation"]
+                            creneau["fin"] = datetime.strptime(creneau["fin"], '%a %b %d %H:%M:%S %Y') if type(
+                                creneau["fin"]) == str else creneau["fin"]
+
+                        all_creneaux = local_creneau
 
                         for creneau in all_creneaux:
                             if creneau["debut_preparation"].day == jour_debut_preparation_voulue:
@@ -217,13 +224,12 @@ def generation_calendrier():
                                         and not((heure_debut_preparation_voulue + temps_preparation_matiere >= timedelta(hours=fin_passage_creneau.hour, minutes=fin_passage_creneau.minute))
                                                 or (heure_debut_preparation_voulue + temps_preparation_matiere + temps_passage_matiere <= timedelta(hours=(debut_preparation_creneau.hour + temps_preparation_creneau.hour), minutes=(debut_preparation_creneau.minute + temps_preparation_creneau.minute)))):
                                         aucune_collision = False
-                                
+
                                 # Test if the user don't have already creneau and need a pause
                                 delta_m30 = (
                                     debut_preparation_creneau - timedelta(minutes=30))
                                 delta_p30 = (fin_passage_creneau +
                                              timedelta(minutes=30))
-
 
                                 if creneau["id_candidat"] == candidat["id_candidat"] \
                                     and not ((fin_passage_matiere <= timedelta(hours=delta_m30.hour, minutes=delta_m30.minute))
@@ -242,9 +248,11 @@ def generation_calendrier():
 
                                     local_creneau_test_break = local_creneau
                                     local_creneau_test_break.sort(key=order_by)
-                                    local_creneau_test_break_filtered = filter(lambda creneau: creneau["id_salle"] == a_salle["id_salle"], local_creneau_test_break)
-                                                                            
-                                    all_creneau_test_break = list(local_creneau_test_break_filtered)
+                                    local_creneau_test_break_filtered = filter(
+                                        lambda creneau: creneau["id_salle"] == a_salle["id_salle"], local_creneau_test_break)
+
+                                    all_creneau_test_break = list(
+                                        local_creneau_test_break_filtered)
                                     break_time = 0
                                     creneau_prec = all_creneau_test_break[0] if len(
                                         all_creneau_test_break) > 0 else []
@@ -261,7 +269,8 @@ def generation_calendrier():
                                                 aucune_collision = False
 
                                 # Test only morning or only afternoon
-                                first_creneau = list(filter(lambda creneau: creneau["id_candidat"] == candidat["id_candidat"], local_creneau))
+                                first_creneau = list(filter(
+                                    lambda creneau: creneau["id_candidat"] == candidat["id_candidat"], local_creneau))
                                 first_creneau = first_creneau[0] if first_creneau else None
                                 if first_creneau \
                                     and (((first_creneau["debut_preparation"].hour) <= 13 and heure_debut_preparation_voulue >= timedelta(hours=14))
@@ -269,7 +278,8 @@ def generation_calendrier():
                                     aucune_collision = False
 
                             # Test both same day
-                            first_creneau = list(filter(lambda creneau: creneau["id_candidat"] == candidat["id_candidat"], local_creneau))
+                            first_creneau = list(filter(
+                                lambda creneau: creneau["id_candidat"] == candidat["id_candidat"], local_creneau))
                             first_creneau = first_creneau[0] if first_creneau else None
                             if first_creneau \
                                     and (first_creneau["debut_preparation"].day != jour_debut_preparation_voulue):
@@ -288,20 +298,22 @@ def generation_calendrier():
                             #         res = main_database.add_creneau(candidat.id_candidat, matiere.id_matiere, a_salle.id_salle,
                             #                                     heure_debut_preparation_voulue_datetime, fin_preparation_matiere_datetime, fin_passage_matiere_datetime)
                             #         print(res)
-                        
+
                         for professeur in all_professeurs:
                             for liste_matiere in all_liste_matiere:
-                                if liste_matiere["id_professeur"]==professeur["id_professeur"] and liste_matiere["id_matiere"]==matiere["id_matiere"]:
+                                if liste_matiere["id_professeur"] == professeur["id_professeur"] and liste_matiere["id_matiere"] == matiere["id_matiere"]:
                                     for horaire in all_horaires:
-                                        if horaire["id_professeur"] == professeur["id_professeur"]:  
+                                        if horaire["id_professeur"] == professeur["id_professeur"]:
                                             heure_debut_preparation_voulue_datetime = datetime.strptime(
                                                 f'{jour_debut_preparation_voulue}/{datetime.now().month}/{datetime.now().year} ' + str(heure_debut_preparation_voulue), '%d/%m/%Y %H:%M:%f')
-                                            horaire_arr = datetime.strptime(horaire["horaire_arr"+str(int(jour_debut_preparation_voulue))], '%a %b %d %H:%M:%S %Y')
-                                            horaire_dep = datetime.strptime(horaire["horaire_dep"+str(int(jour_debut_preparation_voulue))], '%a %b %d %H:%M:%S %Y')
-                                            fin_passage_matiere_datetime = datetime.strptime(f'{jour_debut_preparation_voulue}/{datetime.now().month}/{datetime.now().year} ' + str((heure_debut_preparation_voulue + temps_preparation_matiere + temps_passage_matiere)), '%d/%m/%Y %H:%M:%f')
-                                            if int(horaire_arr.strftime('%d'))==int(jour_debut_preparation_voulue) and (horaire_arr.strftime('%H:%M:%S')>heure_debut_preparation_voulue_datetime.strftime('%H:%M:%S') or horaire_dep.strftime('%H:%M:%S')<fin_passage_matiere_datetime.strftime('%H:%M:%S')):
+                                            horaire_arr = datetime.strptime(
+                                                horaire["horaire_arr"+str(int(jour_debut_preparation_voulue))], '%a %b %d %H:%M:%S %Y')
+                                            horaire_dep = datetime.strptime(
+                                                horaire["horaire_dep"+str(int(jour_debut_preparation_voulue))], '%a %b %d %H:%M:%S %Y')
+                                            fin_passage_matiere_datetime = datetime.strptime(f'{jour_debut_preparation_voulue}/{datetime.now().month}/{datetime.now().year} ' + str(
+                                                (heure_debut_preparation_voulue + temps_preparation_matiere + temps_passage_matiere)), '%d/%m/%Y %H:%M:%f')
+                                            if int(horaire_arr.strftime('%d')) == int(jour_debut_preparation_voulue) and (horaire_arr.strftime('%H:%M:%S') > heure_debut_preparation_voulue_datetime.strftime('%H:%M:%S') or horaire_dep.strftime('%H:%M:%S') < fin_passage_matiere_datetime.strftime('%H:%M:%S')):
                                                 aucune_collision = False
-                                                
 
                         if aucune_collision and not candidat["absent"]:
                             # Create the creneau
@@ -327,7 +339,7 @@ def generation_calendrier():
 
     # commit
     db.session.commit()
-    
+
     result = test_calendar_complete()
     flash(result[0], result[1])
 
@@ -350,21 +362,22 @@ def convert_minute_to_string(time):
     h, m = int(time/60), int(time % 60)
     return f"{h}:{m}"
 
+
 def order_by(e):
-  return e["debut_preparation"]
+    return e["debut_preparation"]
 
 
 def test_calendar_complete():
-    response = ask_api("data/fetchmulti", ["creneau", "candidat", "choix_matiere"])
+    response = ask_api("data/fetchmulti",
+                       ["creneau", "candidat", "choix_matiere"])
     if response.status_code != 200:
         flash("Une erreur est survenue lors de la récupération des données", "danger")
     all_creneaux, all_candidats, all_choix_matiere = response.json()
-    
+
     # all_choix_matiere = CHOIX_MATIERE.query.all()
     # Because all_choix_matiere is immutable
     all_choix_matiere_left = deepcopy(all_choix_matiere)
-    
-    
+
     # all_creneaux = CRENEAU.query.all()
     # all_candidats = CANDIDATS.query.all()
 
@@ -392,11 +405,11 @@ def test_calendar_complete():
                     matiere_left -= 1
         if candidat["absent"]:
             if not matiere1:
-                matiere_left -= 1 
+                matiere_left -= 1
             else:
                 matiere1 = True
             if not matiere2:
-                matiere_left -= 1 
+                matiere_left -= 1
             else:
                 matiere2 = True
         if matiere1 and matiere2:
@@ -411,3 +424,30 @@ def test_calendar_complete():
     else:
         logging.warning("Le calendrier est complet !")
         return ['Calendrier généré avec succès', 'success']
+
+
+if(os.getenv("NETWORK_VISU") == "true"):
+    requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+        "type": "node",
+        "name": "website-calendar",
+        "data": {
+                "name": "Génération du calendrier",
+                "id": "website-calendar",
+                "size": 46,
+                "fsize": 30
+        },
+        "position": {
+            "x": 315,
+            "y": 632
+        }
+    })
+    requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+        "type": "edge",
+        "name": "website:website-calendar",
+        "data": {
+                "id": "website:website-calendar",
+                "weight": 1,
+                "source": "website",
+                "target": "website-calendar"
+        }
+    })

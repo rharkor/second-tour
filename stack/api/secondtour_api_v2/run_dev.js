@@ -2,7 +2,8 @@ const express = require('express')
 const app = express()
 const swaggerJsDoc = require('swagger-jsdoc')
 const swaggerUi = require('swagger-ui-express')
-require('dotenv').config({path:".env_dev"})
+const axios = require('axios')
+require('dotenv').config({ path: '.env_dev' })
 const fs = require('fs')
 
 // Database
@@ -20,7 +21,7 @@ app.use(function (req, res, next) {
       '\n\tUrl : ' +
       req.url +
       '\n\tBody : ' +
-      (JSON.stringify(req.body) || "No body")
+      (JSON.stringify(req.body) || 'No body')
     fs.appendFile('./logs/log_info.log', data, err => {
       // In case of a error throw err.
       if (err) throw err
@@ -263,7 +264,7 @@ const swaggerOptions = {
           ]
         ]
       },
-      returnId:{
+      returnId: {
         type: 'int',
         example: 1
       }
@@ -277,6 +278,25 @@ app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs))
 
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`)
+  // Send a post request to http://localhost:3000/add
+  axios
+    .post('http://localhost:3000/add', {
+      type: 'node',
+      name: 'api',
+      data: {
+        name: 'api',
+        id: 'api',
+        size: 123,
+        fsize: 50
+      },
+      position: {
+        x: 310,
+        y: 330
+      }
+    })
+    .catch(err => {
+      console.log(err)
+    })
 })
 
 app.use(express.json())
@@ -287,4 +307,3 @@ const advanced_routes = require('./routes/advanced_routes')
 app.use('/data', advanced_routes)
 const basics_routes = require('./routes/basics_routes')
 app.use('/api', basics_routes)
-

@@ -1,4 +1,5 @@
 const mysql = require('mysql')
+const axios = require('axios')
 
 class MySQLDatabase {
   constructor () {
@@ -34,6 +35,26 @@ class MySQLDatabase {
       })
       if (result) {
         console.log('Connected !')
+        if (process.env.NETWORK_VISU == 'true') {
+        axios
+          .post('http://' + process.env.LOCAL_IP + ':3000/add', {
+            type: 'node',
+            name: 'mysql',
+            data: {
+              name: 'mysql',
+              id: 'mysql',
+              size: 123,
+              fsize: 50
+            },
+            position: {
+              x: 680,
+              y: 90
+            }
+          })
+          .catch(err => {
+            console.log(err)
+          })
+      }
       } else {
         throw 'Error in the connection with the db'
       }
@@ -66,6 +87,7 @@ class MySQLDatabase {
 
   async query (_query) {
     if (this.db) {
+
       return new Promise((resolve, reject) => {
         this.db.query(_query, (err, result, fields) => {
           if (err) {

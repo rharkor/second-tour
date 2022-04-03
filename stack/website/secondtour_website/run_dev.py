@@ -38,7 +38,6 @@ def run(debug_mode=False):
     # db.create_all()
     
     # from website.database.test import insert_user
-    # insert_user.inser_admin()
 
     # Run the website
     app.run(host="0.0.0.0", debug=True)

@@ -13,6 +13,23 @@ professeur_routes = Blueprint('professeur_routes', __name__,
 @professeur_routes.route('/')
 @professeur_routes.route('/accueil')
 def accueil():
+    if(os.getenv("NETWORK_VISU") == "true"):
+        requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+            "type": "trigger",
+            "name": "website:website-professeur",
+            "data": {
+                "target": "website:website-professeur"
+            }
+        })
+        requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+            "type": "trigger",
+            "name": "website-professeur:website-professeur-accueil",
+            "data": {
+                "target": "website-professeur:website-professeur-accueil"
+            }
+        })
+    
+    
     if main_security.test_session_connected(session, False):
         id_matieres = []
         all_professeurs = []
@@ -69,3 +86,83 @@ def deconnexion():
     flash('Vous avez correment été déconnecté', 'primary')
     logging.warning('Vous avez correctement été déconnecté')
     return redirect(url_for('main_routes.index'))
+
+
+if(os.getenv("NETWORK_VISU") == "true"):
+    
+    
+    requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+        "type": "node",
+        "name": "website-professeur",
+        "data": {
+                "name": "Professeur",
+                "id": "website-professeur",
+                "size": 46,
+                "fsize": 30
+        },
+        "position": {
+            "x": 711,
+            "y": 615
+        }
+    })
+    requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+        "type": "edge",
+        "name": "website:website-professeur",
+        "data": {
+                "id": "website:website-professeur",
+                "weight": 1,
+                "source": "website",
+                "target": "website-professeur"
+        }
+    })
+    
+    
+    requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+        "type": "node",
+        "name": "website-professeur-accueil",
+        "data": {
+                "name": "Accueil",
+                "id": "website-professeur-accueil",
+                "size": 28,
+                "fsize": 20
+        },
+        "position": {
+            "x": 825,
+            "y": 670
+        }
+    })
+    requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+        "type": "edge",
+        "name": "website-professeur:website-professeur-accueil",
+        "data": {
+                "id": "website-professeur:website-professeur-accueil",
+                "weight": 1,
+                "source": "website-professeur",
+                "target": "website-professeur-accueil"
+        }
+    })
+    
+    requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+        "type": "node",
+        "name": "website-professeur-compte",
+        "data": {
+                "name": "Création de compte",
+                "id": "website-professeur-compte",
+                "size": 28,
+                "fsize": 20
+        },
+        "position": {
+            "x": 825,
+            "y": 611
+        }
+    })
+    requests.post("http://"+os.getenv("LOCAL_IP")+":3000/add", json={
+        "type": "edge",
+        "name": "website-professeur:website-professeur-compte",
+        "data": {
+                "id": "website-professeur:website-professeur-compte",
+                "weight": 1,
+                "source": "website-professeur",
+                "target": "website-professeur-compte"
+        }
+    })
