@@ -371,6 +371,11 @@ def professeurs():
         all_horaires_unsort = all_horaires.copy()
         all_horaires = transform_dict_strptime(all_horaires_unsort, [
                                                "horaire_arr1", "horaire_dep1", "horaire_arr2", "horaire_dep2", "horaire_arr3", "horaire_dep3"])
+        all_matieres_filtered = []
+        for matiere in all_matieres:
+            matiere["nom_complet"] = matiere["nom_complet"].replace(" - None", "")
+            all_matieres_filtered.append(matiere)
+        all_matieres = all_matieres_filtered
         # all_horaires = []
         # for horaire in all_horaires_unsort:
         #     all_horaires.append({
