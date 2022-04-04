@@ -57,7 +57,7 @@ def generation_calendrier():
     # Order by tiers temps
     candidat_techno_orderned = []
     for candidat in candidat_techno:
-        if candidat["tiers_temps"] == True:
+        if candidat["tiers_temps"] != True:
             # Push at the end
             candidat_techno_orderned.append(candidat)
         else:
@@ -65,7 +65,7 @@ def generation_calendrier():
             candidat_techno_orderned.insert(0, candidat)
     candidat_general_orderned = []
     for candidat in candidat_general:
-        if candidat["tiers_temps"] == True:
+        if candidat["tiers_temps"] != True:
             # Push at the end
             candidat_general_orderned.append(candidat)
         else:
