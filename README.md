@@ -27,13 +27,13 @@ docker exec -it nom-du-conteneur bash
 *ps: Le site et l'API ont un fichier de log accessible à leur racine.*
 
 #### Lancer les tests:
-Il faut dans un premier temps se placer dans le répertoire `tests`.
-Pour executer les tests unitaires :
-`npm run test`
+Il faut dans un premier temps se placer dans le répertoire `tests`.   
+Pour executer les tests unitaires :    
+`npm run test`    
 
-Pour executer les tests fonctionnels :
-`npm run test:ui`
-*ps: Les test fonctionnels prennent un peu de temps à se lancer*
+Pour executer les tests fonctionnels :   
+`npm run test:ui`   
+*ps: Les test fonctionnels prennent un peu de temps à se lancer*   
 
 
 #### Execution des fixtures:
