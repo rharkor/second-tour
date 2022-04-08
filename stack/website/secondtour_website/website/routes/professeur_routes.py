@@ -1,6 +1,7 @@
 import logging
 from flask import Blueprint, render_template, session, request, redirect, url_for
 from flask.helpers import flash
+import os
 
 from ..function import main_security, main_sessions, main_database, main_calendrier
 from ..database.main_database import *
