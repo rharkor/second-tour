@@ -7,6 +7,7 @@ services:
       dockerfile: ./build/website/Dockerfile
     image: secondtour-website
     container_name: secondtour-website
+    restart: always
     volumes:
       - ./website:/app/website
     depends_on:
@@ -21,6 +22,7 @@ services:
       dockerfile: ./build/api/Dockerfile
     image: secondtour-api
     container_name: secondtour-api
+    restart: always
     volumes:
       - ./api:/app/api
     depends_on:
@@ -36,6 +38,7 @@ services:
     image: secondtour-mysql
     command: --default-authentication-plugin=mysql_native_password
     container_name: secondtour-mysql
+    restart: always
     ports:
       - 3306:3306
     volumes:
