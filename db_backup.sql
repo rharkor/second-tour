@@ -273,7 +273,7 @@ DROP TABLE IF EXISTS `serie`;
 CREATE TABLE `serie` (
   `id_serie` int NOT NULL AUTO_INCREMENT,
   `nom` varchar(40) NOT NULL,
-  `specialite1` varchar(50) NOT NULL,
+  `specialite1` varchar(50) DEFAULT NULL,
   `specialite2` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id_serie`),
   UNIQUE KEY `UNQ_NOM_SPE1_SPE2` (`nom`,`specialite1`,`specialite2`)
@@ -286,7 +286,7 @@ CREATE TABLE `serie` (
 
 LOCK TABLES `serie` WRITE;
 /*!40000 ALTER TABLE `serie` DISABLE KEYS */;
-INSERT INTO `serie` VALUES (4,'Générale','Anglais avancé','Mathématiques'),(1,'Générale','SVT','Mathématiques'),(2,'Technologique','Mathématique',NULL),(6,'Technologique','Mécanique',NULL);
+INSERT INTO `serie` VALUES (4,'Générale',NULL,NULL),(1,'Générale',NULL, NULL),(2,'Technologique','Mathématique',NULL),(6,'Technologique','Mécanique',NULL);
 /*!40000 ALTER TABLE `serie` ENABLE KEYS */;
 UNLOCK TABLES;
 

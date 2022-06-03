@@ -32,6 +32,8 @@ def test(dev):
 
 
 def run(debug_mode=False):
+    website_url = 'secondtour.vieljeux.yetixdev.com:8000'
+    app.config['SERVER_NAME'] = website_url
     logging.warning("Run the server")
     # Create db with the framwork sql alchemy
     # db.create_all()

@@ -14,12 +14,31 @@ Lancer la stack:
 docker-compose up --build
 ```
 
+Pour lancer le visualisateur des échanges réseaux, il faut :
+ - Vérifier que "NETWORK_VISU=true" dans les .env de l'api et du site internet
+ - LOCAL_IP=.... soit bien l'adresse ip de la machine en question (toujours dans les mêmes .env)
+ - Lancer le `NetworkExchangeVisualisation` à l'aide de la commande `node app.js` avant la stack docker
+
 Pour accéder aux conteneurs individuels il faut éxecuter (*la stack doit être entrain de tourner*):
 ```console
 docker exec -it nom-du-conteneur bash
 ```
 
 *ps: Le site et l'API ont un fichier de log accessible à leur racine.*
+
+#### Lancer les tests:
+Il faut dans un premier temps se placer dans le répertoire `tests`.   
+Pour executer les tests unitaires :    
+`npm run test`    
+
+Pour executer les tests fonctionnels :   
+`npm run test:ui`   
+*ps: Les test fonctionnels prennent un peu de temps à se lancer*   
+
+
+#### Execution des fixtures:
+Afin de lancer les fixtures il faut executer la commande `python tests.py` dans le répertoire ***stack\website\secondtour_website***
+
 
 #### Différents partis du projet:
 
