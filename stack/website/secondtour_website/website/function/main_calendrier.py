@@ -269,13 +269,13 @@ def generation_calendrier():
                                                 aucune_collision = False
 
                                 # Test only morning or only afternoon
-                                first_creneau = list(filter(
-                                    lambda creneau: creneau["id_candidat"] == candidat["id_candidat"], local_creneau))
-                                first_creneau = first_creneau[0] if first_creneau else None
-                                if first_creneau \
-                                    and (((first_creneau["debut_preparation"].hour) <= 13 and heure_debut_preparation_voulue >= timedelta(hours=14))
-                                         or ((first_creneau["debut_preparation"].hour) >= 14 and heure_debut_preparation_voulue <= timedelta(hours=13))):
-                                    aucune_collision = False
+                                # first_creneau = list(filter(
+                                #     lambda creneau: creneau["id_candidat"] == candidat["id_candidat"], local_creneau))
+                                # first_creneau = first_creneau[0] if first_creneau else None
+                                # if first_creneau \
+                                #     and (((first_creneau["debut_preparation"].hour) <= 13 and heure_debut_preparation_voulue >= timedelta(hours=14))
+                                #          or ((first_creneau["debut_preparation"].hour) >= 14 and heure_debut_preparation_voulue <= timedelta(hours=13))):
+                                #     aucune_collision = False
 
                             # Test both same day
                             first_creneau = list(filter(
