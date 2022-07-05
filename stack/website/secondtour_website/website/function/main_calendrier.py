@@ -335,7 +335,7 @@ def generation_calendrier():
                             heure_debut_preparation_voulue = timedelta(
                                 hours=20)
                             break
-                    heure_debut_preparation_voulue += timedelta(minutes=10)
+                    heure_debut_preparation_voulue += timedelta(minutes=30)
 
     # commit
     db.session.commit()
