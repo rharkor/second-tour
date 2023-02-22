@@ -59,83 +59,83 @@ L'objectif du projet est de créer une application permettant de proposer à l'a
 ##### Enjeux :
 Il faut que l’application soit fonctionnelle avant les épreuves du baccalauréat 2022 (Avant juin 2022) afin qu'elle puisse être utilisée pour celles-ci.
 
-#### 1. [Présentation du projet](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Pr%C3%A9sentation-du-projet)
+#### 1. [Présentation du projet](https://github.com/rharkor/second-tour/wiki/Pr%C3%A9sentation-du-projet)
 
-- [Sujet de base](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Pr%C3%A9sentation-du-projet#sujet-de-base)
-- [Notre équipe](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Pr%C3%A9sentation-du-projet#notre-%C3%A9quipe)
-- [Logiciels/Applications utilisées](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Pr%C3%A9sentation-du-projet#logicielsapplications-utilis%C3%A9es)
-- [Langage de programmation utiliser](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Pr%C3%A9sentation-du-projet#langage-de-programmation-utiliser)
-- [Framework utilisé](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Pr%C3%A9sentation-du-projet#framework-utilis%C3%A9)
-- [Schéma des relations avec l'API](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Pr%C3%A9sentation-du-projet#sch%C3%A9ma-des-relations-avec-lapi)
+- [Sujet de base](https://github.com/rharkor/second-tour/wiki/Pr%C3%A9sentation-du-projet#sujet-de-base)
+- [Notre équipe](https://github.com/rharkor/second-tour/wiki/Pr%C3%A9sentation-du-projet#notre-%C3%A9quipe)
+- [Logiciels/Applications utilisées](https://github.com/rharkor/second-tour/wiki/Pr%C3%A9sentation-du-projet#logicielsapplications-utilis%C3%A9es)
+- [Langage de programmation utiliser](https://github.com/rharkor/second-tour/wiki/Pr%C3%A9sentation-du-projet#langage-de-programmation-utiliser)
+- [Framework utilisé](https://github.com/rharkor/second-tour/wiki/Pr%C3%A9sentation-du-projet#framework-utilis%C3%A9)
+- [Schéma des relations avec l'API](https://github.com/rharkor/second-tour/wiki/Pr%C3%A9sentation-du-projet#sch%C3%A9ma-des-relations-avec-lapi)
 
-#### 2. [Charte graphique](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Charte-graphique)
+#### 2. [Charte graphique](https://github.com/rharkor/second-tour/wiki/Charte-graphique)
 
-- [Logo](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Charte-graphique#1-logo)
-- [Couleurs utilisées](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Charte-graphique#2-couleurs-utilisees)
-- [Typographie](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Charte-graphique#3-typographie)
-- [Illustration et banque d'images](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Charte-graphique#4-illustrations-et-banque-dimages)
-
-
-
-#### 3. [Navigation](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Navigation)
-- [Pages accessible à tous](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Navigation#pages-accessible-%C3%A0-tous)
-- [Page professeur](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Navigation#page-professeur)
-- [Pages administrateur](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Navigation#pages-administrateur)
-
-
-#### 4. [Base de données](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Base-de-données)
-
-- [Dictionnaire des relations](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Base-de-donn%C3%A9es#1-dictionnaire-des-relations)
-- [Schéma des relations](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Base-de-donn%C3%A9es#2-schema-des-relations)
-- [Dictionnaire des attributs](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Base-de-donn%C3%A9es#3-dictionnaire-des-attributs-des-relations-de-la-base-de-donnees)
-- [Schéma](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Base-de-donn%C3%A9es#4-schema-de-la-base-de-donnees)
+- [Logo](https://github.com/rharkor/second-tour/wiki/Charte-graphique#1-logo)
+- [Couleurs utilisées](https://github.com/rharkor/second-tour/wiki/Charte-graphique#2-couleurs-utilisees)
+- [Typographie](https://github.com/rharkor/second-tour/wiki/Charte-graphique#3-typographie)
+- [Illustration et banque d'images](https://github.com/rharkor/second-tour/wiki/Charte-graphique#4-illustrations-et-banque-dimages)
 
 
 
-#### 5. [Documentation Flask](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Documentation-Flask)
-
-- [Présentation de Flask](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Documentation-Flask#1-pr%C3%A9sentation-de-flask)
-- [Débuter un projet avec le framework Flask](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Documentation-Flask#2-d%C3%A9buter-un-projet-avec-le-framework-flask)
-- [Installation du framework Flask](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Documentation-Flask#2-d%C3%A9buter-un-projet-avec-le-framework-flask)
-  - [Création de la première page du projet](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Documentation-Flask#2-creation-de-la-premiere-page-du-projet)
-  - [Création des différentes routes](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Documentation-Flask#3-definition-des-differentes-routes)
-  - [Exécuter le projet](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Documentation-Flask#4-executer-le-projet)  
-  - [HTML et Template](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Documentation-Flask#5-html-et-template)
+#### 3. [Navigation](https://github.com/rharkor/second-tour/wiki/Navigation)
+- [Pages accessible à tous](https://github.com/rharkor/second-tour/wiki/Navigation#pages-accessible-%C3%A0-tous)
+- [Page professeur](https://github.com/rharkor/second-tour/wiki/Navigation#page-professeur)
+- [Pages administrateur](https://github.com/rharkor/second-tour/wiki/Navigation#pages-administrateur)
 
 
+#### 4. [Base de données](https://github.com/rharkor/second-tour/wiki/Base-de-données)
 
-#### 6. [Réunions avec le client](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/R%C3%A9union-avec-le-client)
+- [Dictionnaire des relations](https://github.com/rharkor/second-tour/wiki/Base-de-donn%C3%A9es#1-dictionnaire-des-relations)
+- [Schéma des relations](https://github.com/rharkor/second-tour/wiki/Base-de-donn%C3%A9es#2-schema-des-relations)
+- [Dictionnaire des attributs](https://github.com/rharkor/second-tour/wiki/Base-de-donn%C3%A9es#3-dictionnaire-des-attributs-des-relations-de-la-base-de-donnees)
+- [Schéma](https://github.com/rharkor/second-tour/wiki/Base-de-donn%C3%A9es#4-schema-de-la-base-de-donnees)
 
-- [Réunion du 22 octobre 2021](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/R%C3%A9union-avec-le-client#r%C3%A9sum%C3%A9-de-la-premi%C3%A8re-r%C3%A9union-du-22-octobre-2021)
-- [Réunion du 18 novembre 2021](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/R%C3%A9union-avec-le-client#r%C3%A9sum%C3%A9-de-la-seconde-r%C3%A9union-du-18-novembre-2021)
-- [Réunion du 4 février 2022](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/R%C3%A9union-avec-le-client#r%C3%A9sum%C3%A9-de-la-troisi%C3%A8me-r%C3%A9union-4-f%C3%A9vrier-2022)
 
 
-#### 7. [Réunions avec le tuteur](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/R%C3%A9union-avec-le-tuteur)
-- [Réunion du 1er décembre 2021](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/R%C3%A9union-avec-le-tuteur#r%C3%A9union-du-1er-d%C3%A9cembre-2021)
-- [Réunion du 2 Mars 2022](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/R%C3%A9union-avec-le-tuteur#r%C3%A9union-du-2-mars-2022)
+#### 5. [Documentation Flask](https://github.com/rharkor/second-tour/wiki/Documentation-Flask)
 
-#### 8. [Documentation API](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Documentation-de-l'API#documentation-de-lapi)
-- [Présentation de l'API](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Documentation-de-l'API#1-pr%C3%A9sentation-de-lapi)
-- [Définition des routes](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Documentation-de-l'API#2-d%C3%A9finition-des-routes)
+- [Présentation de Flask](https://github.com/rharkor/second-tour/wiki/Documentation-Flask#1-pr%C3%A9sentation-de-flask)
+- [Débuter un projet avec le framework Flask](https://github.com/rharkor/second-tour/wiki/Documentation-Flask#2-d%C3%A9buter-un-projet-avec-le-framework-flask)
+- [Installation du framework Flask](https://github.com/rharkor/second-tour/wiki/Documentation-Flask#2-d%C3%A9buter-un-projet-avec-le-framework-flask)
+  - [Création de la première page du projet](https://github.com/rharkor/second-tour/wiki/Documentation-Flask#2-creation-de-la-premiere-page-du-projet)
+  - [Création des différentes routes](https://github.com/rharkor/second-tour/wiki/Documentation-Flask#3-definition-des-differentes-routes)
+  - [Exécuter le projet](https://github.com/rharkor/second-tour/wiki/Documentation-Flask#4-executer-le-projet)  
+  - [HTML et Template](https://github.com/rharkor/second-tour/wiki/Documentation-Flask#5-html-et-template)
 
-#### 9. [Gestion de projet](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Gestion-de-projet#gestion-du-projet)
-- [Périmètre du projet](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Gestion-de-projet#p%C3%A9rim%C3%A8tre-du-projet)
-     - [Détails de la vision produit](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Gestion-de-projet#d%C3%A9tails-de-la-vision-produit)
-     - [Les contraintes](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Gestion-de-projet#les-contraintes)
-     - [Les livrables attendus](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Gestion-de-projet#les-livrables-attendus)
-- [Organisation du projet](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Gestion-de-projet#organisation-du-projet)
-     - [Méthodologie de projet](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Gestion-de-projet#m%C3%A9thodologie-de-projet)
-     - [Outils de suivi de projet](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Gestion-de-projet#outils-de-suivi-de-projet)
-     - [Répartition du travail](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Gestion-de-projet#r%C3%A9partition-du-travail-entre-les-membres-du-groupe)
-     - [Organisation](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Gestion-de-projet#organisation)
+
+
+#### 6. [Réunions avec le client](https://github.com/rharkor/second-tour/wiki/R%C3%A9union-avec-le-client)
+
+- [Réunion du 22 octobre 2021](https://github.com/rharkor/second-tour/wiki/R%C3%A9union-avec-le-client#r%C3%A9sum%C3%A9-de-la-premi%C3%A8re-r%C3%A9union-du-22-octobre-2021)
+- [Réunion du 18 novembre 2021](https://github.com/rharkor/second-tour/wiki/R%C3%A9union-avec-le-client#r%C3%A9sum%C3%A9-de-la-seconde-r%C3%A9union-du-18-novembre-2021)
+- [Réunion du 4 février 2022](https://github.com/rharkor/second-tour/wiki/R%C3%A9union-avec-le-client#r%C3%A9sum%C3%A9-de-la-troisi%C3%A8me-r%C3%A9union-4-f%C3%A9vrier-2022)
+
+
+#### 7. [Réunions avec le tuteur](https://github.com/rharkor/second-tour/wiki/R%C3%A9union-avec-le-tuteur)
+- [Réunion du 1er décembre 2021](https://github.com/rharkor/second-tour/wiki/R%C3%A9union-avec-le-tuteur#r%C3%A9union-du-1er-d%C3%A9cembre-2021)
+- [Réunion du 2 Mars 2022](https://github.com/rharkor/second-tour/wiki/R%C3%A9union-avec-le-tuteur#r%C3%A9union-du-2-mars-2022)
+
+#### 8. [Documentation API](https://github.com/rharkor/second-tour/wiki/Documentation-de-l'API#documentation-de-lapi)
+- [Présentation de l'API](https://github.com/rharkor/second-tour/wiki/Documentation-de-l'API#1-pr%C3%A9sentation-de-lapi)
+- [Définition des routes](https://github.com/rharkor/second-tour/wiki/Documentation-de-l'API#2-d%C3%A9finition-des-routes)
+
+#### 9. [Gestion de projet](https://github.com/rharkor/second-tour/wiki/Gestion-de-projet#gestion-du-projet)
+- [Périmètre du projet](https://github.com/rharkor/second-tour/wiki/Gestion-de-projet#p%C3%A9rim%C3%A8tre-du-projet)
+     - [Détails de la vision produit](https://github.com/rharkor/second-tour/wiki/Gestion-de-projet#d%C3%A9tails-de-la-vision-produit)
+     - [Les contraintes](https://github.com/rharkor/second-tour/wiki/Gestion-de-projet#les-contraintes)
+     - [Les livrables attendus](https://github.com/rharkor/second-tour/wiki/Gestion-de-projet#les-livrables-attendus)
+- [Organisation du projet](https://github.com/rharkor/second-tour/wiki/Gestion-de-projet#organisation-du-projet)
+     - [Méthodologie de projet](https://github.com/rharkor/second-tour/wiki/Gestion-de-projet#m%C3%A9thodologie-de-projet)
+     - [Outils de suivi de projet](https://github.com/rharkor/second-tour/wiki/Gestion-de-projet#outils-de-suivi-de-projet)
+     - [Répartition du travail](https://github.com/rharkor/second-tour/wiki/Gestion-de-projet#r%C3%A9partition-du-travail-entre-les-membres-du-groupe)
+     - [Organisation](https://github.com/rharkor/second-tour/wiki/Gestion-de-projet#organisation)
      
-#### 10. [Projet réalisé](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Projet-r%C3%A9alis%C3%A9)
-- [Fonctionnalités implémentées](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Projet-r%C3%A9alis%C3%A9#fonctionnalit%C3%A9s-impl%C3%A9ment%C3%A9es)
-     - [Partie accueil](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Projet-r%C3%A9alis%C3%A9#partie-accueil)
-     - [Partie admin](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Projet-r%C3%A9alis%C3%A9#partie-admin)
-     - [Partie professeur](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Projet-r%C3%A9alis%C3%A9#partie-professeur)
-- [Rétrospective finale](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Projet-r%C3%A9alis%C3%A9#r%C3%A9trospective-finale)
-     - [Rétrospective individuelle](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Projet-r%C3%A9alis%C3%A9#r%C3%A9trospective-individuelle)
-     - [Rétrospective d'équipe](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Projet-r%C3%A9alis%C3%A9#r%C3%A9trospective-d%C3%A9quipe)
-- [Bilan du projet](https://forge.iut-larochelle.fr/lhuort/pts2021_sujet14/-/wikis/Projet-r%C3%A9alis%C3%A9#bilan-du-projet)
+#### 10. [Projet réalisé](https://github.com/rharkor/second-tour/wiki/Projet-r%C3%A9alis%C3%A9)
+- [Fonctionnalités implémentées](https://github.com/rharkor/second-tour/wiki/Projet-r%C3%A9alis%C3%A9#fonctionnalit%C3%A9s-impl%C3%A9ment%C3%A9es)
+     - [Partie accueil](https://github.com/rharkor/second-tour/wiki/Projet-r%C3%A9alis%C3%A9#partie-accueil)
+     - [Partie admin](https://github.com/rharkor/second-tour/wiki/Projet-r%C3%A9alis%C3%A9#partie-admin)
+     - [Partie professeur](https://github.com/rharkor/second-tour/wiki/Projet-r%C3%A9alis%C3%A9#partie-professeur)
+- [Rétrospective finale](https://github.com/rharkor/second-tour/wiki/Projet-r%C3%A9alis%C3%A9#r%C3%A9trospective-finale)
+     - [Rétrospective individuelle](https://github.com/rharkor/second-tour/wiki/Projet-r%C3%A9alis%C3%A9#r%C3%A9trospective-individuelle)
+     - [Rétrospective d'équipe](https://github.com/rharkor/second-tour/wiki/Projet-r%C3%A9alis%C3%A9#r%C3%A9trospective-d%C3%A9quipe)
+- [Bilan du projet](https://github.com/rharkor/second-tour/wiki/Projet-r%C3%A9alis%C3%A9#bilan-du-projet)
